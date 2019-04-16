@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import SEO from 'components/seo'
 import Sidebar from './Sidebar'
 import Card from 'components/Shared/Card'
 import style from './style.module.css'
 
+// TODO: DON'T USE THUMBNAIL
 import Thumbnail from 'components/Shared/Thumbnail'
 
 export const Collection = ({ iiifManifest }) => {
@@ -17,11 +17,10 @@ export const Collection = ({ iiifManifest }) => {
       <SEO title={iiifManifest.label} description={iiifManifest.description} />
       <div><Thumbnail src={iiifManifest.thumbnail} /></div>
       <div>Breadcrumb</div>
-      <h1>{iiifManifest.label}</h1>
-      <div>
-        <div>DisplayViewToggle</div>
-        <div>
-          <p>ManifestCardList</p>
+      <article>
+        <h1>{iiifManifest.label}</h1>
+        <div classame='placeholder-for-toggle-class'>
+          <div>DisplayViewToggle</div>
           <ul>
             {
               iiifManifest.childrenIiifManifest.map(manifest => {
@@ -37,7 +36,7 @@ export const Collection = ({ iiifManifest }) => {
             }
           </ul>
         </div>
-      </div>
+      </article>
     </Layout>
   )
 }
