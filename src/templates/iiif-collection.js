@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import Thumbnail from "../components/thumbnail"
+import Thumbnail from "../components/Shared/Thumbnail"
 
 export default ({data}) => (
   <Layout>

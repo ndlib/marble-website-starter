@@ -1,0 +1,19 @@
+.loginButton {
+  border-left: 1px solid #666;
+  height: 70px;
+  line-height: 70px;
+  margin-left: auto;
+  padding: 0;
+  width: 60px
+}
+
+.loginButton a {
+  text-align: right;
+  margin: 0;
+  height: 70px;
+  vertical-align: top;
+  line-height: 70px;
+  width: 100%;
+  display: inline-block;
+  padding: 0;
+}

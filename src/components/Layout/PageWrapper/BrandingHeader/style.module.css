@@ -1,0 +1,38 @@
+.wrapper {
+  background-color: #0A233F;
+}
+
+.wrapper a {
+  margin: 0 40px;
+  text-decoration: none;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+}
+
+.inner img {
+  height: 50px;
+  width: auto;
+}
+
+.inner a:nth-of-type(2) {
+  position: absolute;
+  right: 20px;
+}
+@media (max-width: 780px) {
+  .wrapper {
+    text-align: center;
+  }
+  .inner a:nth-of-type(2) {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .inner {
+    margin: 0 auto;
+    width: 1280px;
+  }
+}

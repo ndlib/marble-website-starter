@@ -14,15 +14,20 @@
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.11",
     "gatsby-plugin-sharp": "^2.0.31",
+    "gatsby-plugin-typography": "^2.2.13",
     "gatsby-source-filesystem": "^2.0.28",
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-sharp": "^2.1.17",
     "prop-types": "^15.7.2",
+    "query-string": "^6.4.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19"
   },
   "devDependencies": {
+    "eslint-plugin-react-hooks": "^1.6.0",
     "prettier": "^1.16.4"
   },
   "keywords": [
@@ -39,9 +44,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/ndlib/marble-website-starter"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/ndlib/marble-website-starter/issues"
   }
 }

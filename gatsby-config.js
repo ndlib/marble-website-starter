@@ -1,8 +1,15 @@
 module.exports = {
   siteMetadata: {
     title: `Collection SITE!!!`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `JON!`,
+    author: `ndlib`,
+    description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
+    // apis and embedded urls
+    universalViewerBaseURL: `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
+    // branding
+    institutionURL: process.env.MARBLE_INSTITUTION_URL || `https://marble.library.nd.edu`,
+    institutionLabel: process.env.MARBLE_INSTITUTION_LABEL || `MARBLE`,
+    departmentURL: process.env.MARBLE_DEPARTMENT_URL || ``,
+    departmentLabel: process.env.MARBLE_DEPARTMENT_LABEL || ``,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -39,7 +46,13 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    'gatsby-plugin-offline',
+    `gatsby-plugin-offline`,
     `gatsby-transformer-iiif`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
   ],
 }

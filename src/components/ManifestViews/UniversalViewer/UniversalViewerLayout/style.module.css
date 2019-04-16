@@ -1,0 +1,8 @@
+.universalViewer {
+  border: none;
+  left: 0;
+  margin: 0 auto;
+  min-height: calc(100vh - 50px - 70px - 64px);
+  position: absolute;
+  width: 100vw;
+}

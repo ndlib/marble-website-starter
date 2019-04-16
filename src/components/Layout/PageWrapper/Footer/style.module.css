@@ -1,0 +1,46 @@
+.pageFooter{
+  background-color: #222;
+  color: #fff;
+  min-height : 64px;
+  position: static;
+  bottom: 0;
+  left: 0;
+}
+.pageFooter a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footerInner {
+  width: 100%;
+}
+
+.footerText,
+.footerCenter,
+.footerLinks {
+  display: inline-block;
+  margin: 2rem 0;
+  vertical-align: top;
+  width: calc(100% / 3);
+}
+
+.footerText p {
+  line-height: 1.5em;
+  margin: 0 .25em;
+}
+.footerLinks a {
+  display: block;
+}
+
+@media (max-width: 780px) {
+  .footerText {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footerInner {
+    margin: 0 auto;
+    width: 1280px;
+  }
+}

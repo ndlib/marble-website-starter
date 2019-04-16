@@ -1,0 +1,39 @@
+.navBar {
+  background-color: black;
+  color: white;
+}
+.navBarInner {
+  align-items: center;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  width: calc(100vw - 60px);
+}
+
+.navBar nav {
+  margin: 0 auto;
+  height: 70px;
+  vertical-align: middle;
+  line-height: 70px;
+  width: 50vw;
+}
+.navBar a{
+  text-decoration: none;
+  color : #ffffff;
+  font-size : 1rem;
+  font-family: Geneva;
+}
+.navBar a:hover{
+  color : #aaaaaa;
+}
+
+.siteTitle {
+  margin: 0 40px;
+}
+
+@media (min-width: 1280px) {
+  .navBarInner {
+    margin: 0 auto;
+    width: 1220px;
+  }
+}

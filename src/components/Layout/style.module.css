@@ -1,0 +1,14 @@
+.standardLayout {}
+.asideLayout {}
+
+.mainPadding {
+  background-color: white;
+  margin: 1.8rem auto;
+  min-height: calc(100vh - 50px - 70px - 64px - 1.8rem*2);
+  width: 70vw;
+}
+.noMainPadding {
+  background-color: white;
+  margin: 0 0;
+  min-height: calc(100vh - 50px - 70px - 64px);
+}
