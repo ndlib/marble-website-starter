@@ -1,25 +1,28 @@
-import React from "react"
-import { Link } from "gatsby"
-import { graphql } from "gatsby"
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import Thumbnail from "../components/Shared/Thumbnail"
+import React from 'react'
+import Collection from 'components/ManifestViews/Collection'
+// import { Link } from "gatsby"
+// import { graphql } from "gatsby"
+// import Layout from "../components/Layout"
+// import SEO from "../components/seo"
+// import Thumbnail from "../components/Shared/Thumbnail"
 
-export default ({data}) => (
-  <Layout>
-    <SEO title={data.iiifManifest.label} description={data.iiifManifest.description} />
-    <h1>{data.iiifManifest.label}</h1>
-    <p>{data.iiifManifest.description}</p>
-    <p><Thumbnail src={data.iiifManifest.thumbnail} /></p>
-    <ul>
-    {
-      data.iiifManifest.childrenIiifManifest.map(manifest => <li><Link to={manifest.slug}>{manifest.label}</Link></li>)
-    }
-    </ul>
-  </Layout>
+export default ({ data }) => (
+  <Collection iiifManifest={data.iiifManifest} />
+
 )
+// <Layout>
+//   <SEO title={data.iiifManifest.label} description={data.iiifManifest.description} />
+//   <h1>{data.iiifManifest.label}</h1>
+//   <p>{data.iiifManifest.description}</p>
+//   <p><Thumbnail src={data.iiifManifest.thumbnail} /></p>
+//   <ul>
+//   {
+//     data.iiifManifest.childrenIiifManifest.map(manifest => <li><Link to={manifest.slug}>{manifest.label}</Link></li>)
+//   }
+//   </ul>
+// </Layout>
 
- export const query = graphql`
+export const query = graphql`
   query($slug: String!) {
     iiifManifest( slug: { eq: $slug }) {
       id
@@ -29,6 +32,10 @@ export default ({data}) => (
         _id
       }
       slug
+      metadata {
+        label
+        value
+      }
       childrenIiifManifest {
         id
         label
