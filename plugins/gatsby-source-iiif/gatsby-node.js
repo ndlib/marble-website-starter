@@ -1,6 +1,6 @@
-const fetch = require("node-fetch")
-const md5 = require("md5")
-const fs = require("fs")
+const fetch = require('node-fetch')
+const md5 = require('md5')
+const fs = require('fs')
 const fetchData = require('./fetch')
 
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
@@ -14,16 +14,16 @@ exports.sourceNodes = async (
 
   const buildNode = (data) => {
     const node = data.manifest
-    node.id = node["@id"]
+    node.id = node['@id']
     node.children = (node.collections || node.manifests || []).map(manifest => manifest['@id'])
 
     delete node.collections
     delete node.manifests
 
     if (node['@type'].toLowerCase() === 'sc:collection') {
-      node.slug = "collection/" + md5(node["@id"])
+      node.slug = 'collection/' + md5(node['@id'])
     } else {
-      node.slug = "item/" + md5(node["@id"])
+      node.slug = 'item/' + md5(node['@id'])
     }
 
     if (manifest2Tags[node['@id']]) {
@@ -40,7 +40,7 @@ exports.sourceNodes = async (
       id: node.id,
       parent: data.parent_id,
       internal: {
-        type: "iiifManifest",
+        type: 'iiifManifest',
         mediaType: `text/json`,
         content: nodeContent,
         contentDigest: createContentDigest(node),
@@ -57,7 +57,7 @@ exports.sourceNodes = async (
       id: node.id,
       parent: node.parent_id,
       internal: {
-        type: "BrowseCategory",
+        type: 'BrowseCategory',
         mediaType: `text/json`,
         content: nodeContent,
         contentDigest: createContentDigest(node),
@@ -69,7 +69,7 @@ exports.sourceNodes = async (
   }
 
   const loadManifestsFile = () => {
-    const contents = fs.readFileSync(__dirname + "/../../manifests.json")
+    const contents = fs.readFileSync(__dirname + '/../../manifests.json')
     return JSON.parse(contents)
   }
 /*
