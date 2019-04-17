@@ -7,7 +7,6 @@ import Thumbnail from '../components/thumbnail'
 import { Link, graphql } from 'gatsby'
 
 const Tags = ({ data }) => {
-  const nodes = data.allIiifManifest.nodes
   const categories = data.allBrowseCategory.nodes
   const category = data.browseCategory
   return (
@@ -26,7 +25,7 @@ const Tags = ({ data }) => {
         })}
       </ul>
       <ul>
-        {nodes.map((node) => {
+        {category.manifest_ids.map((node) => {
           const { slug, label } = node
           return (
             <li key={slug}>
@@ -71,28 +70,23 @@ export const pageQuery = graphql`
       label
       description
       thumbnail
+      manifest_ids {
+        slug
+        thumbnail {
+          _id
+        }
+        label
+      }
     },
-    allIiifManifest(
+    allBrowseCategory(
       limit: 2000
-      filter: { tags: { in: [$tag] } }
+      filter: { parent_id: { eq: $tag } }
     ) {
         nodes {
-          slug
-          thumbnail {
-            _id
-          }
+          id
+          thumbnail
           label
         }
       },
-      allBrowseCategory(
-        limit: 2000
-        filter: { parent_id: { eq: $tag } }
-      ) {
-          nodes {
-            id
-            thumbnail
-            label
-          }
-        },
-    }
+  }
 `

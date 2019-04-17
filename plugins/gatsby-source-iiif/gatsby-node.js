@@ -52,6 +52,10 @@ exports.sourceNodes = async (
   }
 
   const buildCategoryNode = (node) => {
+    node.manifest_ids___NODE = node.manifest_ids
+    delete node.manifest_ids
+
+    console.log(node.children)
     const nodeContent = JSON.stringify(node)
 
     const nodeMeta = {
