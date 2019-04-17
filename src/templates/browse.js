@@ -25,7 +25,7 @@ const Tags = ({ data }) => {
         })}
       </ul>
       <ul>
-        {category.manifest_ids.map((node) => {
+        {category.manifest_ids && category.manifest_ids.map((node) => {
           const { slug, label } = node
           return (
             <li key={slug}>
