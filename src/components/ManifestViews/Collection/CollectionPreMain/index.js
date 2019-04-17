@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SEO from 'components/seo'
 import Breadcrumb from 'components/Shared/Breadcrumb'
-// import style from './style.module.css'
 
 // TODO: DON'T USE THUMBNAIL
 import Thumbnail from 'components/Shared/Thumbnail'
