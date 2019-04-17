@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '../components/layout'
-import Thumbnail from '../components/thumbnail'
 
 // Components
 import { Link, graphql } from 'gatsby'
@@ -13,7 +12,6 @@ const Tags = ({ data }) => {
     <Layout>
       <h1>{category.label}</h1>
       <p>{category.description}</p>
-      <p><Thumbnail src={category.thumbnail} /></p>
       <ul>
         {categories.map((node) => {
           const { id, label } = node
