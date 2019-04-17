@@ -14,15 +14,15 @@ exports.onCreateNode = ({
     return "item/" + createNodeId(node.id)
   }
 
-  //console.log(node.internal.type)
+  // console.log(node.internal.type)
   if (node.internal.type === `iiifManifest`) {
-//    console.log("FIELDS")
-//    console.log(console.log(node.type))
+    // console.log("FIELDS")
+    // console.log(console.log(node.type))
 
-    //createNodeField({
+    // createNodeField({
     //  node,
     //  name: `slug`,
-    ///  value: determineSlug(node),
-    //})
+    //  value: determineSlug(node),
+    // })
   }
 }

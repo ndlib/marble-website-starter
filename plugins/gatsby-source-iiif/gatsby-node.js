@@ -72,9 +72,9 @@ exports.sourceNodes = async (
     const contents = fs.readFileSync(__dirname + "/../../manifests.json")
     return JSON.parse(contents)
   }
-
+/*
   const downloadFiles = async (node, urls) => {
-    //node.localFiles___NODE = []
+    // node.localFiles___NODE = []
     // chunk the requests becase iiif servers are slow
     let chunkedUrls = []
     let i,j,chunk = 1;
@@ -109,7 +109,7 @@ exports.sourceNodes = async (
             })
 
             if (fileNode) {
-              //bar.tick()
+              // bar.tick()
               fileNodeID = fileNode.id
 
               await cache.set(remoteDataCacheKey, { fileNodeID })
@@ -128,25 +128,24 @@ exports.sourceNodes = async (
     )
     })
   }
-  let manifestList = loadManifestsFile()
+*/
+  const manifestList = loadManifestsFile()
   let manifest2Tags = {}
-  manifestList.manifests.map ( (manifest) => {
+  manifestList.manifests.map ((manifest) => {
     manifest2Tags[manifest.id] = manifest
   })
 
-
-
   return new Promise(async (resolve, reject) => {
     for (let tag_id in manifestList.tags) {
-      let node = buildCategoryNode(manifestList.tags[tag_id])
+      const node = buildCategoryNode(manifestList.tags[tag_id])
       await createNode(node)
     }
 
-    let manifestData = await fetchData(manifestList.manifests.map( (manifest) => manifest.id))
+    const manifestData = await fetchData(manifestList.manifests.map( (manifest) => manifest.id))
 
     for (let key in manifestData) {
       let data = manifestData[key]
-      let node = buildNode(data)
+      const node = buildNode(data)
       await createNode(node)
     }
 

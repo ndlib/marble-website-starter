@@ -6,7 +6,7 @@ import Thumbnail from "../components/thumbnail"
 // Components
 import { Link, graphql } from "gatsby"
 
-const Tags = ({ pageContext, data }) => {
+const Tags = ({ data }) => {
   const nodes = data.allIiifManifest.nodes
   const categories = data.allBrowseCategory.nodes
   const category = data.browseCategory
@@ -20,7 +20,7 @@ const Tags = ({ pageContext, data }) => {
           const { id, label } = node
           return (
             <li key={id}>
-              <Link to={"/browse/" + id}>{label}</Link>
+              <Link to={'/browse/' + id}>{label}</Link>
             </li>
           )
         })}
