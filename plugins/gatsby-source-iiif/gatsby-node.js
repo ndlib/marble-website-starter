@@ -2,6 +2,7 @@ const fetch = require('node-fetch')
 const md5 = require('md5')
 const fs = require('fs')
 const fetchData = require('./fetch')
+const path = require(`path`)
 
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
@@ -68,7 +69,7 @@ exports.sourceNodes = async (
   }
 
   const loadManifestsFile = () => {
-    const contents = fs.readFileSync(__dirname + '/../../manifests.json')
+    const contents = fs.readFileSync(path.join(__dirname, '/../../manifests.json'))
     return JSON.parse(contents)
   }
 /*
