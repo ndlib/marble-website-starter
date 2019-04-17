@@ -65,7 +65,6 @@ exports.sourceNodes = async (
     }
 
     return Object.assign({}, node, nodeMeta)
-
   }
 
   const loadManifestsFile = () => {
@@ -120,7 +119,7 @@ exports.sourceNodes = async (
         }
 
         if (fileNodeID) {
-          //node.localFiles___NODE.push(fileNodeID)
+          // node.localFiles___NODE.push(fileNodeID)
         }
 
         return fileNodeID
