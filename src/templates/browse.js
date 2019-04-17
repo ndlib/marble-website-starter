@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Layout from '../components/layout'
-import Thumbnail from '../components/thumbnail'
+import Layout from 'components/Layout'
+import Thumbnail from 'components/Shared/Thumbnail'
 
 // Components
 import { Link, graphql } from 'gatsby'

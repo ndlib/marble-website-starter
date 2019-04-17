@@ -1,0 +1,29 @@
+.left,
+.right {
+  display: inline-block;
+  margin: 0;
+  vertical-align: top;
+  width: 50%;
+}
+
+.left {
+  padding-right: 1rem;
+}
+
+.right {
+  padding-left: 1rem;
+}
+
+
+.itemAside {
+  display: inline-block;
+  padding-right: 1rem;
+  vertical-align: top;
+  width: 50%;
+}
+.itemMain {
+  display: inline-block;
+  padding-left: 1rem;
+  vertical-align: top;
+  width: 50%;
+}
