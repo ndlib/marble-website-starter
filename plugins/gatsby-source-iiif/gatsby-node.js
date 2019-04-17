@@ -6,14 +6,14 @@ const fetchData = require('./fetch')
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 exports.sourceNodes = async (
-  { actions, getNode, getNodes, createNodeId, hasNodeChanged, store, cache, createContentDigest },
-  configOptions
+  { actions, getNode, getNodes, createNodeId, hasNodeChanged, store, cache, createContentDigest }
 ) => {
   const { createNode, touchNode } = actions
+  touchNode
   let urlPromises = []
 
   const buildNode = (data) => {
-    let node = data.manifest
+    const node = data.manifest
     node.id = node["@id"]
     node.children = (node.collections || node.manifests || []).map(manifest => manifest['@id'])
 
@@ -43,7 +43,7 @@ exports.sourceNodes = async (
         type: "iiifManifest",
         mediaType: `text/json`,
         content: nodeContent,
-        contentDigest: createContentDigest(node)
+        contentDigest: createContentDigest(node),
       }
     }
 
@@ -60,7 +60,7 @@ exports.sourceNodes = async (
         type: "BrowseCategory",
         mediaType: `text/json`,
         content: nodeContent,
-        contentDigest: createContentDigest(node)
+        contentDigest: createContentDigest(node),
       }
     }
 
@@ -129,6 +129,7 @@ exports.sourceNodes = async (
     })
   }
 */
+
   const manifestList = loadManifestsFile()
   let manifest2Tags = {}
   manifestList.manifests.map ((manifest) => {
@@ -136,8 +137,8 @@ exports.sourceNodes = async (
   })
 
   return new Promise(async (resolve, reject) => {
-    for (let tag_id in manifestList.tags) {
-      const node = buildCategoryNode(manifestList.tags[tag_id])
+    for (const tagId in manifestList.tags) {
+      const node = buildCategoryNode(manifestList.tags[tagId])
       await createNode(node)
     }
 

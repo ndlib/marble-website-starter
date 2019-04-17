@@ -1,10 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Layout from "../components/layout"
-import Thumbnail from "../components/thumbnail"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Layout from '../components/layout'
+import Thumbnail from '../components/thumbnail'
 
 // Components
-import { Link, graphql } from "gatsby"
+import { Link, graphql } from 'gatsby'
 
 const Tags = ({ data }) => {
   const nodes = data.allIiifManifest.nodes
