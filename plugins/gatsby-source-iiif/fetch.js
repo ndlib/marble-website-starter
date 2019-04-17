@@ -41,11 +41,9 @@ const searchForAssets = (node) => {
     }
     if (recursiveSearchKeys.includes(key.toLowerCase())) {
       node[key].map( searchNode => {
-        console.log("1 ",searchForAssets(searchNode))
-        assets.concat(searchForAssets(searchNode))
+        assets = assets.concat(searchForAssets(searchNode))
       })
     }
   }
-  console.log("2 ", assets)
   return assets
 }
