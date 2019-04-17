@@ -1,42 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
-import SEO from 'components/seo'
-import Sidebar from './Sidebar'
+import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
+import CollectionAside from './CollectionAside'
+import CollectionPreMain from './CollectionPreMain'
 import Card from 'components/Shared/Card'
-import style from './style.module.css'
-
-// TODO: DON'T USE THUMBNAIL
-import Thumbnail from 'components/Shared/Thumbnail'
 
 export const Collection = ({ iiifManifest }) => {
   return (
     <Layout
-      aside={<Sidebar iiifManifest={iiifManifest} />}
+      aside={<CollectionAside iiifManifest={iiifManifest} />}
+      preMain={<CollectionPreMain iiifManifest={iiifManifest} />}
+      title={iiifManifest.label}
     >
-      <SEO title={iiifManifest.label} description={iiifManifest.description} />
-      <div><Thumbnail src={iiifManifest.thumbnail} /></div>
-      <div>Breadcrumb</div>
-      <article>
-        <h1>{iiifManifest.label}</h1>
-        <div classame='placeholder-for-toggle-class'>
-          <div>DisplayViewToggle</div>
-          <ul>
-            {
-              iiifManifest.childrenIiifManifest.map(manifest => {
-                return (
-                  <Card
-                    key={JSON.stringify(manifest)}
-                    target={`/${manifest.slug}`}
-                    label={manifest.label}
-                    image={manifest.thumbnail['_id']}
-                  />
-                )
-              })
-            }
-          </ul>
-        </div>
-      </article>
+      <DisplayViewToggle>
+        {
+          iiifManifest.childrenIiifManifest.map(manifest => {
+            return (
+              <Card
+                key={JSON.stringify(manifest)}
+                target={`/${manifest.slug}`}
+                label={manifest.label}
+                image={manifest.thumbnail['_id']}
+              />
+            )
+          })
+        }
+      </DisplayViewToggle>
     </Layout>
   )
 }

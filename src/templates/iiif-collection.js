@@ -1,11 +1,17 @@
 import React from 'react'
-import Collection from 'components/ManifestViews/Collection'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import Collection from 'components/ManifestViews/Collection'
 
-export default ({ data }) => (
+export const CollectionTemplate = ({ data }) => (
   <Collection iiifManifest={data.iiifManifest} />
 )
 
+CollectionTemplate.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export default CollectionTemplate
 export const query = graphql`
   query($slug: String!) {
     iiifManifest( slug: { eq: $slug }) {

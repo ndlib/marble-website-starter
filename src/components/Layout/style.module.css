@@ -1,6 +1,24 @@
-.standardLayout {}
-.asideLayout {}
+.standardLayout {
+  width: 100%;
+}
 
+.asideLayout .defaultAsideClass {
+  display: inline-block;
+  padding-right: 1rem;
+  vertical-align: top;
+  width: 240px;
+}
+.asideLayout .mainArticle {
+  display: inline-block;
+  padding-left: 1rem;
+  vertical-align: top;
+  width: calc(100% - 240px);
+}
+
+.preMain {
+  margin: 0 auto;
+  width: 70vw;
+}
 .mainPadding {
   background-color: white;
   margin: 1.8rem auto;

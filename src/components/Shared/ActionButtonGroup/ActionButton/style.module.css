@@ -1,0 +1,10 @@
+.actionButton {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 3px;
+}
+
+.actionButtons a {
+  display: inline-block;
+}

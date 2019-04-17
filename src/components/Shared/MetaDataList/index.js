@@ -23,7 +23,7 @@ const MetaDataList = ({ metadata, className, skipHtml }) => {
 }
 
 MetaDataList.propTypes = {
-  metadata: PropTypes.array.isRequired,
+  metadata: PropTypes.array,
   className: PropTypes.string.isRequired,
   skipHtml: PropTypes.bool.isRequired,
 }
