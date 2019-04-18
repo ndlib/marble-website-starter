@@ -27,12 +27,6 @@ exports.sourceNodes = async (
       node.slug = 'item/' + md5(node['@id'])
     }
 
-    if (manifest2Tags[node['@id']]) {
-      node.tags = manifest2Tags[node['@id']].tags
-    } else {
-      node.tags = []
-    }
-
     // downloadFiles(node, data.assets)
 
     const nodeContent = JSON.stringify(node)
@@ -52,15 +46,33 @@ exports.sourceNodes = async (
   }
 
   const buildCategoryNode = (node) => {
-    node.manifest_ids___NODE = node.manifest_ids
+    // create a foriegn key reference to the manifests
+    node.manifests___NODE = node.manifest_ids
     delete node.manifest_ids
 
-    console.log(node.children)
+    // add a slug for the page creation
+    node.slug = path.join('/browse/', node.id)
+
+    // find the toplevel parent (the level right under root)
+
+    const topLevelParentId = findTopLevelParentId(node)
+    if (topLevelParentId) {
+      node.topLevelParent___NODE = createNodeId(topLevelParentId)
+    }
+
+    // map any subCategories so that they can be searched as foreign keys
+    node.subCategories___NODE = node.children.map(child => createNodeId(child))
+    delete node.children
+
+    // allow the direct parent to be searched
+    if (node.parent_id) {
+      node.parentCategory___NODE =  createNodeId(node.parent_id)
+    }
+
     const nodeContent = JSON.stringify(node)
 
     const nodeMeta = {
-      id: node.id,
-      parent: node.parent_id,
+      id: createNodeId(node.id),
       internal: {
         type: 'BrowseCategory',
         mediaType: `text/json`,
@@ -75,6 +87,19 @@ exports.sourceNodes = async (
   const loadManifestsFile = () => {
     const contents = fs.readFileSync(path.join(__dirname, '/../../manifests.json'))
     return JSON.parse(contents)
+  }
+
+  const findTopLevelParentId = (node) => {
+    if (node.id === 'root' || node.parent_id === 'root') {
+      return null
+    }
+
+    const parentNode = manifestList.tags[node.parent_id]
+    if (parentNode.parent_id === 'root') {
+      return parentNode.id
+    }
+
+    return findTopLevelParentId(parentNode)
   }
 /*
   const downloadFiles = async (node, urls) => {
@@ -135,10 +160,6 @@ exports.sourceNodes = async (
 */
 
   const manifestList = loadManifestsFile()
-  let manifest2Tags = {}
-  manifestList.manifests.map ((manifest) => {
-    manifest2Tags[manifest.id] = manifest
-  })
 
   return new Promise(async (resolve, reject) => {
     for (const tagId in manifestList.tags) {
