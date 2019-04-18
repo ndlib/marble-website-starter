@@ -1,55 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PageWrapper from './PageWrapper'
-import style from './style.module.css'
+import ContentWrapper from './ContentWrapper'
+import PageContent from './PageContent'
 
-// eslint-disable-next-line complexity
 const Layout = ({
-  aside, // content related to but separate from main
+  aside, // content related to but separate from main - use either nav or aside not both
   asideClassName, // special className for aside
   articleClassName, // special className for article inside main
-  nav, // sidebar navigation
+  nav, // sidebar navigation - use either nav or aside not both
   title, // page title to be placed inside main
-  preMain, // stuff before main like header image - exists outside noPadding wrapper
+  preMain, // stuff before main like header image and breadcrumbs - exists outside noPadding wrapper
   noPadding, // bool used to avoid padding page content
   children,
 }) => {
   return (
     <PageWrapper>
-      <div className={style.preMain}>{preMain}</div>
-      <div className={noPadding ? style.noMainPadding : style.mainPadding}>
-        {nav ? <nav>{nav}</nav> : null}
-        <main
-          id='mainContent'
-          className={aside ? style.asideLayout : style.standardLayout}
+      <ContentWrapper
+        preMain={preMain}
+        noPadding={noPadding}
+      >
+        <PageContent
+          aside={aside}
+          asideClassName={asideClassName}
+          articleClassName={articleClassName}
+          nav={nav}
+          title={title}
         >
-          {title ? <h1>{title}</h1> : null}
-          {aside ? <aside className={asideClassName}>{aside}</aside> : null}
-          <article className={articleClassName}>{children}</article>
-        </main>
-      </div>
+          {children}
+        </PageContent>
+      </ContentWrapper>
     </PageWrapper>
   )
 }
 
 Layout.propTypes = {
   aside: PropTypes.node,
-  asideClassName: PropTypes.string.isRequired,
-  articleClassName: PropTypes.string.isRequired,
+  asideClassName: PropTypes.string,
+  articleClassName: PropTypes.string,
   nav: PropTypes.node,
   title: PropTypes.node,
   preMain: PropTypes.node,
-  noPadding: PropTypes.bool.isRequired,
+  noPadding: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 
-Layout.defaultProps = {
-  aside: null,
-  asideClassName: style.defaultAsideClass,
-  articleClassName: style.mainArticle,
-  nav: null,
-  title: null,
-  preMain: null,
-  noPadding: false,
-}
 export default Layout
