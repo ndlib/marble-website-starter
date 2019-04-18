@@ -62,7 +62,7 @@ exports.createPages = ({ graphql, actions }) => {
           path: `/browse`,
           component: tagTemplate,
           context: {
-            slug: node.slug
+            slug: node.slug,
           },
         })
       } else {

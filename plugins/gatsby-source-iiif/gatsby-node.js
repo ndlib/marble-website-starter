@@ -57,7 +57,7 @@ exports.sourceNodes = async (
 
     const topLevelParentId = findTopLevelParentId(node)
     if (topLevelParentId) {
-      node.topLevelParent___NODE = createNodeId(topLevelParentId)
+      node.topLevelParentCategory___NODE = createNodeId(topLevelParentId)
     }
 
     // map any subCategories so that they can be searched as foreign keys
@@ -66,7 +66,7 @@ exports.sourceNodes = async (
 
     // allow the direct parent to be searched
     if (node.parent_id) {
-      node.parentCategory___NODE =  createNodeId(node.parent_id)
+      node.parentCategory___NODE = createNodeId(node.parent_id)
     }
 
     const nodeContent = JSON.stringify(node)

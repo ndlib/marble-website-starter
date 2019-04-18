@@ -73,7 +73,7 @@ export const pageQuery = graphql`
         id
         label
       }
-      topLevelParent {
+      topLevelParentCategory {
         id
         label
       }
