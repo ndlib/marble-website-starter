@@ -7,27 +7,30 @@ import listIcon from 'assets/icons/svg/baseline-view_list-24px.svg'
 import gridIcon from 'assets/icons/svg/baseline-view_module-24px.svg'
 
 export const DisplayViewToggle = ({ defaultActive, children }) => {
+  if (defaultActive !== 'list' && defaultActive !== 'grid') {
+    defaultActive = 'grid'
+  }
   const [activeStyle, setActiveStyle] = useState(defaultActive)
+  const options = ['list', 'grid']
 
   return (
     <div classame={activeStyle}>
       <div className={style.displayViewToggleGroup}>
-        <ToggleButton
-          icon={listIcon}
-          option='list'
-          action={() => {
-            setActiveStyle('list')
-          }}
-          active={activeStyle === 'list'}
-        />
-        <ToggleButton
-          icon={gridIcon}
-          option='grid'
-          action={() => {
-            setActiveStyle('grid')
-          }}
-          active={activeStyle === 'grid'}
-        />
+        {
+          options.map(opt => {
+            return (
+              <ToggleButton
+                key={opt}
+                icon={opt === 'list' ? listIcon : gridIcon}
+                option={opt}
+                action={() => {
+                  setActiveStyle(opt)
+                }}
+                active={activeStyle === opt}
+              />
+            )
+          })
+        }
       </div>
       <br className='clearfix' />
       {children}
