@@ -10,3 +10,7 @@ body {
   overflow:hidden;
   z-index:-999;
 }
+
+.clearfix {
+  clear: both;
+}
