@@ -61,8 +61,10 @@ exports.sourceNodes = async (
     }
 
     // map any subCategories so that they can be searched as foreign keys
-    node.subCategories___NODE = node.children.map(child => createNodeId(child))
-    delete node.children
+    if (node.children) {
+      node.subCategories___NODE = node.children.map(child => createNodeId(child))
+      delete node.children
+    }
 
     // allow the direct parent to be searched
     if (node.parent_id) {
@@ -167,7 +169,7 @@ exports.sourceNodes = async (
       await createNode(node)
     }
 
-    const manifestData = await fetchData(manifestList.manifests.map( (manifest) => manifest.id))
+    const manifestData = await fetchData(manifestList.manifests)
 
     for (let key in manifestData) {
       let data = manifestData[key]
