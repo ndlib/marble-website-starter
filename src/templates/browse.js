@@ -7,25 +7,25 @@ import Thumbnail from 'components/Shared/Thumbnail'
 import { Link, graphql } from 'gatsby'
 
 const Tags = ({ data }) => {
-  const categories = data.allBrowseCategory.nodes
   const category = data.browseCategory
   return (
     <Layout>
       <h1>{category.label}</h1>
+      <p>{category.id}</p>
       <p>{category.description}</p>
       <p><Thumbnail src={category.thumbnail} /></p>
       <ul>
-        {categories.map((node) => {
-          const { id, label } = node
+        {category.subCategories && category.subCategories.map((node) => {
+          const { id, label, slug } = node
           return (
             <li key={id}>
-              <Link to={'/browse/' + id}>{label}</Link>
+              <Link to={slug}>{label}</Link>
             </li>
           )
         })}
       </ul>
       <ul>
-        {category.manifest_ids && category.manifest_ids.map((node) => {
+        {category.manifests && category.manifests.map((node) => {
           const { slug, label } = node
           return (
             <li key={slug}>
@@ -39,24 +39,10 @@ const Tags = ({ data }) => {
 }
 
 Tags.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-  }),
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired
-      ),
+    browseCategory: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
     }),
   }),
 }
@@ -64,29 +50,33 @@ Tags.propTypes = {
 export default Tags
 
 export const pageQuery = graphql`
-  query($tag: String) {
-    browseCategory( id: { eq: $tag }) {
+  query($slug: String) {
+    browseCategory( slug: { eq: $slug }) {
       id
       label
       description
       thumbnail
-      manifest_ids {
+      slug
+      manifests {
         slug
         thumbnail {
           _id
         }
         label
       }
-    },
-    allBrowseCategory(
-      limit: 2000
-      filter: { parent_id: { eq: $tag } }
-    ) {
-        nodes {
-          id
-          thumbnail
-          label
-        }
-      },
-  }
+      subCategories {
+        id
+        label
+        slug
+      }
+      parentCategory {
+        id
+        label
+      }
+      topLevelParentCategory {
+        id
+        label
+      }
+    }
+}
 `

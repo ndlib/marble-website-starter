@@ -22,13 +22,16 @@ exports.createPages = ({ graphql, actions }) => {
     	allIiifManifest {
       	nodes {
           slug
-          tags
           _type
         }
       },
       allBrowseCategory {
-        nodes{
+        nodes {
           id
+          slug
+          parentCategory {
+            id
+          }
         }
       }
     }
@@ -54,20 +57,20 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     browse.forEach(node => {
-      if (node.id === 'root') {
+      if (!node.parentCategory) {
         createPage({
           path: `/browse`,
           component: tagTemplate,
           context: {
-            tag: node.id,
+            slug: node.slug,
           },
         })
       } else {
         createPage({
-          path: `/browse/${_.kebabCase(node.id)}`,
+          path: node.slug,
           component: tagTemplate,
           context: {
-            tag: node.id,
+            slug: node.slug,
           },
         })
       }
