@@ -9,7 +9,6 @@ export const ToggleButton = ({ icon, option, action, active }) => {
       className={active ? style.selected : style.notSelected}
       alt={`${option} view`}
       onClick={() => {
-        console.log(option)
         action(option)
       }}
     />
