@@ -1,0 +1,19 @@
+.standardLayout {
+  width: 100%;
+}
+
+.defaultAsideClass {
+  display: inline-block;
+  padding-right: 1rem;
+  vertical-align: top;
+  width: 240px;
+}
+.asideLayout {
+  display: inline-block;
+}
+.asideLayout .mainArticle {
+  display: inline-block;
+  padding-left: 1rem;
+  vertical-align: top;
+  width: calc(70vw - 240px);
+}
