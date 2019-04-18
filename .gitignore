@@ -63,3 +63,5 @@ typings/
 /public
 
 .cache
+
+manifests.json
