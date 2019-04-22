@@ -18,6 +18,8 @@ export const query = graphql`
       id
       label
       description
+      attribution
+      license
       slug
       metadata {
         label
