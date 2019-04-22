@@ -53,5 +53,19 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+        resolve: `gatsby-plugin-accessibilityjs`,
+        options: {
+          injectStyles: `
+            .accessibility-error {
+              border: 3px solid #f00;
+            }
+          `,
+          errorClassName: `accessibility-error`,
+          onError: (error) => {
+            // do something with the error
+          },
+        },
+      },    
   ],
 }
