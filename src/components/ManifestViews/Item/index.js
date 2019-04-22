@@ -17,6 +17,8 @@ export const Item = ({ iiifManifest }) => {
     >
       <p>{iiifManifest.description}</p>
       <MetaDataList metadata={iiifManifest.metadata} />
+      <p>{iiifManifest.attribution}</p>
+      <p>{iiifManifest.license}</p>
     </Layout>
   )
 }
