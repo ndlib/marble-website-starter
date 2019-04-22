@@ -11,7 +11,7 @@ const HomeCardGroup = ({ label, items }) => {
           items.map((item, index) => {
             return (
               <Card
-                key={JSON.stringify(item)}
+                key={index}
                 target={item.target}
                 label={item.label}
                 image={item.image}

@@ -1,5 +1,5 @@
 import React from 'react'
-//import SearchBox from 'Components/Shared/SearchBox'
+// import SearchBox from 'Components/Shared/SearchBox'
 import HomeBanner from './HomeBanner'
 import HomeCardGroups from './HomeCardGroups'
 import image1 from 'assets/images/01.jpg'
@@ -29,7 +29,7 @@ const groups = [
   },
 ]
 const Home = () => {
-  //<SearchBox />
+  //  <SearchBox />
   return (
     <React.Fragment>
 
