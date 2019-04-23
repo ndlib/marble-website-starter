@@ -17,7 +17,7 @@ export const ImageSection = ({ iiifManifest }) => {
 ImageSection.propTypes = {
   iiifManifest: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    thumbnail: PropTypes.string.isRequired,
+    thumbnail: PropTypes.object.isRequired,
   }).isRequired,
 }
 export default ImageSection

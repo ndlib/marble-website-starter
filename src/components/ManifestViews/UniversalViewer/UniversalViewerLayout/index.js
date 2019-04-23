@@ -5,9 +5,11 @@ import Layout from 'components/Layout'
 import style from './style.module.css'
 
 export const UniversalViewerLayout = ({ data, manifest }) => {
-  const qs = queryString.parse(window.location.search).manifest
-  if (!manifest && qs) {
-    manifest = qs
+  if (typeof window !== `undefined`) {
+    const qs = queryString.parse(window.location.search).manifest
+    if (!manifest && qs) {
+      manifest = qs
+    }
   }
   if (!manifest) {
     return (<Layout>Not Found</Layout>)

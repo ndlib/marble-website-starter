@@ -21,6 +21,22 @@ export const query = graphql`
       thumbnail {
         _id
       }
+      sequences {
+        _id
+        canvases {
+          _id
+          _type
+          label
+          height
+          width
+          images {
+            _id
+            _type
+            motivation
+            on
+          }
+        }
+      }
       slug
       metadata {
         label

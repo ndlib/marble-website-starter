@@ -52,6 +52,7 @@ export const shareAction = () => {
 }
 
 export const printAction = () => {
+  window.print()
   console.log('print')
 }
 
