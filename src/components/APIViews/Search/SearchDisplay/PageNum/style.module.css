@@ -1,0 +1,20 @@
+.pagenum {
+  margin: 12px auto;
+  margin-left : auto;
+  margin-right : auto;
+  font-size: 18px;
+  width: 500px;
+  padding : 10px;
+  color: #333;
+  text-align: center;
+}
+
+.pageLink {
+  display: inline-block;
+  border : none;
+  padding: 0 1em;
+}
+
+.pagenum a button {
+	font-size: 18px;
+}

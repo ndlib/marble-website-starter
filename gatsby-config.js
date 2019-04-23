@@ -4,7 +4,8 @@ module.exports = {
     author: `ndlib`,
     description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
     // apis and embedded urls
-    universalViewerBaseURL: `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
+    universalViewerBaseURL: process.env.MARBLE_UNIVERSAL_VIEWER_BASE_URL || `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
+    primoSearchBaseURL: process.env.MARBLE_PRIMO_BASE_URL || `https://a1fc3ld3d7.execute-api.us-east-1.amazonaws.com/dev/primo/v1/search`,
     // branding
     institutionURL: process.env.MARBLE_INSTITUTION_URL || `https://marble.library.nd.edu`,
     institutionLabel: process.env.MARBLE_INSTITUTION_LABEL || `MARBLE`,
@@ -21,14 +22,14 @@ module.exports = {
       },
     },
     {
-        resolve: "gatsby-source-iiif",
-        options: {
-          manifests: [
-            "https://presentation-iiif.library.nd.edu/collection/website",
-//            "http://wellcomelibrary.org/iiif/collection/b18031511",
-//            "http://wellcomelibrary.org/iiif/b18035723/manifest",
-          ]
-        },
+      resolve: 'gatsby-source-iiif',
+      options: {
+        manifests: [
+          'https://presentation-iiif.library.nd.edu/collection/website',
+          //  "http://wellcomelibrary.org/iiif/collection/b18031511",
+          //  "http://wellcomelibrary.org/iiif/b18035723/manifest",
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -63,7 +64,7 @@ module.exports = {
         `,
         errorClassName: `accessibility-error`,
         onError: (error) => {
-          
+          console.warn(error)
         },
       },
     },
