@@ -21,6 +21,31 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `config`,
+        path: `${__dirname}/config`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/content/markdown`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        tableOfContents: {
+          pathToSlugField: 'frontmatter.slug',
+          heading: null,
+          maxDepth: 6,
+        },
+      },
+    },
     'gatsby-source-iiif',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
