@@ -42,7 +42,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         tableOfContents: {
-          pathToSlugField: "frontmatter.slug",          
+          pathToSlugField: 'frontmatter.slug',
           heading: null,
           maxDepth: 6,
         },

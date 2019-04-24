@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
-export default ({ data }) => {
+const MarkdownTemplate = ({ data }) => {
   const post = data.markdownRemark
   return (
     <Layout>
@@ -13,6 +14,11 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+MarkdownTemplate.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+export default MarkdownTemplate
 
 export const query = graphql`
   query($slug: String!) {
