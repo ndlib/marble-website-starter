@@ -38,7 +38,16 @@ module.exports = {
         path: `${__dirname}/content/markdown`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        tableOfContents: {
+          pathToSlugField: "frontmatter.slug",          
+          heading: null,
+          maxDepth: 6,
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
