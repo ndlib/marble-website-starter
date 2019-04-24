@@ -10,6 +10,7 @@ export const SearchDisplay = () => {
       <PerPage />
       <PageNum />
       <Results />
+      <PageNum />
     </DisplayViewToggle>
   )
 }
