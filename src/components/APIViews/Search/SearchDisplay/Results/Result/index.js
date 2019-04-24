@@ -44,22 +44,34 @@ export const buildUrl = (doc) => {
 
 // eslint-disable-next-line complexity
 export const buildMetadata = (doc) => {
-  const metadata = []
-  if (typy(doc, 'pnx.display.creator[0]').isString) {
-    metadata.push({ label: 'Creator', value: typy(doc, 'pnx.display.creator[0]').safeString })
-  }
-  if (typy(doc, 'pnx.display.creationdate[0]').isString) {
-    metadata.push({ label: 'Date', value: typy(doc, 'pnx.display.creationdate[0]').safeString })
-  }
-  if (typy(doc, 'pnx.display.format[0]').isString) {
-    metadata.push({ label: 'Format', value: typy(doc, 'pnx.display.format[0]').safeString })
-  }
-  if (typy(doc, 'pnx.control.sourceid[0]').isString) {
-    metadata.push({ label: 'Repository', value: typy(doc, 'pnx.control.sourceid[0]').safeString })
-  }
-  if (typy(doc, 'delivery.holding[0].subLocation').isObject) {
-    metadata.push({ label: 'Collection', value: typy(doc.delivery.holding[0].subLocation).safeObject })
-  }
+  const desiredData = [
+    {
+      label: 'Creator',
+      docField: 'pnx.display.creator[0]',
+    },
+    {
+      label: 'Date',
+      docField: 'pnx.display.creationdate[0]',
+    },
+    {
+      label: 'Format',
+      docField: 'pnx.display.format[0]',
+    },
+    {
+      label: 'Repository',
+      docField: 'pnx.control.sourceid[0]',
+    },
+    {
+      label: 'Collection',
+      docField: 'delivery.holding[0].subLocation',
+    },
+  ]
+  const metadata = desiredData.map(data => {
+    if (typy(doc, data.docField).isString) {
+      return { label: data.label, value: typy(doc, data.docField).safeString }
+    }
+    return null
+  }).filter(data => data)
   return metadata
 }
 
