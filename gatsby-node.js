@@ -33,6 +33,15 @@ exports.createPages = ({ graphql, actions }) => {
             id
           }
         }
+      },
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+          }
+        }
       }
     }
   `).then(result => {
@@ -42,6 +51,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     const manifests = result.data.allIiifManifest.nodes
     const browse = result.data.allBrowseCategory.nodes
+    const pages = result.data.allMarkdownRemark.edges
 
     manifests.forEach((node) => {
       const template = (node._type.toLowerCase() === 'sc:collection') ? iiifCollectionTemplate : iiifItemTemplate
@@ -74,6 +84,18 @@ exports.createPages = ({ graphql, actions }) => {
           },
         })
       }
+    })
+
+    pages.forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.slug,
+        component: path.resolve(`./src/templates/markdownTemplate.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.frontmatter.slug,
+        },
+      })
     })
 
   })
