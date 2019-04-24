@@ -21,16 +21,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    {
-      resolve: 'gatsby-source-iiif',
-      options: {
-        manifests: [
-          'https://presentation-iiif.library.nd.edu/collection/website',
-          //  "http://wellcomelibrary.org/iiif/collection/b18031511",
-          //  "http://wellcomelibrary.org/iiif/b18035723/manifest",
-        ],
-      },
-    },
+    'gatsby-source-iiif',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
