@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { updateInput } from 'Store/actions/searchActions'
+import { updateInput } from 'store/actions/searchActions'
 
 // You should only have one search field on a page.
 export const SearchField = ({ submitSearch, searchReducer, dispatch, className }) => {
@@ -14,7 +14,6 @@ export const SearchField = ({ submitSearch, searchReducer, dispatch, className }
         className='accessibilityOnly'
       >{fieldLabel}</label>
       <input
-        autoComplete
         id='searchField'
         type='text'
         className={className}
