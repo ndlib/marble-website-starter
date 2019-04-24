@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import queryString from 'query-string'
 import Layout from 'components/Layout'
 import Search from 'components/APIViews/Search'
+import SearchBox from 'components/Shared/SearchBox'
 import {
   submitSearch,
   STATUS_SEARCH_FETCHING,
@@ -13,6 +14,7 @@ const SearchPage = () => {
   return (
     <Layout
       title={'Search Results'}
+      preMain={<SearchBox />}
     >
       <Search />
     </Layout>

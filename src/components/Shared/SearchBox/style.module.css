@@ -1,0 +1,49 @@
+.searchBox {
+  border: 1px solid #555;
+}
+.searchBox {
+  border: 2px solid #dedede;
+  background: #fff;
+}
+
+.searchComponent {
+  width:600px;
+  padding: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchField {
+  background: #fff;
+  border: none;
+  font: 19px helvetica;
+  height:40px;
+  padding-left: 10px;
+  vertical-align: top;
+  width: calc(100% - 65px);
+}
+
+.advancedSearch {
+  text-align: right;
+  font-size: 12px;
+  padding: 5px 3px;
+}
+
+.advancedSearch {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+}
+
+.searchIcon {
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+}
+
+.searchButton {
+  border:none;
+  border-left: 1px solid #dedede;
+  height: 40px;
+  width:65px;
+}
