@@ -54,5 +54,5 @@ export const linkTarget = (location, targetPage) => {
   const qs = queryString.parse(location.search)
   qs.page = targetPage
   qs.perpage = qs.perpage || 12
-  return `${location.pathname}?${queryString.stringify(qs)}`
+  return `/search?${queryString.stringify(qs)}`
 }

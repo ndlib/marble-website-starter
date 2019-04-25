@@ -40,7 +40,7 @@ export const handleChange = (e, location) => {
   const qs = queryString.parse(location.search)
   qs.page = 1
   qs.perpage = e.value
-  navigate(`${location.pathname}?${queryString.stringify(qs)}`)
+  navigate(`/search?${queryString.stringify(qs)}`)
 }
 
 export default connect(mapStateToProps)(PerPage)
