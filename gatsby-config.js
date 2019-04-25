@@ -68,14 +68,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `config`,
-        path: `${__dirname}/config`,
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
