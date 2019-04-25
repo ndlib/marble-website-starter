@@ -11,6 +11,53 @@ module.exports = {
     institutionLabel: process.env.MARBLE_INSTITUTION_LABEL || `MARBLE`,
     departmentURL: process.env.MARBLE_DEPARTMENT_URL || ``,
     departmentLabel: process.env.MARBLE_DEPARTMENT_LABEL || ``,
+    // menus
+    menus: {
+      top: [
+        {
+          "id": "top-browse",
+          "title": "Browse",
+          "link": "/browse"
+        },
+        {
+          "id": "top-exhibits",
+          "title": "Exhibits",
+          "link": "/exhibits"
+        }
+      ],
+      footer: [
+        {
+          "id": "footer-browse",
+          "title": "Browse",
+          "link": "/browse"
+        },
+        {
+          "id": "footer-exhibits",
+          "title": "Exhibits",
+          "link": "/exhibits"
+        },
+        {
+          "id": "footer-search",
+          "title": "Search",
+          "link": "/search"
+        },
+        {
+          "id": "footer-about",
+          "title": "About",
+          "link": "/about"
+        },
+        {
+          "id": "footer-learn",
+          "title": "Learn",
+          "link": "/learn"
+        },
+        {
+          "id": "footer-help",
+          "title": "Help",
+          "link": "/help"
+        }
+      ]
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
