@@ -1,7 +1,8 @@
 import React from 'react'
 import style from './style.module.css'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
+import Navigation from '../../../Shared/Navigation'
 
 
 export const Footer = ({ data }) => {
@@ -14,12 +15,8 @@ export const Footer = ({ data }) => {
           <ReactMarkdown source={footerText} />
         </div>
         <div className={style.footerCenter} />
-        <div className={style.footerLinks}>
-          <nav>
-            { links.map(l => {
-              return <Link to={l.link} key={l.title}>{l.title}</Link>
-            })}
-          </nav>
+        <div>
+          <Navigation links={links} navClass={style.footerLinks} />
         </div>
       </div>
     </footer>
@@ -32,7 +29,6 @@ export default () => {
       query {
         site {
           siteMetadata {
-            footerTextMarkdown
             menus {
               footer {
                 id
