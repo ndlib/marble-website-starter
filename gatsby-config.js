@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Collection SITE!!!`,
+    title: `Marble Digital Collections`,
     author: `ndlib`,
     description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
     // apis and embedded urls

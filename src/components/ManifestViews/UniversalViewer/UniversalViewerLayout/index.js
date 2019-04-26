@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import Layout from 'components/Layout'
+import SEO from 'components/Seo'
 import style from './style.module.css'
 
 export const UniversalViewerLayout = ({ data, manifest }) => {
@@ -15,7 +16,10 @@ export const UniversalViewerLayout = ({ data, manifest }) => {
     return (<Layout>Not Found</Layout>)
   }
   return (
-    <Layout noPadding>
+    <Layout
+      noPadding
+      preMain={<SEO title={`Universal Viewer`} />}
+    >
       <h1 className='accessibilityOnly'>Universal Viewer</h1>
       <iframe
         allowFullScreen

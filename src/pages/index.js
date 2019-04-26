@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import SEO from '../components/seo'
+import SEO from '../components/Seo'
 import Home from '../components/Home'
 const IndexPage = () => (
   <Layout>
-    <SEO title='Marble Digital Collections' keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title='Marble Digital Collections' />
     <Home />
   </Layout>
 )
