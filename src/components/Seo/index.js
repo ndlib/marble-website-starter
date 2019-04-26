@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import MetaTagGroup from './MetaTagGroup'
 import { getOpenGraph, getTwitter } from './data'
 
-const Seo = ({
+const SEO = ({
   title,
   description,
   image,
@@ -50,15 +50,15 @@ const Seo = ({
   )
 }
 
-Seo.defaultProps = {
+SEO.defaultProps = {
   lang: `en`,
 }
 
-Seo.propTypes = {
+SEO.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   image: PropTypes.string,
   lang: PropTypes.string,
 }
 
-export default Seo
+export default SEO
