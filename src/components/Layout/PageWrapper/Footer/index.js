@@ -27,7 +27,6 @@ Footer.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-
 export default () => {
   return (
     <StaticQuery

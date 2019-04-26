@@ -23,7 +23,7 @@ module.exports = {
           'id': 'top-exhibits',
           'title': 'Exhibits',
           'link': '/exhibits',
-        }
+        },
       ],
       footer: [
         {
@@ -55,8 +55,8 @@ module.exports = {
           'id': 'footer-help',
           'title': 'Help',
           'link': '/help',
-        }
-      ]
+        },
+      ],
     }
   },
   plugins: [
