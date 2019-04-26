@@ -11,6 +11,53 @@ module.exports = {
     institutionLabel: process.env.MARBLE_INSTITUTION_LABEL || `MARBLE`,
     departmentURL: process.env.MARBLE_DEPARTMENT_URL || ``,
     departmentLabel: process.env.MARBLE_DEPARTMENT_LABEL || ``,
+    // menus
+    menus: {
+      top: [
+        {
+          'id': 'top-browse',
+          'title': 'Browse',
+          'link': '/browse',
+        },
+        {
+          'id': 'top-exhibits',
+          'title': 'Exhibits',
+          'link': '/exhibits',
+        },
+      ],
+      footer: [
+        {
+          'id': 'footer-browse',
+          'title': 'Browse',
+          'link': '/browse',
+        },
+        {
+          'id': 'footer-exhibits',
+          'title': 'Exhibits',
+          'link': '/exhibits',
+        },
+        {
+          'id': 'footer-search',
+          'title': 'Search',
+          'link': '/search',
+        },
+        {
+          'id': 'footer-about',
+          'title': 'About',
+          'link': '/about',
+        },
+        {
+          'id': 'footer-learn',
+          'title': 'Learn',
+          'link': '/learn',
+        },
+        {
+          'id': 'footer-help',
+          'title': 'Help',
+          'link': '/help',
+        },
+      ],
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,16 +66,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-iiif',
-      options: {
-        manifests: [
-          'https://presentation-iiif.library.nd.edu/collection/website',
-          //  "http://wellcomelibrary.org/iiif/collection/b18031511",
-          //  "http://wellcomelibrary.org/iiif/b18035723/manifest",
-        ],
       },
     },
     {
@@ -48,6 +85,7 @@ module.exports = {
         },
       },
     },
+    'gatsby-source-iiif',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

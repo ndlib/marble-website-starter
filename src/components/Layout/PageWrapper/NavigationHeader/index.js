@@ -1,19 +1,51 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
 import SiteLogo from './SiteLogo'
-import Hamburger from './Hamburger'
 import LoginButton from './LoginButton'
+import Navigation from '../../../Shared/Navigation'
 import style from './style.module.css'
 
-export const NavigationHeader = () => {
+export const NavigationHeader = ({ data }) => {
+  const links = data.site.siteMetadata.menus.top
+
   return (
     <header className={style.navBar}>
       <div className={style.navBarInner}>
         <SiteLogo />
-        <Hamburger />
+        <Navigation links={links} />
         <LoginButton />
       </div>
     </header>
   )
 }
 
-export default NavigationHeader
+NavigationHeader.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export default () => {
+  return (
+    <StaticQuery
+      query={graphql`
+      query {
+        site {
+          siteMetadata {
+            menus {
+              top {
+                id
+                link
+                title
+              }
+            }
+          }
+        }
+      }
+    `
+      }
+      render={data => (
+        <NavigationHeader data={data} />
+      )}
+    />
+  )
+}
