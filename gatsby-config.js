@@ -15,46 +15,46 @@ module.exports = {
     menus: {
       top: [
         {
-          "id": "top-browse",
-          "title": "Browse",
-          "link": "/browse"
+          'id': 'top-browse',
+          'title': 'Browse',
+          'link': '/browse',
         },
         {
-          "id": "top-exhibits",
-          "title": "Exhibits",
-          "link": "/exhibits"
+          'id': 'top-exhibits',
+          'title': 'Exhibits',
+          'link': '/exhibits',
         }
       ],
       footer: [
         {
-          "id": "footer-browse",
-          "title": "Browse",
-          "link": "/browse"
+          'id': 'footer-browse',
+          'title': 'Browse',
+          'link': '/browse',
         },
         {
-          "id": "footer-exhibits",
-          "title": "Exhibits",
-          "link": "/exhibits"
+          'id': 'footer-exhibits',
+          'title': 'Exhibits',
+          'link': '/exhibits',
         },
         {
-          "id": "footer-search",
-          "title": "Search",
-          "link": "/search"
+          'id': 'footer-search',
+          'title': 'Search',
+          'link': '/search',
         },
         {
-          "id": "footer-about",
-          "title": "About",
-          "link": "/about"
+          'id': 'footer-about',
+          'title': 'About',
+          'link': '/about',
         },
         {
-          "id": "footer-learn",
-          "title": "Learn",
-          "link": "/learn"
+          'id': 'footer-learn',
+          'title': 'Learn',
+          'link': '/learn',
         },
         {
-          "id": "footer-help",
-          "title": "Help",
-          "link": "/help"
+          'id': 'footer-help',
+          'title': 'Help',
+          'link': '/help',
         }
       ]
     }

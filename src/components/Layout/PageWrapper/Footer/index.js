@@ -1,9 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import style from './style.module.css'
 import { StaticQuery, graphql } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
 import Navigation from '../../../Shared/Navigation'
-
 
 export const Footer = ({ data }) => {
   const links = data.site.siteMetadata.menus.footer
@@ -22,6 +22,12 @@ export const Footer = ({ data }) => {
     </footer>
   )
 }
+
+Footer.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+
 export default () => {
   return (
     <StaticQuery

@@ -20,6 +20,10 @@ export const NavigationHeader = ({ data }) => {
   )
 }
 
+NavigationHeader.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
 export default () => {
   return (
     <StaticQuery
