@@ -34,6 +34,5 @@ export const buildCrumbs = (extraCrumbs) => {
   } else {
     crumbs.push({ to: '/browse', label: 'Browse' })
   }
-  console.log(crumbs)
   return crumbs
 }
