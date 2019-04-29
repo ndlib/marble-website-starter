@@ -6,9 +6,9 @@ import Navigation from '../../../Shared/Navigation'
 
 test('Footer renders some divs with markdown text', () => {
   const data = { site: { siteMetadata: {
-    menus: { footer: [ "links go here!" ] },
-    footerText: "footer!!"
-  }}}
+    menus: { footer: [ 'links go here!' ] },
+    footerText: 'footer!!'
+  } } }
   const wrapper = shallow(<Footer data={data} />)
 
   expect(wrapper.find('footer.pageFooter').exists()).toBeTruthy()
@@ -17,5 +17,5 @@ test('Footer renders some divs with markdown text', () => {
   expect(wrapper.find('.footerCenter').exists()).toBeTruthy()
   expect(wrapper.find('.footerLinks').exists()).toBeTruthy()
   expect(wrapper.find(ReactMarkdown).props().source).toEqual('footer!!')
-  expect(wrapper.find(Navigation).props().links).toEqual([ 'links go here!'])
+  expect(wrapper.find(Navigation).props().links).toEqual([ 'links go here!' ])
 })
