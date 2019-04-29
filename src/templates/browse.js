@@ -1,40 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Layout from 'components/Layout'
-import Thumbnail from 'components/Shared/Thumbnail'
-
+import Browse from 'components/ManifestViews/Browse'
 // Components
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 const Tags = ({ data }) => {
-  const category = data.browseCategory
   return (
-    <Layout>
-      <h1>{category.label}</h1>
-      <p>{category.id}</p>
-      <p>{category.description}</p>
-      <p><Thumbnail src={category.thumbnail} /></p>
-      <ul>
-        {category.subCategories && category.subCategories.map((node) => {
-          const { id, label, slug } = node
-          return (
-            <li key={id}>
-              <Link to={slug}>{label}</Link>
-            </li>
-          )
-        })}
-      </ul>
-      <ul>
-        {category.manifests && category.manifests.map((node) => {
-          const { slug, label } = node
-          return (
-            <li key={slug}>
-              <Link to={slug}>{label}</Link>
-            </li>
-          )
-        })}
-      </ul>
-    </Layout>
+    <Browse data={data} />
   )
 }
 
@@ -68,14 +40,17 @@ export const pageQuery = graphql`
         id
         label
         slug
+        thumbnail
       }
       parentCategory {
         id
         label
+        slug
       }
       topLevelParentCategory {
         id
         label
+        slug
       }
     }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import style from './style.module.css'
+import noImage from 'assets/images/noImage.svg'
 const Card = ({
   target,
   label,
@@ -12,7 +13,7 @@ const Card = ({
     <Link to={target}>
       <article>
         <figure>
-          <img src={image} alt={label} />
+          <img src={image || noImage} alt={label} />
           <figcaption>{label}</figcaption>
         </figure>
         <div className={style.additional}>
