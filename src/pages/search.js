@@ -5,6 +5,7 @@ import queryString from 'query-string'
 import Layout from 'components/Layout'
 import Search from 'components/APIViews/Search'
 import SearchBox from 'components/Shared/SearchBox'
+import Seo from 'components/Seo'
 import {
   submitSearch,
   STATUS_SEARCH_FETCHING,
@@ -14,7 +15,12 @@ const SearchPage = () => {
   return (
     <Layout
       title={'Search Results'}
-      preMain={<SearchBox />}
+      preMain={
+        <React.Fragment>
+          <Seo title='Search' />
+          <SearchBox />
+        </React.Fragment>
+      }
     >
       <Search />
     </Layout>
