@@ -7,7 +7,7 @@ import Navigation from '../../../Shared/Navigation'
 test('Footer renders some divs with markdown text', () => {
   const data = { site: { siteMetadata: {
     menus: { footer: [ 'links go here!' ] },
-    footerText: 'footer!!'
+    footerText: 'footer!!',
   } } }
   const wrapper = shallow(<Footer data={data} />)
 
