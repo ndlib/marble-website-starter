@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'propTypes'
 import { Link as GatsbyLink } from 'gatsby'
 
+// https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links
+
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
