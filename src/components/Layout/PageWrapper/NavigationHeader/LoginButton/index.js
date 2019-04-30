@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from 'components/Shared/Link'
 import style from './style.module.css'
 const LoginButton = () => {
   return (

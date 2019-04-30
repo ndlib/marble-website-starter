@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'gatsby'
+import Link from 'components/Shared/Link'
 import queryString from 'query-string'
 
 export const PaginationButton = ({ currentPage, prev, searchReducer, location }) => {

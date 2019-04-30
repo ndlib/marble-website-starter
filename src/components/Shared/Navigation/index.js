@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import style from './style.module.css'
-import { Link } from 'gatsby'
+import Link from 'components/Shared/Link'
 
 export const Navigation = ({ links, navClass }) => {
   return (

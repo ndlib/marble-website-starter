@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'components/Shared/Link'
 
 export const LinkedLogo = ({ href, src, alt }) => {
   if (!href || !src || !alt) {
     return null
   }
   return (
-    <a href={href}>
+    <Link to={href}>
       <img src={src} alt={alt} />
-    </a>
+    </Link>
   )
 }
 
