@@ -9,8 +9,8 @@ test('Footer renders some divs with markdown text', () => {
       siteMetadata: {
         menus: { footer: [ 'links go here!' ] },
         footerText: '<p>footer!!</p>',
-      }
-    }
+      },
+    },
   }
   const wrapper = shallow(<Footer data={data} />)
 
