@@ -38,7 +38,7 @@ const SearchBox = ({ location }) => {
 }
 
 SearchBox.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 export default SearchBox

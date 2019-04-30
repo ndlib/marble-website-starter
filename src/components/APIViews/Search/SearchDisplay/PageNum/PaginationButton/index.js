@@ -27,7 +27,7 @@ PaginationButton.propTypes = {
   searchReducer: PropTypes.object.isRequired,
   prev: PropTypes.bool,
   currentPage: PropTypes.number.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 export const mapStateToProps = (state) => {

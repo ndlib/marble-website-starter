@@ -25,7 +25,7 @@ SearchButton.propTypes = {
   searchReducer: PropTypes.object.isRequired,
   submitSearch: PropTypes.func.isRequired,
   white: PropTypes.bool.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 SearchButton.defaultProps = {

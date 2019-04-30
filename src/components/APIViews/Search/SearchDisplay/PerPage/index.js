@@ -30,7 +30,7 @@ export const PerPage = ({ searchReducer, location }) => {
 
 PerPage.propTypes = {
   searchReducer: PropTypes.object.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 export const mapStateToProps = (state) => {

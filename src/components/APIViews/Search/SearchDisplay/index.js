@@ -17,7 +17,7 @@ export const SearchDisplay = ({ location }) => {
 }
 
 SearchDisplay.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 export default SearchDisplay

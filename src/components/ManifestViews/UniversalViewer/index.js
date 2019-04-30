@@ -28,7 +28,7 @@ export const UniversalViewer = ({ manifest, location }) => {
 }
 
 UniversalViewer.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
   manifest: PropTypes.string,
 }
 

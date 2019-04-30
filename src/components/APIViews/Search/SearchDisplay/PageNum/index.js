@@ -30,7 +30,7 @@ export const mapStateToProps = (state) => {
 
 PageNum.propTypes = {
   searchReducer: PropTypes.object.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps)(PageNum)

@@ -36,7 +36,7 @@ SearchField.propTypes = {
   submitSearch: PropTypes.func.isRequired,
   searchReducer: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => {

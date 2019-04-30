@@ -24,7 +24,7 @@ export const Search = ({ searchReducer, location }) => {
 }
 
 Search.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => {

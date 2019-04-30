@@ -6,7 +6,7 @@ import SEO from 'components/Seo'
 import style from './style.module.css'
 
 export const UniversalViewerLayout = ({ data, manifest, location }) => {
-  if (location) {
+  if (location.search) {
     const qs = queryString.parse(location.search).manifest
     if (!manifest && qs) {
       manifest = qs
@@ -42,7 +42,7 @@ UniversalViewerLayout.propTypes = {
     }).isRequired,
   }).isRequired,
   manifest: PropTypes.string,
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 }
 
 export default UniversalViewerLayout
