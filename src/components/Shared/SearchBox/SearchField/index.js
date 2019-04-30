@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { updateInput } from 'store/actions/searchActions'
 
 // You should only have one search field on a page.
-export const SearchField = ({ submitSearch, searchReducer, dispatch, className }) => {
+export const SearchField = ({ submitSearch, searchReducer, dispatch, className, location }) => {
   const { rawInput } = searchReducer
   const fieldLabel = 'Search the Collections'
   return (
@@ -23,7 +23,7 @@ export const SearchField = ({ submitSearch, searchReducer, dispatch, className }
         onKeyDown={(e) => {
         // Submit on enter key press
           if (e.keyCode === 13) {
-            submitSearch(window.location, rawInput)
+            submitSearch(location, rawInput)
           }
         }}
       />
@@ -36,6 +36,7 @@ SearchField.propTypes = {
   submitSearch: PropTypes.func.isRequired,
   searchReducer: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
+  location: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {

@@ -14,13 +14,13 @@ const options = [
   { value: 60, label: '60/page' },
 ]
 
-export const PerPage = ({ searchReducer }) => {
+export const PerPage = ({ searchReducer, location }) => {
   let { perpage } = searchReducer
   perpage = parseInt(perpage, 10) || 12
   return (
     <Select
       options={options}
-      onChange={e => handleChange(e, window.location)}
+      onChange={e => handleChange(e, location)}
       placeholder={perpage + '/page'}
       selectedValue={perpage}
       className={style.perpage}
@@ -30,6 +30,7 @@ export const PerPage = ({ searchReducer }) => {
 
 PerPage.propTypes = {
   searchReducer: PropTypes.object.isRequired,
+  location: PropTypes.object,
 }
 
 export const mapStateToProps = (state) => {

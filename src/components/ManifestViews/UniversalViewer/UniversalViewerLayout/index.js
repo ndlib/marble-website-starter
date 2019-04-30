@@ -5,9 +5,9 @@ import Layout from 'components/Layout'
 import SEO from 'components/Seo'
 import style from './style.module.css'
 
-export const UniversalViewerLayout = ({ data, manifest }) => {
-  if (typeof window !== `undefined`) {
-    const qs = queryString.parse(window.location.search).manifest
+export const UniversalViewerLayout = ({ data, manifest, location }) => {
+  if (location) {
+    const qs = queryString.parse(location.search).manifest
     if (!manifest && qs) {
       manifest = qs
     }
@@ -42,6 +42,7 @@ UniversalViewerLayout.propTypes = {
     }).isRequired,
   }).isRequired,
   manifest: PropTypes.string,
+  location: PropTypes.object,
 }
 
 export default UniversalViewerLayout

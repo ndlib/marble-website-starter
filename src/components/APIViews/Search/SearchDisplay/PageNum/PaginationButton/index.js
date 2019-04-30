@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import { Link } from 'gatsby'
 import queryString from 'query-string'
 
-export const PaginationButton = ({ currentPage, prev, searchReducer }) => {
+export const PaginationButton = ({ currentPage, prev, searchReducer, location }) => {
   const { nextpage } = searchReducer
 
   // Do not render if no nextPage on next link OR
   // Do not render if currently on 1st page and prev
   if ((!prev && nextpage) || (prev && currentPage > 1)) {
     const settings = getSettings(prev, currentPage)
-    const target = linkTarget(window.location, settings.targetPage)
+    const target = linkTarget(location, settings.targetPage)
     return (
       <Link to={target}>
         <button
@@ -27,6 +27,7 @@ PaginationButton.propTypes = {
   searchReducer: PropTypes.object.isRequired,
   prev: PropTypes.bool,
   currentPage: PropTypes.number.isRequired,
+  location: PropTypes.object,
 }
 
 export const mapStateToProps = (state) => {

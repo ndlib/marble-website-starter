@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link, navigate } from 'gatsby'
 import queryString from 'query-string'
 import SearchButton from './SearchButton'
@@ -7,16 +8,19 @@ import style from './style.module.css'
 
 import helpIcon from 'assets/icons/svg/baseline-help_outline-24px.svg'
 
-const SearchBox = () => {
+const SearchBox = ({ location }) => {
   return (
     <section className={style.searchComponent} >
       <div className={style.searchBox}>
         <SearchField
           className={style.searchField}
+          location={location}
           submitSearch={submitSearch}
+
         />
         <SearchButton
           className={style.searchButton}
+          location={location}
           submitSearch={submitSearch}
         />
       </div>
@@ -33,6 +37,12 @@ const SearchBox = () => {
   )
 }
 
+SearchBox.propTypes = {
+  location: PropTypes.object,
+}
+
+export default SearchBox
+
 export const submitSearch = (location, rawInput) => {
   const qs = queryString.parse(location.search)
   qs.terms = rawInput
@@ -40,5 +50,3 @@ export const submitSearch = (location, rawInput) => {
   qs.perpage = qs.perpage || 12
   navigate(`/search?${queryString.stringify(qs)}`)
 }
-
-export default SearchBox

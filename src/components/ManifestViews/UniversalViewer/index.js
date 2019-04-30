@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import UniversalViewerLayout from './UniversalViewerLayout'
 
-export const UniversalViewer = ({ manifest }) => {
+export const UniversalViewer = ({ manifest, location }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -20,6 +20,7 @@ export const UniversalViewer = ({ manifest }) => {
         <UniversalViewerLayout
           data={data}
           manifest={manifest}
+          location={location}
         />
       )}
     />
@@ -27,6 +28,7 @@ export const UniversalViewer = ({ manifest }) => {
 }
 
 UniversalViewer.propTypes = {
+  location: PropTypes.object,
   manifest: PropTypes.string,
 }
 
