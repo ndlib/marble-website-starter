@@ -15,8 +15,8 @@ const groups = [
     label: 'Featured',
     items: [
       { image: image1, label: 'In a Civilized Nation: Newspapers, Magazines and the Print Revolution in the 19th-Century Peru', target: 'https://collections.library.nd.edu/3df879828f/in-a-civilized-nation' },
-      { image: image2, label: 'Highlights' },
-      { image: image3, label: 'Recently Added' },
+      { image: image2, label: 'Highlights', target: '/' },
+      { image: image3, label: 'Recently Added', target: '/' },
     ],
   },
   {
@@ -32,7 +32,6 @@ const Home = () => {
   //  <SearchBox />
   return (
     <React.Fragment>
-
       <HomeBanner />
       <HomeCardGroups groups={groups} />
     </React.Fragment>

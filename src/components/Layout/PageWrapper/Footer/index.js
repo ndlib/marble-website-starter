@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import style from './style.module.css'
 import { StaticQuery, graphql } from 'gatsby'
-import ReactMarkdown from 'react-markdown'
 import Navigation from '../../../Shared/Navigation'
 
 export const Footer = ({ data }) => {
