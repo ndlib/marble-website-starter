@@ -11,9 +11,7 @@ export const Footer = ({ data }) => {
   return (
     <footer className={style.pageFooter}>
       <div className={style.footerInner}>
-        <div className={style.footerText}>
-          <ReactMarkdown source={footerText} />
-        </div>
+        <div className={style.footerText} dangerouslySetInnerHTML={{ __html: footerText }} />
         <div className={style.footerCenter} />
         <div className={style.footerLinks}>
           <Navigation links={links} />
@@ -34,6 +32,7 @@ export default () => {
       query {
         site {
           siteMetadata {
+            footerText
             menus {
               footer {
                 id

@@ -11,6 +11,7 @@ module.exports = {
     institutionLabel: process.env.MARBLE_INSTITUTION_LABEL || `MARBLE`,
     departmentURL: process.env.MARBLE_DEPARTMENT_URL || ``,
     departmentLabel: process.env.MARBLE_DEPARTMENT_LABEL || ``,
+    footerText: '<p>© 2019 University of Notre Dame</p><address>Notre Dame, IN 46556 USA</address><p><a href="/help/contact-us">Contact Us</a></p>',
     // menus
     menus: {
       top: [
