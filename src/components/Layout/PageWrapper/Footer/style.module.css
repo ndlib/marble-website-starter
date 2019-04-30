@@ -17,14 +17,15 @@
 
 .footerText,
 .footerCenter,
-nav .footerLinks {
+.footerLinks {
   display: inline-block;
   margin: 2rem 0;
   vertical-align: top;
   width: calc(100% / 3);
 }
 
-.footerText p {
+.footerText p,
+.footerText address {
   line-height: 1.5em;
   margin: 0 .25em;
 }
