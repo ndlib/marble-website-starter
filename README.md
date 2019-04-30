@@ -39,7 +39,7 @@ For more information about Marble visit https://innovation.library.nd.edu/marble
 
     ```sh
     cd marble-website-starter/
-    gatsby develop
+    yarn develop
     ```
 
 1.  **Open the source code and start editing!**

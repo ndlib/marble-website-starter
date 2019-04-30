@@ -7,7 +7,7 @@ import Navigation from '../../../Shared/Navigation'
 
 export const Footer = ({ data }) => {
   const links = data.site.siteMetadata.menus.footer
-  const footerText = data.site.siteMetadata.footerTextMarkdown
+  const footerText = data.site.siteMetadata.footerText
   return (
     <footer className={style.pageFooter}>
       <div className={style.footerInner}>
@@ -15,8 +15,8 @@ export const Footer = ({ data }) => {
           <ReactMarkdown source={footerText} />
         </div>
         <div className={style.footerCenter} />
-        <div>
-          <Navigation links={links} navClass={style.footerLinks} />
+        <div className={style.footerLinks}>
+          <Navigation links={links} />
         </div>
       </div>
     </footer>
