@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from 'components/Layout'
+import SEO from 'components/Seo'
 
 const MarkdownTemplate = ({ data }) => {
   const post = data.markdownRemark
   return (
     <Layout
       title={post.frontmatter.title}
+      preMain={<SEO title={post.frontmatter.title} />}
     >
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
