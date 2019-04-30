@@ -15,7 +15,7 @@ export const CollectionPreMain = ({ iiifManifest }) => {
         description={iiifManifest.description}
       />
       <Thumbnail src={iiifManifest.thumbnail} />
-      <Breadcrumb />
+      <Breadcrumb title={iiifManifest.label} />
     </React.Fragment>
 
   )
