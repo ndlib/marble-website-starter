@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'propTypes'
+import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 
 // https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links
