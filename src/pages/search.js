@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { connect } from 'react-redux'
 import queryString from 'query-string'
@@ -11,22 +12,25 @@ import {
   STATUS_SEARCH_FETCHING,
 } from 'store/actions/searchActions'
 
-const SearchPage = () => {
+const SearchPage = ({ location }) => {
   return (
     <Layout
       title={'Search Results'}
       preMain={
         <React.Fragment>
           <Seo title='Search' />
-          <SearchBox />
+          <SearchBox location={location} />
         </React.Fragment>
       }
     >
-      <Search />
+      <Search location={location} />
     </Layout>
   )
 }
 
+SearchPage.propTypes = {
+  location: PropTypes.object,
+}
 const mapStateToProps = (state) => {
   return { ...state }
 }

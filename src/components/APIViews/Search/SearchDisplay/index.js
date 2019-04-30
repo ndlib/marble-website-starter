@@ -1,18 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 import PerPage from './PerPage'
 import PageNum from './PageNum'
 import Results from './Results'
 
-export const SearchDisplay = () => {
+export const SearchDisplay = ({ location }) => {
   return (
     <DisplayViewToggle>
-      <PerPage />
-      <PageNum />
+      <PerPage location={location} />
+      <PageNum location={location} />
       <Results />
-      <PageNum />
+      <PageNum location={location} />
     </DisplayViewToggle>
   )
+}
+
+SearchDisplay.propTypes = {
+  location: PropTypes.object.isRequired,
 }
 
 export default SearchDisplay
