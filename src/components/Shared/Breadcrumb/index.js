@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import Link from 'components/Shared/Link'
 import style from './style.module.css'
 
 // TODO: MAKE BREADCRUMBS WORK

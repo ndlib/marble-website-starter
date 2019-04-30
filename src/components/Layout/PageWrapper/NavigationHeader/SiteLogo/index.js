@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, Link, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import Link from 'components/Shared/Link'
 import style from './style.module.css'
 const siteLogo = require('assets/logos/default.siteLogo.png')
 
