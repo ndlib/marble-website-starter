@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import typy from 'typy'
 import Result from './Result'
 
-export const Results = ({ searchReducer }) => {
+export const Results = ({ searchReducer, location }) => {
   if (typy(searchReducer, 'results.docs').safeObject) {
     return (
       <React.Fragment>
@@ -14,6 +14,7 @@ export const Results = ({ searchReducer }) => {
               <Result
                 key={index}
                 doc={doc}
+                location={location}
               />
             )
           })
@@ -31,6 +32,7 @@ export const mapStateToProps = (state) => {
 
 Results.propTypes = {
   searchReducer: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps)(Results)

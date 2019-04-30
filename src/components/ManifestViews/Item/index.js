@@ -6,10 +6,11 @@ import ItemPreMain from './ItemPreMain'
 import MetaDataList from 'components/Shared/MetaDataList'
 import style from './style.module.css'
 
-export const Item = ({ iiifManifest }) => {
+export const Item = ({ iiifManifest, location }) => {
+  console.log(location.state)
   return (
     <Layout
-      preMain={<ItemPreMain iiifManifest={iiifManifest} />}
+      preMain={<ItemPreMain iiifManifest={iiifManifest} location={location} />}
       title={iiifManifest.label}
       aside={<ItemAside iiifManifest={iiifManifest} />}
       asideClassName={style.itemAside}
@@ -24,6 +25,7 @@ export const Item = ({ iiifManifest }) => {
 }
 Item.propTypes = {
   iiifManifest: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default Item

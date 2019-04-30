@@ -4,9 +4,9 @@ import Browse from 'components/ManifestViews/Browse'
 // Components
 import { graphql } from 'gatsby'
 
-const Tags = ({ data }) => {
+const Tags = ({ data, location }) => {
   return (
-    <Browse data={data} />
+    <Browse data={data} location={location} />
   )
 }
 

@@ -5,7 +5,7 @@ import Breadcrumb from 'components/Shared/Breadcrumb'
 import Image from 'components/Shared/Image'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
 
-export const CollectionPreMain = ({ iiifManifest }) => {
+export const CollectionPreMain = ({ iiifManifest, location }) => {
   return (
     <React.Fragment>
       <SEO
@@ -19,7 +19,7 @@ export const CollectionPreMain = ({ iiifManifest }) => {
         size='1200,'
         alt={iiifManifest.label}
       />
-      <Breadcrumb title={iiifManifest.label} />
+      <Breadcrumb title={iiifManifest.label} location={location} />
     </React.Fragment>
 
   )
@@ -27,5 +27,6 @@ export const CollectionPreMain = ({ iiifManifest }) => {
 
 CollectionPreMain.propTypes = {
   iiifManifest: PropTypes.object.isRequired,
+  location: PropTypes.object,
 }
 export default CollectionPreMain

@@ -5,7 +5,8 @@ import Card from 'components/Shared/Card'
 import SEO from 'components/Seo'
 import Breadcrumb from 'components/Shared/Breadcrumb'
 
-const Browse = ({ data }) => {
+const Browse = ({ data, location }) => {
+  console.log(location.state)
   const category = data.browseCategory
   const groups = [category.subCategories, category.manifests]
   return (
@@ -20,7 +21,7 @@ const Browse = ({ data }) => {
           />
           <Breadcrumb
             title={category.label}
-            crumbs={buildCrumbs(category)}
+            location={location}
           />
         </React.Fragment>
       }
@@ -36,6 +37,12 @@ const Browse = ({ data }) => {
                 target={slug}
                 label={label}
                 image={thumbnail ? thumbnail._id : null}
+                location={location}
+                referal={{
+                  type:'browse',
+                  label: category.label,
+                  target: location.pathname,
+                }}
               />
 
             )
@@ -54,6 +61,7 @@ Browse.propTypes = {
       slug: PropTypes.string.isRequired,
     }),
   }),
+  location: PropTypes.object.isRequired,
 }
 
 export default Browse

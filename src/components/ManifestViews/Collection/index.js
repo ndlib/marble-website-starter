@@ -6,11 +6,12 @@ import CollectionAside from './CollectionAside'
 import CollectionPreMain from './CollectionPreMain'
 import Card from 'components/Shared/Card'
 
-export const Collection = ({ iiifManifest }) => {
+export const Collection = ({ iiifManifest, location }) => {
+  console.log(location)
   return (
     <Layout
       aside={<CollectionAside iiifManifest={iiifManifest} />}
-      preMain={<CollectionPreMain iiifManifest={iiifManifest} />}
+      preMain={<CollectionPreMain iiifManifest={iiifManifest} location={location} />}
       title={iiifManifest.label}
     >
       <DisplayViewToggle>
@@ -22,6 +23,12 @@ export const Collection = ({ iiifManifest }) => {
                 target={`/${manifest.slug}`}
                 label={manifest.label}
                 iiifManifest={manifest}
+                location={location}
+                referal={{
+                  type:'collection',
+                  label: iiifManifest.label,
+                  target: location.pathname,
+                }}
               />
             )
           })
@@ -33,5 +40,6 @@ export const Collection = ({ iiifManifest }) => {
 
 Collection.propTypes = {
   iiifManifest: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 export default Collection

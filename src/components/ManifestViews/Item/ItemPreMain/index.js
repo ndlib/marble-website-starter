@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SEO from 'components/Seo'
 import Breadcrumb from 'components/Shared/Breadcrumb'
-export const ItemPreMain = ({ iiifManifest }) => {
+export const ItemPreMain = ({ iiifManifest, location }) => {
   return (
     <React.Fragment>
       <SEO
@@ -10,12 +10,13 @@ export const ItemPreMain = ({ iiifManifest }) => {
         image={iiifManifest.thumbnail._id}
         description={iiifManifest.description}
       />
-      <Breadcrumb title={iiifManifest.label} />
+      <Breadcrumb title={iiifManifest.label} location={location} />
     </React.Fragment>
   )
 }
 ItemPreMain.propTypes = {
   iiifManifest: PropTypes.object.isRequired,
+  location: PropTypes.object,
 }
 
 export default ItemPreMain

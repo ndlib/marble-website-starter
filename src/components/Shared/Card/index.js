@@ -11,10 +11,14 @@ const Card = ({
   image,
   iiifManifest,
   children,
+  location,
+  referal,
 }) => {
   const imageService = getImageService(iiifManifest)
   return (
-    <Link to={target}>
+    <Link to={target}
+      state={buildState(location, referal)}
+    >
       <article>
         <figure>
           <Image
@@ -38,9 +42,22 @@ Card.propTypes = {
   image: PropTypes.string,
   iiifManifest: PropTypes.object,
   children: PropTypes.node,
+  location: PropTypes.object,
+  referal: PropTypes.object,
 }
 
 Card.defaultProps = {
   children: null,
 }
 export default Card
+
+const buildState = (location, referal) => {
+  if (location && referal) {
+    return {
+      crumbs: {
+        referal: referal,
+      },
+    }
+  }
+  return null
+}
