@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import SearchDisplay from './SearchDisplay'
 import Loading from 'components/Shared/Loading'
-
 import {
   STATUS_SEARCH_EMPTY,
   STATUS_SEARCH_READY,
   STATUS_SEARCH_ERROR,
 } from 'store/actions/searchActions'
 
+// The location prop is only available from Gatsby in components inside the 'page' and 'template' directories and must be passed down.
 export const Search = ({ searchReducer, location }) => {
   switch (searchReducer.status) {
     case STATUS_SEARCH_EMPTY:
