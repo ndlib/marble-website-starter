@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Navigation, findNavInData } from './'
-import Link from 'components/Shared/Link'
 
 const data = {
   site: {
@@ -39,7 +38,7 @@ const data = {
             },
           ],
         },
-      ]
+      ],
     },
   },
 }

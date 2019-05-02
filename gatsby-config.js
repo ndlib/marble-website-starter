@@ -64,7 +64,7 @@ module.exports = {
             'label': 'Help',
             'link': '/help',
           },
-        ]
+        ],
       },
       {
         id: 'help',

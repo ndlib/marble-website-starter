@@ -12,7 +12,7 @@ export const Footer = ({ data }) => {
         <div className={style.footerText} dangerouslySetInnerHTML={{ __html: footerText }} />
         <div className={style.footerCenter} />
         <div className={style.footerLinks}>
-          <Navigation id="footer" />
+          <Navigation id='footer' />
         </div>
       </div>
     </footer>

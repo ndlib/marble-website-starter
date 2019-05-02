@@ -16,35 +16,35 @@ export const Navigation = ({ menu, navClass }) => {
 }
 
 Navigation.propTypes = {
-  menu: PropTypes.object.isRequired,
+  menu: PropTypes.string.isRequired,
   navClass: PropTypes.string,
 }
 
 export const findNavInData = (id, navData) => {
   return navData.find((element) => {
-    return element.id == id
+    return element.id === id
   })
 }
 
-export default ({id, navClass}) => {
+export default ({ id, navClass }) => {
   return (
     <StaticQuery
       query={graphql`
-      query {
-      	site {
-          siteMetadata {
-            menus {
-             	id
-              label
-              items {
-                id
-                link
+        query {
+          site {
+            siteMetadata {
+              menus {
+               	id
                 label
+                items {
+                  id
+                  link
+                  label
+                }
               }
             }
           }
         }
-      }
     `}
       render={data => {
         const menus = data.site.siteMetadata.menus
