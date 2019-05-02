@@ -7,13 +7,11 @@ import Navigation from '../../../Shared/Navigation'
 import style from './style.module.css'
 
 export const NavigationHeader = ({ data }) => {
-  const links = data.site.siteMetadata.menus.top
-
   return (
     <header className={style.navBar}>
       <div className={style.navBarInner}>
         <SiteLogo />
-        <Navigation links={links} />
+        <Navigation id="top" />
         <LoginButton />
       </div>
     </header>
@@ -31,13 +29,7 @@ export default () => {
       query {
         site {
           siteMetadata {
-            menus {
-              top {
-                id
-                link
-                title
-              }
-            }
+            title
           }
         }
       }

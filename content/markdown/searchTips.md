@@ -1,11 +1,7 @@
 ---
 title: Search Tips
 slug: help/search-tips
-menus:
-  help:
-    identifier: help/search-tips
-    title: Search Tips
-    weight: 20
+menu: help
 ---
 
 There are two ways to search on this Alpha site: basic and advanced. Because the prototype contains a small set of records, you may find that your search terms return no or few results.
