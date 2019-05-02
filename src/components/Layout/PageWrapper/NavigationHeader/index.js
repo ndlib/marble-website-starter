@@ -11,7 +11,7 @@ export const NavigationHeader = ({ data }) => {
     <header className={style.navBar}>
       <div className={style.navBarInner}>
         <SiteLogo />
-        <Navigation id="top" />
+        <Navigation id='top' />
         <LoginButton />
       </div>
     </header>

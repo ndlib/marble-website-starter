@@ -21,8 +21,8 @@ test('it renders the markdown template with a nav', () => {
 
   expect(wrapper.find('Layout').prop('title')).toEqual('Page Title')
   expect(wrapper.find('Layout div').prop('dangerouslySetInnerHTML').__html).toEqual('<p>HTML! </p>')
-  expect(wrapper.find('Layout').prop('preMain')).toEqual(<SEO lang="en" title="Page Title" />)
-  expect(wrapper.find('Layout').prop('nav')).toEqual(<Navigation id="menu" />)
+  expect(wrapper.find('Layout').prop('preMain')).toEqual(<SEO lang='en' title='Page Title' />)
+  expect(wrapper.find('Layout').prop('nav')).toEqual(<Navigation id='menu' />)
 })
 
 test('it renders no nav when there is no menu', () => {

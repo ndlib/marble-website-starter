@@ -95,9 +95,9 @@ module.exports = {
             'label': 'Contact Us',
             'link': '/help/contact-us',
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

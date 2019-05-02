@@ -57,7 +57,7 @@ test('It renders a menu with a label', () => {
   const wrapper = shallow(<Navigation menu={data.site.siteMetadata.menus[1]} />)
 
   expect(wrapper.find('h3').exists()).toBeTruthy()
-  expect(wrapper.find('h3').text()).toEqual("label")
+  expect(wrapper.find('h3').text()).toEqual('label')
 })
 
 test('findNavInData finds the menu correctly', () => {
@@ -68,6 +68,6 @@ test('findNavInData finds the menu correctly', () => {
 })
 
 test('it allows for a class name to be passed into the object', () => {
-  const wrapper = shallow(<Navigation menu={data.site.siteMetadata.menus[0]} navClass="the-class" />)
+  const wrapper = shallow(<Navigation menu={data.site.siteMetadata.menus[0]} navClass='the-class' />)
   expect(wrapper.find('nav').prop('className')).toEqual('the-class')
 })
