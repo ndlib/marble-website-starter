@@ -21,7 +21,7 @@ export const Collection = ({ iiifManifest }) => {
                 key={JSON.stringify(manifest)}
                 target={`/${manifest.slug}`}
                 label={manifest.label}
-                image={manifest.thumbnail['_id']}
+                iiifManifest={manifest}
               />
             )
           })

@@ -20,6 +20,9 @@ export const query = graphql`
       description
       thumbnail {
         _id
+        service {
+          _id
+        }
       }
       sequences {
         _id
@@ -48,6 +51,22 @@ export const query = graphql`
         slug
         thumbnail {
           _id
+        }
+        sequences {
+          _id
+          canvases {
+            _id
+            _type
+            label
+            height
+            width
+            images {
+              _id
+              _type
+              motivation
+              on
+            }
+          }
         }
         slug
       }
