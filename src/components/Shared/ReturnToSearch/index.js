@@ -5,11 +5,11 @@ import Link from 'components/Shared/Link'
 import style from './style.module.css'
 
 export const ReturnToSearch = ({ location }) => {
-  if (typy(location, 'state.crumbs.referal.type').safeString === 'search') {
+  if (typy(location, 'state.referal.type').safeString === 'search') {
     return (
       <nav className={style.returnToSearch}>
         <Link
-          to={`/search${location.state.crumbs.referal.query}`}
+          to={`/search${location.state.referal.query}`}
         >Return to Search</Link>
       </nav>
     )

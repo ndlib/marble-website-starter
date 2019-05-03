@@ -54,9 +54,7 @@ export default Card
 const buildState = (location, referal) => {
   if (location && referal) {
     return {
-      crumbs: {
-        referal: referal,
-      },
+      referal: referal,
     }
   }
   return null
