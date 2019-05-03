@@ -6,10 +6,12 @@ import noImage from 'assets/images/noImage.svg'
 // iiif image service requires a region and a width OR a height.
 // 'region' is defined in default props as 'full'.
 // Since we may want to specify only a height, we do a check on width and height existing before we set a default width of 500.
+
+// See https://iiif.io/api/image/2.1/#image-request-parameters for image server request parameters.
 const Image = ({
   service, // iiif Image service
   region, // 'full', 'square', or format: `x,y,w,h`, `pct:x,y,w,h`
-  size, // width in pixels for image service
+  size, // 'max', 'w,', ',h', 'pct:n', 'w,h', or '!w,h'
   src, // src to use if no service provided
   alt, // alt text for the image
 }) => {
