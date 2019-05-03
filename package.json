@@ -57,7 +57,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "jest",
-    "watch": "jest --watch"
+    "watch": "jest --watchAll --coverage"
   },
   "repository": {
     "type": "git",
