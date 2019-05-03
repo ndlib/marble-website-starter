@@ -8,7 +8,7 @@ import noImage from 'assets/images/noImage.svg'
 // Since we may want to specify only a height, we do a check on width and height existing before we set a default width of 500.
 const Image = ({
   service, // iiif Image service
-  region, // 'full', 'square', `x,y,w,h`, or `pct:x,y,w,h` -x,y,w,h numeric or blank
+  region, // 'full', 'square', or format: `x,y,w,h`, `pct:x,y,w,h`
   size, // width in pixels for image service
   src, // src to use if no service provided
   alt, // alt text for the image
