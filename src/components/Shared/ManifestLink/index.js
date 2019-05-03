@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'components/Shared/Link'
 import imgIIIF from './iiif.png'
 import style from './style.module.css'
 
@@ -8,8 +9,8 @@ const ManifestLink = ({ manifestUrl }) => {
     return null
   }
   return (
-    <a
-      href={manifestUrl}
+    <Link
+      to={manifestUrl}
       target='_blank'
     >
       <img
@@ -17,7 +18,7 @@ const ManifestLink = ({ manifestUrl }) => {
         alt='Download IIIF manifest.'
         className={style.manifestLink}
       />
-    </a>
+    </Link>
   )
 }
 
