@@ -13,7 +13,7 @@ const PageContent = ({
 }) => {
   return (
     <React.Fragment>
-      {nav ? <nav className={asideClassName}>{nav}</nav> : null}
+      {nav ? <div className={asideClassName}>{nav}</div> : null}
       <main
         id='mainContent'
         className={aside || nav ? style.asideLayout : style.standardLayout}

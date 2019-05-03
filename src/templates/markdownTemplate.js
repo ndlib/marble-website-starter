@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import SEO from 'components/Seo'
+import Navigation from 'components/Shared/Navigation'
 
-const MarkdownTemplate = ({ data }) => {
+export const MarkdownTemplate = ({ data }) => {
   const post = data.markdownRemark
+  const navigation = (post.frontmatter.menu ? <Navigation id={post.frontmatter.menu} /> : null)
   return (
     <Layout
       title={post.frontmatter.title}
+      nav={navigation}
       preMain={<SEO title={post.frontmatter.title} />}
     >
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -28,6 +31,7 @@ export const query = graphql`
       frontmatter {
         title
         slug
+        menu
       }
     }
   }

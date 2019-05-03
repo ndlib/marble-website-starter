@@ -7,7 +7,6 @@ test('Footer renders some divs with markdown text', () => {
   const data = {
     site: {
       siteMetadata: {
-        menus: { footer: [ 'links go here!' ] },
         footerText: '<p>footer!!</p>',
       },
     },
@@ -20,5 +19,5 @@ test('Footer renders some divs with markdown text', () => {
   expect(wrapper.find('.footerText').html()).toEqual('<div class="footerText"><p>footer!!</p></div>')
   expect(wrapper.find('.footerCenter').exists()).toBeTruthy()
   expect(wrapper.find('.footerLinks').exists()).toBeTruthy()
-  expect(wrapper.find(Navigation).props().links).toEqual([ 'links go here!' ])
+  expect(wrapper.find(Navigation).props().id).toEqual('footer')
 })

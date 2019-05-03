@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import Navigation from '../../../Shared/Navigation'
 
 export const Footer = ({ data }) => {
-  const links = data.site.siteMetadata.menus.footer
   const footerText = data.site.siteMetadata.footerText
   return (
     <footer className={style.pageFooter}>
@@ -13,7 +12,7 @@ export const Footer = ({ data }) => {
         <div className={style.footerText} dangerouslySetInnerHTML={{ __html: footerText }} />
         <div className={style.footerCenter} />
         <div className={style.footerLinks}>
-          <Navigation links={links} />
+          <Navigation id='footer' />
         </div>
       </div>
     </footer>
@@ -32,13 +31,6 @@ export default () => {
         site {
           siteMetadata {
             footerText
-            menus {
-              footer {
-                id
-                link
-                title
-              }
-            }
           }
         }
       }
