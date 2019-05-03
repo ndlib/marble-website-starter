@@ -3,12 +3,16 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Collection from 'components/ManifestViews/Collection'
 
-export const CollectionTemplate = ({ data }) => (
-  <Collection iiifManifest={data.iiifManifest} />
+export const CollectionTemplate = ({ data, location }) => (
+  <Collection
+    iiifManifest={data.iiifManifest}
+    location={location}
+  />
 )
 
 CollectionTemplate.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default CollectionTemplate

@@ -16,7 +16,7 @@ export const Navigation = ({ menu, navClass }) => {
 }
 
 Navigation.propTypes = {
-  menu: PropTypes.string.isRequired,
+  menu: PropTypes.object.isRequired,
   navClass: PropTypes.string,
 }
 
@@ -34,7 +34,7 @@ export default ({ id, navClass }) => {
           site {
             siteMetadata {
               menus {
-               	id
+                id
                 label
                 items {
                   id
