@@ -4,7 +4,7 @@ import typy from 'typy'
 import Link from 'components/Shared/Link'
 import style from './style.module.css'
 
-export const Breadcrumb = ({ location }) => {
+export const ReturnToSearch = ({ location }) => {
   if (typy(location, 'state.crumbs.referal.type').safeString === 'search') {
     return (
       <nav className={style.breadcrumbs}>
@@ -17,8 +17,8 @@ export const Breadcrumb = ({ location }) => {
   return null
 }
 
-Breadcrumb.propTypes = {
+ReturnToSearch.propTypes = {
   location: PropTypes.object,
 }
 
-export default Breadcrumb
+export default ReturnToSearch

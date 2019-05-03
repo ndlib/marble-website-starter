@@ -17,7 +17,6 @@ BrowseTemplate.propTypes = {
       slug: PropTypes.string.isRequired,
     }),
   }),
-  location: PropTypes.object.isRequired,
 }
 
 export default BrowseTemplate

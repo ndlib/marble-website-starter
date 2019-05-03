@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SEO from 'components/Seo'
-import Breadcrumb from 'components/Shared/Breadcrumb'
+import ReturnToSearch from 'components/Shared/ReturnToSearch'
 export const ItemPreMain = ({ iiifManifest, location }) => {
   return (
     <React.Fragment>
@@ -10,7 +10,7 @@ export const ItemPreMain = ({ iiifManifest, location }) => {
         image={iiifManifest.thumbnail._id}
         description={iiifManifest.description}
       />
-      <Breadcrumb location={location} />
+      <ReturnToSearch location={location} />
     </React.Fragment>
   )
 }
