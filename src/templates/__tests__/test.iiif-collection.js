@@ -4,7 +4,7 @@ import { CollectionTemplate } from '../iiif-collection'
 
 test('it renders the collection template', () => {
   const data = {
-    iiifManifest: { id: 'manifest' }
+    iiifManifest: { id: 'manifest' },
   }
   const location = { object: 'object' }
 

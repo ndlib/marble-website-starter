@@ -4,7 +4,7 @@ import { BrowseTemplate } from '../browse'
 
 test('it renders the manifest template', () => {
   const data = {
-    data: { id: 'manifest' }
+    data: { id: 'manifest' },
   }
 
   const wrapper = shallow(<BrowseTemplate data={data} />)

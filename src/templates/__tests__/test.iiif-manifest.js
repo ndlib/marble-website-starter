@@ -4,7 +4,7 @@ import { ItemTemplate } from '../iiif-manifest'
 
 test('it renders the manifest template', () => {
   const data = {
-    iiifManifest: { id: 'manifest' }
+    iiifManifest: { id: 'manifest' },
   }
 
   const wrapper = shallow(<ItemTemplate data={data} />)
