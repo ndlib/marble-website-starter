@@ -1,15 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
-import Thumbnail from 'components/Shared/Thumbnail'
+import Image from 'components/Shared/Image'
+import ItemAlternateViews from './ItemAlternateViews'
+import getImageService from 'utils/getImageService'
 
 export const ImageSection = ({ iiifManifest }) => {
   return (
     <section>
       <Link to={`/viewer?manifest=${encodeURIComponent(iiifManifest.id)}`}>
-        <Thumbnail src={iiifManifest.thumbnail} />
+        <Image
+          service={getImageService(iiifManifest)}
+          alt={iiifManifest.description}
+        />
       </Link>
-      <section>ALTERNATE VIEWS</section>
+      <ItemAlternateViews iiifManifest={iiifManifest} />
     </section>
   )
 }

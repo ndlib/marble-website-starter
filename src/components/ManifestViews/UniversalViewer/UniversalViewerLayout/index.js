@@ -6,15 +6,14 @@ import SEO from 'components/Seo'
 import style from './style.module.css'
 
 export const UniversalViewerLayout = ({ data, manifest, location }) => {
-  if (location.search) {
-    const qs = queryString.parse(location.search).manifest
-    if (!manifest && qs) {
-      manifest = qs
-    }
+  const qs = queryString.parse(location.search)
+  if (!manifest && qs) {
+    manifest = qs.manifest
   }
   if (!manifest) {
     return (<Layout>Not Found</Layout>)
   }
+  const cv = qs.cv || 1
   return (
     <Layout
       noPadding
@@ -27,7 +26,7 @@ export const UniversalViewerLayout = ({ data, manifest, location }) => {
         className={style.universalViewer}
         title='universal-viewer'
         sandbox='allow-same-origin allow-scripts allow-pointer-lock allow-popups'
-        src={`${data.site.siteMetadata.universalViewerBaseURL}#?manifest=${manifest}`}
+        src={`${data.site.siteMetadata.universalViewerBaseURL}#?manifest=${manifest}&cv=${cv}`}
       />
     </Layout>
   )
