@@ -3,12 +3,16 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Item from 'components/ManifestViews/Item'
 
-export const ItemTemplate = ({ data }) => (
-  <Item iiifManifest={data.iiifManifest} />
+export const ItemTemplate = ({ data, location }) => (
+  <Item
+    iiifManifest={data.iiifManifest}
+    location={location}
+  />
 )
 
 ItemTemplate.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default ItemTemplate

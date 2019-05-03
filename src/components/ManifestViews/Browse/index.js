@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 import Card from 'components/Shared/Card'
 import SEO from 'components/Seo'
-import Breadcrumb from 'components/Shared/Breadcrumb'
 
 const Browse = ({ data }) => {
   const category = data.browseCategory
@@ -17,10 +16,6 @@ const Browse = ({ data }) => {
             title={category.label}
             description={category.description}
             image={category.thumbnail ? category.thumbnail._id : null}
-          />
-          <Breadcrumb
-            title={category.label}
-            crumbs={buildCrumbs(category)}
           />
         </React.Fragment>
       }
@@ -57,17 +52,3 @@ Browse.propTypes = {
 }
 
 export default Browse
-
-export const buildCrumbs = (category) => {
-  const crumbs = []
-  if (category.topLevelParentCategory) {
-    crumbs.push({ to: category.topLevelParentCategory.slug, label: category.topLevelParentCategory.label })
-  }
-  if (category.parentCategory &&
-    category.topLevelParentCategory &&
-    category.topLevelParentCategory.id !== category.parentCategory.id
-  ) {
-    crumbs.push({ to: category.parentCategory.slug, label: category.parentCategory.label })
-  }
-  return crumbs
-}

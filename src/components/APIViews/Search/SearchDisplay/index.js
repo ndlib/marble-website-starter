@@ -10,7 +10,7 @@ export const SearchDisplay = ({ location }) => {
     <DisplayViewToggle>
       <PerPage location={location} />
       <PageNum location={location} />
-      <Results />
+      <Results location={location} />
       <PageNum location={location} />
     </DisplayViewToggle>
   )

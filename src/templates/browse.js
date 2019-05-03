@@ -4,13 +4,13 @@ import Browse from 'components/ManifestViews/Browse'
 // Components
 import { graphql } from 'gatsby'
 
-const Tags = ({ data }) => {
+const BrowseTemplate = ({ data }) => {
   return (
     <Browse data={data} />
   )
 }
 
-Tags.propTypes = {
+BrowseTemplate.propTypes = {
   data: PropTypes.shape({
     browseCategory: PropTypes.shape({
       label: PropTypes.string.isRequired,
@@ -19,7 +19,7 @@ Tags.propTypes = {
   }),
 }
 
-export default Tags
+export default BrowseTemplate
 
 export const pageQuery = graphql`
   query($slug: String) {
