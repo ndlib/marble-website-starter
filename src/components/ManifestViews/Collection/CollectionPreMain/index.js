@@ -19,7 +19,7 @@ export const CollectionPreMain = ({ iiifManifest, location }) => {
         size='1200,'
         alt={iiifManifest.label}
       />
-      <Breadcrumb title={iiifManifest.label} location={location} />
+      <Breadcrumb location={location} />
     </React.Fragment>
 
   )

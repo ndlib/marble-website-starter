@@ -5,6 +5,3 @@ nav.breadcrumbs {
 nav.breadcrumbs a {
   text-decoration: none;
 }
-nav.breadcrumbs a::after {
-  content: ' > ';
-}

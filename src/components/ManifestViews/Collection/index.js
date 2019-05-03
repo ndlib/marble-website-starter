@@ -7,7 +7,6 @@ import CollectionPreMain from './CollectionPreMain'
 import Card from 'components/Shared/Card'
 
 export const Collection = ({ iiifManifest, location }) => {
-  console.log(location)
   return (
     <Layout
       aside={<CollectionAside iiifManifest={iiifManifest} />}

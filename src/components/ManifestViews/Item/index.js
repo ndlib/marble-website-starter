@@ -7,7 +7,6 @@ import MetaDataList from 'components/Shared/MetaDataList'
 import style from './style.module.css'
 
 export const Item = ({ iiifManifest, location }) => {
-  console.log(location.state)
   return (
     <Layout
       preMain={<ItemPreMain iiifManifest={iiifManifest} location={location} />}

@@ -10,7 +10,7 @@ export const ItemPreMain = ({ iiifManifest, location }) => {
         image={iiifManifest.thumbnail._id}
         description={iiifManifest.description}
       />
-      <Breadcrumb title={iiifManifest.label} location={location} />
+      <Breadcrumb location={location} />
     </React.Fragment>
   )
 }
