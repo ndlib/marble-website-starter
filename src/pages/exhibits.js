@@ -4,7 +4,7 @@ import { graphql } from 'gatsby' // mocked
 import SEO from '../components/Seo'
 import Card from 'components/Shared/Card'
 
-export const ExhibitsPage = ({data}) => {
+export const ExhibitsPage = ({ data }) => {
   const exhibitions = data.site.siteMetadata.exhibitions
   return (
     <Layout>
@@ -29,6 +29,10 @@ export const ExhibitsPage = ({data}) => {
 }
 
 export default ExhibitsPage
+
+ExhibitsPage.propTypes = {
+  data: PropTypes.object.isRequired,
+}
 
 export const query = graphql`
   query {

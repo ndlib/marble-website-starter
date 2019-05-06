@@ -11,14 +11,14 @@ test('it renders the exhibits page', () => {
             id: '1',
             label: 'label1',
             image: 'image',
-            link:  'http://link.com/'
+            link:  'http://link.com/',
           },
           {
             id: '2',
             label: 'label2',
             image: 'image2',
-            link:  'http://link2.com/'
-          }
+            link:  'http://link2.com/',
+          },
         ],
       },
     },
