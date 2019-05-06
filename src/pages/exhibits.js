@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { graphql } from 'gatsby' // mocked
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import SEO from '../components/Seo'
 import Card from 'components/Shared/Card'
 
