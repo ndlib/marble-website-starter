@@ -1,9 +1,10 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import { graphql } from 'gatsby' // mocked
 import SEO from '../components/Seo'
 import Card from 'components/Shared/Card'
 
-const ExhibitsPage = ({data}) => {
+export const ExhibitsPage = ({data}) => {
   const exhibitions = data.site.siteMetadata.exhibitions
   return (
     <Layout>
