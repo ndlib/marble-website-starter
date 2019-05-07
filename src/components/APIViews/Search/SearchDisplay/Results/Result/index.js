@@ -45,30 +45,8 @@ export const buildUrl = (doc) => {
   return subset
 }
 
-// eslint-disable-next-line complexity
 export const buildMetadata = (doc) => {
-  const desiredData = [
-    {
-      label: 'Creator',
-      docField: 'pnx.display.creator[0]',
-    },
-    {
-      label: 'Date',
-      docField: 'pnx.display.creationdate[0]',
-    },
-    {
-      label: 'Format',
-      docField: 'pnx.display.format[0]',
-    },
-    {
-      label: 'Repository',
-      docField: 'pnx.control.sourceid[0]',
-    },
-    {
-      label: 'Collection',
-      docField: 'delivery.holding[0].subLocation',
-    },
-  ]
+  const desiredData = dataMap()
   const metadata = desiredData.map(data => {
     if (typy(doc, data.docField).isString) {
       return { label: data.label, value: typy(doc, data.docField).safeString }
@@ -92,4 +70,30 @@ export const imageFromDoc = (doc) => {
     link.linkURL = ''
   }
   return link.linkURL
+}
+
+// TODO: Move this to an external configuration file
+export const dataMap = () => {
+  return [
+    {
+      label: 'Creator',
+      docField: 'pnx.display.creator[0]',
+    },
+    {
+      label: 'Date',
+      docField: 'pnx.display.creationdate[0]',
+    },
+    {
+      label: 'Format',
+      docField: 'pnx.display.format[0]',
+    },
+    {
+      label: 'Repository',
+      docField: 'pnx.control.sourceid[0]',
+    },
+    {
+      label: 'Collection',
+      docField: 'delivery.holding[0].subLocation',
+    },
+  ]
 }
