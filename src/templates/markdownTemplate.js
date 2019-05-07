@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
-import SEO from 'components/Seo'
+import SEO from 'components/Shared/Seo'
 import Navigation from 'components/Shared/Navigation'
 
 export const MarkdownTemplate = ({ data }) => {
