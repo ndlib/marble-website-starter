@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import SEO from '../components/Seo'
+import SEO from 'components/Shared/Seo'
 import Card from 'components/Shared/Card'
 
 export const ExhibitsPage = ({ data }) => {
