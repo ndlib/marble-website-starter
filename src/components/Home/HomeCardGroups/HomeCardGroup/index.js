@@ -1,25 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 
 const HomeCardGroup = ({ label, items }) => {
   return (
     <div className='featured'>
       <h2>{label}</h2>
-      <div className='grid-x grid-margin-x'>
+      <ResponsiveGridList>
         {
           items.map((item, index) => {
             return (
-              <Card
-                key={index}
-                target={item.target}
-                label={item.label}
-                image={item.image}
-              />
+              <div key={`${index}`}>
+                <Card
+                  key={index}
+                  target={item.target}
+                  label={item.label}
+                  image={item.image}
+                />
+              </div>
             )
           })
         }
-      </div>
+      </ResponsiveGridList>
     </div>
   )
 }

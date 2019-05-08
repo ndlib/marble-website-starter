@@ -4,6 +4,7 @@ import Layout from 'components/Layout'
 import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 import CollectionAside from './CollectionAside'
 import CollectionPreMain from './CollectionPreMain'
+import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 
 export const Collection = ({ iiifManifest, location }) => {
@@ -14,24 +15,32 @@ export const Collection = ({ iiifManifest, location }) => {
       title={iiifManifest.label}
     >
       <DisplayViewToggle>
-        {
-          iiifManifest.childrenIiifManifest.map(manifest => {
-            return (
-              <Card
-                key={JSON.stringify(manifest)}
-                target={`/${manifest.slug}`}
-                label={manifest.label}
-                iiifManifest={manifest}
-                location={location}
-                referal={{
-                  type:'collection',
-                  label: iiifManifest.label,
-                  target: location.pathname,
-                }}
-              />
-            )
-          })
-        }
+        <ResponsiveGridList
+          breakpoints={{ lg: 600, md: 480, sm: 240 }}
+          cols={{ lg: 6, md: 4, sm: 2 }}
+          rowHeight={200}
+          cardWidth={2}
+        >
+          {
+            iiifManifest.childrenIiifManifest.map((manifest, index) => {
+              return (
+                <div key={`${index}`}>
+                  <Card
+                    target={`/${manifest.slug}`}
+                    label={manifest.label}
+                    iiifManifest={manifest}
+                    location={location}
+                    referal={{
+                      type:'collection',
+                      label: iiifManifest.label,
+                      target: location.pathname,
+                    }}
+                  />
+                </div>
+              )
+            })
+          }
+        </ResponsiveGridList>
       </DisplayViewToggle>
     </Layout>
   )

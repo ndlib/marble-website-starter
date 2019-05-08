@@ -14,10 +14,11 @@ const Image = ({
   size, // 'max', 'w,', ',h', 'pct:n', 'w,h', or '!w,h'
   src, // src to use if no service provided
   alt, // alt text for the image
+  className, // class on the outer picture element
 }) => {
   const image = serviceURL(service, region, size) || src
   return (
-    <picture>
+    <picture className={className}>
       <img
         src={image || noImage}
         alt={alt}
@@ -32,12 +33,14 @@ Image.propTypes = {
   size: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
+  className: PropTypes.string,
 }
 
 Image.defaultProps = {
   region: 'full',
   size: '500,',
   alt: 'a static image',
+  className: '',
 }
 export default Image
 

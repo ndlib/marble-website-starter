@@ -2,24 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Result from './Result'
 
 export const Results = ({ searchReducer, location }) => {
   if (typy(searchReducer, 'results.docs').safeObject) {
     return (
-      <React.Fragment>
+      <ResponsiveGridList>
         {
           searchReducer.results.docs.map((doc, index) => {
             return (
-              <Result
-                key={index}
-                doc={doc}
-                location={location}
-              />
+              <div key={`${index}`}>
+                <Result
+                  doc={doc}
+                  location={location}
+                />
+              </div>
             )
           })
         }
-      </React.Fragment>
+      </ResponsiveGridList>
     )
   }
 

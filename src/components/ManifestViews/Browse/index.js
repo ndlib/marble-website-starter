@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
+import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 import SEO from 'components/Shared/Seo'
 
 const Browse = ({ data }) => {
   const category = data.browseCategory
-  const groups = [category.subCategories, category.manifests]
+  const group = mergeGroups(category.subCategories, category.manifests)
+
   return (
     <Layout
       title={category.label}
@@ -21,23 +23,23 @@ const Browse = ({ data }) => {
       }
     >
       <p>{category.description}</p>
-      {
-        groups.map(group => {
-          return group && group.map(node => {
+      <ResponsiveGridList>
+        {
+          group.map((node, index) => {
             const { label, slug, thumbnail } = node
             return (
-              <Card
-                key={slug}
-                target={slug}
-                label={label}
-                image={thumbnail ? thumbnail._id : null}
-              />
-
+              <div key={`${index}`}>
+                <Card
+                  key={slug}
+                  target={slug}
+                  label={label}
+                  image={thumbnail ? thumbnail._id : null}
+                />
+              </div>
             )
           })
-        })
-      }
-
+        }
+      </ResponsiveGridList>
     </Layout>
   )
 }
@@ -52,3 +54,9 @@ Browse.propTypes = {
 }
 
 export default Browse
+
+export const mergeGroups = (group1, group2) => {
+  group1 = group1 || []
+  group2 = group2 || []
+  return group1.concat(group2)
+}

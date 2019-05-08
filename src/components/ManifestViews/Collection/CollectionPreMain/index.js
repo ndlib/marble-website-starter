@@ -4,6 +4,7 @@ import SEO from 'components/Shared/Seo'
 import ReturnToSearch from 'components/Shared/ReturnToSearch'
 import Image from 'components/Shared/Image'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
+import style from './style.module.css'
 
 export const CollectionPreMain = ({ iiifManifest, location }) => {
   return (
@@ -15,9 +16,10 @@ export const CollectionPreMain = ({ iiifManifest, location }) => {
       />
       <Image
         service={getImageServiceFromThumbnail(iiifManifest)}
-        region='pct:0,40,100,40'
+        region='full'
         size='1200,'
         alt={iiifManifest.label}
+        className={style.mainCollectionImage}
       />
       <ReturnToSearch location={location} />
     </React.Fragment>
