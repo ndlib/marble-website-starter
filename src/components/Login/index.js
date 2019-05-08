@@ -1,6 +1,6 @@
 import React from 'react'
 import { navigate } from 'gatsby'
-//import { isLoggedIn } from 'utils/auth'
+// import { isLoggedIn } from 'utils/auth'
 import { getState } from 'utils/State'
 
 const Login = () => {
@@ -18,11 +18,11 @@ const Login = () => {
               name: `Jim`,
               legalName: `James K. User`,
               email: `jim@example.org`,
-            }
+            },
           }
         )
         navigate(`/app/profile`)
-       }}
+      }}
     >
       <p>
         For this demo, please log in with the username <code>gatsby</code> and the

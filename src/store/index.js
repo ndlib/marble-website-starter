@@ -3,7 +3,7 @@ import React from 'react'
 import { StateProvider } from 'utils/State'
 import PropTypes from 'prop-types'
 
- export const Store = ({ element }) => {
+export const Store = ({ element }) => {
   const initialState = {
     user: {},
     basket: {},
@@ -41,7 +41,7 @@ import PropTypes from 'prop-types'
 }
 
 Store.propTypes = {
-  component: PropTypes.any.isRequired,
+  element: PropTypes.object.isRequired,
 }
 
 export default Store

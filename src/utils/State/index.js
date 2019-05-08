@@ -7,7 +7,7 @@ export const StateProvider = ({ reducer, initialState, children }) => (
   <StateContext.Provider value={useReducer(reducer, initialState)}>
     {children}
   </StateContext.Provider>
-);
+)
 
 StateProvider.propTypes = {
   /**
@@ -25,7 +25,7 @@ StateProvider.propTypes = {
    * @param {object} state
    * @param {object} action
    */
-  reducer: PropTypes.func.isRequired
+  reducer: PropTypes.func.isRequired,
 }
 
 export const getState = () => useContext(StateContext)

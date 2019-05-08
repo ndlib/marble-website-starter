@@ -23,7 +23,7 @@ export const isLoggedIn = (user) => {
   return !!(user && user.email)
 }
 
-//export const getCurrentUser = () => isBrowser && getUser()
+// export const getCurrentUser = () => isBrowser && getUser()
 
 export const logout = callback => {
   if (!isBrowser) return
