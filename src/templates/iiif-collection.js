@@ -2,12 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Collection from 'components/ManifestViews/Collection'
+import PrivateRoute from 'components/Shared/PrivateRoute'
 
 export const CollectionTemplate = ({ data, location }) => (
-  <Collection
-    iiifManifest={data.iiifManifest}
-    location={location}
-  />
+  <PrivateRoute location={location} testLogin={false}>
+    <Collection
+      iiifManifest={data.iiifManifest}
+      location={location}
+    />
+  </PrivateRoute>
 )
 
 CollectionTemplate.propTypes = {

@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Browse from 'components/ManifestViews/Browse'
-// Components
 import { graphql } from 'gatsby'
+import PrivateRoute from 'components/Shared/PrivateRoute'
 
-export const BrowseTemplate = ({ data }) => {
+export const BrowseTemplate = ({ data, location }) => {
   return (
-    <Browse data={data} />
+    <PrivateRoute location={location} testLogin={false}>
+      <Browse data={data} />
+    </PrivateRoute>
   )
 }
 
@@ -17,6 +19,7 @@ BrowseTemplate.propTypes = {
       slug: PropTypes.string.isRequired,
     }),
   }),
+  location: PropTypes.object.isRequired,
 }
 
 export default BrowseTemplate

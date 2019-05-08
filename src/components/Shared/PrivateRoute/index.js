@@ -4,20 +4,30 @@ import { navigate } from 'gatsby'
 import { isLoggedIn } from 'utils/auth'
 import { getState } from 'utils/State'
 
-const PrivateRoute = ({ component: Component, location, ...rest }) => {
+const PrivateRoute = ({ children, location, testLogin }) => {
   const [{user}] = getState()
 
-  if (!isLoggedIn(user) && location.pathname !== `/app/login`) {
+  if (testLogin && !isLoggedIn(user) && location.pathname !== `/app/login`) {
     // If we’re not logged in, redirect to the home page.
-    navigate(`/app/login`)
+    navigate(`/login`)
     return null
   }
 
-  return (<div> Private Route! {user.legalName}</div>)
+  return (
+    <div>
+      {children}
+    </div>
+  )
 }
 
 PrivateRoute.propTypes = {
   component: PropTypes.any.isRequired,
+  location: PropTypes.any.isRequired,
+  testLogin: PropTypes.bool,
+}
+
+PrivateRoute.defaultProps = {
+  testLogin: false,
 }
 
 export default PrivateRoute
