@@ -10,9 +10,9 @@ export const Results = ({ searchReducer, location }) => {
     return (
       <ResponsiveGridList>
         {
-          searchReducer.results.docs.map((doc, index) => {
+          searchReducer.results.docs.map(doc => {
             return (
-              <div key={`${index}`}>
+              <div key={doc['@id']}>
                 <Result
                   doc={doc}
                   location={location}

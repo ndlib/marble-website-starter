@@ -25,10 +25,10 @@ const Browse = ({ data }) => {
       <p>{category.description}</p>
       <ResponsiveGridList>
         {
-          group.map((node, index) => {
+          group.map(node => {
             const { label, slug, thumbnail } = node
             return (
-              <div key={`${index}`}>
+              <div key={slug}>
                 <Card
                   key={slug}
                   target={slug}

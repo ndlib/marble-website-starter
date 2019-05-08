@@ -9,11 +9,10 @@ const HomeCardGroup = ({ label, items }) => {
       <h2>{label}</h2>
       <ResponsiveGridList>
         {
-          items.map((item, index) => {
+          items.map(item => {
             return (
-              <div key={`${index}`}>
+              <div key={item.target}>
                 <Card
-                  key={index}
                   target={item.target}
                   label={item.label}
                   image={item.image}

@@ -13,7 +13,7 @@ export const ResponsiveGridList = ({
   children, // Must be an array of nodes. Individual children must be wrapped in <div key={`${index}`}>
 }) => {
   const ResponsiveGridLayout = WidthProvider(Responsive)
-  const layouts = makeResponsiveLayouts(children.length, cardWidth, cardHeight, cols)
+  const layouts = makeResponsiveLayouts(children, cardWidth, cardHeight, cols)
   return (
     <ResponsiveGridLayout
       layouts={layouts}
@@ -46,26 +46,26 @@ ResponsiveGridList.defaultProps = {
 export default ResponsiveGridList
 
 // Make multiple layouts for different breakpoints
-export const makeResponsiveLayouts = (count, cardWidth, cardHeight, cols) => {
+export const makeResponsiveLayouts = (children, cardWidth, cardHeight, cols) => {
   const layouts = {}
   Object.keys(cols).forEach(key => {
-    layouts[key] = makeLayout(count, cardWidth, cardHeight, cols[key])
+    layouts[key] = makeLayout(children, cardWidth, cardHeight, cols[key])
   })
   return layouts
 }
 
 // Make a single static layout
-export const makeLayout = (count, cardWidth, cardHeight, numCols) => {
+export const makeLayout = (children, cardWidth, cardHeight, numCols) => {
   const layout = []
-  for (let i = 0; i < count; i++) {
+  children.forEach((child, index) => {
     layout.push({
-      i: `${i}`,
-      x: (i * cardWidth) % numCols,
-      y: Math.floor(i / (numCols / cardWidth)),
+      i: child.key,
+      x: (index * cardWidth) % numCols,
+      y: Math.floor(index / (numCols / cardWidth)),
       w: cardWidth,
       h: cardHeight,
       static: true,
     })
-  }
+  })
   return layout
 }

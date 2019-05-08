@@ -22,9 +22,9 @@ export const Collection = ({ iiifManifest, location }) => {
           cardWidth={2}
         >
           {
-            iiifManifest.childrenIiifManifest.map((manifest, index) => {
+            iiifManifest.childrenIiifManifest.map(manifest => {
               return (
-                <div key={`${index}`}>
+                <div key={manifest.id}>
                   <Card
                     target={`/${manifest.slug}`}
                     label={manifest.label}

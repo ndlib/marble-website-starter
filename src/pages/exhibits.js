@@ -17,11 +17,10 @@ export const ExhibitsPage = ({ data }) => {
     >
       <ResponsiveGridList>
         {
-          exhibitions.map((exhibit, index) => {
+          exhibitions.map(exhibit => {
             return (
-              <div key={`${index}`}>
+              <div key={exhibit.id}>
                 <Card
-                  key={exhibit.id}
                   label={exhibit.label}
                   target={exhibit.link}
                   image={exhibit.image}
