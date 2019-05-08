@@ -1,9 +1,9 @@
 // This is imported in gatsby-ssr and gatsby-browser as wrapRootElement to provide a connection to the store.
 import React from 'react'
 import { StateProvider } from 'utils/State'
+import PropTypes from 'prop-types'
 
-
-export default ({ element }) => {
+ export const Store = ({ element }) => {
   const initialState = {
     user: {},
     basket: {},
@@ -39,3 +39,9 @@ export default ({ element }) => {
     </StateProvider>
   )
 }
+
+Store.propTypes = {
+  component: PropTypes.any.isRequired,
+}
+
+export default Store

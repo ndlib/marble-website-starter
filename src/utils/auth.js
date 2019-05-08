@@ -29,6 +29,6 @@ export const logout = callback => {
   if (!isBrowser) return
 
   console.log(`Ensuring the \`gatsbyUser\` property exists.`)
-//  setUser({})
+  //  setUser({})
   callback()
 }
