@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery } from 'gatsby' // mocked
 import { shallow } from 'enzyme'
 import { MarkdownTemplate } from '../markdownTemplate'
-import SEO from 'components/Seo'
+import SEO from 'components/Shared/Seo'
 import Navigation from 'components/Shared/Navigation'
 
 test('it renders the markdown template with a nav', () => {

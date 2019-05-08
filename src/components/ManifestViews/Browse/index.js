@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 import Card from 'components/Shared/Card'
-import SEO from 'components/Seo'
+import SEO from 'components/Shared/Seo'
 
 const Browse = ({ data }) => {
   const category = data.browseCategory

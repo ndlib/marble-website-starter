@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import Layout from 'components/Layout'
-import SEO from 'components/Seo'
+import SEO from 'components/Shared/Seo'
 import style from './style.module.css'
 
 export const UniversalViewerLayout = ({ data, manifest, location }) => {
