@@ -1,4 +1,4 @@
- const isBrowser = typeof window !== `undefined`
+const isBrowser = typeof window !== `undefined`
 
 export const handleLogin = ({ username, password, setUser }) => {
   if (!isBrowser) return false
@@ -23,12 +23,12 @@ export const isLoggedIn = (user) => {
   return !!(user && user.email)
 }
 
-export const getCurrentUser = () => isBrowser && getUser()
+//export const getCurrentUser = () => isBrowser && getUser()
 
 export const logout = callback => {
   if (!isBrowser) return
 
   console.log(`Ensuring the \`gatsbyUser\` property exists.`)
-  setUser({})
+//  setUser({})
   callback()
 }

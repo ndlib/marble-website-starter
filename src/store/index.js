@@ -1,5 +1,4 @@
 // This is imported in gatsby-ssr and gatsby-browser as wrapRootElement to provide a connection to the store.
-
 import React from 'react'
 import { StateProvider } from 'utils/State'
 
@@ -15,7 +14,7 @@ export default ({ element }) => {
       case 'setUser':
         return {
           ...state,
-          ...action.newUser
+          ...action.newUser,
         }
       default:
         return state
@@ -26,7 +25,7 @@ export default ({ element }) => {
     return state
   }
 
-  const mainReducer = ({user, basket}, action) => {
+  const mainReducer = ({ user, basket }, action) => {
     // middleware goes here, i.e calling analytics service, etc.
     return {
       user: reducer(user, action),
