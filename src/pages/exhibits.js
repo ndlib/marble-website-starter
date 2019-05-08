@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from 'components/Layout'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import SEO from 'components//Shared/Seo'
+import SEO from 'components/Shared/Seo'
 import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 
