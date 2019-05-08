@@ -7,12 +7,13 @@ import 'react-resizable/css/styles.css'
 export const ResponsiveGridList = ({
   breakpoints,
   cols,
-  rowHeight,
-  cardWidth,
-  children, // Individual children must be wrapped in <div key={`${index}`}>
+  rowHeight, // Number of pixels for height of a row
+  cardWidth, // Number of columns for a child
+  cardHeight, // Number of rows for a child
+  children, // Must be an array of nodes. Individual children must be wrapped in <div key={`${index}`}>
 }) => {
   const ResponsiveGridLayout = WidthProvider(Responsive)
-  const layouts = makeResponsiveLayouts(children.length, cardWidth, cols)
+  const layouts = makeResponsiveLayouts(children.length, cardWidth, cardHeight, cols)
   return (
     <ResponsiveGridLayout
       layouts={layouts}
@@ -30,7 +31,8 @@ ResponsiveGridList.propTypes = {
   cols: PropTypes.object,
   rowHeight: PropTypes.number,
   cardWidth: PropTypes.number,
-  children: PropTypes.node.isRequired,
+  cardHeight: PropTypes.number,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
 }
 
 ResponsiveGridList.defaultProps = {
@@ -38,21 +40,22 @@ ResponsiveGridList.defaultProps = {
   cols: { lg: 12, md: 8, sm: 4 },
   rowHeight: 200,
   cardWidth: 4,
+  cardHeight: 1,
 }
 
 export default ResponsiveGridList
 
 // Make multiple layouts for different breakpoints
-export const makeResponsiveLayouts = (count, cardWidth, cols) => {
+export const makeResponsiveLayouts = (count, cardWidth, cardHeight, cols) => {
   const layouts = {}
   Object.keys(cols).forEach(key => {
-    layouts[key] = makeLayout(count, cardWidth, cols[key])
+    layouts[key] = makeLayout(count, cardWidth, cardHeight, cols[key])
   })
   return layouts
 }
 
 // Make a single static layout
-export const makeLayout = (count, cardWidth, numCols) => {
+export const makeLayout = (count, cardWidth, cardHeight, numCols) => {
   const layout = []
   for (let i = 0; i < count; i++) {
     layout.push({
@@ -60,7 +63,7 @@ export const makeLayout = (count, cardWidth, numCols) => {
       x: (i * cardWidth) % numCols,
       y: Math.floor(i / (numCols / cardWidth)),
       w: cardWidth,
-      h: 1,
+      h: cardHeight,
       static: true,
     })
   }
