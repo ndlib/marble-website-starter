@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import AlternateImage from './AlternateImage'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
+
 // export max number of images to display so we don't have to update unit
 // tests if/when this number changes
 export const MAX_IMAGES = 4
