@@ -1,0 +1,15 @@
+.alternateOverlay {
+  background-color: rgba( 0, 0, 0, .75);
+  color: white;
+  font-size: 18px;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.alternateOverlay span {
+  left: 0;
+  position: absolute;
+  top: calc(50% - 9px);
+  width: 100%;
+}

@@ -20,6 +20,7 @@ export const ResponsiveGridList = ({
       breakpoints={breakpoints}
       cols={cols}
       rowHeight={rowHeight}
+      containerPadding={[0, 0]}
     >
       {children}
     </ResponsiveGridLayout>

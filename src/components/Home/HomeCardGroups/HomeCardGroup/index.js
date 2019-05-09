@@ -9,9 +9,9 @@ const HomeCardGroup = ({ label, items }) => {
       <h2>{label}</h2>
       <ResponsiveGridList>
         {
-          items.map(item => {
+          items.map((item, index) => {
             return (
-              <div key={item.target}>
+              <div key={index}>
                 <Card
                   target={item.target}
                   label={item.label}

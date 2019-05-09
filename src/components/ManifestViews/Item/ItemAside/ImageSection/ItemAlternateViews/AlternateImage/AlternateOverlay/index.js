@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import style from './style.module.css'
 
 const AlternateOverlay = ({ index, max, length }) => {
   // only render on last instance
@@ -7,7 +8,7 @@ const AlternateOverlay = ({ index, max, length }) => {
   if (max === index + 1 && max !== length) {
     const overlayNumber = length - max
     return (
-      <div className='alternateOverlay'>+{overlayNumber}</div>
+      <div className={style.alternateOverlay}><span>{`+${overlayNumber}`}</span></div>
     )
   }
   return null
