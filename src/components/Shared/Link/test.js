@@ -9,7 +9,7 @@ describe('Link', () => {
     expect(wrapper.find(GatsbyLink).props().to).toEqual('/some-path')
     expect(wrapper.find(GatsbyLink).props().children).toEqual('Link Text')
   })
-  test('internal Link from sug', () => {
+  test('internal Link from slug', () => {
     const wrapper = shallow(<Link to='some-path'>Link Text</Link>)
     expect(wrapper.find(GatsbyLink).props().to).toEqual('/some-path')
     expect(wrapper.find(GatsbyLink).props().children).toEqual('Link Text')
