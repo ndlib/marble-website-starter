@@ -4,12 +4,13 @@ import Link from 'components/Shared/Link'
 import Image from 'components/Shared/Image'
 import AlternateOverlay from './AlternateOverlay'
 import getImageService from 'utils/getImageService'
+import style from './style.module.css'
 
 export const AlternateImage = ({ iiifManifest, index, max, length }) => {
   if (length > 1) {
     return (
       <Link
-        className='alternateImage'
+        className={style.alternateLink}
         to={`/viewer?manifest=${encodeURIComponent(iiifManifest.id)}&cv=${index}`}
       >
         <AlternateOverlay
@@ -22,6 +23,7 @@ export const AlternateImage = ({ iiifManifest, index, max, length }) => {
           region='square'
           size='125,'
           alt={`Alternate View ${index}`}
+          className={style.alternateImage}
         />
       </Link>
     )

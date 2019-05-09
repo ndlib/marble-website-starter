@@ -2,6 +2,7 @@
   background-color: #222;
   color: #fff;
   min-height : 64px;
+  overflow: hidden;
   position: static;
   bottom: 0;
   left: 0;
@@ -18,10 +19,8 @@
 .footerText,
 .footerCenter,
 .footerLinks {
-  display: inline-block;
-  margin: 2rem 0;
+  padding: 2rem;
   vertical-align: top;
-  width: calc(100% / 3);
 }
 
 .footerText p,
@@ -33,9 +32,18 @@
   display: block;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 800px) {
   .footerText {
+    font-size: 1.5rem;
     text-align: center;
+  }
+  .footerLinks {
+    text-align: center;
+    vertical-align: top;
+  }
+  .footerLinks a {
+    font-size: 1.5rem;
+    margin: 1rem auto;
   }
 }
 

@@ -14,7 +14,7 @@ const ItemAlternateViews = ({ iiifManifest }) => {
     const originalLength = canvases.length
     canvases.length = Math.min(MAX_IMAGES, canvases.length)
     return (
-      <span className='alternateImages'>
+      <div>
         {
           canvases.map((canvas, index) => {
             return (
@@ -28,7 +28,7 @@ const ItemAlternateViews = ({ iiifManifest }) => {
             )
           })
         }
-      </span>
+      </div>
     )
   }
   return null

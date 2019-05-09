@@ -1,0 +1,7 @@
+.bigImage, .bigImage img {
+  width: 100%;
+  height: auto;
+}
+.link {
+  position: relative;
+}

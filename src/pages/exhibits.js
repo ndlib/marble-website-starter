@@ -1,30 +1,35 @@
 import React from 'react'
-import Layout from '../components/Layout'
+import Layout from 'components/Layout'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import SEO from '../components/Seo'
+import SEO from 'components/Shared/Seo'
+import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 
 export const ExhibitsPage = ({ data }) => {
   const exhibitions = data.site.siteMetadata.exhibitions
   return (
-    <Layout>
-      <SEO title='Digital Exhibits' />
-      <h1>Exhibits</h1>
-      <main>
+    <Layout
+      title='Exhibits'
+      preMain={
+        <SEO title='Digital Exhibits' />
+      }
+    >
+      <ResponsiveGridList>
         {
           exhibitions.map(exhibit => {
             return (
-              <Card
-                key={exhibit.id}
-                label={exhibit.label}
-                target={exhibit.link}
-                image={exhibit.image}
-              />
+              <div key={exhibit.id}>
+                <Card
+                  label={exhibit.label}
+                  target={exhibit.link}
+                  image={exhibit.image}
+                />
+              </div>
             )
           })
         }
-      </main>
+      </ResponsiveGridList>
     </Layout>
   )
 }

@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => {
 export const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const searchBase = ownProps.data.site.siteMetadata.primoSearchBaseURL
   const values = queryString.parse(ownProps.location.search)
-  if (shouldDispatchSearch(stateProps.searchReducer, values.terms, stateProps.searchReducer.page, values.page)) {
+  if (shouldDispatchSearch(stateProps.searchReducer, values.terms, stateProps.searchReducer.page, values.page, values.perpage)) {
     dispatchProps.dispatch(
       submitSearch(searchBase, values.perpage, values.terms, values.page || 1)
     )
@@ -50,7 +50,7 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
   return { ...stateProps, ...dispatchProps, ...ownProps }
 }
 
-export const shouldDispatchSearch = (searchReducer, terms, page, targetPage) => {
+export const shouldDispatchSearch = (searchReducer, terms, page, targetPage, perpage) => {
   // Not currently fetching
   // Has some terms
   // Current page of results is changing or terms are changing
@@ -59,7 +59,8 @@ export const shouldDispatchSearch = (searchReducer, terms, page, targetPage) => 
     terms &&
     (
       parseInt(page, 10) !== parseInt(targetPage, 10) ||
-      searchReducer.terms !== terms
+      searchReducer.terms !== terms ||
+      searchReducer.perpage !== parseInt(perpage, 10)
     )
   )
 }

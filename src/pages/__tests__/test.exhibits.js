@@ -26,7 +26,6 @@ test('it renders the exhibits page', () => {
 
   const wrapper = shallow(<ExhibitsPage data={data} />)
   expect(wrapper.find('Layout').exists()).toBeTruthy()
-  expect(wrapper.find('h1').text()).toEqual('Exhibits')
 
   expect(wrapper.find('Card').length).toEqual(2)
   expect(wrapper.find('Card[label="label1"]').prop('label')).toEqual('label1')
