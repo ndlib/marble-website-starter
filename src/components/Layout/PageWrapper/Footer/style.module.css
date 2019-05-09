@@ -32,7 +32,7 @@
   display: block;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 800px) {
   .footerText {
     font-size: 1.5rem;
     text-align: center;

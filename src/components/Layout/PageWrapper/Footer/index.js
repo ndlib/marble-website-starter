@@ -24,7 +24,7 @@ export const Footer = ({ data }) => {
         <ResponsiveGridList
           layouts={layouts}
           measureBeforeMount
-          rowHeight={300}
+          rowHeight={400}
         >
           <div
             key='footerText'
