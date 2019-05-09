@@ -13,7 +13,7 @@ export const UniversalViewerLayout = ({ data, manifest, location }) => {
   if (!manifest) {
     return (<Layout>Not Found</Layout>)
   }
-  const cv = qs.cv || 1
+  const cv = qs.cv || 0
   return (
     <Layout
       noPadding
