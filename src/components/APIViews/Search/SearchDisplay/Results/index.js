@@ -8,7 +8,7 @@ import Result from './Result'
 export const Results = ({ searchReducer, location }) => {
   if (typy(searchReducer, 'results.docs').safeObject) {
     return (
-      <ResponsiveGridList>
+      <ResponsiveGridList measureBeforeMount>
         {
           searchReducer.results.docs.map(doc => {
             return (

@@ -10,17 +10,20 @@ export const ResponsiveGridList = ({
   rowHeight, // Number of pixels for height of a row
   cardWidth, // Number of columns for a child
   cardHeight, // Number of rows for a child
+  layouts, // An objects to do a custom layout
+  measureBeforeMount, // Bool set to true to avoid animation
   children, // Must be an array of nodes. Individual children must be wrapped in <div key={`${index}`}>
 }) => {
   const ResponsiveGridLayout = WidthProvider(Responsive)
-  const layouts = makeResponsiveLayouts(children, cardWidth, cardHeight, cols)
+  const currentLayout = layouts || makeResponsiveLayouts(children, cardWidth, cardHeight, cols)
   return (
     <ResponsiveGridLayout
-      layouts={layouts}
+      layouts={currentLayout}
       breakpoints={breakpoints}
       cols={cols}
       rowHeight={rowHeight}
       containerPadding={[0, 0]}
+      measureBeforeMount={measureBeforeMount}
     >
       {children}
     </ResponsiveGridLayout>
@@ -33,6 +36,8 @@ ResponsiveGridList.propTypes = {
   rowHeight: PropTypes.number,
   cardWidth: PropTypes.number,
   cardHeight: PropTypes.number,
+  layouts: PropTypes.object,
+  measureBeforeMount: PropTypes.bool,
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
 }
 
@@ -42,6 +47,7 @@ ResponsiveGridList.defaultProps = {
   rowHeight: 200,
   cardWidth: 4,
   cardHeight: 1,
+  measureBeforeMount: false,
 }
 
 export default ResponsiveGridList
