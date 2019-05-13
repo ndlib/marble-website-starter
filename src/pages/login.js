@@ -11,9 +11,10 @@ export const Login = ({ dispatch, loginReducer }) => {
   const message = (isLoggedIn(loginReducer)) ? (<p>Hi {loginReducer.user.fullname}</p>) : ''
 
   return (
-    <Layout>
-      <SEO title='Login' />
-      <h1>Login</h1>
+    <Layout
+      title='Login'
+      preMain={<SEO title='Login' />}
+    >
       {message}
       <form
         method='post'
