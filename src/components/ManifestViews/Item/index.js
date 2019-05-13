@@ -7,6 +7,7 @@ import MetaDataList from 'components/Shared/MetaDataList'
 import style from './style.module.css'
 
 export const Item = ({ iiifManifest, location }) => {
+  console.log(iiifManifest)
   return (
     <Layout
       preMain={<ItemPreMain iiifManifest={iiifManifest} location={location} />}
@@ -18,7 +19,7 @@ export const Item = ({ iiifManifest, location }) => {
       <p>{iiifManifest.description}</p>
       <MetaDataList metadata={iiifManifest.metadata} />
       <p>{iiifManifest.attribution}</p>
-      <p>{iiifManifest.license}</p>
+      <p dangerouslySetInnerHTML={{ __html: iiifManifest.license }} />
     </Layout>
   )
 }
