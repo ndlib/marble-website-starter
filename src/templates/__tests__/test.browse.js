@@ -7,7 +7,7 @@ test('it renders the manifest template', () => {
     data: { id: 'manifest' },
   }
 
-  const wrapper = shallow(<BrowseTemplate data={data} />)
+  const wrapper = shallow(<BrowseTemplate data={data} location={{}} />)
   expect(wrapper.find('Browse').exists()).toBeTruthy()
   expect(wrapper.find('Browse').prop('data')).toEqual(data)
 })

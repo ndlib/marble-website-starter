@@ -31,6 +31,7 @@ const SearchPage = ({ location }) => {
 SearchPage.propTypes = {
   location: PropTypes.object,
 }
+
 const mapStateToProps = (state) => {
   return { ...state }
 }

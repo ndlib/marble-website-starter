@@ -17,7 +17,7 @@ test('it renders the markdown template with a nav', () => {
     },
   }
 
-  const wrapper = shallow(<MarkdownTemplate data={data} />)
+  const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
 
   expect(wrapper.find('Layout').prop('title')).toEqual('Page Title')
   expect(wrapper.find('Layout div').prop('dangerouslySetInnerHTML').__html).toEqual('<p>HTML! </p>')
@@ -35,7 +35,7 @@ test('it renders no nav when there is no menu', () => {
       },
     },
   }
-  const wrapper = shallow(<MarkdownTemplate data={data} />)
+  const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
 
   expect(wrapper.find('Layout').prop('nav')).toEqual(null)
 })
