@@ -6,14 +6,14 @@ import {
 
 test('it returns true if the user is logged in', () => {
   const loginReducer = {
-    status: STATUS_LOGGED_IN
+    status: STATUS_LOGGED_IN,
   }
   expect(isLoggedIn(loginReducer)).toBeTruthy()
 })
 
 test('it returns false if the user is not logged in', () => {
   const loginReducer = {
-    status: STATUS_NOT_LOGGED_IN
+    status: STATUS_NOT_LOGGED_IN,
   }
   expect(isLoggedIn(loginReducer)).toBeFalsy()
 })

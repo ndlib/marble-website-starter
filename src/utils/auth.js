@@ -2,6 +2,11 @@ import { STATUS_LOGGED_IN } from 'store/actions/loginActions'
 
 const isBrowser = typeof window !== `undefined`
 
+export const isLoggedIn = (loginReducer) => {
+  if (!isBrowser) return false
+  return (loginReducer.status === STATUS_LOGGED_IN)
+}
+
 /*
 // export const getCurrentUser = () => isBrowser && getUser()
 
@@ -36,8 +41,3 @@ export const handleLogin = ({ username, password, getState }) => {
   return false
 }
 */
-
-export const isLoggedIn = (loginReducer) => {
-  if (!isBrowser) return false
-  return (loginReducer.status === STATUS_LOGGED_IN)
-}
