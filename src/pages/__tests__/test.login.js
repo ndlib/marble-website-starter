@@ -1,16 +1,17 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Login from '../login'
+import { Login } from '../login'
 import * as State from 'utils/state'
+import * as auth from 'utils/auth'
 
-beforeEach(() => {
-  jest
-    .spyOn(State, 'getState')
-    .mockImplementation(() => [ { user: 'user'}, jest.fn()])
-})
-
-test('it renders the login page', () => {
-  const wrapper = shallow(<Login />)
+test('it renders the login page with the user logged in', () => {
+  jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
+  const loginReducer = {
+    user: {
+      fullname: "username"
+    }
+  }
+  const wrapper = shallow(<Login loginReducer={loginReducer} />)
 
   expect(wrapper.find('Layout').exists()).toBeTruthy()
   expect(wrapper.find('h1').text()).toEqual('Login')

@@ -1,15 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import PrivateRoute from './'
+import { PrivateRoute } from './'
 import * as State from 'utils/state'
 import * as Gatsby from 'gatsby'
 import * as auth from 'utils/auth'
-
-beforeEach(() => {
-  jest
-    .spyOn(State, 'getState')
-    .mockImplementation(() => [ { user: 'user'}, jest.fn()])
-})
 
 test('it renders the page if we are not testing login', () => {
   const wrapper = shallow(<PrivateRoute location={{}} testLogin={false}>TEXT</PrivateRoute>)

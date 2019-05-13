@@ -1,3 +1,5 @@
+import { STATUS_LOGGED_IN } from 'store/actions/loginActions'
+
 const isBrowser = typeof window !== `undefined`
 
 /*
@@ -35,8 +37,7 @@ export const handleLogin = ({ username, password, getState }) => {
 }
 */
 
-export const isLoggedIn = (user) => {
+export const isLoggedIn = (loginReducer) => {
   if (!isBrowser) return false
-
-  return !!(user && user.email)
+  return (loginReducer.status === STATUS_LOGGED_IN)
 }

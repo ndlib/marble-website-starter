@@ -2,30 +2,23 @@ import React from 'react'
 import { navigate } from 'gatsby'
 import Layout from 'components/Layout'
 import SEO from 'components/Shared/Seo'
-import { getState } from 'utils/state'
+import { connect } from 'react-redux'
+import { handleLogin } from 'store/actions/loginActions'
+import { isLoggedIn } from 'utils/auth'
 
-export const Login = () => {
-  const [{ user }, dispatcher] = getState()
+export const Login = ({ dispatch, loginReducer }) => {
+  const message = (isLoggedIn(loginReducer)) ? (<p>Hi {loginReducer.user.fullname}</p>) : ''
 
   return (
     <Layout>
       <SEO title="Login" />
       <h1>Login</h1>
-
+      {message}
       <form
         method='post'
         onSubmit={event => {
           event.preventDefault()
-          dispatcher(
-            {
-              type: 'setUser',
-              newUser: {
-                name: `Jim`,
-                legalName: `James K. User`,
-                email: `jim@example.org`,
-              },
-            }
-          )
+          dispatch(handleLogin())
           navigate(`/`)
         }}
       >
@@ -47,4 +40,15 @@ export const Login = () => {
   )
 }
 
-export default Login
+const mapStateToProps = (state) => {
+  return { ...state }
+}
+
+const mapDispatchToProps = dispatch => {
+  return { dispatch }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login)
