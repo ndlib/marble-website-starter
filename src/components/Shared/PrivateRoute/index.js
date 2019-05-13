@@ -21,7 +21,7 @@ export const PrivateRoute = ({ children, location, testLogin, loginReducer }) =>
 PrivateRoute.propTypes = {
   children: PropTypes.any.isRequired,
   location: PropTypes.any.isRequired,
-  loginReducer: PropTypes.object.isRequired,
+  loginReducer: PropTypes.object,
   testLogin: PropTypes.bool,
 }
 
