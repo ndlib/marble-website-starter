@@ -15,10 +15,13 @@ export const Item = ({ iiifManifest, location }) => {
       asideClassName={style.itemAside}
       articleClassName={style.itemMain}
     >
-      <p>{iiifManifest.description}</p>
+      <p className={style.description}>{iiifManifest.description}</p>
       <MetaDataList metadata={iiifManifest.metadata} />
-      <p>{iiifManifest.attribution}</p>
-      <p>{iiifManifest.license}</p>
+      <p className={style.attribution}>{iiifManifest.attribution}</p>
+      <p
+        className={style.license}
+        dangerouslySetInnerHTML={{ __html: iiifManifest.license }}
+      />
     </Layout>
   )
 }
