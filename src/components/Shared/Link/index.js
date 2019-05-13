@@ -15,6 +15,10 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
 
   // Use Gatsby Link for internal links, and <a> for others
   if (!external) {
+    // Play safe and make sure internal links start with '/'
+    if (!to.startsWith('/')) {
+      to = `/${to}`
+    }
     return (
       <GatsbyLink
         to={to}

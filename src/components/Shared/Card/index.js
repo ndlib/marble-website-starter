@@ -19,14 +19,15 @@ const Card = ({
     <Link to={target}
       state={buildState(location, referal)}
     >
-      <article>
-        <figure>
+      <article className={style.cardWrapper}>
+        <figure className={style.cardFigure}>
           <Image
             src={image || null}
             service={imageService || null}
             alt={label}
+            className={style.cardImage}
           />
-          <figcaption>{label}</figcaption>
+          <figcaption className={style.cardCaption}>{label}</figcaption>
         </figure>
         <div className={style.additional}>
           {children}
