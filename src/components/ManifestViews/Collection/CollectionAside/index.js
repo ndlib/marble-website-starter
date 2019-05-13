@@ -6,9 +6,9 @@ import MetaDataList from 'components/Shared/MetaDataList'
 const CollectionAside = ({ iiifManifest }) => {
   return (
     <React.Fragment>
+      <ActionButtonGroup iiifManifest={iiifManifest} />
       <p>{iiifManifest.description}</p>
       <MetaDataList metadata={iiifManifest.metadata} />
-      <ActionButtonGroup iiifManifest={iiifManifest} />
     </React.Fragment>
   )
 }

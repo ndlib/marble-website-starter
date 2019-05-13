@@ -30,11 +30,6 @@ export const Collection = ({ iiifManifest, location }) => {
                     label={manifest.label}
                     iiifManifest={manifest}
                     location={location}
-                    referal={{
-                      type:'collection',
-                      label: iiifManifest.label,
-                      target: location.pathname,
-                    }}
                   />
                 </div>
               )
