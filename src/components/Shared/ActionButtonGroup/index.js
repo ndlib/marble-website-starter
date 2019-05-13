@@ -13,7 +13,6 @@ import style from './style.module.css'
 const ActionButtonGroup = ({ iiifManifest }) => {
   return (
     <section className={style.actionButtons}>
-
       <ActionButton
         name='bookmark'
         action={bookmarkAction}
@@ -54,7 +53,6 @@ export const shareAction = () => {
 
 export const printAction = () => {
   window.print()
-  console.log('print')
 }
 
 export const downloadAction = () => {
