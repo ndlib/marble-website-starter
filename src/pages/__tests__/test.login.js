@@ -10,7 +10,7 @@ test('it renders the login page with the user logged in', () => {
       fullname: 'username',
     },
   }
-  const wrapper = shallow(<Login loginReducer={ loginReducer } />)
+  const wrapper = shallow(<Login loginReducer={loginReducer} />)
 
   expect(wrapper.find('Layout').exists()).toBeTruthy()
   expect(wrapper.find('h1').text()).toEqual('Login')
