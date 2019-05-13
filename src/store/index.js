@@ -1,6 +1,6 @@
 // This is imported in gatsby-ssr and gatsby-browser as wrapRootElement to provide a connection to the store.
 import React from 'react'
-import { StateProvider } from 'utils/State'
+import { StateProvider } from 'utils/state'
 import PropTypes from 'prop-types'
 
 export const Store = ({ element }) => {
