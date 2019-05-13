@@ -1,15 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Login } from '../login'
-import * as State from 'utils/state'
 import * as auth from 'utils/auth'
 
 test('it renders the login page with the user logged in', () => {
   jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
   const loginReducer = {
     user: {
-      fullname: "username"
-    }
+      fullname: "username",
+    },
   }
   const wrapper = shallow(<Login loginReducer={loginReducer} />)
 

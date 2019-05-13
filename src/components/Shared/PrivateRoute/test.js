@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { PrivateRoute } from './'
-import * as State from 'utils/state'
 import * as Gatsby from 'gatsby'
 import * as auth from 'utils/auth'
 
@@ -22,12 +21,12 @@ test('it renders the page if they are logged in and we are testing logins', () =
 test('it navigates to the login page if they are not logged in and we are testing logins', () => {
   jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => false)
 
-  const wrapper = shallow(<PrivateRoute location={{}} testLogin={true}>TEXT</PrivateRoute>)
+  shallow(<PrivateRoute location={{}} testLogin={true}>TEXT</PrivateRoute>)
 
   expect(Gatsby.navigate).toHaveBeenCalledWith('/login')
 })
 
-test('it does not navigage to the login page if they are already on it even if they are not logged in' , () => {
+test('it does not navigage to the login page if they are already on it even if they are not logged in', () => {
   jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => false)
 
   const wrapper = shallow(<PrivateRoute location={{pathname: '/login'}} testLogin={true}>TEXT</PrivateRoute>)

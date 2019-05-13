@@ -16,6 +16,6 @@ export const logUserIn = (username, fullname, email) => {
       username: username,
       fullname: fullname,
       email: email,
-    }
+    },
   }
 }

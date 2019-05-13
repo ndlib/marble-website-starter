@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import Layout from 'components/Layout'
 import SEO from 'components/Shared/Seo'
@@ -11,7 +12,7 @@ export const Login = ({ dispatch, loginReducer }) => {
 
   return (
     <Layout>
-      <SEO title="Login" />
+      <SEO title='Login' />
       <h1>Login</h1>
       {message}
       <form
@@ -38,6 +39,11 @@ export const Login = ({ dispatch, loginReducer }) => {
       </form>
     </Layout>
   )
+}
+
+Login.propTypes = {
+  loginReducer: PropTypes.object,
+  dispatch: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
