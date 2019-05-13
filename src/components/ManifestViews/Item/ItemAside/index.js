@@ -6,8 +6,8 @@ import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 export const ItemAside = ({ iiifManifest }) => {
   return (
     <React.Fragment>
-      <ImageSection iiifManifest={iiifManifest} />
       <ActionButtonGroup iiifManifest={iiifManifest} />
+      <ImageSection iiifManifest={iiifManifest} />
     </React.Fragment>
   )
 }

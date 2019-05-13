@@ -10,20 +10,17 @@ export const MAX_IMAGES = 4
 const ItemAlternateViews = ({ iiifManifest }) => {
   const canvases = typy(iiifManifest, 'sequences[0].canvases').safeObject
   if (Array.isArray(canvases)) {
-    // truncate at 4 alternate images
-    const originalLength = canvases.length
-    canvases.length = Math.min(MAX_IMAGES, canvases.length)
     return (
       <div>
         {
-          canvases.map((canvas, index) => {
+          canvases.slice(1, Math.min(MAX_IMAGES + 1, canvases.length)).map((canvas, index) => {
             return (
               <AlternateImage
                 key={index}
                 iiifManifest={iiifManifest}
-                index={index}
+                index={index + 1}
                 max={MAX_IMAGES}
-                length={originalLength}
+                length={canvases.length}
               />
             )
           })

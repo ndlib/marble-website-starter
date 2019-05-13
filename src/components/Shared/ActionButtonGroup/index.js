@@ -13,22 +13,7 @@ import style from './style.module.css'
 const ActionButtonGroup = ({ iiifManifest }) => {
   return (
     <section className={style.actionButtons}>
-      <ManifestLink manifestUrl={iiifManifest.id} />
-      <ActionButton
-        name='download'
-        action={downloadAction}
-        icon={downloadImg}
-      />
-      <ActionButton
-        name='print'
-        action={printAction}
-        icon={print}
-      />
-      <ActionButton
-        name='share'
-        action={shareAction}
-        icon={share}
-      />
+
       <ActionButton
         name='bookmark'
         action={bookmarkAction}
@@ -36,6 +21,22 @@ const ActionButtonGroup = ({ iiifManifest }) => {
         activeIcon={bookmarkActive}
         isActive
       />
+      <ActionButton
+        name='share'
+        action={shareAction}
+        icon={share}
+      />
+      <ActionButton
+        name='print'
+        action={printAction}
+        icon={print}
+      />
+      <ActionButton
+        name='download'
+        action={downloadAction}
+        icon={downloadImg}
+      />
+      <ManifestLink manifestUrl={iiifManifest.id} />
     </section>
   )
 }
