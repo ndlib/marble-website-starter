@@ -5,7 +5,7 @@ import * as Gatsby from 'gatsby'
 import * as auth from 'utils/auth'
 
 test('it renders the page if we are not testing login', () => {
-  const wrapper = shallow(<PrivateRoute location={{}} testLogin={false}>TEXT</PrivateRoute>)
+  const wrapper = shallow(<PrivateRoute location={ {} } testLogin={false}>TEXT</PrivateRoute>)
 
   expect(wrapper.text()).toEqual('TEXT')
 })
@@ -13,7 +13,7 @@ test('it renders the page if we are not testing login', () => {
 test('it renders the page if they are logged in and we are testing logins', () => {
   jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
 
-  const wrapper = shallow(<PrivateRoute location={{}} testLogin={true}>TEXT</PrivateRoute>)
+  const wrapper = shallow(<PrivateRoute location={ {} } testLogin={true}>TEXT</PrivateRoute>)
 
   expect(wrapper.text()).toEqual('TEXT')
 })
