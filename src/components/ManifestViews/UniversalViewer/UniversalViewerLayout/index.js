@@ -2,33 +2,39 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import Layout from 'components/Layout'
+import PrivateRoute from 'components/Layout/PrivateRoute/'
+import SkipToMain from 'components/Layout/PageWrapper/SkipToMain'
 import SEO from 'components/Shared/Seo'
 import style from './style.module.css'
 
-export const UniversalViewerLayout = ({ data, manifest, location }) => {
+export const UniversalViewerLayout = ({ data, manifest, location, requireLogin }) => {
   const qs = queryString.parse(location.search)
   if (!manifest && qs) {
     manifest = qs.manifest
   }
   if (!manifest) {
-    return (<Layout>Not Found</Layout>)
+    return (<Layout location={location}>Not Found</Layout>)
   }
   const cv = qs.cv || 0
   return (
-    <Layout
-      noPadding
-      preMain={<SEO title={`Universal Viewer`} />}
+    <PrivateRoute
+      location={location}
+      requireLogin={requireLogin}
     >
+      <SkipToMain />
+      <SEO title={`Universal Viewer`} />
       <h1 className='accessibilityOnly'>Universal Viewer</h1>
-      <iframe
-        allowFullScreen
-        id='universalViewer'
-        className={style.universalViewer}
-        title='universal-viewer'
-        sandbox='allow-same-origin allow-scripts allow-pointer-lock allow-popups'
-        src={`${data.site.siteMetadata.universalViewerBaseURL}#?manifest=${manifest}&cv=${cv}`}
-      />
-    </Layout>
+      <main id='mainContent'>
+        <iframe
+          allowFullScreen
+          id='universalViewer'
+          className={style.universalViewer}
+          title='universal-viewer'
+          sandbox='allow-same-origin allow-scripts allow-pointer-lock allow-popups'
+          src={`${data.site.siteMetadata.universalViewerBaseURL}#?manifest=${manifest}&cv=${cv}`}
+        />
+      </main>
+    </PrivateRoute>
   )
 }
 
@@ -42,6 +48,7 @@ UniversalViewerLayout.propTypes = {
   }).isRequired,
   manifest: PropTypes.string,
   location: PropTypes.object.isRequired,
+  requireLogin: PropTypes.bool.isRequired,
 }
 
 export default UniversalViewerLayout
