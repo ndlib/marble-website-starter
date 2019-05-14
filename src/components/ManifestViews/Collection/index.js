@@ -13,6 +13,7 @@ export const Collection = ({ iiifManifest, location }) => {
       aside={<CollectionAside iiifManifest={iiifManifest} />}
       preMain={<CollectionPreMain iiifManifest={iiifManifest} location={location} />}
       title={iiifManifest.label}
+      location={location}
     >
       <DisplayViewToggle>
         <ResponsiveGridList

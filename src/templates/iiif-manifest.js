@@ -2,15 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Item from 'components/ManifestViews/Item'
-import PrivateRoute from 'components/Shared/PrivateRoute'
 
 export const ItemTemplate = ({ data, location }) => (
-  <PrivateRoute location={location} testLogin={false}>
-    <Item
-      iiifManifest={data.iiifManifest}
-      location={location}
-    />
-  </PrivateRoute>
+  <Item
+    iiifManifest={data.iiifManifest}
+    location={location}
+  />
 )
 
 ItemTemplate.propTypes = {

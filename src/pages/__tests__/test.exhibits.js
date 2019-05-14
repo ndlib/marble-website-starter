@@ -24,7 +24,7 @@ test('it renders the exhibits page', () => {
     },
   }
 
-  const wrapper = shallow(<ExhibitsPage data={data} />)
+  const wrapper = shallow(<ExhibitsPage data={data} location={{}} />)
   expect(wrapper.find('Layout').exists()).toBeTruthy()
 
   expect(wrapper.find('Card').length).toEqual(2)

@@ -2,13 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Browse from 'components/ManifestViews/Browse'
 import { graphql } from 'gatsby'
-import PrivateRoute from 'components/Shared/PrivateRoute'
 
 export const BrowseTemplate = ({ data, location }) => {
   return (
-    <PrivateRoute location={location} testLogin={false}>
-      <Browse data={data} />
-    </PrivateRoute>
+    <Browse data={data} location={location} />
   )
 }
 

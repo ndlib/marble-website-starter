@@ -14,6 +14,7 @@ export const Item = ({ iiifManifest, location }) => {
       aside={<ItemAside iiifManifest={iiifManifest} />}
       asideClassName={style.itemAside}
       articleClassName={style.itemMain}
+      location={location}
     >
       <p className={style.description}>{iiifManifest.description}</p>
       <MetaDataList metadata={iiifManifest.metadata} />

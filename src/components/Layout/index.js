@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
 import ContentWrapper from './ContentWrapper'
 import PageContent from './PageContent'
@@ -13,24 +14,31 @@ const Layout = ({
   preMain, // stuff before main like header image and breadcrumbs - exists outside noPadding wrapper
   noPadding, // bool used to avoid padding page content
   children,
+  requireLogin, // bool to test login
+  location,
 }) => {
   return (
-    <PageWrapper>
-      <ContentWrapper
-        preMain={preMain}
-        noPadding={noPadding}
-      >
-        <PageContent
-          aside={aside}
-          asideClassName={asideClassName}
-          articleClassName={articleClassName}
-          nav={nav}
-          title={title}
+    <PrivateRoute
+      location={location}
+      requireLogin={requireLogin}
+    >
+      <PageWrapper>
+        <ContentWrapper
+          preMain={preMain}
+          noPadding={noPadding}
         >
-          {children}
-        </PageContent>
-      </ContentWrapper>
-    </PageWrapper>
+          <PageContent
+            aside={aside}
+            asideClassName={asideClassName}
+            articleClassName={articleClassName}
+            nav={nav}
+            title={title}
+          >
+            {children}
+          </PageContent>
+        </ContentWrapper>
+      </PageWrapper>
+    </PrivateRoute>
   )
 }
 
@@ -43,6 +51,12 @@ Layout.propTypes = {
   preMain: PropTypes.node,
   noPadding: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
+  requireLogin: PropTypes.bool,
+}
+
+Layout.defaultProps = {
+  requireLogin: false,
 }
 
 export default Layout
