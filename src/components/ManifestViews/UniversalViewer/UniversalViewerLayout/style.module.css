@@ -2,7 +2,7 @@
   border: none;
   left: 0;
   margin: 0 auto;
-  min-height: calc(100vh - 50px - 70px - 64px);
+  height: 100vh;
   position: absolute;
   width: 100vw;
 }

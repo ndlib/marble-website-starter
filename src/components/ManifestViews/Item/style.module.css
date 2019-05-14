@@ -10,3 +10,18 @@
   vertical-align: top;
   width: 50%;
 }
+
+@media (max-width: 780px) {
+  .itemAside {
+    display: block;
+    padding: 0;
+    vertical-align: top;
+    width: 100%;
+  }
+  .itemMain {
+    display: block;
+    padding: 0;
+    vertical-align: top;
+    width: 100%;
+  }
+}

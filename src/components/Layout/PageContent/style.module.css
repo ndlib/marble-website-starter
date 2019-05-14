@@ -20,3 +20,24 @@
   vertical-align: top;
   width: calc(70vw - 240px);
 }
+
+@media (max-width: 780px) {
+  .defaultAsideClass {
+    display: block;
+    padding: 0;
+    vertical-align: top;
+    width: 100%;
+  }
+  .defaultAsideClass nav {
+    display: block;
+  }
+  .asideLayout {
+    display: block;
+  }
+  .asideLayout .mainArticle {
+    display: block;
+    padding: 0;
+    vertical-align: top;
+    width: 100%;
+  }
+}

@@ -16,3 +16,24 @@
   margin: 0;
   min-height: calc(100vh - 50px - 70px - 64px);
 }
+
+@media (max-width: 1024px) {
+  .mainPadding {
+    margin: 1rem 2rem;
+    width: calc(100% - 4rem)
+  }
+  .preMain {
+    margin: 0 auto;
+    width: 100vw;
+  }
+}
+@media (max-width: 780px) {
+  .mainPadding {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+  .preMain {
+    margin: 0 auto;
+    width: 100vw;
+  }
+}

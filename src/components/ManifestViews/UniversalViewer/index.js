@@ -22,6 +22,7 @@ export const UniversalViewer = ({ manifest, location }) => {
           data={data}
           manifest={manifest}
           location={location}
+          requireLogin={false}
         />
       )}
     />
