@@ -6,7 +6,7 @@ import SEO from 'components/Shared/Seo'
 import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 
-export const ExhibitsPage = ({ data }) => {
+export const ExhibitsPage = ({ data, location }) => {
   const exhibitions = data.site.siteMetadata.exhibitions
   return (
     <Layout
@@ -14,6 +14,7 @@ export const ExhibitsPage = ({ data }) => {
       preMain={
         <SEO title='Digital Exhibits' />
       }
+      location={location}
     >
       <ResponsiveGridList>
         {
@@ -38,6 +39,7 @@ export default ExhibitsPage
 
 ExhibitsPage.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const query = graphql`

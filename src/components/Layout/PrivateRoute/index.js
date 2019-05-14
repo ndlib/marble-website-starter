@@ -4,17 +4,17 @@ import { navigate } from 'gatsby'
 import { isLoggedIn } from 'utils/auth'
 import { connect } from 'react-redux'
 
-export const PrivateRoute = ({ children, location, testLogin, loginReducer }) => {
-  if (testLogin && !isLoggedIn(loginReducer) && location.pathname !== `/login`) {
-    // If we’re not logged in, redirect to the home page.
+export const PrivateRoute = ({ children, location, requireLogin, loginReducer }) => {
+  if (requireLogin && !isLoggedIn(loginReducer) && location.pathname !== `/login`) {
+    // If we’re not logged in, redirect to the login page.
     navigate(`/login`)
     return null
   }
 
   return (
-    <div>
+    <React.Fragment>
       {children}
-    </div>
+    </React.Fragment>
   )
 }
 
@@ -22,11 +22,11 @@ PrivateRoute.propTypes = {
   children: PropTypes.any.isRequired,
   location: PropTypes.any.isRequired,
   loginReducer: PropTypes.object,
-  testLogin: PropTypes.bool,
+  requireLogin: PropTypes.bool,
 }
 
 PrivateRoute.defaultProps = {
-  testLogin: false,
+  requireLogin: false,
 }
 
 const mapStateToProps = (state, ownProps) => {

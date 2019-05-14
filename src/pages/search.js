@@ -22,6 +22,7 @@ const SearchPage = ({ location }) => {
           <SearchBox location={location} />
         </React.Fragment>
       }
+      location={location}
     >
       <Search location={location} />
     </Layout>

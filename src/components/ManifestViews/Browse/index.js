@@ -5,7 +5,7 @@ import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 import SEO from 'components/Shared/Seo'
 
-const Browse = ({ data }) => {
+const Browse = ({ data, location }) => {
   const category = data.browseCategory
   const group = mergeGroups(category.subCategories, category.manifests)
 
@@ -21,6 +21,7 @@ const Browse = ({ data }) => {
           />
         </React.Fragment>
       }
+      location={location}
     >
       <p>{category.description}</p>
       <ResponsiveGridList>
@@ -51,6 +52,7 @@ Browse.propTypes = {
       slug: PropTypes.string.isRequired,
     }),
   }),
+  location: PropTypes.object.isRequired,
 }
 
 export default Browse

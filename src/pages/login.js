@@ -7,13 +7,14 @@ import { connect } from 'react-redux'
 import { handleLogin } from 'store/actions/loginActions'
 import { isLoggedIn } from 'utils/auth'
 
-export const Login = ({ dispatch, loginReducer }) => {
+export const Login = ({ dispatch, location, loginReducer }) => {
   const message = (isLoggedIn(loginReducer)) ? (<p>Hi {loginReducer.user.fullname}</p>) : ''
 
   return (
     <Layout
       title='Login'
       preMain={<SEO title='Login' />}
+      location={location}
     >
       {message}
       <form
@@ -43,8 +44,9 @@ export const Login = ({ dispatch, loginReducer }) => {
 }
 
 Login.propTypes = {
-  loginReducer: PropTypes.object,
+  loginReducer: PropTypes.object.isRequired,
   dispatch: PropTypes.func,
+  location: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => {
