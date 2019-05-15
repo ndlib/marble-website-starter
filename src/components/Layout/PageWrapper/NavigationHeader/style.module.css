@@ -3,21 +3,18 @@
   color: white;
 }
 .navBarInner {
-  align-items: center;
-  display: flex;
   height: 70px;
-  justify-content: space-between;
   width: calc(100vw - 60px);
 }
 
 .navBar nav {
+  display: inline-block;
   margin: 0 auto;
   height: 70px;
   vertical-align: middle;
   line-height: 70px;
-  width: 50vw;
 }
-.navBar a{
+.navBar a {
   text-decoration: none;
   color : #ffffff;
   font-size : 1rem;
@@ -31,13 +28,84 @@
   color : #aaaaaa;
 }
 
-.siteTitle {
-  margin: 0 40px;
+.hamburger {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  width: calc(100vw - 300px);
+  z-index: 10;
+}
+
+.hamburger button {
+  display: none;
 }
 
 @media (min-width: 1280px) {
   .navBarInner {
     margin: 0 auto;
     width: 1220px;
+  }
+
+  .hamburger {
+    width: calc(1220px - 200px);
+  }
+}
+
+@media (max-width: 800px) {
+  .hamburger {
+    width: calc(100vw - 260px);
+  }
+  .hamburger button {
+    background: black;
+    border: none;
+    display: block;
+    height: 70px;
+    float: right;
+  }
+
+  .hamburger button:focus {
+    outline: none;
+  }
+
+  .hamburgerIcon {
+    display: inline-block;
+    float: right;
+    height: 30px;
+    margin: 20px;
+    width: 30px;
+  }
+
+  .hamburgerInnerOpen {
+    background: black;
+    display: block;
+    left: -240px;
+    position: absolute;
+    top: 70px;
+    width: 100vw;
+  }
+
+  .hamburgerInnerOpen nav {
+    display: block;
+    height: auto;
+  }
+
+  .hamburgerInnerOpen nav a {
+    background: black;
+    border-top: 1px solid #666;
+    display: block;
+    font-size: 1.25rem;
+    width: 100vw;
+  }
+
+  .hamburgerInnerClosed {
+    display: none;
+  }
+
+  .navBar a  {
+    font-size: 1.25rem;
+  }
+
+  .navBarInner {
+    width: 100vw;
   }
 }

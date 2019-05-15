@@ -21,15 +21,26 @@
   width: calc(70vw - 240px);
 }
 
+@media (max-width: 1024px) {
+  .asideLayout .mainArticle {
+    display: inline-block;
+    padding-left: 1rem;
+    vertical-align: top;
+    width: calc(100vw - 240px - 4rem);
+  }
+}
+
 @media (max-width: 780px) {
   .defaultAsideClass {
     display: block;
+    margin-bottom: 2rem;
     padding: 0;
     vertical-align: top;
-    width: 100%;
+    width: 100vw;
   }
   .defaultAsideClass nav {
     display: block;
+    margin-bottom: 2rem;
   }
   .asideLayout {
     display: block;
@@ -38,6 +49,16 @@
     display: block;
     padding: 0;
     vertical-align: top;
-    width: 100%;
+    width: calc(100vw - 4rem);
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .asideLayout .mainArticle {
+    display: inline-block;
+    padding-left: 1rem;
+    vertical-align: top;
+    width: calc(1220px - 240px);
   }
 }

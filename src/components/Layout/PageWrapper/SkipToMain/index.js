@@ -3,7 +3,7 @@ import style from './style.module.css'
 
 const SkipToMain = () => {
   return (
-    <a className={style.skipToMain} href='#mainContent'>Skip to main content</a>
+    <a className={style.skipToMain} href='#mainContent'>Skip to main content.</a>
   )
 }
 

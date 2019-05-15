@@ -22,7 +22,7 @@ const Layout = ({
       location={location}
       requireLogin={requireLogin}
     >
-      <PageWrapper>
+      <PageWrapper location={location}>
         <ContentWrapper
           preMain={preMain}
           noPadding={noPadding}
