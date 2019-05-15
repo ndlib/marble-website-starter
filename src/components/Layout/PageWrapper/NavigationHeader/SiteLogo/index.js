@@ -5,7 +5,7 @@ import Link from 'components/Shared/Link'
 import style from './style.module.css'
 const siteLogo = require('assets/logos/default.siteLogo.png')
 
-const NavigationHeader = ({ data }) => {
+export const SiteLogo = ({ data }) => {
   const { title } = data.site.siteMetadata
   return (
     <Link to='/' className={style.siteTitle}>
@@ -19,7 +19,7 @@ const NavigationHeader = ({ data }) => {
   )
 }
 
-NavigationHeader.propTypes = {
+SiteLogo.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
@@ -43,7 +43,7 @@ export default () => {
     `
       }
       render={data => (
-        <NavigationHeader data={data} />
+        <SiteLogo data={data} />
       )}
     />
   )

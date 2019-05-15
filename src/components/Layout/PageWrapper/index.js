@@ -5,12 +5,12 @@ import BrandingHeader from './BrandingHeader'
 import NavigationHeader from './NavigationHeader'
 import Footer from './Footer'
 
-const PageWrapper = ({ children }) => {
+const PageWrapper = ({ children, location }) => {
   return (
     <React.Fragment>
       <SkipToMain />
       <BrandingHeader />
-      <NavigationHeader />
+      <NavigationHeader location={location} />
       {children}
       <Footer />
     </React.Fragment>
@@ -19,6 +19,7 @@ const PageWrapper = ({ children }) => {
 
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default PageWrapper

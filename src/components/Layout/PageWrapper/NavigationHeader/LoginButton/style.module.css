@@ -1,19 +1,62 @@
-.loginButton {
-  border-left: 1px solid #666;
-  height: 70px;
-  line-height: 70px;
-  margin-left: auto;
-  padding: 0;
-  width: 60px
-}
+@media (min-width: 801px) {
+  .loginButton {
+    border-left: 1px solid #666;
+    border-right: 1px solid #666;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 0 20px;
+    padding: 0;
+    min-width: 80px;
+    float: right;
+  }
 
-.loginButton a {
-  text-align: right;
-  margin: 0;
-  height: 70px;
-  vertical-align: top;
-  line-height: 70px;
-  width: 100%;
-  display: inline-block;
-  padding: 0;
+  .loginButton a {
+    text-align: center;
+    margin: 0;
+    height: 70px;
+    vertical-align: top;
+    line-height: 70px;
+    width: 100%;
+    display: inline-block;
+    padding: 0;
+  }
+
+  .loginButton img {
+    height: 30px;
+    margin: 20px;
+    width: 30px;
+  }
+
+  .loginButton span {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .loginButton {
+    background: black;
+    border-top: 1px solid #666;
+    display: block;
+    width: 100vw;
+  }
+
+  .loginButton a {
+    display: block;
+    line-height: 70px;
+    padding: 16px;
+    text-align: left;
+  }
+
+  .loginButton img {
+    height:40px;
+    width: 40px;
+    margin: -10px 0;
+  }
+
+  .loginButton span {
+    display: inline-block;
+    padding-left: 1rem;
+    vertical-align: top;
+  }
 }

@@ -1,5 +1,19 @@
-.siteTitle {
-  height: 50px;
-  margin: 0 40px;
+a.siteTitle {
+  display: inline-block;
+  height: 70px;
+  margin: 0;
+  margin-left: 40px;
   width: 200px;
+}
+.siteTitle img {
+  height: 50px;
+  width: 200px;
+  max-width: 200px;
+  margin: 10px 0;
+}
+
+@media (min-width: 1280px) {
+  a.siteTitle {
+    margin-left: 0;
+  }
 }
