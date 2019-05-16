@@ -6,6 +6,7 @@ import CollectionAside from './CollectionAside'
 import CollectionPreMain from './CollectionPreMain'
 import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
+import { COLLECTION_PAGE } from 'store/actions/displayActions'
 
 export const Collection = ({ iiifManifest, location }) => {
   return (
@@ -15,7 +16,9 @@ export const Collection = ({ iiifManifest, location }) => {
       title={iiifManifest.label}
       location={location}
     >
-      <DisplayViewToggle>
+      <DisplayViewToggle
+        page={COLLECTION_PAGE}
+      >
         <ResponsiveGridList
           breakpoints={{ lg: 680, md: 480, sm: 240 }}
           cols={{ lg: 6, md: 4, sm: 2 }}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
 import Image from 'components/Shared/Image'
 import getImageService from 'utils/getImageService'
-import style from './style.module.css'
+import './style.css'
 
 const Card = ({
   target,
@@ -19,17 +19,17 @@ const Card = ({
     <Link to={target}
       state={buildState(location, referal)}
     >
-      <article className={style.cardWrapper}>
-        <figure className={style.cardFigure}>
+      <article className='cardWrapper'>
+        <figure className='cardFigure'>
           <Image
             src={image || null}
             service={imageService || null}
             alt={label}
-            className={style.cardImage}
+            className='cardImage'
           />
-          <figcaption className={style.cardCaption}>{label}</figcaption>
+          <figcaption className='cardCaption'>{label}</figcaption>
         </figure>
-        <div className={style.additional}>
+        <div className='cardAdditional'>
           {children}
         </div>
       </article>

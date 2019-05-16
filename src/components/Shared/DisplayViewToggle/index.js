@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import ToggleButton from './ToggleButton'
 import style from './style.module.css'
+import {
+  DISPLAY_GRID,
+  DISPLAY_LIST,
+  setGridListView,
+} from 'store/actions/displayActions'
 
 import listIcon from 'assets/icons/svg/baseline-view_list-24px.svg'
 import gridIcon from 'assets/icons/svg/baseline-view_module-24px.svg'
 
-export const DisplayViewToggle = ({ defaultActive, children }) => {
-  if (defaultActive !== 'list' && defaultActive !== 'grid') {
-    defaultActive = 'grid'
-  }
-  const [activeStyle, setActiveStyle] = useState(defaultActive)
-  const options = ['list', 'grid']
+export const DisplayViewToggle = ({ page, children, displayReducer, dispatch }) => {
+  const activeStyle = displayReducer[page]
+  const options = [DISPLAY_LIST, DISPLAY_GRID]
 
   return (
     <div classame={activeStyle}>
@@ -21,10 +24,10 @@ export const DisplayViewToggle = ({ defaultActive, children }) => {
             return (
               <ToggleButton
                 key={opt}
-                icon={opt === 'list' ? listIcon : gridIcon}
+                icon={opt === DISPLAY_LIST ? listIcon : gridIcon}
                 option={opt}
                 action={() => {
-                  setActiveStyle(opt)
+                  dispatch(setGridListView(page, opt))
                 }}
                 active={activeStyle === opt}
               />
@@ -39,12 +42,13 @@ export const DisplayViewToggle = ({ defaultActive, children }) => {
 }
 
 DisplayViewToggle.propTypes = {
-  defaultActive: PropTypes.string,
+  page: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  displayReducer: PropTypes.object.isRequired,
 }
 
-DisplayViewToggle.defaultProps = {
-  defaultActive: 'grid',
+const mapStateToProps = (state) => {
+  return { ...state }
 }
-
-export default DisplayViewToggle
+export default connect(mapStateToProps)(DisplayViewToggle)
