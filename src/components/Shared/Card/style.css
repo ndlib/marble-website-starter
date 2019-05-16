@@ -21,9 +21,41 @@
   color: #fff;
   padding: 12px;
   box-sizing: border-box;
-  font-weight: bold;
+}
+.cardCaption h2 {
   font-size: 18px;
+  font-weight: bold;
 }
 .cardAdditional {
   display: none;
+}
+
+.list .cardWrapper {
+  background: #efefef;
+}
+
+.list .cardFigure {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.list .cardImage img {
+  display: inline-block;
+  height: 250px;
+  width: 250px
+}
+.list .cardCaption {
+  background: none;
+  color: #000;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 250px);
+}
+
+.list .cardAdditional {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
 }

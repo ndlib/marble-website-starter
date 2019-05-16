@@ -29,7 +29,7 @@ const manifest = {
   ],
 }
 
-const wrapper = shallow(<Collection location={location} iiifManifest={manifest} />)
+const wrapper = shallow(<Collection location={location} iiifManifest={manifest} displayReducer={{}} />)
 
 test('Collection', () => {
   expect(wrapper.find(Layout).props().title).toEqual('a title')

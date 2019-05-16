@@ -13,11 +13,13 @@ const Card = ({
   children,
   location,
   referal,
+  cardClass,
 }) => {
   const imageService = getImageService(iiifManifest)
   return (
     <Link to={target}
       state={buildState(location, referal)}
+      className={cardClass}
     >
       <article className='cardWrapper'>
         <figure className='cardFigure'>
@@ -27,11 +29,13 @@ const Card = ({
             alt={label}
             className='cardImage'
           />
-          <figcaption className='cardCaption'>{label}</figcaption>
+          <figcaption className='cardCaption'>
+            <h2>{label}</h2>
+            <div className='cardAdditional'>
+              {children}
+            </div>
+          </figcaption>
         </figure>
-        <div className='cardAdditional'>
-          {children}
-        </div>
       </article>
     </Link>
   )
@@ -45,10 +49,12 @@ Card.propTypes = {
   children: PropTypes.node,
   location: PropTypes.object,
   referal: PropTypes.object,
+  cardClass: PropTypes.string,
 }
 
 Card.defaultProps = {
   children: null,
+  cardClass: 'basicCard',
 }
 export default Card
 

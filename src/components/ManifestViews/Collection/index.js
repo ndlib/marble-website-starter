@@ -16,7 +16,7 @@ import {
 
 export const Collection = ({ iiifManifest, location, displayReducer }) => {
   const activeSettings = getActiveSettings(displayReducer)
-
+  const cardClass = displayReducer[COLLECTION_PAGE] || DISPLAY_GRID
   return (
     <Layout
       aside={<CollectionAside iiifManifest={iiifManifest} />}
@@ -42,7 +42,10 @@ export const Collection = ({ iiifManifest, location, displayReducer }) => {
                     label={manifest.label}
                     iiifManifest={manifest}
                     location={location}
-                  />
+                    cardClass={cardClass}
+                  >
+                    <div>{manifest.description}</div>
+                  </Card>
                 </div>
               )
             })
@@ -75,7 +78,7 @@ export const getActiveSettings = (displayReducer) => {
     [DISPLAY_LIST]: {
       breakpoints: { lg: 680, md: 480, sm: 240 },
       cols: { lg: 6, md: 6, sm: 6 },
-      rowHeight: 300,
+      rowHeight: 250,
       cardWidth:  6,
     },
   }

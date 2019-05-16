@@ -52,6 +52,7 @@ export const query = graphql`
       childrenIiifManifest {
         id
         label
+        description
         slug
         thumbnail {
           _id

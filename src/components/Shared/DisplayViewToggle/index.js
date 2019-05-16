@@ -17,7 +17,7 @@ export const DisplayViewToggle = ({ page, children, displayReducer, dispatch }) 
   const options = [DISPLAY_LIST, DISPLAY_GRID]
 
   return (
-    <div classame={activeStyle}>
+    <div>
       <div className={style.displayViewToggleGroup}>
         {
           options.map(opt => {
