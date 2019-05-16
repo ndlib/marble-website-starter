@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { CollectionTemplate } from '../iiif-collection'
+import Collection from 'components/ManifestViews/Collection/'
 
 test('it renders the collection template', () => {
   const data = {
@@ -9,7 +10,7 @@ test('it renders the collection template', () => {
   const location = { object: 'object' }
 
   const wrapper = shallow(<CollectionTemplate data={data} location={location} />)
-  expect(wrapper.find('Collection').exists()).toBeTruthy()
-  expect(wrapper.find('Collection').prop('iiifManifest')).toEqual({ id: 'manifest' })
-  expect(wrapper.find('Collection').prop('location')).toEqual({ object: 'object' })
+  expect(wrapper.find(Collection).exists()).toBeTruthy()
+  expect(wrapper.find(Collection).prop('iiifManifest')).toEqual({ id: 'manifest' })
+  expect(wrapper.find(Collection).prop('location')).toEqual({ object: 'object' })
 })
