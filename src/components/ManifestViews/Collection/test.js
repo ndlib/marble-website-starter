@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Collection from './'
+import { Collection } from './'
 import Layout from 'components/Layout'
 import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
@@ -29,7 +29,7 @@ const manifest = {
   ],
 }
 
-const wrapper = shallow(<Collection location={location} iiifManifest={manifest} />)
+const wrapper = shallow(<Collection location={location} iiifManifest={manifest} displayReducer={{}} />)
 
 test('Collection', () => {
   expect(wrapper.find(Layout).props().title).toEqual('a title')
