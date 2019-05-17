@@ -19,14 +19,21 @@ const Layout = ({
   location,
 }) => {
   return (
-      <PrivateRoute
-        location={location}
-        requireLogin={requireLogin}
-      >
-        <PageWrapper>
-          <ContentWrapper
-            preMain={preMain}
-            noPadding={noPadding}
+    <PrivateRoute
+      location={location}
+      requireLogin={requireLogin}
+    >
+      <PageWrapper location={location}>
+        <ContentWrapper
+          preMain={preMain}
+          noPadding={noPadding}
+        >
+          <PageContent
+            aside={aside}
+            asideClassName={asideClassName}
+            articleClassName={articleClassName}
+            nav={nav}
+            title={title}
           >
             <PageContent
               aside={aside}

@@ -37,3 +37,14 @@
     width: 100vw;
   }
 }
+
+@media (min-width: 1280px) {
+  .mainPadding {
+    margin: 1rem auto;
+    width: 1220px;
+  }
+  .preMain {
+    margin: 0 auto;
+    width: 1220px;
+  }
+}
