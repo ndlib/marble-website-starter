@@ -7,25 +7,138 @@ import Layout from 'components/Layout'
 import Search from 'components/APIViews/Search'
 import SearchBox from 'components/Shared/SearchBox'
 import Seo from 'components/Shared/Seo'
+import Card from 'components/Shared/Card'
 import {
   submitSearch,
   STATUS_SEARCH_FETCHING,
 } from 'store/actions/searchActions'
+import { ReactiveBase, DataSearch, MultiList, SingleDataList, ReactiveList, DynamicRangeSlider, MultiDropdownList, MultiDataList, SelectedFilters } from '@appbaseio/reactivesearch'
 
 const SearchPage = ({ location }) => {
   return (
-    <Layout
-      title={'Search Results'}
-      preMain={
-        <React.Fragment>
-          <Seo title='Search' />
-          <SearchBox location={location} />
-        </React.Fragment>
-      }
-      location={location}
-    >
-      <Search location={location} />
-    </Layout>
+    <ReactiveBase
+      app="website"
+      url="https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com">
+
+      <Layout
+        title={''}
+        preMain={
+          <React.Fragment>
+            <DataSearch
+              componentId="SearchSensor"
+              dataField={["title", "creator", "fulltext", "type"]}
+              filterLabel="Search"
+              react={{
+                  "and": ["FormatListAggregate", "CampusLocationAggregate", "DynamicYearSlider", "SearchResult", 'LanguageListAggregate', 'LocationListAggregate']
+              }}
+              URLParams={true}
+            />
+            <SelectedFilters />
+          </React.Fragment>
+        }
+        location={location}
+        aside={
+          <React.Fragment>
+            <SingleDataList
+              componentId="CampusLocationAggregate"
+              dataField="repository.keyword"
+              title="Campus Location"
+              filterLabel="Campus Location"
+              showSearch={false}
+              URLParams={true}
+              data={
+                [{
+                  label: "Rare Books and Special Collections",
+                  value: "SPEC RBSC"
+                }, {
+                  label: "Snite Museum of Art",
+                  value: "SNITE"
+                }, {
+                  label: "University Archives",
+                  value: "ARCHIVES"
+                }]
+              }
+              react={{
+                  "and": ["FormatListAggregate", "SearchSensor", "DynamicYearSlider", "SearchResult", 'LanguageListAggregate', 'LocationListAggregate', 'SearchSensor']
+              }}
+            />
+            <MultiList
+              componentId="FormatListAggregate"
+              dataField="type.keyword"
+              title="Format"
+              size={7}
+              filterLabel="Format"
+              showSearch={false}
+              react={{
+                  "and": ["SearchResult", "SearchSensor", "DynamicYearSlider", "CampusLocationAggregate", 'LanguageListAggregate', 'LocationListAggregate', 'SearchSensor']
+              }}
+              URLParams={true}
+            />
+            <MultiDropdownList
+              componentId="LocationListAggregate"
+              dataField="place.keyword"
+              title="Places"
+              filterLabel="Places"
+              size={15}
+              sortBy="count"
+              showSearch={false}
+              react={{
+                  "and": ["FormatListAggregate", "SearchSensor", "DynamicYearSlider", "CampusLocationAggregate", 'LanguageListAggregate', 'SearchResult', 'SearchSensor']
+              }}
+              URLParams={true}
+            />
+            <DynamicRangeSlider
+              componentId="DynamicYearSlider"
+              dataField="year"
+              title="Date"
+              filterLabel="Date"
+              stepValue={5}
+              react={{
+                  "and": ["FormatListAggregate", "SearchSensor", "SearchResult", "CampusLocationAggregate", 'LanguageListAggregate', 'LocationListAggregate', 'SearchSensor']
+              }}
+              URLParams={true}
+            />
+            <MultiDropdownList
+              componentId="LanguageListAggregate"
+              dataField="language.keyword"
+              title="Language"
+              sortBy="count"
+              filterLabel="Language"
+              showSearch={false}
+              react={{
+                  "and": ["FormatListAggregate", "SearchSensor", "DynamicYearSlider", "CampusLocationAggregate", 'SearchResult', 'LocationListAggregate', 'SearchSensor']
+              }}
+              URLParams={true}
+            />
+          </React.Fragment>
+        }
+      >
+          <ReactiveList
+              componentId="SearchResult"
+              dataField={"title"}
+              react={{
+                  "and": ["FormatListAggregate", "SearchSensor", "DynamicYearSlider", "CampusLocationAggregate", 'LanguageListAggregate', 'LocationListAggregate']
+              }}
+              excludeFields="fulltext"
+              renderItem={(res) => {
+
+                return(
+                  <Card
+                    key={res.id}
+                    label={res.title}
+                    image={res.thumbnail}
+                    target={res.url}
+                    location={location}
+                    referal={{ type: 'search', query: location.search }}
+                  >
+                    <div className='description'>{res.description}</div>
+                    <div>{res.creator}</div>
+                  </Card>
+                )
+              } }
+          />
+      </Layout>
+    </ReactiveBase>
   )
 }
 
@@ -66,6 +179,7 @@ export const shouldDispatchSearch = (searchReducer, terms, page, targetPage, per
     )
   )
 }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps,

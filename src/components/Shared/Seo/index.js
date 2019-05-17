@@ -44,6 +44,7 @@ const SEO = ({
           },
         ]}
       />
+    
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
     </React.Fragment>
