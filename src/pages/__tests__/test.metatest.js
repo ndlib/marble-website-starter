@@ -1,9 +1,9 @@
 import React from 'react'
 import MetaTest from '../metatest'
 import { shallow } from 'enzyme'
-import schema1 from 'Configurations/Schema/basicschema1'
-import schema2 from 'Configurations/Schema/basicschema2'
-import schema3 from 'Configurations/Schema/basicschema3'
+import schema1 from 'components/Schema/basicschema1'
+import schema2 from 'components/Schema/basicschema2'
+import schema3 from 'components/Schema/basicschema3'
 
 test('Default Renders Properly', () => {
   const wrapper = shallow(<MetaTest schema={schema3} />)
