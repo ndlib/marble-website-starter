@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "name": "marble-website-starter",
+  "private": false,
+  "description": "A Gatsby Starter for a MARBLE website.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Web and Software Engineering at Hesburgh Libraries",
   "dependencies": {
     "axios": "^0.18.0",
     "fetch": "^1.1.0",

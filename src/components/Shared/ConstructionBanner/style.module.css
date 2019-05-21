@@ -1,0 +1,25 @@
+.constructionBanner {
+  background: white;
+  font-weight: bold;
+  left: -70px;
+  position: absolute;
+  text-align: center;
+  top: 50px;
+  transform: rotate(-45deg);
+  width: 280px;
+}
+.versionText {
+  height: 2rem;
+  line-height: 2rem;
+}
+.constructionStripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    #000,
+    #000 10px,
+    #999 10px,
+    #999 20px
+  );
+  height: 8px;
+  width: 280px;
+}
