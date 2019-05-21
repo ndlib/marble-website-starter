@@ -1,0 +1,7 @@
+{
+  "@context": "http://schema.org",
+  "@type": "CreativeWork",
+  "title": "The Answer to Everything",
+  "description": "The answer to life, the universe, and everything is... 42",
+  "alternateTitle": "The Answer to Everything... and More"
+}
