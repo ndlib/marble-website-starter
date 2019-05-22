@@ -7,160 +7,25 @@ import Layout from 'components/Layout'
 import Search from 'components/APIViews/Search'
 import SearchBox from 'components/Shared/SearchBox'
 import Seo from 'components/Shared/Seo'
-import Card from 'components/Shared/Card'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
-
 import {
   submitSearch,
   STATUS_SEARCH_FETCHING,
 } from 'store/actions/searchActions'
-import { ReactiveBase, DataSearch, MultiList, SingleDataList, ReactiveList, RangeSlider, MultiDropdownList, MultiDataList, SelectedFilters } from '@appbaseio/reactivesearch'
-
-const components = ["SearchResult", "SearchSensor", "DynamicYearSlider", "CampusLocationAggregate", 'LanguageListAggregate', 'LocationListAggregate', 'FormatListAggregate']
 
 const SearchPage = ({ location }) => {
   return (
-    <ReactiveBase
-      app="website"
-      url="https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com">
-
-      <Layout
-        title={''}
-        preMain={
-          <React.Fragment>
-            <DataSearch
-              componentId="SearchSensor"
-              dataField={["title", "creator", "fulltext", "type", "systemId"]}
-              filterLabel="Search"
-              highlight={true}
-              highlightField={'title', 'creator', "systemId"}
-              react={{
-                  "and": components
-              }}
-              URLParams={true}
-            />
-            <SelectedFilters />
-          </React.Fragment>
-        }
-        location={location}
-        aside={
-          <React.Fragment>
-            <MultiList
-              componentId="FormatListAggregate"
-              dataField="type.keyword"
-              title="Format"
-              size={7}
-              filterLabel="Format"
-              showSearch={false}
-              react={{
-                  "and": components
-              }}
-              URLParams={true}
-            />
-            <MultiDropdownList
-              componentId="LocationListAggregate"
-              dataField="place.keyword"
-              title="Places"
-              filterLabel="Places"
-              size={15}
-              sortBy="count"
-              showSearch={false}
-              react={{
-                  "and": components
-              }}
-              URLParams={true}
-            />
-            <RangeSlider
-              componentId="DynamicYearSlider"
-              dataField="year"
-              title="Date"
-              filterLabel="Date"
-              stepValue={5}
-              interval={5}
-              react={{
-                  "and": components
-              }}
-              rangeLabels={{
-                "start": "1880",
-                "end": "2010"
-              }}
-              range={{
-                "start": 1880,
-                "end": 2010
-              }}
-              URLParams={true}
-            />
-            <SingleDataList
-              componentId="CampusLocationAggregate"
-              dataField="repository.keyword"
-              title="Campus Location"
-              filterLabel="Campus Location"
-              showSearch={false}
-              URLParams={true}
-              data={
-                [{
-                  label: "Rare Books and Special Collections",
-                  value: "SPEC RBSC"
-                }, {
-                  label: "Snite Museum of Art",
-                  value: "SNITE"
-                }, {
-                  label: "University Archives",
-                  value: "ARCHIVES"
-                }]
-              }
-              react={{
-                  "and": components
-              }}
-            />
-            <MultiDropdownList
-              componentId="LanguageListAggregate"
-              dataField="language.keyword"
-              title="Language"
-              sortBy="count"
-              filterLabel="Language"
-              showSearch={false}
-              react={{
-                  "and": components
-              }}
-              URLParams={true}
-            />
-          </React.Fragment>
-        }
-      >
-          <ReactiveList
-              componentId="SearchResult"
-              dataField={"title"}
-              react={{
-                  "and": components
-              }}
-              excludeFields={ ["fulltext"] }
-              size={21}
-              >
-              {({ data, error, loading, ...rest }) => (
-                <ResponsiveGridList measureBeforeMount={true}>
-                  {
-                    data.map(res => (
-                      <div key={res['_id']}>
-                        <Card
-                          label={res.title}
-                          image={res.thumbnail}
-                          target={res.url}
-                          location={location}
-                          referal={{ type: 'search', query: location.search }}
-                        >
-                          <div className='description'>{res.description}</div>
-                          <div>{res.creator}</div>
-                        </Card>
-                      </div>
-                      )
-                    )
-                  }
-                </ResponsiveGridList>
-              )}
-              </ReactiveList>
-      </Layout>
-    </ReactiveBase>
+    <Layout
+      title={'Search Results'}
+      preMain={
+        <React.Fragment>
+          <Seo title='Search' />
+          <SearchBox location={location} />
+        </React.Fragment>
+      }
+      location={location}
+    >
+      <Search location={location} />
+    </Layout>
   )
 }
 
@@ -201,7 +66,6 @@ export const shouldDispatchSearch = (searchReducer, terms, page, targetPage, per
     )
   )
 }
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
