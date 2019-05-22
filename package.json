@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "dependencies": {
+    "@appbaseio/reactivemaps": "^3.0.0-alpha.7",
+    "@appbaseio/reactivesearch": "^3.0.0-rc.8",
     "axios": "^0.18.0",
     "fetch": "^1.1.0",
     "gatsby": "^2.5.2",
