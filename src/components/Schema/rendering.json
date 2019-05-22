@@ -1,0 +1,28 @@
+{
+  "sections": [
+    {
+      "id": 1,
+      "label": "Tombstone",
+      "attributes": [
+        {
+           "id": 2,
+           "label": "Title",
+           "renderer": "title",
+           "key": ["title"]
+        },
+        {
+           "id": 3,
+           "label": "Description",
+           "renderer": "basic",
+           "key": ["description"]
+        },
+        {
+          "id": 4,
+          "label": "AltTitle",
+          "renderer": "basic",
+          "key": ["alternateTitle"]
+        }
+      ]
+    }
+  ]
+}
