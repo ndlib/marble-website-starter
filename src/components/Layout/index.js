@@ -5,7 +5,6 @@ import PageWrapper from './PageWrapper'
 import ContentWrapper from './ContentWrapper'
 import PageContent from './PageContent'
 
-
 const Layout = ({
   aside, // content related to but separate from main - use either nav or aside not both
   asideClassName, // special className for aside
@@ -35,19 +34,11 @@ const Layout = ({
             nav={nav}
             title={title}
           >
-            <PageContent
-              aside={aside}
-              asideClassName={asideClassName}
-              articleClassName={articleClassName}
-              nav={nav}
-              title={title}
-            >
-              {children}
-            </PageContent>
-          </ContentWrapper>
-        </PageWrapper>
-      </PrivateRoute>
-
+            {children}
+          </PageContent>
+        </ContentWrapper>
+      </PageWrapper>
+    </PrivateRoute>
   )
 }
 
