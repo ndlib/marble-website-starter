@@ -5,6 +5,9 @@ import PageWrapper from './PageWrapper'
 import ContentWrapper from './ContentWrapper'
 import PageContent from './PageContent'
 
+/// CONSTRUCTION BANNER
+import ConstructionBanner from 'components/Shared/ConstructionBanner'
+
 const Layout = ({
   aside, // content related to but separate from main - use either nav or aside not both
   asideClassName, // special className for aside
@@ -23,6 +26,7 @@ const Layout = ({
       requireLogin={requireLogin}
     >
       <PageWrapper location={location}>
+        <ConstructionBanner />
         <ContentWrapper
           preMain={preMain}
           noPadding={noPadding}
