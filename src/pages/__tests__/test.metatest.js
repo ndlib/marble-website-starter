@@ -1,7 +1,6 @@
 import React from 'react'
 import MetaTest from '../metatest'
 import { shallow } from 'enzyme'
-import schema1 from 'components/Schema/basicschema1'
 import schema2 from 'components/Schema/basicschema2'
 import schema3 from 'components/Schema/basicschema3'
 

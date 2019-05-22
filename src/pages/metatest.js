@@ -3,7 +3,6 @@ import basicschema from 'components/Schema/basicschema2.json'
 import renderer from 'components/Schema/rendering.json'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
-import SEO from 'components/Shared/Seo'
 
 const MetaTest = (props) => {
   const schema = props.schema != null ? props.schema : basicschema
