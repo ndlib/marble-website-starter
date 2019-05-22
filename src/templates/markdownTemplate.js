@@ -39,34 +39,32 @@ export const MarkdownTemplate = ({ data, location }) => {
                 }
               }
             }}
-            size={21}            
+            size={21}
             react={{
                 "and": ["SearchResult", "location"]
             }}
         >
-        {({ data, error, loading, ...rest }) => (
-          <ResponsiveGridList measureBeforeMount={true}>
-            {
-              data.map(res => (
-                <div key={res['_id']}>
-                  <Card
-                    label={res.title}
-                    image={res.thumbnail}
-                    target={res.url}
-                    location={location}
-                    referal={{ type: 'search', query: location.search }}
-                  >
-                    <div className='description'>{res.description}</div>
-                    <div>{res.creator}</div>
-                  </Card>
-                </div>
+          {({ data, error, loading, ...rest }) => (
+            <ResponsiveGridList measureBeforeMount={true}>
+              {
+                data.map(res => (
+                  <div key={res['_id']}>
+                    <Card
+                      label={res.title}
+                      image={res.thumbnail}
+                      target={res.url}
+                      location={location}
+                      referal={{ type: 'search', query: location.search }}
+                    >
+                      <div className='description'>{res.description}</div>
+                      <div>{res.creator}</div>
+                    </Card>
+                  </div>
+                  )
                 )
-              )
-            }
-          </ResponsiveGridList>
-        )}
-
-
+              }
+            </ResponsiveGridList>
+          )}
         </ReactiveList>
 
       </ReactiveBase>
