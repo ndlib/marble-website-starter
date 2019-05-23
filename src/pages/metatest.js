@@ -11,11 +11,15 @@ const MetaTest = ({ schema, location }) => {
     if (currentSchema[field.key] != null) {
       switch (field.renderer) {
         case 'title':
-          metaObj.push(<h1 className={field.key}> {currentSchema[field.key]} </h1>)
+          metaObj.push(<h1 className={field.key} key={field}> {currentSchema[field.key]} </h1>)
           break
         case 'basic':
         default:
-          metaObj.push(<React.Fragment><dt key={field.label}>{field.label}:</dt><dd className={field.key} key={field.key}> {currentSchema[field.key]} </dd></React.Fragment>)
+          metaObj.push(
+            <React.Fragment key={field}>
+              <dt >{field.label}:</dt>
+              <dd className={field.key}> {currentSchema[field.key]} </dd>
+            </React.Fragment>)
       }
     }
   })
