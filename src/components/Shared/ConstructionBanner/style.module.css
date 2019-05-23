@@ -1,9 +1,12 @@
 .constructionBanner {
   background: white;
+  color: black;
+  display: block;
   font-weight: bold;
   left: -70px;
   position: absolute;
   text-align: center;
+  text-decoration: none;
   top: 50px;
   transform: rotate(-45deg);
   width: 280px;
