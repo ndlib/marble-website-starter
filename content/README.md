@@ -9,3 +9,7 @@ This is where the content of your marble-website-starter lives. The following fi
 * `exhibitions.js` ***(required)*** - This includes the content for the Exhibitions page.
 
 * `markdown/` *(optional)* - This folder contains the markdown content for static content pages on your site. No specific pages or naming contention exists, but examples include: 'About Us', 'Contact', 'FAQs', etc.
+
+**TODO**
+
+The contents of this directory will be added to `.gitignore` and will need to be included during the install phase of site building.
