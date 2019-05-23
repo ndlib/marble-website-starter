@@ -1,17 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: `Marble Digital Collections`,
+    title: `Digital Collections`,
     author: `ndlib`,
     description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
+
     // apis and embedded urls
     universalViewerBaseURL: process.env.MARBLE_UNIVERSAL_VIEWER_BASE_URL || `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
     primoSearchBaseURL: process.env.MARBLE_PRIMO_BASE_URL || `https://a1fc3ld3d7.execute-api.us-east-1.amazonaws.com/dev/primo/v1/search`,
+
     // branding
-    institutionURL: process.env.MARBLE_INSTITUTION_URL || `https://marble.library.nd.edu`,
-    institutionLabel: process.env.MARBLE_INSTITUTION_LABEL || `MARBLE`,
-    departmentURL: process.env.MARBLE_DEPARTMENT_URL || ``,
-    departmentLabel: process.env.MARBLE_DEPARTMENT_LABEL || ``,
+    institutionURL: process.env.MARBLE_INSTITUTION_URL || `http://nd.edu`,
+    institutionLabel: process.env.MARBLE_INSTITUTION_LABEL || `University of Notre Dame`,
+    departmentURL: process.env.MARBLE_DEPARTMENT_URL || `https://provost.nd.edu/`,
+    departmentLabel: process.env.MARBLE_DEPARTMENT_LABEL || `Office of the Provost`,
     footerText: '<p>© 2019 University of Notre Dame</p><address>Notre Dame, IN 46556 USA</address><p><a href="/help/contact-us">Contact Us</a></p>',
+
     // menus
     menus: [
       {

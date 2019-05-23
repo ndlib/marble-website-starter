@@ -64,4 +64,4 @@ typings/
 
 .cache
 
-manifests.json
+#manifests.json
