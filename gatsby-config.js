@@ -1,3 +1,5 @@
+const menus = require('./content/menus')
+const exhibitions = require('./content/exhibitions')
 module.exports = {
   siteMetadata: {
     title: `Digital Collections`,
@@ -16,117 +18,8 @@ module.exports = {
     footerText: '<p>© 2019 University of Notre Dame</p><address>Notre Dame, IN 46556 USA</address><p><a href="/help/contact-us">Contact Us</a></p>',
 
     // menus
-    menus: [
-      {
-        id: 'top',
-        label: '',
-        items: [
-          {
-            'id': 'top-browse',
-            'label': 'Browse',
-            'link': '/browse',
-          },
-          {
-            'id': 'top-exhibits',
-            'label': 'Exhibits',
-            'link': '/exhibits',
-          },
-        ],
-      },
-      {
-        id: 'footer',
-        label: '',
-        items: [
-          {
-            'id': 'footer-browse',
-            'label': 'Browse',
-            'link': '/browse',
-          },
-          {
-            'id': 'footer-exhibits',
-            'label': 'Exhibits',
-            'link': '/exhibits',
-          },
-          {
-            'id': 'footer-search',
-            'label': 'Search',
-            'link': '/search',
-          },
-          {
-            'id': 'footer-about',
-            'label': 'About',
-            'link': '/about',
-          },
-          {
-            'id': 'footer-learn',
-            'label': 'Learn',
-            'link': '/learn',
-          },
-          {
-            'id': 'footer-help',
-            'label': 'Help',
-            'link': '/help',
-          },
-        ],
-      },
-      {
-        id: 'help',
-        label: 'Help',
-        items: [
-          {
-            'id': 'help-site-info',
-            'label': 'Site Information',
-            'link': '/help',
-          },
-          {
-            'id': 'help-search-tips',
-            'label': 'Search Tips',
-            'link': '/help/search-tips',
-          },
-          {
-            'id': 'help-creating-collections',
-            'label': 'Creating Collections',
-            'link': '/help/creating-collections',
-          },
-          {
-            'id': 'help-copyright-and-permissions',
-            'label': 'Copyright and Permissions',
-            'link': '/help/copyright-and-permissions',
-          },
-          {
-            'id': 'help-contact-us',
-            'label': 'Contact Us',
-            'link': '/help/contact-us',
-          },
-        ],
-      },
-    ],
-    exhibitions: [
-      {
-        id: '1',
-        label: 'In a Civilized Nation: Newspapers, Magazines, and the Print Revolution in Nineteenth-Century Peru',
-        image: 'https://honeypot.library.nd.edu/images/honeycomb/000/049/025/084/medium/Home-Graphic-v2e.jpg',
-        link: 'https://collections.library.nd.edu/3df879828f/in-a-civilized-nation',
-      },
-      {
-        id: '2',
-        label: 'Preserving the Steadfastness of Your Faith: Catholics in the Early American Republic',
-        image: 'https://honeypot.library.nd.edu/images/honeycomb/000/043/013/334/medium/BLOG-EarlyCatholicAmerica.jpg',
-        link: 'https://collections.library.nd.edu/04f477d5b4/preserving-the-steadfastness-of-your-faith',
-      },
-      {
-        id: '3',
-        label: 'Words on Play: Baseball Literature before 1900 from the Joyce Sports Collection',
-        image:'https://honeypot.library.nd.edu/images/honeycomb/000/022/013/553/medium/cover-1.jpg',
-        link: 'https://collections.library.nd.edu/2c4a5ed54c/words-on-play',
-      },
-      {
-        id: '4',
-        label: 'After Gutenberg: Print, Books, and Knowledge in Germany through the Long Sixteenth Century',
-        image: 'https://honeypot.library.nd.edu/images/honeycomb/000/003/000/003/medium/gutenberg.jpg',
-        link: 'https://collections.library.nd.edu/b2c90e6dc2/after-gutenberg',
-      },
-    ],
+    menus: menus,
+    exhibitions: exhibitions,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -178,6 +71,8 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    // this plugin highlights accessibility errors on the rendered pages
+    // It should probably be removed from production
     {
       resolve: `gatsby-plugin-accessibilityjs`,
       options: {

@@ -11,7 +11,7 @@ exports.sourceNodes = async (
 ) => {
   const { createNode, touchNode } = actions
   touchNode
-  let urlPromises = []
+  const urlPromises = []
 
   const buildNode = (data) => {
     const node = data.manifest
@@ -39,7 +39,7 @@ exports.sourceNodes = async (
         mediaType: `text/json`,
         content: nodeContent,
         contentDigest: createContentDigest(node),
-      }
+      },
     }
 
     return Object.assign({}, node, nodeMeta)
@@ -80,14 +80,14 @@ exports.sourceNodes = async (
         mediaType: `text/json`,
         content: nodeContent,
         contentDigest: createContentDigest(node),
-      }
+      },
     }
 
     return Object.assign({}, node, nodeMeta)
   }
 
   const loadManifestsFile = () => {
-    const contents = fs.readFileSync(path.join(__dirname, '/../../manifests.json'))
+    const contents = fs.readFileSync(path.join(__dirname, '/../../content/manifests.json'))
     return JSON.parse(contents)
   }
 
@@ -103,7 +103,7 @@ exports.sourceNodes = async (
 
     return findTopLevelParentId(parentNode)
   }
-/*
+  /*
   const downloadFiles = async (node, urls) => {
     // node.localFiles___NODE = []
     // chunk the requests becase iiif servers are slow
@@ -171,8 +171,8 @@ exports.sourceNodes = async (
 
     const manifestData = await fetchData(manifestList.manifests)
 
-    for (let key in manifestData) {
-      let data = manifestData[key]
+    for (const key in manifestData) {
+      const data = manifestData[key]
       const node = buildNode(data)
       await createNode(node)
     }
