@@ -11,7 +11,7 @@ exports.sourceNodes = async (
 ) => {
   const { createNode, touchNode } = actions
   touchNode
-  const urlPromises = []
+  // const urlPromises = []
 
   const buildNode = (data) => {
     const node = data.manifest
