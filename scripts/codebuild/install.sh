@@ -15,5 +15,5 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ## install external customizations
 ## TODO Copy external dependencies such as:
-####  assets/logos/*
+####  src/assets/logos/*
 ####  content/*
