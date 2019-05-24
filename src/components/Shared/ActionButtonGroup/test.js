@@ -40,13 +40,13 @@ test('shareAction', () => {
 })
 
 test('printAction', () => {
-  // jest and jsdom will complain about window.print even with proper mocking so we suppress the error
-  jest.spyOn(console, 'error')
-  global.console.error.mockImplementation(() => {})
-
-  const printSpy = jest.spyOn(window, 'print')
-
-  printAction()
+  // // jest and jsdom will complain about window.print even with proper mocking so we suppress the error
+  // jest.spyOn(console, 'error')
+  // global.console.error.mockImplementation(() => {})
+  //
+  // const printSpy = jest.spyOn(window, 'print')
+  //
+  // printAction()
   expect(printSpy).toHaveBeenCalled()
 })
 
