@@ -10,7 +10,7 @@ import ActionButtonGroup,
 import ActionButton from './ActionButton'
 
 const print = jest.fn()
-const window = global.window
+const window = global.window || {}
 Object.defineProperty(window, 'print', print)
 
 const manifest = {
