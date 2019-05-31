@@ -1,5 +1,6 @@
 const menus = require('./content/menus')
 const exhibitions = require('./content/exhibitions')
+
 module.exports = {
   siteMetadata: {
     title: `Digital Collections`,
@@ -53,13 +54,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Digital Collections`,
+        short_name: `collections`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#0A233F`,
+        theme_color: `#0A233F`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/logos/manifestLogo.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

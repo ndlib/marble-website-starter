@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import MetaTagGroup from './MetaTagGroup'
 import { getOpenGraph, getTwitter } from './data'
+import defaultImage from 'assets/logos/defaultOpenGraphLogo.png'
 
 const SEO = ({
   title,
@@ -26,8 +27,7 @@ const SEO = ({
   )
 
   const metaDescription = description || site.siteMetadata.description
-  // TODO define site.siteMetadata.siteImage in gatsby-config.js
-  const metaImage = image || site.siteMetadata.siteImage
+  const metaImage = image || defaultImage
   const openGraph = getOpenGraph(title, metaDescription, metaImage)
   const twitter = getTwitter(site.siteMetadata.author, title, metaDescription, metaImage)
 
@@ -44,7 +44,7 @@ const SEO = ({
           },
         ]}
       />
-    
+
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
     </React.Fragment>
