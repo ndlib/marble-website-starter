@@ -8,10 +8,10 @@ import AlternateOverlay from './AlternateOverlay'
 const manifest = {
   id: 'id',
 }
-
+const location = {}
 describe('AlternateImage', () => {
   test('length == 1', () => {
-    const wrapper = shallow(<AlternateImage iiifManifest={manifest} index={1} max={5} length={1} />)
+    const wrapper = shallow(<AlternateImage iiifManifest={manifest} index={1} max={5} length={1} location={location} />)
 
     expect(wrapper.find(Link).exists()).toBeFalsy()
     expect(wrapper.find(AlternateOverlay).exists()).toBeFalsy()
@@ -19,7 +19,7 @@ describe('AlternateImage', () => {
   })
 
   test('lenght > 1', () => {
-    const wrapper = shallow(<AlternateImage iiifManifest={manifest} index={1} max={5} length={4} />)
+    const wrapper = shallow(<AlternateImage iiifManifest={manifest} index={1} max={5} length={4} location={location} />)
 
     expect(wrapper.find(Link).props().to).toEqual(`/viewer?manifest=id&cv=1`)
     expect(wrapper.find(AlternateOverlay).exists()).toBeTruthy()

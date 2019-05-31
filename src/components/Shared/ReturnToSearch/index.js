@@ -10,7 +10,7 @@ export const ReturnToSearch = ({ location }) => {
       <nav className={style.returnToSearch}>
         <Link
           to={`/search${location.state.referal.query}`}
-        >Return to Search</Link>
+        >≪ Return to Search</Link>
       </nav>
     )
   }

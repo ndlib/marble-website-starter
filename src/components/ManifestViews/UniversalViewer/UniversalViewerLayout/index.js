@@ -5,6 +5,7 @@ import Layout from 'components/Layout'
 import PrivateRoute from 'components/Layout/PrivateRoute/'
 import SkipToMain from 'components/Layout/PageWrapper/SkipToMain'
 import SEO from 'components/Shared/Seo'
+import BackToItem from './BackToItem'
 import style from './style.module.css'
 
 export const UniversalViewerLayout = ({ data, manifest, location, requireLogin }) => {
@@ -25,6 +26,7 @@ export const UniversalViewerLayout = ({ data, manifest, location, requireLogin }
       <SEO title={`Universal Viewer`} />
       <h1 className='accessibilityOnly'>Universal Viewer</h1>
       <main id='mainContent'>
+        <BackToItem location={location} />
         <iframe
           allowFullScreen
           id='universalViewer'

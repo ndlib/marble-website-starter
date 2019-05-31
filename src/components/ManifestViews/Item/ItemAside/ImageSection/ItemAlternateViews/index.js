@@ -7,7 +7,7 @@ import AlternateImage from './AlternateImage'
 // tests if/when this number changes
 export const MAX_IMAGES = 4
 
-const ItemAlternateViews = ({ iiifManifest }) => {
+const ItemAlternateViews = ({ iiifManifest, location }) => {
   const canvases = typy(iiifManifest, 'sequences[0].canvases').safeObject
   if (Array.isArray(canvases)) {
     return (
@@ -21,6 +21,7 @@ const ItemAlternateViews = ({ iiifManifest }) => {
                 index={index + 1}
                 max={MAX_IMAGES}
                 length={canvases.length}
+                location={location}
               />
             )
           })
@@ -33,6 +34,7 @@ const ItemAlternateViews = ({ iiifManifest }) => {
 
 ItemAlternateViews.propTypes = {
   iiifManifest: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default ItemAlternateViews
