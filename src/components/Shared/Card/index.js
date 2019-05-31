@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
 import Image from 'components/Shared/Image'
+import ExteralLinkIcon from './ExteralLinkIcon'
 import getImageService from 'utils/getImageService'
 import buildReferalState from 'utils/buildReferalState'
 import './style.css'
@@ -18,7 +19,8 @@ const Card = ({
 }) => {
   const imageService = getImageService(iiifManifest)
   return (
-    <Link to={target}
+    <Link
+      to={target}
       state={buildReferalState(location, referal)}
       className={cardClass}
     >
@@ -30,6 +32,7 @@ const Card = ({
             alt={label}
             className='cardImage'
           />
+          <ExteralLinkIcon target={target} />
           <figcaption className='cardCaption'>
             <h2>{label}</h2>
             <div className='cardAdditional'>
