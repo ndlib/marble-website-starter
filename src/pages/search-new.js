@@ -9,6 +9,7 @@ import SearchBox from 'components/Shared/SearchBox'
 import Seo from 'components/Shared/Seo'
 import Card from 'components/Shared/Card'
 import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
+import Loading from 'components/Shared/Loading'
 
 import {
   submitSearch,
@@ -16,28 +17,28 @@ import {
 } from 'store/actions/searchActions'
 import { ReactiveBase, DataSearch, MultiList, SingleDataList, ReactiveList, RangeSlider, MultiDropdownList, MultiDataList, SelectedFilters } from '@appbaseio/reactivesearch'
 
-const components = ["SearchResult", "SearchSensor", "DynamicYearSlider", "CampusLocationAggregate", 'LanguageListAggregate', 'LocationListAggregate', 'FormatListAggregate']
+const components = ['SearchResult', 'SearchSensor', 'DynamicYearSlider', 'CampusLocationAggregate', 'LanguageListAggregate', 'LocationListAggregate', 'FormatListAggregate']
 
 const SearchPage = ({ location }) => {
   return (
     <ReactiveBase
-      app="website"
-      url="https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com">
+      app='website'
+      url='https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com'>
 
       <Layout
         title={''}
         preMain={
           <React.Fragment>
             <DataSearch
-              componentId="SearchSensor"
-              dataField={["title", "creator", "fulltext", "type", "systemId"]}
-              filterLabel="Search"
-              highlight={true}
-              highlightField={'title', 'creator', "systemId"}
+              componentId='SearchSensor'
+              dataField={['title', 'creator', 'fulltext', 'type', 'systemId']}
+              filterLabel='Search'
+              highlight
+              highlightField={'title', 'creator', 'systemId'}
               react={{
-                  "and": components
+                'and': components,
               }}
-              URLParams={true}
+              URLParams
             />
             <SelectedFilters />
           </React.Fragment>
@@ -46,119 +47,123 @@ const SearchPage = ({ location }) => {
         aside={
           <React.Fragment>
             <MultiList
-              componentId="FormatListAggregate"
-              dataField="type.keyword"
-              title="Format"
+              componentId='FormatListAggregate'
+              dataField='type.keyword'
+              title='Format'
               size={7}
-              filterLabel="Format"
+              filterLabel='Format'
               showSearch={false}
               react={{
-                  "and": components
+                'and': components,
               }}
-              URLParams={true}
+              URLParams
             />
             <MultiDropdownList
-              componentId="LocationListAggregate"
-              dataField="place.keyword"
-              title="Places"
-              filterLabel="Places"
+              componentId='LocationListAggregate'
+              dataField='place.keyword'
+              title='Places'
+              filterLabel='Places'
               size={15}
-              sortBy="count"
+              sortBy='count'
               showSearch={false}
               react={{
-                  "and": components
+                'and': components,
               }}
-              URLParams={true}
+              URLParams
             />
             <RangeSlider
-              componentId="DynamicYearSlider"
-              dataField="year"
-              title="Date"
-              filterLabel="Date"
+              componentId='DynamicYearSlider'
+              dataField='year'
+              title='Date'
+              filterLabel='Date'
               stepValue={5}
               interval={5}
               react={{
-                  "and": components
+                'and': components,
               }}
               rangeLabels={{
-                "start": "1880",
-                "end": "2010"
+                'start': '1880',
+                'end': '2010',
               }}
               range={{
-                "start": 1880,
-                "end": 2010
+                'start': 1880,
+                'end': 2010,
               }}
-              URLParams={true}
+              URLParams
             />
             <SingleDataList
-              componentId="CampusLocationAggregate"
-              dataField="repository.keyword"
-              title="Campus Location"
-              filterLabel="Campus Location"
+              componentId='CampusLocationAggregate'
+              dataField='repository.keyword'
+              title='Campus Location'
+              filterLabel='Campus Location'
               showSearch={false}
-              URLParams={true}
+              URLParams
               data={
                 [{
-                  label: "Rare Books and Special Collections",
-                  value: "SPEC RBSC"
+                  label: 'Rare Books and Special Collections',
+                  value: 'SPEC RBSC',
                 }, {
-                  label: "Snite Museum of Art",
-                  value: "SNITE"
+                  label: 'Snite Museum of Art',
+                  value: 'SNITE',
                 }, {
-                  label: "University Archives",
-                  value: "ARCHIVES"
+                  label: 'University Archives',
+                  value: 'ARCHIVES',
                 }]
               }
               react={{
-                  "and": components
+                'and': components,
               }}
             />
             <MultiDropdownList
-              componentId="LanguageListAggregate"
-              dataField="language.keyword"
-              title="Language"
-              sortBy="count"
-              filterLabel="Language"
+              componentId='LanguageListAggregate'
+              dataField='language.keyword'
+              title='Language'
+              sortBy='count'
+              filterLabel='Language'
               showSearch={false}
               react={{
-                  "and": components
+                'and': components,
               }}
-              URLParams={true}
+              URLParams
             />
           </React.Fragment>
         }
       >
-          <ReactiveList
-              componentId="SearchResult"
-              dataField={"title"}
-              react={{
-                  "and": components
-              }}
-              excludeFields={ ["fulltext"] }
-              size={21}
-              >
-              {({ data, error, loading, ...rest }) => (
-                <ResponsiveGridList measureBeforeMount={true}>
-                  {
-                    data.map(res => (
-                      <div key={res['_id']}>
-                        <Card
-                          label={res.title}
-                          image={res.thumbnail}
-                          target={res.url}
-                          location={location}
-                          referal={{ type: 'search', query: location.search }}
-                        >
-                          <div className='description'>{res.description}</div>
-                          <div>{res.creator}</div>
-                        </Card>
-                      </div>
-                      )
-                    )
-                  }
-                </ResponsiveGridList>
-              )}
-              </ReactiveList>
+        <ReactiveList
+          componentId='SearchResult'
+          dataField={'title'}
+          react={{
+            'and': components,
+          }}
+          excludeFields={['fulltext']}
+          size={48}
+          loader={<Loading />}
+          scrollOnChange
+          infiniteScroll={false}
+          pagination
+          renderNoResults={<div>No matches could be found</div>}
+          render={({ data, error, loading, ...rest }) => (
+            <ResponsiveGridList measureBeforeMount>
+              {
+                data.map(res => (
+                  <div key={res['_id']}>
+                    <Card
+                      label={res.title}
+                      image={res.thumbnail}
+                      target={res.url}
+                      location={location}
+                      referal={{ type: 'search', query: location.search }}
+                    >
+                      <div className='description'>{res.description}</div>
+                      <div>{res.creator}</div>
+                    </Card>
+                  </div>
+                )
+                )
+              }
+            </ResponsiveGridList>
+          )}
+        />
       </Layout>
     </ReactiveBase>
   )
