@@ -16,6 +16,7 @@ const ManifestLink = ({ manifestUrl }) => {
       <img
         src={imgIIIF}
         alt='Download IIIF manifest.'
+        title='Download IIIF manifest.'
         className={style.manifestLink}
       />
     </Link>

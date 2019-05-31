@@ -10,7 +10,7 @@ const ActionButton = ({ name, action, icon, activeIcon, isActive, altText }) => 
         action()
       }}
     >
-      <img src={isActive ? activeIcon : icon} alt={altText || name} />
+      <img src={isActive ? activeIcon : icon} alt={altText || name} title={altText || name} />
     </button>
   )
 }

@@ -8,6 +8,7 @@ const ExpandIcon = () => {
         src={expandIcon}
         alt='Open in Universal Viewer'
         className={style.expandIcon}
+        title='Open in Universal Viewer'
       />
     </span>
   )

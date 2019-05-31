@@ -19,6 +19,7 @@ export const ImageSection = ({ location, iiifManifest }) => {
           service={getImageService(iiifManifest)}
           alt={iiifManifest.description}
           className={style.bigImage}
+          title='Open in Universal Viewer'
         />
         <ExpandIcon />
       </Link>

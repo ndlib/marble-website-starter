@@ -25,6 +25,7 @@ export const AlternateImage = ({ iiifManifest, index, max, length, location }) =
           region='square'
           size='125,'
           alt={`Alternate View ${index}`}
+          title={`Alternate View ${index}. Opens in Universal Viewer.`}
           className={style.alternateImage}
         />
       </Link>

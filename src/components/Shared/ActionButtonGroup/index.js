@@ -14,24 +14,24 @@ const ActionButtonGroup = ({ iiifManifest }) => {
   return (
     <section className={style.actionButtons}>
       <ActionButton
-        name='bookmark'
+        name='Bookmark'
         action={bookmarkAction}
         icon={bookmark}
         activeIcon={bookmarkActive}
         isActive
       />
       <ActionButton
-        name='share'
+        name='Share'
         action={shareAction}
         icon={share}
       />
       <ActionButton
-        name='print'
+        name='Print'
         action={printAction}
         icon={print}
       />
       <ActionButton
-        name='download'
+        name='Download'
         action={downloadAction}
         icon={downloadImg}
       />
