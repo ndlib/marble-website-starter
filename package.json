@@ -2,7 +2,7 @@
   "name": "marble-website-starter",
   "private": false,
   "description": "A Gatsby Starter for a MARBLE website.",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "dependencies": {
     "@appbaseio/reactivemaps": "^3.0.0-alpha.7",
