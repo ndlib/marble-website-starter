@@ -19,7 +19,8 @@ const Card = ({
 }) => {
   const imageService = getImageService(iiifManifest)
   return (
-    <Link to={target}
+    <Link
+      to={target}
       state={buildReferalState(location, referal)}
       className={cardClass}
     >
