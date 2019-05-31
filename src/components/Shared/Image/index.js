@@ -14,6 +14,7 @@ const Image = ({
   size, // 'max', 'w,', ',h', 'pct:n', 'w,h', or '!w,h'
   src, // src to use if no service provided
   alt, // alt text for the image
+  title, // title attribute on iamge
   className, // class on the outer picture element
 }) => {
   const image = serviceURL(service, region, size) || src
@@ -21,7 +22,8 @@ const Image = ({
     <picture className={className}>
       <img
         src={image || noImage}
-        alt={alt}
+        alt={alt || title}
+        title={title || alt}
       />
     </picture>
   )
@@ -33,6 +35,7 @@ Image.propTypes = {
   size: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
+  title: PropTypes.string,
   className: PropTypes.string,
 }
 

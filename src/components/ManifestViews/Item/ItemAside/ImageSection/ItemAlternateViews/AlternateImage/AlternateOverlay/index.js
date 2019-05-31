@@ -9,7 +9,7 @@ const AlternateOverlay = ({ index, max, length }) => {
   if (max === index && max + 1 !== length) {
     const overlayNumber = length - max
     return (
-      <div className={style.alternateOverlay}><span>{`+${overlayNumber}`}</span></div>
+      <div className={style.alternateOverlay} title='See all images in Universal Viewer.'><span>{`+${overlayNumber}`}</span></div>
     )
   }
   return null
