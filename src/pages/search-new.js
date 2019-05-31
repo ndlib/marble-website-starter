@@ -141,7 +141,7 @@ const SearchPage = ({ location }) => {
           scrollOnChange
           infiniteScroll={false}
           pagination
-          renderNoResults={<div>No matches could be found</div>}
+          renderNoResults={() => (<div>No matches could be found</div>)}
           render={({ data, error, loading, ...rest }) => (
             <ResponsiveGridList measureBeforeMount>
               {
