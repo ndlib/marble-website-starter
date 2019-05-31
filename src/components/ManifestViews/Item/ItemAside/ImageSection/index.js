@@ -5,12 +5,15 @@ import Image from 'components/Shared/Image'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
 import getImageService from 'utils/getImageService'
+import buildReferalState from 'utils/buildReferalState'
 import style from './style.module.css'
-export const ImageSection = ({ iiifManifest }) => {
+export const ImageSection = ({ location, iiifManifest }) => {
   return (
     <section>
-      <Link to={`/viewer?manifest=${encodeURIComponent(iiifManifest.id)}`}
+      <Link
+        to={`/viewer?manifest=${encodeURIComponent(iiifManifest.id)}`}
         className={style.link}
+        state={buildReferalState(location, { type: 'item', backLink: location.href })}
       >
         <Image
           service={getImageService(iiifManifest)}
@@ -19,7 +22,7 @@ export const ImageSection = ({ iiifManifest }) => {
         />
         <ExpandIcon />
       </Link>
-      <ItemAlternateViews iiifManifest={iiifManifest} />
+      <ItemAlternateViews iiifManifest={iiifManifest} location={location} />
     </section>
   )
 }
@@ -28,5 +31,6 @@ ImageSection.propTypes = {
   iiifManifest: PropTypes.shape({
     id: PropTypes.string.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 export default ImageSection

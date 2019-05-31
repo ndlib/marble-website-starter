@@ -4,9 +4,10 @@ import ItemAlternateViews from './'
 import AlternateImage from './AlternateImage'
 
 describe('ItemAlternateViews', () => {
+  const location = {}
   test('no more canvases', () => {
     const manifest = {}
-    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} />)
+    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} location={location} />)
 
     expect(wrapper.find('div').exists()).toBeFalsy()
     expect(wrapper.find(AlternateImage).exists()).toBeFalsy()
@@ -18,7 +19,7 @@ describe('ItemAlternateViews', () => {
         canvases: ['a', 'b', 'c'],
       }],
     }
-    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} />)
+    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} location={location} />)
 
     expect(wrapper.find('div').exists()).toBeTruthy()
     expect(wrapper.find(AlternateImage).length).toEqual(2)

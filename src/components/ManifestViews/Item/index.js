@@ -11,7 +11,7 @@ export const Item = ({ iiifManifest, location }) => {
     <Layout
       preMain={<ItemPreMain iiifManifest={iiifManifest} location={location} />}
       title={iiifManifest.label}
-      aside={<ItemAside iiifManifest={iiifManifest} />}
+      aside={<ItemAside iiifManifest={iiifManifest} location={location} />}
       asideClassName={style.itemAside}
       articleClassName={style.itemMain}
       location={location}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
 import Image from 'components/Shared/Image'
 import getImageService from 'utils/getImageService'
+import buildReferalState from 'utils/buildReferalState'
 import './style.css'
 
 const Card = ({
@@ -18,7 +19,7 @@ const Card = ({
   const imageService = getImageService(iiifManifest)
   return (
     <Link to={target}
-      state={buildState(location, referal)}
+      state={buildReferalState(location, referal)}
       className={cardClass}
     >
       <article className='cardWrapper'>
@@ -57,12 +58,3 @@ Card.defaultProps = {
   cardClass: 'basicCard',
 }
 export default Card
-
-const buildState = (location, referal) => {
-  if (location && referal) {
-    return {
-      referal: referal,
-    }
-  }
-  return null
-}

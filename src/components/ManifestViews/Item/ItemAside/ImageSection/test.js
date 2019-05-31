@@ -9,7 +9,7 @@ import ItemAlternateViews from './ItemAlternateViews'
 const manifest = {
   id: 'id',
 }
-const wrapper = shallow(<ImageSection iiifManifest={manifest} />)
+const wrapper = shallow(<ImageSection iiifManifest={manifest} location={{}} />)
 
 test('ImageSection', () => {
   expect(wrapper.find('section').exists()).toBeTruthy()

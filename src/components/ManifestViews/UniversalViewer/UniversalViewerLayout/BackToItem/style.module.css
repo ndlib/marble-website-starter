@@ -1,0 +1,19 @@
+.backLink {
+  color: white;
+  left: 0;
+  margin: .75rem;
+  position: absolute;
+  text-decoration: none;
+  top: 0;
+  z-index: 1;
+}
+
+.backLink:hover {
+  color: #dedede;
+}
+
+@media (max-width: 799px) {
+  .backLink {
+    display: none;
+  }
+}
