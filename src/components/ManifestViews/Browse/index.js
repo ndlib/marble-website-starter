@@ -24,7 +24,7 @@ const Browse = ({ data, location }) => {
       location={location}
     >
       <p>{category.description}</p>
-      <ResponsiveGridList>
+      <ResponsiveGridList measureBeforeMount>
         {
           group.map(node => {
             const { label, slug, thumbnail } = node
@@ -35,6 +35,7 @@ const Browse = ({ data, location }) => {
                   target={slug}
                   label={label}
                   image={thumbnail ? thumbnail._id : null}
+                  iiifManifest={node}
                 />
               </div>
             )

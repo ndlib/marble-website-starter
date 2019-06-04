@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
 import Image from 'components/Shared/Image'
 import ExteralLinkIcon from './ExteralLinkIcon'
-import getImageService from 'utils/getImageService'
+import { getImageService, getImageServiceFromThumbnail } from 'utils/getImageService'
 import buildReferalState from 'utils/buildReferalState'
 import './style.css'
 
@@ -17,7 +17,7 @@ const Card = ({
   referal,
   cardClass,
 }) => {
-  const imageService = getImageService(iiifManifest)
+  const imageService = getImageService(iiifManifest) || getImageServiceFromThumbnail(iiifManifest)
   return (
     <Link
       to={target}

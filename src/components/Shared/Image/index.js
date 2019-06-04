@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Waypoint } from 'react-waypoint'
 import noImage from 'assets/images/noImage.svg'
 
 // Image component takes either an iiif image service and the basic parameters to render OR an src.
 // iiif image service requires a region and a width OR a height.
 // 'region' is defined in default props as 'full'.
 // Since we may want to specify only a height, we do a check on width and height existing before we set a default width of 500.
+// If a service is provided, Image component will attempt to generate a srcset with x descriptors based on the values provided in size.
 
 // See https://iiif.io/api/image/2.1/#image-request-parameters for image server request parameters.
+// eslint-disable-next-line complexity
 const Image = ({
   service, // iiif Image service
   region, // 'full', 'square', or format: `x,y,w,h`, `pct:x,y,w,h`
@@ -17,15 +20,28 @@ const Image = ({
   title, // title attribute on iamge
   className, // class on the outer picture element
 }) => {
-  const image = serviceURL(service, region, size) || src
+  // derive image from image service OR src OR use the default noImage
+  const imageSrc = serviceURL(service, region, size) || src || noImage
+  // build a srcset from the service
+  const srcSet = sourceSet(service, region, size)
+
+  const [ activeSrcSet, setSrcSet ] = useState('')
+
+  const onEnter = () => {
+    setSrcSet(srcSet)
+  }
+
   return (
-    <picture className={className}>
-      <img
-        src={image || noImage}
-        alt={alt || title}
-        title={title || alt}
-      />
-    </picture>
+    <Waypoint onEnter={onEnter}>
+      <picture className={className}>
+        <img
+          src={imageSrc}
+          srcSet={activeSrcSet}
+          alt={alt || title}
+          title={title || alt}
+        />
+      </picture>
+    </Waypoint>
   )
 }
 
@@ -47,10 +63,38 @@ Image.defaultProps = {
 }
 export default Image
 
-const serviceURL = (service, region, size) => {
-  let image
+export const serviceURL = (service, region, size) => {
+  let url
   if (service && service !== '') {
-    image = `${service}/${region}/${size}/0/default.jpg`
+    url = `${service}/${region}/${size}/0/default.jpg`
   }
-  return image
+  return url
+}
+
+// generate a srcset based on the original image
+export const sourceSet = (service, region, size) => {
+  if (service) {
+    const xDescriptors = [1, 1.5, 2]
+    const set = []
+    xDescriptors.forEach(xD => {
+      const newSize = resize(size, xD)
+      set.push(
+        `${serviceURL(service, region, newSize)} ${xD}x`
+      )
+    })
+    return set.join(', ')
+  }
+  return null
+}
+
+// attempt get a larger size of the imsage based on the passed size
+export const resize = (originalSize, xDescriptor) => {
+  const sizes = originalSize.split(',')
+  sizes.forEach((size, index) => {
+    const sizeNum = parseInt(size, 10)
+    if (!isNaN(sizeNum)) {
+      sizes[index] = Math.round(sizeNum * xDescriptor)
+    }
+  })
+  return sizes.join()
 }

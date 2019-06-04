@@ -47,6 +47,9 @@ export const query = graphql`
       }
       thumbnail {
         _id
+        service {
+          _id
+        }
       }
     }
   }
