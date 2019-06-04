@@ -33,6 +33,9 @@ export const pageQuery = graphql`
         slug
         thumbnail {
           _id
+          service {
+            _id
+          }
         }
         label
       }

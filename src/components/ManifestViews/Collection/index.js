@@ -32,6 +32,7 @@ export const Collection = ({ iiifManifest, location, displayReducer }) => {
           cols={activeSettings.cols}
           rowHeight={activeSettings.rowHeight}
           cardWidth={activeSettings.cardWidth}
+          measureBeforeMount
         >
           {
             iiifManifest.childrenIiifManifest.map(manifest => {

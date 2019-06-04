@@ -20,6 +20,7 @@ export const CollectionPreMain = ({ iiifManifest, location }) => {
         size='1200,'
         alt={iiifManifest.label}
         className={style.mainCollectionImage}
+        iiifManifest={iiifManifest}
       />
       <ReturnToSearch location={location} />
     </React.Fragment>

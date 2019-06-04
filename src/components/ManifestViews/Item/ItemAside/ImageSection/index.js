@@ -20,6 +20,7 @@ export const ImageSection = ({ location, iiifManifest }) => {
           alt={iiifManifest.description}
           className={style.bigImage}
           title='Open in Universal Viewer'
+          iiifManifest={iiifManifest}
         />
         <ExpandIcon />
       </Link>
