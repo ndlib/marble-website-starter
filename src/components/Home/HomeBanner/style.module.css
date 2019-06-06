@@ -1,0 +1,60 @@
+.banner {
+  position: relative;
+  height: 363px;
+}
+
+.bannerImage {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.imageCaption {
+  position: relative;
+  top: 50px;
+  left: 0;
+  width: 724px;
+  padding: 12px 12px 0px 12px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  margin: 0 auto;
+  color: #fff;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+.imageCaption h1 {
+  margin: 0;
+  font-size: 24px;
+  text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  font-size: 28px;
+}
+
+.imageCitation {
+  margin-top: 8px;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  padding: 10px;
+}
+.citation {
+  text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.65);
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+  color: #fff;
+  margin: 0 auto;
+}
+
+p.citation sub {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 3px;
+  white-space: pre;
+}
+
+.imageCaption sub {
+  font-size: 10px;
+  display: block;
+  line-height: 1.3em;
+}
