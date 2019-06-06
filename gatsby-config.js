@@ -7,6 +7,9 @@ module.exports = {
     author: `ndlib`,
     description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
 
+    // required for sitemap
+    siteUrl:  process.env.MARBLE_SITEURL || `https://marble.library.nd.edu`,
+
     // apis and embedded urls
     universalViewerBaseURL: process.env.MARBLE_UNIVERSAL_VIEWER_BASE_URL || `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
     primoSearchBaseURL: process.env.MARBLE_PRIMO_BASE_URL || `https://a1fc3ld3d7.execute-api.us-east-1.amazonaws.com/dev/primo/v1/search`,
@@ -27,6 +30,7 @@ module.exports = {
     exhibitions: exhibitions,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
