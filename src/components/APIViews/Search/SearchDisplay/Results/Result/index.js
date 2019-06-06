@@ -5,7 +5,7 @@ import MetaDataList from 'components/Shared/MetaDataList'
 import Card from 'components/Shared/Card'
 const md5 = require('md5')
 
-const Result = ({ doc, location }) => {
+const Result = ({ doc, cardClass, location }) => {
   const metadata = buildMetadata(doc)
   const url = buildUrl(doc)
   const image = imageFromDoc(doc)
@@ -16,6 +16,7 @@ const Result = ({ doc, location }) => {
       target={url}
       location={location}
       referal={{ type: 'search', query: location.search }}
+      cardClass={cardClass}
     >
       <MetaDataList metadata={metadata} />
       <div className='description'>{doc.description}</div>
@@ -25,6 +26,7 @@ const Result = ({ doc, location }) => {
 
 Result.propTypes = {
   doc: PropTypes.object.isRequired,
+  cardClass: PropTypes.string,
   location: PropTypes.object.isRequired,
 }
 
