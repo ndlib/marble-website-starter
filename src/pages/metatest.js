@@ -10,14 +10,27 @@ const MetaTest = ({ schema, location }) => {
   const currentSchema = schema != null ? schema : basicschema
   const metaObj = []
   renderer.sections[0].attributes.forEach(function (field) {
+    console.log(field)
     if (currentSchema[field.key] != null) {
       switch (field.renderer) {
         case 'title':
-          metaObj.push(<div className={field.key} key={field}> <TitleMicro meta={field} schema={currentSchema} /> </div>)
+          metaObj.push(
+            <TitleMicro
+              meta={field}
+              schema={currentSchema}
+              key={field.key}
+            />
+          )
           break
         case 'basic':
         default:
-          metaObj.push(<div className={field.key} key={field}> <Default meta={field} schema={currentSchema} /></div>)
+          metaObj.push(
+            <Default
+              meta={field}
+              schema={currentSchema}
+              key={field.key}
+            />
+          )
       }
     }
   })
