@@ -17,7 +17,7 @@ const MetaTest = ({ schema, location }) => {
           break
         case 'basic':
         default:
-          metaObj.push(<div key={field}> <Default meta={field} schema={currentSchema} /></div>)
+          metaObj.push(<div className={field.key} key={field}> <Default meta={field} schema={currentSchema} /></div>)
       }
     }
   })
