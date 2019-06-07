@@ -23,8 +23,8 @@ export const UniversalViewer = ({ data, manifest, location, requireLogin }) => {
       requireLogin={requireLogin}
     >
       <SkipToMain />
-      <SEO title={`${manifest} | Universal Viewer`} />
-      <h1 className='accessibilityOnly'>{manifest} - Universal Viewer</h1>
+      <SEO title={`${manifest} | ${cv} | Universal Viewer`} />
+      <h1 className='accessibilityOnly'>{manifest} - {cv} - Universal Viewer</h1>
       <main id='mainContent'>
         <BackToItem location={location} />
         <iframe
