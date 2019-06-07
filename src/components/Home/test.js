@@ -8,5 +8,4 @@ test('Home', () => {
   const wrapper = shallow(<Home title={'home page'} location={{}} />)
   expect(wrapper.find(Layout).exists()).toBeTruthy()
   expect(wrapper.find(HomeCardGroups).exists()).toBeTruthy()
-  expect(wrapper.find('h1').text()).toEqual('home page')
 })
