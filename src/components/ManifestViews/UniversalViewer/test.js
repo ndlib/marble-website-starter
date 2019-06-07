@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import UniversalViewerLayout from './'
+import UniversalViewer from './'
 import Layout from 'components/Layout'
 import PrivateRoute from 'components/Layout/PrivateRoute/'
 import SkipToMain from 'components/Layout/PageWrapper/SkipToMain'
@@ -15,7 +15,7 @@ describe('UniversalViewerLayout', () => {
   }
 
   test('no query param or manifest', () => {
-    const wrapper = shallow(<UniversalViewerLayout data={data} location={{}} requireLogin={false} />)
+    const wrapper = shallow(<UniversalViewer data={data} location={{}} requireLogin={false} />)
     expect(wrapper.find(Layout).props().children).toEqual('Not Found')
   })
 
@@ -23,7 +23,7 @@ describe('UniversalViewerLayout', () => {
     const location = {
       search: '?manifest=http://my-manifest.json&cv=200',
     }
-    const wrapper = shallow(<UniversalViewerLayout data={data} location={location} requireLogin={false} />)
+    const wrapper = shallow(<UniversalViewer data={data} location={location} requireLogin={false} />)
     expect(wrapper.find(PrivateRoute).props().location).toEqual(location)
     expect(wrapper.find(PrivateRoute).props().requireLogin).toEqual(false)
     expect(wrapper.find(SkipToMain).exists()).toBeTruthy()
@@ -35,7 +35,7 @@ describe('UniversalViewerLayout', () => {
   test('manifest', () => {
     const manifest = 'http://test.json'
     const location = {}
-    const wrapper = shallow(<UniversalViewerLayout data={data} location={{}} manifest={manifest} requireLogin={false} />)
+    const wrapper = shallow(<UniversalViewer data={data} location={{}} manifest={manifest} requireLogin={false} />)
     expect(wrapper.find(PrivateRoute).props().location).toEqual(location)
     expect(wrapper.find(PrivateRoute).props().requireLogin).toEqual(false)
     expect(wrapper.find(SkipToMain).exists()).toBeTruthy()

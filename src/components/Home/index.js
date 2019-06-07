@@ -29,23 +29,25 @@ const groups = [
     ],
   },
 ]
-const Home = ({ location }) => {
+const Home = ({ title, location }) => {
   return (
     <Layout
       location={location}
       preMain={
         <React.Fragment>
-          <Seo title='Marble Digital Collections' />
+          <Seo title={title} />
           <HomeBanner location={location} />
         </React.Fragment>
       }
     >
+      <h1 className='accessibilityOnly'>{title}</h1>
       <HomeCardGroups groups={groups} />
     </Layout>
   )
 }
 
 Home.propTypes = {
+  title: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
 }
 export default Home

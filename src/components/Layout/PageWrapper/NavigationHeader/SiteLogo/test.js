@@ -15,7 +15,7 @@ test('SiteLogo', () => {
   const wrapper = shallow(<SiteLogo data={data} />)
   expect(wrapper.find(Link).props().to).toEqual('/')
   expect(wrapper.find(Link).props().className).toEqual('siteTitle')
-  expect(wrapper.find('h1.accessibilityOnly').text()).toEqual('My Title')
   expect(wrapper.find('img.siteLogo').props().alt).toEqual('My Title')
+  expect(wrapper.find('img.siteLogo').props().title).toEqual('My Title')
   expect(wrapper.find('img.siteLogo').props().src).toEqual(siteLogo)
 })
