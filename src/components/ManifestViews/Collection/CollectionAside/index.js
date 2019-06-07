@@ -8,6 +8,7 @@ const CollectionAside = ({ iiifManifest }) => {
     <React.Fragment>
       <ActionButtonGroup iiifManifest={iiifManifest} />
       <p>{iiifManifest.description}</p>
+      <h2 className='accessibilityOnly'>Metadata</h2>
       <MetaDataList metadata={iiifManifest.metadata} />
     </React.Fragment>
   )

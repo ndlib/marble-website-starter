@@ -8,7 +8,10 @@ export const LinkedLogo = ({ href, src, alt }) => {
   }
   return (
     <Link to={href}>
-      <img src={src} alt={alt} />
+      <img
+        src={src}
+        alt={alt}
+        title={alt} />
     </Link>
   )
 }

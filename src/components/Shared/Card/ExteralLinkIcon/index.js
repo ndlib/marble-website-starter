@@ -8,7 +8,11 @@ const ExteralLinkIcon = ({ target }) => {
   if (isExternal(target)) {
     return (
       <span className={style.iconWrapper}>
-        <img src={openInNew} alt='Link to external site.' />
+        <img
+          src={openInNew}
+          alt='Link to external site.'
+          title='Link to external site.'
+        />
       </span>
     )
   }

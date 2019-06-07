@@ -10,7 +10,7 @@ const HomeBanner = ({ location }) => {
       <img
         src={bannerImage}
         className={style.bannerImage}
-        alt='home page banner'
+        alt=''
       />
       <div className={style.imageCaption}>
         <div className={style.captionFrame}>

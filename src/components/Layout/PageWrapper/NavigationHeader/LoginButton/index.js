@@ -12,7 +12,11 @@ export const LoginButton = ({ loginReducer }) => {
     return (
       <div className={style.loginButton}>
         <Link to='/login'>
-          <img src={userIcon} alt='My Account' />
+          <img
+            src={userIcon}
+            alt='My Account'
+            title='My Account'
+          />
           <span>{safeName}</span>
         </Link>
       </div>

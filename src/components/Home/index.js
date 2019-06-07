@@ -40,7 +40,6 @@ const Home = ({ title, location }) => {
         </React.Fragment>
       }
     >
-      <h1 className='accessibilityOnly'>{title}</h1>
       <HomeCardGroups groups={groups} />
     </Layout>
   )
