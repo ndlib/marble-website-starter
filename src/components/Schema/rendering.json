@@ -8,7 +8,7 @@
            "id": 2,
            "label": "Title",
            "renderer": "title",
-           "key": ["title"]
+           "key": ["headline"]
         },
         {
            "id": 3,
@@ -21,6 +21,24 @@
           "label": "AltTitle",
           "renderer": "basic",
           "key": ["alternateTitle"]
+        },
+        {
+          "id": 5,
+          "label": "DateCreated",
+          "renderer": "date",
+          "key": ["dateCreated"]
+        },
+        {
+          "id": 6,
+          "label": "DateModified",
+          "renderer": "date",
+          "key": ["dateModified"]
+        },
+        {
+          "id": 7,
+          "label":  "License",
+          "renderer": "link",
+          "key": ["license"]
         }
       ]
     }
