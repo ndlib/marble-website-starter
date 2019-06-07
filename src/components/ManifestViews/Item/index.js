@@ -16,6 +16,7 @@ export const Item = ({ iiifManifest, location }) => {
       articleClassName={style.itemMain}
       location={location}
     >
+      <h2 className='accessibilityOnly'>Metadata</h2>
       <p className={style.description}>{iiifManifest.description}</p>
       <MetaDataList metadata={iiifManifest.metadata} />
       <p className={style.attribution}>{iiifManifest.attribution}</p>

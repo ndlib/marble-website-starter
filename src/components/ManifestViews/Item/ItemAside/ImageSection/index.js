@@ -10,6 +10,7 @@ import style from './style.module.css'
 export const ImageSection = ({ location, iiifManifest }) => {
   return (
     <section>
+      <h2 className='accessibilityOnly'>Images</h2>
       <Link
         to={`/viewer?manifest=${encodeURIComponent(iiifManifest.id)}`}
         className={style.link}

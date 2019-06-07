@@ -11,6 +11,7 @@ const HamburgerButton = ({ onClick, onBlur, className }) => {
       <img
         src={hamburgerIcon}
         alt='Show Menu'
+        title='Show Menu'
         className={className}
       />
     </button>

@@ -22,6 +22,7 @@ export const Collection = ({ iiifManifest, location, displayReducer }) => {
       title={iiifManifest.label}
       location={location}
     >
+      <h2 className='accessibilityOnly'>Collection Items</h2>
       <DisplayViewToggle
         page={COLLECTION_PAGE}
       >
