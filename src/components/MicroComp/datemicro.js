@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 
 const DateMicro = ({ meta, schema }) => {
-  const formattedDate = moment(schema[meta.key]).format("YYYY-MM-DD")
+  const formattedDate = moment(schema[meta.key]).format('YYYY-MM-DD')
   return (
     <React.Fragment>
       <dt className={meta.key}>{meta.label}:</dt>
