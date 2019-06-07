@@ -9,10 +9,10 @@ export const SiteLogo = ({ data }) => {
   const { title } = data.site.siteMetadata
   return (
     <Link to='/' className={style.siteTitle}>
-      <h1 className='accessibilityOnly'>{title}</h1>
       <img
         className={style.siteLogo}
         alt={title}
+        title={title}
         src={siteLogo}
       />
     </Link>

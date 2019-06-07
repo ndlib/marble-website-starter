@@ -3,6 +3,7 @@ title: Learn
 slug: learn
 ---
 
+## Coming Soon
 Coming in the beta release! On this page you will be able to:
 
 •  Read about how instructors are using unique collections in their classrooms
