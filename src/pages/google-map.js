@@ -8,7 +8,7 @@ const MapPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Map
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKDHMmDseH35VfYP0ZykHC_6QDCHYoXS0&v=3.exp&libraries=geometry,drawing,places"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
