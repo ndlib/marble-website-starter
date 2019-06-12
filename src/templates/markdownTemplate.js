@@ -4,6 +4,8 @@ import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import SEO from 'components/Shared/Seo'
 import Navigation from 'components/Shared/Navigation'
+import KmlMap from 'components/Map/Kml'
+
 // import { ReactiveBase, DataSearch, MultiList, SingleDataList, ReactiveList, DynamicRangeSlider, MultiDropdownList, MultiDataList, SelectedFilters } from '@appbaseio/reactivesearch'
 // import Card from 'components/Shared/Card'
 // import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
@@ -21,53 +23,7 @@ export const MarkdownTemplate = ({ data, location }) => {
     >
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       {
-      // <ReactiveBase
-      //   app='website'
-      //   url='https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com'>
-      //
-      //   <ReactiveList
-      //     componentId='SearchResult'
-      //     dataField={'title'}
-      //     excludeFields={['fulltext']}
-      //     showResultStats={false}
-      //     defaultQuery={() => {
-      //       return {
-      //         'query' : {
-      //           'match' : {
-      //             'categories.keyword' : 'europe',
-      //           },
-      //         },
-      //       }
-      //     }}
-      //     size={21}
-      //     react={{
-      //       'and': ['SearchResult', 'location'],
-      //     }}
-      //   >
-      //     {({ data, error, loading, ...rest }) => (
-      //       <ResponsiveGridList measureBeforeMount>
-      //         {
-      //           data.map(res => (
-      //             <div key={res['_id']}>
-      //               <Card
-      //                 label={res.title}
-      //                 image={res.thumbnail}
-      //                 target={res.url}
-      //                 location={location}
-      //                 referal={{ type: 'search', query: location.search }}
-      //               >
-      //                 <div className='description'>{res.description}</div>
-      //                 <div>{res.creator}</div>
-      //               </Card>
-      //             </div>
-      //           )
-      //           )
-      //         }
-      //       </ResponsiveGridList>
-      //     )}
-      //   </ReactiveList>
-      //
-      // </ReactiveBase>
+        post.frontmatter.map && <KmlMap center={post.frontmatter.map.center} kmlFile={post.frontmatter.map.kmlFile} defaultZoom={post.frontmatter.map.defaultZoom} />
       }
     </Layout>
   )
@@ -87,6 +43,14 @@ export const query = graphql`
         title
         slug
         menu
+        map {
+          kmlFile
+          defaultZoom
+          center {
+            lat
+            lng
+          }
+        }
       }
     }
   }
