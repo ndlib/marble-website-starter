@@ -30,9 +30,7 @@ const KmlMap = ({ map }) => {
 }
 
 KmlMap.propTypes = {
-  center: PropTypes.object.isRequired,
-  kmlFile: PropTypes.string.isRequired,
-  defaultZoom: PropTypes.number.isRequired,
+  map: PropTypes.object.isRequired,
 }
 
 export default KmlMap
