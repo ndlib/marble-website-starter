@@ -13,6 +13,7 @@ export const CollectionPreMain = ({ iiifManifest, location }) => {
         title={iiifManifest.label}
         image={iiifManifest.thumbnail._id}
         description={iiifManifest.description}
+        pathname={location.pathname}
       />
       <Image
         service={getImageServiceFromThumbnail(iiifManifest)}

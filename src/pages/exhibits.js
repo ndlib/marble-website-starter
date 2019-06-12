@@ -12,7 +12,7 @@ export const ExhibitsPage = ({ data, location }) => {
     <Layout
       title='Exhibits'
       preMain={
-        <SEO title='Digital Exhibits' />
+        <SEO title='Digital Exhibits' pathname={location.pathname} />
       }
       location={location}
     >

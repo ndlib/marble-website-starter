@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import CanonicalLink from './CanonicalLink'
 import MetaTagGroup from './MetaTagGroup'
 import { getOpenGraph, getTwitter } from './data'
 import defaultImage from 'assets/logos/defaultOpenGraphLogo.png'
@@ -11,6 +12,7 @@ const SEO = ({
   description,
   image,
   lang,
+  pathname,
 }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -20,6 +22,7 @@ const SEO = ({
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -44,9 +47,15 @@ const SEO = ({
           },
         ]}
       />
-
+      <CanonicalLink base={site.siteMetadata.siteUrl} pathname={pathname} />
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
+      {
+        /// REMOVE WHEN READY
+        <Helmet>
+          <meta name='robots' content='noindex' />
+        </Helmet>
+      }
     </React.Fragment>
   )
 }
@@ -60,6 +69,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   lang: PropTypes.string,
+  pathname: PropTypes.string,
 }
 
 export default SEO
