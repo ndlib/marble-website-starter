@@ -39,3 +39,21 @@ test('it renders no nav when there is no menu', () => {
 
   expect(wrapper.find('Layout').prop('nav')).toEqual(null)
 })
+
+test('it renders a map when there is a map', () => {
+  const data = {
+    markdownRemark: {
+      html: `<p>HTML! </p>`,
+      frontmatter: {
+        title: `Page Title`,
+        slug: `urlForEver`,
+        map: {
+          kmlFile: "file"
+        }
+      },
+    },
+  }
+  const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
+
+  expect(wrapper.find('KmlMap').prop('map')).toEqual({kmlFile: "file" })
+})

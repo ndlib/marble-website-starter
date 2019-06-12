@@ -6,8 +6,11 @@ const { KmlLayer } = require('react-google-maps')
 // http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml
 const KmlMap = ({ map }) => {
   const key = ''
-  const { center, kmlFile, defaultZoom } = map
+  if (!map) {
+    return null
+  }
 
+  const { center, kmlFile, defaultZoom } = map
   if (!kmlFile) {
     return null
   }
@@ -30,7 +33,7 @@ const KmlMap = ({ map }) => {
 }
 
 KmlMap.propTypes = {
-  map: PropTypes.object.isRequired,
+  map: PropTypes.object,
 }
 
 export default KmlMap
