@@ -22,9 +22,7 @@ export const MarkdownTemplate = ({ data, location }) => {
       location={location}
     >
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      {
-        post.frontmatter.map && <KmlMap center={post.frontmatter.map.center} kmlFile={post.frontmatter.map.kmlFile} defaultZoom={post.frontmatter.map.defaultZoom} />
-      }
+      <KmlMap map={post.frontmatter.map} />
     </Layout>
   )
 }

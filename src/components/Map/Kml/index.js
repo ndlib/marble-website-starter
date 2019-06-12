@@ -4,8 +4,14 @@ import Map from 'components/Map'
 const { KmlLayer } = require('react-google-maps')
 
 // http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml
-const KmlMap = ({ center, kmlFile, defaultZoom }) => {
+const KmlMap = ({ map }) => {
   const key = ''
+  let { center, kmlFile, defaultZoom } = map
+
+  if (!kmlFile) {
+    return null
+  }
+
   return (
     <Map
       googleMapURL={'https://maps.googleapis.com/maps/api/js?key=' + key + '&v=3.exp&libraries=geometry,drawing,places'}
