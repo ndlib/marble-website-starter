@@ -13,14 +13,11 @@ const KmlMap = ({ map }) => {
         site {
           siteMetadata {
             gooleMapApiURL
-          }          
+          }
         }
       }
     `
   )
-  console.log(site)
-
-  const key = ''
   if (!map) {
     return null
   }
