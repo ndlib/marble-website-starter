@@ -6,7 +6,7 @@ const { KmlLayer } = require('react-google-maps')
 // http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml
 const KmlMap = ({ map }) => {
   const key = ''
-  let { center, kmlFile, defaultZoom } = map
+  const { center, kmlFile, defaultZoom } = map
 
   if (!kmlFile) {
     return null
