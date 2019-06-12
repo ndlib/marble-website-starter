@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Map from 'components/Map'
-const { KmlLayer } = require("react-google-maps")
+const { KmlLayer } = require('react-google-maps')
 
 // http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml
 const KmlMap = ({ center, kmlFile, defaultZoom }) => {
