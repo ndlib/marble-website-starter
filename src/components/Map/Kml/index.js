@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Map from 'components/Map'
 const { KmlLayer } = require('react-google-maps')
 
-
 // http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml
 const KmlMap = ({ map }) => {
   const { site } = useStaticQuery(
