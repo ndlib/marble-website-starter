@@ -1,7 +1,7 @@
 // Helper function to remove items where content is null, undefined, or empty string
-const dropEmpty = (arr) => {
+export const dropEmpty = (arr) => {
   return arr.filter(o => {
-    return !(o.content === null && o.content === '' && o.content !== 'undefined')
+    return (o.content !== null && o.content !== '' && o.content !== undefined)
   })
 }
 

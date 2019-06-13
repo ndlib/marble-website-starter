@@ -1,6 +1,7 @@
 const menus = require('./content/menus')
 const exhibitions = require('./content/exhibitions')
 
+const siteUrl = process.env.MARBLE_SITEURL || `https://marble.library.nd.edu`
 module.exports = {
   siteMetadata: {
     title: `Digital Collections`,
@@ -8,7 +9,7 @@ module.exports = {
     description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
 
     // required for sitemap
-    siteUrl:  process.env.MARBLE_SITEURL || `https://marble.library.nd.edu`,
+    siteUrl:  siteUrl,
 
     // apis and embedded urls
     universalViewerBaseURL: process.env.MARBLE_UNIVERSAL_VIEWER_BASE_URL || `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
@@ -31,6 +32,26 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        env: {
+          development: {
+            policy: [
+              { userAgent: '*', disallow: ['/'] },
+            ],
+          },
+          production: {
+            policy: [
+              { userAgent: '*', disallow: ['/'] },
+              // { userAgent: '*', allow: '/' },
+            ],
+          },
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
