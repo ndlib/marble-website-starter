@@ -15,12 +15,11 @@ module.exports = async (urls) => {
           result[data['@id']]['manifest'] = data
           result[data['@id']]['parent_id'] = parent_id
           result[data['@id']]['assets'] = searchForAssets(data)
-          //console.log(result[data['@id']]['assets'])
           let childRequests = children.map(url => {
             return recursiveProcess(url, data['@id'])
           })
           return Promise.all(childRequests)
-        })
+        }).catch(err => console.log("fetch error", url))
   }
 
   requests = urls.map( url => {
