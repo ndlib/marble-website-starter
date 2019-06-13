@@ -1,5 +1,5 @@
 import React from 'react'
-import TitleMicro from 'components/MicroComp/titlemicro'
+import TitleMicro from './'
 import { shallow } from 'enzyme'
 
 const meta = { id: 2, label: 'Title', renderer: 'title', key: ['headline'] }
