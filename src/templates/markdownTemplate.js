@@ -18,7 +18,7 @@ export const MarkdownTemplate = ({ data, location }) => {
     <Layout
       title={post.frontmatter.title}
       nav={navigation}
-      preMain={<SEO title={post.frontmatter.title} />}
+      preMain={<SEO title={post.frontmatter.title} pathname={location.pathname} />}
       location={location}
     >
       <div dangerouslySetInnerHTML={{ __html: post.html }} />

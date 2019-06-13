@@ -23,7 +23,7 @@ export const UniversalViewer = ({ data, manifest, location, requireLogin }) => {
       requireLogin={requireLogin}
     >
       <SkipToMain />
-      <SEO title={`${manifest} | ${cv} | Universal Viewer`} />
+      <SEO title={`${manifest} | ${cv} | Universal Viewer`} pathname={UVCanonicalPath(qs)} />
       <h1 className='accessibilityOnly'>{manifest} - {cv} - Universal Viewer</h1>
       <main id='mainContent'>
         <BackToItem location={location} />
@@ -53,4 +53,13 @@ UniversalViewer.propTypes = {
   requireLogin: PropTypes.bool.isRequired,
 }
 
+UniversalViewer.defaultProps = {
+  requireLogin: false,
+}
 export default UniversalViewer
+
+// Remove cv query parameter from cannonical link but still include the manifest
+const UVCanonicalPath = (qs) => {
+  delete qs.cv
+  return `/viewer/?${queryString.stringify(qs)}`
+}

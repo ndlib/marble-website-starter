@@ -35,7 +35,7 @@ const Home = ({ title, location }) => {
       location={location}
       preMain={
         <React.Fragment>
-          <Seo title={title} />
+          <Seo title={title} pathname='/' />
           <HomeBanner location={location} />
         </React.Fragment>
       }

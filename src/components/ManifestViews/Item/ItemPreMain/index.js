@@ -9,6 +9,7 @@ export const ItemPreMain = ({ iiifManifest, location }) => {
         title={iiifManifest.label}
         image={iiifManifest.thumbnail._id}
         description={iiifManifest.description}
+        pathname={location.pathname}
       />
       <ReturnToSearch location={location} />
     </React.Fragment>

@@ -18,6 +18,7 @@ const Browse = ({ data, location }) => {
             title={category.label}
             description={category.description}
             image={category.thumbnail ? category.thumbnail._id : null}
+            pathname={location.pathname}
           />
         </React.Fragment>
       }

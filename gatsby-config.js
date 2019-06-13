@@ -3,6 +3,7 @@ const exhibitions = require('./content/exhibitions')
 
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
 const gooleMapApiURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`
+const siteUrl = process.env.MARBLE_SITEURL || `https://marble.library.nd.edu`
 
 module.exports = {
   siteMetadata: {
@@ -11,7 +12,7 @@ module.exports = {
     description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
 
     // required for sitemap
-    siteUrl:  process.env.MARBLE_SITEURL || `https://marble.library.nd.edu`,
+    siteUrl:  siteUrl,
 
     // apis and embedded urls
     universalViewerBaseURL: process.env.MARBLE_UNIVERSAL_VIEWER_BASE_URL || `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
@@ -35,6 +36,26 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        env: {
+          development: {
+            policy: [
+              { userAgent: '*', disallow: ['/'] },
+            ],
+          },
+          production: {
+            policy: [
+              { userAgent: '*', disallow: ['/'] },
+              // { userAgent: '*', allow: '/' },
+            ],
+          },
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
