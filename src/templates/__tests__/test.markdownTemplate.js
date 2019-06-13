@@ -23,6 +23,7 @@ test('it renders the markdown template with a nav', () => {
   expect(wrapper.find('Layout div').prop('dangerouslySetInnerHTML').__html).toEqual('<p>HTML! </p>')
   expect(wrapper.find('Layout').prop('preMain')).toEqual(<SEO lang='en' title='Page Title' />)
   expect(wrapper.find('Layout').prop('nav')).toEqual(<Navigation id='menu' />)
+  expect(wrapper.find('KmlMap').prop('map')).toEqual(undefined)
 })
 
 test('it renders no nav when there is no menu', () => {
@@ -38,4 +39,22 @@ test('it renders no nav when there is no menu', () => {
   const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
 
   expect(wrapper.find('Layout').prop('nav')).toEqual(null)
+})
+
+test('it renders a map when there is a map', () => {
+  const data = {
+    markdownRemark: {
+      html: `<p>HTML! </p>`,
+      frontmatter: {
+        title: `Page Title`,
+        slug: `urlForEver`,
+        map: {
+          kmlFile: `file`,
+        }
+      },
+    },
+  }
+  const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
+
+  expect(wrapper.find('KmlMap').prop('map')).toEqual({ kmlFile: `file` })
 })

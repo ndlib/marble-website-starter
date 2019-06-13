@@ -1,7 +1,10 @@
 const menus = require('./content/menus')
 const exhibitions = require('./content/exhibitions')
 
+const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
+const gooleMapApiURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`
 const siteUrl = process.env.MARBLE_SITEURL || `https://marble.library.nd.edu`
+
 module.exports = {
   siteMetadata: {
     title: `Digital Collections`,
@@ -14,6 +17,7 @@ module.exports = {
     // apis and embedded urls
     universalViewerBaseURL: process.env.MARBLE_UNIVERSAL_VIEWER_BASE_URL || `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
     primoSearchBaseURL: process.env.MARBLE_PRIMO_BASE_URL || `https://a1fc3ld3d7.execute-api.us-east-1.amazonaws.com/dev/primo/v1/search`,
+    gooleMapApiURL: gooleMapApiURL,
     searchBase: {
       app: process.env.MARBLE_SEARCHBASE_APP || 'website',
       url: process.env.MARBLE_SEARCHBASE_URL || 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com',
