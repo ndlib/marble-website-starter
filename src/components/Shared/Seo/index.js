@@ -1,19 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-import CanonicalLink from './CanonicalLink'
-import MetaTagGroup from './MetaTagGroup'
-import { getOpenGraph, getTwitter } from './data'
-import defaultImage from 'assets/logos/defaultOpenGraphLogo.png'
+import SeoContent from './SeoContent'
 
-const SEO = ({
-  title,
-  description,
-  image,
-  lang,
-  pathname,
-}) => {
+const Seo = (props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -29,42 +19,16 @@ const SEO = ({
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const metaImage = image || defaultImage
-  const openGraph = getOpenGraph(title, metaDescription, metaImage)
-  const twitter = getTwitter(site.siteMetadata.author, title, metaDescription, metaImage)
-
   return (
-    <React.Fragment>
-      <Helmet
-        htmlAttributes={{ lang }}
-        title={title}
-        titleTemplate={title === site.siteMetadata.title ? site.siteMetadata.title : `%s | ${site.siteMetadata.title}`}
-        meta={[
-          {
-            name: `description`,
-            content: metaDescription,
-          },
-        ]}
-      />
-      <CanonicalLink base={site.siteMetadata.siteUrl} pathname={pathname} />
-      <MetaTagGroup tags={openGraph} />
-      <MetaTagGroup tags={twitter} />
-      {
-        /// REMOVE WHEN READY
-        <Helmet>
-          <meta name='robots' content='noindex' />
-        </Helmet>
-      }
-    </React.Fragment>
+    <SeoContent site={site} {...props} />
   )
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   lang: `en`,
 }
 
-SEO.propTypes = {
+Seo.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   image: PropTypes.string,
@@ -72,4 +36,4 @@ SEO.propTypes = {
   pathname: PropTypes.string,
 }
 
-export default SEO
+export default Seo
