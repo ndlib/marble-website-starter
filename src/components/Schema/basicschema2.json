@@ -1,6 +1,9 @@
 {
   "@context": "http://schema.org",
   "@type": "CreativeWork",
-  "title": "Jonathan's Wish",
-  "description": "I wish there were more hours in the day."
+  "headline": "Jonathan's Wish",
+  "description": "I wish there were more hours in the day.",
+  "dateCreated": "Jan 1, 2016",
+  "dateModified": "04/16/2018",
+  "license": "https://marble.library.nd.edu/"
 }

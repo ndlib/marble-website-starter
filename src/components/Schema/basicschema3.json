@@ -1,7 +1,10 @@
 {
   "@context": "http://schema.org",
   "@type": "CreativeWork",
-  "title": "The Answer to Everything",
+  "headline": "The Answer to Everything",
   "description": "The answer to life, the universe, and everything is... 42",
-  "alternateTitle": "The Answer to Everything... and More"
+  "alternateTitle": "The Answer to Everything... and More",
+  "dateCreated": "Jan 1, 2016",
+  "dateModified": "04/16/2018",
+  "license": "https://marble.library.nd.edu/"
 }
