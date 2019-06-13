@@ -1,5 +1,5 @@
 import React from 'react'
-import DateMicro from 'components/MicroComp/datemicro'
+import DateMicro from './'
 import { shallow } from 'enzyme'
 
 const meta = { id: 5, label: 'DateCreated', renderer: 'date', key: ['dateCreated'] }
