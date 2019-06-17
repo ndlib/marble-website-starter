@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
+import BrowsePager from './BrowsePager'
 import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 import SEO from 'components/Shared/Seo'
@@ -24,6 +25,7 @@ const Browse = ({ data, location }) => {
       }
       location={location}
     >
+      <BrowsePager parentCategory={data.browseCategory.parentCategory} />
       <p>{category.description}</p>
       <ResponsiveGridList measureBeforeMount>
         {
