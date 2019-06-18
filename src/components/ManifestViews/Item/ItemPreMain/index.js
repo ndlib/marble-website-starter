@@ -1,15 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SEO from 'components/Shared/Seo'
+import ManifestSEO from 'components/ManifestViews/ManifestSEO'
 import ReturnToSearch from 'components/Shared/ReturnToSearch'
 export const ItemPreMain = ({ iiifManifest, location }) => {
   return (
     <React.Fragment>
-      <SEO
-        title={iiifManifest.label}
-        image={iiifManifest.thumbnail._id}
-        description={iiifManifest.description}
-        pathname={location.pathname}
+      <ManifestSEO
+        iiifManifest={iiifManifest}
+        location={location}
       />
       <ReturnToSearch location={location} />
     </React.Fragment>

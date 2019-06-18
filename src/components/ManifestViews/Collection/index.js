@@ -5,7 +5,6 @@ import Layout from 'components/Layout'
 import DisplayViewToggle, { getActiveSettings } from 'components/Shared/DisplayViewToggle'
 import CollectionAside from './CollectionAside'
 import CollectionPreMain from './CollectionPreMain'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 import {
   COLLECTION_PAGE,
@@ -25,32 +24,25 @@ export const Collection = ({ iiifManifest, location, displayReducer }) => {
       <h2 className='accessibilityOnly'>Collection Items</h2>
       <DisplayViewToggle
         page={COLLECTION_PAGE}
+        activeSettings={activeSettings}
       >
-        <ResponsiveGridList
-          breakpoints={activeSettings.breakpoints}
-          cols={activeSettings.cols}
-          rowHeight={activeSettings.rowHeight}
-          cardWidth={activeSettings.cardWidth}
-          measureBeforeMount
-        >
-          {
-            iiifManifest.childrenIiifManifest.map(manifest => {
-              return (
-                <div key={manifest.id}>
-                  <Card
-                    target={`/${manifest.slug}`}
-                    label={manifest.label}
-                    iiifManifest={manifest}
-                    location={location}
-                    cardClass={cardClass}
-                  >
-                    <div>{manifest.description}</div>
-                  </Card>
-                </div>
-              )
-            })
-          }
-        </ResponsiveGridList>
+        {
+          iiifManifest.childrenIiifManifest.map(manifest => {
+            return (
+              <div key={manifest.id}>
+                <Card
+                  target={`/${manifest.slug}`}
+                  label={manifest.label}
+                  iiifManifest={manifest}
+                  location={location}
+                  cardClass={cardClass}
+                >
+                  <div>{manifest.description}</div>
+                </Card>
+              </div>
+            )
+          })
+        }
       </DisplayViewToggle>
     </Layout>
   )

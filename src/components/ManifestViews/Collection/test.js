@@ -3,7 +3,6 @@ import { shallow } from 'enzyme'
 import { Collection } from './'
 import Layout from 'components/Layout'
 import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 
 const location = { some: 'place' }
@@ -34,7 +33,6 @@ const wrapper = shallow(<Collection location={location} iiifManifest={manifest} 
 test('Collection', () => {
   expect(wrapper.find(Layout).props().title).toEqual('a title')
   expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
-  expect(wrapper.find(ResponsiveGridList).exists()).toBeTruthy()
   expect(wrapper.find(Card).at(1).props().target).toEqual('/2')
   expect(wrapper.find(Card).at(1).props().label).toEqual('title 2')
   expect(wrapper.find(Card).at(1).props().iiifManifest).toEqual({

@@ -23,6 +23,8 @@
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-remark": "^2.3.10",
     "gatsby-transformer-sharp": "^2.1.17",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.4.2",
     "react": "^16.8.5",

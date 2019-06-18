@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import { connect } from 'react-redux'
 import ToggleButton from './ToggleButton'
+import DisplayViewToggleGridList from './DisplayViewToggleGridList'
 import style from './style.module.css'
 import {
   DISPLAY_GRID,
@@ -13,7 +14,7 @@ import {
 import listIcon from 'assets/icons/svg/baseline-view_list-24px.svg'
 import gridIcon from 'assets/icons/svg/baseline-view_module-24px.svg'
 
-export const DisplayViewToggle = ({ page, children, displayReducer, dispatch }) => {
+export const DisplayViewToggle = ({ page, activeSettings, children, displayReducer, dispatch }) => {
   const activeStyle = displayReducer[page]
   const options = [DISPLAY_LIST, DISPLAY_GRID]
 
@@ -37,13 +38,16 @@ export const DisplayViewToggle = ({ page, children, displayReducer, dispatch }) 
         }
       </div>
       <br className='clearfix' />
-      {children}
+      <DisplayViewToggleGridList activeSettings={activeSettings}>
+        {children}
+      </DisplayViewToggleGridList>
     </div>
   )
 }
 
 DisplayViewToggle.propTypes = {
   page: PropTypes.string.isRequired,
+  activeSettings: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   dispatch: PropTypes.func.isRequired,
   displayReducer: PropTypes.object.isRequired,
