@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const path = require(`path`)
-const _ = require("lodash")
+const _ = require('lodash')
 
 // eslint-disable-next-line no-unused-vars
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
@@ -32,8 +32,8 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
     {
-    	allIiifManifest {
-      	nodes {
+      allIiifManifest {
+        nodes {
           slug
           _type
         }
@@ -58,7 +58,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    const tagTemplate = path.resolve("src/templates/browse.js")
+    const tagTemplate = path.resolve('src/templates/browse.js')
     const iiifCollectionTemplate = path.resolve(`./src/templates/iiif-collection.js`)
     const iiifItemTemplate = path.resolve(`./src/templates/iiif-manifest.js`)
 
@@ -81,6 +81,14 @@ exports.createPages = ({ graphql, actions }) => {
 
     browse.forEach(node => {
       if (!node.parentCategory) {
+        // createPage({
+        //   path: `/browse`,
+        //   component: tagTemplate,
+        //   context: {
+        //     slug: node.slug,
+        //   },
+        // })
+      } else if (node.slug === '/browse/website') {
         createPage({
           path: `/browse`,
           component: tagTemplate,
@@ -110,7 +118,6 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-
   })
 
   // non manifest tags
