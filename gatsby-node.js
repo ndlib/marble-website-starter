@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const path = require(`path`)
-const _ = require('lodash')
 
 // eslint-disable-next-line no-unused-vars
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
@@ -59,22 +58,20 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then(result => {
     const tagTemplate = path.resolve('src/templates/browse.js')
-    const iiifCollectionTemplate = path.resolve(`./src/templates/iiif-collection.js`)
-    const iiifItemTemplate = path.resolve(`./src/templates/iiif-manifest.js`)
-
+    const iiifTemplate = path.resolve('src/templates/iiifTemplate.js')
     const manifests = result.data.allIiifManifest.nodes
     const browse = result.data.allBrowseCategory.nodes
     const pages = result.data.allMarkdownRemark.edges
 
     manifests.forEach((node) => {
-      const template = (node._type.toLowerCase() === 'sc:collection') ? iiifCollectionTemplate : iiifItemTemplate
       createPage({
         path: node.slug,
-        component: template,
+        component: iiifTemplate,
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
           slug: node.slug,
+          layout: node._type.toLowerCase(),
         },
       })
     })

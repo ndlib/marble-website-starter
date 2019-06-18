@@ -2,26 +2,32 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Collection from 'components/ManifestViews/Collection'
+import Item from 'components/ManifestViews/Item'
+export const IIIFTemplate = ({ data, pageContext, location }) => {
+  let component = Item
+  if (pageContext.layout === 'sc:collection') {
+    component = Collection
+  }
+  const props = { iiifManifest: data.iiifManifest, location: location }
+  return React.createElement(component, props, null)
+}
 
-export const CollectionTemplate = ({ data, location }) => (
-  <Collection
-    iiifManifest={data.iiifManifest}
-    location={location}
-  />
-)
-
-CollectionTemplate.propTypes = {
+IIIFTemplate.propTypes = {
   data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object,
   location: PropTypes.object.isRequired,
 }
 
-export default CollectionTemplate
+export default IIIFTemplate
 export const query = graphql`
   query($slug: String!) {
     iiifManifest( slug: { eq: $slug }) {
       id
       label
       description
+      attribution
+      license
+      slug
       thumbnail {
         _id
         service {
@@ -44,7 +50,6 @@ export const query = graphql`
           }
         }
       }
-      slug
       metadata {
         label
         value
