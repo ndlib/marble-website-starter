@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import CollectionPreMain from './'
-import SEO from 'components/Shared/Seo'
+import ManifestSEO from 'components/ManifestViews/ManifestSEO'
 import ReturnToSearch from 'components/Shared/ReturnToSearch'
 import Image from 'components/Shared/Image'
 
@@ -17,9 +17,8 @@ const manifest = {
 const wrapper = shallow(<CollectionPreMain location={location} iiifManifest={manifest} />)
 
 test('CollectionPreMain', () => {
-  expect(wrapper.find(SEO).props().title).toEqual('a title')
-  expect(wrapper.find(SEO).props().image).toEqual('example.jpg')
-  expect(wrapper.find(SEO).props().description).toEqual('some text')
+  expect(wrapper.find(ManifestSEO).props().iiifManifest).toEqual(manifest)
+  expect(wrapper.find(ManifestSEO).props().location).toEqual({ my: 'location' })
   expect(wrapper.find(Image).props().alt).toEqual('a title')
   expect(wrapper.find(ReturnToSearch).props().location).toEqual({ my: 'location' })
 })

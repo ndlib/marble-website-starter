@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { ReactiveList } from '@appbaseio/reactivesearch'
 import Card from 'components/Shared/Card'
 import DisplayViewToggle, { getActiveSettings } from 'components/Shared/DisplayViewToggle'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Loading from 'components/Shared/Loading'
 import {
   SEARCH_PAGE,
@@ -33,33 +32,26 @@ const SearchResults = ({ location, components, displayReducer }) => {
           return (
             <DisplayViewToggle
               page={SEARCH_PAGE}
+              activeSettings={activeSettings}
             >
-              <ResponsiveGridList
-                breakpoints={activeSettings.breakpoints}
-                cols={activeSettings.cols}
-                rowHeight={activeSettings.rowHeight}
-                cardWidth={activeSettings.cardWidth}
-                measureBeforeMount
-              >
-                {
-                  data.map(res => (
-                    <div key={res['_id']}>
-                      <Card
-                        label={res.title}
-                        image={res.thumbnail}
-                        target={res.url}
-                        location={location}
-                        referal={{ type: 'search', query: location.search }}
-                        cardClass={cardClass}
-                      >
-                        <div className='description'>{res.description}</div>
-                        <div>{res.creator}</div>
-                      </Card>
-                    </div>
-                  )
-                  )
-                }
-              </ResponsiveGridList>
+              {
+                data.map(res => (
+                  <div key={res['_id']}>
+                    <Card
+                      label={res.title}
+                      image={res.thumbnail}
+                      target={res.url}
+                      location={location}
+                      referal={{ type: 'search', query: location.search }}
+                      cardClass={cardClass}
+                    >
+                      <div className='description'>{res.description}</div>
+                      <div>{res.creator}</div>
+                    </Card>
+                  </div>
+                )
+                )
+              }
             </DisplayViewToggle>
           )
         }

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SEO from 'components/Shared/Seo'
+import ManifestSEO from 'components/ManifestViews/ManifestSEO'
 import ReturnToSearch from 'components/Shared/ReturnToSearch'
 import Image from 'components/Shared/Image'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
@@ -9,11 +9,9 @@ import style from './style.module.css'
 export const CollectionPreMain = ({ iiifManifest, location }) => {
   return (
     <React.Fragment>
-      <SEO
-        title={iiifManifest.label}
-        image={iiifManifest.thumbnail._id}
-        description={iiifManifest.description}
-        pathname={location.pathname}
+      <ManifestSEO
+        iiifManifest={iiifManifest}
+        location={location}
       />
       <Image
         service={getImageServiceFromThumbnail(iiifManifest)}

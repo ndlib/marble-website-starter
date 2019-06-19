@@ -9,7 +9,6 @@ import {
   STATUS_SEARCH_ERROR,
 } from 'store/actions/searchActions'
 
-
 // The location prop is only available from Gatsby in components inside the 'page' and 'template' directories and must be passed down.
 export const Search = ({ searchReducer, location }) => {
   switch (searchReducer.status) {

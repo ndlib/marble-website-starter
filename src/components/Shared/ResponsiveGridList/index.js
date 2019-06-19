@@ -38,7 +38,11 @@ ResponsiveGridList.propTypes = {
   cardHeight: PropTypes.number,
   layouts: PropTypes.object,
   measureBeforeMount: PropTypes.bool,
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.array,
+    PropTypes.object,
+  ]).isRequired,
 }
 
 ResponsiveGridList.defaultProps = {

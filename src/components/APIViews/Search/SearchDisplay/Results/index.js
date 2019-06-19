@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
-import { getActiveSettings } from 'components/Shared/DisplayViewToggle'
+import DisplayViewToggle, { getActiveSettings } from 'components/Shared/DisplayViewToggle'
 import Result from './Result'
 import {
   SEARCH_PAGE,
@@ -16,12 +15,9 @@ export const Results = ({ searchReducer, location, displayReducer }) => {
 
   if (typy(searchReducer, 'results.docs').safeObject) {
     return (
-      <ResponsiveGridList
-        breakpoints={activeSettings.breakpoints}
-        cols={activeSettings.cols}
-        rowHeight={activeSettings.rowHeight}
-        cardWidth={activeSettings.cardWidth}
-        measureBeforeMount
+      <DisplayViewToggle
+        page={SEARCH_PAGE}
+        activeSettings={activeSettings}
       >
         {
           searchReducer.results.docs.map(doc => {
@@ -36,7 +32,7 @@ export const Results = ({ searchReducer, location, displayReducer }) => {
             )
           })
         }
-      </ResponsiveGridList>
+      </DisplayViewToggle>
     )
   }
 
