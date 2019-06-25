@@ -2,30 +2,36 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SearchBox from 'components/Shared/SearchBox'
 import style from './style.module.css'
-import bannerImage from 'assets/images/banner.jpg'
 
-const HomeBanner = ({ location }) => {
+const HomeBanner = ({ frontmatter, location }) => {
+  const { mainCallOut, mainCaption, mainBanner } = frontmatter
   return (
     <div className={style.banner}>
       <img
-        src={bannerImage}
+        src={mainBanner.publicURL}
         className={style.bannerImage}
         alt=''
       />
       <div className={style.imageCaption}>
         <div className={style.captionFrame}>
-          <h1>Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.</h1>
+          <h1 dangerouslySetInnerHTML={{ __html: mainCallOut }} />
           <SearchBox location={location} />
         </div>
       </div>
       <div className={style.imageCitation}>
-        <p className={style.citation}><sub>Photograph of St. Joseph's Novitiate exterior from across St. Joseph's Lake, 1894,<br /> Notre Dame Life Photograph Collection (GNDL) 45/0, University of Notre Dame Archives.</sub></p>
+        <p className={style.citation}>
+          <sub dangerouslySetInnerHTML={{ __html: mainCaption }} />
+        </p>
       </div>
     </div>
   )
 }
 
 HomeBanner.propTypes = {
+  frontmatter: PropTypes.shape({
+    mainCallOut: PropTypes.string.isRequired,
+    mainCaption: PropTypes.string,
+  }).isRequired,
   location: PropTypes.object.isRequired,
 }
 export default HomeBanner

@@ -71,17 +71,8 @@ module.exports = {
         path: `${__dirname}/content/markdown`,
       },
     },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        tableOfContents: {
-          pathToSlugField: 'frontmatter.slug',
-          heading: null,
-          maxDepth: 6,
-        },
-      },
-    },
     'gatsby-source-iiif',
+    `gatsby-remark-copy-linked-files`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -94,6 +85,17 @@ module.exports = {
         theme_color: `#0A233F`,
         display: `minimal-ui`,
         icon: `src/assets/logos/manifestLogo.png`,
+      },
+    },
+    // Markdown pages
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        tableOfContents: {
+          pathToSlugField: 'frontmatter.slug',
+          heading: null,
+          maxDepth: 6,
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
