@@ -6,8 +6,8 @@ import Card from 'components/Shared/Card'
 test('HomeCardGroup', () => {
   const label = 'A group'
   const items = [
-    { image: '/img.png', label: 'Label 1', target: '/target/1' },
-    { image: '/img.jpg', label: 'Label 2', target: '/target/2' },
+    { image: { publicURL: '/img.png' }, label: 'Label 1', target: '/target/1' },
+    { image: { publicURL: '/img.jpg' }, label: 'Label 2', target: '/target/2' },
   ]
   const wrapper = shallow(<HomeCardGroup label={label} items={items} />)
 

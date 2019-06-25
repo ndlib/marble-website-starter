@@ -16,7 +16,7 @@ const HomeCardGroup = ({ label, items }) => {
                 <Card
                   target={item.target}
                   label={item.label}
-                  image={item.image}
+                  image={item.image.publicURL}
                 />
               </div>
             )

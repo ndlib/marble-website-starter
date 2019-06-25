@@ -50,7 +50,7 @@ test('it renders a map when there is a map', () => {
         slug: `urlForEver`,
         map: {
           kmlFile: `file`,
-        }
+        },
       },
     },
   }
