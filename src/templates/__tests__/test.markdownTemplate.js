@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { MarkdownTemplate } from '../markdownTemplate'
 import Markdown from 'components/Markdown'
 
-test('it renders the manifest template', () => {
+test('MarkdownTemplate', () => {
   const data = {
     some: 'data',
   }
