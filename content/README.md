@@ -6,9 +6,19 @@ This is where the content of your marble-website-starter lives. The following fi
 
 * `menus.js` ***(required)*** - This includes all the menus that will be used in your site including the main navigation menu links, footer menu links, and submenus included on any markdown pages.
 
-* `exhibitions.js` ***(required)*** - This includes the content for the Exhibitions page.
 
-* `markdown/` *(optional)* - This folder contains the markdown content for static content pages on your site. No specific pages or naming contention exists, but examples include: 'About Us', 'Contact', 'FAQs', etc.
+* `markdown/`  ***(required)*** - This folder contains the markdown content for static content pages on your site. No specific pages or naming contention exists, but examples include: 'About Us', 'Contact', 'FAQs', etc.
+
+  * `markdown/[index/home/etc].md` ***(required)*** - A markdown file with `slug: index` in the frontmatter is required to generate a home page. The file may have any filename.
+
+  * `markdown/images/`  ***(recommended)*** - Images referenced in the frontmatter will be made available on the site:
+
+    ```
+    ---
+    myImage: './images/myImage.png'
+    ---
+    ```
+    Will be available in as: `data.markdownRemark.frontmatter.myImage.publicURL`
 
 **TODO**
 
