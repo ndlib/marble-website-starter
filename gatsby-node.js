@@ -105,9 +105,9 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     pages.forEach(({ node }) => {
-      const slug = node.frontmatter.slug === 'index' ? '/' : node.frontmatter.slug
+      const pagePath = node.frontmatter.slug === 'index' ? '/' : node.frontmatter.slug
       createPage({
-        path: slug,
+        path: pagePath,
         component: path.resolve(`./src/templates/markdownTemplate.js`),
         context: {
           // Data passed to context is available
