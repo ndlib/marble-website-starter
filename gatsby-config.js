@@ -1,5 +1,4 @@
 const menus = require('./content/menus')
-const exhibitions = require('./content/exhibitions')
 
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
 const gooleMapApiURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`
@@ -32,7 +31,6 @@ module.exports = {
 
     // menus
     menus: menus,
-    exhibitions: exhibitions,
   },
   plugins: [
     `gatsby-plugin-sitemap`,

@@ -1,10 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Home from './'
-import HomeCardGroups from './HomeCardGroups'
+import Markdown from './'
+import MarkdownCardGroups from './MarkdownCardGroups'
 import Layout from 'components/Layout'
 
-test('Home', () => {
+test('Markdown', () => {
   const props = {
     data: {
       site: {
@@ -25,8 +25,8 @@ test('Home', () => {
     location: {},
 
   }
-  const wrapper = shallow(<Home {...props} />)
+  const wrapper = shallow(<Markdown {...props} />)
   expect(wrapper.find(Layout).exists()).toBeTruthy()
-  expect(wrapper.find('.homeText').html()).toContain('Some html text we could put on the front page.')
-  expect(wrapper.find(HomeCardGroups).exists()).toBeTruthy()
+  expect(wrapper.find('.bodyText').html()).toContain('Some html text we could put on the front page.')
+  expect(wrapper.find(MarkdownCardGroups).exists()).toBeTruthy()
 })
