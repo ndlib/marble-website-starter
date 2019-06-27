@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import SeoContent from './'
+import { SeoContent } from './'
 import Helmet from 'react-helmet'
 import CanonicalLink from './CanonicalLink'
 import MetaTagGroup from './MetaTagGroup'
@@ -14,12 +14,13 @@ const site = {
     siteUrl: 'https://example.test',
   },
 }
-
+const defaultImage = './image.png'
 describe('SeoContent', () => {
   test('Title only prop', () => {
     const props = {
       title: 'Test Title',
       site: site,
+      defaultImage: defaultImage,
     }
     const wrapper = shallow(<SeoContent {...props} />)
 
@@ -43,6 +44,7 @@ describe('SeoContent', () => {
       lang: 'en-gb',
       pathname: '/some/page',
       site: site,
+      defaultImage: defaultImage,
     }
     const wrapper = shallow(<SeoContent {...props} />)
 

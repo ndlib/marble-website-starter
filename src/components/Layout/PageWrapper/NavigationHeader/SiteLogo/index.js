@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import Link from 'components/Shared/Link'
 import style from './style.module.css'
-const siteLogo = require('assets/logos/default.siteLogo.png')
 
 export const SiteLogo = ({ data }) => {
   const { title } = data.site.siteMetadata
+  const siteLogo = data.file.publicURL
   return (
     <Link to='/' className={style.siteTitle}>
       <img
@@ -38,6 +38,9 @@ export default () => {
           siteMetadata {
             title
           }
+        }
+        file(name: {eq: "siteLogo"}) {
+          publicURL
         }
       }
     `

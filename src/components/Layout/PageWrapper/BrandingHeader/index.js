@@ -3,33 +3,23 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import LinkedLogo from './LinkedLogo'
 import style from './style.module.css'
-let institutionLogo, departmentLogo
-try {
-  institutionLogo = require('assets/logos/institutionLogo.png')
-} catch (e) {
-  try {
-    institutionLogo = require('assets/logos/default.institutionLogo.png')
-  } catch (e) {
-    console.warn('Default Institution logo found.')
-  }
-  console.warn('Institution not logo found.')
-}
-
-try {
-  departmentLogo = require('assets/logos/departmentLogo.png')
-} catch (e) {
-  console.warn('Department logo not found.')
-}
 
 export const BrandingHeader = ({ data }) => {
+  const departmentLogo = getLogoURL(data.allFile.edges, 'departmentLogo')
+  const institutionLogo = getLogoURL(data.allFile.edges, 'institutionLogo')
+
   const {
     institutionURL,
     institutionLabel,
     departmentURL,
     departmentLabel,
+    headerColor,
   } = data.site.siteMetadata
   return (
-    <header className={style.wrapper}>
+    <header
+      className={style.wrapper}
+      style={{ backgroundColor: headerColor }}
+    >
       <div className={style.inner}>
         <LinkedLogo
           href={institutionURL}
@@ -70,6 +60,15 @@ export default () => {
             institutionLabel
             departmentURL
             departmentLabel
+            headerColor
+          }
+        }
+        allFile(filter: {name: {in: ["departmentLogo", "institutionLogo"]}}) {
+          edges {
+            node {
+              name
+              publicURL
+            }
           }
         }
       }
@@ -80,4 +79,10 @@ export default () => {
       )}
     />
   )
+}
+
+export const getLogoURL = (logos, name) => {
+  return logos.find(edge => {
+    return edge.node.name === name
+  }).node.publicURL
 }
