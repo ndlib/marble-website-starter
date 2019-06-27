@@ -4,7 +4,7 @@ import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
 import Card from 'components/Shared/Card'
 import style from './style.module.css'
 
-const HomeCardGroup = ({ label, items }) => {
+const MarkdownCardGroup = ({ label, items }) => {
   return (
     <div className={style.featured}>
       <h2>{label}</h2>
@@ -27,9 +27,9 @@ const HomeCardGroup = ({ label, items }) => {
   )
 }
 
-HomeCardGroup.propTypes = {
-  label: PropTypes.string.isRequired,
+MarkdownCardGroup.propTypes = {
+  label: PropTypes.string,
   items: PropTypes.array.isRequired,
 }
 
-export default HomeCardGroup
+export default MarkdownCardGroup

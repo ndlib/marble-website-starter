@@ -1,6 +1,6 @@
 ---
-title: Home Page
 slug: index
+showBanner: true
 mainCallOut: Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
 mainCaption: Photograph of St. Joseph's Novitiate exterior from across St. Joseph's Lake, 1894,<br /> Notre Dame Life Photograph Collection (GNDL) 45/0, University of Notre Dame Archives.
 mainBanner: "./images/banner.jpg"

@@ -1,24 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import CanonicalLink from './CanonicalLink'
 import MetaTagGroup from './MetaTagGroup'
 import { getOpenGraph, getTwitter } from './data'
-import defaultImage from 'assets/logos/defaultOpenGraphLogo.png'
 
-const SeoContent = ({
+export const SeoContent = ({
   title,
   description,
   image,
   lang,
   pathname,
   site,
+  defaultImage,
 }) => {
   const metaDescription = description || site.siteMetadata.description
   const metaImage = image || defaultImage
   const openGraph = getOpenGraph(title, metaDescription, metaImage)
   const twitter = getTwitter(site.siteMetadata.author, title, metaDescription, metaImage)
-
   return (
     <React.Fragment>
       <Helmet
@@ -63,6 +63,23 @@ SeoContent.propTypes = {
       siteUrl: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  defaultImage: PropTypes.string.isRequired,
 }
 
-export default SeoContent
+export default (props) => {
+  return (
+    <StaticQuery
+      query={graphql`
+      {
+        file(name: {eq: "openGraphLogo"}) {
+          publicURL
+        }
+      }
+    `
+      }
+      render={data => (
+        <SeoContent defaultImage={data.file.publicURL} {...props} />
+      )}
+    />
+  )
+}

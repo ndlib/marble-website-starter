@@ -11,7 +11,7 @@ const KmlMap = ({ map }) => {
       query {
         site {
           siteMetadata {
-            gooleMapApiURL
+            googleMapApiURL
           }
         }
       }
@@ -28,7 +28,7 @@ const KmlMap = ({ map }) => {
 
   return (
     <Map
-      googleMapURL={site.siteMetadata.gooleMapApiURL}
+      googleMapURL={site.siteMetadata.googleMapApiURL}
       loadingElement={<div style={{ height: `100%` }} />}
       containerElement={<div style={{ height: `400px` }} />}
       mapElement={<div style={{ height: `100%` }} />}

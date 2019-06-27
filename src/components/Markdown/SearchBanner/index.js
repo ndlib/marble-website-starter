@@ -3,8 +3,11 @@ import PropTypes from 'prop-types'
 import SearchBox from 'components/Shared/SearchBox'
 import style from './style.module.css'
 
-const HomeBanner = ({ frontmatter, location }) => {
-  const { mainCallOut, mainCaption, mainBanner } = frontmatter
+const SearchBanner = ({ frontmatter, location }) => {
+  const { showBanner, mainCallOut, mainCaption, mainBanner } = frontmatter
+  if (!showBanner) {
+    return null
+  }
   return (
     <div className={style.banner}>
       <img
@@ -27,11 +30,20 @@ const HomeBanner = ({ frontmatter, location }) => {
   )
 }
 
-HomeBanner.propTypes = {
+SearchBanner.propTypes = {
   frontmatter: PropTypes.shape({
-    mainCallOut: PropTypes.string.isRequired,
+    showBanner: PropTypes.bool,
+    mainCallOut: PropTypes.string,
     mainCaption: PropTypes.string,
-  }).isRequired,
+    mainBanner: PropTypes.shape({
+      publicURL: PropTypes.string,
+    }),
+  }),
   location: PropTypes.object.isRequired,
 }
-export default HomeBanner
+SearchBanner.defaultProps = {
+  frontmatter: {
+    showBanner: false,
+  },
+}
+export default SearchBanner

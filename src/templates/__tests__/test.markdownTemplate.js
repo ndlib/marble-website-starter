@@ -1,60 +1,17 @@
 import React from 'react'
-import { StaticQuery } from 'gatsby' // mocked
 import { shallow } from 'enzyme'
 import { MarkdownTemplate } from '../markdownTemplate'
-import SEO from 'components/Shared/Seo'
-import Navigation from 'components/Shared/Navigation'
+import Markdown from 'components/Markdown'
 
-test('it renders the markdown template with a nav', () => {
+test('MarkdownTemplate', () => {
   const data = {
-    markdownRemark: {
-      html: `<p>HTML! </p>`,
-      frontmatter: {
-        title: `Page Title`,
-        slug: `urlForEver`,
-        menu: `menu`,
-      },
-    },
+    some: 'data',
   }
-
-  const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
-
-  expect(wrapper.find('Layout').prop('title')).toEqual('Page Title')
-  expect(wrapper.find('Layout div').prop('dangerouslySetInnerHTML').__html).toEqual('<p>HTML! </p>')
-  expect(wrapper.find('Layout').prop('preMain')).toEqual(<SEO lang='en' title='Page Title' />)
-  expect(wrapper.find('Layout').prop('nav')).toEqual(<Navigation id='menu' />)
-  expect(wrapper.find('KmlMap').prop('map')).toEqual(undefined)
-})
-
-test('it renders no nav when there is no menu', () => {
-  const data = {
-    markdownRemark: {
-      html: `<p>HTML! </p>`,
-      frontmatter: {
-        title: `Page Title`,
-        slug: `urlForEver`,
-      },
-    },
+  const location = {
+    some: 'location',
   }
-  const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
-
-  expect(wrapper.find('Layout').prop('nav')).toEqual(null)
-})
-
-test('it renders a map when there is a map', () => {
-  const data = {
-    markdownRemark: {
-      html: `<p>HTML! </p>`,
-      frontmatter: {
-        title: `Page Title`,
-        slug: `urlForEver`,
-        map: {
-          kmlFile: `file`,
-        },
-      },
-    },
-  }
-  const wrapper = shallow(<MarkdownTemplate data={data} location={{}} />)
-
-  expect(wrapper.find('KmlMap').prop('map')).toEqual({ kmlFile: `file` })
+  const wrapper = shallow(<MarkdownTemplate data={data} location={location} />)
+  expect(wrapper.find(Markdown).exists()).toBeTruthy()
+  expect(wrapper.find(Markdown).prop('data')).toEqual({ some: 'data' })
+  expect(wrapper.find(Markdown).prop('location')).toEqual({ some: 'location' })
 })

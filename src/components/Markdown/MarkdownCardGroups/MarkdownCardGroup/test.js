@@ -1,15 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import HomeCardGroup from './'
+import MarkdownCardGroup from './'
 import Card from 'components/Shared/Card'
 
-test('HomeCardGroup', () => {
+test('MarkdownCardGroup', () => {
   const label = 'A group'
   const items = [
     { image: { publicURL: '/img.png' }, label: 'Label 1', target: '/target/1' },
     { image: { publicURL: '/img.jpg' }, label: 'Label 2', target: '/target/2' },
   ]
-  const wrapper = shallow(<HomeCardGroup label={label} items={items} />)
+  const wrapper = shallow(<MarkdownCardGroup label={label} items={items} />)
 
   expect(wrapper.find('.featured').exists()).toBeTruthy()
   expect(wrapper.find('h2').text()).toEqual('A group')

@@ -105,27 +105,16 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     pages.forEach(({ node }) => {
-      if (node.frontmatter.slug === 'index') {
-        createPage({
-          path: '/',
-          component: path.resolve(`./src/templates/index.js`),
-          context: {
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
-            slug: node.frontmatter.slug,
-          },
-        })
-      } else {
-        createPage({
-          path: node.frontmatter.slug,
-          component: path.resolve(`./src/templates/markdownTemplate.js`),
-          context: {
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
-            slug: node.frontmatter.slug,
-          },
-        })
-      }
+      const pagePath = node.frontmatter.slug === 'index' ? '/' : node.frontmatter.slug
+      createPage({
+        path: pagePath,
+        component: path.resolve(`./src/templates/markdownTemplate.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.frontmatter.slug,
+        },
+      })
     })
   })
 
