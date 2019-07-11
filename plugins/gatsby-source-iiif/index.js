@@ -3,7 +3,7 @@ const md5 = require('md5')
 const fs = require('fs')
 const fetchData = require('./fetch')
 const path = require(`path`)
-const request = require('request');
+const request = require('request')
 
 const loadManifestsFile = () => {
   const contents = fs.readFileSync(path.join(__dirname, '/../../content/manifests.json'))
@@ -18,13 +18,13 @@ parent_id: '${manifest.parent_id}'
 iiifJson___NODE___fkid: '${manifest.fkid}'
 ---
 `
-  return mdFile;
+  return mdFile
 }
 
-var download = async (uri, filename, callback) => {
-  request.head(uri, function(err, res, body){
+const download = async (uri, filename, callback) => {
+  request.head(uri, function(err, res) {
     if (err) {
-      console.log("ERR:")
+      console.log('ERR:')
       console.log(err)
     }
     // console.log('content-type:', res.headers['content-type']);
@@ -40,11 +40,11 @@ new Promise(async (resolve, reject) => {
 
   for (const key in manifestData) {
     let manifest = manifestData[key].manifest
-    manifest['@id'] = manifest['@id'] + "2"
+    manifest['@id'] = manifest['@id'] + '2'
     manifest.id = manifest['@id']
     manifest.fkid = manifest['@id']
-    manifest.collection___NODE = manifestData[key].parent_id ? manifestData[key].parent_id + "2" : undefined
-    manifest.items___NODE = (manifest.collections || manifest.manifests || []).map(child => child['@id'] + "2")
+    manifest.collection___NODE = manifestData[key].parent_id ? manifestData[key].parent_id + '2' : undefined
+    manifest.items___NODE = (manifest.collections || manifest.manifests || []).map(child => child['@id'] + '2')
 
     const data = JSON.stringify(manifest)
     const filename = key.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
@@ -57,14 +57,14 @@ new Promise(async (resolve, reject) => {
       await fs.writeFileSync(path.join(__dirname, '/../../content/iiif/' + filename + '.json'), data)
       await fs.writeFileSync(path.join(__dirname, '/../../content/markdown/iiif/' + filename + '.md'), getMDFile(manifest, filename))
       for (let i = 0; i < manifestData[key].assets.length; i++) {
-        let url = manifestData[key].assets[i]
-        let filename = path.basename(url)
-        let filepath = path.join(__dirname, '/../../content/images/iiif/', filename)
+        const url = manifestData[key].assets[i]
+        const filename = path.basename(url)
+        const filepath = path.join(__dirname, '/../../content/images/iiif/', filename)
         download(manifestData[key].assets[i], filepath, () => {})
       }
-    } catch(e) {
+    } catch (e) {
       console.log(e)
-      reject()
+      reject('Failed to dowload manifest and process it')
     }
 
     //
