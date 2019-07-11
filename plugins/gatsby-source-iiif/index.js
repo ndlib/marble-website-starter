@@ -1,5 +1,3 @@
-const fetch = require('node-fetch')
-const md5 = require('md5')
 const fs = require('fs')
 const fetchData = require('./fetch')
 const path = require(`path`)
