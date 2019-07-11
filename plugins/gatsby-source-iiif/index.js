@@ -28,7 +28,7 @@ const download = async (uri, filename, callback) => {
     // console.log('content-type:', res.headers['content-type']);
     // console.log('content-length:', res.headers['content-length']);
 
-    return request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+    return request(uri).pipe(fs.createWriteStream(filename)).on('close', callback)
   })
 }
 
@@ -62,7 +62,7 @@ new Promise(async (resolve, reject) => {
       }
     } catch (e) {
       console.log(e)
-      reject(e)
+      reject('Error')
     }
 
     //
