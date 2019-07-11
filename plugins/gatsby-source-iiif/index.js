@@ -36,7 +36,6 @@ const download = async (uri, filename, callback) => {
 new Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
-  total = 0
   for (const key in manifestData) {
     let manifest = manifestData[key].manifest
     manifest['@id'] = manifest['@id'] + '2'
@@ -55,17 +54,17 @@ new Promise(async (resolve, reject) => {
 
       await fs.writeFileSync(path.join(__dirname, '/../../content/iiif/' + filename + '.json'), data)
       await fs.writeFileSync(path.join(__dirname, '/../../content/markdown/iiif/' + filename + '.md'), getMDFile(manifest, filename))
-      
+
       for (let i = 0; i < manifestData[key].assets.length; i++) {
         const url = manifestData[key].assets[i]
         const filename = path.basename(url)
         const filepath = path.join(__dirname, '/../../content/images/iiif/', filename)
-        //await download(manifestData[key].assets[i], filepath, (data) => { })
+        await download(manifestData[key].assets[i], filepath, (data) => { })
       }
     } catch (e) {
       console.log("catchy:")
       console.log(e)
-      //reject('Error')
+      reject('Error')
     }
   }
   resolve()

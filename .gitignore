@@ -62,8 +62,4 @@ typings/
 
 /public
 
-/content/iiif*
-/content/markdown/iiif/*
-/content/images/iiif/*
-
 .cache
