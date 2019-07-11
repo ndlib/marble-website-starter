@@ -46,6 +46,39 @@ export const query = graphql`
         mainBanner {
           publicURL
         }
+        iiifJson {
+          id
+          label
+          description
+          attribution
+          license
+          thumbnail {
+            _id
+            service {
+              _id
+            }
+          }
+          sequences {
+            _id
+            canvases {
+              _id
+              _type
+              label
+              height
+              width
+              images {
+                _id
+                _type
+                motivation
+                on
+              }
+            }
+          }
+          metadata {
+            label
+            value
+          }
+        }
         cards {
           groups {
             label
