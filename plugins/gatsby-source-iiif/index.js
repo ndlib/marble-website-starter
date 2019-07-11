@@ -62,7 +62,7 @@ new Promise(async (resolve, reject) => {
       }
     } catch (e) {
       console.log(e)
-      reject('Failed to dowload manifest and process it')
+      reject(e)
     }
 
     //
