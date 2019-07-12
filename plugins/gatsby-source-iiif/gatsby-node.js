@@ -9,7 +9,7 @@ const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 exports.sourceNodes = async (
   { actions, getNode, getNodes, createNodeId, hasNodeChanged, store, cache, createContentDigest }
 ) => {
-  const { createNode, touchNode } = actions
+  const { createNode, touchNode, createTypes } = actions
   touchNode
   // const urlPromises = []
 

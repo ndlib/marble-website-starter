@@ -20,7 +20,8 @@ iiifJson___NODE___fkid: '${manifest.fkid}'
 }
 
 const download = async (uri, filename, callback) => {
-  request.head(uri, async (err, res) => {
+  const getOptions = { uri, agentOptions: { family: 4 } }
+  request.head(getOptions, async (err, res) => {
     if (err) {
       console.log('ERR:')
       console.log(err)
@@ -28,16 +29,15 @@ const download = async (uri, filename, callback) => {
     // console.log('content-type:', res.headers['content-type']);
     // console.log('content-length:', res.headers['content-length']);
 
-    await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback)
-    return
+    await request(getOptions).pipe(fs.createWriteStream(filename)).on('close', callback)
   })
 }
 
-new Promise(async (resolve, reject) => {
+Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
   for (const key in manifestData) {
-    let manifest = manifestData[key].manifest
+    const manifest = manifestData[key].manifest
     manifest['@id'] = manifest['@id'] + '2'
     manifest.id = manifest['@id']
     manifest.fkid = manifest['@id']
@@ -59,10 +59,10 @@ new Promise(async (resolve, reject) => {
         const url = manifestData[key].assets[i]
         const filename = path.basename(url)
         const filepath = path.join(__dirname, '/../../content/images/iiif/', filename)
-        await download(manifestData[key].assets[i], filepath, (data) => { })
+        // await download(manifestData[key].assets[i], filepath, (data) => { })
       }
     } catch (e) {
-      console.log("catchy:")
+      console.log('catchy:')
       console.log(e)
       reject('Error')
     }
