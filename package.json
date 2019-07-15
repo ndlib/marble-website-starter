@@ -6,6 +6,8 @@
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "dependencies": {
     "@appbaseio/reactivesearch": "^3.0.0-rc.12",
+    "@types/googlemaps": "^3.0.0",
+    "@types/markerclustererplus": "^2.1.29",
     "axios": "^0.18.0",
     "fetch": "^1.1.0",
     "gatsby": "^2.5.2",
@@ -42,13 +44,15 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "typography": "^0.16.19",
-    "typy": "^3.0.2"
+    "typy": "^3.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "babel-jest": "^24.7.1",
     "babel-preset-gatsby": "^0.1.11",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
+    "eslint": "^5.0.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",

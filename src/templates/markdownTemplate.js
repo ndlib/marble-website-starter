@@ -2,8 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Markdown from 'components/Markdown'
+import MarkdownNew from 'components/MarkdownNew'
+import typy from 'typy'
 
 export const MarkdownTemplate = ({ data, location }) => {
+  if (typy(data, 'markdownRemark.frontmatter.components').safeObject) {
+    return (
+      <MarkdownNew
+        data={data}
+        location={location}
+      />
+    )
+  }
   return (
     <Markdown
       data={data}
@@ -32,6 +42,46 @@ export const query = graphql`
         title
         slug
         menu
+        components {
+          component
+          props {
+            label
+            value
+            fileValue {
+              publicURL
+            }
+          }
+          components {
+            component
+            props {
+              label
+              value
+              fileValue {
+                publicURL
+              }
+            }
+            components {
+              component
+              props {
+                label
+                value
+                fileValue {
+                  publicURL
+                }
+              }
+              components {
+                component
+                props {
+                  label
+                  value
+                  fileValue {
+                    publicURL
+                  }
+                }
+              }
+            }
+          }
+        }
         map {
           kmlFile
           defaultZoom
