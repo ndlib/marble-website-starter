@@ -6,12 +6,14 @@ import Navigation from 'components/Shared/Navigation'
 import KmlMap from 'components/Map/Kml'
 import SearchBanner from './SearchBanner'
 import MarkdownCardGroups from './MarkdownCardGroups'
+import ImageSection from 'components/ManifestViews/Item/ItemAside/ImageSection'
 import style from './style.module.css'
 
 const Markdown = ({ data, location }) => {
   const { frontmatter, html } = data.markdownRemark
   const seoTitle = frontmatter.title || data.site.siteMetadata.title
   const navigation = (frontmatter.menu ? <Navigation id={frontmatter.menu} /> : null)
+  const iiifManifest = frontmatter.iiifJson
   return (
     <Layout
       title={frontmatter.title}
@@ -31,6 +33,7 @@ const Markdown = ({ data, location }) => {
         className={style.bodyText}
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <ImageSection iiifManifest={iiifManifest} location={location} />
       <MarkdownCardGroups frontmatter={frontmatter} />
       <KmlMap map={frontmatter.map} />
     </Layout>

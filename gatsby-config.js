@@ -42,6 +42,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `iiif`,
+        path: `${__dirname}/content/iiif`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

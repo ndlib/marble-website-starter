@@ -8,6 +8,10 @@ import getImageService from 'utils/getImageService'
 import buildReferalState from 'utils/buildReferalState'
 import style from './style.module.css'
 export const ImageSection = ({ location, iiifManifest }) => {
+  if (!iiifManifest || !iiifManifest.id) {
+    return null
+  }
+
   return (
     <section>
       <h2 className='accessibilityOnly'>Images</h2>
@@ -33,7 +37,7 @@ export const ImageSection = ({ location, iiifManifest }) => {
 ImageSection.propTypes = {
   iiifManifest: PropTypes.shape({
     id: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   location: PropTypes.object.isRequired,
 }
 export default ImageSection
