@@ -10,8 +10,73 @@ exports.sourceNodes = async (
   { actions, getNode, getNodes, createNodeId, hasNodeChanged, store, cache, createContentDigest }
 ) => {
   const { createNode, touchNode, createTypes } = actions
-  touchNode
   // const urlPromises = []
+  const typeDefs = `
+    type iiifTranslatedString {
+      en: [ String ]
+      none: [ String ]
+    }
+
+    type iiifLabeledString {
+      label: iiifTranslatedString
+      value: iiifTranslatedString
+    }
+
+    type iiifServiceJson {
+      id: String!
+      _context: String
+      profile: String
+    }
+
+    type iiifThumbnailJson {
+      id: String!
+      service: iiifServiceJson
+    }
+
+    type iiifLogoJson {
+      id: String
+      type: String
+      height: Int
+      weight: Int
+      format: String
+    }
+
+    type iiifHomepage {
+      id: String
+      type: String
+      label: iiifTranslatedString
+      format: String
+    }
+
+    type iiifSeeAlso {
+      id: String
+      type: String
+      format: String
+      profile: String
+    }
+
+    type iiifProviderJson {
+      id: String
+      type: String
+      label: iiifTranslatedString
+      homepage: [ iiifHomepage ]
+      logo: [ iiifLogoJson ]
+      seeAlso: [ iiifSeeAlso ]
+    }
+
+    type iiifManifestJson implements Node {
+      # However Node fields are optional and you don't have to add them
+      id: ID!
+      _context: String
+      label: iiifTranslatedString!
+      summary: iiifTranslatedString
+      requiredStatement: iiifLabeledString
+      provider: iiifProviderJson
+      rights: String
+      metadata: [iiifLabeledString]
+      thumbnail: iiifThumbnailJson
+    }`
+  createTypes(typeDefs)
 
   const buildNode = (data) => {
     const node = data.manifest
