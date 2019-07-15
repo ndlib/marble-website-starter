@@ -1,7 +1,7 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
   "@type": "sc:Manifest",
-  "@id": "https://presentation-iiif.library.nd.edu/test-manifest/manifest2",
+  "@id": "https://presentation-iiif.library.nd.edu/test-manifest/manifest",
   "label": "Letter to Anna Le Rossignol",
   "metadata": [
     {
@@ -191,8 +191,8 @@
       ]
     }
   ],
-  "id": "https://presentation-iiif.library.nd.edu/test-manifest/manifest2",
-  "fkid": "https://presentation-iiif.library.nd.edu/test-manifest/manifest2",
-  "collection___NODE": "",
+  "id": "https://presentation-iiif.library.nd.edu/test-manifest/manifest",
+  "fkid": "https://presentation-iiif.library.nd.edu/test-manifest/manifest",
+  "collection___NODE": "https://presentation-iiif.library.nd.edu/collection/test-collection",
   "items___NODE": []
 }

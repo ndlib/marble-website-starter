@@ -2,4 +2,4 @@
 *
 # Except this file
 !.gitignore
-!test-manifest.md
+!test-*.md
