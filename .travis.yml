@@ -12,7 +12,7 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   - npm test -- --coverage
-  - pushd /plugins/gatsby-source-iiif
+  - pushd plugins/gatsby-source-iiif
   - yarn install
   - node index.js
   - popd
