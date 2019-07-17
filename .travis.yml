@@ -3,7 +3,7 @@ env:
     - CC_TEST_REPORTER_ID=f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
 language: node_js
 node_js:
-  - "8"
+  - "10"
 
 cache: yarn
 before_script:
