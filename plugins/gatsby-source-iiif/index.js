@@ -33,7 +33,8 @@ const download = async (uri, filename, callback) => {
   })
 }
 
-Promise(async (resolve, reject) => {
+// eslint-disable-next-line
+new Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
   for (const key in manifestData) {

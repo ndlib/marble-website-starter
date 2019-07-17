@@ -21,7 +21,7 @@ const Image = ({
   className, // class on the outer picture element
 }) => {
   // derive image from image service OR src OR use the default noImage
-  const imageSrc = serviceURL(service, region, size) || src || noImage
+  const imageSrc = src || serviceURL(service, region, size) || noImage
   // build a srcset from the service
   const srcSet = sourceSet(service, region, size)
 
