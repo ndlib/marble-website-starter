@@ -12,6 +12,10 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   - npm test -- --coverage
+  - pushd /plugins/gatsby-source-iiif
+  - yarn install
+  - node index.js
+  - popd
   - npm run build
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
