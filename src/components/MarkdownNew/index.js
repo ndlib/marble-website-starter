@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import Layout from 'components/Layout'
 import Seo from 'components/Shared/Seo'
+import MarkdownSeo from './MarkdownSeo'
 import Navigation from 'components/Shared/Navigation'
 import ComponentRenderer from './ComponentRenderer'
-import style from './style.module.css'
 
 const MarkdownPageRenderer = ({ data, location }) => {
-  const layoutComponents = typy(data, 'markdownRemark.frontmatter.components').safeObject
-  const { frontmatter, html } = data.markdownRemark
-  const seoTitle = frontmatter.title || data.site.siteMetadata.title
+  const { frontmatter } = data.markdownRemark
+  const layoutComponents = typy(frontmatter, 'components').safeObject
+
   const navigation = (frontmatter.menu ? <Navigation id={frontmatter.menu} /> : null)
 
   return (
@@ -20,21 +20,16 @@ const MarkdownPageRenderer = ({ data, location }) => {
       location={location}
       preMain={
         <React.Fragment>
-          <Seo
-            title={seoTitle}
-            pathname={location.pathname}
+          <MarkdownSeo
+            data={data}
+            location={location}
           />
         </React.Fragment>
       }
     >
-      <div
-        className={style.bodyText}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
       {
-        layoutComponents.map((c, i) => {
-          const comps = expandChildren(c, i)
-          return comps
+        layoutComponents.map((comp, index) => {
+          return expandChildren(comp, data, location, index)
         })
       }
     </Layout>
@@ -47,20 +42,20 @@ MarkdownPageRenderer.propTypes = {
 }
 export default MarkdownPageRenderer
 
-export const expandChildren = (row, key = 0) => {
+export const expandChildren = (row, data, location, key = 0) => {
   const children = row.components
 
   if (children) {
     const childComponents = []
     children.forEach((child, i) => {
-      childComponents.push(expandChildren(child, i))
+      childComponents.push(expandChildren(child, data, location, i))
     })
     return (
       <ComponentRenderer
         component={row.component}
         children={childComponents}
         key={`${row.component}-${key}`}
-        {...transformProps(row.props)}
+        {...transformProps(data, location, row.props)}
       />
     )
   }
@@ -69,17 +64,24 @@ export const expandChildren = (row, key = 0) => {
     <ComponentRenderer
       component={row.component}
       key={`${row.component}-${key}`}
-      {...transformProps(row.props)}
+      {...transformProps(data, location, row.props)}
     />
   )
 }
 
-export const transformProps = (propObjectArr) => {
-  if (!propObjectArr) {
-    return null
+export const getParentProps = (data, location) => {
+  return {
+    html: typy(data, 'markdownRemark.html').safeString,
+    menu: typy(data, 'markdownRemark.frontmatter.menu').safeString,
+    title: typy(data, 'markdownRemark.frontmatter.title').safeString,
+    iiifManifest: typy(data, 'markdownRemark.frontmatter.iiifJson').safeObject,
+    location: location,
   }
-  const props = {}
-  propObjectArr.forEach(propObject => {
+}
+
+export const transformProps = (data, location, propObjectArr) => {
+  const props = getParentProps(data, location)
+  typy(propObjectArr).safeArray.forEach(propObject => {
     props[propObject.label] = propObject.value || propObject.fileValue.publicURL
   })
   return props

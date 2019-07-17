@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import style from './style.module.css'
 const MarkdownHtmlContent = ({ html }) => {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: html }}
+      className={style.htmlContent}
     />
   )
 }

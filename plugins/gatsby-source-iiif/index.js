@@ -10,10 +10,10 @@ const loadManifestsFile = () => {
 
 const getMDFile = (manifest, slug) => {
   const mdFile = `---
-title: '${manifest.label}'
-slug: '${slug}'
-parent_id: '${manifest.parent_id}'
-iiifJson___NODE___fkid: '${manifest.fkid}'
+title: "${manifest.label}"
+slug: "${slug}"
+parent_id: "${manifest.parent_id}"
+iiifJson___NODE___fkid: "${manifest.fkid}"
 ---
 `
   return mdFile
@@ -33,7 +33,8 @@ const download = async (uri, filename, callback) => {
   })
 }
 
-Promise(async (resolve, reject) => {
+// eslint-disable-next-line
+new Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
   for (const key in manifestData) {

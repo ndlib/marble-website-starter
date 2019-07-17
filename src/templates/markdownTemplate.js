@@ -128,6 +128,24 @@ export const query = graphql`
             label
             value
           }
+          manifests {
+          _id
+          label
+          thumbnail {
+            service {
+              _id
+              _context
+              profile
+            }
+            _id
+          }
+          description
+          metadata {
+            label
+            value
+          }
+          license
+        }
         }
         cards {
           groups {
