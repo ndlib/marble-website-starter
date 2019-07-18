@@ -15,6 +15,7 @@ import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ChildManifests from './ChildManifests'
 import ImageSection from 'components/ManifestViews/Item/ItemAside/ImageSection'
 import ManifestMetaData from './ManifestMetaData'
+import SearchBanner from './SearchBanner'
 
 const ComponentRenderer = (props) => {
   const validComponents = {
@@ -30,6 +31,7 @@ const ComponentRenderer = (props) => {
     MarkdownHtmlContent: MarkdownHtmlContent,
     ManifestMetaData: ManifestMetaData,
     MultiColumn: MultiColumn,
+    SearchBanner: SearchBanner,
   }
   // console.log(props)
   const renderComponent = validComponents[props.component] || TestComponent

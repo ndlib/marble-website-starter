@@ -1,19 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import typy from 'typy'
 import Layout from 'components/Layout'
-import Seo from 'components/Shared/Seo'
+import MarkdownSeo from './MarkdownSeo'
 import Navigation from 'components/Shared/Navigation'
-import KmlMap from 'components/Map/Kml'
-import SearchBanner from './SearchBanner'
-import MarkdownCardGroups from './MarkdownCardGroups'
-import ImageSection from 'components/ManifestViews/Item/ItemAside/ImageSection'
-import style from './style.module.css'
+import ComponentRenderer from './ComponentRenderer'
 
-const Markdown = ({ data, location }) => {
-  const { frontmatter, html } = data.markdownRemark
-  const seoTitle = frontmatter.title || data.site.siteMetadata.title
+const MarkdownPageRenderer = ({ data, location }) => {
+  const { frontmatter, fields } = data.markdownRemark
+  const layoutComponents = typy(fields, 'components').safeObject
   const navigation = (frontmatter.menu ? <Navigation id={frontmatter.menu} /> : null)
-  const iiifManifest = frontmatter.iiifJson
+
   return (
     <Layout
       title={frontmatter.title}
@@ -21,27 +18,69 @@ const Markdown = ({ data, location }) => {
       location={location}
       preMain={
         <React.Fragment>
-          <Seo
-            title={seoTitle}
-            pathname={location.pathname}
+          <MarkdownSeo
+            data={data}
+            location={location}
           />
-          <SearchBanner frontmatter={frontmatter} location={location} />
         </React.Fragment>
       }
     >
-      <div
-        className={style.bodyText}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-      <ImageSection iiifManifest={iiifManifest} location={location} />
-      <MarkdownCardGroups frontmatter={frontmatter} />
-      <KmlMap map={frontmatter.map} />
+      {
+        layoutComponents.map((comp, index) => {
+          return expandChildren(comp, data, location, index)
+        })
+      }
     </Layout>
   )
 }
 
-Markdown.propTypes = {
+MarkdownPageRenderer.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 }
-export default Markdown
+export default MarkdownPageRenderer
+
+export const expandChildren = (row, data, location, key = 0) => {
+  const children = row.components
+
+  if (children) {
+    const childComponents = []
+    children.forEach((child, i) => {
+      childComponents.push(expandChildren(child, data, location, i))
+    })
+    return (
+      <ComponentRenderer
+        component={row.component}
+        children={childComponents}
+        key={`${row.component}-${key}`}
+        {...transformProps(data, location, row.props)}
+      />
+    )
+  }
+
+  return (
+    <ComponentRenderer
+      component={row.component}
+      key={`${row.component}-${key}`}
+      {...transformProps(data, location, row.props)}
+    />
+  )
+}
+
+export const getParentProps = (data, location) => {
+  return {
+    html: typy(data, 'markdownRemark.html').safeString,
+    menu: typy(data, 'markdownRemark.frontmatter.menu').safeString,
+    title: typy(data, 'markdownRemark.frontmatter.title').safeString,
+    iiifManifest: typy(data, 'markdownRemark.frontmatter.iiifJson').safeObject,
+    location: location,
+  }
+}
+
+export const transformProps = (data, location, propObjectArr) => {
+  const props = getParentProps(data, location)
+  typy(propObjectArr).safeArray.forEach(propObject => {
+    props[propObject.label] = propObject.value || propObject.fileValue.publicURL
+  })
+  return props
+}

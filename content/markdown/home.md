@@ -1,31 +1,71 @@
 ---
 slug: index
-showBanner: true
-mainCallOut: Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
-mainCaption: Photograph of St. Joseph's Novitiate exterior from across St. Joseph's Lake, 1894,<br /> Notre Dame Life Photograph Collection (GNDL) 45/0, University of Notre Dame Archives.
-mainBanner: "./images/banner.jpg"
-cards:
-  groups:
-    - label: Featured
-      items:
-        - image: "./images/01.jpg"
-          label: "In a Civilized Nation: Newspapers, Magazines and the Print Revolution in the 19th-Century Peru"
-          target: "https://collections.library.nd.edu/3df879828f/in-a-civilized-nation"
-        - image: "./images/02.jpg"
-          label: "Highlights"
-          target: "/browse/notre-dame"
-        - image: "./images/03.jpg"
-          label: "Recently Added"
-          target: "/browse"
-    - label: Browse By
-      items:
-        - image: "./images/06.jpg"
-          label: "Time"
-          target: "/browse/timeperiods"
-        - image: "./images/05.jpg"
-          label: "Place"
-          target: "/browse/places"
-        - image: "./images/04.jpg"
-          label: "Theme"
-          target: "/browse/themes"
+
+components:
+  - component: SearchBanner
+    props:
+      - label: "image"
+        fileValue: "./images/banner.jpg"
+      - label: "callOut"
+        value: Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
+      - label: "caption"
+        value: Photograph of St. Joseph's Novitiate exterior from across St. Joseph"s Lake, 1894,<br /> Notre Dame Life Photograph Collection (GNDL) 45/0, University of Notre Dame Archives.
+  - component: CardGroup
+    props:
+      - label: "label"
+        value: "Featured"
+    components:
+      - component: Card
+        props:
+        - label: "label"
+          value: "In a Civilized Nation: Newspapers, Magazines and the Print Revolution in the 19th-Century Peru"
+        - label: "image"
+          fileValue: "./images/01.jpg"
+        - label: "target"
+          value: "https://collections.library.nd.edu/3df879828f/in-a-civilized-nation"
+      - component: Card
+        props:
+        - label: "label"
+          value: "Highlights"
+        - label: "image"
+          fileValue: "./images/02.jpg"
+        - label: "target"
+          value: "/browse/notre-dame"
+      - component: Card
+        props:
+        - label: "label"
+          value: "Recently Added"
+        - label: "image"
+          fileValue: "./images/03.jpg"
+        - label: "target"
+          value: "/browse"
+  - component: CardGroup
+    props:
+      - label: "label"
+        value: "Browse By"
+    components:
+      - component: Card
+        props:
+        - label: "label"
+          value: "Time"
+        - label: "image"
+          fileValue: "./images/06.jpg"
+        - label: "target"
+          value: "/browse/timeperiods"
+      - component: Card
+        props:
+        - label: "label"
+          value: "Place"
+        - label: "image"
+          fileValue: "./images/05.jpg"
+        - label: "target"
+          value: "/browse/places"
+      - component: Card
+        props:
+        - label: "label"
+          value: "Theme"
+        - label: "image"
+          fileValue: "./images/04.jpg"
+        - label: "target"
+          value: "/browse/themes"
 ---

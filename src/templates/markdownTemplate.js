@@ -2,18 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Markdown from 'components/Markdown'
-import MarkdownNew from 'components/MarkdownNew'
-import typy from 'typy'
 
 export const MarkdownTemplate = ({ data, location }) => {
-  if (typy(data, 'markdownRemark.frontmatter.components').safeObject) {
-    return (
-      <MarkdownNew
-        data={data}
-        location={location}
-      />
-    )
-  }
   return (
     <Markdown
       data={data}
@@ -30,6 +20,16 @@ MarkdownTemplate.propTypes = {
 export default MarkdownTemplate
 
 export const query = graphql`
+  fragment ComponentFragment on component {
+    component
+    props {
+      label
+      value
+      fileValue {
+        publicURL
+      }
+    }
+  }
   query($slug: String!) {
     site {
       siteMetadata {
@@ -37,51 +37,32 @@ export const query = graphql`
       }
     }
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        slug
-        menu
+      fields {
         components {
-          component
-          props {
-            label
-            value
-            fileValue {
-              publicURL
-            }
-          }
+          ...ComponentFragment
           components {
-            component
-            props {
-              label
-              value
-              fileValue {
-                publicURL
-              }
-            }
+            ...ComponentFragment
             components {
-              component
-              props {
-                label
-                value
-                fileValue {
-                  publicURL
-                }
-              }
+              ...ComponentFragment
               components {
-                component
-                props {
-                  label
-                  value
-                  fileValue {
-                    publicURL
+                ...ComponentFragment
+                components {
+                  ...ComponentFragment
+                  components {
+                    ...ComponentFragment
                   }
                 }
               }
             }
           }
         }
+      }
+      html
+      frontmatter {
+        title
+        slug
+        menu
+        layout
         map {
           kmlFile
           defaultZoom
@@ -89,12 +70,6 @@ export const query = graphql`
             lat
             lng
           }
-        }
-        showBanner
-        mainCallOut
-        mainCaption
-        mainBanner {
-          publicURL
         }
         iiifJson {
           id
@@ -140,23 +115,11 @@ export const query = graphql`
             _id
           }
           description
-          metadata {
-            label
-            value
-          }
-          license
-        }
-        }
-        cards {
-          groups {
-            label
-            items {
-              image {
-                publicURL
-              }
+            metadata {
               label
-              target
+              value
             }
+            license
           }
         }
       }
