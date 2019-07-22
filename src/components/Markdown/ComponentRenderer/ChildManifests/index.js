@@ -14,7 +14,7 @@ export const ChildManifests = ({ iiifManifest, displayReducer }) => {
   const cardClass = displayReducer[COLLECTION_PAGE] || DISPLAY_GRID
   return (
     <React.Fragment>
-      <h2 className='accessibilityOnly'>Collection Items</h2>
+      <h2 className='accessibilityOnly'>Related Items</h2>
       <DisplayViewToggle
         page={COLLECTION_PAGE}
         activeSettings={activeSettings}
