@@ -29,7 +29,7 @@ exports.sourceNodes = ({ actions }) => {
   createTypes(typeDefs)
 }
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, actions }, pluginOptions) => {
   const descriptors = [
     {
       predicate: node => node.frontmatter,
@@ -37,7 +37,7 @@ exports.onCreateNode = ({ node, actions }) => {
         {
           name: 'components',
           getter: node => {
-            return getComponents(node)
+            return getComponents(node, pluginOptions)
           },
           defaultValue: [{ component: 'MarkdownHtmlContent' }],
         },

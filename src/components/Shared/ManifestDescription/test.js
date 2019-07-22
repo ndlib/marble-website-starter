@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import ManifestDescription from './'
-import MarkdownHtmlContent from '../MarkdownHtmlContent'
+import MarkdownHtmlContent from '../../../../plugins/gatsby-remark-react-components/MarkdownLayoutRenderer/ComponentRenderer/MarkdownHtmlContent/'
 
 describe('ManifestDescription', () => {
   test('with description', () => {

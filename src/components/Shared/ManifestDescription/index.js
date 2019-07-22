@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MarkdownHtmlContent from '../MarkdownHtmlContent'
+import MarkdownHtmlContent from '../../../../plugins/gatsby-remark-react-components/MarkdownLayoutRenderer/ComponentRenderer/MarkdownHtmlContent/'
 
 const ManifestDescription = ({ iiifManifest }) => {
   return (

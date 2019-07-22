@@ -65,6 +65,12 @@ module.exports = {
       },
     },
     `gatsby-remark-react-components`,
+    {
+      resolve: `gatsby-remark-react-components`,
+      options: {
+        defaultLayouts: configuration.layouts,
+      },
+    },
     `gatsby-source-iiif`,
     `gatsby-remark-copy-linked-files`,
     `gatsby-transformer-sharp`,
