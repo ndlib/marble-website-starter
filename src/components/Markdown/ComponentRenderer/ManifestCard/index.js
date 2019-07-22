@@ -5,7 +5,7 @@ import typy from 'typy'
 import Card from 'components/Shared/Card'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
 
-const ManifestCard = (props) => {
+export const ManifestCard = (props) => {
   const iiifManifest = typy(props, 'iiifManifest').isObject ? props.iiifManifest : props.allManifests.find(manifest => {
     return manifest.node['_id'] === props.iiifManifest
   }).node

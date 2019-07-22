@@ -9,7 +9,7 @@ const TestComponent = ({ component, children }) => {
       style={style}
     >
       <em>{component}</em>
-      {children}
+      <div className={`${component}Children`}>{children}</div>
     </div>
   )
 }

@@ -11,7 +11,10 @@ const CardGroup = ({ label, children }) => {
         {
           children.map((card, index) => {
             return (
-              <div key={index}>
+              <div
+                key={index}
+                className={style.cardWrapper}
+              >
                 {card}
               </div>
             )

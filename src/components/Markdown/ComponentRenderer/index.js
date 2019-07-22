@@ -33,7 +33,6 @@ const ComponentRenderer = (props) => {
     MultiColumn: MultiColumn,
     SearchBanner: SearchBanner,
   }
-  // console.log(props)
   const renderComponent = validComponents[props.component] || TestComponent
   return React.createElement(renderComponent, props, props.children)
 }

@@ -11,7 +11,7 @@ const ManifestDescription = ({ iiifManifest }) => {
 ManifestDescription.propTypes = {
   iiifManifest: PropTypes.shape(
     { description: PropTypes.string }
-  ).isRequired,
+  ),
 }
 
 export default ManifestDescription
