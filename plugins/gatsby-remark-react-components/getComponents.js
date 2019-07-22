@@ -10,7 +10,7 @@ module.exports = (node, pluginOptions) => {
 }
 
 const getComponentsFromLayout = (layout, pluginOptions) => {
-  if (pluginOptions.defaultLayout) {
+  if (pluginOptions.defaultLayouts) {
     return pluginOptions.defaultLayouts[layout] || pluginOptions.defaultLayouts.default
   }
   return [{ component: 'MarkdownHtmlContent' }]
