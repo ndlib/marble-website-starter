@@ -24,6 +24,7 @@ MarkdownLayoutRenderer.propTypes = {
 }
 
 MarkdownLayoutRenderer.defaultProps = {
+  availableComponents: {},
   globalProps: {},
 }
 export default MarkdownLayoutRenderer
