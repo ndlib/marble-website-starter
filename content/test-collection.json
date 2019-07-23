@@ -1,0 +1,538 @@
+{
+  "@id": "https://presentation-iiif.library.nd.edu/collection/test-collection",
+  "@type": "sc:Collection",
+  "label": "Le Rossignol Correspondence",
+  "description": "The Le Rossignol correspondence consists of 45 letters written from Arthur Stanley Le Rossignol to his sister, Constance Ethel, from his position on the Western Front during World War I. There are additional letters written by Arthur (5), Ethel's colleague Pierre Pulinekse (4), Ethel herself to her Aunt Anna Le Rossignol (4), and others. The bulk of correspondence took place in 1918. The letters cover topics of cultural interest, such as British-German animosity and perceptions of the war. Most of Arthur's letters are vague and do not reveal his location or the details of military operations. His correspondence covers the period 1914-1919. All together, there are 52 letters, 42 envelopes, 14 post cards, a photograph album, a telegram, a copy of strategic battle plans, a pamphlet, and other miscellaneous items.",
+  "thumbnail": {
+    "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-01%2FMSE-MD_3821-001-env_a.tif/full/250,/0/default.jpg",
+    "service": {
+      "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-01%2FMSE-MD_3821-001-env_a.tif",
+      "profile": "http://iiif.io/api/image/2/level2.json",
+      "@context": "http://iiif.io/api/image/2/context.json"
+    }
+  },
+  "metadata": [
+    {
+      "label": "Dates",
+      "value": "1914-1919"
+    },
+    {
+      "label": "Creator",
+      "value": "Le Rossignol, Arthur Stanley, 1875-? (Person)"
+    },
+    {
+      "label": "Language of Materials",
+      "value": "English"
+    },
+    {
+      "label": "Collection Finding Aid",
+      "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "manifests": [
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-01/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Anna Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-1"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol, Arthur Stanley, 1875-?"
+        },
+        {
+          "label": "Date",
+          "value": "10-24-1914"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, england, kensington"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-01%2FMSE-MD_3821-001-env_a.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-01%2FMSE-MD_3821-001-env_a.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Arthur Le Rossignol, Kensington, London, England, to Anna Le Rossignol, Jersey, Channel Islands, 1914 October 24.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-02/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Anna Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-2"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol, Ernest"
+        },
+        {
+          "label": "Date",
+          "value": "10-24-1914"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, ireland"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-02%2FMSE-MD_3821-002a.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-02%2FMSE-MD_3821-002a.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Ernest Le Rossignol, Lancaster Lodge, Ireland, to Anna Le Rossignol, n. p., 1914 October 24.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-03/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Ethel Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-3"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol, Arthur Stanley, 1875-?"
+        },
+        {
+          "label": "Date",
+          "value": "01-11-1915"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, england, surrey"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-03%2FMSE-MD_3821-003ab.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-03%2FMSE-MD_3821-003ab.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Arthur Le Rossignol, Surrey, England, to Ethel Le Rossignol, n. p., 1915 January 11.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-04/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Ethel Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-4"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol, Arthur Stanley, 1875-?"
+        },
+        {
+          "label": "Date",
+          "value": "01-19-1915"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, england, surrey"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-04%2FMSE-MD_3821-004ab.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-04%2FMSE-MD_3821-004ab.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Arthur Le Rossignol, Surrey, England, to Ethel Le Rossignol, n. p., 1915 January 19.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-05/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Ethel Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-5"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol, Arthur Stanley, 1875-?"
+        },
+        {
+          "label": "Date",
+          "value": "02-02-1915"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, england, surrey"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-05%2FMSE-MD_3821-005ab.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-05%2FMSE-MD_3821-005ab.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Arthur Le Rossignol, Surrey, England, to Ethel Le Rossignol, n. p., 1915 February 2.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-06/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Ethel Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-6"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol"
+        },
+        {
+          "label": "Date",
+          "value": "01-17-1915"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, england, surrey"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-06%2FMSE-MD_3821-006ab.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-06%2FMSE-MD_3821-006ab.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Arthur Le Rossignol, Surrey, England, to Ethel Le Rossignol, n. p., 1915 February 17.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-07/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Ethel Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-7"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol, Arthur Stanley, 1875-?"
+        },
+        {
+          "label": "Date",
+          "value": "04-06-1915"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, england, france"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-07%2FMSE-MD_3821-007a.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-07%2FMSE-MD_3821-007a.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Arthur Le Rossignol, to Ethel Le Rossignol, n. p., 1915 April 6.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-08/manifest",
+      "@type": "sc:Manifest",
+      "label": "Letter to Ethel Le Rossignol",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-7"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol, Arthur Stanley, 1875-?"
+        },
+        {
+          "label": "Date",
+          "value": "04-08-1915"
+        },
+        {
+          "label": "Format",
+          "value": "Hand written letter"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, letters, world war one, england, hampshire"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-08%2FMSE-MD_3821-008-env_a.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-08%2FMSE-MD_3821-008-env_a.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Arthur Le Rossignol, Hampshire, England, to Ethel Le Rossignol, Dieppe, France, 1915 April 8.",
+      "license": "<a href=\"http://rightsstatements.org/vocab/NoC-US/1.0/\" target=\"_blank\">No Copyright - United States</a>"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-77/manifest",
+      "@type": "sc:Manifest",
+      "label": "A Brief History of the 30th Division",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-77"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "War Narratives Publishing"
+        },
+        {
+          "label": "Date",
+          "value": "1919"
+        },
+        {
+          "label": "Format",
+          "value": "Printed Pamphlet"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, pamphlet, world war one, military history"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-77%2FMSE-MD_3821-077_00a.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-77%2FMSE-MD_3821-077_00a.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "A Brief History of the 30th Division, circa 1919. 69 pages. Arthur Le Rossignol is listed on page 6. Fold-out map is in the back.",
+      "license": "http://rightsstatements.org/vocab/NoC-NC/1.0/"
+    },
+    {
+      "@id": "https://presentation-iiif.library.nd.edu/le-rossignol-81/manifest",
+      "@type": "sc:Manifest",
+      "label": "Le Rossignol Family Photo Album",
+      "metadata": [
+        {
+          "label": "Rare Books Identifier",
+          "value": "MSE/MD 3821-81"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        },
+        {
+          "label": "Collection Finding Aid",
+          "value": "<a href=\"https://archivesspace.library.nd.edu/repositories/3/resources/1392\">https://archivesspace.library.nd.edu/repositories/3/resources/1392</a>"
+        },
+        {
+          "label": "Language",
+          "value": "English"
+        },
+        {
+          "label": "Creator",
+          "value": "Le Rossignol Family"
+        },
+        {
+          "label": "Contents",
+          "value": "96 photographs each measuring 1 x 2.5 in."
+        },
+        {
+          "label": "Date",
+          "value": "circa 1918"
+        },
+        {
+          "label": "Format",
+          "value": "Photo Album"
+        },
+        {
+          "label": "Keywords",
+          "value": "rossignol, photo, world war one, england"
+        },
+        {
+          "label": "Collection Name",
+          "value": "Le Rossignol Correspondence"
+        }
+      ],
+      "thumbnail": {
+        "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-81%2FMSE-MD_3821-081_00a.tif/full/250,/0/default.jpg",
+        "service": {
+          "@id": "https://image-iiif.library.nd.edu:8182/iiif/2/le-rossignol-81%2FMSE-MD_3821-081_00a.tif",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "@context": "http://iiif.io/api/image/2/context.json"
+        }
+      },
+      "description": "Photograph Album, n. d. 1 album. 96 photographs each measuring 1 x 2.5 in.",
+      "license": "http://rightsstatements.org/vocab/NoC-NC/1.0/"
+    }
+  ],
+  "id": "https://presentation-iiif.library.nd.edu/collection/test-collection",
+  "fkid": "https://presentation-iiif.library.nd.edu/collection/test-collection",
+  "items___NODE": [
+    "https://presentation-iiif.library.nd.edu/test-manifest/manifest"
+  ]
+}
