@@ -51,6 +51,7 @@ module.exports = {
     collection: [
       { component: 'ActionButtons' },
       { component: 'ManifestDescription' },
+      { component: 'ManifestMetaData' },
       { component: 'ChildManifests' },
     ],
     item: [
