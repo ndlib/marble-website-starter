@@ -19,6 +19,7 @@ IIIFTemplate.propTypes = {
 }
 
 export default IIIFTemplate
+/*
 export const query = graphql`
   query($slug: String!) {
     iiifManifest( slug: { eq: $slug }) {
@@ -83,3 +84,4 @@ export const query = graphql`
     }
   }
 `
+*/

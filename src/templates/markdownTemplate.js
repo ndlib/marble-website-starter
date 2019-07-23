@@ -98,18 +98,19 @@ export const query = graphql`
         }
         iiifJson {
           id
-          label
-          description
-          attribution
-          license
+          ...translatedLabelString
+          attribution {
+            ...translatedLabelString
+          }
+          rights
           thumbnail {
-            _id
+            id
             service {
-              _id
+              id
             }
           }
-          sequences {
-            _id
+          items {
+            id
             canvases {
               _id
               _type
@@ -123,10 +124,6 @@ export const query = graphql`
                 on
               }
             }
-          }
-          metadata {
-            label
-            value
           }
         }
         cards {

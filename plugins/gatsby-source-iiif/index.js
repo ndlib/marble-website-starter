@@ -2,6 +2,8 @@ const fs = require('fs')
 const fetchData = require('./fetch')
 const path = require(`path`)
 const request = require('request')
+const currentLanguage = 'en'
+const currentAvailableLaguages = ['en', 'en-US', 'en-GB', 'fr', 'none']
 
 const loadManifestsFile = () => {
   const contents = fs.readFileSync(path.join(__dirname, '/../../content/manifests.json'))
@@ -13,10 +15,50 @@ const getMDFile = (manifest, slug) => {
 title: '${manifest.label}'
 slug: '${slug}'
 parent_id: '${manifest.parent_id}'
-iiifJson___NODE___fkid: '${manifest.fkid}'
+iiifJson___NODE: '${manifest.id}'
 ---
 `
   return mdFile
+}
+
+const fixLanguage = (data) => {
+  if (!data) {
+    return undefined
+  }
+  if (typeof (data) !== 'object') {
+    if (!Array.isArray(data)) {
+      data = [data]
+    }
+    const save = data
+    data = { }
+    data[currentLanguage] = save
+  }
+
+  const ret = {}
+  currentAvailableLaguages.forEach((lang) => {
+    if (data[lang]) {
+      ret[lang] = data[lang]
+    } else {
+      ret[lang] = ['']
+    }
+  })
+  return ret
+}
+
+// called with every property and its value
+function process (key, value) {
+  console.log(key + ' : ' + value)
+}
+
+function traverse (o, func) {
+  for (const i in o) {
+    if (i === 'label' || i === 'value' && typeof (o[i]) == 'object') {
+      o[i] = fixLanguage(o[i])
+    } else if (o[i] !== null && typeof (o[i]) == 'object') {
+      // going one step down in the object tree!!
+      traverse(o[i], func)
+    }
+  }
 }
 
 const download = async (uri, filename, callback) => {
@@ -33,20 +75,21 @@ const download = async (uri, filename, callback) => {
   })
 }
 
-Promise(async (resolve, reject) => {
+new Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
   for (const key in manifestData) {
     const manifest = manifestData[key].manifest
-    manifest['@id'] = manifest['@id'] + '2'
-    manifest.id = manifest['@id']
-    manifest.fkid = manifest['@id']
-    manifest.collection___NODE = manifestData[key].parent_id ? manifestData[key].parent_id + '2' : undefined
-    manifest.items___NODE = (manifest.collections || manifest.manifests || []).map(child => child['@id'] + '2')
+    manifest.id = manifest.id
+    console.log(manifest.id)
+    traverse(manifest, process)
+    console.log(manifest.label)
+
+    manifest.collection___NODE = manifestData[key].parent_id ? manifestData[key].parent_id : undefined
+    manifest.items___NODE = (manifest.collections || manifest.manifests || []).map(child => child['id'])
 
     const data = JSON.stringify(manifest)
     const filename = key.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-
     try {
       await fs.promises.mkdir(path.join(__dirname, '/../../content/iiif/'), { recursive: true })
       await fs.promises.mkdir(path.join(__dirname, '/../../content/markdown/iiif/'), { recursive: true })
