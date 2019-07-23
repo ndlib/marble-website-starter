@@ -1,0 +1,122 @@
+.multiColumn-1,
+.multiColumn-2,
+.multiColumn-3,
+.multiColumn-4,
+.multiColumn-5 {
+  margin: 1em 0;
+  vertical-align: top;
+  width: 100%;
+}
+
+/* one column */
+.multiColumn-1 .col-1 {
+  display: inline-block;;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  width: 100%;
+}
+
+/* two columns */
+.multiColumn-2 .col-1 {
+  display: inline-block;;
+  margin: 0;
+  margin-right: 1rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 50% - 1rem);
+}
+.multiColumn-2 .col-2 {
+  display: inline-block;
+  margin: 0;
+  margin-left: 1rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 50% - 1rem);
+}
+
+/* three columns */
+.multiColumn-3 .col-1 {
+  display: inline-block;
+  margin: 0;
+  margin-right: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 100% / 3 -  2rem / 3);
+}
+.multiColumn-3 .col-2 {
+  display: inline-block;
+  margin: 0;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 100% / 3 -  2rem / 3);
+}
+.multiColumn-3 .col-3 {
+  display: inline-block;
+  margin: 0;
+  margin-left: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 100% / 3 -  2rem / 3);
+}
+
+/* four columns */
+.multiColumn-4 .col-1 {
+  display: inline-block;
+  margin: 0;
+  margin-right: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 25% -  3rem / 4);
+}
+.multiColumn-4 .col-2,
+.multiColumn-4 .col-3 {
+  display: inline-block;
+  margin: 0;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 25% -  3rem / 4);
+}
+.multiColumn-4 .col-4 {
+  display: inline-block;
+  margin: 0;
+  margin-left: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 25% -  3rem / 4);
+}
+
+/* five columns */
+.multiColumn-5 .col-1 {
+  display: inline-block;
+  margin: 0;
+  margin-right: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 20% -  4rem / 5);
+}
+.multiColumn-5 .col-2,
+.multiColumn-5 .col-3,
+.multiColumn-5 .col-4 {
+  display: inline-block;
+  margin: 0;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 20% -  4rem / 5);
+}
+.multiColumn-5 .col-5 {
+  display: inline-block;
+  margin: 0;
+  margin-left: .5rem;
+  padding: 0;
+  vertical-align: top;
+  width: calc( 20% -  4rem / 5);
+}
+
+/* TODO @media for responsive */

@@ -1,41 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import typy from 'typy'
 import Layout from 'components/Layout'
-import Seo from 'components/Shared/Seo'
+import MarkdownSeo from './MarkdownSeo'
 import Navigation from 'components/Shared/Navigation'
-import KmlMap from 'components/Map/Kml'
-import SearchBanner from './SearchBanner'
-import MarkdownCardGroups from './MarkdownCardGroups'
-import ImageSection from 'components/ManifestViews/Item/ItemAside/ImageSection'
-import style from './style.module.css'
+import MarkdownLayoutRenderer from '../../../plugins/gatsby-remark-react-components'
+import availableComponents from './availableComponents'
 
 const Markdown = ({ data, location }) => {
-  const { frontmatter, html } = data.markdownRemark
-  const seoTitle = frontmatter.title || data.site.siteMetadata.title
-  const navigation = (frontmatter.menu ? <Navigation id={frontmatter.menu} /> : null)
-  const iiifManifest = frontmatter.iiifJson
+  const title = typy(data, 'markdownRemark.frontmatter.title').safeString || null
+  const navigation = (typy(data, 'markdownRemark.frontmatter.menu').isString ? <Navigation id={data.markdownRemark.frontmatter.menu} /> : null)
+  const globalProps = getglobalProps(data, location)
+
   return (
     <Layout
-      title={frontmatter.title}
+      title={title}
       nav={navigation}
       location={location}
-      preMain={
-        <React.Fragment>
-          <Seo
-            title={seoTitle}
-            pathname={location.pathname}
-          />
-          <SearchBanner frontmatter={frontmatter} location={location} />
-        </React.Fragment>
-      }
     >
-      <div
-        className={style.bodyText}
-        dangerouslySetInnerHTML={{ __html: html }}
+      <MarkdownSeo
+        data={data}
+        location={location}
       />
-      <ImageSection iiifManifest={iiifManifest} location={location} />
-      <MarkdownCardGroups frontmatter={frontmatter} />
-      <KmlMap map={frontmatter.map} />
+      <MarkdownLayoutRenderer
+        markdownRemark={data.markdownRemark}
+        location={location}
+        availableComponents={availableComponents}
+        globalProps={globalProps}
+      />
     </Layout>
   )
 }
@@ -45,3 +37,13 @@ Markdown.propTypes = {
   location: PropTypes.object.isRequired,
 }
 export default Markdown
+
+export const getglobalProps = (data, location) => {
+  return {
+    html: typy(data, 'markdownRemark.html').safeString,
+    menu: typy(data, 'markdownRemark.frontmatter.menu').safeString,
+    title: typy(data, 'markdownRemark.frontmatter.title').safeString,
+    iiifManifest: typy(data, 'markdownRemark.frontmatter.iiifJson').safeObject,
+    location: location,
+  }
+}

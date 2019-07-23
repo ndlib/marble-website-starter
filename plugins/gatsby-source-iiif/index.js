@@ -12,10 +12,11 @@ const loadManifestsFile = () => {
 
 const getMDFile = (manifest, slug) => {
   const mdFile = `---
-title: '${manifest.label}'
-slug: '${slug}'
-parent_id: '${manifest.parent_id}'
+title: "${manifest.label}"
+slug: "${slug}"
+parent_id: "${manifest.parent_id}"
 iiifJson___NODE: '${manifest.id}'
+layout: "${manifest['@type'].toLowerCase() === 'sc:collection' ? 'collection' : 'item'}"
 ---
 `
   return mdFile
@@ -75,6 +76,7 @@ const download = async (uri, filename, callback) => {
   })
 }
 
+// eslint-disable-next-line
 new Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
