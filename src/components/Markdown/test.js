@@ -1,32 +1,18 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Markdown from './'
-import MarkdownCardGroups from './MarkdownCardGroups'
-import Layout from 'components/Layout'
+import MarkdownSeo from './MarkdownSeo'
+import MarkdownLayoutRenderer from '../../../plugins/gatsby-remark-react-components'
 
 test('Markdown', () => {
-  const props = {
-    data: {
-      site: {
-        siteMetadata: {
-          title: 'home page',
-        },
+  const data = {
+    markdownRemark: {
+      frontmatter: {
+        title: 'A title',
       },
-      markdownRemark: {
-        frontmatter: {
-          mainCallOut: '',
-          cards: {
-            groups: [],
-          },
-        },
-        html: 'Some html text we could put on the front page.',
-      },
-    },
-    location: {},
-
-  }
-  const wrapper = shallow(<Markdown {...props} />)
-  expect(wrapper.find(Layout).exists()).toBeTruthy()
-  expect(wrapper.find('.bodyText').html()).toContain('Some html text we could put on the front page.')
-  expect(wrapper.find(MarkdownCardGroups).exists()).toBeTruthy()
+    } }
+  const location = { some: 'place' }
+  const wrapper = shallow(<Markdown data={data} location={location} />)
+  expect(wrapper.find(MarkdownSeo).exists()).toBeTruthy()
+  expect(wrapper.find(MarkdownLayoutRenderer).exists()).toBeTruthy()
 })

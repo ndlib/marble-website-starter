@@ -64,7 +64,14 @@ module.exports = {
         path: `${__dirname}/content/markdown`,
       },
     },
-    'gatsby-source-iiif',
+    `gatsby-remark-react-components`,
+    {
+      resolve: `gatsby-remark-react-components`,
+      options: {
+        defaultLayouts: configuration.layouts,
+      },
+    },
+    `gatsby-source-iiif`,
     `gatsby-remark-copy-linked-files`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

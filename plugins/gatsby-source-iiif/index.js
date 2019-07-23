@@ -14,6 +14,7 @@ title: "${manifest.label}"
 slug: "${slug}"
 parent_id: "${manifest.parent_id}"
 iiifJson___NODE___fkid: "${manifest.fkid}"
+layout: "${manifest['@type'].toLowerCase() === 'sc:collection' ? 'collection' : 'item'}"
 ---
 `
   return mdFile
