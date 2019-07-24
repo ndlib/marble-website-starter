@@ -274,7 +274,7 @@ exports.sourceNodes = async (
     )
     })
   }
-*/
+
   const flattenLanguage = (data) => {
     if (!data) {
       return ''
@@ -286,7 +286,7 @@ exports.sourceNodes = async (
 
     return data[keys.shift]
   }
-
+*/
   const manifestList = loadManifestsFile()
 
   return new Promise(async (resolve, reject) => {
