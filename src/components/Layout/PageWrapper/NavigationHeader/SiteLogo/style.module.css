@@ -12,7 +12,7 @@ a.siteTitle {
   margin: 10px 0;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1600px) {
   a.siteTitle {
     margin-left: 0;
   }

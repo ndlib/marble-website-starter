@@ -1,4 +1,19 @@
 .manifestLink {
+  border: 1px solid #00000000;
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px 5px 15px 0px;
+  padding: 10px;
+  border-radius: 30px;
+  vertical-align: top;
+}
+.manifestLink:hover {
+  border: 1px solid #efefef;
+  margin: 3px 5px 17px 0px;
+  box-shadow: 1px 2px 6px 2px rgba(153, 153, 153, 0.14);
+}
+
+.manifestLink img {
   height: 24px;
   width: 24px;
 }

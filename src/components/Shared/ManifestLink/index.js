@@ -12,12 +12,13 @@ const ManifestLink = ({ manifestUrl }) => {
     <Link
       to={manifestUrl}
       target='_blank'
+      className={style.manifestLink}
     >
       <img
         src={imgIIIF}
         alt='Download IIIF manifest.'
         title='Download IIIF manifest.'
-        className={style.manifestLink}
+
       />
     </Link>
   )

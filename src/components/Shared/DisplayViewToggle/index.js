@@ -61,15 +61,15 @@ export default connect(mapStateToProps)(DisplayViewToggle)
 export const getActiveSettings = (displayReducer, reducer) => {
   const gridListSettings = {
     [DISPLAY_GRID]: {
-      breakpoints: { lg: 680, md: 480, sm: 240 },
+      breakpoints: { lg: 1200, md: 800, sm: 600 },
       cols: { lg: 6, md: 4, sm: 2 },
-      rowHeight: 200,
+      rowHeight: 400,
       cardWidth:  2,
     },
     [DISPLAY_LIST]: {
       breakpoints: { lg: 680, md: 480, sm: 240 },
       cols: { lg: 6, md: 6, sm: 6 },
-      rowHeight: 250,
+      rowHeight: 260,
       cardWidth:  6,
     },
   }

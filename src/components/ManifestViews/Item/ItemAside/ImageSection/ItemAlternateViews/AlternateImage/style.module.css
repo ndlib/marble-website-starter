@@ -33,7 +33,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1600px) {
   .alternateLink {
     height: calc( 156px - 5rem/4);
     margin: 0.5rem;

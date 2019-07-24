@@ -2,14 +2,8 @@
 slug: index
 
 components:
-  - component: SearchBanner
-    props:
-      - label: "image"
-        fileValue: "./images/banner.jpg"
-      - label: "callOut"
-        value: Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
-      - label: "caption"
-        value: Photograph of St. Joseph's Novitiate exterior from across St. Joseph"s Lake, 1894,<br /> Notre Dame Life Photograph Collection (GNDL) 45/0, University of Notre Dame Archives.
+  - component: SearchBox
+  - component: MarkdownHtmlContent
   - component: CardGroup
     props:
       - label: "label"
@@ -69,3 +63,5 @@ components:
         - label: "target"
           value: "/browse/themes"
 ---
+
+Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
