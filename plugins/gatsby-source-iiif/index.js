@@ -1,7 +1,6 @@
 const fs = require('fs')
 const fetchData = require('./fetch')
 const path = require(`path`)
-const request = require('request')
 const configuration = require('../../content/configuration.js')
 
 const loadManifestsFile = () => {
@@ -45,22 +44,26 @@ const fixLanguage = (data) => {
   return ret
 }
 
-// called with every property and its value
-function process (key, value) {
-  console.log(key + ' : ' + value)
-}
-
-function traverse (o, func) {
+const traverse = (o, func) => {
   for (const i in o) {
-    if (i === 'label' || i === 'value' && typeof (o[i]) == 'object') {
+    if (objectIsLabelORValue(i, o[i])) {
       o[i] = fixLanguage(o[i])
-    } else if (o[i] !== null && typeof (o[i]) == 'object') {
+    } else if (continueTraversing(o[i])) {
       // going one step down in the object tree!!
       traverse(o[i], func)
     }
   }
 }
 
+const objectIsLabelORValue = (key, obj) => {
+  return ((key === 'label' || key === 'value') && typeof (obj[key]) === 'object')
+}
+
+const continueTraversing = (obj) => {
+  return (obj !== null && typeof (obj) === 'object')
+}
+/*
+const request = require('request')
 const download = async (uri, filename, callback) => {
   const getOptions = { uri, agentOptions: { family: 4 } }
   request.head(getOptions, async (err, res) => {
@@ -75,13 +78,29 @@ const download = async (uri, filename, callback) => {
   })
 }
 
+const dowloadAllFiles = async (assets) => {
+  for (let i = 0; i < assets.length; i++) {
+    const url = assets[i]
+    const filename = path.basename(url)
+    const filepath = path.join(__dirname, '/../../content/images/iiif/', filename)
+    // await download(manifestData[key].assets[i], filepath, (data) => { })
+  }
+}
+*/
+const ensureDirectoryStructure = async () => {
+  return Promise.all([
+    fs.promises.mkdir(path.join(__dirname, '/../../content/iiif/'), { recursive: true }),
+    fs.promises.mkdir(path.join(__dirname, '/../../content/markdown/iiif/'), { recursive: true }),
+    fs.promises.mkdir(path.join(__dirname, '/../../content/images/iiif/'), { recursive: true }),
+  ])
+}
+
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
   for (const key in manifestData) {
     const manifest = manifestData[key].manifest
-    manifest.id = manifest.id
     traverse(manifest, process)
 
     manifest.collection___NODE = manifestData[key].parent_id ? manifestData[key].parent_id : undefined
@@ -90,23 +109,14 @@ new Promise(async (resolve, reject) => {
     const data = JSON.stringify(manifest)
     const filename = key.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
     try {
-      await fs.promises.mkdir(path.join(__dirname, '/../../content/iiif/'), { recursive: true })
-      await fs.promises.mkdir(path.join(__dirname, '/../../content/markdown/iiif/'), { recursive: true })
-      await fs.promises.mkdir(path.join(__dirname, '/../../content/images/iiif/'), { recursive: true })
+      await ensureDirectoryStructure()
 
       await fs.writeFileSync(path.join(__dirname, '/../../content/iiif/' + filename + '.json'), data)
       await fs.writeFileSync(path.join(__dirname, '/../../content/markdown/iiif/' + filename + '.md'), getMDFile(manifest, filename))
-
-      for (let i = 0; i < manifestData[key].assets.length; i++) {
-        const url = manifestData[key].assets[i]
-        const filename = path.basename(url)
-        const filepath = path.join(__dirname, '/../../content/images/iiif/', filename)
-        // await download(manifestData[key].assets[i], filepath, (data) => { })
-      }
     } catch (e) {
       console.log('catchy:')
       console.log(e)
-      reject('Error')
+      reject(e)
     }
   }
   resolve()
