@@ -2,8 +2,7 @@ const fs = require('fs')
 const fetchData = require('./fetch')
 const path = require(`path`)
 const request = require('request')
-const currentLanguage = 'en'
-const currentAvailableLaguages = ['en', 'en-US', 'en-GB', 'fr', 'none']
+const configuration = require('../../content/configuration.js')
 
 const loadManifestsFile = () => {
   const contents = fs.readFileSync(path.join(__dirname, '/../../content/manifests.json'))
@@ -12,11 +11,11 @@ const loadManifestsFile = () => {
 
 const getMDFile = (manifest, slug) => {
   const mdFile = `---
-title: "${manifest.label}"
+title: "${manifest.label[configuration.languages.default]}"
 slug: "${slug}"
 parent_id: "${manifest.parent_id}"
 iiifJson___NODE: '${manifest.id}'
-layout: "${manifest['@type'].toLowerCase() === 'sc:collection' ? 'collection' : 'item'}"
+layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'item'}"
 ---
 `
   return mdFile
@@ -32,11 +31,11 @@ const fixLanguage = (data) => {
     }
     const save = data
     data = { }
-    data[currentLanguage] = save
+    data[configuration.languages.default] = save
   }
 
   const ret = {}
-  currentAvailableLaguages.forEach((lang) => {
+  configuration.languages.allowed.forEach((lang) => {
     if (data[lang]) {
       ret[lang] = data[lang]
     } else {
@@ -83,9 +82,7 @@ new Promise(async (resolve, reject) => {
   for (const key in manifestData) {
     const manifest = manifestData[key].manifest
     manifest.id = manifest.id
-    console.log(manifest.id)
     traverse(manifest, process)
-    console.log(manifest.label)
 
     manifest.collection___NODE = manifestData[key].parent_id ? manifestData[key].parent_id : undefined
     manifest.items___NODE = (manifest.collections || manifest.manifests || []).map(child => child['id'])

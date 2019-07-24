@@ -26,13 +26,15 @@ exports.sourceNodes = async (
     }
 
     type iiifServiceJson {
-      id: String!
+      id: String
       _context: String
       profile: String
     }
 
     type iiifThumbnailJson {
-      id: String!
+      id: String
+      type: String
+      format: String
       service: iiifServiceJson
     }
 
@@ -67,6 +69,41 @@ exports.sourceNodes = async (
       seeAlso: [ iiifSeeAlso ]
     }
 
+    type iiifItemsList {
+      id: String
+      type: String
+      items: [iiifItemAnnotationPage]
+    }
+
+    type iiifItemAnnotationPageBody {
+      id: String
+      type: String
+      format: String
+      width: Int
+      height: Int
+      service: iiifServiceJson
+    }
+
+    type iiifItemAnnotationPage {
+      id: ID!
+      type: String
+      label: iiifTranslatedString
+      motivation: String
+      target: String
+      body: iiifItemAnnotationPageBody
+    }
+
+    type iiifItemCanvas {
+      id: ID!
+      type: String
+      label: iiifTranslatedString
+      height: Int
+      width: Int
+      seeAlso: [ iiifSeeAlso ]
+      thumbnail: iiifThumbnailJson
+      items: [iiifItemsList]
+    }
+
     type IiifJson implements Node {
       # However Node fields are optional and you don't have to add them
       id: ID!
@@ -79,6 +116,7 @@ exports.sourceNodes = async (
       rights: String
       metadata: [iiifLabeledString]
       thumbnail: iiifThumbnailJson
+      items: [iiifItemCanvas]
     }`
   createTypes(typeDefs)
   return

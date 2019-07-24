@@ -20,6 +20,111 @@ MarkdownTemplate.propTypes = {
 export default MarkdownTemplate
 
 export const query = graphql`
+  fragment iiifTranslatedStringFragment on iiifTranslatedString {
+    en
+    en_GB
+    en_US
+    fr
+    none
+  }
+
+  fragment iiifLabeledStringFragment on iiifLabeledString {
+    label {
+      ...iiifTranslatedStringFragment
+    }
+    value {
+      ...iiifTranslatedStringFragment
+    }
+  }
+
+  fragment iiifThumbnailJsonFragment on iiifThumbnailJson {
+    id
+    type
+    format
+    service {
+      ...iiifServiceFragment
+    }
+  }
+
+  fragment iiifServiceFragment on iiifServiceJson {
+    id
+    _context
+    profile
+  }
+
+  fragment iiifItemCanvasFragment on iiifItemCanvas {
+    id
+    height
+    type
+    width
+    label {
+      ...iiifTranslatedStringFragment
+    }
+    thumbnail {
+      ...iiifThumbnailJsonFragment
+    }
+    items {
+      ...iiifItemsListFragment
+    }
+  }
+
+  fragment iiifItemAnnotationPageFragment on iiifItemAnnotationPage {
+    id
+    type
+    label {
+      ...iiifTranslatedStringFragment
+    }
+    motivation
+    target
+    body {
+      ...iiifItemAnnotationPageBodyFragment
+    }
+  }
+
+  fragment iiifItemAnnotationPageBodyFragment on iiifItemAnnotationPageBody {
+    id
+    type
+    format
+    width
+    height
+    service {
+      ...iiifServiceFragment
+    }
+  }
+
+  fragment iiifItemsListFragment on iiifItemsList {
+    id
+    type
+    items {
+      ...iiifItemAnnotationPageFragment
+    }
+  }
+
+  fragment iiifJsonFragment on IiifJson {
+    id
+    type
+    label {
+      ...iiifTranslatedStringFragment
+    }
+    summary {
+      ...iiifTranslatedStringFragment
+    }
+    rights
+    requiredStatement {
+      ...iiifLabeledStringFragment
+    }
+    metadata {
+      ...iiifLabeledStringFragment
+    }
+    viewingDirection
+    thumbnail {
+      ...iiifThumbnailJsonFragment
+    }
+    items {
+      ...iiifItemCanvasFragment
+    }
+  }
+
   fragment ComponentFragment on component {
     component
     props {
@@ -72,56 +177,7 @@ export const query = graphql`
           }
         }
         iiifJson {
-          id
-          ...translatedLabelString
-          attribution {
-            ...translatedLabelString
-          }
-          rights
-          thumbnail {
-            id
-            service {
-              id
-            }
-          }
-          items {
-            id
-            canvases {
-              _id
-              _type
-              label
-              height
-              width
-              images {
-                _id
-                _type
-                motivation
-                on
-              }
-            }
-          }
-          metadata {
-            label
-            value
-          }
-          manifests {
-          _id
-          label
-          thumbnail {
-            service {
-              _id
-              _context
-              profile
-            }
-            _id
-          }
-          description
-            metadata {
-              label
-              value
-            }
-            license
-          }
+          ...iiifJsonFragment
         }
       }
     }

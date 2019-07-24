@@ -2,8 +2,6 @@
 title: Layout Test
 slug: layoutTest
 
-iiifJson___NODE___fkid: 'https://presentation-iiif.library.nd.edu/collection/le-rossignol2'
-
 components:
   - component: Image
     props:

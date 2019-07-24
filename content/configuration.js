@@ -31,6 +31,11 @@ module.exports = {
     menus: menus,
   },
 
+  languages: {
+    default: 'en',
+    allowed: ['en', 'en-US', 'en-GB', 'fr', 'none'],
+  },
+
   // manifest
   manifest: {
     name: `Digital Collections`,
@@ -77,5 +82,4 @@ module.exports = {
     ],
     test: [{ component: 'TestComponent' }],
   },
-
 }
