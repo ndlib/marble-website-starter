@@ -40,14 +40,14 @@
   display: none;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1600px) {
   .navBarInner {
     margin: 0 auto;
-    width: 1220px;
+    width: 1540px;
   }
 
   .hamburger {
-    width: calc(1220px - 200px);
+    width: calc(1540px - 200px);
   }
 }
 

@@ -105,6 +105,7 @@ export const query = graphql`
           }
           manifests {
           _id
+          _type
           label
           thumbnail {
             service {

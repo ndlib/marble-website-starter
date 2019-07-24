@@ -9,7 +9,7 @@ import ManifestCard from 'components/Shared/ManifestCard'
 import ManifestDescription from 'components/Shared/ManifestDescription'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import MultiColumn from 'components/Shared/MultiColumn'
-import SearchBanner from 'components/Shared/SearchBanner'
+import SearchBox from 'components/Shared/SearchBox'
 
 export const availableComponents = {
   ActionButtons: ActionButtonGroup,
@@ -23,7 +23,7 @@ export const availableComponents = {
   ManifestImage: ImageSection,
   ManifestMetaData: ManifestMetaData,
   MultiColumn: MultiColumn,
-  SearchBanner: SearchBanner,
+  SearchBox: SearchBox,
 }
 
 export default availableComponents

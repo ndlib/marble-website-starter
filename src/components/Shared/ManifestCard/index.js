@@ -4,16 +4,18 @@ import { StaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import Card from 'components/Shared/Card'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
+import { pageLinkFromManifest } from 'utils/pageLinkFromManifest'
 
 export const ManifestCard = (props) => {
   const iiifManifest = typy(props, 'iiifManifest').isObject ? props.iiifManifest : props.allManifests.find(manifest => {
     return manifest.node['_id'] === props.iiifManifest
   }).node
   const imageService = getImageServiceFromThumbnail(iiifManifest)
+  const linkToManifestPage = pageLinkFromManifest(iiifManifest)
   return (
     <Card
       label={iiifManifest.label}
-      target={iiifManifest._id}
+      target={linkToManifestPage}
       imageService={imageService || null}
       {...props}
     >
@@ -36,6 +38,7 @@ export const ManifestCardWrapper = (props) => {
           edges {
             node {
               _id
+              _type
               label
               thumbnail {
                 _id
