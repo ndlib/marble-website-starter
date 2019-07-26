@@ -2,5 +2,5 @@
 title: 'Letter to Anna Le Rossignol'
 slug: 'test-manifest'
 parent_id: 'undefined'
-iiifJson___NODE___fkid: 'https://presentation-iiif.library.nd.edu/test-manifest/manifest'
+iiifJson___NODE: ''
 ---

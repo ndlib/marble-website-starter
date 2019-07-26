@@ -8,14 +8,14 @@ module.exports = async (urls) => {
     return fetch(url)
       .then(response => response.json())
       .then((data) => {
-        const children = (data.collections || data.manifests || []).map(manifest => manifest['@id'])
+        const children = (data.collections || data.manifests || []).map(manifest => manifest['id'])
 
-        result[data['@id']] = {}
-        result[data['@id']]['manifest'] = data
-        result[data['@id']]['parent_id'] = parent_id
-        result[data['@id']]['assets'] = searchForAssets(data)
+        result[data['id']] = {}
+        result[data['id']]['manifest'] = data
+        result[data['id']]['parent_id'] = parent_id
+        result[data['id']]['assets'] = searchForAssets(data)
         const childRequests = children.map(url => {
-          return recursiveProcess(url, data['@id'])
+          return recursiveProcess(url, data['id'])
         })
         return Promise.all(childRequests)
       }).catch(err => console.log('fetch error', url))
@@ -29,13 +29,13 @@ module.exports = async (urls) => {
   return result
 }
 
-const recursiveSearchKeys = ['collections', 'manifests', 'sequences', 'canvases', 'images']
+const recursiveSearchKeys = ['collections', 'manifests', 'sequences', 'canvases', 'images', 'items']
 
 const searchForAssets = (node) => {
   let assets = []
   for (const key in node) {
     if (key.toLowerCase() == 'resource') {
-      assets.push(node[key]['service']['@id'])
+      assets.push(node[key]['service']['id'])
     }
     if (recursiveSearchKeys.includes(key.toLowerCase())) {
       node[key].map(searchNode => {

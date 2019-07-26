@@ -41,6 +41,7 @@ module.exports = {
         },
       },
     },
+    'gatsby-source-iiif',
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-json`,
     {
@@ -71,7 +72,6 @@ module.exports = {
         defaultLayouts: configuration.layouts,
       },
     },
-    `gatsby-source-iiif`,
     `gatsby-remark-copy-linked-files`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

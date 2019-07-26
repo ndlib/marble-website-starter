@@ -10,10 +10,13 @@ exports.sourceNodes = async (
   { actions, getNode, getNodes, createNodeId, hasNodeChanged, store, cache, createContentDigest }
 ) => {
   const { createNode, touchNode, createTypes } = actions
+  console.log(actions)
+  console.log('other node -------------------------------------------->>')
   // const urlPromises = []
   const typeDefs = `
     type iiifTranslatedString {
       en: [ String ]
+      fr: [ String ]
       none: [ String ]
     }
 
@@ -23,13 +26,15 @@ exports.sourceNodes = async (
     }
 
     type iiifServiceJson {
-      id: String!
+      id: String
       _context: String
       profile: String
     }
 
     type iiifThumbnailJson {
-      id: String!
+      id: String
+      type: String
+      format: String
       service: iiifServiceJson
     }
 
@@ -58,16 +63,52 @@ exports.sourceNodes = async (
     type iiifProviderJson {
       id: String
       type: String
-      label: iiifTranslatedString
+      label: String
       homepage: [ iiifHomepage ]
       logo: [ iiifLogoJson ]
       seeAlso: [ iiifSeeAlso ]
     }
 
-    type iiifManifestJson implements Node {
+    type iiifItemsList {
+      id: String
+      type: String
+      items: [iiifItemAnnotationPage]
+    }
+
+    type iiifItemAnnotationPageBody {
+      id: String
+      type: String
+      format: String
+      width: Int
+      height: Int
+      service: iiifServiceJson
+    }
+
+    type iiifItemAnnotationPage {
+      id: ID!
+      type: String
+      label: iiifTranslatedString
+      motivation: String
+      target: String
+      body: iiifItemAnnotationPageBody
+    }
+
+    type iiifItemCanvas {
+      id: ID!
+      type: String
+      label: iiifTranslatedString
+      height: Int
+      width: Int
+      seeAlso: [ iiifSeeAlso ]
+      thumbnail: iiifThumbnailJson
+      items: [iiifItemsList]
+    }
+
+    type IiifJson implements Node {
       # However Node fields are optional and you don't have to add them
       id: ID!
       _context: String
+      type: String!
       label: iiifTranslatedString!
       summary: iiifTranslatedString
       requiredStatement: iiifLabeledString
@@ -75,23 +116,32 @@ exports.sourceNodes = async (
       rights: String
       metadata: [iiifLabeledString]
       thumbnail: iiifThumbnailJson
+      items: [iiifItemCanvas]
     }`
   createTypes(typeDefs)
+  return
 
   const buildNode = (data) => {
     const node = data.manifest
-    node.id = node['@id']
-    node.children = (node.collections || node.manifests || []).map(manifest => manifest['@id'])
+    node.children = (node.items || []).map(manifest => manifest.id)
 
-    delete node.collections
-    delete node.manifests
-
-    if (node['@type'].toLowerCase() === 'sc:collection') {
-      node.slug = 'collection/' + md5(node['@id'])
+    if (node['type'].toLowerCase() === 'collection') {
+      node.slug = 'collection/' + md5(node.id)
     } else {
-      node.slug = 'item/' + md5(node['@id'])
+      node.slug = 'item/' + md5(node.id)
     }
-
+    node.label = flattenLanguage(node.label)
+    node.summary = flattenLanguage(node.summary)
+    if (node.requiredStatement) {
+      node.requiredStatement.label = flattenLanguage(node.requiredStatement.label)
+      node.requiredStatement.value = flattenLanguage(node.requiredStatement.value)
+    }
+    node.metadata = node.metadata.map(metadata => {
+      return {
+        label: flattenLanguage(metadata.label),
+        value: flattenLanguage(metadata.value),
+      }
+    })
     // downloadFiles(node, data.assets)
 
     const nodeContent = JSON.stringify(node)
@@ -224,14 +274,25 @@ exports.sourceNodes = async (
     )
     })
   }
-*/
 
+  const flattenLanguage = (data) => {
+    if (!data) {
+      return ''
+    }
+    const keys = Object.keys()
+    if (keys.include(currentLanguage)) {
+      return data[currentLanguage]
+    }
+
+    return data[keys.shift]
+  }
+*/
   const manifestList = loadManifestsFile()
 
   return new Promise(async (resolve, reject) => {
     for (const tagId in manifestList.tags) {
-      const node = buildCategoryNode(manifestList.tags[tagId])
-      await createNode(node)
+      // const node = buildCategoryNode(manifestList.tags[tagId])
+      // await createNode(node)
     }
 
     const manifestData = await fetchData(manifestList.manifests)

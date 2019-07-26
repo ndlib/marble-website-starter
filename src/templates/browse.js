@@ -1,3 +1,4 @@
+/*
 import React from 'react'
 import PropTypes from 'prop-types'
 import Browse from 'components/ManifestViews/Browse'
@@ -58,3 +59,4 @@ export const pageQuery = graphql`
     }
 }
 `
+*/

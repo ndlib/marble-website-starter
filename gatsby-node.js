@@ -31,21 +31,6 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
     {
-      allIiifManifest {
-        nodes {
-          slug
-          _type
-        }
-      },
-      allBrowseCategory {
-        nodes {
-          id
-          slug
-          parentCategory {
-            id
-          }
-        }
-      },
       allMarkdownRemark {
         edges {
           node {
@@ -62,8 +47,10 @@ exports.createPages = ({ graphql, actions }) => {
   `).then(result => {
     const tagTemplate = path.resolve('src/templates/browse.js')
     const iiifTemplate = path.resolve('src/templates/iiifTemplate.js')
-    const manifests = result.data.allIiifManifest.nodes
-    const browse = result.data.allBrowseCategory.nodes
+    // const manifests = result.data.allIiifManifest.nodes
+    const manifests = []
+    // const browse = result.data.allBrowseCategory.nodes
+    const browse = []
     const pages = result.data.allMarkdownRemark.edges
 
     manifests.forEach((node) => {

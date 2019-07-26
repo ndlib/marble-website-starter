@@ -26,7 +26,7 @@ export const ManifestCard = (props) => {
 
 ManifestCard.propTypes = {
   allManifests: PropTypes.array.isRequired,
-  iiifManifest: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]).isRequired,
+  iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 }
 
 export const ManifestCardWrapper = (props) => {
@@ -39,11 +39,14 @@ export const ManifestCardWrapper = (props) => {
             node {
               _id
               _type
-              label
+              id
+              label {
+                en
+              }
               thumbnail {
-                _id
+                id
                 service {
-                  _id
+                  id
                 }
               }
             }
@@ -57,7 +60,7 @@ export const ManifestCardWrapper = (props) => {
 }
 
 ManifestCardWrapper.propTypes = {
-  iiifManifest: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]).isRequired,
+  iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 }
 
 export default ManifestCardWrapper

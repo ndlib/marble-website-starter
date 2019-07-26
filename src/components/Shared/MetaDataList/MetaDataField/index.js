@@ -6,10 +6,10 @@ const MarkDownField = ({ metadata, skipHtml }) => {
   const { label, value } = metadata
   return (
     <React.Fragment>
-      <dt>{label}</dt>
+      <dt>{label.en}</dt>
       <dd>
         <ReactMarkdown
-          source={value}
+          source={value.en}
           escapeHtml={false}
           skipHtml={skipHtml}
         />

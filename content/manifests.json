@@ -90,8 +90,14 @@
     "art-1":{
       "id":"art-1",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1999.024/manifest",
-        "https://presentation-iiif.library.nd.edu/1976.057/manifest"
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-1/manifest",
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-2/manifest",
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-3/manifest",
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-4/manifest",
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-5/manifest",
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-6/manifest",
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-7/manifest",
+        "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-8/manifest"
       ],
       "label":"Religious Paintings",
       "parent_id":"website",
@@ -116,9 +122,6 @@
     "art-3":{
       "id":"art-3",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1982.072.001/manifest",
-        "https://presentation-iiif.library.nd.edu/1983.053.002/manifest",
-        "https://presentation-iiif.library.nd.edu/1986.059.001/manifest"
       ],
       "label":"Historical Artifacts",
       "parent_id":"website",
@@ -139,9 +142,6 @@
     "journals":{
       "id":"journals",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/nduspec_eadks65h991878/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/theophilus",
-        "https://presentation-iiif.library.nd.edu/nduspec_ead7s75db80w4r/manifest"
       ],
       "label":"Historical Journals",
       "parent_id":"website",
@@ -166,8 +166,6 @@
     "art-2":{
       "id":"art-2",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1934.007.001/manifest",
-        "https://presentation-iiif.library.nd.edu/1982.072.001/manifest"
       ],
       "label":"Religious Artifacts",
       "parent_id":"website",
@@ -192,14 +190,6 @@
     "north-america":{
       "id":"north-america",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1986.059.001/manifest",
-        "https://presentation-iiif.library.nd.edu/1982.072.001/manifest",
-        "https://presentation-iiif.library.nd.edu/1976.057/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/theophilus",
-        "https://presentation-iiif.library.nd.edu/collection/journals",
-        "https://presentation-iiif.library.nd.edu/nduspec_ead7s75db80w4r/manifest",
-        "https://presentation-iiif.library.nd.edu/1934.007.001/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/nd-life"
       ],
       "label":"North America",
       "parent_id":"places",
@@ -245,10 +235,6 @@
     "europe":{
       "id":"europe",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1999.024/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/dante",
-        "https://presentation-iiif.library.nd.edu/collection/epistemological-letters",
-        "https://presentation-iiif.library.nd.edu/collection/le-rossignol"
       ],
       "label":"Europe",
       "parent_id":"places",
@@ -273,13 +259,6 @@
     "religious":{
       "id":"religious",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1986.059.001/manifest",
-        "https://presentation-iiif.library.nd.edu/1982.072.001/manifest",
-        "https://presentation-iiif.library.nd.edu/1934.007.001/manifest",
-        "https://presentation-iiif.library.nd.edu/CSOR-04-05-01/manifest",
-        "https://presentation-iiif.library.nd.edu/GNDL-45-01/manifest",
-        "https://presentation-iiif.library.nd.edu/nduspec_ead7s75db80w4r/manifest",
-        "https://presentation-iiif.library.nd.edu/CTAO-01-28/manifest"
       ],
       "label":"Religious Artifacts",
       "parent_id":"themes",
@@ -304,12 +283,6 @@
     "historical":{
       "id":"historical",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1983.053.002/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/le-rossignol",
-        "https://presentation-iiif.library.nd.edu/1976.057/manifest",
-        "https://presentation-iiif.library.nd.edu/nduspec_eadks65h991878/manifest",
-        "https://presentation-iiif.library.nd.edu/nduspec_ead7s75db80w4r/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/theophilus"
       ],
       "label":"Historical Artifacts",
       "parent_id":"themes",
@@ -334,11 +307,6 @@
     "personal":{
       "id":"personal",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/collection/journals",
-        "https://presentation-iiif.library.nd.edu/collection/le-rossignol",
-        "https://presentation-iiif.library.nd.edu/collection/epistemological-letters",
-        "https://presentation-iiif.library.nd.edu/CSOR-04-05-01/manifest",
-        "https://presentation-iiif.library.nd.edu/CEDW-30-16-01/manifest"
       ],
       "label":"Journals and Notebooks",
       "parent_id":"themes",
@@ -363,8 +331,7 @@
     "science":{
       "id":"science",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/GNDL-45-05/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/epistemological-letters"
+
       ],
       "label":"Scientific Artifacts",
       "parent_id":"themes",
@@ -389,11 +356,6 @@
     "notre-dame":{
       "id":"notre-dame",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/GNDL-45-02/manifest",
-        "https://presentation-iiif.library.nd.edu/GNDL-45-04/manifest",
-        "https://presentation-iiif.library.nd.edu/GNDL-45-05/manifest",
-        "https://presentation-iiif.library.nd.edu/CEDW-20-02-08/manifest",
-        "https://presentation-iiif.library.nd.edu/1976.057/manifest"
       ],
       "label":"Notre Dame",
       "parent_id":"themes",
@@ -435,8 +397,6 @@
     "medieval-time-period":{
       "id":"medieval-time-period",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/1934.007.001/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/dante"
       ],
       "label":"Medieval",
       "parent_id":"timeperiods",
@@ -453,9 +413,6 @@
     "renaissance-time-period":{
       "id":"renaissance-time-period",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/collection/dante",
-        "https://presentation-iiif.library.nd.edu/1999.024/manifest",
-        "https://presentation-iiif.library.nd.edu/nduspec_ead7s75db80w4r/manifest"
       ],
       "label":"Renaissance",
       "parent_id":"timeperiods",
@@ -486,11 +443,6 @@
     "19thcentury-time-period":{
       "id":"19thcentury-time-period",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/collection/theophilus",
-        "https://presentation-iiif.library.nd.edu/1982.072.001/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/nd-life",
-        "https://presentation-iiif.library.nd.edu/nduspec_eadks65h991878/manifest",
-        "https://presentation-iiif.library.nd.edu/1976.057/manifest"
       ],
       "label":"19th Century",
       "parent_id":"timeperiods",
@@ -504,9 +456,6 @@
     "20thcentury-time-period":{
       "id":"20thcentury-time-period",
       "manifest_ids":[
-        "https://presentation-iiif.library.nd.edu/collection/le-rossignol",
-        "https://presentation-iiif.library.nd.edu/1986.059.001/manifest",
-        "https://presentation-iiif.library.nd.edu/collection/epistemological-letters"
       ],
       "label":"20th Century",
       "parent_id":"timeperiods",
@@ -519,27 +468,13 @@
     }
   },
   "manifests":[
-    "https://presentation-iiif.library.nd.edu/GNDL-45-02/manifest",
-    "https://presentation-iiif.library.nd.edu/collection/le-rossignol",
-    "https://presentation-iiif.library.nd.edu/CTAO-01-28/manifest",
-    "https://presentation-iiif.library.nd.edu/nduspec_eadks65h991878/manifest",
-    "https://presentation-iiif.library.nd.edu/1982.072.001/manifest",
-    "https://presentation-iiif.library.nd.edu/GNDL-45-05/manifest",
-    "https://presentation-iiif.library.nd.edu/1986.059.001/manifest",
-    "https://presentation-iiif.library.nd.edu/collection/nd-life",
-    "https://presentation-iiif.library.nd.edu/collection/theophilus",
-    "https://presentation-iiif.library.nd.edu/GNDL-45-01/manifest",
-    "https://presentation-iiif.library.nd.edu/collection/epistemological-letters",
-    "https://presentation-iiif.library.nd.edu/1999.024/manifest",
-    "https://presentation-iiif.library.nd.edu/1983.053.002/manifest",
-    "https://presentation-iiif.library.nd.edu/collection/journals",
-    "https://presentation-iiif.library.nd.edu/CEDW-30-16-01/manifest",
-    "https://presentation-iiif.library.nd.edu/CEDW-20-02-08/manifest",
-    "https://presentation-iiif.library.nd.edu/nduspec_ead7s75db80w4r/manifest",
-    "https://presentation-iiif.library.nd.edu/collection/dante",
-    "https://presentation-iiif.library.nd.edu/CSOR-04-05-01/manifest",
-    "https://presentation-iiif.library.nd.edu/1934.007.001/manifest",
-    "https://presentation-iiif.library.nd.edu/GNDL-45-04/manifest",
-    "https://presentation-iiif.library.nd.edu/1976.057/manifest"
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-1/manifest",
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-2/manifest",
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-3/manifest",
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-4/manifest",
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-5/manifest",
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-6/manifest",
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-7/manifest",
+    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-8/manifest"
   ]
 }
