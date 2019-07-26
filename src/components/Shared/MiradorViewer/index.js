@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MiradorViewerPage from 'components/MiradorViewerPage'
 import pageLinkFromManifest from 'utils/pageLinkFromManifest.js'
 
 const MiradorViewer = ({ iiifManifest, height, width }) => {
