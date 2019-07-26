@@ -9,7 +9,7 @@
   background-color: white;
   margin: 1.8rem auto;
   min-height: calc(100vh - 50px - 70px - 64px - 1.8rem*2);
-  width: 70vw;
+  width: calc(100% - 4rem);
 }
 .noMainPadding {
   background-color: white;
@@ -38,13 +38,13 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1600px) {
   .mainPadding {
     margin: 1rem auto;
-    width: 1220px;
+    width: 1540px;
   }
   .preMain {
     margin: 0 auto;
-    width: 1220px;
+    width: 1540px;
   }
 }

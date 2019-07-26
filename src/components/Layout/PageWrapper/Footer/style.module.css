@@ -47,9 +47,9 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1600px) {
   .footerInner {
     margin: 0 auto;
-    width: 1280px;
+    width: 1600px;
   }
 }

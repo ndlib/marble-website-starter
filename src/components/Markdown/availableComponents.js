@@ -8,8 +8,9 @@ import ImageSection from 'components/ManifestViews/Item/ItemAside/ImageSection'
 import ManifestCard from 'components/Shared/ManifestCard'
 import ManifestDescription from 'components/Shared/ManifestDescription'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
+import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
-import SearchBanner from 'components/Shared/SearchBanner'
+import SearchBox from 'components/Shared/SearchBox'
 
 export const availableComponents = {
   ActionButtons: ActionButtonGroup,
@@ -22,8 +23,9 @@ export const availableComponents = {
   ManifestDescription: ManifestDescription,
   ManifestImage: ImageSection,
   ManifestMetaData: ManifestMetaData,
+  MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
-  SearchBanner: SearchBanner,
+  SearchBox: SearchBox,
 }
 
 export default availableComponents

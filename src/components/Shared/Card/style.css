@@ -1,9 +1,21 @@
+a.basicCard,
+a.grid,
+a.list {
+  text-decoration: none;
+}
 .cardWrapper {
-  height: 100%;
   position: relative;
+  border: 1px solid #999;
+  box-shadow: 2px 2px 8px 2px rgba(153,153,153,0.5);
 }
 .cardFigure {
   height: 100%;
+}
+.grid .cardImage,
+.basicCard .cardImage {
+  position: relative;
+  display: block;
+  height: 250px;
 }
 .cardImage img {
   display: block;
@@ -13,25 +25,30 @@
   width: 100%;
 }
 .cardCaption {
-  position: absolute;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: #fff;
+  border-top: 1px solid #999;
   display: block;
   width: 100%;
-  color: #fff;
+  color: #000;
   padding: 12px;
-  box-sizing: border-box;
+  height: 100px;
 }
+
 .cardCaption h2 {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
+}
+.list .cardCaption h2 {
+  font-weight: 600;
 }
 .cardAdditional {
   display: none;
 }
 
 .list .cardWrapper {
-  background: #efefef;
+  background: #fff;
+  height: 250px;
+  overflow: hidden;
 }
 
 .list .cardFigure {
@@ -47,7 +64,10 @@
 }
 .list .cardCaption {
   background: none;
+  border-top: none;
+  border-left: 1px solid #999;
   color: #000;
+  height: 250px;
   position: relative;
   display: inline-block;
   vertical-align: top;

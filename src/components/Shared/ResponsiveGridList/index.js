@@ -46,9 +46,9 @@ ResponsiveGridList.propTypes = {
 }
 
 ResponsiveGridList.defaultProps = {
-  breakpoints: { lg: 800, md: 600, sm: 480 },
+  breakpoints: { lg: 1200, md: 800, sm: 600 },
   cols: { lg: 12, md: 8, sm: 4 },
-  rowHeight: 200,
+  rowHeight: 400,
   cardWidth: 4,
   cardHeight: 1,
   measureBeforeMount: false,

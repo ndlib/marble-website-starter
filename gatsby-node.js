@@ -36,6 +36,9 @@ exports.createPages = ({ graphql, actions }) => {
           node {
             frontmatter {
               slug
+              iiifJson {
+                id
+              }
             }
           }
         }
@@ -102,6 +105,17 @@ exports.createPages = ({ graphql, actions }) => {
           slug: node.frontmatter.slug,
         },
       })
+    })
+    pages.forEach(({ node }) => {
+      if (node.frontmatter.iiifJson) {
+        createPage({
+          path: `${node.frontmatter.slug}/mirador`,
+          component: path.resolve(`./src/templates/mirador.js`),
+          context: {
+            slug: node.frontmatter.slug,
+          },
+        })
+      }
     })
   })
 
