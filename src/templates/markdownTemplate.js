@@ -72,6 +72,8 @@ export const query = graphql`
           }
         }
         iiifJson {
+          _id
+          _type
           id
           label
           description
