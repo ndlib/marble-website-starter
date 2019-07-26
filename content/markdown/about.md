@@ -11,7 +11,7 @@ components:
           - component: MarkdownHtmlContent
             props:
               - label: "html"
-                value: "<h2>Snite Museum of Art<br/><br/></h2>"
+                value: "<h2>Snite Museum of Art</h2>"
           - component: Image
             props:
               - label: "src"

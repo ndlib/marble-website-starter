@@ -9,6 +9,7 @@ components:
     props:
       - label: "src"
         fileValue: "./images/banner.jpg"
+  - component: MiradorViewer
   - component: MarkdownHtmlContent
   - component: MarkdownHtmlContent
     props:
