@@ -6,7 +6,7 @@ import ManifestSEO from './'
 test('ManifestSEO', () => {
   const iiifManifest = {
     label: 'test title',
-    thumbnail: { _id: '/fake.png' },
+    thumbnail: { id: '/fake.png' },
     description: 'test description',
   }
   const location = {

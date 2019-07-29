@@ -1,7 +1,7 @@
 import typy from 'typy'
 export const getImageService = (iiifManifest, index = 0) => {
-  if (typy(iiifManifest, `items[0].items[0].items[0].id`).isString) {
-    return iiifManifest.items[0].items[0].items[0].id
+  if (typy(iiifManifest, `items[${index}].items[0].items[0].id`).isString) {
+    return iiifManifest.items[index].items[0].items[0].id
   }
   return null
 }
