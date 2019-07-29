@@ -1,13 +1,13 @@
 import typy from 'typy'
 export const getImageService = (iiifManifest, index = 0) => {
-  if (typy(iiifManifest, `sequences[0].canvases[${index}].images[0]['_id']`).isString) {
-    return iiifManifest.sequences[0].canvases[index].images[0]['_id']
+  if (typy(iiifManifest, `items[${index}].items[0].items[0].id`).isString) {
+    return iiifManifest.items[index].items[0].items[0].id
   }
   return null
 }
 export const getImageServiceFromThumbnail = (iiifManifest) => {
-  if (typy(iiifManifest, `thumbnail.service['_id']`).isString) {
-    return iiifManifest.thumbnail.service['_id']
+  if (typy(iiifManifest, `thumbnail[0].service[0].id`).isString) {
+    return iiifManifest.thumbnail[0].service[0].id
   }
   return null
 }

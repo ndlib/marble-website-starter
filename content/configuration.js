@@ -67,7 +67,7 @@ module.exports = {
             component: 'Column',
             components: [
               { component: 'ActionButtons' },
-              { component: 'ManifestImage' },
+              { component: 'MiradorViewer' },
             ],
           },
           {

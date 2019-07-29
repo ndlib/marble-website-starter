@@ -16,6 +16,8 @@ exports.sourceNodes = async (
   const typeDefs = `
     type iiifTranslatedString {
       en: [ String ]
+      en_GB: [ String ]
+      en_US: [ String ]
       fr: [ String ]
       none: [ String ]
     }
@@ -35,7 +37,7 @@ exports.sourceNodes = async (
       id: String
       type: String
       format: String
-      service: iiifServiceJson
+      service: [iiifServiceJson]
     }
 
     type iiifLogoJson {
@@ -100,7 +102,7 @@ exports.sourceNodes = async (
       height: Int
       width: Int
       seeAlso: [ iiifSeeAlso ]
-      thumbnail: iiifThumbnailJson
+      thumbnail: [iiifThumbnailJson]
       items: [iiifItemsList]
     }
 
@@ -115,7 +117,7 @@ exports.sourceNodes = async (
       provider: iiifProviderJson
       rights: String
       metadata: [iiifLabeledString]
-      thumbnail: iiifThumbnailJson
+      thumbnail: [iiifThumbnailJson]
       items: [iiifItemCanvas]
     }`
   createTypes(typeDefs)

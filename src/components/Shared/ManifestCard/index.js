@@ -8,13 +8,13 @@ import { pageLinkFromManifest } from 'utils/pageLinkFromManifest'
 
 export const ManifestCard = (props) => {
   const iiifManifest = typy(props, 'iiifManifest').isObject ? props.iiifManifest : props.allManifests.find(manifest => {
-    return manifest.node['_id'] === props.iiifManifest
+    return manifest.node.id === props.iiifManifest
   }).node
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const linkToManifestPage = pageLinkFromManifest(iiifManifest)
   return (
     <Card
-      label={iiifManifest.label}
+      label={iiifManifest.label.en[0]}
       target={linkToManifestPage}
       imageService={imageService || null}
       {...props}
@@ -37,9 +37,8 @@ export const ManifestCardWrapper = (props) => {
         allIiifJson {
           edges {
             node {
-              _id
-              _type
               id
+              type
               label {
                 en
               }

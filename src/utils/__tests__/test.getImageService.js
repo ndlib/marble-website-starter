@@ -2,10 +2,10 @@ import { getImageService, getImageServiceFromThumbnail } from '../getImageServic
 
 describe('getImageService', () => {
   const iiifManifest = {
-    sequences: [{
-      canvases: [{
-        images: [{
-          '_id': '/image/path.jpg',
+    items: [{
+      items: [{
+        items: [{
+          id: '/image/path.jpg',
         }],
       }],
     }],
@@ -24,11 +24,11 @@ describe('getImageService', () => {
 describe('getImageServiceFromThumbnail', () => {
   test('return url', () => {
     const iiifManifest = {
-      thumbnail: {
-        service: {
-          '_id': '/image/path.jpg',
-        },
-      },
+      thumbnail: [{
+        service: [{
+          id: '/image/path.jpg',
+        }],
+      }],
     }
     const result = getImageServiceFromThumbnail(iiifManifest)
     expect(result).toEqual('/image/path.jpg')
