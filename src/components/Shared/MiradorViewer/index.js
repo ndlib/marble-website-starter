@@ -1,26 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import pageLinkFromManifest from 'utils/pageLinkFromManifest.js'
-
+import style from './style.module.css'
 const MiradorViewer = ({ iiifManifest, height, width }) => {
-  const style = {
-    border: 'none',
+  const [viewerBlocked, toggleBlocking] = useState(true)
+  const viewerDimensions = {
     height: height,
-    margin: '0',
-    overflow: 'hidden',
     width: width,
   }
   return (
-    <iframe
-      allowFullScreen
-      id='miradorViewer'
-      className='miradorViewer'
-      title='mirador-viewer'
-      sandbox='allow-same-origin allow-scripts allow-pointer-lock allow-popups'
-      scrolling='no'
-      style={style}
-      src={`${pageLinkFromManifest(iiifManifest)}/mirador`}
-    />
+    <div className={style.viewerWrapper}>
+      <iframe
+        allowFullScreen
+        id='miradorViewer'
+        className='miradorViewer'
+        title='mirador-viewer'
+        sandbox='allow-same-origin allow-scripts allow-pointer-lock allow-popups'
+        scrolling='no'
+        style={viewerDimensions}
+        src={'/epistemological-letters-issue-1/mirador?title=false&thumbnails=true&sidebar=false&fullscreen=false'}
+      // src={`${pageLinkFromManifest(iiifManifest)}/mirador?title=false&thumbnails=true&sidebar=false&fullscreen=false`}
+      />
+      <div
+        className={viewerBlocked ? style.blocking : style.notBlocking}
+        style={{
+          height: viewerDimensions.height,
+          width: viewerDimensions.width,
+        }}
+      />
+      <button
+        className={style.toggleButton}
+        onClick={() => {
+          toggleBlocking(!viewerBlocked)
+        }}
+      >{
+          viewerBlocked ? 'Click to enable interactive viewer' : 'Click to disable interactive viewer'
+        }</button>
+    </div>
   )
 }
 MiradorViewer.propTypes = {

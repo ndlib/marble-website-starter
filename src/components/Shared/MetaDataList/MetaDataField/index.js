@@ -7,21 +7,28 @@ const MarkDownField = ({ metadata, skipHtml }) => {
   return (
     <React.Fragment>
       <dt>{label.en}</dt>
-      <dd>
-        <ReactMarkdown
-          source={value.en}
-          escapeHtml={false}
-          skipHtml={skipHtml}
-        />
-      </dd>
+      {
+        value.en.map(val => {
+          return (
+            <dd key={value}>
+              <ReactMarkdown
+                source={val}
+                escapeHtml={false}
+                skipHtml={skipHtml}
+              />
+            </dd>
+          )
+        })
+      }
+
     </React.Fragment>
   )
 }
 
 MarkDownField.propTypes = {
   metadata: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    label: PropTypes.object.isRequired,
+    value: PropTypes.object.isRequired,
   }).isRequired,
   skipHtml: PropTypes.bool,
 }

@@ -30,7 +30,6 @@ const Image = ({
   const onEnter = () => {
     setSrcSet(srcSet)
   }
-
   return (
     <Waypoint onEnter={onEnter}>
       <picture className={className}>

@@ -1,17 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
+import queryString from 'query-string'
 import MiradorWrapper from './MiradorWrapper'
 
 const MiradorViewerPage = ({ data, location }) => {
   const manifestId = typy(data, 'markdownRemark.frontmatter.iiifJson.id').safeString
+  const qs = queryString.parse(location.search)
+  const hideWindowTitle = qs.title === 'false'
+  const sideBarOpenByDefault = qs.sidebar !== 'false'
+  const thumbnailNavigationPosition = qs.thumbnails === 'true' ? 'far-bottom' : 'off'
+  const fullscreen = qs.fullscreen !== 'false'
   const config = {
     id: 'test',
     window: {
       allowClose: false,
-      allowFullscreen: true,
+      allowFullscreen: fullscreen,
       allowMaximize: false,
-      sideBarOpenByDefault: true,
+      hideWindowTitle: hideWindowTitle,
+      sideBarOpenByDefault: sideBarOpenByDefault,
     },
     responseHeaders: {
       'Content-Type': 'text/json',
@@ -20,6 +27,7 @@ const MiradorViewerPage = ({ data, location }) => {
       {
         manifestId: manifestId,
         maximized: true,
+        thumbnailNavigationPosition: thumbnailNavigationPosition,
       },
 
     ],

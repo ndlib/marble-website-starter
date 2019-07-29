@@ -1,6 +1,7 @@
 ---
 title: Layout Test
 slug: layoutTest
+iiifJson___NODE: 'https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-1/manifest'
 
 components:
   - component: Image
@@ -163,11 +164,11 @@ components:
       - component: ManifestCard
         props:
           - label: "iiifManifest"
-            value: "https://presentation-iiif.library.nd.edu/CTAO-01-28/manifest2"
+            value: "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-2/manifest"
       - component: ManifestCard
         props:
           - label: "iiifManifest"
-            value: "https://presentation-iiif.library.nd.edu/1982.072.001/manifest2"
+            value: "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-3/manifest"
   - component: ChildManifests
 
 ---

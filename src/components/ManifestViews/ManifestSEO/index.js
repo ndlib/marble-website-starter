@@ -7,7 +7,7 @@ const ManifestSEO = ({ iiifManifest, location }) => {
   return (
     <SEO
       title={iiifManifest.label}
-      image={typy(iiifManifest, 'thumbnail._id').safeString}
+      image={typy(iiifManifest, 'thumbnail.id').safeString}
       description={iiifManifest.description}
       pathname={location.pathname}
     />

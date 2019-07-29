@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import mirador from 'mirador'
+let mirador = {}
+try {
+  mirador = require('mirador')
+} catch (e) {
+  console.warn('mirador unaviailable at build time.')
+}
 
 class MiradorWrapper extends React.Component {
   componentDidMount () {
