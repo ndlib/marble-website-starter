@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import DisplayViewToggle, { getActiveSettings } from 'components/Shared/DisplayViewToggle'
+import DisplayViewToggle, { getActiveSettings } from 'components/Internal/DisplayViewToggle'
 import ManifestCard from '../ManifestCard'
 import {
   COLLECTION_PAGE,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { LoginButton, getSafeName } from './'
-import Link from 'components/Shared/Link'
+import Link from 'components/Internal/Link'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 
 describe('LoginButton', () => {

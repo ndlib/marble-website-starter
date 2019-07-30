@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import style from './style.module.css'
 import { StaticQuery, graphql } from 'gatsby'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
-import Navigation from '../../../Shared/Navigation'
+import ResponsiveGridList from 'components/Internal/ResponsiveGridList'
+import Navigation from 'components/Internal/Navigation'
 
 export const Footer = ({ data }) => {
   const footerText = data.site.siteMetadata.footerText

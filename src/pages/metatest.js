@@ -3,7 +3,7 @@ import schema1 from '../../content/schema/basicschema1.json'
 import schema2 from '../../content/schema/basicschema2.json'
 import schema3 from '../../content/schema/basicschema3.json'
 import renderer from '../../content/schema/rendering.json'
-import SchemaRenderer from 'components/Shared/SchemaRenderer'
+import SchemaRenderer from 'components/Experimental/SchemaRenderer'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 

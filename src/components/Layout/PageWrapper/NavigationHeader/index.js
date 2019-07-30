@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
-import Navigation from 'components/Shared/Navigation'
+import Navigation from 'components/Internal/Navigation'
 import HamburgerButton from './HamburgerButton'
 import style from './style.module.css'
 

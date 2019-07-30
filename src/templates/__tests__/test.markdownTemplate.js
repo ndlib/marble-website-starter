@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { MarkdownTemplate } from '../markdownTemplate'
-import Markdown from 'components/Markdown'
+import Markdown from 'components/Pages/Markdown'
 
 test('MarkdownTemplate', () => {
   const data = {

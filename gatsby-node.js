@@ -110,7 +110,7 @@ exports.createPages = ({ graphql, actions }) => {
       if (node.frontmatter.iiifJson) {
         createPage({
           path: `${node.frontmatter.slug}/mirador`,
-          component: path.resolve(`./src/templates/mirador.js`),
+          component: path.resolve(`./src/templates/miradorTemplate.js`),
           context: {
             slug: node.frontmatter.slug,
           },

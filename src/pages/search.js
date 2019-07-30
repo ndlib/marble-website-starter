@@ -4,9 +4,9 @@ import { graphql } from 'gatsby'
 import { connect } from 'react-redux'
 import queryString from 'query-string'
 import Layout from 'components/Layout'
-import Search from 'components/APIViews/Search'
+import Search from 'components/Legacy/Search'
 import SearchBox from 'components/Shared/SearchBox'
-import Seo from 'components/Shared/Seo'
+import Seo from 'components/Internal/Seo'
 import {
   submitSearch,
   STATUS_SEARCH_FETCHING,
