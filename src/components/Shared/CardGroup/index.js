@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ResponsiveGridList from 'components/Shared/ResponsiveGridList'
+import ResponsiveGridList from 'components/Internal/ResponsiveGridList'
 import style from './style.module.css'
 
 const CardGroup = ({ label, children }) => {

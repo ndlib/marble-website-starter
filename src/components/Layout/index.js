@@ -6,7 +6,7 @@ import ContentWrapper from './ContentWrapper'
 import PageContent from './PageContent'
 
 /// CONSTRUCTION BANNER
-import ConstructionBanner from 'components/Shared/ConstructionBanner'
+import ConstructionBanner from './ConstructionBanner'
 
 const Layout = ({
   aside, // content related to but separate from main - use either nav or aside not both
