@@ -139,6 +139,10 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        searchBase {
+          app
+          url
+        }
       }
     }
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {

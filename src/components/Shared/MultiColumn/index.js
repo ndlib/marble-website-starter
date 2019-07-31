@@ -1,16 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import typy from 'typy'
 import './style.css'
 
 const MultiColumn = ({ columns, children }) => {
-  const numberOfColumns = columns || children.length
+  const numberOfColumns = parseInt(columns, 10) || children.length
   return (
     <div className={`multiColumn-${numberOfColumns}`}>
       {
         children.map((comp, index) => {
+          console.log('colSpan', typy(comp, 'props.colSpan').safeString)
+          const colSpan = typy(comp, 'props.colSpan').safeString ? ` col-span-${comp.props.colSpan}` : ''
           return (
             <div
-              className={`col-${index + 1}`}
+              className={`col ${colSpan}`}
               key={index}
             >
               {comp}
@@ -23,7 +26,7 @@ const MultiColumn = ({ columns, children }) => {
 }
 
 MultiColumn.propTypes = {
-  columns: PropTypes.number,
+  columns: PropTypes.string,
   children: PropTypes.array,
 }
 

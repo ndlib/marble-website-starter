@@ -1,13 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {
   MultiList,
   SingleDataList,
   RangeSlider,
   MultiDropdownList,
 } from '@appbaseio/reactivesearch'
+import { components } from 'components/Internal/SearchBase'
 
-const SearchTools = ({ components }) => {
+const SearchTools = () => {
   return (
     <React.Fragment>
       <MultiList
@@ -82,10 +82,6 @@ const SearchTools = ({ components }) => {
       />
     </React.Fragment>
   )
-}
-
-SearchTools.propTypes = {
-  components: PropTypes.array.isRequired,
 }
 
 export default SearchTools

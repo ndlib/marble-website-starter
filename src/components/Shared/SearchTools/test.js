@@ -9,7 +9,7 @@ import {
 } from '@appbaseio/reactivesearch'
 
 test('SearchTools', () => {
-  const wrapper = shallow(<SearchTools components={[]} />)
+  const wrapper = shallow(<SearchTools />)
   expect(wrapper.find(MultiList).exists()).toBeTruthy()
   expect(wrapper.find(SingleDataList).exists()).toBeTruthy()
   expect(wrapper.find(RangeSlider).exists()).toBeTruthy()

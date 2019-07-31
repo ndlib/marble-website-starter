@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { ReactiveList } from '@appbaseio/reactivesearch'
 import Card from 'components/Shared/Card'
 import DisplayViewToggle, { getActiveSettings } from 'components/Internal/DisplayViewToggle'
@@ -8,8 +9,9 @@ import {
   SEARCH_PAGE,
   DISPLAY_LIST,
 } from 'store/actions/displayActions'
+import { components } from 'components/Internal/SearchBase'
 
-const SearchResults = ({ location, components, displayReducer }) => {
+export const SearchResults = ({ location, displayReducer }) => {
   const activeSettings = getActiveSettings(displayReducer, SEARCH_PAGE)
   const cardClass = displayReducer[SEARCH_PAGE] || DISPLAY_LIST
 
@@ -62,10 +64,12 @@ const SearchResults = ({ location, components, displayReducer }) => {
 }
 
 SearchResults.propTypes = {
-
   location: PropTypes.object.isRequired,
-  components: PropTypes.array.isRequired,
   displayReducer: PropTypes.object.isRequired,
 }
 
-export default SearchResults
+const mapStateToProps = (state) => {
+  return { ...state }
+}
+
+export default connect(mapStateToProps)(SearchResults)
