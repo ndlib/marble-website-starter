@@ -1,12 +1,5 @@
 {
   "manifests":[
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-1/manifest",
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-2/manifest",
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-3/manifest",
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-4/manifest",
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-5/manifest",
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-6/manifest",
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-7/manifest",
-    "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-8/manifest"
+    "https://manifest-pipeline-v3.libraries.nd.edu/collection/epistemological-letters"
   ]
 }
