@@ -12,7 +12,7 @@ const MultiColumn = ({ columns, children }) => {
           const colSpan = typy(comp, 'props.colSpan').safeString ? ` col-span-${comp.props.colSpan}` : ''
           return (
             <div
-              className={`col ${colSpan}`}
+              className={`col${colSpan}`}
               key={index}
             >
               {comp}
