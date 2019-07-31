@@ -52,35 +52,6 @@ export const query = graphql`
     profile
   }
 
-  fragment iiifItemCanvasFragment on iiifItemCanvas {
-    id
-    height
-    type
-    width
-    label {
-      ...iiifTranslatedStringFragment
-    }
-    thumbnail {
-      ...iiifThumbnailJsonFragment
-    }
-    items {
-      ...iiifItemsListFragment
-    }
-  }
-
-  fragment iiifItemAnnotationPageFragment on iiifItemAnnotationPage {
-    id
-    type
-    label {
-      ...iiifTranslatedStringFragment
-    }
-    motivation
-    target
-    body {
-      ...iiifItemAnnotationPageBodyFragment
-    }
-  }
-
   fragment iiifItemAnnotationPageBodyFragment on iiifItemAnnotationPageBody {
     id
     type
@@ -92,11 +63,35 @@ export const query = graphql`
     }
   }
 
-  fragment iiifItemsListFragment on iiifItemsList {
+  fragment iiifJsonItemFragment on iiifItem {
     id
     type
-    items {
-      ...iiifItemAnnotationPageFragment
+    label {
+      ...iiifTranslatedStringFragment
+    }
+    summary {
+      ...iiifTranslatedStringFragment
+    }
+    rights
+    requiredStatement {
+      ...iiifLabeledStringFragment
+    }
+    metadata {
+      ...iiifLabeledStringFragment
+    }
+    viewingDirection
+    thumbnail {
+      ...iiifThumbnailJsonFragment
+    }
+    width
+    height
+    service {
+      ...iiifServiceFragment
+    }
+    motivation
+    target
+    body {
+      ...iiifItemAnnotationPageBodyFragment
     }
   }
 
@@ -119,9 +114,6 @@ export const query = graphql`
     viewingDirection
     thumbnail {
       ...iiifThumbnailJsonFragment
-    }
-    items {
-      ...iiifItemCanvasFragment
     }
   }
 
@@ -178,6 +170,15 @@ export const query = graphql`
         }
         iiifJson {
           ...iiifJsonFragment
+          items {
+            ...iiifJsonItemFragment
+            items {
+              ...iiifJsonItemFragment
+              items {
+                ...iiifJsonItemFragment
+              }
+            }
+          }
         }
       }
     }
