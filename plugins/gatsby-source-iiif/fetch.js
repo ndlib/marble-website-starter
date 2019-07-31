@@ -45,14 +45,19 @@ module.exports = async (urls) => {
   })
 
   await Promise.all(requests)
-
   const manifestTree = []
-  Object.keys(result).forEach(key => {
-    let manifest = expandManifestTree(result[key])
-    manifest = traverseAndFixData(manifest)
 
-    manifestTree.push(manifest)
-  })
+  try {
+    Object.keys(result).forEach(key => {
+      const manifest = expandManifestTree(result[key])
+      console.log(manifest)
+      traverseAndFixData(manifest)
+
+      manifestTree.push(manifest)
+    })
+  } catch (err) {
+    console.log('fetch error', err)
+  }
 
   return manifestTree
 }

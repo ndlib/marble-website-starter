@@ -20,32 +20,6 @@ layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'ite
   return mdFile
 }
 
-/*
-const request = require('request')
-const download = async (uri, filename, callback) => {
-  const getOptions = { uri, agentOptions: { family: 4 } }
-  request.head(getOptions, async (err, res) => {
-    if (err) {
-      console.log('ERR:')
-      console.log(err)
-    }
-    // console.log('content-type:', res.headers['content-type']);
-    // console.log('content-length:', res.headers['content-length']);
-
-    await request(getOptions).pipe(fs.createWriteStream(filename)).on('close', callback)
-  })
-}
-
-const dowloadAllFiles = async (assets) => {
-  for (let i = 0; i < assets.length; i++) {
-    const url = assets[i]
-    const filename = path.basename(url)
-    const filepath = path.join(__dirname, '/../../content/images/iiif/', filename)
-    // await download(manifestData[key].assets[i], filepath, (data) => { })
-  }
-}
-*/
-
 const ensureDirectoryStructure = async () => {
   return Promise.all([
     fs.promises.mkdir(path.join(__dirname, '/../../content/iiif/'), { recursive: true }),
