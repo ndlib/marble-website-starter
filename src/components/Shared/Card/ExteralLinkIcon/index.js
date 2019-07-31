@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { isExternal } from 'components/Shared/Link'
+import { isExternal } from 'components/Internal/Link'
 import openInNew from 'assets/icons/svg/baseline-open_in_new-24px-white.svg'
 import style from './style.module.css'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Markdown from 'components/Markdown'
+import Markdown from 'components/Pages/Markdown'
 
 export const MarkdownTemplate = ({ data, location }) => {
   return (

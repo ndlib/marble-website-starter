@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Shared/Link'
+import Link from 'components/Internal/Link'
 
 export const LinkedLogo = ({ href, src, alt }) => {
   if (!href || !src || !alt) {

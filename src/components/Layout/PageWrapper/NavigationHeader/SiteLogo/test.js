@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { SiteLogo } from './'
-import Link from 'components/Shared/Link'
+import Link from 'components/Internal/Link'
 
 test('SiteLogo', () => {
   const data = {

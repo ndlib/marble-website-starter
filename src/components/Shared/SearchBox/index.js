@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import Link from 'components/Shared/Link'
+import Link from 'components/Internal/Link'
 import queryString from 'query-string'
 import SearchButton from './SearchButton'
 import SearchField from './SearchField'

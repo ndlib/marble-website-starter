@@ -1,7 +1,7 @@
 /*
 import React from 'react'
 import PropTypes from 'prop-types'
-import Browse from 'components/ManifestViews/Browse'
+import Browse from 'components/Legacy/Browse'
 import { graphql } from 'gatsby'
 
 export const BrowseTemplate = ({ data, location }) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Footer } from './'
-import Navigation from 'components/Shared/Navigation'
+import Navigation from 'components/Internal/Navigation'
 
 test('Footer renders some divs with markdown text', () => {
   const data = {

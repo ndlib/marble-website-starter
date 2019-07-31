@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import Link from 'components/Shared/Link'
+import Link from 'components/Internal/Link'
 import style from './style.module.css'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 

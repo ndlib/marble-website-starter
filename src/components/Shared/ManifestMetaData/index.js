@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import MetaDataList from 'components/Shared/MetaDataList'
+import MetaDataList from 'components/Internal/MetaDataList'
 
 const ManifestMetaData = ({ iiifManifest, skipHtml }) => {
   return (

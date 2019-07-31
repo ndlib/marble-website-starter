@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Search from 'components/Search'
+import Search from 'components/Experimental/Search'
 
 const SearchPage = ({ data, location }) => {
   return <Search

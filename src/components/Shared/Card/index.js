@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Shared/Link'
+import Link from 'components/Internal/Link'
 import Image from 'components/Shared/Image'
 import ExteralLinkIcon from './ExteralLinkIcon'
 import buildReferalState from 'utils/buildReferalState'
