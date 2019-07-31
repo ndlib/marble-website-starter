@@ -25,7 +25,7 @@ export const ChildManifests = ({ iiifManifest, displayReducer }) => {
         {
           typy(iiifManifest, 'manifests').safeArray.map(manifest => {
             return (
-              <div key={manifest._id}>
+              <div key={manifest.id}>
                 <ManifestCard
                   cardClass={cardClass}
                   iiifManifest={manifest}

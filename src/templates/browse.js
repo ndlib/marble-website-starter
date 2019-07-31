@@ -33,9 +33,9 @@ export const pageQuery = graphql`
       manifests {
         slug
         thumbnail {
-          _id
+          id
           service {
-            _id
+            id
           }
         }
         label

@@ -9,7 +9,6 @@ const MultiColumn = ({ columns, children }) => {
     <div className={`multiColumn-${numberOfColumns}`}>
       {
         children.map((comp, index) => {
-          console.log('colSpan', typy(comp, 'props.colSpan').safeString)
           const colSpan = typy(comp, 'props.colSpan').safeString ? ` col-span-${comp.props.colSpan}` : ''
           return (
             <div

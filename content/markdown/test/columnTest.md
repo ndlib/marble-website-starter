@@ -258,16 +258,3 @@ components:
               - label: "src"
                 fileValue: "./images/05.jpg"
 ---
-
-- component: Image
-props:
-- label: "src"
-fileValue: "./images/05.jpg"
-- component: Image
-props:
-- label: "src"
-fileValue: "./images/05.jpg"
-- component: Image
-props:
-- label: "src"
-fileValue: "./images/05.jpg"

@@ -5,8 +5,8 @@ import pageLinkFromManifest from '../pageLinkFromManifest'
 //   const md5Id = md5('fakeID')
 //   test('collection link', () => {
 //     const iiifManifest = {
-//       _id: 'fakeID',
-//       _type: 'sc:Collection',
+//       id: 'fakeID',
+//       type: 'Collection',
 //     }
 //     const expected = `/collection/${md5Id}`
 //     const actual = pageLinkFromManifest(iiifManifest)
@@ -14,8 +14,8 @@ import pageLinkFromManifest from '../pageLinkFromManifest'
 //   })
 //   test('item link', () => {
 //     const iiifManifest = {
-//       _id: 'fakeID',
-//       _type: 'sc:Manifest',
+//       id: 'fakeID',
+//       type: 'Manifest',
 //     }
 //     const expected = `/item/${md5Id}`
 //     const actual = pageLinkFromManifest(iiifManifest)
@@ -23,7 +23,7 @@ import pageLinkFromManifest from '../pageLinkFromManifest'
 //   })
 //   test('bad link', () => {
 //     const iiifManifest = {
-//       _id: 'fakeID',
+//       id: 'fakeID',
 //     }
 //     const expected = `/`
 //     const actual = pageLinkFromManifest(iiifManifest)
