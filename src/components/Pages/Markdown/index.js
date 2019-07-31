@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
+import SearchBase from 'components/Internal/SearchBase'
 import Layout from 'components/Layout'
 import MarkdownSeo from './MarkdownSeo'
 import Navigation from 'components/Internal/Navigation'
@@ -13,22 +14,24 @@ const Markdown = ({ data, location }) => {
   const globalProps = getglobalProps(data, location)
 
   return (
-    <Layout
-      title={title}
-      nav={navigation}
-      location={location}
-    >
-      <MarkdownSeo
-        data={data}
+    <SearchBase data={data}>
+      <Layout
+        title={title}
+        nav={navigation}
         location={location}
-      />
-      <MarkdownLayoutRenderer
-        markdownRemark={data.markdownRemark}
-        location={location}
-        availableComponents={availableComponents}
-        globalProps={globalProps}
-      />
-    </Layout>
+      >
+        <MarkdownSeo
+          data={data}
+          location={location}
+        />
+        <MarkdownLayoutRenderer
+          markdownRemark={data.markdownRemark}
+          location={location}
+          availableComponents={availableComponents}
+          globalProps={globalProps}
+        />
+      </Layout>
+    </SearchBase>
   )
 }
 

@@ -10,6 +10,9 @@ import {
 } from 'store/actions/displayActions'
 
 export const ChildManifests = ({ iiifManifest, displayReducer }) => {
+  if (!typy(iiifManifest, 'manifests').isArray) {
+    return null
+  }
   const activeSettings = getActiveSettings(displayReducer, COLLECTION_PAGE)
   const cardClass = displayReducer[COLLECTION_PAGE] || DISPLAY_GRID
   return (
@@ -22,7 +25,7 @@ export const ChildManifests = ({ iiifManifest, displayReducer }) => {
         {
           typy(iiifManifest, 'manifests').safeArray.map(manifest => {
             return (
-              <div key={manifest._id}>
+              <div key={manifest.id}>
                 <ManifestCard
                   cardClass={cardClass}
                   iiifManifest={manifest}

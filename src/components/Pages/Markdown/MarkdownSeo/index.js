@@ -6,7 +6,7 @@ import Seo from 'components/Internal/Seo'
 const MarkdownSeo = ({ data, location }) => {
   const { frontmatter } = data.markdownRemark
   const seoTitle = frontmatter.title || typy(frontmatter, 'iiifJson.label').safeString || data.site.siteMetadata.title
-  const seoImage = typy(frontmatter, 'iiifJson.thumbnail._id').safeString
+  const seoImage = typy(frontmatter, 'iiifJson.thumbnail.id').safeString
   const seoDescription = frontmatter.description || typy(frontmatter, 'iiifJson.description').safeString || null
 
   return (

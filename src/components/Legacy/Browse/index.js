@@ -18,7 +18,7 @@ const Browse = ({ data, location }) => {
           <SEO
             title={category.label}
             description={category.description}
-            image={category.thumbnail ? category.thumbnail._id : null}
+            image={category.thumbnail ? category.thumbnail.id : null}
             pathname={location.pathname}
           />
         </React.Fragment>
@@ -37,7 +37,7 @@ const Browse = ({ data, location }) => {
                   key={slug}
                   target={slug}
                   label={label}
-                  image={thumbnail ? thumbnail._id : null}
+                  image={thumbnail ? thumbnail.id : null}
                   iiifManifest={node}
                 />
               </div>

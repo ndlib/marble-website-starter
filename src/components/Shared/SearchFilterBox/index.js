@@ -1,16 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {
   DataSearch,
   SelectedFilters,
 } from '@appbaseio/reactivesearch'
-import Seo from 'components/Internal/Seo/'
+import { components } from 'components/Internal/SearchBase'
 import style from './style.module.css'
 
-const SearchPreMain = ({ components }) => {
+const SearchFilterBox = () => {
   return (
     <div className={style.searchHead}>
-      <Seo title='Search' />
       <DataSearch
         componentId='SearchSensor'
         dataField={['title', 'creator', 'fulltext', 'type', 'systemId']}
@@ -25,8 +23,4 @@ const SearchPreMain = ({ components }) => {
   )
 }
 
-SearchPreMain.propTypes = {
-  components: PropTypes.array.isRequired,
-}
-
-export default SearchPreMain
+export default SearchFilterBox
