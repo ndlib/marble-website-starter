@@ -4,18 +4,18 @@ import { StaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import Card from 'components/Shared/Card'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
-import { pageLinkFromManifest } from 'utils/pageLinkFromManifest'
 
-export const ManifestCard = (props) => {
-  const iiifManifest = typy(props, 'iiifManifest').isObject ? props.iiifManifest : props.allManifests.find(manifest => {
-    return manifest.node.id === props.iiifManifest
+export const ManifestCardInternal = (props) => {
+  const manifestId = typy(props, 'iiifManifest').isString ? props.iiifManifest : props.iiifManifest.id
+  const iiifManifest = props.allManifests.find(manifest => {
+    return manifest.node.id === manifestId
   }).node
+
   const imageService = getImageServiceFromThumbnail(iiifManifest)
-  const linkToManifestPage = pageLinkFromManifest(iiifManifest)
   return (
     <Card
       label={iiifManifest.label.en[0]}
-      target={linkToManifestPage}
+      target={`/${iiifManifest.slug}`}
       imageService={imageService || null}
       {...props}
     >
@@ -24,12 +24,12 @@ export const ManifestCard = (props) => {
   )
 }
 
-ManifestCard.propTypes = {
+ManifestCardInternal.propTypes = {
   allManifests: PropTypes.array.isRequired,
   iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 }
 
-export const ManifestCardWrapper = (props) => {
+export const ManifestCard = (props) => {
   return (
     <StaticQuery
       query={graphql`
@@ -39,6 +39,7 @@ export const ManifestCardWrapper = (props) => {
             node {
               id
               type
+              slug
               label {
                 en
               }
@@ -53,13 +54,13 @@ export const ManifestCardWrapper = (props) => {
         }
       }
     `}
-      render={data => <ManifestCard allManifests={data.allIiifJson.edges} {...props} />}
+      render={data => <ManifestCardInternal allManifests={data.allIiifJson.edges} {...props} />}
     />
   )
 }
 
-ManifestCardWrapper.propTypes = {
+ManifestCard.propTypes = {
   iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 }
 
-export default ManifestCardWrapper
+export default ManifestCard

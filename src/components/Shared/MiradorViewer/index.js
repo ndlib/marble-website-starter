@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import pageLinkFromManifest from 'utils/pageLinkFromManifest.js'
 import style from './style.module.css'
 const MiradorViewer = ({ iiifManifest, height, width }) => {
   const [viewerBlocked, toggleBlocking] = useState(true)
@@ -18,8 +17,7 @@ const MiradorViewer = ({ iiifManifest, height, width }) => {
         sandbox='allow-same-origin allow-scripts allow-pointer-lock allow-popups'
         scrolling='no'
         style={viewerDimensions}
-        src={'/epistemological-letters-issue-1/mirador?title=false&thumbnails=true&sidebar=false&fullscreen=false'}
-      // src={`${pageLinkFromManifest(iiifManifest)}/mirador?title=false&thumbnails=true&sidebar=false&fullscreen=false`}
+        src={`/${iiifManifest.slug}/mirador?title=false&thumbnails=true&sidebar=false&fullscreen=false`}
       />
       <div
         className={viewerBlocked ? style.blocking : style.notBlocking}
