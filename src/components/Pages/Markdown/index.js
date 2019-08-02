@@ -12,7 +12,6 @@ const Markdown = ({ data, location }) => {
   const title = typy(data, 'markdownRemark.frontmatter.title').safeString || null
   const navigation = (typy(data, 'markdownRemark.frontmatter.menu').isString ? <Navigation id={data.markdownRemark.frontmatter.menu} /> : null)
   const globalProps = getglobalProps(data, location)
-
   return (
     <SearchBase data={data}>
       <Layout

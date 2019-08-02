@@ -98,6 +98,7 @@ export const query = graphql`
   fragment iiifJsonFragment on IiifJson {
     id
     type
+    slug
     label {
       ...iiifTranslatedStringFragment
     }

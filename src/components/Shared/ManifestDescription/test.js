@@ -6,14 +6,16 @@ import MarkdownHtmlContent from '../../../../plugins/gatsby-remark-react-compone
 describe('ManifestDescription', () => {
   test('with description', () => {
     const iiifManifest = {
-      description: 'This is the description of the manifest.',
+      summary: {
+        en: [ 'This is the description of the manifest.' ],
+      },
     }
     const wrapper = shallow(<ManifestDescription iiifManifest={iiifManifest} />)
-    expect(wrapper.find(MarkdownHtmlContent).props().html).toEqual(iiifManifest.description)
+    expect(wrapper.find(MarkdownHtmlContent).props().html).toEqual(iiifManifest.summary.en[0])
   })
   test('without description', () => {
     const iiifManifest = {}
     const wrapper = shallow(<ManifestDescription iiifManifest={iiifManifest} />)
-    expect(wrapper.find(MarkdownHtmlContent).props().html).toEqual(null)
+    expect(wrapper.find(MarkdownHtmlContent).exists()).toBeFalsy()
   })
 })
