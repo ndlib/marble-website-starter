@@ -121,3 +121,42 @@ exports.createPages = ({ graphql, actions }) => {
 
   // non manifest tags
 }
+
+// predefine stuff we expect from configuration.js
+exports.sourceNodes = ({ actions }) => {
+  const { createTypes } = actions
+
+  const typeDefs = `
+  type searchBase {
+    app: String
+    url: String
+  }
+  type menuItems {
+    id: String
+    label: String
+    link: String
+  }
+  type menus {
+    id: String
+    label: String
+    items: [menuItems]
+  }
+  type SiteMetadata {
+    universalViewerBaseURL: String
+    googleMapApiURL: String
+    searchBase: searchBase
+    useBrandBar: Boolean
+    headerColor: String
+    institutionURL: String
+    institutionLabel: String
+    departmentURL: String
+    departmentLabel: String
+    footerText: String
+    menus: [menus]
+  }
+  type Site implements Node {
+    siteMetadata: SiteMetadata
+  }
+  `
+  createTypes(typeDefs)
+}
