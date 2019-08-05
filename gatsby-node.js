@@ -141,7 +141,7 @@ exports.sourceNodes = ({ actions }) => {
     label: String
     items: [menuItems]
   }
-  type SiteMetadata implements Node {
+  type SiteMetadata {
     universalViewerBaseURL: String
     googleMapApiURL: String
     searchBase: searchBase
