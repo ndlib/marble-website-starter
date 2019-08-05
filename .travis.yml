@@ -14,7 +14,8 @@ script:
   - npm test -- --coverage
   - pushd plugins/gatsby-source-iiif
   - yarn install
-  - node index.js
+  - node getManifests.js
+  - node generateMD.js
   - popd
   - npm run build
 after_script:
