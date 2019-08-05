@@ -34,7 +34,6 @@ describe('BrandingHeader', () => {
       },
     }
     const wrapper = shallow(<BrandingHeader data={data} />)
-    console.log(wrapper.debug())
     expect(wrapper.find('.wrapper').exists()).toBeTruthy()
     expect(wrapper.find(LinkedLogo).length).toEqual(2)
   })
