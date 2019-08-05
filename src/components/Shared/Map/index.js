@@ -42,8 +42,8 @@ const Map = ({
       defaultZoom={parseInt(defaultZoom, 10)}
     >
       <KmlLayer
-        url={kmlFile}
-        // url={`${siteUrl}${kmlFile}`}
+        // url={kmlFile}
+        url={`${siteUrl}${kmlFile}`}
         options={{ preserveViewport: true }}
       />
     </MapWrapper>
