@@ -5,16 +5,20 @@ import LinkedLogo from './LinkedLogo'
 import style from './style.module.css'
 
 export const BrandingHeader = ({ data }) => {
-  const departmentLogo = getLogoURL(data.allFile.edges, 'departmentLogo')
-  const institutionLogo = getLogoURL(data.allFile.edges, 'institutionLogo')
-
   const {
     institutionURL,
     institutionLabel,
     departmentURL,
     departmentLabel,
     headerColor,
+    useBrandBar,
   } = data.site.siteMetadata
+
+  if (!useBrandBar) {
+    return null
+  }
+  const departmentLogo = getLogoURL(data.allFile.edges, 'departmentLogo')
+  const institutionLogo = getLogoURL(data.allFile.edges, 'institutionLogo')
   return (
     <header
       className={style.wrapper}
@@ -56,6 +60,7 @@ export default () => {
       query {
         site {
           siteMetadata {
+            useBrandBar
             institutionURL
             institutionLabel
             departmentURL
