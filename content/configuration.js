@@ -1,6 +1,10 @@
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
 const menus = require('./menus')
 const themeColor = `#0A233F`
+const languages = {
+  default: 'en',
+  allowed: ['en', 'en-US', 'en-GB', 'fr', 'none'],
+}
 
 module.exports = {
   // siteMetadata
@@ -30,12 +34,12 @@ module.exports = {
 
     // menus
     menus: menus,
+
+    //
+    languages: languages,
   },
 
-  languages: {
-    default: 'en',
-    allowed: ['en', 'en-US', 'en-GB', 'fr', 'none'],
-  },
+  languages: languages,
 
   // manifest
   manifest: {

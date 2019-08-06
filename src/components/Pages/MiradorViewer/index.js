@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import queryString from 'query-string'
 import MiradorWrapper from './MiradorWrapper'
+import Seo from 'components/Internal/Seo'
 
 const MiradorViewerPage = ({ data, location }) => {
   const manifestId = typy(data, 'markdownRemark.frontmatter.iiifJson.id').safeString
+  const manifestTitle = typy(data, 'markdownRemark.frontmatter.iiifJson.label.en[0]').safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
   const sideBarOpenByDefault = qs.sidebar !== 'false'
@@ -37,9 +39,14 @@ const MiradorViewerPage = ({ data, location }) => {
   }
   return (
     <React.Fragment>
-      {
-        // seo stuff
-      }
+      <Seo
+        data={data}
+        location={location}
+        title={`Mirador Viewer | ${manifestTitle}`}
+        description={`Mirador viewer viewing ${manifestTitle}.`}
+        image={typy(data, 'markdownRemark.frontmatter.iiifJson.thumbnail[0].id').safeString}
+        noIndex
+      />
       <MiradorWrapper
         config={config}
         plugins={[]}
