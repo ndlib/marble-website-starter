@@ -20,6 +20,7 @@ module.exports = {
     },
 
     // branding
+    useBrandBar: false,
     headerColor: themeColor,
     institutionURL: `http://nd.edu`,
     institutionLabel: `University of Notre Dame`,

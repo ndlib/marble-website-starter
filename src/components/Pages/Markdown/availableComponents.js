@@ -8,8 +8,10 @@ import ManifestImage from 'components/Shared/ManifestImage'
 import ManifestCard from 'components/Shared/ManifestCard'
 import ManifestDescription from 'components/Shared/ManifestDescription'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
+import Map from 'components/Shared/Map'
 import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
+import SavedSearch from 'components/Shared/SavedSearch'
 import SearchBox from 'components/Shared/SearchBox'
 import SearchFilterBox from 'components/Shared/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchResults'
@@ -26,8 +28,10 @@ export const availableComponents = {
   ManifestDescription: ManifestDescription,
   ManifestImage: ManifestImage,
   ManifestMetaData: ManifestMetaData,
+  Map: Map,
   MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
+  SavedSearch: SavedSearch,
   SearchBox: SearchBox,
   SearchFilterBox: SearchFilterBox,
   SearchResults: SearchResults,

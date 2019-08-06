@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
 
-const Map = withScriptjs(withGoogleMap(({ center, children, defaultZoom }) => {
+const MapWrapper = withScriptjs(withGoogleMap(({ center, children, defaultZoom }) => {
   return (
     <GoogleMap
       defaultZoom={defaultZoom}
@@ -13,8 +13,8 @@ const Map = withScriptjs(withGoogleMap(({ center, children, defaultZoom }) => {
   )
 }
 ))
-Map.propTypes = {
-  location: PropTypes.object.isRequired,
+MapWrapper.propTypes = {
+  location: PropTypes.object,
 }
 
-export default Map
+export default MapWrapper
