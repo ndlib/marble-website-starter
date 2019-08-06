@@ -1,3 +1,6 @@
-To run the iiif import.
+To Get the manifests
 
-`node index.js`
+`node getManifests.js`
+
+To make new markdown files
+`node generateMD.js`
