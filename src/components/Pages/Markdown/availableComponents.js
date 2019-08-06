@@ -10,6 +10,7 @@ import ManifestDescription from 'components/Shared/ManifestDescription'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
+import SavedSearch from 'components/Shared/SavedSearch'
 import SearchBox from 'components/Shared/SearchBox'
 import SearchFilterBox from 'components/Shared/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchResults'
@@ -28,6 +29,7 @@ export const availableComponents = {
   ManifestMetaData: ManifestMetaData,
   MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
+  SavedSearch: SavedSearch,
   SearchBox: SearchBox,
   SearchFilterBox: SearchFilterBox,
   SearchResults: SearchResults,
