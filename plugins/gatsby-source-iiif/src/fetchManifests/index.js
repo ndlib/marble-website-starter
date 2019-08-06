@@ -47,13 +47,11 @@ module.exports = async (urls) => {
     return manifest
   }
 
-  const requests = urls.map(url => {
+  await Promise.all(urls.map(url => {
     return recursiveFetchManifest(url)
-  })
+  }))
 
-  await Promise.all(requests)
   const manifestTree = []
-
   try {
     Object.keys(result).forEach(key => {
       const manifest = expandManifestTree(result[key])
