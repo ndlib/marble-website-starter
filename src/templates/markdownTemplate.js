@@ -165,14 +165,7 @@ export const query = graphql`
         slug
         menu
         layout
-        map {
-          kmlFile
-          defaultZoom
-          center {
-            lat
-            lng
-          }
-        }
+        
         iiifJson {
           ...iiifJsonFragment
           items {
