@@ -19,6 +19,7 @@ module.exports = {
   // departmentLabel
   // footerText
   // menus
+  // languages
   siteMetadata: configuration.siteMetadata,
   plugins: [
     `gatsby-plugin-sitemap`,

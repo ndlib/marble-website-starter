@@ -141,6 +141,10 @@ exports.sourceNodes = ({ actions }) => {
     label: String
     items: [menuItems]
   }
+  type languages {
+    default: String
+    allowed: [String]
+  }
   type SiteMetadata {
     universalViewerBaseURL: String
     googleMapApiURL: String
@@ -153,9 +157,18 @@ exports.sourceNodes = ({ actions }) => {
     departmentLabel: String
     footerText: String
     menus: [menus]
+    languages: languages
   }
   type Site implements Node {
     siteMetadata: SiteMetadata
+  }
+
+  type MarkdownRemarkFrontmatter {
+    description: String
+    author: String
+  }
+  type MarkdownRemark implements Node {
+    frontmatter: MarkdownRemarkFrontmatter
   }
   `
   createTypes(typeDefs)

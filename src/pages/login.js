@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import Layout from 'components/Layout'
-import SEO from 'components/Internal/Seo'
+import Seo from 'components/Internal/Seo'
 import { connect } from 'react-redux'
 import { handleLogin } from 'store/actions/loginActions'
 import { isLoggedIn } from 'utils/auth'
@@ -13,9 +13,13 @@ export const Login = ({ dispatch, location, loginReducer }) => {
   return (
     <Layout
       title='Login'
-      preMain={<SEO title='Login' />}
       location={location}
     >
+      <Seo
+        title='Login'
+        location={location}
+        data={{}}
+      />
       {message}
       <form
         method='post'

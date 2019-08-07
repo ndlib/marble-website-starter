@@ -132,6 +132,8 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        description
+        author
         searchBase {
           app
           url
@@ -165,7 +167,8 @@ export const query = graphql`
         slug
         menu
         layout
-        
+        description
+        author
         iiifJson {
           ...iiifJsonFragment
           items {

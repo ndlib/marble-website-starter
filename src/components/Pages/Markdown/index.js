@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import SearchBase from 'components/Internal/SearchBase'
 import Layout from 'components/Layout'
-import MarkdownSeo from './MarkdownSeo'
+import Seo from 'components/Internal/Seo'
 import Navigation from 'components/Internal/Navigation'
 import MarkdownLayoutRenderer from '../../../../plugins/gatsby-remark-react-components'
 import availableComponents from './availableComponents'
@@ -19,9 +19,10 @@ const Markdown = ({ data, location }) => {
         nav={navigation}
         location={location}
       >
-        <MarkdownSeo
+        <Seo
           data={data}
           location={location}
+          noIndex // TODO remove this line when ready to index!!!!
         />
         <MarkdownLayoutRenderer
           markdownRemark={data.markdownRemark}
