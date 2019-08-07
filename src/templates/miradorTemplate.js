@@ -20,6 +20,9 @@ export const query = graphql`
       frontmatter {
         iiifJson {
           ...iiifJsonFragment
+          items {
+            ...iiifJsonItemFragment
+          }
         }
       }
     }

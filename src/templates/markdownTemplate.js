@@ -128,11 +128,13 @@ export const query = graphql`
       }
     }
   }
-  
+
   query($slug: String!) {
     site {
       siteMetadata {
         title
+        description
+        author
         searchBase {
           app
           url
@@ -166,7 +168,8 @@ export const query = graphql`
         slug
         menu
         layout
-
+        description
+        author
         iiifJson {
           ...iiifJsonFragment
           items {

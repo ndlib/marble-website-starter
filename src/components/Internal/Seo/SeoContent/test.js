@@ -12,40 +12,24 @@ const site = {
     description: 'Site description',
     author: 'Some Person',
     siteUrl: 'https://example.test',
+    siteTitle: 'Site Title',
   },
 }
 const defaultImage = './image.png'
+const props = {
+  title: 'A New Test Title',
+  description: 'A different description',
+  image: '/wubbzy.gif',
+  lang: 'en-gb',
+  pathname: '/some/page',
+  site: site,
+  defaultImage: defaultImage,
+  siteUrl: 'https://example.test',
+  siteTitle: 'Site Title',
+  author: 'author',
+}
 describe('SeoContent', () => {
-  test('Title only prop', () => {
-    const props = {
-      title: 'Test Title',
-      site: site,
-      defaultImage: defaultImage,
-    }
-    const wrapper = shallow(<SeoContent {...props} />)
-
-    expect(wrapper.find(Helmet).at(0).props().htmlAttributes).toEqual({ 'lang': 'en' })
-    expect(wrapper.find(Helmet).at(0).props().title).toEqual('Test Title')
-    expect(wrapper.find(Helmet).at(0).props().titleTemplate).toEqual('Test Title | Site Title')
-    expect(wrapper.find(Helmet).at(0).props().meta).toEqual([{
-      name: 'description',
-      content: 'Site description',
-    }])
-    expect(wrapper.find(CanonicalLink).props().base).toEqual('https://example.test')
-    expect(wrapper.find(CanonicalLink).props().pathname).toBeUndefined()
-    expect(wrapper.find(MetaTagGroup).length).toEqual(2)
-  })
-
   test('All the props', () => {
-    const props = {
-      title: 'A New Test Title',
-      description: 'A different description',
-      image: '/wubbzy.gif',
-      lang: 'en-gb',
-      pathname: '/some/page',
-      site: site,
-      defaultImage: defaultImage,
-    }
     const wrapper = shallow(<SeoContent {...props} />)
 
     expect(wrapper.find(Helmet).at(0).props().htmlAttributes).toEqual({ 'lang': 'en-gb' })
@@ -58,5 +42,10 @@ describe('SeoContent', () => {
     expect(wrapper.find(CanonicalLink).props().base).toEqual('https://example.test')
     expect(wrapper.find(CanonicalLink).props().pathname).toEqual('/some/page')
     expect(wrapper.find(MetaTagGroup).length).toEqual(2)
+    expect(wrapper.find("meta[name='robots']").exists()).toBeFalsy()
+  })
+  test('No Index', () => {
+    const wrapper = shallow(<SeoContent noIndex {...props} />)
+    expect(wrapper.find("meta[name='robots']").props().content).toEqual('noindex')
   })
 })

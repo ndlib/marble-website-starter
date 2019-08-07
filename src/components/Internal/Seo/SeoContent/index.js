@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import CanonicalLink from './CanonicalLink'
 import MetaTagGroup from './MetaTagGroup'
@@ -12,41 +11,51 @@ export const SeoContent = ({
   image,
   lang,
   pathname,
-  site,
-  defaultImage,
+  author,
+  siteTitle,
+  siteUrl,
+  noIndex,
 }) => {
-  const metaDescription = description || site.siteMetadata.description
-  const metaImage = image || defaultImage
-  const openGraph = getOpenGraph(title, metaDescription, metaImage)
-  const twitter = getTwitter(site.siteMetadata.author, title, metaDescription, metaImage)
+  const openGraph = getOpenGraph(title, description, image)
+  const twitter = getTwitter(author, title, description, image)
+  // console.log('=======================================================')
+  // console.log('title:', title)
+  // console.log('author:', author)
+  // console.log('description:', description)
+  // console.log('image:', image)
+  // console.log('lang:', lang)
+  // console.log('pathname:', pathname)
+  // console.log('siteTitle:', siteTitle)
+  // console.log('siteUrl:', siteUrl)
+  // console.log('noIndex:', noIndex)
+  // console.log('=======================================================')
+  let indexable = null
+  if (noIndex === true) {
+    indexable = (
+      <Helmet>
+        <meta name='robots' content='noindex' />
+      </Helmet>
+    )
+  }
   return (
     <React.Fragment>
       <Helmet
         htmlAttributes={{ lang }}
         title={title}
-        titleTemplate={title === site.siteMetadata.title ? site.siteMetadata.title : `${title} | ${site.siteMetadata.title}`}
+        titleTemplate={title === siteTitle ? siteTitle : `${title} | ${siteTitle}`}
         meta={[
           {
             name: `description`,
-            content: metaDescription,
+            content: description,
           },
         ]}
       />
-      <CanonicalLink base={site.siteMetadata.siteUrl} pathname={pathname} />
+      <CanonicalLink base={siteUrl} pathname={pathname} />
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
-      {
-        /// REMOVE WHEN READY
-        <Helmet>
-          <meta name='robots' content='noindex' />
-        </Helmet>
-      }
+      {indexable}
     </React.Fragment>
   )
-}
-
-SeoContent.defaultProps = {
-  lang: `en`,
 }
 
 SeoContent.propTypes = {
@@ -55,31 +64,15 @@ SeoContent.propTypes = {
   image: PropTypes.string,
   lang: PropTypes.string,
   pathname: PropTypes.string,
-  site: PropTypes.shape({
-    siteMetadata: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      siteUrl: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  defaultImage: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  siteUrl: PropTypes.string.isRequired,
+  siteTitle: PropTypes.string.isRequired,
+  noIndex: PropTypes.bool,
 }
 
-export default (props) => {
-  return (
-    <StaticQuery
-      query={graphql`
-      {
-        file(name: {eq: "openGraphLogo"}) {
-          publicURL
-        }
-      }
-    `
-      }
-      render={data => (
-        <SeoContent defaultImage={data.file.publicURL} {...props} />
-      )}
-    />
-  )
+SeoContent.defaultProps = {
+  lang: 'none',
+  noIndex: false,
 }
+
+export default SeoContent

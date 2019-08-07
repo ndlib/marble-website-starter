@@ -4,7 +4,7 @@ import UniversalViewer from './'
 import Layout from 'components/Layout'
 import PrivateRoute from 'components/Layout/PrivateRoute/'
 import SkipToMain from 'components/Layout/PageWrapper/SkipToMain'
-import SEO from 'components/Internal/Seo'
+import Seo from 'components/Internal/Seo'
 describe('UniversalViewer', () => {
   const data = {
     site: {
@@ -27,7 +27,7 @@ describe('UniversalViewer', () => {
     expect(wrapper.find(PrivateRoute).props().location).toEqual(location)
     expect(wrapper.find(PrivateRoute).props().requireLogin).toEqual(false)
     expect(wrapper.find(SkipToMain).exists()).toBeTruthy()
-    expect(wrapper.find(SEO).props().title).toEqual('http://my-manifest.json | 200 | Universal Viewer')
+    expect(wrapper.find(Seo).props().title).toEqual('Universal Viewer')
     expect(wrapper.find('#mainContent').exists()).toBeTruthy()
     expect(wrapper.find('iframe').props().src).toEqual('http://test.com#?manifest=http://my-manifest.json&cv=200')
   })
@@ -39,7 +39,7 @@ describe('UniversalViewer', () => {
     expect(wrapper.find(PrivateRoute).props().location).toEqual(location)
     expect(wrapper.find(PrivateRoute).props().requireLogin).toEqual(false)
     expect(wrapper.find(SkipToMain).exists()).toBeTruthy()
-    expect(wrapper.find(SEO).props().title).toEqual('http://test.json | 0 | Universal Viewer')
+    expect(wrapper.find(Seo).props().title).toEqual('Universal Viewer')
     expect(wrapper.find('#mainContent').exists()).toBeTruthy()
     expect(wrapper.find('iframe').props().src).toEqual('http://test.com#?manifest=http://test.json&cv=0')
   })

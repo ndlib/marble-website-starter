@@ -4,7 +4,7 @@ import queryString from 'query-string'
 import Layout from 'components/Layout'
 import PrivateRoute from 'components/Layout/PrivateRoute/'
 import SkipToMain from 'components/Layout/PageWrapper/SkipToMain'
-import SEO from 'components/Internal/Seo'
+import Seo from 'components/Internal/Seo'
 import BackToItem from './BackToItem'
 import style from './style.module.css'
 
@@ -23,7 +23,12 @@ export const UniversalViewer = ({ data, manifest, location, requireLogin }) => {
       requireLogin={requireLogin}
     >
       <SkipToMain />
-      <SEO title={`${manifest} | ${cv} | Universal Viewer`} pathname={UVCanonicalPath(qs)} />
+      <Seo
+        data={data}
+        location={location}
+        title={`Universal Viewer`}
+        description={`Universal Viewer viewing ${manifest}.`}
+      />
       <h1 className='accessibilityOnly'>{manifest} - {cv} - Universal Viewer</h1>
       <main id='mainContent'>
         <BackToItem location={location} />
