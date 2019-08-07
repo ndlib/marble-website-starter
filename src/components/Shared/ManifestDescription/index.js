@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
+import getLanguage from 'utils/getLanguage'
 import MarkdownHtmlContent from '../../../../plugins/gatsby-remark-react-components/MarkdownLayoutRenderer/ComponentRenderer/MarkdownHtmlContent/'
 
 const ManifestDescription = ({ iiifManifest }) => {
-  if (!typy(iiifManifest, `summary.en`).isArray) {
+  const lang = getLanguage()
+  if (!typy(iiifManifest, `summary[${lang}]`).isArray) {
     return null
   }
   return (
     <React.Fragment>
       {
-        iiifManifest.summary.en.map((content, index) => {
+        iiifManifest.summary[lang].map((content, index) => {
           return <MarkdownHtmlContent
             key={index}
             html={content}

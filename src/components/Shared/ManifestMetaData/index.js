@@ -1,6 +1,7 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import MetaDataList from 'components/Internal/MetaDataList'
+import MetaDataField from 'components/Internal/MetaDataList/MetaDataField'
 
 const ManifestMetaData = ({ iiifManifest, skipHtml }) => {
   return (
@@ -10,8 +11,8 @@ const ManifestMetaData = ({ iiifManifest, skipHtml }) => {
         metadata={iiifManifest.metadata}
         skipHtml={skipHtml}
       />
-      { iiifManifest.attribution ? <p>{iiifManifest.attribution}</p> : null }
-      { iiifManifest.license ? <p dangerouslySetInnerHTML={{ __html: iiifManifest.license }} /> : null}
+      { iiifManifest.requiredStatement ? <MetaDataField metadata={iiifManifest.requiredStatement} /> : null }
+      { iiifManifest.rights ? <p dangerouslySetInnerHTML={{ __html: iiifManifest.rights }} /> : null}
     </React.Fragment>
   )
 }

@@ -4,10 +4,12 @@ import typy from 'typy'
 import queryString from 'query-string'
 import MiradorWrapper from './MiradorWrapper'
 import Seo from 'components/Internal/Seo'
+import getLanguage from 'utils/getLanguage'
 
 const MiradorViewerPage = ({ data, location }) => {
+  const lang = getLanguage()
   const manifestId = typy(data, 'markdownRemark.frontmatter.iiifJson.id').safeString
-  const manifestTitle = typy(data, 'markdownRemark.frontmatter.iiifJson.label.en[0]').safeString
+  const manifestTitle = typy(data, `markdownRemark.frontmatter.iiifJson.label[${lang}][0]`).safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
   const sideBarOpenByDefault = qs.sidebar !== 'false'
