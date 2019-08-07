@@ -1,31 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactMarkdown from 'react-markdown/with-html'
+import typy from 'typy'
+import MetaDataLabel from './MetaDataLabel'
+import MetaDataValue from './MetaDataValue'
+import getLanguage from 'utils/getLanguage'
 
-const MarkDownField = ({ metadata, skipHtml }) => {
+const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, value } = metadata
+  const lang = getLanguage()
   return (
     <React.Fragment>
-      <dt>{label.en}</dt>
-      {
-        value.en.map(val => {
-          return (
-            <dd key={value}>
-              <ReactMarkdown
-                source={val}
-                escapeHtml={false}
-                skipHtml={skipHtml}
-              />
-            </dd>
-          )
-        })
-      }
-
+      <MetaDataLabel
+        labels={typy(label, `[${lang}]`).safeArray}
+      />
+      <MetaDataValue
+        values={typy(value, `[${lang}]`).safeArray}
+        skipHtml={skipHtml}
+      />
     </React.Fragment>
   )
 }
 
-MarkDownField.propTypes = {
+MetaDataField.propTypes = {
   metadata: PropTypes.shape({
     label: PropTypes.object.isRequired,
     value: PropTypes.object.isRequired,
@@ -33,8 +29,8 @@ MarkDownField.propTypes = {
   skipHtml: PropTypes.bool,
 }
 
-MarkDownField.defaultProps = {
+MetaDataField.defaultProps = {
   skipHtml: false,
 }
 
-export default MarkDownField
+export default MetaDataField

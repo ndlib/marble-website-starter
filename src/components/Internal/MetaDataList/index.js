@@ -6,12 +6,12 @@ const MetaDataList = ({ metadata, className, skipHtml }) => {
     return (
       <dl className={className}>
         {
-          metadata.map((md) => {
+          metadata.map((md, index) => {
             return (
               <MetaDataField
                 metadata={md}
                 skipHtml={skipHtml}
-                key={JSON.stringify(md)}
+                key={index}
               />
             )
           })
