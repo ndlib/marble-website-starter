@@ -1,10 +1,14 @@
 const fetch = require('node-fetch')
 const traverseAndFixData = require('./fixIiifJson')
+const md5 = require('md5')
 
 module.exports = async (urls) => {
   const result = {}
 
   const recursiveFetchManifest = async (url, parentId) => {
+    if (!url) {
+      return
+    }
     console.log('Fetching:', url)
     return fetch(url)
       .then(response => response.json())
@@ -16,11 +20,18 @@ module.exports = async (urls) => {
         result[data['id']] = data
 
         return recursiveFetchChildren(data)
-      }).catch(err => console.log('fetch error', err))
+      }).catch(err => console.log('fetch error', url, err))
   }
 
   const getFilenameFromId = (id) => {
-    return id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
+    const newId = md5(id)
+    if (id.includes('manifest')) {
+      return 'item/' + newId
+    } else {
+      return 'collection/' + newId
+    }
+    //
+    // return id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
   }
 
   const recursiveFetchChildren = (manifest) => {

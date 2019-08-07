@@ -19,7 +19,7 @@ export const query = graphql`
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         iiifJson {
-          id
+          ...iiifJsonFragment
         }
       }
     }
