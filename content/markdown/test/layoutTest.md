@@ -1,7 +1,7 @@
 ---
 title: Layout Test
 slug: layoutTest
-iiifJson___NODE: 'https://manifest-pipeline-v3.libraries.nd.edu/collection/epistemological-letters'
+iiifJson___NODE: 'https://presentation-iiif.library.nd.edu/collection/epistemological-letters'
 
 components:
   - component: Image

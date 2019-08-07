@@ -5,7 +5,7 @@ const configuration = require('../../content/configuration.js')
 
 const getMDFile = (manifest) => {
   const mdFile = `---
-title: "${manifest.label[configuration.languages.default]}"
+title: "${manifest.label[configuration.siteMetadata.languages.default]}"
 slug: "${manifest.slug}"
 iiifJson___NODE: '${manifest.id}'
 layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'item'}"
@@ -28,8 +28,9 @@ promisify(fs.readdir)(readDirectory).then((filenames) => {
   // optional:
   strArr.forEach((str) => {
     const manifest = JSON.parse(str)
-    fs.writeFile(path.join(writeDirectory, manifest.slug + '.md'), getMDFile(manifest), (err) => {
-      console.log('Writing: ', manifest.slug + '.md')
+    const filename = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
+    fs.writeFile(path.join(writeDirectory, filename + '.md'), getMDFile(manifest), (err) => {
+      console.log('Writing: ', filename + '.md')
       if (err) {
         console.log(err)
       }

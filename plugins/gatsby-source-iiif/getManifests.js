@@ -20,7 +20,7 @@ new Promise(async (resolve, reject) => {
   const manifestData = await fetchData(manifestList.manifests)
   manifestData.forEach(async (manifest) => {
     const data = JSON.stringify(manifest)
-    const filename = manifest.slug
+    const filename = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
     try {
       await ensureDirectoryStructure()
 

@@ -29,11 +29,11 @@ const fixLanguage = (data) => {
     }
     const save = data
     data = { }
-    data[configuration.languages.default] = save
+    data[configuration.siteMetadata.languages.default] = save
   }
 
   const ret = {}
-  configuration.languages.allowed.forEach((lang) => {
+  configuration.siteMetadata.languages.allowed.forEach((lang) => {
     if (data[lang]) {
       if (!Array.isArray(data[lang])) {
         data[lang] = [data[lang]]
