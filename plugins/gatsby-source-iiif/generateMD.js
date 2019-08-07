@@ -5,7 +5,7 @@ const configuration = require('../../content/configuration.js')
 
 const getMDFile = (manifest) => {
   const mdFile = `---
-title: "${manifest.label[configuration.languages.default]}"
+title: "${manifest.label[configuration.siteMetadata.languages.default]}"
 slug: "${manifest.slug}"
 iiifJson___NODE: '${manifest.id}'
 layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'item'}"

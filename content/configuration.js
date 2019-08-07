@@ -39,8 +39,6 @@ module.exports = {
     languages: languages,
   },
 
-  languages: languages,
-
   // manifest
   manifest: {
     name: `Digital Collections`,
