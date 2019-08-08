@@ -21,4 +21,5 @@ pushd plugins/gatsby-source-iiif
 yarn install
 node getManifests.js
 node generateMD.js
+node indexSearch.js
 popd

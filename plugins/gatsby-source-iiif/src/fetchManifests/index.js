@@ -24,14 +24,12 @@ module.exports = async (urls) => {
   }
 
   const getFilenameFromId = (id) => {
-    const newId = md5(id)
+    const newId = id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
     if (id.includes('manifest')) {
       return 'item/' + newId
     } else {
       return 'collection/' + newId
     }
-    //
-    // return id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
   }
 
   const recursiveFetchChildren = (manifest) => {

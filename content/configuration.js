@@ -19,7 +19,7 @@ module.exports = {
     primoSearchBaseURL: `https://a1fc3ld3d7.execute-api.us-east-1.amazonaws.com/dev/primo/v1/search`,
     googleMapApiURL: `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`,
     searchBase: {
-      app: 'website',
+      app: 'website-new-index',
       url: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com',
     },
 
