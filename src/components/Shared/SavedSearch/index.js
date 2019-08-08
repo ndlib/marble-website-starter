@@ -16,18 +16,18 @@ const SavedSearch = ({ terms, location }) => {
       <div style={{ display: 'none' }}>
         <DataSearch
           componentId={components[0]}
-          dataField={['title', 'creator', 'fulltext', 'type', 'systemId']}
+          dataField={['name', 'creator', 'type', 'identifier']}
           defaultValue={terms}
           highlight={false}
-          react={{ 'and': components }}
+          react={{ and: components }}
           URLParams={false}
         />
       </div>
       <ReactiveList
         componentId={components[1]}
-        dataField={'title'}
+        dataField={'name'}
         react={{
-          'and': components,
+          and: components,
         }}
         excludeFields={['fulltext']}
         size={48}
@@ -47,7 +47,7 @@ const SavedSearch = ({ terms, location }) => {
                   data.map(res => (
                     <div key={res['_id']}>
                       <Card
-                        label={res.title}
+                        label={res.name}
                         image={res.thumbnail}
                         target={res.url}
                         location={location}

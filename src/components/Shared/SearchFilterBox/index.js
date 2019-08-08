@@ -11,11 +11,11 @@ const SearchFilterBox = () => {
     <div className={style.searchHead}>
       <DataSearch
         componentId='SearchSensor'
-        dataField={['title', 'creator', 'fulltext', 'type', 'systemId']}
+        dataField={['name', 'creator', 'type', 'identifier']}
         filterLabel='Search'
         highlight
-        highlightField={['title', 'creator', 'systemId']}
-        react={{ 'and': components }}
+        highlightField={['name', 'creator', 'identifier']}
+        react={{ and: components }}
         URLParams
       />
       <SelectedFilters />

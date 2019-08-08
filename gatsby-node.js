@@ -45,12 +45,9 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    const tagTemplate = path.resolve('src/templates/browse.js')
     const iiifTemplate = path.resolve('src/templates/iiifTemplate.js')
     // const manifests = result.data.allIiifManifest.nodes
     const manifests = []
-    // const browse = result.data.allBrowseCategory.nodes
-    const browse = []
     const pages = result.data.allMarkdownRemark.edges
 
     manifests.forEach((node) => {
@@ -64,34 +61,6 @@ exports.createPages = ({ graphql, actions }) => {
           layout: node._type.toLowerCase(),
         },
       })
-    })
-
-    browse.forEach(node => {
-      if (!node.parentCategory) {
-        // createPage({
-        //   path: `/browse`,
-        //   component: tagTemplate,
-        //   context: {
-        //     slug: node.slug,
-        //   },
-        // })
-      } else if (node.slug === '/browse/website') {
-        createPage({
-          path: `/browse`,
-          component: tagTemplate,
-          context: {
-            slug: node.slug,
-          },
-        })
-      } else {
-        createPage({
-          path: node.slug,
-          component: tagTemplate,
-          context: {
-            slug: node.slug,
-          },
-        })
-      }
     })
 
     pages.forEach(({ node }) => {

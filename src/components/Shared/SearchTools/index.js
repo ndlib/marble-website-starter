@@ -17,7 +17,7 @@ const SearchTools = () => {
         size={7}
         filterLabel='Format'
         showSearch={false}
-        react={{ 'and': components }}
+        react={{ and: components }}
         URLParams
       />
       <MultiDropdownList
@@ -28,7 +28,7 @@ const SearchTools = () => {
         size={15}
         sortBy='count'
         showSearch={false}
-        react={{ 'and': components }}
+        react={{ and: components }}
         URLParams
       />
       <RangeSlider
@@ -38,14 +38,14 @@ const SearchTools = () => {
         filterLabel='Date'
         stepValue={5}
         interval={5}
-        react={{ 'and': components }}
+        react={{ and: components }}
         rangeLabels={{
-          'start': '1880',
-          'end': '2010',
+          start: '1880',
+          end: '2010',
         }}
         range={{
-          'start': 1880,
-          'end': 2010,
+          start: 1880,
+          end: 2010,
         }}
         URLParams
       />
@@ -68,7 +68,7 @@ const SearchTools = () => {
             value: 'ARCHIVES',
           }]
         }
-        react={{ 'and': components }}
+        react={{ and: components }}
       />
       <MultiDropdownList
         componentId='LanguageListAggregate'
@@ -77,7 +77,7 @@ const SearchTools = () => {
         sortBy='count'
         filterLabel='Language'
         showSearch={false}
-        react={{ 'and': components }}
+        react={{ and: components }}
         URLParams
       />
     </React.Fragment>

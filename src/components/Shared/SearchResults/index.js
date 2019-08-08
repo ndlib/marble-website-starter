@@ -20,7 +20,7 @@ export const SearchResults = ({ location, displayReducer }) => {
       componentId='SearchResult'
       dataField={'title'}
       react={{
-        'and': components,
+        and: components,
       }}
       excludeFields={['fulltext']}
       size={48}
@@ -40,7 +40,7 @@ export const SearchResults = ({ location, displayReducer }) => {
                 data.map(res => (
                   <div key={res['_id']}>
                     <Card
-                      label={res.title}
+                      label={res.name}
                       image={res.thumbnail}
                       target={res.url}
                       location={location}
