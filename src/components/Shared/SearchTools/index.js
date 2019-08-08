@@ -12,7 +12,7 @@ const SearchTools = () => {
     <React.Fragment>
       <MultiList
         componentId='FormatListAggregate'
-        dataField='type.keyword'
+        dataField='tag.keyword'
         title='Format'
         size={7}
         filterLabel='Format'
