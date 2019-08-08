@@ -24,7 +24,7 @@ const getSearchDataFromManifest = (identifier, manifest) => {
     repository: 'SNITE',
     year: 1900 + Math.random() * 100,
     url: manifest.slug,
-    tag: [availbaleTags[parseInt(Math.random() * availbaleTags.length)]],
+    tag: [availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)]],
   }
 
   manifest.metadata.forEach((row) => {
