@@ -12,7 +12,7 @@ const SearchTools = () => {
     <React.Fragment>
       <MultiList
         componentId='FormatListAggregate'
-        dataField='tag.keyword'
+        dataField='type.keyword'
         title='Format'
         size={7}
         filterLabel='Format'
@@ -22,9 +22,9 @@ const SearchTools = () => {
       />
       <MultiDropdownList
         componentId='LocationListAggregate'
-        dataField='place.keyword'
-        title='Places'
-        filterLabel='Places'
+        dataField='tag.keyword'
+        title='Category'
+        filterLabel='Category'
         size={15}
         sortBy='count'
         showSearch={false}
