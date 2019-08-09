@@ -50,7 +50,7 @@ const indexToElasticSearch = async (identifier, searchData) => {
   console.log('finished', identifier)
 }
 
-const writeDirectory = path.join(__dirname, '/../../content/search/iiif/')
+const writeDirectory = path.join(__dirname, '/../../content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
@@ -60,7 +60,7 @@ new Promise(async (resolve, reject) => {
 
   manifestList.forEach((manifestUrl) => {
     const identifier = manifestUrl.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-    const manifestString = fs.readFileSync(path.join(__dirname, '/../../content/iiif/' + identifier + '.json'), { encoding: 'utf8' })
+    const manifestString = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/' + identifier + '.json'), { encoding: 'utf8' })
     const manifest = JSON.parse(manifestString)
     const searchData = getSearchDataFromManifest(identifier, manifest)
 

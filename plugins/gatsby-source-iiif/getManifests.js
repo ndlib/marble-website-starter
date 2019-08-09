@@ -9,9 +9,9 @@ const loadManifestsFile = () => {
 
 const ensureDirectoryStructure = async () => {
   return Promise.all([
-    fs.promises.mkdir(path.join(__dirname, '/../../content/iiif/'), { recursive: true }),
+    fs.promises.mkdir(path.join(__dirname, '/../../content/json/iiif/'), { recursive: true }),
     fs.promises.mkdir(path.join(__dirname, '/../../content/markdown/iiif/'), { recursive: true }),
-    fs.promises.mkdir(path.join(__dirname, '/../../content/search/iiif/'), { recursive: true }),
+    fs.promises.mkdir(path.join(__dirname, '/../../content/json/search/'), { recursive: true }),
   ])
 }
 
@@ -25,7 +25,7 @@ new Promise(async (resolve, reject) => {
     try {
       await ensureDirectoryStructure()
 
-      await fs.writeFileSync(path.join(__dirname, '/../../content/iiif/' + filename + '.json'), data)
+      await fs.writeFileSync(path.join(__dirname, '/../../content/json/iiif/' + filename + '.json'), data)
     } catch (e) {
       console.log('catchy:')
       console.log(e)

@@ -14,7 +14,7 @@ layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'ite
   return mdFile
 }
 
-const readDirectory = path.join(__dirname, '/../../content/iiif/')
+const readDirectory = path.join(__dirname, '/../../content/json/iiif/')
 const writeDirectory = path.join(__dirname, '/../../content/markdown/iiif/')
 
 promisify(fs.readdir)(readDirectory).then((filenames) => {
