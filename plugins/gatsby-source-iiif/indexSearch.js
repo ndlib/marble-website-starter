@@ -15,6 +15,7 @@ const loadManifestsFile = () => {
 
 const getSearchDataFromManifest = (identifier, manifest) => {
   const search = {
+    id: manifest.id,
     name: manifest.label[configuration.siteMetadata.languages.default],
     thumbnail: manifest.thumbnail[0].id,
     identifier: identifier,
@@ -22,7 +23,7 @@ const getSearchDataFromManifest = (identifier, manifest) => {
     language: 'en',
     place: 'South Bend',
     repository: 'SNITE',
-    year: 1900 + Math.random() * 100,
+    year: Math.floor(1900 + Math.random() * 100),
     url: manifest.slug,
     tag: [availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)]],
   }
@@ -43,6 +44,7 @@ const indexToElasticSearch = async (identifier, searchData) => {
   await client.index({
     index: siteIndex,
     type: '_doc', // uncomment this line if you are using Elasticsearch ≤ 6
+    id: searchData.id,
     body: searchData,
   })
   console.log('finished', identifier)
