@@ -5,7 +5,7 @@ const SavedSearch = ({ terms, location }) => {
   console.log(terms, location)
   // This will be rewritten in a separate pull request
   return (
-    <div>Saved search: [{terms.join(', ')}]</div>
+    <div>Coming soon.</div>
   )
 }
 
