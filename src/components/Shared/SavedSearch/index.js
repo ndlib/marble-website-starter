@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import SearchBase from 'components/Internal/SearchBase'
+import SearchResults from 'components/Shared/SearchTools/SearchResults'
 
-const SavedSearch = ({ terms, location }) => {
-  console.log(terms, location)
-  // This will be rewritten in a separate pull request
+const SavedSearch = ({ terms }) => {
   return (
-    <div>Coming soon.</div>
+    <SearchBase terms={terms}>
+      <SearchResults defaultDisplay='grid' />
+    </SearchBase>
+
   )
 }
 
 SavedSearch.propTypes = {
-  location: PropTypes.object.isRequired,
   terms: PropTypes.string,
 }
 
