@@ -75,13 +75,13 @@ components:
             fileValue: "./images/05.jpg"
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 3
+      - label: "columns"
+        value: "3"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 2
+            value: "2"
         components:
           - component: Image
             props:
@@ -95,13 +95,13 @@ components:
 
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 4
+      - label: "columns"
+        value: "4"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 2
+            value: "2"
         components:
           - component: Image
             props:
@@ -110,7 +110,7 @@ components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 2
+            value: "2"
         components:
           - component: Image
             props:
@@ -118,13 +118,13 @@ components:
                 fileValue: "./images/05.jpg"
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 4
+      - label: "columns"
+        value: "4"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 3
+            value: "3"
         components:
           - component: Image
             props:
@@ -133,7 +133,7 @@ components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 1
+            value: "1"
         components:
           - component: Image
             props:
@@ -141,13 +141,13 @@ components:
                 fileValue: "./images/05.jpg"
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 4
+      - label: "columns"
+        value: "4"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 2
+            value: "2"
         components:
           - component: Image
             props:
@@ -163,13 +163,13 @@ components:
             fileValue: "./images/05.jpg"
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 5
+      - label: "columns"
+        value: "5"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 2
+            value: "2"
         components:
           - component: Image
             props:
@@ -182,7 +182,7 @@ components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 2
+            value: "2"
         components:
           - component: Image
             props:
@@ -190,13 +190,13 @@ components:
                 fileValue: "./images/05.jpg"
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 5
+      - label: "columns"
+        value: "5"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 3
+            value: "3"
         components:
           - component: Image
             props:
@@ -205,7 +205,7 @@ components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 2
+            value: "2"
         components:
           - component: Image
             props:
@@ -213,13 +213,13 @@ components:
                 fileValue: "./images/05.jpg"
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 5
+      - label: "columns"
+        value: "5"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 3
+            value: "3"
         components:
           - component: Image
             props:
@@ -236,13 +236,13 @@ components:
 
   - component: MultiColumn
     props:
-      - label: 'columns'
-        value: 5
+      - label: "columns"
+        value: "5"
     components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 1
+            value: "1"
         components:
           - component: Image
             props:
@@ -251,7 +251,7 @@ components:
       - component: Column
         props:
           - label: "colSpan"
-            value: 4
+            value: "4"
         components:
           - component: Image
             props:

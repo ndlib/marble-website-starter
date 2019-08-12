@@ -16,7 +16,7 @@ components:
       - label: "lng"
         value: "-122.0914977709329"
       - label: "defaultZoom"
-        value: 10
+        value: "10"
 ---
 
 Some notes:
