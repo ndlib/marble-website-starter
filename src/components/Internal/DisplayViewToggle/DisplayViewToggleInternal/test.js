@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { DisplayViewToggle } from './'
+import { DisplayViewToggleInternal } from './'
 import DisplayViewToggleGridList from './DisplayViewToggleGridList'
 import ToggleButton from './ToggleButton'
 import {
@@ -24,7 +24,14 @@ test('DisplayViewToggle', () => {
     somePage: DISPLAY_GRID,
   }
   const dispatch = jest.fn()
-  const wrapper = shallow(<DisplayViewToggle page={page} activeSettings={activeSettings} displayReducer={displayReducer} dispatch={dispatch}>{children}</DisplayViewToggle>)
+  const wrapper = shallow(
+    <DisplayViewToggleInternal
+      page={page}
+      activeSettings={activeSettings}
+      displayReducer={displayReducer}
+      dispatch={dispatch}
+    >{children}</DisplayViewToggleInternal>
+  )
 
   expect(wrapper.find('.displayViewToggleGroup').exists()).toBeTruthy()
   expect(wrapper.find(ToggleButton).length).toEqual(2)

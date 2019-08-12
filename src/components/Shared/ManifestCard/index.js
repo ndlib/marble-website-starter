@@ -8,12 +8,18 @@ import getLanguage from 'utils/getLanguage'
 
 export const ManifestCardInternal = (props) => {
   const manifestId = typy(props, 'iiifManifest').isString ? props.iiifManifest : props.iiifManifest.id
-  const iiifManifest = props.allManifests.find(manifest => {
-    return manifest.node.id === manifestId
-  }).node
 
+  const iiifEdge = props.allManifests.find(manifest => {
+    return manifest.node.id === manifestId
+  })
+  const iiifManifest = typy(iiifEdge, 'node').safeObject || null
+  if (!iiifManifest) {
+    console.warn('Could not find manifest: ', manifestId)
+    return null
+  }
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const lang = getLanguage()
+
   return (
     <Card
       label={iiifManifest.label[lang][0]}

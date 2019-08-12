@@ -13,9 +13,12 @@ import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
 import SavedSearch from 'components/Shared/SavedSearch'
 import SearchBox from 'components/Shared/SearchBox'
-import SearchFilterBox from 'components/Shared/SearchFilterBox'
-import SearchResults from 'components/Shared/SearchResults'
-import SearchTools from 'components/Shared/SearchTools'
+import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
+import SearchResults from 'components/Shared/SearchTools/SearchResults'
+
+import SearchDynamicRangeFilter from 'components/Shared/SearchTools/SearchDynamicRangeFilter'
+import SearchMenuFilter from 'components/Shared/SearchTools/SearchMenuFilter'
+import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefinementListFilter'
 
 export const availableComponents = {
   ActionButtons: ActionButtonGroup,
@@ -33,9 +36,11 @@ export const availableComponents = {
   MultiColumn: MultiColumn,
   SavedSearch: SavedSearch,
   SearchBox: SearchBox,
+  SearchDynamicRangeFilter: SearchDynamicRangeFilter,
   SearchFilterBox: SearchFilterBox,
+  SearchMenuFilter: SearchMenuFilter,
+  SearchRefinementListFilter: SearchRefinementListFilter,
   SearchResults: SearchResults,
-  SearchTools: SearchTools,
 }
 
 export default availableComponents

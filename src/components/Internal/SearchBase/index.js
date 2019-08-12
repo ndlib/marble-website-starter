@@ -1,16 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import { ReactiveBase } from '@appbaseio/reactivesearch'
+import {
+  SearchkitProvider,
+  SearchkitManager,
+} from 'searchkit'
 
 const SearchBase = ({ children, data }) => {
   const searchBase = typy(data, 'site.siteMetadata.searchBase').safeObject
+  const sk = new SearchkitManager(`${searchBase.url}/${searchBase.app}`)
   return (
-    <ReactiveBase
-      app={searchBase.app}
-      url={searchBase.url}>
-      {children}
-    </ReactiveBase>
+    <SearchkitProvider searchkit={sk}>
+      <React.Fragment>
+        {children}
+      </React.Fragment>
+    </SearchkitProvider>
   )
 }
 SearchBase.propTypes = {
@@ -19,5 +23,3 @@ SearchBase.propTypes = {
 }
 
 export default SearchBase
-
-export const components = ['SearchResult', 'SearchSensor', 'DynamicYearSlider', 'CampusLocationAggregate', 'LanguageListAggregate', 'LocationListAggregate', 'FormatListAggregate']
