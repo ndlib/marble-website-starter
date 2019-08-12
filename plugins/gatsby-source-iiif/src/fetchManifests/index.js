@@ -1,6 +1,5 @@
 const fetch = require('node-fetch')
 const traverseAndFixData = require('./fixIiifJson')
-const md5 = require('md5')
 
 module.exports = async (urls) => {
   const result = {}
