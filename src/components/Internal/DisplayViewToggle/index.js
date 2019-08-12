@@ -5,9 +5,9 @@ import typy from 'typy'
 import DisplayViewToggleInternal, { getActiveSettings } from './DisplayViewToggleInternal'
 import {
   COLLECTION_PAGE,
-  SEARCH_PAGE,
+  // SEARCH_PAGE,
   DISPLAY_GRID,
-  DISPLAY_LIST,
+  // DISPLAY_LIST,
 } from 'store/actions/displayActions'
 
 export const DisplayView = ({ children, defaultDisplay, displayReducer }) => {
@@ -37,6 +37,7 @@ export const DisplayView = ({ children, defaultDisplay, displayReducer }) => {
 
 DisplayView.propTypes = {
   children: PropTypes.node,
+  defaultDisplay: PropTypes.string,
   displayReducer: PropTypes.object,
 }
 
