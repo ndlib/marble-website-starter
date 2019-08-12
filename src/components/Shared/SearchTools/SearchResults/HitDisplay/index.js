@@ -31,7 +31,13 @@ export default HitDisplay
 export const HitList = ({ hits }) => {
   return <HitDisplay hits={hits} defaultDisplay={'SEARCH_PAGE'} />
 }
+HitList.propTypes = {
+  hits: PropTypes.array,
+}
 
 export const HitGrid = ({ hits }) => {
   return <HitDisplay hits={hits} defaultDisplay={'COLLECTION_PAGE'} />
+}
+HitGrid.propTypes = {
+  hits: PropTypes.array,
 }
