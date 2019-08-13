@@ -18,25 +18,11 @@ const ensureDirectoryStructure = async () => {
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
   await ensureDirectoryStructure()
-
   const manifestList = loadManifestsFile()
+
   const manifestData = await fetchData(manifestList.manifests)
   const data = JSON.stringify(manifestData)
-  await fs.writeFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'), data)
-  resolve()
-  return
-  manifestData.forEach(async (manifest) => {
-    const data = JSON.stringify(manifest)
-    const filename = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-    try {
-      await ensureDirectoryStructure()
+  fs.writeFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'), data)
 
-      await fs.writeFileSync(path.join(__dirname, '/../../content/json/iiif/' + filename + '.json'), data)
-    } catch (e) {
-      console.log('catchy:')
-      console.log(e)
-      reject(e)
-    }
-  })
   resolve()
 })

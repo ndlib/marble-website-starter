@@ -1,5 +1,4 @@
 const fs = require('fs')
-const { promisify } = require('util')
 const path = require(`path`)
 const configuration = require('../../content/configuration.js')
 
@@ -14,10 +13,10 @@ layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'ite
   return mdFile
 }
 
-const readDirectory = path.join(__dirname, '/../../content/json/iiif/')
+const readFile = path.join(__dirname, '/../../content/json/iiif/iiif.json')
 const writeDirectory = path.join(__dirname, '/../../content/markdown/iiif/')
 
-const data = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'))
+const data = fs.readFileSync(readFile)
 const manifestData = JSON.parse(data.toString())
 
 manifestData.forEach((manifest) => {

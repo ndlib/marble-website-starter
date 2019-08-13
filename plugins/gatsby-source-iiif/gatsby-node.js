@@ -4,7 +4,7 @@ exports.sourceNodes = async (
   const { createTypes } = actions
 
   const typeDefs = `
-    type iiifTranslatedString {
+    type iiifTranslatedString @dontInfer {
       en: [ String ]
       en_GB: [ String ]
       en_US: [ String ]
@@ -12,25 +12,25 @@ exports.sourceNodes = async (
       none: [ String ]
     }
 
-    type iiifLabeledString {
+    type iiifLabeledString @dontInfer {
       label: iiifTranslatedString
       value: iiifTranslatedString
     }
 
-    type iiifServiceJson {
+    type iiifServiceJson @dontInfer {
       id: String
       _context: String
       profile: String
     }
 
-    type iiifThumbnailJson {
+    type iiifThumbnailJson @dontInfer {
       id: String
       type: String
       format: String
       service: [iiifServiceJson]
     }
 
-    type iiifLogoJson {
+    type iiifLogoJson @dontInfer {
       id: String
       type: String
       height: Int
@@ -38,21 +38,21 @@ exports.sourceNodes = async (
       format: String
     }
 
-    type iiifHomepage {
+    type iiifHomepage @dontInfer {
       id: String
       type: String
       label: iiifTranslatedString
       format: String
     }
 
-    type iiifSeeAlso {
+    type iiifSeeAlso @dontInfer {
       id: String
       type: String
       format: String
       profile: String
     }
 
-    type iiifProviderJson {
+    type iiifProviderJson @dontInfer {
       id: String
       type: String
       label: String
@@ -61,7 +61,7 @@ exports.sourceNodes = async (
       seeAlso: [ iiifSeeAlso ]
     }
 
-    type iiifItemAnnotationPageBody {
+    type iiifItemAnnotationPageBody @dontInfer {
       id: String
       type: String
       format: String
@@ -70,7 +70,7 @@ exports.sourceNodes = async (
       service: iiifServiceJson
     }
 
-    type iiifItem {
+    type iiifItem @dontInfer {
       id: ID!
       type: String
       label: iiifTranslatedString

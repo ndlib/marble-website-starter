@@ -2,7 +2,7 @@ const configuration = require('../../../../../content/configuration.js')
 
 const traverseAndFixData = (o) => {
   for (const i in o) {
-    if (objectIsLabelORValue(i, o[i])) {
+    if (objectIsLabelORValue(i)) {
       o[i] = fixLanguage(o[i])
     } else if (continueTraversing(o[i])) {
       // going one step down in the object tree!!
@@ -11,8 +11,8 @@ const traverseAndFixData = (o) => {
   }
 }
 
-const objectIsLabelORValue = (key, obj) => {
-  return ((key === 'label' || key === 'value' || key === 'summary') && typeof (obj) === 'object')
+const objectIsLabelORValue = (key) => {
+  return ((key === 'label' || key === 'value' || key === 'summary'))
 }
 
 const continueTraversing = (obj) => {
@@ -31,7 +31,6 @@ const fixLanguage = (data) => {
     data = { }
     data[configuration.siteMetadata.languages.default] = save
   }
-
   const ret = {}
   configuration.siteMetadata.languages.allowed.forEach((lang) => {
     if (data[lang]) {
