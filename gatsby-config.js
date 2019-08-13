@@ -50,7 +50,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `iiif`,
-        path: `${__dirname}/content/json`,
+        path: `${__dirname}/content/json/`,
       },
     },
     {

@@ -8,15 +8,10 @@ const availbaleTags = ['art', 'journals', 'sports', 'catholic stuff']
 const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
 const siteIndex = configuration.siteMetadata.searchBase.app
 
-const loadManifestsFile = () => {
-  const contents = fs.readFileSync(path.join(__dirname, '/../../content/manifests.json'))
-  return JSON.parse(contents).manifests
-}
-
 const getSearchDataFromManifest = (identifier, manifest) => {
   const search = {
     id: manifest.id,
-    name: manifest.label[configuration.siteMetadata.languages.default],
+    name: manifest.label[configuration.siteMetadata.languages.default].join(),
     thumbnail: manifest.thumbnail[0].id,
     identifier: identifier,
     type: manifest.type,
@@ -27,7 +22,6 @@ const getSearchDataFromManifest = (identifier, manifest) => {
     url: manifest.slug,
     tag: [availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)]],
   }
-
   manifest.metadata.forEach((row) => {
     const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
     const value = row.value[configuration.siteMetadata.languages.default].join('')
@@ -43,7 +37,7 @@ const indexToElasticSearch = async (identifier, searchData) => {
 
   await client.index({
     index: siteIndex,
-    type: '_doc', // uncomment this line if you are using Elasticsearch ≤ 6
+    type: '_doc',
     id: searchData.id,
     body: searchData,
   })
@@ -54,21 +48,28 @@ const writeDirectory = path.join(__dirname, '/../../content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  const manifestList = loadManifestsFile()
+  const data = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'))
+  const manifestData = JSON.parse(data.toString())
+
   console.log('removing current index')
   await client.indices.delete({ index: siteIndex })
 
-  manifestList.forEach((manifestUrl) => {
-    const identifier = manifestUrl.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-    const manifestString = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/' + identifier + '.json'), { encoding: 'utf8' })
-    const manifest = JSON.parse(manifestString)
+  let writeData = []
+  writeData = []
+  manifestData.forEach((manifest) => {
+    const identifier = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
+    // const manifestString = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/' + identifier + '.json'), { encoding: 'utf8' })
+    // const manifest = JSON.parse(manifestString)
     const searchData = getSearchDataFromManifest(identifier, manifest)
+    writeData.push(searchData)
 
     indexToElasticSearch(identifier, searchData)
-    fs.writeFileSync(path.join(writeDirectory, identifier + '.json'), JSON.stringify(searchData))
   })
 
+  fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
   resolve()
 }).then(() => {
   console.log('done')
+}).catch((e) => {
+  console.log(e)
 })

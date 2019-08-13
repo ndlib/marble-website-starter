@@ -4,4 +4,4 @@ reset=`tput sgr0`
 echo "${magenta}----- BUILD -----${reset}"
 
 # build
-gatsby build || { echo "Gatsby build failed" ;exit 1; }
+yarn gatsby build || { echo "Gatsby build failed" ;exit 1; }
