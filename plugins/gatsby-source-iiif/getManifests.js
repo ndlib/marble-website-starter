@@ -17,8 +17,14 @@ const ensureDirectoryStructure = async () => {
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
+  await ensureDirectoryStructure()
+
   const manifestList = loadManifestsFile()
   const manifestData = await fetchData(manifestList.manifests)
+  const data = JSON.stringify(manifestData)
+  await fs.writeFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'), data)
+  resolve()
+  return
   manifestData.forEach(async (manifest) => {
     const data = JSON.stringify(manifest)
     const filename = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')

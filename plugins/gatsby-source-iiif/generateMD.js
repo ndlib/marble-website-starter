@@ -17,26 +17,15 @@ layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'ite
 const readDirectory = path.join(__dirname, '/../../content/json/iiif/')
 const writeDirectory = path.join(__dirname, '/../../content/markdown/iiif/')
 
-promisify(fs.readdir)(readDirectory).then((filenames) => {
-  filenames = filenames.filter((file) => {
-    return file.match(/.*\.(json)/ig)
+const data = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'))
+const manifestData = JSON.parse(data.toString())
+
+manifestData.forEach((manifest) => {
+  const filename = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
+  fs.writeFile(path.join(writeDirectory, filename + '.md'), getMDFile(manifest), (err) => {
+    console.log('Writing: ', filename + '.md')
+    if (err) {
+      console.log(err)
+    }
   })
-  return Promise.all(filenames.map((filename) => {
-    return promisify(fs.readFile)(readDirectory + filename, { encoding: 'utf8' })
-  }))
-}).then((strArr) => {
-  // optional:
-  strArr.forEach((str) => {
-    const manifest = JSON.parse(str)
-    const filename = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-    fs.writeFile(path.join(writeDirectory, filename + '.md'), getMDFile(manifest), (err) => {
-      console.log('Writing: ', filename + '.md')
-      if (err) {
-        console.log(err)
-      }
-    })
-  })
-  // send data here
-}).catch((err) => {
-  console.log(err)
 })

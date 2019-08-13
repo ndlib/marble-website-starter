@@ -54,20 +54,24 @@ const writeDirectory = path.join(__dirname, '/../../content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  const manifestList = loadManifestsFile()
+  const data = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'))
+  const manifestData = JSON.parse(data.toString())
+
   console.log('removing current index')
   await client.indices.delete({ index: siteIndex })
 
-  manifestList.forEach((manifestUrl) => {
-    const identifier = manifestUrl.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-    const manifestString = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/' + identifier + '.json'), { encoding: 'utf8' })
-    const manifest = JSON.parse(manifestString)
-    const searchData = getSearchDataFromManifest(identifier, manifest)
+  let searchData = []
+  searchData = []
+  manifestData.forEach((manifest) => {
+    const identifier = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
+    // const manifestString = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/' + identifier + '.json'), { encoding: 'utf8' })
+    // const manifest = JSON.parse(manifestString)
+    searchData.push(getSearchDataFromManifest(identifier, manifest))
 
     indexToElasticSearch(identifier, searchData)
-    fs.writeFileSync(path.join(writeDirectory, identifier + '.json'), JSON.stringify(searchData))
   })
 
+  fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(searchData))
   resolve()
 }).then(() => {
   console.log('done')
