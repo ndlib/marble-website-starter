@@ -7,14 +7,14 @@ components:
   - component: SavedSearch
     props:
       - label: 'terms'
-        value: 'rossignol'
+        value: 'le rossignol'
   - component: MarkdownHtmlContent
     props:
       - label: 'html'
-        value: 'A different saved search on the same page. Term is "letter"'
+        value: 'A different saved search on the same page. Term is "journal"'
   - component: SavedSearch
     props:
       - label: 'terms'
-        value: 'letter'
+        value: 'journal'
 ---
 Testing Saved Search with value of "rossignol"

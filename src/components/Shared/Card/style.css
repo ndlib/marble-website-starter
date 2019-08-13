@@ -1,6 +1,4 @@
-a.basicCard,
-a.grid,
-a.list {
+a.basicCard {
   text-decoration: none;
 }
 .cardWrapper {
@@ -11,7 +9,7 @@ a.list {
 .cardFigure {
   height: 100%;
 }
-.grid .cardImage,
+.grid .basicCard .cardImage,
 .basicCard .cardImage {
   position: relative;
   display: block;
@@ -38,31 +36,33 @@ a.list {
   font-size: 18px;
   font-weight: 500;
 }
-.list .cardCaption h2 {
+.list .basicCard .cardCaption h2 {
   font-weight: 600;
 }
-.cardAdditional {
+.grid .basicCard .cardAdditional {
   display: none;
 }
 
-.list .cardWrapper {
+.list .basicCard .cardWrapper {
   background: #fff;
   height: 250px;
   overflow: hidden;
 }
 
-.list .cardFigure {
+.list .basicCard .cardFigure {
   display: inline-block;
   height: 100%;
   width: 100%;
 }
-
-.list .cardImage img {
+.list .basicCard .cardImage {
+  display: inline-block;
+}
+.list .basicCard .cardImage img {
   display: inline-block;
   height: 250px;
   width: 250px
 }
-.list .cardCaption {
+.list .basicCard .cardCaption {
   background: none;
   border-top: none;
   border-left: 1px solid #999;
@@ -74,7 +74,7 @@ a.list {
   width: calc(100% - 250px);
 }
 
-.list .cardAdditional {
+.list .basicCard .cardAdditional {
   display: inline-block;
   vertical-align: top;
   width: 100%;

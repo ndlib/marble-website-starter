@@ -46,9 +46,6 @@ export default SearchBox
 
 export const submitSearch = (location, rawInput) => {
   const qs = queryString.parse(location.search)
-  // qs.terms = rawInput
-  // qs.page = qs.page || 1
-  // qs.perpage = qs.perpage || 12
-  qs.SearchSensor = `"${rawInput}"`
+  qs.q = `${rawInput}`
   navigate(`/search?${queryString.stringify(qs)}`)
 }

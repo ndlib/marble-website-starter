@@ -14,3 +14,19 @@ body {
 .clearfix {
   clear: both;
 }
+
+.sk-search-box {
+  border: 1px solid #999;
+}
+.sk-search-box input.sk-search-box__text {
+  color: black !important;
+}
+.sk-panel {
+  border-bottom: 1px solid #999;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+.sk-range-slider {
+  padding-left: .75rem;
+  padding-right: .75rem;
+}

@@ -8,7 +8,6 @@ module.exports = {
   // description
   // siteUrl
   // universalViewerBaseURL
-  // primoSearchBaseURL
   // googleMapApiURL
   // searchBase
   // useBrandBar
