@@ -1,24 +1,6 @@
 const path = require('path')
 
 module.exports = ({ contentPath = 'content' }) => ({
-  // siteMetadata required fields:
-  // ====================================
-  // title
-  // author
-  // description
-  // siteUrl
-  // universalViewerBaseURL
-  // googleMapApiURL
-  // searchBase
-  // useBrandBar
-  // headerColor
-  // institutionURL
-  // institutionLabel,
-  // departmentURL
-  // departmentLabel
-  // footerText
-  // menus
-  // languages
   plugins: [
     {
       resolve: 'gatsby-plugin-root-import',
