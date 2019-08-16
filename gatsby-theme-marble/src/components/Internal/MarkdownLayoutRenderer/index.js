@@ -5,7 +5,6 @@ import ComponentRenderer from './ComponentRenderer'
 
 export const MarkdownLayoutRenderer = ({ markdownRemark, availableComponents, globalProps }) => {
   const layoutComponents = typy(markdownRemark, 'fields.components').safeObject
-  console.log(markdownRemark)
   return (
     <React.Fragment>
       {

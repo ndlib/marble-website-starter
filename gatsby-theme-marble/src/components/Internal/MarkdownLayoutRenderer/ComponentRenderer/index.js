@@ -5,7 +5,6 @@ import TestComponent from './TestComponent'
 import MarkdownHtmlContent from './MarkdownHtmlContent'
 
 const ComponentRenderer = (props) => {
-  console.log(props)
   const validComponents = Object.assign({}, props.availableComponents)
   validComponents['MarkdownHtmlContent'] = MarkdownHtmlContent
   const renderComponent = validComponents[props.component] || TestComponent
