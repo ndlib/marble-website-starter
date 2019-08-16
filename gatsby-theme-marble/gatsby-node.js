@@ -11,7 +11,6 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     fs.mkdirSync(contentPath)
   }
 }
-// predefine stuff we expect from configuration.js
 exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
 
