@@ -4,7 +4,9 @@ module.exports = {
   plugins: [
     {
       resolve: 'gatsby-theme-marble',
-
+      options: {
+        layouts: configuration.layouts,
+      },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
