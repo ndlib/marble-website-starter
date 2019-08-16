@@ -1,0 +1,123 @@
+{
+  "parser"  : "babel-eslint",
+  "extends" : [
+    "standard",
+    "standard-react",
+    "react-app"
+  ],
+  "plugins" : [
+    "babel",
+    "react",
+    "react-hooks",
+    "promise"
+  ],
+  "env" : {
+    "browser" : true
+  },
+  "globals" : {
+    "__DEV__"      : false,
+    "__TEST__"     : false,
+    "__PROD__"     : false,
+    "__COVERAGE__" : false
+  },
+  "rules" : {
+    "brace-style"           : [2, "1tbs"],
+    "comma-dangle"          : [2, "always-multiline"],
+    "indent"                : ["error", 2, {"SwitchCase" : 1}],
+    "jsx-quotes"            : [2, "prefer-single"],
+    "key-spacing"           : 0,
+    "max-len"               : [0, 120, 2],
+    "no-unused-vars"        : [1, { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+    "no-var"              : 1,
+    "object-curly-spacing"  : [2, "always"],
+    "prefer-const": [1, {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": true
+    }],
+    "react/prop-types"      : 1,
+    "react-hooks/rules-of-hooks": "error",
+    "semi"                  : [2, "never"],
+    "space-in-parens"       : ["error", "never"],
+
+     // This should replicate Code Climate's computational complexity code smells warning. It is actually more strict.
+    "complexity"            : ["warn", 5],
+
+     // accessibility rules
+    //
+    // NOTE Need to elevate many 1s to 2s after remediation
+    //
+
+     "jsx-a11y/href-no-hash" : "off",
+    "jsx-a11y/alt-text"     : [ 1, {
+      "elements"  : [ "img", "object", "area", "input[type=\"image\"]" ],
+      "img" : ["Image"],
+      "object"  : ["Object"],
+      "area"  : ["Area"],
+      "input[type=\"image\"]" : ["InputImage"]
+    }],
+    "jsx-a11y/anchor-has-content" : [ 1, {
+      "components"  : [ "Anchor" ],
+    }],
+    "jsx-a11y/anchor-is-valid"  : [ 2, {
+      "components"  : [ "Link" ],
+      "specialLink" : [ "to" ],
+      "aspects" : [ "noHref", "invalidHref", "preferButton" ]
+    }],
+    "jsx-a11y/aria-activedescendant-has-tabindex"  : 1,
+    "jsx-a11y/aria-props"   : 1,
+    "jsx-a11y/aria-proptypes"   : 1,
+    "jsx-a11y/aria-role"  : [ 1, {
+      "ignoreNonDOM"  : true
+    }],
+    "jsx-a11y/heading-has-content"  : 2,
+    "jsx-a11y/html-has-lang"  : 2,
+    "jsx-a11y/media-has-caption"  : [ 1, {
+      "audio" : [ "Audio" ],
+      "video" : [ "Video" ],
+      "track" : [ "Track" ],
+    }],
+    "jsx-a11y/mouse-events-have-key-events" : 1,
+    "jsx-a11y/no-access-key"  : 1,
+    "jsx-a11y/no-distracting-elements"  : [ 2, {
+      "elements"  : [ "marquee", "blink" ],
+    }],
+    "jsx-a11y/no-interactive-element-to-noninteractive-role"  : 2,
+    "jsx-a11y/no-noninteractive-element-interactions" : [ 1, {
+      "handlers"  : [
+        "onClick",
+        "onMouseDown",
+        "onMouseUp",
+        "onKeyPress",
+        "onKeyDown",
+        "onKeyUp",
+      ],
+    }],
+    "jsx-a11y/no-noninteractive-element-to-interactive-role" : [ 2, {
+      "ul"  : ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+      "ol"  : ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+      "li"  : ["menuitem", "option", "row", "tab", "treeitem"],
+      "table" : ["grid"],
+      "td"  : ["gridcell"],
+    }],
+    "jsx-a11y/no-noninteractive-tabindex" : [ 2, {
+      "tags"  : [],
+      "roles" : ["tabpanel"],
+    }],
+    "jsx-a11y/no-onchange"  : 2,
+    "jsx-a11y/no-redundant-roles" : [ 2, {
+      "nav"  : ["navigation"],
+    }],
+    "jsx-a11y/no-static-element-interactions" : [ 1, {
+      "handlers"  : [
+        "onClick",
+        "onMouseDown",
+        "onMouseUp",
+        "onKeyPress",
+        "onKeyDown",
+        "onKeyUp",
+      ],
+    }],
+    "jsx-a11y/role-has-required-aria-props" : 1,
+    "jsx-a11y/role-supports-aria-props" : 1,
+  }
+}
