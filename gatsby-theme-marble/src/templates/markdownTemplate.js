@@ -176,6 +176,12 @@ export const query = graphql`
           ...iiifJsonFragment
           items {
             ...iiifJsonItemFragment
+            items {
+              ...iiifJsonItemFragment
+              items {
+                ...iiifJsonItemFragment
+              }
+            }
           }
         }
       }
