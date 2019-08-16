@@ -3,14 +3,7 @@ const path = require(`path`)
 const fs = require("fs")
 const crypto = require("crypto");
 const { attachFields } = require(`gatsby-plugin-node-fields`)
-// eslint-disable-next-line no-unused-vars
-// exports.onCreateWebpackConfig = ({ stage, actions }) => {
-//   actions.setWebpackConfig({
-//     resolve: {
-//       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-//     },
-//   })
-// }
+
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }) => {
   const contentPath = "content"

@@ -19,7 +19,7 @@ export const MarkdownLayoutRenderer = ({ markdownRemark, availableComponents, gl
 MarkdownLayoutRenderer.propTypes = {
   availableComponents: PropTypes.object.isRequired,
   globalProps: PropTypes.object.isRequired,
-  markdownRemark: PropTypes.object.isRequired,
+  markdownRemark: PropTypes.object,
 }
 
 MarkdownLayoutRenderer.defaultProps = {

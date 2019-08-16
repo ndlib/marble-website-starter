@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require(`path`)
 const { Client } = require('@elastic/elasticsearch')
-const configuration = require('../../content/configuration.js')
+const configuration = require('../../site/content/configuration.js')
 
 const availbaleTags = ['art', 'journals', 'sports', 'catholic stuff']
 
@@ -44,11 +44,11 @@ const indexToElasticSearch = async (identifier, searchData) => {
   console.log('finished', identifier)
 }
 
-const writeDirectory = path.join(__dirname, '/../../content/json/search/')
+const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  const data = fs.readFileSync(path.join(__dirname, '/../../content/json/iiif/iiif.json'))
+  const data = fs.readFileSync(path.join(__dirname, '/../../site/content/json/iiif/iiif.json'))
   const manifestData = JSON.parse(data.toString())
 
   console.log('removing current index')

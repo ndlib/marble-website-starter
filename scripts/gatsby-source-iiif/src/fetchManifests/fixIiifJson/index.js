@@ -1,4 +1,4 @@
-const configuration = require('../../../../../content/configuration.js')
+const configuration = require('../../../../../site/content/configuration.js')
 
 const traverseAndFixData = (o) => {
   for (const i in o) {

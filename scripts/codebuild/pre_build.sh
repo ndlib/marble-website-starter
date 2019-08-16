@@ -4,4 +4,4 @@ reset=`tput sgr0`
 
 echo "${magenta}----- TESTS ------${reset}"
 
-yarn test || { echo "Unit Tests Failed"; exit 1; }
+yarn workspace gatsby-theme-marble test || { echo "Unit Tests Failed"; exit 1; }

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Markdown from './'
 import Seo from 'components/Internal/Seo'
-import MarkdownLayoutRenderer from '../../../../plugins/gatsby-remark-react-components'
+import MarkdownLayoutRenderer from 'components/Internal/MarkdownLayoutRenderer'
 
 test('Markdown', () => {
   const data = {
