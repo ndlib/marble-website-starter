@@ -3,8 +3,5 @@
   "workspaces": [
     "gatsby-theme-marble",
     "site"
-  ],
-  "devDependencies": {
-    "@hesburgh-wse/eslint-config-hesburgh": "^1.0.2"
-  }
+  ]
 }
