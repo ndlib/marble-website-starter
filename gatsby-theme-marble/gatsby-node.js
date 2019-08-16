@@ -253,7 +253,7 @@ exports.createPages = ({ graphql, actions }) => {
   // non manifest tags
 }
 
-exports.onCreateNode = ({ node, actions, createNodeId }, pluginOptions) => {
+exports.onCreateNode = ({ node, actions, createNodeId }) => {
   const { createNode } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const fieldData = {
@@ -284,7 +284,7 @@ exports.onCreateNode = ({ node, actions, createNodeId }, pluginOptions) => {
         {
           name: 'components',
           getter: node => {
-            return getComponents(node, pluginOptions)
+            return getComponents(node)
           },
           defaultValue: [{ component: 'MarkdownHtmlContent' }],
         },
@@ -294,18 +294,18 @@ exports.onCreateNode = ({ node, actions, createNodeId }, pluginOptions) => {
   attachFields(node, actions, descriptors)
 }
 
-const getComponents = (node, pluginOptions) => {
+const getComponents = (node) => {
   if (node && node.frontmatter) {
     if (node.frontmatter.components) {
       return node.frontmatter.components
     } else if (node.frontmatter.layout) {
-      return getComponentsFromLayout(node.frontmatter.layout, pluginOptions)
+      return getComponentsFromLayout(node.frontmatter.layout)
     }
   }
   return [{ component: 'MarkdownHtmlContent' }]
 }
 
-const getComponentsFromLayout = (layout, pluginOptions) => {
+const getComponentsFromLayout = (layout) => {
   if (configuration.layouts) {
     return configuration.layouts[layout] || configuration.layouts.default
   }

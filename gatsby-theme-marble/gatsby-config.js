@@ -1,7 +1,7 @@
 const path = require('path')
 const configuration = require('./content/configuration')
 
-module.exports = ({ contentPath = 'content', basePath = '/' }) => ({
+module.exports = ({ contentPath = 'content' }) => ({
   // siteMetadata required fields:
   // ====================================
   // title
