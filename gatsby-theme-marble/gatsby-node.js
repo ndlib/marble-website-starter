@@ -1,5 +1,4 @@
 const configuration = require('./content/configuration.js')
-const path = require(`path`)
 const fs = require('fs')
 const crypto = require('crypto')
 const { attachFields } = require(`gatsby-plugin-node-fields`)
@@ -254,8 +253,8 @@ exports.createPages = ({ graphql, actions }) => {
   // non manifest tags
 }
 
-exports.onCreateNode = ({ node, actions, getNode, createNodeId }, pluginOptions) => {
-  const { createNodeField, createNode, createParentChildLink } = actions
+exports.onCreateNode = ({ node, actions, createNodeId }, pluginOptions) => {
+  const { createNode } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const fieldData = {
       frontmatter: node.frontmatter,
