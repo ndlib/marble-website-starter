@@ -1,7 +1,7 @@
 const path = require('path')
 const configuration = require('./content/configuration')
 
-module.exports = {
+module.exports = ({ contentPath = 'content', basePath = '/' }) => ({
   // siteMetadata required fields:
   // ====================================
   // title
@@ -63,21 +63,21 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `iiif`,
-        path: `${__dirname}/content/json/`,
+        path: `${contentPath}/json/`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/content/images`,
+        path: `${contentPath}/images`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/content/markdown`,
+        path: `${contentPath}/markdown`,
       },
     },
     `gatsby-remark-copy-linked-files`,
@@ -133,4 +133,4 @@ module.exports = {
       },
     },
   ],
-}
+})

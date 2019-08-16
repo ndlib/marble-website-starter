@@ -4,8 +4,8 @@ const crypto = require('crypto')
 const { attachFields } = require(`gatsby-plugin-node-fields`)
 
 // Make sure the data directory exists
-exports.onPreBootstrap = ({ reporter }) => {
-  const contentPath = 'content'
+exports.onPreBootstrap = ({ reporter }, options) => {
+  const contentPath = options.contentPath || 'content'
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`)
     fs.mkdirSync(contentPath)
@@ -189,8 +189,8 @@ exports.sourceNodes = ({ actions }) => {
   createTypes(typeDefs)
 }
 
-// exports.createResolvers = ({ createResolvers }) => {
-//   const basePath = '/'
+// exports.createResolvers = ({ createResolvers }, options) => {
+//   const basePath = options.basePath || '/'
 //   createResolvers({})
 // }
 
