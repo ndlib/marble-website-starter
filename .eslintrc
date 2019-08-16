@@ -39,15 +39,15 @@
     "semi"                  : [2, "never"],
     "space-in-parens"       : ["error", "never"],
 
-     // This should replicate Code Climate's computational complexity code smells warning. It is actually more strict.
+    // This should replicate Code Climate's computational complexity code smells warning. It is actually more strict.
     "complexity"            : ["warn", 5],
 
-     // accessibility rules
+    // accessibility rules
     //
     // NOTE Need to elevate many 1s to 2s after remediation
     //
 
-     "jsx-a11y/href-no-hash" : "off",
+    "jsx-a11y/href-no-hash" : "off",
     "jsx-a11y/alt-text"     : [ 1, {
       "elements"  : [ "img", "object", "area", "input[type=\"image\"]" ],
       "img" : ["Image"],
