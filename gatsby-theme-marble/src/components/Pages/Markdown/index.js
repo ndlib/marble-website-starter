@@ -19,13 +19,11 @@ const Markdown = ({ data, location }) => {
         nav={navigation}
         location={location}
       >
-      {
         <Seo
           data={data}
           location={location}
           noIndex // TODO remove this line when ready to index!!!!
         />
-      }
         <MarkdownLayoutRenderer
           markdownRemark={data.remarkMarblePage}
           location={location}

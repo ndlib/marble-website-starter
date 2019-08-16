@@ -1,12 +1,12 @@
 const configuration = require('./content/configuration.js')
 const path = require(`path`)
-const fs = require("fs")
-const crypto = require("crypto");
+const fs = require('fs')
+const crypto = require('crypto');
 const { attachFields } = require(`gatsby-plugin-node-fields`)
 
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }) => {
-  const contentPath = "content"
+  const contentPath = 'content'
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`)
     fs.mkdirSync(contentPath)
@@ -190,9 +190,8 @@ exports.sourceNodes = ({ actions }) => {
   createTypes(typeDefs)
 }
 
-
 // exports.createResolvers = ({ createResolvers }) => {
-//   const basePath = "/"
+//   const basePath = '/'
 //   createResolvers({})
 // }
 
@@ -274,12 +273,10 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }, pluginOptions)
           .update(JSON.stringify(fieldData))
           .digest(`hex`),
         content: JSON.stringify(fieldData),
-        description: `Enhanced markdown pages with react components`
+        description: `Enhanced markdown pages with react components`,
       }
     })
   }
-
-
 
   const descriptors = [
     {
@@ -297,7 +294,6 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }, pluginOptions)
   ]
   attachFields(node, actions, descriptors)
 }
-
 
 const getComponents = (node, pluginOptions) => {
   if (node && node.frontmatter) {
