@@ -4,6 +4,7 @@ module.exports = {
   plugins: [
     {
       resolve: 'gatsby-theme-marble',
+
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
@@ -27,15 +28,6 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-manifest`,
-      // options required fields:
-      // ====================================
-      // name
-      // short_name
-      // start_url
-      // background_color
-      // theme_color
-      // display
-      // icon
       options: configuration.manifest,
     },
   ],

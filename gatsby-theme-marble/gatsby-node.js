@@ -1,4 +1,3 @@
-const configuration = require('./content/configuration.js')
 const fs = require('fs')
 const crypto = require('crypto')
 const { attachFields } = require(`gatsby-plugin-node-fields`)
@@ -11,6 +10,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     fs.mkdirSync(contentPath)
   }
 }
+// predefine stuff we expect from configuration.js
 exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
 
@@ -252,7 +252,7 @@ exports.createPages = ({ graphql, actions }) => {
   // non manifest tags
 }
 
-exports.onCreateNode = ({ node, actions, createNodeId }) => {
+exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
   const { createNode } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const fieldData = {
@@ -283,7 +283,7 @@ exports.onCreateNode = ({ node, actions, createNodeId }) => {
         {
           name: 'components',
           getter: node => {
-            return getComponents(node)
+            return getComponents(node, options)
           },
           defaultValue: [{ component: 'MarkdownHtmlContent' }],
         },
@@ -293,20 +293,53 @@ exports.onCreateNode = ({ node, actions, createNodeId }) => {
   attachFields(node, actions, descriptors)
 }
 
-const getComponents = (node) => {
+const getComponents = (node, options) => {
   if (node && node.frontmatter) {
     if (node.frontmatter.components) {
       return node.frontmatter.components
     } else if (node.frontmatter.layout) {
-      return getComponentsFromLayout(node.frontmatter.layout)
+      return getComponentsFromLayout(node.frontmatter.layout, options)
     }
   }
   return [{ component: 'MarkdownHtmlContent' }]
 }
 
-const getComponentsFromLayout = (layout) => {
-  if (configuration.layouts) {
-    return configuration.layouts[layout] || configuration.layouts.default
+const getComponentsFromLayout = (layout, options) => {
+  if (options.layouts) {
+    return options.layouts[layout] || options.layouts.default
   }
-  return [{ component: 'MarkdownHtmlContent' }]
+  return defaultLayouts[layout] || defaultLayouts.default
+}
+
+const defaultLayouts = {
+  default: [
+    { component: 'MarkdownHtmlContent' },
+  ],
+  collection: [
+    { component: 'ActionButtons' },
+    { component: 'ManifestDescription' },
+    { component: 'ManifestMetaData' },
+    { component: 'ChildManifests' },
+  ],
+  item: [
+    {
+      component: 'MultiColumn',
+      components: [
+        {
+          component: 'Column',
+          components: [
+            { component: 'ActionButtons' },
+            { component: 'MiradorViewer' },
+          ],
+        },
+        {
+          component: 'Column',
+          components: [
+            { component: 'ManifestDescription' },
+            { component: 'ManifestMetaData' },
+          ],
+        },
+      ],
+    },
+  ],
 }
