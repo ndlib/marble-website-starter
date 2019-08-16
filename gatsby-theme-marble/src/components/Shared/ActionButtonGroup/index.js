@@ -11,7 +11,7 @@ import downloadImg from 'assets/icons/svg/baseline-save_alt-24px.svg'
 import style from './style.module.css'
 
 const ActionButtonGroup = ({ iiifManifest }) => {
-  if(!iiifManifest) {
+  if (!iiifManifest) {
     return null
   }
   return (

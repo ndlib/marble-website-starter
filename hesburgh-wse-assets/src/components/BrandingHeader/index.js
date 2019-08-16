@@ -6,20 +6,20 @@ export const BrandingHeader = ({ data }) => {
   return (
     <header className={style.wrapper}>
       <div className={style.inner}>
-      <a href='http://nd.edu'>
-        <img
-          src={institutionLogo}
-          alt=''
-          title='University of Notre Dame'
-        />
-      </a>
-      <a href='https://provost.nd.edu/'>
-        <img
-          src={departmentLogo}
-          alt=''
-          title='Office of the Provost'
-        />
-      </a>
+        <a href='http://nd.edu'>
+          <img
+            src={institutionLogo}
+            alt=''
+            title='University of Notre Dame'
+          />
+        </a>
+        <a href='https://provost.nd.edu/'>
+          <img
+            src={departmentLogo}
+            alt=''
+            title='Office of the Provost'
+          />
+        </a>
       </div>
     </header>
   )
