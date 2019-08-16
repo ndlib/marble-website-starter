@@ -1,7 +1,7 @@
 const configuration = require('./content/configuration.js')
 const path = require(`path`)
 const fs = require('fs')
-const crypto = require('crypto');
+const crypto = require('crypto')
 const { attachFields } = require(`gatsby-plugin-node-fields`)
 
 // Make sure the data directory exists
@@ -255,7 +255,7 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 exports.onCreateNode = ({ node, actions, getNode, createNodeId }, pluginOptions) => {
-  const { createNodeField, createNode, createParentChildLink } = actions;
+  const { createNodeField, createNode, createParentChildLink } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const fieldData = {
       frontmatter: node.frontmatter,
@@ -274,7 +274,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }, pluginOptions)
           .digest(`hex`),
         content: JSON.stringify(fieldData),
         description: `Enhanced markdown pages with react components`,
-      }
+      },
     })
   }
 
