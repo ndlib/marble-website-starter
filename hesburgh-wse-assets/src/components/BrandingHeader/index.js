@@ -2,7 +2,7 @@ import React from 'react'
 import style from './style.module.css'
 import departmentLogo from './departmentLogo.png'
 import institutionLogo from './institutionLogo.png'
-export const BrandingHeader = ({ data }) => {
+export const BrandingHeader = () => {
   return (
     <header className={style.wrapper}>
       <div className={style.inner}>
