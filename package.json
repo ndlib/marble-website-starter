@@ -2,8 +2,7 @@
   "private": true,
   "workspaces": [
     "gatsby-theme-marble",
-    "site",
-    "hesburgh-wse-assets"
+    "site"
   ],
   "devDependencies": {
     "@hesburgh-wse/eslint-config-hesburgh": "^1.0.2"
