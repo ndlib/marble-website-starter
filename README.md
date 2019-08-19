@@ -48,16 +48,20 @@ yarn workspace gatsby-theme-marble watch
 ```
 yarn workspace site develop
 ```
+Your site is now running at `http://localhost:8000`.
+
+_Note: You'll also see a second link:_ `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
 
 #### Marble Starter:
 ```
 yarn workspace gatsby-starter-marble develop
 ```
 
-Your site is now running at `http://localhost:8000`!
-
-_Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
-
+Alternatively, if you would like to run `site` and `gatsby-starter-marble` at the same time, you may open a second terminal window and specify a port after the development command:
+```
+yarn workspace gatsby-starter-marble develop -p 8001
+```
+The starter will then be available at `http://localhost:8000` and it's graphql tool at `http://localhost:8000/___graphql`.
 ### Project Structure:
 
 ```
