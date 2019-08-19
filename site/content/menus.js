@@ -82,4 +82,30 @@ module.exports = [
       },
     ],
   },
+  {
+    id: 'browse',
+    label: 'Browse',
+    items: [
+      {
+        id: 'browse-all',
+        label: 'All',
+        link: '/browse',
+      },
+      {
+        id: 'browse-timeperiods',
+        label: 'Time Periods',
+        link: '/browse/timeperiods',
+      },
+      {
+        id: 'browse-theme',
+        label: 'Theme',
+        link: '/browse/themes',
+      },
+      {
+        id: 'browse-places',
+        label: 'Places',
+        link: '/browse/places',
+      },
+    ],
+  },
 ]
