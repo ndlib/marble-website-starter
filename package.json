@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": [
     "gatsby-theme-marble",
+    "gatsby-starter-marble",
     "site"
   ],
   "devDependencies": {
