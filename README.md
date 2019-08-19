@@ -40,7 +40,7 @@ yarn install
 
 ### Run unit tests:
 ```
-yarn workspace gatsby-theme-marble watch
+yarn workspace @hesburgh-wse/gatsby-theme-marble watch
 ```
 
 ### Running locally for development:
@@ -54,12 +54,12 @@ _Note: You'll also see a second link:_ `http://localhost:8000/___graphql`. This 
 
 #### Marble Starter:
 ```
-yarn workspace gatsby-starter-marble develop
+yarn workspace @hesburgh-wse/gatsby-starter-marble develop
 ```
 
 Alternatively, if you would like to run `site` and `gatsby-starter-marble` at the same time, you may open a second terminal window and specify a port after the development command:
 ```
-yarn workspace gatsby-starter-marble develop -p 8001
+yarn workspace @hesburgh-wse/gatsby-starter-marble develop -p 8001
 ```
 The starter will then be available at `http://localhost:8000` and it's graphql tool at `http://localhost:8000/___graphql`.
 
@@ -67,8 +67,9 @@ The starter will then be available at `http://localhost:8000` and it's graphql t
 
 ```
 marble-website-starter
-↳ gatsby-theme-marble     // The npm module for the Gatsby Theme for a Marble website
-↳ gatsby-starter-marble   // The npm module for the Gatsby Starter for a Marble website
+↳ @hesburgh-wse           // Directory scope for publishing to npm
+  ↳ gatsby-theme-marble   // The npm module for the Gatsby Theme for a Marble website
+  ↳ gatsby-starter-marble // The npm module for the Gatsby Starter for a Marble website
 ↳ site                    // The Gatsby site for Marble that consumes `gatsby-theme-marble`
   ↳ content               // This is where the site content for the Marble site lives
   ↳ gatsby-config.js      // This file is required by Gatsby to configure the site and use the theme

@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "gatsby": "^2.13.61",
-    "gatsby-theme-marble": "*",
+    "@hesburgh-wse/gatsby-theme-marble": "*",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }
