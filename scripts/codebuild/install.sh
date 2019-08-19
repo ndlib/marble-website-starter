@@ -22,4 +22,5 @@ yarn install
 node getManifests.js
 node generateMD.js
 node indexSearch.js
+node generateMDCategories.js
 popd
