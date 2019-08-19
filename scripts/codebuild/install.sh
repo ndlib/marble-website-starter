@@ -17,7 +17,7 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ## TODO Copy external dependencies such as:
 ####  src/assets/logos/*
 ####  content/*
-pushd plugins/gatsby-source-iiif
+pushd scripts/gatsby-source-iiif
 yarn install
 node getManifests.js
 node generateMD.js

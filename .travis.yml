@@ -11,12 +11,6 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - npm test -- --coverage
-  - pushd plugins/gatsby-source-iiif
-  - yarn install
-  - node getManifests.js
-  - node generateMD.js
-  - popd
-  - npm run build
+  - ./scripts/codebuild/local.sh
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
