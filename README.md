@@ -30,7 +30,7 @@ To build and test locally, you will need the following development tools install
   ```
 * gatsby-cli
   ```
-  yarn install -g gatsby-cli
+  yarn global add gatsby-cli
   ```
 
 ### Installing:
