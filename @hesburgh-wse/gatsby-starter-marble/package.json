@@ -2,6 +2,10 @@
   "name": "@hesburgh-wse/gatsby-starter-marble",
   "version": "0.5.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ndlib/marble-website-starter"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

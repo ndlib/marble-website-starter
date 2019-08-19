@@ -30,7 +30,7 @@ To build and test locally, you will need the following development tools install
   ```
 * gatsby-cli
   ```
-  yarn install -g gatsby-cli
+  yarn global add gatsby-cli
   ```
 
 ### Installing:
@@ -45,6 +45,12 @@ yarn workspace @hesburgh-wse/gatsby-theme-marble watch
 
 ### Running locally for development:
 #### Main Marble Website:
+Download the iiif manifests and create pages for them:
+```
+./scripts/local.sh
+```
+
+Start the development server:
 ```
 yarn workspace site develop
 ```
