@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
+import typy from 'typy'
 import Link from 'components/Internal/Link'
 import style from './style.module.css'
 
 export const SiteLogo = ({ data }) => {
   const { title } = data.site.siteMetadata
-  const siteLogo = data.file.publicURL
+  const siteLogo = typy(data, 'file.publicURL').safeString
   return (
     <Link to='/' className={style.siteTitle}>
       <img

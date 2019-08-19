@@ -47,7 +47,6 @@ module.exports = {
     theme_color: themeColor,
     display: `minimal-ui`,
     icon: `content/images/manifestLogo.png`,
-    // icon: `src/assets/logos/manifestLogo.png`,
   },
 
   // layouts

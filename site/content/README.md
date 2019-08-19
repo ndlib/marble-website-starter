@@ -7,8 +7,6 @@ This is where the content of your marble-website-starter lives. The following fi
 * `configuration.js` ***(required)*** - This includes many parameters that are used by `gatsby-config.js` to custom your site including the site name, menu structure, api keys, branding and more.
 
 * `images/` ***(required)*** -  The following images are expected to build the site without modification:
-  * departmentLogo.png - Used on right side of branding bar
-  * institutionLogo.png - Used on left side of branding bar
   * manifestLogo.png - Used in manifest.webmanifest
   * openGraphLogo.png - Used for Twitter Card and Open Graph in SEO components
   * siteLogo.png - Used as graphical site logo next to main navigation
