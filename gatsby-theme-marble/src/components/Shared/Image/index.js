@@ -25,7 +25,7 @@ const Image = ({
   // build a srcset from the service
   const srcSet = sourceSet(service, region, size)
 
-  const [ activeSrcSet, setSrcSet ] = useState('')
+  const [activeSrcSet, setSrcSet] = useState('')
 
   const onEnter = () => {
     setSrcSet(srcSet)
@@ -38,6 +38,7 @@ const Image = ({
           srcSet={activeSrcSet}
           alt={alt || title}
           title={title || alt}
+          style={{ width: '100%' }}
         />
       </picture>
     </Waypoint>
