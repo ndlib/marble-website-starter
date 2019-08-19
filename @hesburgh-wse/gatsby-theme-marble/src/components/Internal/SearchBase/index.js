@@ -24,6 +24,11 @@ const SearchBase = ({ children, terms }) => {
     `
   )
   const searchBase = typy(site, 'siteMetadata.searchBase').safeObject
+  if (!typy(searchBase, 'url').isString || !typy(searchBase, 'app').isString) {
+    return (
+      <React.Fragment>{children}</React.Fragment>
+    )
+  }
   const sk = new SearchkitManager(`${searchBase.url}/${searchBase.app}`)
   if (terms) {
     sk.addDefaultQuery((query) => {

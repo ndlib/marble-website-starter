@@ -1,7 +1,8 @@
 {
   "private": true,
   "workspaces": [
-    "gatsby-theme-marble",
+    "@hesburgh-wse/gatsby-theme-marble",
+    "@hesburgh-wse/gatsby-starter-marble",
     "site"
   ],
   "devDependencies": {

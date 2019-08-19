@@ -138,8 +138,10 @@ exports.sourceNodes = ({ actions }) => {
     components: [component]
     description: String
     layout: String
+    menu: String
     slug: String
     title: String
+    iiifJson: IiifJson
   }
 
   type RemarkMarblePage implements Node {
