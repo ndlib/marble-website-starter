@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-theme-marble",
+  "name": "@hesburgh-wse/gatsby-theme-marble",
   "private": false,
   "description": "A Gatsby Theme for a MARBLE website.",
   "version": "0.4.0",

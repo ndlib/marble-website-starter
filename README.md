@@ -62,6 +62,7 @@ Alternatively, if you would like to run `site` and `gatsby-starter-marble` at th
 yarn workspace gatsby-starter-marble develop -p 8001
 ```
 The starter will then be available at `http://localhost:8000` and it's graphql tool at `http://localhost:8000/___graphql`.
+
 ### Project Structure:
 
 ```
@@ -77,6 +78,41 @@ marble-website-starter
 
 ```
 
+### Notes on development:
+Occasionally, the `.cache` files my get confused if you are making large or frequent changes. To clean it up, stop the development task and run:
+
+```
+yarn workspace site clean
+```
+
+### Local build:
+To build a local production version of the site run:
+```
+yarn workspace site build
+```
+
 ## Deployment
 
 This project is deployed to AWS using a [Code Pipeline](https://aws.amazon.com/codepipeline/). The build scripts are located in `./scripts/codebuild`. The blueprints for deployment are available on Github at [Marble Blueprints](https://github.com/ndlib/marble-blueprints).
+
+## Publishing the node modules
+### Increment Version
+Be sure to increment the package to the appropriate version using one of the following:
+
+```
+yarn workspace [WORKSPACE] version --patch
+```
+
+```
+yarn workspace [WORKSPACE] version --minor
+```
+
+```
+yarn workspace [WORKSPACE] version --major
+```
+
+### Publish to NPM
+```
+cd [WORKSPACE]
+npm publish --access public
+```
