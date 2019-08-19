@@ -1,6 +1,6 @@
 {
   "name": "@hesburgh-wse/gatsby-starter-marble",
-  "version": "0.0.1",
+  "version": "0.4.1",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -8,8 +8,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.13.61",
     "@hesburgh-wse/gatsby-theme-marble": "*",
+    "gatsby": "^2.13.61",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }
