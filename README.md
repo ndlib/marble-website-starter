@@ -45,6 +45,12 @@ yarn workspace @hesburgh-wse/gatsby-theme-marble watch
 
 ### Running locally for development:
 #### Main Marble Website:
+Download the iiif manifests and create pages for them:
+```
+./scripts/local.sh
+```
+
+Start the development server:
 ```
 yarn workspace site develop
 ```
