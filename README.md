@@ -101,18 +101,18 @@ This project is deployed to AWS using a [Code Pipeline](https://aws.amazon.com/c
 Be sure to increment the package to the appropriate version using one of the following:
 
 ```
-yarn version --patch
+yarn workspaces run version --patch
 ```
 
 ```
-yarn version --minor
+yarn workspace run version --minor
 ```
 
 ```
-yarn version --major
+yarn workspace run version --major
 ```
 
-_Note: This will update the version for `gatsby-theme-marble` AND `gatsby-starter-marble`._
+_Note: This will increment the version of `gatsby-theme-marble` AND `gastby-starter-marble`. Git may complain about a pre-existing tag._
 
 ### Publish to NPM
 ```
