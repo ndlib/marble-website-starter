@@ -173,12 +173,6 @@ exports.sourceNodes = ({ actions }) => {
     universalViewerBaseURL: String
     googleMapApiURL: String
     searchBase: searchBase
-    useBrandBar: Boolean
-    headerColor: String
-    institutionURL: String
-    institutionLabel: String
-    departmentURL: String
-    departmentLabel: String
     footerText: String
     menus: [menus]
     loginPath: String
