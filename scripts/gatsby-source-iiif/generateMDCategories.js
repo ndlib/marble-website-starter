@@ -26,10 +26,16 @@ const getMDFile = (manifest) => {
   let search = ''
   if (manifest.manifest_ids) {
     search = `
-  - component: SavedSearch
+  - component: SearchBase
     props:
       - label: 'terms'
-        value: "${manifest.id}"`
+        value: 'letters'
+    components:
+    - component: SearchFilterBox
+    - component: SearchResults
+      props:
+        - label: 'defaultDisplay'
+          value: 'grid'`
   }
 
   const mdFile = `---

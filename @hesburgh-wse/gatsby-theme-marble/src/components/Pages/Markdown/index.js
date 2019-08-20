@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import SearchBase from 'components/Internal/SearchBase'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import Navigation from 'components/Internal/Navigation'
@@ -13,25 +12,23 @@ const Markdown = ({ data, location }) => {
   const navigation = (typy(data, 'remarkMarblePage.frontmatter.menu').isString ? <Navigation id={data.remarkMarblePage.frontmatter.menu} /> : null)
   const globalProps = getglobalProps(data, location)
   return (
-    <SearchBase data={data}>
-      <Layout
-        title={title}
-        nav={navigation}
+    <Layout
+      title={title}
+      nav={navigation}
+      location={location}
+    >
+      <Seo
+        data={data}
         location={location}
-      >
-        <Seo
-          data={data}
-          location={location}
-          noIndex // TODO remove this line when ready to index!!!!
-        />
-        <MarkdownLayoutRenderer
-          markdownRemark={data.remarkMarblePage}
-          location={location}
-          availableComponents={availableComponents}
-          globalProps={globalProps}
-        />
-      </Layout>
-    </SearchBase>
+        noIndex // TODO remove this line when ready to index!!!!
+      />
+      <MarkdownLayoutRenderer
+        markdownRemark={data.remarkMarblePage}
+        location={location}
+        availableComponents={availableComponents}
+        globalProps={globalProps}
+      />
+    </Layout>
   )
 }
 
