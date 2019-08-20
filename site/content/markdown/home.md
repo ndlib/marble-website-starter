@@ -2,37 +2,42 @@
 slug: index
 
 components:
-  - component: SearchBox
   - component: MarkdownHtmlContent
+  - component: SearchBox
   - component: CardGroup
     props:
       - label: "label"
-        value: "Featured"
+        value: "Featured Collections"
     components:
-      - component: Card
+      - component: ManifestCard
         props:
-        - label: "label"
-          value: "In a Civilized Nation: Newspapers, Magazines and the Print Revolution in the 19th-Century Peru"
-        - label: "image"
-          fileValue: "./images/01.jpg"
-        - label: "target"
-          value: "https://collections.library.nd.edu/3df879828f/in-a-civilized-nation"
-      - component: Card
+          - label: "iiifManifest"
+            value: "https://presentation-iiif.library.nd.edu/collection/le-rossignol"
+      - component: ManifestCard
         props:
-        - label: "label"
-          value: "Highlights"
-        - label: "image"
-          fileValue: "./images/02.jpg"
-        - label: "target"
-          value: "/browse/notre-dame"
-      - component: Card
+          - label: "iiifManifest"
+            value: "https://presentation-iiif.library.nd.edu/collection/theophilus"
+      - component: ManifestCard
         props:
-        - label: "label"
-          value: "Recently Added"
-        - label: "image"
-          fileValue: "./images/03.jpg"
-        - label: "target"
-          value: "/browse"
+          - label: "iiifManifest"
+            value: "https://presentation-iiif.library.nd.edu/collection/dante"
+  - component: CardGroup
+    props:
+      - label: "label"
+        value: "Featured Items"
+    components:
+      - component: ManifestCard
+        props:
+          - label: "iiifManifest"
+            value: "https://presentation-iiif.library.nd.edu/1976.057/manifest"
+      - component: ManifestCard
+        props:
+          - label: "iiifManifest"
+            value: "https://presentation-iiif.library.nd.edu/1983.053.002/manifest"
+      - component: ManifestCard
+        props:
+          - label: "iiifManifest"
+            value: "https://presentation-iiif.library.nd.edu/1999.024/manifest"
   - component: CardGroup
     props:
       - label: "label"
@@ -40,28 +45,28 @@ components:
     components:
       - component: Card
         props:
-        - label: "label"
-          value: "Time"
-        - label: "image"
-          fileValue: "./images/06.jpg"
-        - label: "target"
-          value: "/browse/timeperiods"
+          - label: "label"
+            value: "Time"
+          - label: "image"
+            fileValue: "./images/06.jpg"
+          - label: "target"
+            value: "/browse/timeperiods"
       - component: Card
         props:
-        - label: "label"
-          value: "Place"
-        - label: "image"
-          fileValue: "./images/05.jpg"
-        - label: "target"
-          value: "/browse/places"
+          - label: "label"
+            value: "Place"
+          - label: "image"
+            fileValue: "./images/05.jpg"
+          - label: "target"
+            value: "/browse/places"
       - component: Card
         props:
-        - label: "label"
-          value: "Theme"
-        - label: "image"
-          fileValue: "./images/04.jpg"
-        - label: "target"
-          value: "/browse/themes"
+          - label: "label"
+            value: "Theme"
+          - label: "image"
+            fileValue: "./images/04.jpg"
+          - label: "target"
+            value: "/browse/themes"
 ---
 
 Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
