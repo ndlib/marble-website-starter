@@ -1,8 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { useStaticQuery } from 'gatsby'
 import { Navigation, findNavInData } from './'
 
-const data = {
+const sq = {
   site: {
     siteMetadata: {
       menus: [
@@ -44,7 +45,10 @@ const data = {
 }
 describe('Navigation', () => {
   test('It renders the nav menu', () => {
-    const wrapper = shallow(<Navigation menu={data.site.siteMetadata.menus[0]} />)
+    useStaticQuery.mockImplementationOnce(() => {
+      return sq
+    })
+    const wrapper = shallow(<Navigation id='nolabel' />)
 
     expect(wrapper.find('nav').exists()).toBeTruthy()
     expect(wrapper.find('Link')).toHaveLength(2)
@@ -53,21 +57,35 @@ describe('Navigation', () => {
   })
 
   test('It renders a menu with a label', () => {
-    const wrapper = shallow(<Navigation menu={data.site.siteMetadata.menus[1]} />)
+    useStaticQuery.mockImplementationOnce(() => {
+      return sq
+    })
+    const wrapper = shallow(<Navigation id='label' />)
 
     expect(wrapper.find('h3').exists()).toBeTruthy()
     expect(wrapper.find('h3').text()).toEqual('label')
   })
 
   test('findNavInData finds the menu correctly', () => {
-  // does it find the menu labeled nolabel
-    expect(findNavInData('nolabel', data.site.siteMetadata.menus)).toEqual(data.site.siteMetadata.menus[0])
-    expect(findNavInData('label', data.site.siteMetadata.menus)).toEqual(data.site.siteMetadata.menus[1])
-    expect(findNavInData('not-there', data.site.siteMetadata.menus)).toEqual(undefined)
+    // does it find the menu labeled nolabel
+    expect(findNavInData('nolabel', sq.site.siteMetadata.menus)).toEqual(sq.site.siteMetadata.menus[0])
+    expect(findNavInData('label', sq.site.siteMetadata.menus)).toEqual(sq.site.siteMetadata.menus[1])
+    expect(findNavInData('not-there', sq.site.siteMetadata.menus)).toEqual(undefined)
   })
 
   test('it allows for a class name to be passed into the object', () => {
-    const wrapper = shallow(<Navigation menu={data.site.siteMetadata.menus[0]} navClass='the-class' />)
+    useStaticQuery.mockImplementationOnce(() => {
+      return sq
+    })
+    const wrapper = shallow(<Navigation id='nolabel' navClass='the-class' />)
     expect(wrapper.find('nav').prop('className')).toEqual('the-class')
+  })
+
+  test('menu not found', () => {
+    useStaticQuery.mockImplementationOnce(() => {
+      return sq
+    })
+    const wrapper = shallow(<Navigation id='badlabel' />)
+    expect(wrapper.find('nav').exists()).toBeFalsy()
   })
 })
