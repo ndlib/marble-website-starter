@@ -13,4 +13,6 @@ before_script:
 script:
   - ./scripts/local.sh
 after_script:
+  - mkdir ./coverage
+  - rsync -av ./@gatsby-theme-marble/coverage ./coverage
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
