@@ -14,7 +14,6 @@ const wrapper = shallow(
     location={location}
     searchPath='my-search'
     className={'searchFieldClass'}
-    searchPath='search'
   />
 )
 describe('SearchField', () => {
