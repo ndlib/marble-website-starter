@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import searchImage from 'assets/icons/svg/baseline-search-24px.svg'
 import searchImageWhite from 'assets/icons/svg/baseline-search-24px-white.svg'
 
-export const SearchButton = ({ white, searchReducer, submitSearch, className, location }) => {
+export const SearchButton = ({ white, searchReducer, submitSearch, searchPath, className, location }) => {
   const { rawInput } = searchReducer
   return (
     <button
       className={className}
-      onClick={() => submitSearch(location, rawInput)}
+      onClick={() => submitSearch(location, rawInput, searchPath)}
     >
       <img
         className='searchIcon'
@@ -26,6 +26,7 @@ SearchButton.propTypes = {
   submitSearch: PropTypes.func.isRequired,
   white: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
+  searchPath: PropTypes.string.isRequired,
 }
 
 SearchButton.defaultProps = {

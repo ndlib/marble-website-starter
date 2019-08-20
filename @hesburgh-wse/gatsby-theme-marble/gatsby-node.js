@@ -181,6 +181,8 @@ exports.sourceNodes = ({ actions }) => {
     departmentLabel: String
     footerText: String
     menus: [menus]
+    loginPath: String
+    searchPath: String
     languages: languages
   }
   type Site implements Node {

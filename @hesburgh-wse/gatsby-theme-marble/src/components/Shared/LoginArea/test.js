@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Login } from '../login'
+import { LoginArea } from './'
 import * as auth from 'utils/auth'
 
 test('it renders the login page with the user logged in', () => {
@@ -10,12 +10,9 @@ test('it renders the login page with the user logged in', () => {
       fullname: 'username',
     },
   }
-  const wrapper = shallow(<Login loginReducer={loginReducer} location={{}} />)
+  const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)
 
-  expect(wrapper.find('Layout').exists()).toBeTruthy()
-  expect(wrapper.find('Layout').prop('title')).toEqual('Login')
   expect(wrapper.find('form').exists()).toBeTruthy()
-
   expect(wrapper.find('button').length).toEqual(2)
   expect(wrapper.find('button#google').text()).toEqual('Login with Google')
   expect(wrapper.find('button#facebook').text()).toEqual('Login with Facebook')

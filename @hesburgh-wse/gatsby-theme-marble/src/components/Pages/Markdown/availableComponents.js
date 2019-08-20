@@ -4,6 +4,7 @@ import Card from 'components/Shared/Card'
 import ChildManifests from 'components/Shared/ChildManifests'
 import Column from 'components/Shared/Column'
 import Image from 'components/Shared/Image'
+import LoginArea from 'components/Shared/LoginArea'
 import ManifestImage from 'components/Shared/ManifestImage'
 import ManifestCard from 'components/Shared/ManifestCard'
 import ManifestDescription from 'components/Shared/ManifestDescription'
@@ -27,6 +28,7 @@ export const availableComponents = {
   ChildManifests: ChildManifests,
   Column: Column,
   Image: Image,
+  LoginArea: LoginArea,
   ManifestCard: ManifestCard,
   ManifestDescription: ManifestDescription,
   ManifestImage: ManifestImage,
