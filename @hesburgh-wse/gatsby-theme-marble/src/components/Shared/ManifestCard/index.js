@@ -1,18 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import Card from 'components/Shared/Card'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
 import getLanguage from 'utils/getLanguage'
 
-export const ManifestCardInternal = (props) => {
+export const ManifestCard = (props) => {
+  const { allIiifJson } = useStaticQuery(
+    graphql`
+    query {
+      allIiifJson {
+        nodes {
+          ...iiifJsonFragment
+        }
+      }
+    }
+  `
+  )
   const manifestId = typy(props, 'iiifManifest').isString ? props.iiifManifest : props.iiifManifest.id
-
-  const iiifEdge = props.allManifests.find(manifest => {
-    return manifest.node.id === manifestId
+  const iiifNode = allIiifJson.nodes.find(manifest => {
+    return manifest.id === manifestId
   })
-  const iiifManifest = typy(iiifEdge, 'node').safeObject || null
+  const iiifManifest = iiifNode || null
   if (!iiifManifest) {
     console.warn('Could not find manifest: ', manifestId)
     return null
@@ -29,30 +39,6 @@ export const ManifestCardInternal = (props) => {
     >
       <div>{iiifManifest.description}</div>
     </Card>
-  )
-}
-
-ManifestCardInternal.propTypes = {
-  allManifests: PropTypes.array.isRequired,
-  iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-}
-
-export const ManifestCard = (props) => {
-  return (
-    <StaticQuery
-      query={graphql`
-      query {
-        allIiifJson {
-          edges {
-            node {
-              ...iiifJsonFragment
-            }
-          }
-        }
-      }
-    `}
-      render={data => <ManifestCardInternal allManifests={data.allIiifJson.edges} {...props} />}
-    />
   )
 }
 
