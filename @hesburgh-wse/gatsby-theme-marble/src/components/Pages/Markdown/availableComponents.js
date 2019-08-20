@@ -11,7 +11,7 @@ import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import Map from 'components/Shared/Map'
 import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
-import SavedSearch from 'components/Shared/SavedSearch'
+import SearchBase from 'components/Shared/SearchBase'
 import SearchBox from 'components/Shared/SearchBox'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
@@ -34,7 +34,7 @@ export const availableComponents = {
   Map: Map,
   MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
-  SavedSearch: SavedSearch,
+  SearchBase: SearchBase,
   SearchBox: SearchBox,
   SearchDynamicRangeFilter: SearchDynamicRangeFilter,
   SearchFilterBox: SearchFilterBox,
