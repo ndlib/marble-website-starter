@@ -1,11 +1,36 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { useStaticQuery } from 'gatsby'
 import { LoginButton, getSafeName } from './'
 import Link from 'components/Internal/Link'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 
 describe('LoginButton', () => {
+  test('no button', () => {
+    useStaticQuery.mockImplementationOnce(() => {
+      return {
+        site: {
+          siteMetadata: {
+            loginPath: null,
+          },
+        },
+      }
+    })
+    const loginReducer = { status: 'STATUS NOT LOGGED IN' }
+    const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
+    expect(wrapper.find('.loginButton').exists()).toBeFalsy()
+  })
+
   test('logged in', () => {
+    useStaticQuery.mockImplementationOnce(() => {
+      return {
+        site: {
+          siteMetadata: {
+            loginPath: 'sign-in',
+          },
+        },
+      }
+    })
     const loginReducer = {
       status: 'STATUS_LOGGED_IN',
       user: {
@@ -14,16 +39,25 @@ describe('LoginButton', () => {
     }
     const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find('.loginButton').exists()).toBeTruthy()
-    expect(wrapper.find(Link).props().to).toEqual('/login')
+    expect(wrapper.find(Link).props().to).toEqual('/sign-in')
     expect(wrapper.find('span').text()).toEqual('Johnny Logged In')
     expect(wrapper.find('img').props().src).toEqual(userIcon)
   })
 
   test('not logged in', () => {
+    useStaticQuery.mockImplementationOnce(() => {
+      return {
+        site: {
+          siteMetadata: {
+            loginPath: 'sign-in',
+          },
+        },
+      }
+    })
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
     const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find('.loginButton').exists()).toBeTruthy()
-    expect(wrapper.find(Link).props().to).toEqual('/login')
+    expect(wrapper.find(Link).props().to).toEqual('/sign-in')
     expect(wrapper.find(Link).props().children).toEqual('Login')
   })
 })

@@ -1,9 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
+import typy from 'typy'
 import Link from 'components/Internal/Link'
 
-export const Navigation = ({ menu, navClass }) => {
+export const Navigation = ({ id, navClass }) => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            menus {
+              id
+              label
+              items {
+                id
+                link
+                label
+              }
+            }
+          }
+        }
+      }
+  `
+  )
+  const menus = typy(site, 'siteMetadata.menus').safeArray
+  const menu = findNavInData(id, menus)
+  if (!menu) {
+    return null
+  }
   return (
     <nav className={navClass}>
       {menu.label ? <h3>{menu.label}</h3> : null}
@@ -15,7 +40,7 @@ export const Navigation = ({ menu, navClass }) => {
 }
 
 Navigation.propTypes = {
-  menu: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
   navClass: PropTypes.string,
 }
 
@@ -25,35 +50,4 @@ export const findNavInData = (id, navData) => {
   })
 }
 
-export default ({ id, navClass }) => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          site {
-            siteMetadata {
-              menus {
-                id
-                label
-                items {
-                  id
-                  link
-                  label
-                }
-              }
-            }
-          }
-        }
-    `}
-      render={data => {
-        const menus = data.site.siteMetadata.menus
-        const menu = findNavInData(id, menus)
-        if (menu) {
-          return (<Navigation menu={menu} navClass={navClass} />)
-        } else {
-          return (null)
-        }
-      }}
-    />
-  )
-}
+export default Navigation

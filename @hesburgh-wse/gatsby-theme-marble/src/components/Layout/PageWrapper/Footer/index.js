@@ -1,12 +1,22 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import style from './style.module.css'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import ResponsiveGridList from 'components/Internal/ResponsiveGridList'
 import Navigation from 'components/Internal/Navigation'
 
-export const Footer = ({ data }) => {
-  const footerText = data.site.siteMetadata.footerText
+export const Footer = () => {
+  const { site } = useStaticQuery(
+    graphql`
+    query {
+      site {
+        siteMetadata {
+          footerText
+        }
+      }
+    }
+  `
+  )
+  const footerText = site.siteMetadata.footerText
   const layouts = {
     lg: [
       { i: 'footerText', x: 0, y: 0, w: 6, h: 1, static: true },
@@ -46,26 +56,4 @@ export const Footer = ({ data }) => {
   )
 }
 
-Footer.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export default () => {
-  return (
-    <StaticQuery
-      query={graphql`
-      query {
-        site {
-          siteMetadata {
-            footerText
-          }
-        }
-      }
-    `
-      }
-      render={data => (
-        <Footer data={data} />
-      )}
-    />
-  )
-}
+export default Footer

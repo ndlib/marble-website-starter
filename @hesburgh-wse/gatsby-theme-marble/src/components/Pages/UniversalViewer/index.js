@@ -64,7 +64,7 @@ UniversalViewer.defaultProps = {
 export default UniversalViewer
 
 // Remove cv query parameter from cannonical link but still include the manifest
-const UVCanonicalPath = (qs) => {
-  delete qs.cv
-  return `/viewer/?${queryString.stringify(qs)}`
-}
+// const UVCanonicalPath = (qs) => {
+//   delete qs.cv
+//   return `/viewer/?${queryString.stringify(qs)}`
+// }

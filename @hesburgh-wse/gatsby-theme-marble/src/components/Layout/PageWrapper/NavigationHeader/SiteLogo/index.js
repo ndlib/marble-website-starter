@@ -1,13 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
-import typy from 'typy'
+import { useStaticQuery, graphql } from 'gatsby'
 import Link from 'components/Internal/Link'
+import typy from 'typy'
 import style from './style.module.css'
+import siteLogo from './siteLogo.png'
 
-export const SiteLogo = ({ data }) => {
-  const { title } = data.site.siteMetadata
-  const siteLogo = typy(data, 'file.publicURL').safeString
+export const SiteLogo = () => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+  const title = typy(site, 'siteMetadata.title').safeString
   return (
     <Link to='/' className={style.siteTitle}>
       <img
@@ -20,35 +30,4 @@ export const SiteLogo = ({ data }) => {
   )
 }
 
-SiteLogo.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
-}
-
-export default () => {
-  return (
-    <StaticQuery
-      query={graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-        file(name: {eq: "siteLogo"}) {
-          publicURL
-        }
-      }
-    `
-      }
-      render={data => (
-        <SiteLogo data={data} />
-      )}
-    />
-  )
-}
+export default SiteLogo

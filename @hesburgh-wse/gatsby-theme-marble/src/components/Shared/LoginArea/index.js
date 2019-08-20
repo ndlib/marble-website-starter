@@ -1,26 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
 import { connect } from 'react-redux'
 import { handleLogin } from 'store/actions/loginActions'
 import { isLoggedIn } from 'utils/auth'
 
-export const Login = ({ dispatch, location, loginReducer }) => {
+export const LoginArea = ({ dispatch, loginReducer }) => {
   const message = (isLoggedIn(loginReducer)) ? (<p>Hi {loginReducer.user.fullname}</p>) : ''
 
   return (
-    <Layout
-      title='Login'
-      location={location}
-    >
-      <Seo
-        title='Login'
-        location={location}
-        data={{}}
-      />
-      {message}
+    <div>
+      { message }
       <form
         method='post'
         onSubmit={event => {
@@ -43,14 +33,13 @@ export const Login = ({ dispatch, location, loginReducer }) => {
           <button alt='Facebook' id='facebook'>Login with Facebook</button>
         </p>
       </form>
-    </Layout>
+    </div>
   )
 }
 
-Login.propTypes = {
+LoginArea.propTypes = {
   loginReducer: PropTypes.object.isRequired,
   dispatch: PropTypes.func,
-  location: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => {
@@ -64,4 +53,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(LoginArea)

@@ -12,6 +12,7 @@ const wrapper = shallow(
     dispatch={dispatch}
     submitSearch={action}
     location={location}
+    searchPath='my-search'
     className={'searchFieldClass'}
   />
 )

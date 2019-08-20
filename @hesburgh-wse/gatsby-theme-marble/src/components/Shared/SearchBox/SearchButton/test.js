@@ -11,6 +11,7 @@ const wrapper = shallow(
     searchReducer={searchReducer}
     submitSearch={action}
     className='submitSearch'
+    searchPath='search'
   />
 )
 

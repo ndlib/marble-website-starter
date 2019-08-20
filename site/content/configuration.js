@@ -22,13 +22,11 @@ module.exports = {
       url: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com',
     },
 
+    // paths
+    loginPath: 'login',
+    searchPath: 'search',
+
     // branding
-    useBrandBar: false,
-    headerColor: themeColor,
-    institutionURL: `http://nd.edu`,
-    institutionLabel: `University of Notre Dame`,
-    departmentURL: `https://provost.nd.edu/`,
-    departmentLabel: `Office of the Provost`,
     footerText: '<p>© 2019 University of Notre Dame</p><address>Notre Dame, IN 46556 USA</address><p><a href="/help/contact-us">Contact Us</a></p>',
 
     // menus

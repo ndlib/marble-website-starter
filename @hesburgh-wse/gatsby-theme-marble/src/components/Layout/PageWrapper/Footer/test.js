@@ -1,17 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Footer } from './'
+import { useStaticQuery } from 'gatsby'
+import Footer from './'
 import Navigation from 'components/Internal/Navigation'
 
 test('Footer renders some divs with markdown text', () => {
-  const data = {
-    site: {
-      siteMetadata: {
-        footerText: '<p>footer!!</p>',
+  useStaticQuery.mockImplementationOnce(() => {
+    return {
+      site: {
+        siteMetadata: {
+          footerText: '<p>footer!!</p>',
+        },
       },
-    },
-  }
-  const wrapper = shallow(<Footer data={data} />)
+    }
+  })
+  const wrapper = shallow(<Footer />)
 
   expect(wrapper.find('footer.pageFooter').exists()).toBeTruthy()
   expect(wrapper.find('.footerInner').exists()).toBeTruthy()

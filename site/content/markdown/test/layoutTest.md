@@ -86,15 +86,18 @@ components:
       - label: "label"
         value: "Manifest Cards"
     components:
-      - component: ManifestCard
-        props:
-          - label: "iiifManifest"
-            value: "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-2/manifest"
-      - component: ManifestCard
-        props:
-          - label: "iiifManifest"
-            value: "https://manifest-pipeline-v3.libraries.nd.edu/epistemological-letters-issue-3/manifest"
-  - component: ChildManifests
+    - component: ManifestCard
+      props:
+        - label: "iiifManifest"
+          value: "https://presentation-iiif.library.nd.edu/1983.053.002/manifest"
+    - component: ManifestCard
+      props:
+        - label: "iiifManifest"
+          value: "https://presentation-iiif.library.nd.edu/1999.024/manifest"
+    - component: ManifestCard
+      props:
+        - label: "iiifManifest"
+          value: "https://presentation-iiif.library.nd.edu/collection/theophilus"
 
 ---
 Markdown content provided by the markdown document. It is converted to HTML.
