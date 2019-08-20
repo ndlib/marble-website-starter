@@ -75,7 +75,7 @@ The starter will then be available at `http://localhost:8000` and it's graphql t
 marble-website-starter
 ↳ @hesburgh-wse           // Directory scope for publishing to npm
   ↳ gatsby-theme-marble   // The npm module for the Gatsby Theme for a Marble website
-  ↳ gatsby-starter-marble // The npm module for the Gatsby Starter for a Marble website
+  ↳ gatsby-starter-marble // A stand alone Gatsby Starter that consumes `gatsby-theme-marble`
 ↳ site                    // The Gatsby site for Marble that consumes `gatsby-theme-marble`
   ↳ content               // This is where the site content for the Marble site lives
   ↳ gatsby-config.js      // This file is required by Gatsby to configure the site and use the theme
@@ -97,6 +97,15 @@ To build a local production version of the site run:
 ```
 yarn workspace site build
 ```
+### Creating a new site:
+#### Use the Starter:
+From within the project root run:
+```
+gatsby new [NEW_SITE_NAME] @hesburgh-wse/gatsby-starter-marble
+```
+_Note: Gatsby Starters need to live in their own repository, so the code will eventually be split out to make the starter more accessible._
+#### Add it to the yarn workspace
+Edit the root `package.json` and add the name [NEW_SITE_NAME] to the list of workspaces.
 
 ## Deployment
 
@@ -107,21 +116,19 @@ This project is deployed to AWS using a [Code Pipeline](https://aws.amazon.com/c
 Be sure to increment the package to the appropriate version using one of the following:
 
 ```
-yarn workspaces run version --patch
+yarn workspace @hesburgh-wse/gatsby-theme-marble version --patch
 ```
 
 ```
-yarn workspace run version --minor
+yarn workspace @hesburgh-wse/gatsby-theme-marble version --minor
 ```
 
 ```
-yarn workspace run version --major
+yarn workspace @hesburgh-wse/gatsby-theme-marble version --major
 ```
-
-_Note: This will increment the version of `gatsby-theme-marble` AND `gastby-starter-marble`. Git may complain about a pre-existing tag._
 
 ### Publish to NPM
 ```
-cd [WORKSPACE]
+cd @hesburgh-wse/gatsby-theme-marble
 npm publish --access public
 ```
