@@ -13,5 +13,5 @@ before_script:
 script:
   - ./scripts/local.sh
 after_script:
-  - cc-test-reporter format-coverage --prefix /@hesburgh-wse/gatsby-theme-marble
+  - ./cc-test-reporter format-coverage --prefix ./@hesburgh-wse/gatsby-theme-marble
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
