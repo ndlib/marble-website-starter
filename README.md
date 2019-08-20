@@ -98,14 +98,15 @@ To build a local production version of the site run:
 yarn workspace site build
 ```
 ### Creating a new site:
+#### Add it to the yarn workspace
+Edit the root `package.json` and add the name [NEW_SITE_NAME] to the list of workspaces.
+
 #### Use the Starter:
 From within the project root run:
 ```
 gatsby new [NEW_SITE_NAME] @hesburgh-wse/gatsby-starter-marble
 ```
 _Note: Gatsby Starters need to live in their own repository, so the code will eventually be split out to make the starter more accessible._
-#### Add it to the yarn workspace
-Edit the root `package.json` and add the name [NEW_SITE_NAME] to the list of workspaces.
 
 ## Deployment
 
