@@ -58,11 +58,12 @@ a.basicCard {
 }
 .list .basicCard .cardImage {
   display: inline-block;
+  width: 250px;
 }
 .list .basicCard .cardImage img {
   display: inline-block;
   height: 250px;
-  width: 250px
+  width: 250px;
 }
 .list .basicCard .cardCaption {
   background: none;
