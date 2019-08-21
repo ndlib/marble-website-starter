@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/ndlib/marble-website-starter"
   },
+  "starter-name": "gatsby-starter-marble",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
