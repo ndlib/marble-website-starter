@@ -13,11 +13,11 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   # Run the same scripts as the code pipeline
-  - ./scripts/local.sh
+  # - ./scripts/local.sh
 after_script:
   # Generate test coverage and send to code climate
   - cd @hesburgh-wse/gatsby-theme-marble
   - npm test -- --coverage
   - cd ../..
-  - ./cc-test-reporter format-coverage
+  - ./cc-test-reporter format-coverage --prefix @hesburgh-wse/gatsby-theme-marble/coverage
   - ./cc-test-reporter upload-coverage --exit-code $TRAVIS_TEST_RESULT
