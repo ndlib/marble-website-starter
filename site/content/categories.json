@@ -3,7 +3,11 @@
     "id": "timeperiods",
     "subcategories": [
       "ancient-time-period",
-      "medieval-time-period"
+      "medieval-time-period",
+      "renaissance-time-period",
+      "18thcentury-time-period",
+      "19thcentury-time-period",
+      "20thcentury-time-period"
     ],
     "label": "Timeperiods",
     "description": "",
@@ -397,6 +401,7 @@
     "manifest_ids": [
       "1983.053.002/manifest"
     ],
+    "tag": "centuryTag:0thcentury 1thcentury 2thcentury 3thcentury 4thcentury",    
     "label": "0-5th Century",
     "description": "Artifacts from pre-historical or early first millenial time periods",
     "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1983.053.002%2F1983_053_002-v0001.tif",
@@ -414,6 +419,7 @@
       "1934.007.001/manifest",
       "collection/dante"
     ],
+    "tag": "centuryTag:5thcentury 6thcentury 7thcentury 8thcentury 9thcentury 10thcentury 11thcentury 12thcentury",
     "label": "5th Century-14th Century",
     "description": "Artifacts that originate in or depict aspects of the time period ranging from the 11th through 15th centuries",
     "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1934.007.001%2F1934_007_001-v0001.tif",
@@ -432,6 +438,7 @@
       "1999.024/manifest",
       "nduspec_ead7s75db80w4r/manifest"
     ],
+    "tag": "centuryTag:14thcentury 15thcentury 16thcentury 17thcentury",
     "label": "14th Century-18th Century",
     "description": "Artifacts dating roughly to the 14th through 16th centuries",
     "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/ils-000949761%2FBOO_000949761_c2-000ba.tif",
@@ -448,6 +455,7 @@
     "manifest_ids": [
       "nduspec_eadks65h991878/manifest"
     ],
+    "tag": "centuryTag:18thcentury",
     "label": "18th Century",
     "description": "Artifacts that have their origin in or reference the 18th century",
     "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/nduspec_eadks65h991878%2FMSN-EA_5031-01.a.tif",
@@ -463,6 +471,7 @@
       "nduspec_eadks65h991878/manifest",
       "1976.057/manifest"
     ],
+    "tag": "centuryTag:19thcentury",
     "label": "19th Century",
     "description": "Artifacts that have their origin in or reference the 19th century",
     "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/theophilus-journal-v1%2FMSN-EA_8011-01-B-000a.tif",
@@ -476,6 +485,7 @@
       "1986.059.001/manifest",
       "collection/epistemological-letters"
     ],
+    "tag": "centuryTag:20thcentury",
     "label": "20th Century",
     "description": "Artifacts that have their origin in or reference the 20th century",
     "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/epistemological-letters-issue-2%2FMay19742ndIssue_Page_01.tif",

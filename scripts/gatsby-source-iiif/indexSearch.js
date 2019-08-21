@@ -4,9 +4,23 @@ const { Client } = require('@elastic/elasticsearch')
 const configuration = require('../../site/content/configuration.js')
 
 const availbaleTags = ['art', 'journals', 'sports', 'catholic stuff']
+const continentTag = ['north-america', 'europe', 'south-america', 'asia', 'africa', 'austrailia']
 
 const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
 const siteIndex = configuration.siteMetadata.searchBase.app
+
+const indexMapping = {
+  mapping: {
+    _doc: {
+      searchDate: {
+        type: 'integer_range',
+      },
+      searchLocation: {
+        type: 'geo_point',
+      },
+    },
+  },
+}
 
 const loadManifestData = () => {
   const idReferencedObject = {}
@@ -25,9 +39,15 @@ const manifestIdsToIndex = () => {
   return JSON.parse(contents).manifests
 }
 
+const determineCentury = (year) => {
+  return parseInt(year / 100, 10) + 1
+}
+
 const getSearchDataFromManifest = (manifest) => {
   const identifier = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-
+  const date = Math.floor(1700 + Math.random() * 300)
+  const centuryTag = determineCentury(date) + 'thcentury'
+  console.log(centuryTag)
   const search = {
     id: manifest.id,
     name: manifest.label[configuration.siteMetadata.languages.default].join(),
@@ -37,9 +57,12 @@ const getSearchDataFromManifest = (manifest) => {
     language: 'en',
     place: 'South Bend',
     repository: 'SNITE',
-    year: Math.floor(1900 + Math.random() * 100),
+    year: date,
     url: manifest.slug,
-    tag: [availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)]],
+    themeTag: [availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)]],
+    centuryTag: [centuryTag],
+    continentTag: [continentTag[parseInt(Math.random() * availbaleTags.length, 10)]],
+    modernCountryTag: [],
   }
   manifest.metadata.forEach((row) => {
     const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
@@ -73,7 +96,7 @@ const setupIndex = async () => {
     await client.indices.delete({ index: siteIndex })
   }
   console.log('creating index', siteIndex)
-  await client.indices.create({ index: siteIndex })
+  await client.indices.create({ index: siteIndex }, indexMapping)
 }
 
 const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
