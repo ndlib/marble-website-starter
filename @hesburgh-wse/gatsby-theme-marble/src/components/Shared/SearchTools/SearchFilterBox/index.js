@@ -7,7 +7,7 @@ import {
 import style from './style.module.css'
 
 const SearchFilterBox = () => {
-  const fields = ['name', 'language', 'place', 'repository', 'tag']
+  const fields = ['name', 'allMetadata']
   return (
     <div className={style.searchHead}>
       <SearchBox

@@ -64,13 +64,14 @@ const getSearchDataFromManifest = (manifest) => {
     continentTag: [continentTag[parseInt(Math.random() * availbaleTags.length, 10)]],
     modernCountryTag: [],
   }
+  search['allMetadata'] = ''
   manifest.metadata.forEach((row) => {
     const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
     const value = row.value[configuration.siteMetadata.languages.default].join('')
 
     search[label] = value
+    search['allMetadata'] += ' ' + value
   })
-
   return search
 }
 
