@@ -10,6 +10,7 @@ import ManifestCard from 'components/Shared/ManifestCard'
 import ManifestDescription from 'components/Shared/ManifestDescription'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import Map from 'components/Shared/Map'
+import Menu from 'components/Shared/Menu'
 import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
 import SearchBase from 'components/Shared/SearchBase'
@@ -34,6 +35,7 @@ export const availableComponents = {
   ManifestImage: ManifestImage,
   ManifestMetaData: ManifestMetaData,
   Map: Map,
+  Menu: Menu,
   MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
   SearchBase: SearchBase,

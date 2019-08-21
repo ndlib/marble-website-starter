@@ -2,6 +2,7 @@
 title: Creating Collections
 slug: help/creating-collections
 menu: help
+layout: markdownWithMenu
 ---
 
 ## Coming Soon

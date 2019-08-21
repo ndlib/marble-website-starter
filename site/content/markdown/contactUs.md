@@ -2,6 +2,7 @@
 title: Contact
 slug: help/contact-us
 menu: help
+layout: markdownWithMenu
 ---
 
 ## Feedback

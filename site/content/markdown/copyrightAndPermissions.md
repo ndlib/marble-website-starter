@@ -2,6 +2,7 @@
 title: Copyright and Permissions
 slug: help/copyright-and-permissions
 menu: help
+layout: markdownWithMenu
 ---
 
 ## Content
