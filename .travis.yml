@@ -7,7 +7,7 @@ node_js:
 
 cache: yarn
 before_script:
-  # - ./scripts/local.sh
+  - ./scripts/local.sh
 script:
   - pushd @hesburgh-wse/gatsby-theme-marble
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
