@@ -14,9 +14,9 @@ before_script:
 script:
   # Run the same scripts as the code pipeline
   # - ./scripts/local.sh
+  - yarn test
 after_script:
   # Generate test coverage and send to code climate
-  - yarn test
   # - cd @hesburgh-wse/gatsby-theme-marble
   # - npm test -- --coverage
   # - cd ../..

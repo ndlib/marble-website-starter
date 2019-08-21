@@ -5,6 +5,9 @@
     "@hesburgh-wse/gatsby-starter-marble",
     "site"
   ],
+  "scripts": {
+    "test": "yarn workspace @hesburgh-wse/gatsby-theme-marble test --coverage"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
