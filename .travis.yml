@@ -7,14 +7,12 @@ node_js:
 
 cache: yarn
 before_script:
+  # - ./scripts/local.sh
+script:
+  - pushd @hesburgh-wse/gatsby-theme-marble
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-script:
-  # - ./scripts/local.sh
-  - pushd @hesburgh-wse/gatsby-theme-marble
   - npm test -- --coverage
-  - popd
 after_script:
-  - ./cc-test-reporter format-coverage --prefix /@hesburgh-wse/gatsby-theme-marble
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
