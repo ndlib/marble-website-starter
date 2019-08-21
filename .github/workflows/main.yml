@@ -12,4 +12,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: \@hesburgh-wse/gatsby-starter-marble ndlib gatsby-starter-marble
-
