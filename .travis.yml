@@ -10,7 +10,7 @@ before_script:
   # Install code climate test reporting tool
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  # - ./cc-test-reporter before-build
 script:
   # Run the same scripts as the code pipeline
   # - ./scripts/local.sh
@@ -20,4 +20,4 @@ after_script:
   - npm test -- --coverage
   - cd ../..
   - ./cc-test-reporter format-coverage --prefix @hesburgh-wse/gatsby-theme-marble/coverage
-  - ./cc-test-reporter upload-coverage --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter upload-coverage
