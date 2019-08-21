@@ -20,5 +20,5 @@ after_script:
   # - cd @hesburgh-wse/gatsby-theme-marble
   # - npm test -- --coverage
   # - cd ../..
-  - ./cc-test-reporter format-coverage --prefix @hesburgh-wse/gatsby-theme-marble/coverage
+  - ./cc-test-reporter format-coverage --prefix @hesburgh-wse/gatsby-theme-marble
   - ./cc-test-reporter upload-coverage
