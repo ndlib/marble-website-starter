@@ -19,5 +19,5 @@ after_script:
   - cd @hesburgh-wse/gatsby-theme-marble
   - npm test -- --coverage
   - cd ../..
-  - ./cc-test-reporter format-coverage --prefix /@hesburgh-wse/gatsby-theme-marble
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter format-coverage
+  - ./cc-test-reporter upload-coverage --exit-code $TRAVIS_TEST_RESULT
