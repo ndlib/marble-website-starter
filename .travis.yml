@@ -13,9 +13,11 @@ script:
   - ./scripts/local.sh
 after_script:
   # Generate test coverage and send to code climate
-  - pushd @hesburgh-wse/gatsby-theme-marble
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - cd @hesburgh-wse/gatsby-theme-marble
   - npm test -- --coverage
+  - cd ../..
+  - ./cc-test-reporter format-coverage --prefix /@hesburgh-wse/gatsby-theme-marble
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
