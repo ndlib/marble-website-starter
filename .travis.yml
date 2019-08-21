@@ -7,15 +7,15 @@ node_js:
 
 cache: yarn
 before_script:
-  # Do nothing
+  # Install code climate test reporting tool
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   # Run the same scripts as the code pipeline
   - ./scripts/local.sh
 after_script:
   # Generate test coverage and send to code climate
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
   - cd @hesburgh-wse/gatsby-theme-marble
   - npm test -- --coverage
   - cd ../..
