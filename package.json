@@ -6,7 +6,7 @@
     "site"
   ],
   "scripts": {
-    "test": "yarn workspace @hesburgh-wse/gatsby-theme-marble test --coverage"
+    "test": "yarn workspace @hesburgh-wse/gatsby-theme-marble test"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
