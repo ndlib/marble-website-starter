@@ -11,8 +11,8 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - ./scripts/local.sh
+
   - yarn workspace @hesburgh-wse/gatsby-theme-marble test -- --coverage
 after_script:
-  - ./cc-test-reporter format-coverage --prefix ./@hesburgh-wse/gatsby-theme-marble
+  - ./cc-test-reporter format-coverage --prefix /@hesburgh-wse/gatsby-theme-marble
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
