@@ -21,8 +21,7 @@ const PageContent = ({
 }
 
 PageContent.propTypes = {
-  title: PropTypes.node,
-
+  title: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 

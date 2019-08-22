@@ -7,11 +7,9 @@ const ContentWrapper = ({
   children,
 }) => {
   return (
-    <React.Fragment>
-      <div className={noPadding ? style.noMainPadding : style.mainPadding}>
-        {children}
-      </div>
-    </React.Fragment>
+    <div className={noPadding ? style.noMainPadding : style.mainPadding}>
+      {children}
+    </div>
   )
 }
 
