@@ -9,7 +9,7 @@ import {
   RangeQuery,
 } from 'searchkit'
 
-const SearchBase = ({ children, terms, range }) => {
+const SearchBase = ({ children, tag, terms, range }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -31,9 +31,10 @@ const SearchBase = ({ children, terms, range }) => {
     )
   }
   const sk = new SearchkitManager(`${searchBase.url}/${searchBase.app}`)
-  if (terms) {
+  if (tag) {
+    tag = tag.split(':')
     sk.addDefaultQuery((query) => {
-      return query.addQuery(SimpleQueryString(terms))
+      return query.addQuery(SimpleQueryString(tag[1], { fields: [tag[0]] }))
     })
   }
   if (range) {
@@ -54,6 +55,7 @@ const SearchBase = ({ children, terms, range }) => {
 SearchBase.propTypes = {
   children: PropTypes.node.isRequired,
   terms: PropTypes.string,
+  tag: PropTypes.string,
   range: PropTypes.object,
 }
 

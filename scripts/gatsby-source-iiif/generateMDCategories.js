@@ -25,11 +25,15 @@ const getMDFile = (manifest) => {
   }
   let search = ''
   if (manifest.manifest_ids) {
-    search = `
-  - component: SearchBase
+    let props = ''
+    if (manifest.tag) {
+      props = `
     props:
-      - label: 'terms'
-        value: 'letters'
+      - label: 'tag'
+        value: '${manifest.tag}'`
+    }
+    search = `
+  - component: SearchBase ${props}
     components:
     - component: SearchFilterBox
     - component: SearchResults
