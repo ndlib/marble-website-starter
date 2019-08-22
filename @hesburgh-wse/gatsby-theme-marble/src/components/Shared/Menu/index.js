@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import Link from 'components/Internal/Link'
+import './style.css'
 
-export const Navigation = ({ id, navClass }) => {
+export const Menu = ({ menu, navClass }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,22 +26,22 @@ export const Navigation = ({ id, navClass }) => {
   `
   )
   const menus = typy(site, 'siteMetadata.menus').safeArray
-  const menu = findNavInData(id, menus)
-  if (!menu) {
+  const expandedMenu = findNavInData(menu, menus)
+  if (!expandedMenu) {
     return null
   }
   return (
     <nav className={navClass}>
-      {menu.label ? <h3>{menu.label}</h3> : null}
-      { menu.items.map(l => {
+      { expandedMenu.label ? <h3>{expandedMenu.label}</h3> : null }
+      { expandedMenu.items.map(l => {
         return <Link to={l.link} key={l.id}>{l.label}</Link>
       })}
     </nav>
   )
 }
 
-Navigation.propTypes = {
-  id: PropTypes.string.isRequired,
+Menu.propTypes = {
+  menu: PropTypes.string.isRequired,
   navClass: PropTypes.string,
 }
 
@@ -50,4 +51,4 @@ export const findNavInData = (id, navData) => {
   })
 }
 
-export default Navigation
+export default Menu

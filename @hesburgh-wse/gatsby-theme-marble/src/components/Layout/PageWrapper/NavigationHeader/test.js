@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import NavigationHeader, { closeOnBlur } from './'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
-import Navigation from 'components/Internal/Navigation'
+import Menu from 'components/Shared/Menu'
 import HamburgerButton from './HamburgerButton'
 
 describe('NavigationHeader', () => {
@@ -16,7 +16,7 @@ describe('NavigationHeader', () => {
     expect(wrapper.find('header.navBar').exists()).toBeTruthy()
     expect(wrapper.find('.navBarInner').exists()).toBeTruthy()
     expect(wrapper.find(SiteLogo).exists()).toBeTruthy()
-    expect(wrapper.find(Navigation).props().id).toEqual('top')
+    expect(wrapper.find(Menu).props().menu).toEqual('top')
     expect(wrapper.find(LoginButton).exists()).toBeTruthy()
     expect(wrapper.find('.hamburgerInnerClosed').exists()).toBeTruthy()
     expect(wrapper.find(HamburgerButton).exists()).toBeTruthy()

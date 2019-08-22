@@ -2,7 +2,7 @@ import React from 'react'
 import style from './style.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
 import ResponsiveGridList from 'components/Internal/ResponsiveGridList'
-import Navigation from 'components/Internal/Navigation'
+import Menu from 'components/Shared/Menu'
 
 export const Footer = () => {
   const { site } = useStaticQuery(
@@ -48,7 +48,7 @@ export const Footer = () => {
             key='footerNavigation'
             className={style.footerLinks}
           >
-            <Navigation id='footer' />
+            <Menu menu='footer' />
           </div>
         </ResponsiveGridList>
       </div>

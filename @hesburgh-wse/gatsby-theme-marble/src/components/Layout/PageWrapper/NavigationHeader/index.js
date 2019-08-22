@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
-import Navigation from 'components/Internal/Navigation'
+import Menu from 'components/Shared/Menu'
 import HamburgerButton from './HamburgerButton'
 import style from './style.module.css'
 
@@ -25,7 +25,7 @@ export const NavigationHeader = ({ location }) => {
             className={style.hamburgerIcon}
           />
           <span className={hamburgerOpen ? style.hamburgerInnerOpen : style.hamburgerInnerClosed}>
-            <Navigation id='top' />
+            <Menu menu='top' />
             <LoginButton />
           </span>
         </div>

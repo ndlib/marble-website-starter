@@ -3,18 +3,15 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
-import Navigation from 'components/Internal/Navigation'
 import MarkdownLayoutRenderer from 'components/Internal/MarkdownLayoutRenderer'
 import availableComponents from './availableComponents'
 
 const Markdown = ({ data, location }) => {
   const title = typy(data, 'remarkMarblePage.frontmatter.title').safeString || null
-  const navigation = (typy(data, 'remarkMarblePage.frontmatter.menu').isString ? <Navigation id={data.remarkMarblePage.frontmatter.menu} /> : null)
   const globalProps = getglobalProps(data, location)
   return (
     <Layout
       title={title}
-      nav={navigation}
       location={location}
     >
       <Seo

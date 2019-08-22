@@ -313,6 +313,30 @@ const defaultLayouts = {
   default: [
     { component: 'MarkdownHtmlContent' },
   ],
+  markdownWithMenu: [
+    {
+      component: 'MultiColumn',
+      props: [{ label: 'columns', value: '5' }],
+      components: [
+        {
+          component: 'Column',
+          components: [
+            {
+              component: 'Menu',
+              props: [{ label: 'navClass', value: 'verticalMenu' }],
+            },
+          ],
+        },
+        {
+          component: 'Column',
+          props: [{ label: 'colSpan', value: '4' }],
+          components: [
+            { component: 'MarkdownHtmlContent' },
+          ],
+        },
+      ],
+    },
+  ],
   collection: [
     { component: 'ActionButtons' },
     { component: 'ManifestDescription' },

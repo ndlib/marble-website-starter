@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
-import { Navigation, findNavInData } from './'
+import { Menu, findNavInData } from './'
 
 const sq = {
   site: {
@@ -43,12 +43,12 @@ const sq = {
     },
   },
 }
-describe('Navigation', () => {
+describe('Menu', () => {
   test('It renders the nav menu', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
-    const wrapper = shallow(<Navigation id='nolabel' />)
+    const wrapper = shallow(<Menu menu='nolabel' />)
 
     expect(wrapper.find('nav').exists()).toBeTruthy()
     expect(wrapper.find('Link')).toHaveLength(2)
@@ -60,7 +60,7 @@ describe('Navigation', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
-    const wrapper = shallow(<Navigation id='label' />)
+    const wrapper = shallow(<Menu menu='label' />)
 
     expect(wrapper.find('h3').exists()).toBeTruthy()
     expect(wrapper.find('h3').text()).toEqual('label')
@@ -77,7 +77,7 @@ describe('Navigation', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
-    const wrapper = shallow(<Navigation id='nolabel' navClass='the-class' />)
+    const wrapper = shallow(<Menu menu='nolabel' navClass='the-class' />)
     expect(wrapper.find('nav').prop('className')).toEqual('the-class')
   })
 
@@ -85,7 +85,7 @@ describe('Navigation', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
-    const wrapper = shallow(<Navigation id='badlabel' />)
+    const wrapper = shallow(<Menu menu='badlabel' />)
     expect(wrapper.find('nav').exists()).toBeFalsy()
   })
 })

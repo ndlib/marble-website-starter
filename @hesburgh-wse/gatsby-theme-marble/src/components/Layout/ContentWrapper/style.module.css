@@ -1,7 +1,3 @@
-.preMain {
-  margin: 0 auto;
-  width: 70vw;
-}
 .noPreMainPadding {
   margin: 0;
 }
@@ -22,29 +18,17 @@
     margin: 1rem 2rem;
     width: calc(100% - 4rem)
   }
-  .preMain {
-    margin: 0 auto;
-    width: 100vw;
-  }
 }
 @media (max-width: 780px) {
   .mainPadding {
     margin: 1rem;
     width: calc(100% - 2rem);
   }
-  .preMain {
-    margin: 0 auto;
-    width: 100vw;
-  }
 }
 
 @media (min-width: 1600px) {
   .mainPadding {
     margin: 1rem auto;
-    width: 1540px;
-  }
-  .preMain {
-    margin: 0 auto;
     width: 1540px;
   }
 }

@@ -2,6 +2,7 @@
 title: Search Tips
 slug: help/search-tips
 menu: help
+layout: markdownWithMenu
 ---
 
 There are two ways to search on this Alpha site: basic and advanced. Because the prototype contains a small set of records, you may find that your search terms return no or few results.
