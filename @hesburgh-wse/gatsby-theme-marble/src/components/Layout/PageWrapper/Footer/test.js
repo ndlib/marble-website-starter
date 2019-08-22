@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
 import Footer from './'
-import Navigation from 'components/Internal/Navigation'
+import Menu from 'components/Shared/Menu'
 
 test('Footer renders some divs with markdown text', () => {
   useStaticQuery.mockImplementationOnce(() => {
@@ -21,5 +21,5 @@ test('Footer renders some divs with markdown text', () => {
   expect(wrapper.find('.footerText').exists()).toBeTruthy()
   expect(wrapper.find('.footerText').html()).toEqual('<div class="footerText"><span><p>footer!!</p></span></div>')
   expect(wrapper.find('.footerLinks').exists()).toBeTruthy()
-  expect(wrapper.find(Navigation).props().id).toEqual('footer')
+  expect(wrapper.find(Menu).props().menu).toEqual('footer')
 })

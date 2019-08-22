@@ -2,6 +2,7 @@
 title: Site Information
 slug: help
 menu: help
+layout: markdownWithMenu
 ---
 
 ## Development
