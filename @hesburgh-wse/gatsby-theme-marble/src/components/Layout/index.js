@@ -7,7 +7,7 @@ import ContentWrapper from './ContentWrapper'
 import PageContent from './PageContent'
 
 /// CONSTRUCTION BANNER
-// import ConstructionBanner from './ConstructionBanner'
+import CornerBanner from './CornerBanner'
 
 const Layout = ({
   title, // page title to be placed inside main
@@ -23,9 +23,7 @@ const Layout = ({
         requireLogin={requireLogin}
       >
         <PageWrapper location={location}>
-          {
-            // <ConstructionBanner />
-          }
+          <CornerBanner />
           <ContentWrapper
             noPadding={noPadding}
           >
