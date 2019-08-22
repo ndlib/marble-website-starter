@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Layout as ThemeLayout, Header, Main, Container } from 'theme-ui'
 import typy from 'typy'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'

@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Layout as ThemeLayout } from 'theme-ui'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
 import ContentWrapper from './ContentWrapper'
 import PageContent from './PageContent'
 
 /// CONSTRUCTION BANNER
-import ConstructionBanner from './ConstructionBanner'
+// import ConstructionBanner from './ConstructionBanner'
 
 const Layout = ({
   title, // page title to be placed inside main
@@ -16,23 +17,27 @@ const Layout = ({
   location,
 }) => {
   return (
-    <PrivateRoute
-      location={location}
-      requireLogin={requireLogin}
-    >
-      <PageWrapper location={location}>
-        <ConstructionBanner />
-        <ContentWrapper
-          noPadding={noPadding}
-        >
-          <PageContent
-            title={title}
+    <ThemeLayout>
+      <PrivateRoute
+        location={location}
+        requireLogin={requireLogin}
+      >
+        <PageWrapper location={location}>
+          {
+            // <ConstructionBanner />
+          }
+          <ContentWrapper
+            noPadding={noPadding}
           >
-            {children}
-          </PageContent>
-        </ContentWrapper>
-      </PageWrapper>
-    </PrivateRoute>
+            <PageContent
+              title={title}
+            >
+              {children}
+            </PageContent>
+          </ContentWrapper>
+        </PageWrapper>
+      </PrivateRoute>
+    </ThemeLayout>
   )
 }
 

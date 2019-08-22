@@ -15,6 +15,7 @@ module.exports = ({ contentPath = 'content' }) => ({
         utils: path.join(__dirname, 'src/utils'),
       },
     },
+    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-json`,
