@@ -1,7 +1,19 @@
 export const theme = {
   space: [0, 4, 8, 16, 32],
   fonts: {
-    body: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    body: `
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
+    `,
   },
   fontSizes: [16, 18, 20, 22, 27, 36],
   lineHeights: {
@@ -21,7 +33,7 @@ export const theme = {
     Layout: {
       color: 'gray.2',
       fontFamily: 'body',
-      fontSize: 1,
+      fontSize: 0,
       lineHeight: 'body',
     },
     Header: {
