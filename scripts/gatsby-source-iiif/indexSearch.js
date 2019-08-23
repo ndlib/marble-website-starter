@@ -3,16 +3,6 @@ const path = require(`path`)
 const { Client } = require('@elastic/elasticsearch')
 const configuration = require('../../site/content/configuration.js')
 
-const availbaleTags = [
-  'ndlife',
-  'notredame',
-  'religiouspaintings',
-  'historicalartifacts',
-  'historicaljournals',
-  'religiousartifacts',
-  'science',
-]
-const continentTag = ['northamerica', 'europe', 'southamerica', 'asia', 'africa', 'austrailia']
 const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
 
 const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
@@ -48,15 +38,36 @@ const manifestIdsToIndex = () => {
   return JSON.parse(contents).manifests
 }
 
-const determineCentury = (year) => {
-  return parseInt(year / 100, 10) + 1
+const loadCategories = () => {
+  const objectsByTagTypeAndId = {}
+  const data = fs.readFileSync(path.join(__dirname, '/../../site/content/categories.json'))
+  const categories = JSON.parse(data)
+  categories.forEach((row) => {
+    if (!row.tagField) {
+      return
+    }
+    if (!objectsByTagTypeAndId[row.tagField]) {
+      objectsByTagTypeAndId[row.tagField] = {}
+    }
+    if (row.manifest_ids) {
+      row.manifest_ids.forEach((manifestId) => {
+        if (!objectsByTagTypeAndId[row.tagField][manifestId]) {
+          objectsByTagTypeAndId[row.tagField][manifestId] = []
+        }
+        objectsByTagTypeAndId[row.tagField][manifestId].push(row.label.replace(' ', ''))
+      })
+    }
+  })
+  return objectsByTagTypeAndId
 }
+
+const objectsByTagTypeAndId = loadCategories()
 
 const getSearchDataFromManifest = (manifest) => {
   const identifier = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
   const date = Math.floor(1700 + Math.random() * 300)
-  const centuryTag = determineCentury(date) + 'thcentury'
-  console.log(centuryTag)
+
+  const tagId = manifest.id.replace('https://presentation-iiif.library.nd.edu/', '')
   const search = {
     id: manifest.id,
     name: manifest.label[configuration.siteMetadata.languages.default].join(),
@@ -68,11 +79,9 @@ const getSearchDataFromManifest = (manifest) => {
     place: 'South Bend',
     repository: availableRepositories[parseInt(Math.random() * availableRepositories.length, 10)],
     year: date,
-    categoryTags: [centuryTag, availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)], continentTag[parseInt(Math.random() * availbaleTags.length, 10)]],
-    themeTag: [availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)]],
-    centuryTag: [centuryTag],
-    continentTag: [continentTag[parseInt(Math.random() * availbaleTags.length, 10)]],
-    modernCountryTag: [],
+    themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
+    centuryTag: objectsByTagTypeAndId['centuryTag.keyword'][tagId],
+    continentTag: objectsByTagTypeAndId['continentTag.keyword'][tagId],
   }
   search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
 

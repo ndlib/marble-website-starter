@@ -11,10 +11,7 @@
     ],
     "label": "Timeperiods",
     "description": "",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif",
-    "license": "",
-    "metadata": [
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif"
   },
   {
     "id": "places",
@@ -25,10 +22,7 @@
     ],
     "label": "Places",
     "description": "",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif",
-    "license": "",
-    "metadata": [
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif"
   },
   {
     "id": "themes",
@@ -43,10 +37,7 @@
     ],
     "label": "Themes",
     "description": "",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif",
-    "license": "",
-    "metadata": [
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif"
   },
   {
     "id": "nd-life",
@@ -63,20 +54,10 @@
       "GNDL-45-06/manifest"
     ],
     "label": "Notre Dame Life Collection",
-    "tag": "themeTag.keyword:ndlife",
+    "tag": "ndlife",
+    "tagField": "themeTag.keyword",
     "description": "The Notre Dame Life Collection represents historical moments the university's past. Most of the images and artifacts are representative of 19th century moments closely following the founding of the university.",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif",
-    "license": "Materials from the Notre Dame Archives may be protected by copyright law under Title 17 U.S. Code.  Cannot be sold, given away, reproduced, or published in whole or in part (including on the internet) without the prior permission of the University of Notre Dame Archives.",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "Mid to Late 19th Century"
-      },
-      {
-        "label": "Creator",
-        "value": "University of Notre Dame"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif"
   },
   {
     "id": "religious-paintings",
@@ -84,25 +65,11 @@
       "1999.024/manifest",
       "1976.057/manifest"
     ],
-    "tag": "themeTag.keyword:religiouspaintings",
+    "tag": "religiouspaintings",
+    "tagField": "themeTag.keyword",
     "label": "Religious Paintings",
     "description": "Paintings from various time periods representing religious themes",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1976.057%2F1976_057-v0001.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "17th through 19th Centuries"
-      },
-      {
-        "label": "Theme",
-        "value": "Religious"
-      },
-      {
-        "label": "Medium",
-        "value": "Oil on canvas"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1976.057%2F1976_057-v0001.tif"
   },
   {
     "id": "historical-journals",
@@ -112,24 +79,10 @@
       "nduspec_ead7s75db80w4r/manifest"
     ],
     "tag": "themeTag.keyword:historicaljournals",
+    "tagField": "themeTag.keyword",
     "label": "Historical Journals",
     "description": "A collection of historical journals, letters and other personal correspondence",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/nduspec_ead7s75db80w4r%2FMSN-COL_9405-1-B-001v_002r.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "19th Century"
-      },
-      {
-        "label": "Creator",
-        "value": "Various Authors"
-      },
-      {
-        "label": "Language of Materials",
-        "value": "English"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/nduspec_ead7s75db80w4r%2FMSN-COL_9405-1-B-001v_002r.tif"
   },
   {
     "id": "north-america",
@@ -143,46 +96,22 @@
       "1934.007.001/manifest",
       "collection/nd-life"
     ],
-    "tag": "continentTag.keyword:northamerica",
+    "tag": "northamerica",
+    "tagField": "continentTag.keyword",
     "label": "North America",
     "description": "Items that depict or have their origin in North America",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1976.057%2F1976_057-v0001.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "19th and 20th Centuries"
-      },
-      {
-        "label": "Materials",
-        "value": "This collection includes items in a variety of media from paintings to printed pamphlets"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1976.057%2F1976_057-v0001.tif"
   },
   {
     "id": "south-america",
     "manifest_ids": [
       "1983.053.002/manifest"
     ],
-    "tag": "continentTag.keyword:southamerica",
+    "tag": "southamerica",
+    "tagField": "continentTag.keyword",
     "label": "South America",
     "description": "Items that depict or have their origin in South America",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1983.053.002%2F1983_053_002-v0001.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "Ancient"
-      },
-      {
-        "label": "Creator",
-        "value": "Anonymous"
-      },
-      {
-        "label": "Materials",
-        "value": "Greenstone and other materials"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1983.053.002%2F1983_053_002-v0001.tif"
   },
   {
     "id": "europe",
@@ -192,25 +121,11 @@
       "collection/epistemological-letters",
       "collection/le-rossignol"
     ],
-    "tag": "continentTag.keyword:europe",
+    "tag": "europe",
+    "tagField": "continentTag.keyword",
     "label": "Europe",
     "description": "Items that depict or have their origin in Europe",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/ils-000909884%2FBOO_000909884-1-inf-02a.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "19th Century"
-      },
-      {
-        "label": "Creator",
-        "value": "Anonymous"
-      },
-      {
-        "label": "Materials",
-        "value": "Gilt polychrome wood, cloth and leather"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/ils-000909884%2FBOO_000909884-1-inf-02a.tif"
   },
   {
     "id": "religious-artifacts",
@@ -223,25 +138,11 @@
       "nduspec_ead7s75db80w4r/manifest",
       "CTAO-01-28/manifest"
     ],
-    "tag": "themeTag.keyword:religiousartifacts",
+    "tag": "religiousartifacts",
+    "tagField": "themeTag.keyword",
     "label": "Religious Artifacts",
     "description": "From liturgical dress to altar ornamentation to sermon manuscripts; explore the rich collections at the University of Notre Dame used in religious ceremonies and inspired by world religions.",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/CSOR-04-05-01%2FCSOR-04-05-01.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "19th Century"
-      },
-      {
-        "label": "Creator",
-        "value": "Anonymous"
-      },
-      {
-        "label": "Materials",
-        "value": "Gilt polychrome wood, cloth and leather"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/CSOR-04-05-01%2FCSOR-04-05-01.tif"
   },
   {
     "id": "historical-artifacts",
@@ -253,25 +154,11 @@
       "nduspec_ead7s75db80w4r/manifest",
       "collection/theophilus"
     ],
-    "tag": "themeTag.keyword:historicalartifacts",
+    "tag": "historicalartifacts",
+    "tagField": "themeTag.keyword",
     "label": "Historical Artifacts",
     "description": "Artifacts that have particular historical significance",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-05%2FGNDL-45-05.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "19th Century"
-      },
-      {
-        "label": "Creator",
-        "value": "Anonymous"
-      },
-      {
-        "label": "Materials",
-        "value": "Gilt polychrome wood, cloth and leather"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-05%2FGNDL-45-05.tif"
   },
   {
     "id": "science",
@@ -279,25 +166,11 @@
       "GNDL-45-05/manifest",
       "collection/epistemological-letters"
     ],
-    "tag": "themeTag.keyword:science",
+    "tag": "science",
+    "tagField": "themeTag.keyword",
     "label": "Scientific Artifacts",
     "description": "Artifacts that are related to the history of science or are of scientific interest",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/epistemological-letters-issue-2%2FMay19742ndIssue_Page_01.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "19th Century"
-      },
-      {
-        "label": "Creator",
-        "value": "Anonymous"
-      },
-      {
-        "label": "Materials",
-        "value": "Gilt polychrome wood, cloth and leather"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/epistemological-letters-issue-2%2FMay19742ndIssue_Page_01.tif"
   },
   {
     "id": "notre-dame",
@@ -308,42 +181,22 @@
       "CEDW-20-02-08/manifest",
       "1976.057/manifest"
     ],
-    "tag": "themeTag.keyword:noterdame",
+    "tag": "noterdame",
+    "tagField": "themeTag.keyword",
     "label": "Notre Dame",
     "description": "The University of Notre Dame was founded in 1842 by a small group of priests from the Congregation of the Holy Cross. Well-known for its sports programs and Catholic heritage, the university today is a site for cutting-edge research and rigorous liberal arts scholarship. The University of Notre Dame holds most of the photographs, documents, and related materials chronicling the university’s long history. The Snite Museum of Art also stewards many important portraits, prints, and paintings relating to significant figures in the university’s history.",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "19th Century"
-      },
-      {
-        "label": "Creator",
-        "value": "Anonymous"
-      },
-      {
-        "label": "Materials",
-        "value": "Gilt polychrome wood, cloth and leather"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-04%2FGNDL-45-04.tif"
   },
   {
     "id": "ancient-time-period",
     "manifest_ids": [
       "1983.053.002/manifest"
     ],
-    "tag": "centuryTag.keyword:0thcentury 1thcentury 2thcentury 3thcentury 4thcentury",
+    "tag": "0thcentury 1thcentury 2thcentury 3thcentury 4thcentury",
+    "tagField": "centuryTag.keyword",
     "label": "0-5th Century",
     "description": "Artifacts from pre-historical or early first millenial time periods",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1983.053.002%2F1983_053_002-v0001.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "Pre-historical or early first millenia"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1983.053.002%2F1983_053_002-v0001.tif"
   },
   {
     "id": "medieval-time-period",
@@ -351,17 +204,11 @@
       "1934.007.001/manifest",
       "collection/dante"
     ],
-    "tag": "centuryTag.keyword:5thcentury 6thcentury 7thcentury 8thcentury 9thcentury 10thcentury 11thcentury 12thcentury",
+    "tag": "5thcentury 6thcentury 7thcentury 8thcentury 9thcentury 10thcentury 11thcentury 12thcentury",
+    "tagField": "centuryTag.keyword",
     "label": "5th Century-14th Century",
     "description": "Artifacts that originate in or depict aspects of the time period ranging from the 11th through 15th centuries",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1934.007.001%2F1934_007_001-v0001.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "1000-1400"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/1934.007.001%2F1934_007_001-v0001.tif"
   },
   {
     "id": "renaissance-time-period",
@@ -370,29 +217,22 @@
       "1999.024/manifest",
       "nduspec_ead7s75db80w4r/manifest"
     ],
-    "tag": "centuryTag.keyword:14thcentury 15thcentury 16thcentury 17thcentury",
+    "tag": "14thcentury 15thcentury 16thcentury 17thcentury",
+    "tagField": "centuryTag.keyword",
     "label": "14th Century-18th Century",
     "description": "Artifacts dating roughly to the 14th through 16th centuries",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/ils-000949761%2FBOO_000949761_c2-000ba.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": [
-      {
-        "label": "Dates",
-        "value": "1400-1600"
-      }
-    ]
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/ils-000949761%2FBOO_000949761_c2-000ba.tif"
   },
   {
     "id": "18thcentury-time-period",
     "manifest_ids": [
       "nduspec_eadks65h991878/manifest"
     ],
-    "tag": "centuryTag.keyword:18thcentury",
+    "tag": "18thcentury",
+    "tagField": "centuryTag.keyword",
     "label": "18th Century",
     "description": "Artifacts that have their origin in or reference the 18th century",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/nduspec_eadks65h991878%2FMSN-EA_5031-01.a.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": []
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/nduspec_eadks65h991878%2FMSN-EA_5031-01.a.tif"
   },
   {
     "id": "19thcentury-time-period",
@@ -403,12 +243,11 @@
       "nduspec_eadks65h991878/manifest",
       "1976.057/manifest"
     ],
-    "tag": "centuryTag.keyword:19thcentury",
+    "tag": "19thcentury",
+    "tagField": "centuryTag.keyword",
     "label": "19th Century",
     "description": "Artifacts that have their origin in or reference the 19th century",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/theophilus-journal-v1%2FMSN-EA_8011-01-B-000a.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": []
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/theophilus-journal-v1%2FMSN-EA_8011-01-B-000a.tif"
   },
   {
     "id": "20thcentury-time-period",
@@ -417,11 +256,10 @@
       "1986.059.001/manifest",
       "collection/epistemological-letters"
     ],
-    "tag": "centuryTag.keyword:20thcentury",
+    "tag": "20thcentury",
+    "tagField": "centuryTag.keyword",
     "label": "20th Century",
     "description": "Artifacts that have their origin in or reference the 20th century",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/epistemological-letters-issue-2%2FMay19742ndIssue_Page_01.tif",
-    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "metadata": []
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/epistemological-letters-issue-2%2FMay19742ndIssue_Page_01.tif"
   }
 ]
