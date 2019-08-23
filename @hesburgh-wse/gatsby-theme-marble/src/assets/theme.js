@@ -33,10 +33,6 @@ export const theme = {
   //   medium: `@media screen and (max-width: ${breakpoints[1]})`,
   //   large: `@media screen and (min-width: ${breakpoints[2]})`,
   // },
-  // sizes: {
-  //   default: '90vw',
-  //   max: '540px',
-  // },
   styles: {
     Layout: {
       color: 'gray.3',
@@ -55,14 +51,11 @@ export const theme = {
         color: 'inherit',
       },
     },
-    // Main: {
-    //   margin: '0 auto',
-    //   maxWidth: 'max',
-    //   width: 'default',
-    // },
-    // Container: {
-    //   padding: 3,
-    // },
+    Main: {
+      margin: '0 auto',
+      width: '100$',
+    },
+
     Footer: {
       backgroundColor: 'secondary',
       bottom: 0,
@@ -94,28 +87,7 @@ export const theme = {
       fontWeight: '600',
       lineHeight: 'heading',
     },
-    // ul: {
-    //   borderTop: '1px solid',
-    //   borderColor: 'gray.0',
-    //   listStyle: 'none',
-    //   padding: 0,
-    // },
-    // li: {
-    //   borderBottom: '1px solid',
-    //   borderColor: 'gray.1',
-    //   padding: 2,
-    //   '&:focus-within,&:hover': {
-    //     backgroundColor: 'gray.0',
-    //   },
-    // },
-    dt: {
-      display: 'block',
-      fontWeight: '600',
-    },
-    dd: {
-      display: 'block',
 
-    },
   },
 }
 export default theme
