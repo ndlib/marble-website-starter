@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
+import { Styled } from 'theme-ui'
 import { Menu, findNavInData } from './'
 
 const sq = {
@@ -62,8 +63,8 @@ describe('Menu', () => {
     })
     const wrapper = shallow(<Menu menu='label' />)
 
-    expect(wrapper.find('h3').exists()).toBeTruthy()
-    expect(wrapper.find('h3').text()).toEqual('label')
+    expect(wrapper.find(Styled.h3).exists()).toBeTruthy()
+    expect(wrapper.find(Styled.h3).text()).toEqual('label')
   })
 
   test('findNavInData finds the menu correctly', () => {
