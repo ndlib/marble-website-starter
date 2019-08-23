@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Styled } from 'theme-ui'
 import Link from 'components/Internal/Link'
 import Image from 'components/Shared/Image'
 import ExteralLinkIcon from './ExteralLinkIcon'
@@ -32,7 +33,7 @@ const Card = ({
           />
           <ExteralLinkIcon target={target} />
           <figcaption className='cardCaption'>
-            <h2>{label}</h2>
+            <Styled.h3>{label}</Styled.h3>
             <div className='cardAdditional'>
               {children}
             </div>

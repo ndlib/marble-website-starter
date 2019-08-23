@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { Header } from 'theme-ui'
 import NavigationHeader, { closeOnBlur } from './'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
@@ -13,7 +14,7 @@ describe('NavigationHeader', () => {
   const wrapper = shallow(<NavigationHeader location={location} />)
 
   test('renders', () => {
-    expect(wrapper.find('header.navBar').exists()).toBeTruthy()
+    expect(wrapper.find(Header).exists()).toBeTruthy()
     expect(wrapper.find('.navBarInner').exists()).toBeTruthy()
     expect(wrapper.find(SiteLogo).exists()).toBeTruthy()
     expect(wrapper.find(Menu).props().menu).toEqual('top')

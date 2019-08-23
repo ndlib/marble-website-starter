@@ -1,16 +1,3 @@
-.pageFooter{
-  background-color: #222;
-  color: #fff;
-  min-height : 64px;
-  overflow: hidden;
-  position: static;
-  bottom: 0;
-  left: 0;
-}
-.pageFooter a {
-  color: #fff;
-  text-decoration: none;
-}
 
 .footerInner {
   width: 100%;
@@ -25,13 +12,27 @@
 
 .footerText p,
 .footerText address {
-  line-height: 1.5em;
-  margin: 0 .25em;
+  line-height: 1.5rem;
+  margin: 0 .25rem;
 }
 .footerLinks a {
   display: block;
 }
+dd p {
+  margin: 0;
+  margin-bottom: .25rem;
+}
 
+dt {
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+dt:first-of-type {
+  margin-top: 0;
+}
+dd {
+  margin-inline-start: 0;
+}
 @media (max-width: 800px) {
   .footerText {
     font-size: 1.5rem;

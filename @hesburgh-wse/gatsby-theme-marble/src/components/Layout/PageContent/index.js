@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Styled } from 'theme-ui'
 import style from './style.module.css'
 
 // eslint-disable-next-line complexity
@@ -13,7 +14,7 @@ const PageContent = ({
         id='mainContent'
         className={style.standardLayout}
       >
-        {title ? <h1>{title}</h1> : null}
+        {title ? <Styled.h1>{title}</Styled.h1> : null}
         <article>{children}</article>
       </main>
     </React.Fragment>

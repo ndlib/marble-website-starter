@@ -1,3 +1,4 @@
+// const breakpoints = ['800px', '1024px', '1600px']
 export const theme = {
   space: [0, 4, 8, 16, 32],
   fonts: {
@@ -15,7 +16,7 @@ export const theme = {
       sans-serif
     `,
   },
-  fontSizes: [16, 18, 20, 22, 27, 36],
+  fontSizes: [16, 18, 20, 22, 24, 32],
   lineHeights: {
     body: 1.45,
     heading: 1.1,
@@ -23,15 +24,22 @@ export const theme = {
   colors: {
     gray: ['#efefef', '#ddd', '#333', '#111'],
     background: '#fff',
-    primary: 'rebeccapurple',
+    primary: '#ae9142',
+    secondary: '#302205',
+    highlight: '#d39f10',
   },
-  sizes: {
-    default: '90vw',
-    max: '540px',
-  },
+  // mediaQueries: {
+  //   small: `@media screen and (max-width: ${breakpoints[0]})`,
+  //   medium: `@media screen and (max-width: ${breakpoints[1]})`,
+  //   large: `@media screen and (min-width: ${breakpoints[2]})`,
+  // },
+  // sizes: {
+  //   default: '90vw',
+  //   max: '540px',
+  // },
   styles: {
     Layout: {
-      color: 'gray.2',
+      color: 'gray.3',
       fontFamily: 'body',
       fontSize: 0,
       lineHeight: 'body',
@@ -41,41 +49,72 @@ export const theme = {
       color: 'background',
       fontWeight: 'bold',
       margin: '0 auto',
-      maxWidth: 'max',
-      padding: 3,
-      width: 'default',
+      padding: 0,
+      width: '100vw',
       a: {
         color: 'inherit',
       },
     },
-    Main: {
-      margin: '0 auto',
-      maxWidth: 'max',
-      width: 'default',
-    },
-    Container: {
-      padding: 3,
+    // Main: {
+    //   margin: '0 auto',
+    //   maxWidth: 'max',
+    //   width: 'default',
+    // },
+    // Container: {
+    //   padding: 3,
+    // },
+    Footer: {
+      backgroundColor: 'secondary',
+      bottom: 0,
+      color: 'background',
+      left: 0,
+      lineHeight: '1.5rem',
+      minHeight: '64px',
+      overflow: 'hidden',
+      position: 'static',
+      a: {
+        color: 'background',
+        textDecoration: 'none',
+      },
     },
     h1: {
       color: 'gray.3',
       fontSize: 5,
-      fontWeight: 'bold',
+      fontWeight: '500',
       lineHeight: 'heading',
       margin: '1rem 0 0',
     },
-    ul: {
-      borderTop: '1px solid',
-      borderColor: 'gray.0',
-      listStyle: 'none',
-      padding: 0,
+    h2: {
+      fontSize: 4,
+      fontWeight: '600',
+      lineHeight: 'heading',
     },
-    li: {
-      borderBottom: '1px solid',
-      borderColor: 'gray.1',
-      padding: 2,
-      '&:focus-within,&:hover': {
-        backgroundColor: 'gray.0',
-      },
+    h3: {
+      fontSize: 1,
+      fontWeight: '600',
+      lineHeight: 'heading',
+    },
+    // ul: {
+    //   borderTop: '1px solid',
+    //   borderColor: 'gray.0',
+    //   listStyle: 'none',
+    //   padding: 0,
+    // },
+    // li: {
+    //   borderBottom: '1px solid',
+    //   borderColor: 'gray.1',
+    //   padding: 2,
+    //   '&:focus-within,&:hover': {
+    //     backgroundColor: 'gray.0',
+    //   },
+    // },
+    dt: {
+      display: 'block',
+      fontWeight: '600',
+    },
+    dd: {
+      display: 'block',
+
     },
   },
 }
