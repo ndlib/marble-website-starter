@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Main, Styled } from 'theme-ui'
-import style from './style.module.css'
 
 const PageContent = ({
   title,
@@ -21,8 +20,6 @@ PageContent.propTypes = {
 }
 
 PageContent.defaultProps = {
-  articleClassName: style.mainArticle,
   title: null,
-
 }
 export default PageContent
