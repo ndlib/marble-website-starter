@@ -15,6 +15,7 @@ const SearchMenuFilter = ({ field, label }) => {
       id={label.replace(' ', '').toLowerCase()}
       title={label}
       listComponent={ItemList}
+      translations={{ '18thcentury':'18th Century' }}
     />
   )
 }

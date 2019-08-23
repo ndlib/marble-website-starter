@@ -3,8 +3,17 @@ const path = require(`path`)
 const { Client } = require('@elastic/elasticsearch')
 const configuration = require('../../site/content/configuration.js')
 
-const availbaleTags = ['art', 'journals', 'sports', 'catholic stuff']
-const continentTag = ['north-america', 'europe', 'south-america', 'asia', 'africa', 'austrailia']
+const availbaleTags = [
+  'ndlife',
+  'notredame',
+  'religiouspaintings',
+  'historicalartifacts',
+  'historicaljournals',
+  'religiousartifacts',
+  'science',
+]
+const continentTag = ['northamerica', 'europe', 'southamerica', 'asia', 'africa', 'austrailia']
+const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
 
 const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
 const siteIndex = configuration.siteMetadata.searchBase.app
@@ -55,16 +64,18 @@ const getSearchDataFromManifest = (manifest) => {
     identifier: identifier,
     type: manifest.type,
     language: 'en',
-    place: 'South Bend',
-    repository: 'SNITE',
-    year: date,
     url: manifest.slug,
+    place: 'South Bend',
+    repository: availableRepositories[parseInt(Math.random() * availableRepositories.length, 10)],
+    year: date,
+    categoryTags: [centuryTag, availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)], continentTag[parseInt(Math.random() * availbaleTags.length, 10)]],
     themeTag: [availbaleTags[parseInt(Math.random() * availbaleTags.length, 10)]],
     centuryTag: [centuryTag],
     continentTag: [continentTag[parseInt(Math.random() * availbaleTags.length, 10)]],
     modernCountryTag: [],
   }
-  search['allMetadata'] = ''
+  search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
+
   manifest.metadata.forEach((row) => {
     const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
     const value = row.value[configuration.siteMetadata.languages.default].join('')

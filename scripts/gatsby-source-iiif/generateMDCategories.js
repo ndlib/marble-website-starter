@@ -2,17 +2,29 @@ const fs = require('fs')
 const path = require(`path`)
 
 const getMDFile = (manifest) => {
-  let subcategories = ''
+  let mdFile = `---
+title: "${manifest.label}"
+slug: "browse/${manifest.id}"`
+  if (manifest.tag) {
+    mdFile += `
+defaultSearch:
+  - tag: ${manifest.tag}
+layout: "browseSearchPage"
+    `
+  }
   if (manifest.subcategories) {
-    subcategories = `
+    mdFile += `
+components:
+  - component: MarkdownHtmlContent
   - component: CardGroup
     props:
       - label: "label"
         value: "Featured"
     components:`
     manifest.subcategories.forEach((category) => {
+      console.log(category)
       const categoryManifest = getManifest(category)
-      subcategories += `
+      mdFile += `
       - component: Card
         props:
           - label: "label"
@@ -23,31 +35,8 @@ const getMDFile = (manifest) => {
             value: "browse/${category}"`
     })
   }
-  let search = ''
-  if (manifest.manifest_ids) {
-    let props = ''
-    if (manifest.tag) {
-      props = `
-    props:
-      - label: 'tag'
-        value: '${manifest.tag}'`
-    }
-    search = `
-  - component: SearchBase ${props}
-    components:
-    - component: SearchFilterBox
-    - component: SearchResults
-      props:
-        - label: 'defaultDisplay'
-          value: 'grid'`
-  }
 
-  const mdFile = `---
-title: "${manifest.label}"
-slug: "browse/${manifest.id}"
-menu: "browse"
-components:
-  - component: MarkdownHtmlContent${subcategories}${search}
+  mdFile += `
 ---
 ${manifest.description}
 `
