@@ -1,2 +1,2 @@
-import { theme } from '../theme'
+import { theme } from 'assets/theme'
 export default theme
