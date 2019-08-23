@@ -169,6 +169,9 @@ export const query = graphql`
         title
         slug
         menu
+        defaultSearch {
+          tag
+        }
         layout
         description
         author

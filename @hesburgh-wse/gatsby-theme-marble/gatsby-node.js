@@ -165,6 +165,9 @@ exports.sourceNodes = ({ actions }) => {
     label: String
     items: [menuItems]
   }
+  type defaultSearch @dontInfer {
+    tag: String
+  }
   type languages @dontInfer {
     default: String
     allowed: [String]
@@ -175,6 +178,7 @@ exports.sourceNodes = ({ actions }) => {
     searchBase: searchBase
     footerText: String
     menus: [menus]
+    defaultSearch: [defaultSearch]
     loginPath: String
     searchPath: String
     languages: languages
@@ -313,6 +317,76 @@ const defaultLayouts = {
   default: [
     { component: 'MarkdownHtmlContent' },
   ],
+  browseSearchPage: [
+    { component: 'MarkdownHtmlContent' },
+    {
+      component: 'SearchBase',
+      components: [
+        { component: 'SearchFilterBox' },
+        {
+          component: 'MultiColumn',
+          props: [{ label: 'columns', value: '4' }],
+          components: [
+            {
+              component: 'Column',
+              components: [
+                {
+                  component: 'SearchRefinementListFilter',
+                  props: [
+                    { label: 'field', value: 'centuryTag.keyword' },
+                    { label: 'label', value: 'Timeperiod' },
+                    { label: 'operator', value: 'OR' },
+                  ],
+                },
+                {
+                  component: 'SearchRefinementListFilter',
+                  props: [
+                    { label: 'field', value: 'repository.keyword' },
+                    { label: 'label', value: 'Repository' },
+                    { label: 'operator', value: 'OR' },
+                  ],
+                },
+                {
+                  component: 'SearchRefinementListFilter',
+                  props: [
+                    { label: 'field', value: 'language.keyword' },
+                    { label: 'label', value: 'Language' },
+                    { label: 'operator', value: 'OR' },
+                  ],
+                },
+                {
+                  component: 'SearchRefinementListFilter',
+                  props: [
+                    { label: 'field', value: 'continentTag.keyword' },
+                    { label: 'label', value: 'Place' },
+                    { label: 'operator', value: 'OR' },
+                  ],
+                },
+                {
+                  component: 'SearchRefinementListFilter',
+                  props: [
+                    { label: 'field', value: 'themeTag.keyword' },
+                    { label: 'label', value: 'Theme' },
+                    { label: 'operator', value: 'OR' },
+                  ],
+                },
+              ],
+            },
+            {
+              component: 'Column',
+              props: [{ label: 'colSpan', value: '3' }],
+              components: [
+                {
+                  component: 'SearchResults',
+                  props: [{ label: 'defaultDisplay', value: 'grid' }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
   markdownWithMenu: [
     {
       component: 'MultiColumn',
@@ -329,7 +403,7 @@ const defaultLayouts = {
         },
         {
           component: 'Column',
-          props: [{ label: 'colSpan', value: '4' }],
+          props: [{ label: 'colSpan', value: '3' }],
           components: [
             { component: 'MarkdownHtmlContent' },
           ],

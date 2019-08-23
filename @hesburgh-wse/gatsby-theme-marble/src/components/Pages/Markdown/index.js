@@ -39,6 +39,7 @@ export const getglobalProps = (data, location) => {
   return {
     html: typy(data, 'markdownRemark.html').safeString,
     menu: typy(data, 'remarkMarblePage.frontmatter.menu').safeString,
+    defaultSearch: typy(data, 'remarkMarblePage.frontmatter.defaultSearch').safeArray,
     title: typy(data, 'remarkMarblePage.frontmatter.title').safeString,
     iiifManifest: typy(data, 'remarkMarblePage.frontmatter.iiifJson').safeObject,
     location: location,

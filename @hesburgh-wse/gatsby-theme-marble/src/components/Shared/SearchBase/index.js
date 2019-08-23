@@ -6,10 +6,9 @@ import {
   SearchkitProvider,
   SearchkitManager,
   SimpleQueryString,
-  RangeQuery,
 } from 'searchkit'
 
-const SearchBase = ({ children, tag, terms, range }) => {
+const SearchBase = ({ children, defaultSearch }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -31,19 +30,20 @@ const SearchBase = ({ children, tag, terms, range }) => {
     )
   }
   const sk = new SearchkitManager(`${searchBase.url}/${searchBase.app}`)
-  if (tag) {
-    tag = tag.split(':')
+  if (defaultSearch && defaultSearch[0]) {
+    const tag = defaultSearch[0].tag.split(':')
     sk.addDefaultQuery((query) => {
       return query.addQuery(SimpleQueryString(tag[1], { fields: [tag[0]] }))
     })
   }
+  /*
   if (range) {
     const s = range.split('-')
     sk.addDefaultQuery((query) => {
       return query.addQuery(RangeQuery('year', { gte: s[0], lte: s[1] }))
     })
   }
-
+  */
   return (
     <SearchkitProvider searchkit={sk}>
       <React.Fragment>
@@ -54,9 +54,7 @@ const SearchBase = ({ children, tag, terms, range }) => {
 }
 SearchBase.propTypes = {
   children: PropTypes.node.isRequired,
-  terms: PropTypes.string,
-  tag: PropTypes.string,
-  range: PropTypes.object,
+  defaultSearch: PropTypes.array,
 }
 
 export default SearchBase
