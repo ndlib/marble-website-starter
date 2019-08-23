@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './style.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
+import { Footer as ThemeFooter } from 'theme-ui'
 import ResponsiveGridList from 'components/Internal/ResponsiveGridList'
 import Menu from 'components/Shared/Menu'
 
@@ -29,29 +30,31 @@ export const Footer = () => {
   }
 
   return (
-    <footer className={style.pageFooter}>
-      <div className={style.footerInner}>
-        <ResponsiveGridList
-          layouts={layouts}
-          measureBeforeMount
-          rowHeight={400}
-        >
-          <div
-            key='footerText'
-            className={style.footerText}
+    <footer>
+      <ThemeFooter>
+        <div className={style.footerInner}>
+          <ResponsiveGridList
+            layouts={layouts}
+            measureBeforeMount
+            rowHeight={400}
           >
-            <span
-              dangerouslySetInnerHTML={{ __html: footerText }}
-            />
-          </div>
-          <div
-            key='footerNavigation'
-            className={style.footerLinks}
-          >
-            <Menu menu='footer' />
-          </div>
-        </ResponsiveGridList>
-      </div>
+            <div
+              key='footerText'
+              className={style.footerText}
+            >
+              <span
+                dangerouslySetInnerHTML={{ __html: footerText }}
+              />
+            </div>
+            <div
+              key='footerNavigation'
+              className={style.footerLinks}
+            >
+              <Menu menu='footer' />
+            </div>
+          </ResponsiveGridList>
+        </div>
+      </ThemeFooter>
     </footer>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Header } from 'theme-ui'
 import typy from 'typy'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
@@ -11,26 +12,27 @@ export const NavigationHeader = ({ location }) => {
   const [hamburgerOpen, toggleHamburger] = useState(false)
 
   return (
-    <header className={style.navBar}>
-      <div className={style.navBarInner}>
-        <SiteLogo />
-        <div className={style.hamburger}>
-          <HamburgerButton
-            onClick={() => {
-              toggleHamburger(!hamburgerOpen)
-            }}
-            onBlur={(e) => {
-              closeOnBlur(e, toggleHamburger, location)
-            }}
-            className={style.hamburgerIcon}
-          />
-          <span className={hamburgerOpen ? style.hamburgerInnerOpen : style.hamburgerInnerClosed}>
-            <Menu menu='top' />
-            <LoginButton />
-          </span>
+    <header>
+      <Header>
+        <div className={style.navBarInner}>
+          <SiteLogo />
+          <div className={style.hamburger}>
+            <HamburgerButton
+              onClick={() => {
+                toggleHamburger(!hamburgerOpen)
+              }}
+              onBlur={(e) => {
+                closeOnBlur(e, toggleHamburger, location)
+              }}
+              className={style.hamburgerIcon}
+            />
+            <span className={hamburgerOpen ? style.hamburgerInnerOpen : style.hamburgerInnerClosed}>
+              <Menu menu='top' />
+              <LoginButton />
+            </span>
+          </div>
         </div>
-
-      </div>
+      </Header>
     </header>
   )
 }

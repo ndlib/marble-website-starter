@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { Styled } from 'theme-ui'
 import Card from './'
 import Image from 'components/Shared/Image'
 import ExteralLinkIcon from './ExteralLinkIcon'
@@ -21,6 +22,6 @@ test('Card', () => {
   expect(wrapper.find(Image).props().src).toEqual('img.png')
   expect(wrapper.find(ExteralLinkIcon).props().target).toEqual('/some-item')
   expect(wrapper.find('figcaption.cardCaption').exists()).toBeTruthy()
-  expect(wrapper.find('h2').text()).toEqual('Card Label')
+  expect(wrapper.find(Styled.h3).text()).toEqual('Card Label')
   expect(wrapper.find('.childContent').text()).toEqual('More Stuff')
 })

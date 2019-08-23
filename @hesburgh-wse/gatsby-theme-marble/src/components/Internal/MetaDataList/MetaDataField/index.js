@@ -9,7 +9,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, value } = metadata
   const lang = getLanguage()
   return (
-    <React.Fragment>
+    <div>
       <MetaDataLabel
         labels={typy(label, `[${lang}]`).safeArray}
       />
@@ -17,7 +17,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
         values={typy(value, `[${lang}]`).safeArray}
         skipHtml={skipHtml}
       />
-    </React.Fragment>
+    </div>
   )
 }
 

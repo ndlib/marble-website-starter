@@ -1,22 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import style from './style.module.css'
+import { Main, Styled } from 'theme-ui'
 
-// eslint-disable-next-line complexity
 const PageContent = ({
   title,
   children,
 }) => {
   return (
-    <React.Fragment>
-      <main
-        id='mainContent'
-        className={style.standardLayout}
-      >
-        {title ? <h1>{title}</h1> : null}
-        <article>{children}</article>
-      </main>
-    </React.Fragment>
+    <Main id='mainContent'>
+      {title ? <Styled.h1>{title}</Styled.h1> : null}
+      <article>{children}</article>
+    </Main>
   )
 }
 
@@ -26,8 +20,6 @@ PageContent.propTypes = {
 }
 
 PageContent.defaultProps = {
-  articleClassName: style.mainArticle,
   title: null,
-
 }
 export default PageContent

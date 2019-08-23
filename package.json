@@ -3,6 +3,7 @@
   "workspaces": [
     "@hesburgh-wse/gatsby-theme-marble",
     "@hesburgh-wse/gatsby-starter-marble",
+    "test-site",
     "site"
   ],
   "devDependencies": {

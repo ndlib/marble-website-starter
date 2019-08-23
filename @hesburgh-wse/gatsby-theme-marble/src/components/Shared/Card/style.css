@@ -34,13 +34,6 @@ a.basicCard {
   height: 100px;
 }
 
-.cardCaption h2 {
-  font-size: 18px;
-  font-weight: 500;
-}
-.list .basicCard .cardCaption h2 {
-  font-weight: 600;
-}
 .grid .basicCard .cardAdditional {
   display: none;
 }
