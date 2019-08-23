@@ -8,7 +8,7 @@ slug: "browse/${manifest.id}"`
   if (manifest.tag) {
     mdFile += `
 defaultSearch:
-  - tag: ${manifest.tagField}:${manifest.label.replace(' ', '')}
+  - tag: ${manifest.tagField}:${manifest.label.replace(/\W/g, '')}
 layout: "browseSearchPage"
     `
   }
