@@ -8,7 +8,7 @@ slug: "browse/${manifest.id}"`
   if (manifest.tag) {
     mdFile += `
 defaultSearch:
-  - tag: ${manifest.tag}
+  - tag: ${manifest.tagField}:${manifest.label.replace(' ', '')}
 layout: "browseSearchPage"
     `
   }
@@ -17,9 +17,6 @@ layout: "browseSearchPage"
 components:
   - component: MarkdownHtmlContent
   - component: CardGroup
-    props:
-      - label: "label"
-        value: "Featured"
     components:`
     manifest.subcategories.forEach((category) => {
       console.log(category)
