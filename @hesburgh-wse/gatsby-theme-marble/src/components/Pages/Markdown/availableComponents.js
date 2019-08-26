@@ -17,6 +17,7 @@ import SearchBase from 'components/Shared/SearchBase'
 import SearchBox from 'components/Shared/SearchBox'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
+import SearchSortingSelector from 'components/Shared/SearchTools/SearchSortingSelector'
 
 import SearchDynamicRangeFilter from 'components/Shared/SearchTools/SearchDynamicRangeFilter'
 import SearchMenuFilter from 'components/Shared/SearchTools/SearchMenuFilter'
@@ -45,6 +46,7 @@ export const availableComponents = {
   SearchMenuFilter: SearchMenuFilter,
   SearchRefinementListFilter: SearchRefinementListFilter,
   SearchResults: SearchResults,
+  SearchSortingSelector: SearchSortingSelector,
 }
 
 export default availableComponents
