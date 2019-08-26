@@ -5,7 +5,7 @@ import typy from 'typy'
 import {
   SearchkitProvider,
   SearchkitManager,
-  SimpleQueryString,
+  MatchQuery,
 } from 'searchkit'
 
 const SearchBase = ({ children, defaultSearch }) => {
@@ -33,7 +33,7 @@ const SearchBase = ({ children, defaultSearch }) => {
   if (defaultSearch && defaultSearch[0]) {
     const tag = defaultSearch[0].tag.split(':')
     sk.addDefaultQuery((query) => {
-      return query.addQuery(SimpleQueryString(tag[1], { fields: [tag[0]] }))
+      return query.addQuery(MatchQuery(tag[0], tag[1]))
     })
   }
   /*

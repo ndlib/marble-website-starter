@@ -54,7 +54,7 @@ const loadCategories = () => {
         if (!objectsByTagTypeAndId[row.tagField][manifestId]) {
           objectsByTagTypeAndId[row.tagField][manifestId] = []
         }
-        objectsByTagTypeAndId[row.tagField][manifestId].push(row.label.replace(/\W/g, ''))
+        objectsByTagTypeAndId[row.tagField][manifestId].push(row.label)
       })
     }
   })
