@@ -18,7 +18,7 @@ module.exports = {
     universalViewerBaseURL: `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
     googleMapApiURL: `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`,
     searchBase: {
-      app: 'website-new-index',
+      app: 'website-test-index',
       url: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com',
     },
 
