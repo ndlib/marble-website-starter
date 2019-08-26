@@ -9,7 +9,7 @@ components:
         - label: "image"
           fileValue: "./images/01.jpg"
         - label: "label"
-          value: "All"
+          value: "All Items"
         - label: "target"
           value: "browse/all"
     - component: Card
