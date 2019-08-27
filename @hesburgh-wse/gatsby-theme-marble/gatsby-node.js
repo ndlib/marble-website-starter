@@ -323,6 +323,7 @@ const defaultLayouts = {
       component: 'SearchBase',
       components: [
         { component: 'SearchFilterBox' },
+        { component: 'SearchSortingSelector' },
         {
           component: 'MultiColumn',
           props: [{ label: 'columns', value: '4' }],
