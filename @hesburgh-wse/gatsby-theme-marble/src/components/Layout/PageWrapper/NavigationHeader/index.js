@@ -1,6 +1,8 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Header } from 'theme-ui'
+import { Header, jsx } from 'theme-ui'
 import typy from 'typy'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
@@ -26,7 +28,10 @@ export const NavigationHeader = ({ location }) => {
               }}
               className={style.hamburgerIcon}
             />
-            <span className={hamburgerOpen ? style.hamburgerInnerOpen : style.hamburgerInnerClosed}>
+            <span
+              className={hamburgerOpen ? style.hamburgerInnerOpen : style.hamburgerInnerClosed}
+              sx={{ backgroundColor: 'primary' }}
+            >
               <Menu menu='top' />
               <LoginButton />
             </span>

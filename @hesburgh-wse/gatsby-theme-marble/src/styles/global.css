@@ -1,9 +1,36 @@
+html,
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 div {
   box-sizing: border-box;
 }
+dd p {
+  margin: 0;
+  margin-bottom: .25rem;
+}
+
+dt {
+  font-weight: 600;
+}
+dd a {
+  word-break: break-word;
+}
+dt:first-of-type {
+  margin-top: 0;
+}
+dd {
+  margin-inline-start: 0;
+}
+dl div {
+  padding: 0.5rem;
+}
+dl div:nth-child(2n) {
+  background-color: #f0f0f0;
+
+}
+
 .accessibilityOnly {
   left:-999px;
   position:absolute;

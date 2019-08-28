@@ -12,16 +12,10 @@
 }
 .navBarInner a {
   text-decoration: none;
-  color : #ffffff;
   font-size : 1rem;
-  font-family: Geneva;
-
 }
 .navBarInner nav a {
   padding: 16px;
-}
-.navBarInner a:hover{
-  color : #aaaaaa;
 }
 
 .hamburger {
@@ -52,7 +46,6 @@
     width: calc(100vw - 260px);
   }
   .hamburger button {
-    background: black;
     border: none;
     display: block;
     height: 70px;
@@ -72,7 +65,6 @@
   }
 
   .hamburgerInnerOpen {
-    background: black;
     display: block;
     left: -240px;
     position: absolute;
@@ -85,8 +77,7 @@
     height: auto;
   }
 
-  .hamburgerInnerOpen nav a {
-    background: black;
+  .hamburgerInnerOpen a {
     border-top: 1px solid #666;
     display: block;
     font-size: 1.25rem;

@@ -35,7 +35,6 @@
 }
 @media (max-width: 800px) {
   .loginButton {
-    background: black;
     border-top: 1px solid #666;
     display: block;
     width: 100vw;
