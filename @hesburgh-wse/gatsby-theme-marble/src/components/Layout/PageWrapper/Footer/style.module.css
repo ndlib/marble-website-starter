@@ -18,27 +18,6 @@
 .footerLinks a {
   display: block;
 }
-dd p {
-  margin: 0;
-  margin-bottom: .25rem;
-}
-
-dt {
-  font-weight: 600;
-}
-dt:first-of-type {
-  margin-top: 0;
-}
-dd {
-  margin-inline-start: 0;
-}
-dl div {
-  padding: 0.5rem;
-}
-dl div:nth-child(2n) {
-  background-color: #f0f0f0;
-
-}
 @media (max-width: 800px) {
   .footerText {
     font-size: 1.5rem;
