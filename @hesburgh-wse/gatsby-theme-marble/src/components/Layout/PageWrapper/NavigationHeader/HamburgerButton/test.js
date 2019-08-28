@@ -5,22 +5,23 @@ import HamburgerButton from './'
 import hamburgerIcon from 'assets/icons/svg/baseline-menu-24px-white.svg'
 
 describe('HamburgerButton', () => {
-  let sq = {
-    site: {
-      siteMetadata: {
-        menus: {
-          id: 'top',
-          items: [{}],
-        },
-      },
-    },
-  }
-  useStaticQuery.mockImplementationOnce(() => sq)
+  let sq
   const onClick = jest.fn()
   const onBlur = jest.fn()
   const className = 'myClass'
 
   test('top menu exists', () => {
+    sq = {
+      site: {
+        siteMetadata: {
+          menus: {
+            id: 'top',
+            items: [{}],
+          },
+        },
+      },
+    }
+    useStaticQuery.mockImplementationOnce(() => sq)
     const wrapper = shallow(<HamburgerButton onClick={() => onClick()} onBlur={() => onBlur()} className={className} />)
     expect(wrapper.find('img.myClass').props().src).toEqual(hamburgerIcon)
     expect(wrapper.find('img.myClass').props().alt).toEqual('Show Menu')
