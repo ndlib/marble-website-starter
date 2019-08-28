@@ -137,6 +137,7 @@ exports.sourceNodes = ({ actions }) => {
     author: String
     components: [component]
     description: String
+    defaultSearch: [defaultSearch]
     layout: String
     menu: String
     slug: String
@@ -178,7 +179,6 @@ exports.sourceNodes = ({ actions }) => {
     searchBase: searchBase
     footerText: String
     menus: [menus]
-    defaultSearch: [defaultSearch]
     loginPath: String
     searchPath: String
     languages: languages
