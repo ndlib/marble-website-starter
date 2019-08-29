@@ -3,6 +3,7 @@ title: Column Test
 slug: columnTest
 
 components:
+  - component: MarkdownHtmlContent
   - component: MultiColumn
     components:
       - component: Image
@@ -258,3 +259,4 @@ components:
               - label: "src"
                 fileValue: "./images/05.jpg"
 ---
+This page is testing the multi-column layout feature. You can have multiple columns and individual columns can span across the space any number of columns creating complex layouts.

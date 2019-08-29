@@ -1,7 +1,7 @@
 const fs = require('fs')
 const crypto = require('crypto')
 const { attachFields } = require(`gatsby-plugin-node-fields`)
-
+const merge = require('lodash.merge')
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
   const contentPath = options.contentPath || 'content'
@@ -307,10 +307,11 @@ const getComponents = (node, options) => {
 }
 
 const getComponentsFromLayout = (layout, options) => {
+  let availableLayouts = defaultLayouts
   if (options.layouts) {
-    return options.layouts[layout] || options.layouts.default
+    availableLayouts = merge({}, defaultLayouts, options.layouts)
   }
-  return defaultLayouts[layout] || defaultLayouts.default
+  return availableLayouts[layout] || availableLayouts.default
 }
 
 const defaultLayouts = {
@@ -419,6 +420,7 @@ const defaultLayouts = {
     { component: 'ChildManifests' },
   ],
   item: [
+    { component: 'MarkdownHtmlContent' },
     {
       component: 'MultiColumn',
       components: [

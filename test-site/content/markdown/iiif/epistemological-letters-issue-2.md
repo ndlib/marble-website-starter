@@ -2,17 +2,8 @@
 title: "Epistemological Letters Issue 2"
 slug: "item/epistemological-letters-issue-2"
 iiifJson___NODE: 'https://presentation-iiif.library.nd.edu/epistemological-letters-issue-2/manifest'
-components:
-  - component: MarkdownHtmlContent
-  - component: MultiColumn
-    components:
-      - component: Column
-        components:
-          - component: ActionButtons
-          - component: ManifestMetaData
-      - component: Column
-        components:
-          - component: MiradorViewer
-
+layout: "itemCustom"
 ---
-Here is a page that was made with a different layout, just to illustrate that you can (not that you should). It looks a lot like the default, default layout, but we've switched the Mirador Viewer and the Meta Data Display around just to confuse and amaze you. [Here](https://marble-test.library.nd.edu/item/epistemological-letters-issue-2) is what this same page looks like on the Marble Test site.
+This is a custom layout the does not exist in the default configuration. It was added just for this test site in a global configuration and can be used on any number pages just by specifying the new layout's name. Letters number [6](/item/epistemological-letters-issue-6), [7](/item/epistemological-letters-issue-7), and [8](/item/epistemological-letters-issue-8) also use this layout.
+
+Another thing you can do is customize an individual page. You can see an example on [The Third Epistemological Letter](/item/epistemological-letters-issue-3).
