@@ -1,5 +1,6 @@
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
 const menus = require('./menus')
+const layouts = require('./layouts')
 const themeColor = `#0A233F`
 const languages = {
   default: 'en',
@@ -48,4 +49,5 @@ module.exports = {
   },
 
   // layouts
+  layouts: layouts,
 }
