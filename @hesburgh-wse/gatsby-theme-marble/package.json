@@ -38,6 +38,7 @@
     "gatsby-transformer-json": "^2.2.2",
     "gatsby-transformer-remark": "^2.6.13",
     "gatsby-transformer-sharp": "^2.2.6",
+    "lodash.merge": "^4.6.2",
     "md5": "^2.2.1",
     "mirador": "^3.0.0-alpha.16",
     "moment": "^2.24.0",
