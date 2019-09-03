@@ -7,7 +7,6 @@ import Seo from 'components/Internal/Seo'
 import getLanguage from 'utils/getLanguage'
 
 const MiradorViewerPage = ({ data, location }) => {
-  console.log(data.remarkMarblePage.frontmatter.iiifJson)
   const lang = getLanguage()
   const manifestId = typy(data, 'remarkMarblePage.frontmatter.iiifJson.id').safeString
   const manifestTitle = typy(data, `remarkMarblePage.frontmatter.iiifJson.label[${lang}][0]`).safeString
