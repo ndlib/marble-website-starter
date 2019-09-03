@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ExpandIcon from './'
 
-const wrapper = shallow(<ExpandIcon />)
+const wrapper = shallow(<ExpandIcon label={'Open in Universal Viewer'} />)
 test('Renders an svg element', () => {
   expect(wrapper.find('img').props().alt).toEqual('Open in Universal Viewer')
 })

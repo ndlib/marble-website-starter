@@ -428,7 +428,7 @@ const defaultLayouts = {
           component: 'Column',
           components: [
             { component: 'ActionButtons' },
-            { component: 'MiradorViewer' },
+            { component: 'ManifestImageGroup' },
           ],
         },
         {

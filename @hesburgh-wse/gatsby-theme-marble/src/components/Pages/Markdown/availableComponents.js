@@ -5,9 +5,10 @@ import ChildManifests from 'components/Shared/ChildManifests'
 import Column from 'components/Shared/Column'
 import Image from 'components/Shared/Image'
 import LoginArea from 'components/Shared/LoginArea'
-import ManifestImage from 'components/Shared/ManifestImage'
 import ManifestCard from 'components/Shared/ManifestCard'
 import ManifestDescription from 'components/Shared/ManifestDescription'
+import ManifestImage from 'components/Shared/ManifestImage'
+import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import Map from 'components/Shared/Map'
 import Menu from 'components/Shared/Menu'
@@ -34,6 +35,7 @@ export const availableComponents = {
   ManifestCard: ManifestCard,
   ManifestDescription: ManifestDescription,
   ManifestImage: ManifestImage,
+  ManifestImageGroup: ManifestImageGroup,
   ManifestMetaData: ManifestMetaData,
   Map: Map,
   Menu: Menu,

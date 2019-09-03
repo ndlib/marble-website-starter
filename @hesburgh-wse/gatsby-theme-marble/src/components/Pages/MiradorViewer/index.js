@@ -7,6 +7,7 @@ import Seo from 'components/Internal/Seo'
 import getLanguage from 'utils/getLanguage'
 
 const MiradorViewerPage = ({ data, location }) => {
+  console.log(data.remarkMarblePage.frontmatter.iiifJson)
   const lang = getLanguage()
   const manifestId = typy(data, 'remarkMarblePage.frontmatter.iiifJson.id').safeString
   const manifestTitle = typy(data, `remarkMarblePage.frontmatter.iiifJson.label[${lang}][0]`).safeString
@@ -15,6 +16,8 @@ const MiradorViewerPage = ({ data, location }) => {
   const sideBarOpenByDefault = qs.sidebar !== 'false'
   const thumbnailNavigationPosition = qs.thumbnails === 'true' ? 'far-bottom' : 'off'
   const fullscreen = qs.fullscreen !== 'false'
+  const canvasIndex = qs.cv || 0
+  const viewerView = qs.view || 'default'
   const config = {
     id: 'test',
     window: {
@@ -30,8 +33,10 @@ const MiradorViewerPage = ({ data, location }) => {
     windows: [
       {
         manifestId: manifestId,
+        canvasIndex: canvasIndex,
         maximized: true,
         thumbnailNavigationPosition: thumbnailNavigationPosition,
+        view: viewerView,
       },
 
     ],
