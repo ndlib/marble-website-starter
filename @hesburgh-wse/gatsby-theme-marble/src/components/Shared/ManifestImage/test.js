@@ -1,20 +1,21 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import ImageSection from './'
-import Link from 'components/Internal/Link'
+import ManifestImage from './'
 import Image from 'components/Shared/Image'
-import ExpandIcon from './ExpandIcon'
-import ItemAlternateViews from './ItemAlternateViews'
-
-const manifest = {
-  id: 'id',
-}
-const wrapper = shallow(<ImageSection iiifManifest={manifest} location={{}} />)
-
-test('ImageSection', () => {
-  expect(wrapper.find('section').exists()).toBeTruthy()
-  expect(wrapper.find(Link).props().to).toEqual('/viewer?manifest=id')
-  expect(wrapper.find(Image).exists()).toBeTruthy()
-  expect(wrapper.find(ExpandIcon).exists()).toBeTruthy()
-  expect(wrapper.find(ItemAlternateViews).exists()).toBeTruthy()
+describe('ManifestImage', () => {
+  const iiifManifest = {
+    description: 'Manifest Description',
+    name: 'Manifest Name',
+  }
+  const className = 'myClass'
+  test('props from manifest', () => {
+    const wrapper = shallow(<ManifestImage iiifManifest={iiifManifest} className={className} />)
+    expect(wrapper.find('.myClass').props().alt).toEqual('Manifest Description')
+    expect(wrapper.find(Image).props().title).toEqual('Manifest Name')
+  })
+  test('props from props', () => {
+    const wrapper = shallow(<ManifestImage iiifManifest={iiifManifest} className={className} title='propTitle' alt='propAlt' />)
+    expect(wrapper.find('.myClass').props().alt).toEqual('propAlt')
+    expect(wrapper.find(Image).props().title).toEqual('propTitle')
+  })
 })

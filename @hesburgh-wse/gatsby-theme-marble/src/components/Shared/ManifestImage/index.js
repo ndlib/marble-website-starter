@@ -1,43 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Internal/Link'
 import Image from 'components/Shared/Image'
-import ExpandIcon from './ExpandIcon'
-import ItemAlternateViews from './ItemAlternateViews'
 import getImageService from 'utils/getImageService'
-import buildReferalState from 'utils/buildReferalState'
-import style from './style.module.css'
-export const ImageSection = ({ location, iiifManifest }) => {
-  if (!iiifManifest || !iiifManifest.id) {
-    return null
-  }
 
+const ManifestImage = ({
+  iiifManifest,
+  className,
+  alt,
+  title,
+  index = 0,
+}) => {
+  const newAlt = alt || iiifManifest.description
+  const newTitle = title || iiifManifest.name
   return (
-    <section>
-      <h2 className='accessibilityOnly'>Images</h2>
-      <Link
-        to={`/viewer?manifest=${encodeURIComponent(iiifManifest.id)}`}
-        className={style.link}
-        state={buildReferalState(location, { type: 'item', backLink: location.href })}
-      >
-        <Image
-          service={getImageService(iiifManifest)}
-          alt={iiifManifest.description}
-          className={style.bigImage}
-          title='Open in Universal Viewer'
-          iiifManifest={iiifManifest}
-        />
-        <ExpandIcon />
-      </Link>
-      <ItemAlternateViews iiifManifest={iiifManifest} location={location} />
-    </section>
+    <Image
+      service={getImageService(iiifManifest, index)}
+      alt={newAlt}
+      className={className}
+      title={newTitle}
+      iiifManifest={iiifManifest}
+    />
   )
 }
 
-ImageSection.propTypes = {
-  iiifManifest: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }),
-  location: PropTypes.object.isRequired,
+ManifestImage.propTypes = {
+  iiifManifest: PropTypes.object.isRequired,
+  index: PropTypes.number,
+  className: PropTypes.string,
+  alt: PropTypes.string,
+  title: PropTypes.string,
 }
-export default ImageSection
+
+export default ManifestImage

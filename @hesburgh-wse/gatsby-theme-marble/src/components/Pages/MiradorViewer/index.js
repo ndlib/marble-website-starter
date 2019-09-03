@@ -15,6 +15,8 @@ const MiradorViewerPage = ({ data, location }) => {
   const sideBarOpenByDefault = qs.sidebar !== 'false'
   const thumbnailNavigationPosition = qs.thumbnails === 'true' ? 'far-bottom' : 'off'
   const fullscreen = qs.fullscreen !== 'false'
+  const canvasIndex = qs.cv || 0
+  const viewerView = qs.view || 'default'
   const config = {
     id: 'test',
     window: {
@@ -30,8 +32,10 @@ const MiradorViewerPage = ({ data, location }) => {
     windows: [
       {
         manifestId: manifestId,
+        canvasIndex: canvasIndex,
         maximized: true,
         thumbnailNavigationPosition: thumbnailNavigationPosition,
+        view: viewerView,
       },
 
     ],

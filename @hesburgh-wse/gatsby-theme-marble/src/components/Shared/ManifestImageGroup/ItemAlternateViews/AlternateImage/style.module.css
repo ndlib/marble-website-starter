@@ -1,0 +1,26 @@
+.alternateLink {
+  display: inline-block;
+  height: calc( 25% - 1.5rem / 4);
+  width: calc( 25% - 1.5rem / 4);
+  margin: 0 0.25rem;
+  position: relative;
+}
+.alternateLink:first-of-type {
+  margin-left: 0;
+}
+
+.alternateLink:last-of-type {
+  margin-right: 0;
+}
+
+.alternateImage {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.alternateImage img {
+  display: block;
+  height: auto;
+  width: 100%;
+}

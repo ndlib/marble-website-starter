@@ -4,7 +4,7 @@ let mirador = {}
 try {
   mirador = require('mirador')
 } catch (e) {
-  console.warn('mirador unaviailable at build time.')
+  console.warn('mirador unavailable at build time.')
 }
 
 class MiradorWrapper extends React.Component {
@@ -12,6 +12,7 @@ class MiradorWrapper extends React.Component {
     const { config, plugins } = this.props
     mirador.viewer(config, plugins)
   }
+
   render () {
     const { config } = this.props
     return <div id={config.id} />

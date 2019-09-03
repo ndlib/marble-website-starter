@@ -1,17 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import expandIcon from 'assets/icons/svg/baseline-fullscreen-24px.svg'
 import style from './style.module.css'
-const ExpandIcon = () => {
+const ExpandIcon = ({ label }) => {
   return (
     <span className={style.expandWrapper}>
       <img
         src={expandIcon}
-        alt='Open in Universal Viewer'
+        alt={label}
         className={style.expandIcon}
-        title='Open in Universal Viewer'
+        title={label}
       />
     </span>
   )
 }
-
+ExpandIcon.propTypes = {
+  label: PropTypes.string.isRequired,
+}
 export default ExpandIcon
