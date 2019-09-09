@@ -31,7 +31,6 @@ export const ManifestCard = (props) => {
   }
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const lang = getLanguage()
-  console.log(iiifManifest.type)
   return (
     <div className={style.manifestCardWrapper}>
       <Card
