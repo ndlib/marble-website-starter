@@ -16,7 +16,7 @@ export const LoginArea = ({ dispatch, loginReducer }) => {
         onSubmit={event => {
           event.preventDefault()
           dispatch(handleLogin())
-          navigate(`/`)
+          navigate(`/user`)
         }}
       >
         <p>

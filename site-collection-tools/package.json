@@ -1,0 +1,21 @@
+{
+  "name": "site-collection-tools",
+  "version": "0.5.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ndlib/marble-website-starter"
+  },
+  "starter-name": "gatsby-starter-marble",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@hesburgh-wse/gatsby-theme-marble": "*",
+    "gatsby": "^2.13.61",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
