@@ -70,7 +70,7 @@ export const getActiveSettings = (displayReducer, reducer) => {
     [DISPLAY_LIST]: {
       breakpoints: { lg: 680, md: 480, sm: 240 },
       cols: { lg: 6, md: 6, sm: 6 },
-      rowHeight: 260,
+      rowHeight: 270,
       cardWidth:  6,
     },
   }

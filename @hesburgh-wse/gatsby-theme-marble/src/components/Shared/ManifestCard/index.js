@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import Card from 'components/Shared/Card'
+import TypeLabel from './TypeLabel'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
 import getLanguage from 'utils/getLanguage'
+import style from './style.module.css'
 
 export const ManifestCard = (props) => {
   const { allIiifJson } = useStaticQuery(
@@ -29,16 +31,18 @@ export const ManifestCard = (props) => {
   }
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const lang = getLanguage()
-
   return (
-    <Card
-      label={iiifManifest.label[lang][0]}
-      target={`/${iiifManifest.slug}`}
-      imageService={imageService || null}
-      {...props}
-    >
-      <div>{iiifManifest.description}</div>
-    </Card>
+    <div className={style.manifestCardWrapper}>
+      <Card
+        label={iiifManifest.label[lang][0]}
+        target={`/${iiifManifest.slug}`}
+        imageService={imageService || null}
+        {...props}
+      >
+        <div>{iiifManifest.description}</div>
+      </Card>
+      <TypeLabel iiifManifest={iiifManifest} />
+    </div>
   )
 }
 

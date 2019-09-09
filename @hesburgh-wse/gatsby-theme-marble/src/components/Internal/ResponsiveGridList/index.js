@@ -24,6 +24,7 @@ export const ResponsiveGridList = ({
       rowHeight={rowHeight}
       containerPadding={[0, 0]}
       measureBeforeMount={measureBeforeMount}
+      margin={[24, 0]}
     >
       {children}
     </ResponsiveGridLayout>
