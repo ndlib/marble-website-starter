@@ -1,0 +1,14 @@
+{
+  "name": "fake-api",
+  "private": true,
+  "version": "0.1.0",
+  "author": "ndlib",
+  "dependencies": {
+    "json-server": "^0.15.1"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "develop": "json-server --watch db.json -p 9000"
+  }
+}

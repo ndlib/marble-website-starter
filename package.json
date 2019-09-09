@@ -1,10 +1,12 @@
 {
   "private": true,
   "workspaces": [
-    "@hesburgh-wse/gatsby-theme-marble",
     "@hesburgh-wse/gatsby-starter-marble",
+    "@hesburgh-wse/gatsby-theme-marble",
+    "site",
+    "site-collection-tools",
     "test-site",
-    "site"
+    "fake-api"
   ],
   "devDependencies": {
     "@babel/core": "^7.0.0",

@@ -54,6 +54,13 @@ module.exports = ({ contentPath = 'content' }) => ({
         },
       },
     },
+    // Themes do not use the pages directory by default so we add it in manually.
+    {
+      resolve : 'gatsby-plugin-page-creator',
+      options: {
+        path: path.join(__dirname, 'src/pages'),
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,

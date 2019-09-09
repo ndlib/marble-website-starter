@@ -5,6 +5,7 @@ import * as Gatsby from 'gatsby'
 import * as auth from 'utils/auth'
 
 test('it renders the page if we are not testing login', () => {
+  jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => false)
   const wrapper = shallow(<PrivateRoute location={{}} requireLogin={false}>TEXT</PrivateRoute>)
 
   expect(wrapper.text()).toEqual('TEXT')
@@ -13,7 +14,7 @@ test('it renders the page if we are not testing login', () => {
 test('it renders the page if they are logged in and we are testing logins', () => {
   jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
 
-  const wrapper = shallow(<PrivateRoute location={{}} requireLogin={true}>TEXT</PrivateRoute>)
+  const wrapper = shallow(<PrivateRoute location={{}} requireLogin>TEXT</PrivateRoute>)
 
   expect(wrapper.text()).toEqual('TEXT')
 })
@@ -21,7 +22,7 @@ test('it renders the page if they are logged in and we are testing logins', () =
 test('it navigates to the login page if they are not logged in and we are testing logins', () => {
   jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => false)
 
-  shallow(<PrivateRoute location={{}} requireLogin={true}>TEXT</PrivateRoute>)
+  shallow(<PrivateRoute location={{}} requireLogin>TEXT</PrivateRoute>)
 
   expect(Gatsby.navigate).toHaveBeenCalledWith('/login')
 })
@@ -29,7 +30,7 @@ test('it navigates to the login page if they are not logged in and we are testin
 test('it does not navigage to the login page if they are already on it even if they are not logged in', () => {
   jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => false)
 
-  const wrapper = shallow(<PrivateRoute location={{ pathname: '/login' }} requireLogin={true}>TEXT</PrivateRoute>)
+  const wrapper = shallow(<PrivateRoute location={{ pathname: '/login' }} requireLogin>TEXT</PrivateRoute>)
 
   expect(wrapper.text()).toEqual('TEXT')
 })
