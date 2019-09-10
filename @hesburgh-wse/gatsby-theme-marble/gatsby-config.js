@@ -1,6 +1,10 @@
 const path = require('path')
 
-module.exports = ({ contentPath = 'content' }) => ({
+module.exports = ({
+  contentPath = 'content',
+  useLogin = false,
+  useUV = false,
+}) => ({
   plugins: [
     {
       resolve: 'gatsby-plugin-root-import',
@@ -58,7 +62,13 @@ module.exports = ({ contentPath = 'content' }) => ({
     {
       resolve : 'gatsby-plugin-page-creator',
       options: {
-        path: path.join(__dirname, 'src/pages'),
+        path: useLogin ? path.join(__dirname, 'src/pages/user') : path.join(__dirname, 'src/pages/empty'),
+      },
+    },
+    {
+      resolve : 'gatsby-plugin-page-creator',
+      options: {
+        path: useUV ? path.join(__dirname, 'src/pages/viewer') : path.join(__dirname, 'src/pages/empty'),
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
