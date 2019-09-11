@@ -29,7 +29,7 @@ const SearchBox = ({ location, message }) => {
   return (
     <section
       className={style.searchComponent}
-      sx={{ backgroundColor: 'highlight' }}
+      sx={{ backgroundColor: 'highlightWithOpacity' }}
     >
       {displayMessage}
       <div className={style.searchBox}>

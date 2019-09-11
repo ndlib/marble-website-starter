@@ -27,6 +27,7 @@ export const theme = {
     primary: '#ae9142',
     secondary: '#302205',
     highlight: '#d39f10',
+    highlightWithOpacity: '#d39f1052',
   },
   // mediaQueries: {
   //   small: `@media screen and (max-width: ${breakpoints[0]})`,
