@@ -1,16 +1,26 @@
-.searchBox {
-  border: 1px solid #555;
-}
-.searchBox {
-  border: 2px solid #dedede;
-  background: #fff;
-}
-
 .searchComponent {
-  padding: 12px 0;
+  border: 1px solid #999;
+  box-shadow: 2px 2px 8px 2px rgba(153,153,153,0.5);
   margin-left: auto;
   margin-right: auto;
+  padding: 12px 0;
   width: 80%;
+}
+
+.message {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  padding: .25rem 0 .75rem 0;
+}
+
+.searchBox {
+  box-shadow: 0px 2px 6px 0px rgba(0,0,0,.4);
+  border: none;
+  background: #fff;
+  margin: 0 auto;
+  width: calc(100% - 40px);
 }
 
 .searchField {
@@ -30,9 +40,11 @@
 }
 
 .advancedSearch {
-  text-decoration: none;
-  font-weight: bold;
   color: #000;
+  font-weight: bold;
+  margin-right: 20px;
+  margin-top: 10px;
+  text-decoration: none;
 }
 
 .searchIcon {
@@ -46,4 +58,10 @@
   border-left: 1px solid #dedede;
   height: 40px;
   width:65px;
+}
+
+@media (max-width: 1280px) {
+  .searchComponent {
+    width: 100%;
+  }
 }

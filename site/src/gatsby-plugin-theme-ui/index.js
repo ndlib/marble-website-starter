@@ -4,6 +4,6 @@ export default merge({}, theme, {
   colors: {
     primary: '#0A233F',
     secondary: '#333',
-    highlight: '#ae9142',
+    highlight: '#D39F10',
   },
 })

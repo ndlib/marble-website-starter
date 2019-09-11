@@ -4,6 +4,9 @@ slug: index
 components:
   - component: MarkdownHtmlContent
   - component: SearchBox
+    props:
+      - label: 'message'
+        value: 'Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.'
   - component: CardGroup
     props:
       - label: "label"
@@ -68,5 +71,3 @@ components:
           - label: "target"
             value: "/browse/themes"
 ---
-
-Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.

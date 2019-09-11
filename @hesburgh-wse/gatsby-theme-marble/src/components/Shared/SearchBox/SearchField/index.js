@@ -17,6 +17,7 @@ export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch,
         id='searchField'
         type='text'
         className={className}
+        autoComplete='off'
         placeholder={fieldLabel}
         onChange={(e) => dispatch(updateInput(e.target.value))}
         value={decodeURIComponent(rawInput)}
