@@ -10,7 +10,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "serve": "gatsby serve"
   },
   "dependencies": {
     "@hesburgh-wse/gatsby-theme-marble": "*",
