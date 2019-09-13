@@ -9,10 +9,10 @@ const UserIndex = (props) => {
       <UserTopMenu username={props.username} />
       <ul>
         <li>
-          <Link to={`/user/${props.username}/compilation-1`}>Compilation 1</Link>
+          <Link to={`/compilation/compilation-1`}>Compilation 1</Link>
         </li>
         <li>
-          <Link to={`/user/${props.username}/compilation-2`}>Compilation 2</Link>
+          <Link to={`/compilation/compilation-2`}>Compilation 2</Link>
         </li>
       </ul>
     </UserLayout>

@@ -4,6 +4,8 @@ import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
 import { handleLogin } from 'store/actions/loginActions'
 import { isLoggedIn } from 'utils/auth'
+import MaterialButton from 'components/Internal/MaterialButton'
+import style from './style.module.css'
 
 export const LoginArea = ({ dispatch, loginReducer }) => {
   const message = (isLoggedIn(loginReducer)) ? (<p>Hi {loginReducer.user.fullname}</p>) : ''
@@ -11,26 +13,38 @@ export const LoginArea = ({ dispatch, loginReducer }) => {
   return (
     <div>
       { message }
-      <form
-        method='post'
-        onSubmit={event => {
-          event.preventDefault()
-          dispatch(handleLogin())
-          navigate(`/user`)
-        }}
-      >
+      <form className={style.loginArea}>
         <p>
           For this demo, please log in with the username <code>gatsby</code> and the
           password <code>demo</code>.
         </p>
         <p>
-          <input type='submit' value='Login with Notre Dame Campus Authentication' />
+          <MaterialButton
+            id='okta'
+            onClick={(e) => {
+              e.preventDefault()
+              dispatch(handleLogin())
+              navigate(`/user`)
+            }}
+            primary
+            wide
+          >Login with Notre Dame Campus Authentication</MaterialButton>
         </p>
         <p>
-          <button alt='Google' id='google'>Login with Google</button>
+          <MaterialButton
+            disabled
+            id='google'
+            onClick={() => console.log('Login With Google')}
+            wide
+          >Login with Google</MaterialButton>
         </p>
         <p>
-          <button alt='Facebook' id='facebook'>Login with Facebook</button>
+          <MaterialButton
+            disabled
+            id='facebook'
+            onClick={() => console.log('Login With Facebook')}
+            wide
+          >Login with Facebook</MaterialButton>
         </p>
       </form>
     </div>

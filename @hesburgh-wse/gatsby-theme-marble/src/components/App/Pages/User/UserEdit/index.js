@@ -1,24 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { navigate } from 'gatsby'
 import UserLayout from '../UserLayout'
 import MaterialButton from 'components/Internal/MaterialButton'
 import Gravatar from '../UserLayout/Gravatar'
 import style from './style.module.css'
 
 const UserEdit = (props) => {
+  const { username } = props
   return (
     <UserLayout {...props}>
       <form className={style.profileEdit}>
         <div className={style.buttonGroup}>
           <MaterialButton
-            label='Cancel'
-            onClick={() => console.log('cancel changes')}
-          />
+            onClick={(e) => {
+              e.preventDefault()
+              navigate(`/user/${username}`)
+            }}
+          >Cancel</MaterialButton>
           <MaterialButton
-            label='Save'
-            onClick={() => console.log('save profile')}
+            onClick={(e) => {
+              e.preventDefault()
+              console.log('save profile')
+              navigate(`/user/${username}`)
+            }}
             primary
-          />
+          >Save</MaterialButton>
         </div>
         <div>
           <label
@@ -75,7 +82,7 @@ const UserEdit = (props) => {
             className={style.gravatarEdit}
           >
             <Gravatar email='rfox2@nd.edu' size={100} />
-            <span>User icons are provided by the <a href='https://en.gravatar.com'>Gravatar</a> globally recognized avatar image service.</span>
+            <span>User icons are provided by <a href='https://en.gravatar.com'>Gravatar</a>, the globally recognized avatar service.</span>
           </div>
         </div>
       </form>

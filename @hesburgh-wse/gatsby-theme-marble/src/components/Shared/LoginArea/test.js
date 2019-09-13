@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { LoginArea } from './'
+import MaterialButton from 'components/Internal/MaterialButton'
 import * as auth from 'utils/auth'
 
 test('it renders the login page with the user logged in', () => {
@@ -13,8 +14,5 @@ test('it renders the login page with the user logged in', () => {
   const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)
 
   expect(wrapper.find('form').exists()).toBeTruthy()
-  expect(wrapper.find('button').length).toEqual(2)
-  expect(wrapper.find('button#google').text()).toEqual('Login with Google')
-  expect(wrapper.find('button#facebook').text()).toEqual('Login with Facebook')
-  expect(wrapper.find('input[type="submit"]').prop('value')).toEqual('Login with Notre Dame Campus Authentication')
+  expect(wrapper.find('MaterialButton').length).toEqual(3)
 })

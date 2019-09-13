@@ -10,9 +10,7 @@ describe('LoginButton', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return {
         site: {
-          siteMetadata: {
-            loginPath: null,
-          },
+          siteMetadata: {},
         },
       }
     })
@@ -26,7 +24,7 @@ describe('LoginButton', () => {
       return {
         site: {
           siteMetadata: {
-            loginPath: 'sign-in',
+            useLogin: true,
           },
         },
       }
@@ -35,11 +33,12 @@ describe('LoginButton', () => {
       status: 'STATUS_LOGGED_IN',
       user: {
         fullname: 'Johnny Logged In',
+        username: 'jloggedin',
       },
     }
     const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find('.loginButton').exists()).toBeTruthy()
-    expect(wrapper.find(Link).props().to).toEqual('/sign-in')
+    expect(wrapper.find(Link).props().to).toEqual('/user/jloggedin')
     expect(wrapper.find('span').text()).toEqual('Johnny Logged In')
     expect(wrapper.find('img').props().src).toEqual(userIcon)
   })
@@ -49,7 +48,7 @@ describe('LoginButton', () => {
       return {
         site: {
           siteMetadata: {
-            loginPath: 'sign-in',
+            useLogin: true,
           },
         },
       }
@@ -57,7 +56,7 @@ describe('LoginButton', () => {
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
     const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find('.loginButton').exists()).toBeTruthy()
-    expect(wrapper.find(Link).props().to).toEqual('/sign-in')
+    expect(wrapper.find(Link).props().to).toEqual('/user')
     expect(wrapper.find(Link).props().children).toEqual('Login')
   })
 })

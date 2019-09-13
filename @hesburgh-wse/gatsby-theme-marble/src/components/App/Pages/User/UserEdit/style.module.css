@@ -26,6 +26,7 @@ textarea.profileTextArea {
   height: 8rem;
   margin-bottom: 2rem;
   max-width: 100%;
+  min-height: 6rem;
   padding-left: 10px;
   resize: vertical;
   vertical-align: top;

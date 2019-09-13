@@ -39,6 +39,10 @@ dl div:nth-child(2n) {
 
 }
 
+code {
+  background-color: #efefef;
+}
+
 .accessibilityOnly {
   left:-999px;
   position:absolute;

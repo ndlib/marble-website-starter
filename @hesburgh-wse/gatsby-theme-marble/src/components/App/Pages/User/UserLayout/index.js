@@ -13,6 +13,7 @@ import { isLoggedIn } from 'utils/auth'
 import style from './style.module.css'
 const UserLayout = ({ username, children, location, loginReducer }) => {
   const ownsPage = isLoggedIn(loginReducer) && typy(loginReducer, 'user.username').safeString === username
+
   return (
     <Layout
       location={location}

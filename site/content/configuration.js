@@ -26,7 +26,7 @@ module.exports = {
     },
 
     // paths
-    loginPath: 'login',
+    useLogin: false,
     searchPath: 'search',
 
     // branding

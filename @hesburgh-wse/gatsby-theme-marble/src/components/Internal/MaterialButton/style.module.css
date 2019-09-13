@@ -1,4 +1,11 @@
 .materialButton {
-    font-size: 1rem;
-    max-width: 100%;
+  font-size: 1rem;
+  max-width: 100%;
+  padding: .5rem;
+  cursor: pointer;
+}
+
+.materialButton:disabled {
+  cursor: default;
+  opacity: 0.4;
 }
