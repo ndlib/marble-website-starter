@@ -1,7 +1,15 @@
 html,
 body {
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: fixed;
+}
+#gatsby-focus-wrapper {
+  height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  width: 100vw;
+  -webkit-overflow-scrolling: touch;
 }
 div {
   box-sizing: border-box;

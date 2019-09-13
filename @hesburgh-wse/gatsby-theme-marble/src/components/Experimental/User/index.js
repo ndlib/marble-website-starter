@@ -1,31 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
 import { Router } from '@reach/router'
-import { isLoggedIn } from 'utils/auth'
-import Layout from 'components/Layout'
-import UserLanding from './UserLanding'
-import UserCollection from './UserCollection'
-export const User = ({ location, loginReducer }) => {
-  if (location.pathname === `/user`) {
-    if (isLoggedIn(loginReducer)) {
-      navigate(`/user/${loginReducer.user.username}`)
-      return null
-    } else {
-      navigate(`/login`)
-      return null
-    }
-  }
+import LoginOrRedirect from './LoginOrRedirect'
+import UserIndex from './UserIndex'
+import UserEdit from './UserEdit'
+import UserFollowing from './UserFollowing'
+import UserCompilation from './UserCompilation'
+
+export const User = (props) => {
   return (
-    <Layout
-      location={location}
-    >
-      <Router>
-        <UserLanding path='/user/:username' />
-        <UserCollection path='/user/:username/:collectionId' />
-      </Router>
-    </Layout>
+    <Router>
+      <LoginOrRedirect path='/user' {...props} />
+      <UserIndex path='/user/:username' {...props} />
+      <UserEdit path='/user/:username/edit' {...props} />
+      <UserFollowing path='/user/:username/following' {...props} />
+      <UserCompilation path='/user/:username/:compilationId' {...props} />
+    </Router>
   )
 }
 
