@@ -1,0 +1,66 @@
+form.profileEdit {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 800px;
+}
+
+input.profileEditText {
+  background: #fff;
+  border: none;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+  font: 19px helvetica;
+  height: 40px;
+  margin-bottom: 2rem;
+  max-width: 100%;
+  padding-left: 10px;
+  vertical-align: top;
+  width: 800px;
+
+}
+
+textarea.profileTextArea {
+  background: #fff;
+  border: none;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+  font: 19px helvetica;
+  height: 8rem;
+  margin-bottom: 2rem;
+  max-width: 100%;
+  padding-left: 10px;
+  resize: vertical;
+  vertical-align: top;
+  width: 800px;
+}
+
+input.profileEditText:disabled {
+  background: #efefef;
+}
+
+label.profileLabel {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.buttonGroup {
+  text-align: right;
+  max-width: 100%;
+  width: 800px;
+}
+
+.buttonGroup button {
+  margin-left: .5rem;
+}
+
+.gravatarEdit {
+  border: 1px solid #dedede;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+  padding: 1rem;
+}
+.gravatarEdit img {
+  width: 100px;
+}
+.gravatarEdit span {
+  display: inline-block;
+  margin-left: 1rem;
+  vertical-align: top;
+}

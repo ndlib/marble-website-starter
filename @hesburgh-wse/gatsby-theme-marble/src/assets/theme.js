@@ -22,7 +22,7 @@ export const theme = {
     heading: 1.1,
   },
   colors: {
-    gray: ['#efefef', '#ddd', '#333', '#111'],
+    gray: ['#efefef', '#dedede', '$666', '#333', '#111'],
     background: '#fff',
     primary: '#ae9142',
     secondary: '#302205',
@@ -36,7 +36,7 @@ export const theme = {
   // },
   styles: {
     Layout: {
-      color: 'gray.3',
+      color: 'gray.4',
       fontFamily: 'body',
       fontSize: 0,
       lineHeight: 'body',
@@ -72,7 +72,7 @@ export const theme = {
       },
     },
     h1: {
-      color: 'gray.3',
+      color: 'gray.4',
       fontSize: 5,
       fontWeight: '500',
       lineHeight: 'heading',

@@ -62,7 +62,7 @@ export default Seo
 export const getTitle = (title, frontmatter, siteMetadata) => {
   const lang = typy(siteMetadata, 'languages.default').safeString || 'none'
   return title ||
-    frontmatter.title ||
+    typy(frontmatter, 'title').safeString ||
     typy(frontmatter, `iiifJson.label.[${lang}][0]`).safeString ||
     siteMetadata.title
 }
