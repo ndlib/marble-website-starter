@@ -14,5 +14,5 @@ test('it renders the login page with the user logged in', () => {
   const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)
 
   expect(wrapper.find('form').exists()).toBeTruthy()
-  expect(wrapper.find('MaterialButton').length).toEqual(3)
+  expect(wrapper.find(MaterialButton).length).toEqual(3)
 })
