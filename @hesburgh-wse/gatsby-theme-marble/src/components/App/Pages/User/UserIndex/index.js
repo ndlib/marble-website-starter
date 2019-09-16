@@ -1,20 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Internal/Link'
 import UserLayout from '../UserLayout'
 import UserTopMenu from '../UserLayout/UserTopMenu'
+import CompilationList from './CompilationList'
+import { ownsPage } from 'utils/auth'
+
 const UserIndex = (props) => {
+  const { loginReducer, username } = props
+  const isOwner = ownsPage(loginReducer, username)
+  const compilations = [
+    {
+      label: 'Compilation 1',
+      target: '/compilation/thing-1',
+    },
+    {
+      label: 'Compilation 2',
+      target: '/compilation/thing-2',
+    },
+    {
+      label: 'Compilation 3',
+      target: '/compilation/thing-3',
+    },
+  ]
   return (
     <UserLayout {...props} >
       <UserTopMenu username={props.username} />
-      <ul>
-        <li>
-          <Link to={`/compilation/compilation-1`}>Compilation 1</Link>
-        </li>
-        <li>
-          <Link to={`/compilation/compilation-2`}>Compilation 2</Link>
-        </li>
-      </ul>
+      <CompilationList
+        isOwner={isOwner}
+        compilations={compilations}
+      />
     </UserLayout>
 
   )

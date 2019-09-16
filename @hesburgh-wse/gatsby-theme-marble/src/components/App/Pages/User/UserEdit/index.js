@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import UserLayout from '../UserLayout'
 import MaterialButton from 'components/Internal/MaterialButton'
-import Gravatar from '../UserLayout/Gravatar'
+import Gravatar from 'components/Internal/Gravatar'
 import style from './style.module.css'
 
 const UserEdit = (props) => {
@@ -21,6 +21,9 @@ const UserEdit = (props) => {
           <MaterialButton
             onClick={(e) => {
               e.preventDefault()
+              window.confirm(
+                `If there was a functional API behind this page, we'd tell you it has been saved or if something went wrong.`
+              )
               console.log('save profile')
               navigate(`/user/${username}`)
             }}

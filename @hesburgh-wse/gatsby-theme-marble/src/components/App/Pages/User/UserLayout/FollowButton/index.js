@@ -16,7 +16,7 @@ const FollowButton = ({ username, showButton }) => {
           padding: '.5rem',
         }}
       >
-        <p><Link to={`/login`}>Log in</Link> to follow users or access your edit your own content.</p>
+        <p><Link to={`/user`}>Log in</Link> to follow users or access and edit your own content.</p>
       </div>
     )
   }
