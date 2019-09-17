@@ -1,0 +1,15 @@
+.item {
+  padding: .5rem 1rem;
+}
+.item:nth-child(2n + 1) {
+  background-color: #f0f0f0;
+}
+
+.viewerButtons {
+  margin: 1rem 0;
+  text-align: center;
+}
+.viewerButtons button {
+  margin: .5rem;
+  max-width: calc(50% - 1rem) !important;
+}

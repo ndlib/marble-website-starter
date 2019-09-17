@@ -5,10 +5,14 @@ import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import Card from 'components/Shared/Card'
 import NewCompilationButton from './NewCompilationButton'
 import NoCompilations from './NoCompilations'
+import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import { COMPILATION_PAGE } from 'store/actions/displayActions'
+import style from './style.module.css'
+
 const CompilationList = ({
   compilations,
   isOwner = false,
+  loggedIn = false,
 }) => {
   if (compilations.length > 0) {
     return (
@@ -18,15 +22,26 @@ const CompilationList = ({
         }
         <DisplayViewToggle defaultDisplay={COMPILATION_PAGE}>
           {
-            typy(compilations).safeArray.map((compilation, index) => {
-              return (
-                <Card
-                  key={index}
-                  label={compilation.label}
-                  target={compilation.target}
-                />
-              )
-            })
+            typy(compilations).safeArray
+              .filter(c => {
+                return viewable(c, loggedIn, isOwner)
+              })
+              .map((c, index) => {
+                return (
+                  <div key={index} className={style.cardWrapper}>
+                    <Card
+                      label={c.title}
+                      target={`/compilation/${c.id}`}
+                      image={c.image || c.items[0].image}
+                    />
+                    {
+                      isOwner
+                        ? <VisibilityLabel visibility={c.visibility} />
+                        : null
+                    }
+                  </div>
+                )
+              })
           }
         </DisplayViewToggle>
       </React.Fragment>
@@ -38,6 +53,18 @@ const CompilationList = ({
 CompilationList.propTypes = {
   compilations: PropTypes.array.isRequired,
   isOwner: PropTypes.bool,
+  loggedIn: PropTypes.bool,
 }
 
 export default CompilationList
+
+export const viewable = (compilation, loggedIn, isOwner) => {
+  if (isOwner) {
+    return true
+  } else if (loggedIn && compilation.visibility !== 'private') {
+    return true
+  } else if (compilation.visibility === 'public') {
+    return true
+  }
+  return false
+}

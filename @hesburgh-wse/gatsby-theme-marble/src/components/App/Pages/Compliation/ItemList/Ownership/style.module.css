@@ -1,0 +1,21 @@
+.ownership {
+  margin-top: .5rem;
+}
+.ownership span {
+  vertical-align: top;
+}
+
+.ownership a {
+  border: 1px solid #dedede;
+  border-radius: 20px;
+  color: #333;
+  padding: 0.25rem 1rem;
+  text-decoration: none;
+}
+.gravatarWrapper {
+  display: inline-block;
+  height: 22px;
+  margin-right: .25rem;
+  overflow: hidden;
+  width: 22px;
+}

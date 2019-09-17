@@ -4,8 +4,15 @@
   padding: .5rem;
   cursor: pointer;
 }
-
+.materialButton:focus {
+  outline: none;
+}
+.materialButton:hover {
+  box-shadow: 0px 2px 3px 0px rgba(153, 153, 153, 0.4);
+  opacity: 0.95;
+}
 .materialButton:disabled {
+  box-shadow: none !important;
   cursor: default;
   opacity: 0.4;
 }

@@ -13,7 +13,6 @@ const LoginOrRedirect = (props) => {
     navigate(`/user/${loginReducer.user.username}`)
     return null
   }
-  // TODO put login page here instead of redirect
   return (
     <Layout
       location={location}
