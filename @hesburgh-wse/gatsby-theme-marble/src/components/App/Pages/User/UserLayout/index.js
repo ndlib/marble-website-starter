@@ -10,9 +10,8 @@ import FollowButton from './FollowButton'
 import EditUserButton from './EditUserButton'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
-const UserLayout = ({ username, children, location, loginReducer }) => {
-  const isOwner = ownsPage(loginReducer, username)
-
+const UserLayout = ({ user, children, location, loginReducer }) => {
+  const isOwner = ownsPage(loginReducer, user.username)
   return (
     <Layout
       location={location}
@@ -20,25 +19,25 @@ const UserLayout = ({ username, children, location, loginReducer }) => {
       <Seo
         data={{}}
         location={location}
-        title={username}
+        title={user.username}
         noIndex
       />
       <MultiColumn columns='5'>
         <Column>
           <div className={style.identityGroup}>
-            <Gravatar email='rfox2@nd.edu' />
+            <Gravatar email={user.email} />
             <div className={style.identity}>
-              <Styled.h1>Name</Styled.h1>
-              <Styled.h2>{username}</Styled.h2>
+              <Styled.h1>{user.name}</Styled.h1>
+              <Styled.h2>{user.username}</Styled.h2>
             </div>
           </div>
           <div>
             {
             /* Follow or Edit button */
-              isOwner ? <EditUserButton username={username} /> : <FollowButton username={username} showButton={isLoggedIn(loginReducer)} />
+              isOwner ? <EditUserButton username={user.username} /> : <FollowButton username={user.username} showButton={isLoggedIn(loginReducer)} />
             }
           </div>
-          <div className={style.bio}>Some kind of description goes here. Professors can put their class list here maybe, or you could say what kind of things you're interested in. There will be a character limit and it will be editable on the edit page.</div>
+          <div className={style.bio}>{user.bio}</div>
         </Column>
         <Column colSpan='4'>
           {children}
@@ -50,7 +49,7 @@ const UserLayout = ({ username, children, location, loginReducer }) => {
 }
 
 UserLayout.propTypes = {
-  username: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,

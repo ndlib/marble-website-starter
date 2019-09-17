@@ -3,30 +3,25 @@ import PropTypes from 'prop-types'
 import UserLayout from '../UserLayout'
 import UserTopMenu from '../UserLayout/UserTopMenu'
 import CompilationList from './CompilationList'
-import { ownsPage } from 'utils/auth'
+import { isLoggedIn, ownsPage } from 'utils/auth'
+import { getUserCompilations, getUser } from 'utils/appUtils'
+import NoUser from '../NoUser'
 
 const UserIndex = (props) => {
   const { loginReducer, username } = props
+  const user = getUser(username)
+  if (!user) {
+    return (<NoUser {...props} />)
+  }
+  const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, username)
-  const compilations = [
-    {
-      label: 'Compilation 1',
-      target: '/compilation/thing-1',
-    },
-    {
-      label: 'Compilation 2',
-      target: '/compilation/thing-2',
-    },
-    {
-      label: 'Compilation 3',
-      target: '/compilation/thing-3',
-    },
-  ]
+  const compilations = getUserCompilations(username)
   return (
-    <UserLayout {...props} >
+    <UserLayout user={user} {...props} >
       <UserTopMenu username={props.username} />
       <CompilationList
         isOwner={isOwner}
+        loggedIn={loggedIn}
         compilations={compilations}
       />
     </UserLayout>

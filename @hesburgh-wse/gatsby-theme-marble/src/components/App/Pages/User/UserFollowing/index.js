@@ -6,9 +6,15 @@ import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import Card from 'components/Shared/Card'
 import { gravatarImg } from 'components/Internal/Gravatar'
 import { FOLLOWING_PAGE } from 'store/actions/displayActions'
+import { getUser } from 'utils/appUtils'
+import NoUser from '../NoUser'
 const UserFollowing = (props) => {
+  const user = getUser(props.username)
+  if (!user) {
+    return (<NoUser {...props} />)
+  }
   return (
-    <UserLayout {...props}>
+    <UserLayout user={user} {...props}>
       <UserTopMenu username={props.username} />
       <DisplayViewToggle defaultDisplay={FOLLOWING_PAGE}>
         <Card

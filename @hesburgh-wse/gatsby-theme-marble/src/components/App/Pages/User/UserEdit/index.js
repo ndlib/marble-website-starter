@@ -4,12 +4,22 @@ import { navigate } from 'gatsby'
 import UserLayout from '../UserLayout'
 import MaterialButton from 'components/Internal/MaterialButton'
 import Gravatar from 'components/Internal/Gravatar'
+import { ownsPage } from 'utils/auth'
+import { getUser } from 'utils/appUtils'
+import NoUser from '../NoUser'
 import style from './style.module.css'
 
 const UserEdit = (props) => {
-  const { username } = props
+  const { username, loginReducer } = props
+  const user = getUser(username)
+  if (!user) {
+    return (<NoUser {...props} />)
+  } else if (!ownsPage(loginReducer, username)) {
+    navigate(`/user/${username}`)
+    return null
+  }
   return (
-    <UserLayout {...props}>
+    <UserLayout user={user} {...props}>
       <form className={style.profileEdit}>
         <div className={style.buttonGroup}>
           <MaterialButton

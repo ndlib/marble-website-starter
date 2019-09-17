@@ -1,0 +1,8 @@
+.cardWrapper {
+  position: relative;
+}
+.cardWrapper strong{
+  bottom: .75rem;
+  right: 1rem;
+  position: absolute;
+}
