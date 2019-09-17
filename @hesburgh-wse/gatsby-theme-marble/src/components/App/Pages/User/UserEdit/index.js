@@ -12,8 +12,11 @@ import style from './style.module.css'
 const UserEdit = (props) => {
   const { username, loginReducer } = props
   const user = getUser(username)
-  if (!user || !ownsPage(loginReducer, username)) {
+  if (!user) {
     return (<NoUser {...props} />)
+  } else if (!ownsPage(loginReducer, username)) {
+    navigate(`/user/${username}`)
+    return null
   }
   return (
     <UserLayout user={user} {...props}>
