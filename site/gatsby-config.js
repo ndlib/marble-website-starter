@@ -6,6 +6,7 @@ module.exports = {
       resolve: '@hesburgh-wse/gatsby-theme-marble',
       options: {
         // layouts: configuration.layouts,
+        useLogin: configuration.siteMetadata.useLogin,
       },
     },
     {

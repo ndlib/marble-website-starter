@@ -62,7 +62,7 @@ module.exports = ({
     {
       resolve : 'gatsby-plugin-page-creator',
       options: {
-        path: useLogin ? path.join(__dirname, 'src/pages/user') : path.join(__dirname, 'src/pages/empty'),
+        path: useLogin ? path.join(__dirname, 'src/pages/app') : path.join(__dirname, 'src/pages/empty'),
       },
     },
     {

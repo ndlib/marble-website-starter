@@ -13,32 +13,33 @@ export const LoginButton = ({ loginReducer }) => {
       query {
         site {
           siteMetadata {
-            loginPath
+            useLogin
           }
         }
       }
     `
   )
-  if (!site.siteMetadata.loginPath) {
+  if (!site.siteMetadata.useLogin) {
     return null
   }
-  let buttonInards = 'Login'
   if (loginReducer.status === 'STATUS_LOGGED_IN') {
     const safeName = getSafeName(loginReducer)
-    buttonInards = (
-      <React.Fragment>
-        <img
-          src={userIcon}
-          alt='My Account'
-          title='My Account'
-        />
-        <span>{safeName}</span>
-      </React.Fragment>
+    return (
+      <div className={style.loginButton}>
+        <Link to={`/user/${loginReducer.user.username}`}>
+          <img
+            src={userIcon}
+            alt='My Account'
+            title='My Account'
+          />
+          <span>{safeName}</span>
+        </Link>
+      </div>
     )
   }
   return (
     <div className={style.loginButton}>
-      <Link to={`/${site.siteMetadata.loginPath}`}>{buttonInards}</Link>
+      <Link to={`/user`}>Login</Link>
     </div>
   )
 }

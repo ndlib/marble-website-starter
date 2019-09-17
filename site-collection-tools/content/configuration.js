@@ -5,7 +5,7 @@ module.exports = {
     description: `A MARBLE Site to manage user created collections of IIIF things.`,
     siteUrl: `http://example.com`,
     // paths
-    loginPath: 'login',
+    useLogin: true,
     searchPath: 'search',
     menus: [
       {

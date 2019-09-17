@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 
-const UserCompilation = ({ location, compilationId }) => {
+const Compilation = ({ location, compilationId }) => {
   return (
     <Layout
       location={location}
@@ -11,6 +11,7 @@ const UserCompilation = ({ location, compilationId }) => {
       <Seo
         title={'username'}
         location={location}
+        data={{}}
         noIndex
       />
       <div>User Collection</div>
@@ -19,8 +20,8 @@ const UserCompilation = ({ location, compilationId }) => {
   )
 }
 
-UserCompilation.propTypes = {
+Compilation.propTypes = {
   compilationId: PropTypes.string,
   location: PropTypes.object.isRequired,
 }
-export default UserCompilation
+export default Compilation

@@ -6,10 +6,9 @@ const EditUserButton = ({ username }) => {
   return (
     <React.Fragment>
       <MaterialButton
-        label='Edit Profile'
         onClick={() => navigate(`/user/${username}/edit`)}
         wide
-      />
+      >Edit Profile</MaterialButton>
     </React.Fragment>
   )
 }

@@ -6,30 +6,35 @@ import { jsx } from 'theme-ui'
 import style from './style.module.css'
 
 const MaterialButton = ({
-  label,
+  children,
   onClick,
   primary = false,
   wide = false,
+  id,
+  disabled = false,
 }) => {
   return (
     <button
+      id={id}
       className={style.materialButton}
-      onClick={() => onClick()}
+      onClick={(e) => onClick(e)}
       sx={{
         backgroundColor: primary ? 'primary' : 'gray.0',
         color: primary ? 'white' : 'gray.4',
-        padding: wide ? '.5rem 4rem' : '.5rem 1rem',
         width: wide ? '250px' : '100px',
       }}
-    >{label}</button>
+      disabled={disabled}
+    >{children}</button>
   )
 }
 
 MaterialButton.propTypes = {
-  label: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
   primary: PropTypes.bool,
   wide: PropTypes.bool,
+  id: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 export default MaterialButton
