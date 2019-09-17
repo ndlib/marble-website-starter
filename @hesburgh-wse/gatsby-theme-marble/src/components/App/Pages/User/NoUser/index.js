@@ -18,7 +18,7 @@ const NoUser = (props) => {
         noIndex
       />
       <div>
-        <p>This user <code>{username}</code> does not exist.</p>
+        <p>This user <code>{username}</code> does not exist or you are not authorized to see this page.</p>
       </div>
     </Layout>
   )
