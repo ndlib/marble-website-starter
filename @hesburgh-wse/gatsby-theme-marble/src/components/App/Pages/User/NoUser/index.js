@@ -25,5 +25,6 @@ const NoUser = (props) => {
 }
 NoUser.propTypes = {
   location: PropTypes.object.isRequired,
+  username: PropTypes.string.isRequired,
 }
 export default NoUser
