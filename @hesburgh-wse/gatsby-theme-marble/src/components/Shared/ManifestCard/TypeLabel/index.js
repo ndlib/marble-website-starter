@@ -8,7 +8,7 @@ const TypeLabel = ({ iiifManifest }) => {
   const type = typy(iiifManifest, 'type').safeString.toLowerCase()
   if (type === 'collection') {
     return (
-      <div className={style.typeLabel}><img src={icon} /></div>
+      <div className={style.typeLabel}><img src={icon} alt='' /></div>
     )
   }
   return null
