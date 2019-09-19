@@ -1,7 +1,7 @@
 .item {
   padding: .5rem 1rem;
 }
-.item:nth-child(2n + 1) {
+.item:nth-child(2n) {
   background-color: #f0f0f0;
 }
 

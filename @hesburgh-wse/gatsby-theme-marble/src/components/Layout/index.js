@@ -29,6 +29,7 @@ const Layout = ({
           >
             <PageContent
               title={title}
+              location={location}
             >
               {children}
             </PageContent>
