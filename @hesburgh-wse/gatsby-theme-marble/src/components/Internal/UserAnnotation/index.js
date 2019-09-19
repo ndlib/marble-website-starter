@@ -16,7 +16,7 @@ const UserAnnotation = ({ location }) => {
         {
           typy(annotations).safeArray.map((annotation, index) => {
             return (
-              <CalloutBox>
+              <CalloutBox key={index}>
                 <Attribution>
                   <UserCartouche user={annotation.user} /> provided this annotation from <Link to={`/compilation/${annotation.compilation.id}`}>{annotation.compilation.label}</Link>.
                 </Attribution>
