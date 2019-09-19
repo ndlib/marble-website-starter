@@ -337,7 +337,7 @@ const defaultLayouts = {
                   component: 'SearchRefinementListFilter',
                   props: [
                     { label: 'field', value: 'centuryTag.keyword' },
-                    { label: 'label', value: 'Timeperiod' },
+                    { label: 'label', value: 'Time Period' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },
