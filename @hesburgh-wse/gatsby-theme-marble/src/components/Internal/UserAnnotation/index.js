@@ -6,6 +6,7 @@ import CalloutBox from 'components/Internal/CalloutBox'
 import Attribution from 'components/Internal/Attribution'
 import Link from 'components/Internal/Link'
 import UserCartouche from 'components/Internal/UserCartouche'
+
 const UserAnnotation = ({ location }) => {
   const qs = queryString.parse(location.search)
   if (qs.a) {

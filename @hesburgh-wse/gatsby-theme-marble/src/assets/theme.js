@@ -22,7 +22,7 @@ export const theme = {
     heading: 1.1,
   },
   colors: {
-    gray: ['#efefef', '#dedede', '$666', '#333', '#111'],
+    gray: ['#efefef', '#dedede', '#666', '#333', '#111'],
     background: '#fff',
     primary: '#ae9142',
     secondary: '#302205',
