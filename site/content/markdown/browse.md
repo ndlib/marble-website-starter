@@ -97,7 +97,7 @@ components:
 - component: CardGroup
   props:
     - label: 'label'
-      value: 'Timeperiods'
+      value: 'Time Periods'
   components:
     - component: Card
       props:
