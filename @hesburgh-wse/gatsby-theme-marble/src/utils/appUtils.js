@@ -21,7 +21,7 @@ const items = [
   {
     id: 'sdfasdf',
     label: 'Absolution Under Fire',
-    target: 'https://marble.library.nd.edu/item/1976.057',
+    target: '/item/1976.057?a=0123456789',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: 'https://image-iiif.library.nd.edu:8182/iiif/2/1976.057%2F1976_057-v0001.tif/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/1976.057/manifest',
@@ -29,7 +29,7 @@ const items = [
   {
     id: 'sdfasdfsdf',
     label: 'Theophilus Parsons Journal Volume 2',
-    target: 'https://marble.library.nd.edu/item/theophilus-journal-v2',
+    target: '/item/theophilus-journal-v2?a=0123456789',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: 'https://image-iiif.library.nd.edu:8182/iiif/2/theophilus-journal-v1%2Fdefault.tif/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/theophilus-journal-v2/manifest',
@@ -44,7 +44,7 @@ const items = [
 const compilations = [
   {
     id: 'thing-1',
-    title: `Test 1`,
+    title: `My First Test`,
     visibility: 'public',
     user: user1,
     description: `This is a public collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,

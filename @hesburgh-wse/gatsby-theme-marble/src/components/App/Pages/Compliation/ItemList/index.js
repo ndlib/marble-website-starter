@@ -4,6 +4,7 @@ import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import { ownsPage } from 'utils/auth'
 import MaterialButton from 'components/Internal/MaterialButton'
+import CalloutBox from 'components/Internal/CalloutBox'
 import Ownership from './Ownership'
 import Item from './Item'
 import style from '../style.module.css'
@@ -30,7 +31,9 @@ const ItemList = ({ location, compilation, loginReducer }) => {
           </p> : null
       }
       <div>
-        <p>{description}</p>
+        <CalloutBox>
+          <p>{description}</p>
+        </CalloutBox>
       </div>
       <div className={style.itemGroup}>
         {
