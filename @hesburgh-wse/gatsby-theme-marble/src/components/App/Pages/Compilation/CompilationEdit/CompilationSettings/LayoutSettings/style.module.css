@@ -1,0 +1,12 @@
+.value {
+  font-weight: 600;
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+}
+
+.description {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 100px);
+}

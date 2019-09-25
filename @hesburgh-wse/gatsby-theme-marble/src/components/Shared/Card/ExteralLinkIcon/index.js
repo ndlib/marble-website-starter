@@ -5,7 +5,7 @@ import openInNew from 'assets/icons/svg/baseline-open_in_new-24px-white.svg'
 import style from './style.module.css'
 
 const ExteralLinkIcon = ({ target }) => {
-  if (isExternal(target)) {
+  if (target && isExternal(target)) {
     return (
       <span className={style.iconWrapper}>
         <img

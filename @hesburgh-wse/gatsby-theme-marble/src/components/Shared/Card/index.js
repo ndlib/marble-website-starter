@@ -17,35 +17,45 @@ const Card = ({
   cardClass,
   imageService,
 }) => {
+  const cardInternal = (
+    <article className='cardWrapper'>
+      <figure className='cardFigure'>
+        <Image
+          src={image || null}
+          service={imageService || null}
+          alt={label}
+          className='cardImage'
+        />
+        <ExteralLinkIcon target={target} />
+        <figcaption className='cardCaption'>
+          <Styled.h3>{label}</Styled.h3>
+          <div className='cardAdditional'>
+            {children}
+          </div>
+        </figcaption>
+      </figure>
+    </article>
+  )
+  if (!target) {
+    return (
+      <div className={cardClass}>
+        {cardInternal}
+      </div>
+    )
+  }
   return (
     <Link
       to={target}
       state={buildReferalState(location, referal)}
       className={cardClass}
     >
-      <article className='cardWrapper'>
-        <figure className='cardFigure'>
-          <Image
-            src={image || null}
-            service={imageService || null}
-            alt={label}
-            className='cardImage'
-          />
-          <ExteralLinkIcon target={target} />
-          <figcaption className='cardCaption'>
-            <Styled.h3>{label}</Styled.h3>
-            <div className='cardAdditional'>
-              {children}
-            </div>
-          </figcaption>
-        </figure>
-      </article>
+      {cardInternal}
     </Link>
   )
 }
 
 Card.propTypes = {
-  target: PropTypes.string.isRequired,
+  target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
   imageService: PropTypes.string,

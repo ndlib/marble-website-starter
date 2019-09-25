@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import MaterialButton from 'components/Internal/MaterialButton'
-import style from '../../../style.module.css'
+import style from '../style.module.css'
 
 const ViewerButtons = ({ iiifManifest }) => {
   if (iiifManifest) {

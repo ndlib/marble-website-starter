@@ -6,7 +6,7 @@ import LoginOrRedirect from 'components/App/Pages/User/LoginOrRedirect'
 import UserIndex from 'components/App/Pages/User/UserIndex'
 import UserEdit from 'components/App/Pages/User/UserEdit'
 import UserFollowing from 'components/App/Pages/User/UserFollowing'
-import Compilation from 'components/App/Pages/Compliation'
+import Compilation from 'components/App/Pages/Compilation'
 
 export const AppRouter = (props) => {
   return (
@@ -16,6 +16,7 @@ export const AppRouter = (props) => {
       <UserEdit path='/user/:username/edit' {...props} />
       <UserFollowing path='/user/:username/following' {...props} />
       <Compilation path='/compilation/:compilationId' {...props} />
+      <Compilation path='/compilation/:compilationId/edit' edit {...props} />
     </Router>
   )
 }

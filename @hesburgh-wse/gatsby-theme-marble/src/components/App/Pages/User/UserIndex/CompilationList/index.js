@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import Card from 'components/Shared/Card'
-import NewCompilationButton from './NewCompilationButton'
+// import NewCompilationButton from './NewCompilationButton'
 import NoCompilations from './NoCompilations'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import { COMPILATION_PAGE } from 'store/actions/displayActions'
@@ -18,7 +18,8 @@ const CompilationList = ({
     return (
       <React.Fragment>
         {
-          isOwner ? <p><NewCompilationButton /></p> : null
+          // TODO add 'New Compilation button'
+          // isOwner ? <p><NewCompilationButton /></p> : null
         }
         <DisplayViewToggle defaultDisplay={COMPILATION_PAGE}>
           {
@@ -33,7 +34,7 @@ const CompilationList = ({
                       label={c.title}
                       target={`/compilation/${c.id}`}
                       image={c.image || c.items[0].image}
-                    />
+                    >{c.description}</Card>
                     {
                       isOwner
                         ? <VisibilityLabel visibility={c.visibility} />

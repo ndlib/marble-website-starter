@@ -9,7 +9,7 @@ import {
 } from 'store/actions/displayActions'
 
 export const defaultState = {
-  [COMPILATION_PAGE]: DISPLAY_GRID,
+  [COMPILATION_PAGE]: DISPLAY_LIST,
   [COLLECTION_PAGE]: DISPLAY_GRID,
   [FOLLOWING_PAGE]: DISPLAY_LIST,
   [SEARCH_PAGE]: DISPLAY_LIST,

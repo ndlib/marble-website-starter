@@ -46,6 +46,7 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.4.2",
     "react": "^16.9",
+    "react-beautiful-dnd": "^11.0.5",
     "react-dev-utils": "^9.0.2",
     "react-dom": "^16.8.5",
     "react-google-maps": "^9.4.5",

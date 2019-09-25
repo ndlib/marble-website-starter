@@ -1,14 +1,14 @@
-form.profileEdit {
+form.edit {
   margin: 0 auto;
   max-width: 100%;
   width: 800px;
 }
 
-input.profileEditText {
+input.editText {
   background: #fff;
   border: none;
   box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
-  font: 19px helvetica;
+  font-size: 19px;
   height: 40px;
   margin-bottom: 2rem;
   max-width: 100%;
@@ -18,34 +18,55 @@ input.profileEditText {
 
 }
 
-textarea.profileTextArea {
+textarea.editTextArea {
   background: #fff;
   border: none;
   box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
-  font: 19px helvetica;
-  height: 8rem;
+  font-size: 16px;
+  height: 14rem;
+  line-height: 1.45rem;
   margin-bottom: 2rem;
   max-width: 100%;
   min-height: 6rem;
-  padding-left: 10px;
+  overflow: auto;
+  padding: 1rem;
   resize: vertical;
   vertical-align: top;
   width: 800px;
 }
-
-input.profileEditText:disabled {
+textarea.editTextArea:disabled,
+input.editText:disabled {
   background: #efefef;
+  cursor: not-allowed;
 }
 
-label.profileLabel {
+.editLabel {
   display: block;
   margin-bottom: .5rem;
+}
+
+.editGroup {
+  background: #fff;
+  border: none;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+  margin-bottom: 2rem;
+  max-width: 100%;
+  padding: 1rem;
+  width: 800px;
+}
+
+.editGroup input {
+  font-size: 16px;
+  height: 36px;
+  margin-bottom: 1rem;
+  min-width: 100%;
+  padding: 0 0.5rem;
+  vertical-align: top;
 }
 
 .buttonGroup {
   text-align: right;
   max-width: 100%;
-  width: 800px;
 }
 
 .buttonGroup button {

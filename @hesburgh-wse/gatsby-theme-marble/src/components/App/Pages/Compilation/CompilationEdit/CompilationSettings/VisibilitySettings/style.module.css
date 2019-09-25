@@ -1,0 +1,9 @@
+.visibilityLabel {
+  display: inline-block;
+  width: 90px;
+}
+.description {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 90px);
+}
