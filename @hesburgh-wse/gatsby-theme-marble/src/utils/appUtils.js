@@ -86,7 +86,7 @@ const compilations = [
     display: `annotated`,
     visibility: 'public',
     user: user1,
-    description: `This is a public collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    description: `This is a public collection.`,
     items: items,
   },
   {
@@ -95,8 +95,8 @@ const compilations = [
     display: `default`,
     visibility: 'shared',
     user: user1,
-    description: `This is a shared collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-    items: items.slice(1).concat(items.slice(0, 1)),
+    description: `This is a shared collection.`,
+    items: items,
   },
   {
     id: 'thing-3',
@@ -104,8 +104,8 @@ const compilations = [
     display: `annotated`,
     visibility: 'private',
     user: user1,
-    description: `This is a private collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-    items: items.slice(2).concat(items.slice(0, 2)),
+    description: `This is a private collection.`,
+    items: items,
   },
   {
     id: 'thing-4',
@@ -113,8 +113,8 @@ const compilations = [
     display: `default`,
     visibility: 'public',
     user: user2,
-    description: `This is a public collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-    items: items.slice(3).concat(items.slice(0, 3)),
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    items: items,
   },
   {
     id: 'thing-5',
@@ -123,7 +123,7 @@ const compilations = [
     visibility: 'shared',
     user: user2,
     description: ``,
-    items: items.slice(4).concat(items.slice(0, 4)),
+    items: items,
   },
   {
     id: 'thing-6',
