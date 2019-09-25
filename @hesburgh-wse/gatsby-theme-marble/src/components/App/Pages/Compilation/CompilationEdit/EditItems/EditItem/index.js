@@ -4,7 +4,7 @@ import EditItemForm from './EditItemForm'
 import Card from 'components/Shared/Card'
 
 const EditItem = (props) => {
-  const { label, description, image, iiifManifest, target } = props
+  const { label, description, image } = props
   const [editing, toggleEdit] = useState(false)
   return (
     <div className='list'>
@@ -23,6 +23,7 @@ const EditItem = (props) => {
               toggleEdit(true)
             }}
             style={{ cursor: 'pointer' }}
+            role='button'
           >
             <Card
               label={label}
