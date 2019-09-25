@@ -1,0 +1,18 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: 80%;
+}
+.showItems .items,
+.showSettings .showSettings{
+  display: block;
+}
+.showItems .settings,
+.showSettings .items {
+  display: none;
+}
+
+@media screen and ( max-width: 1200px ) {
+  .wrapper {
+    max-width: 100%;
+  }
+}

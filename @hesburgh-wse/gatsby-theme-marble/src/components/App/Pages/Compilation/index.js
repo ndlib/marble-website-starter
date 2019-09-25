@@ -2,22 +2,38 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import { ownsPage } from 'utils/auth'
-import ItemList from './ItemList'
+import CompilationLayout from './CompilationLayout'
+import CompilationView from './CompilationView'
+import CompilationEdit from './CompilationEdit'
 import CompilationUnavailable from './CompilationUnavailable'
 import { getCompilation } from 'utils/appUtils'
 
-// eslint-disable-next-line complexity
-const Compilation = ({ location, compilationId, loginReducer }) => {
+const Compilation = ({ compilationId, edit, location, loginReducer }) => {
   const compilation = getCompilation(compilationId)
   const username = typy(compilation, 'user.username').safeString
   const showCompilation = shouldShow(compilation, ownsPage(loginReducer, username))
   if (showCompilation) {
     return (
-      <ItemList
+      <CompilationLayout
         compilation={compilation}
+        edit={edit}
         location={location}
         loginReducer={loginReducer}
-      />
+      >
+        {
+          edit
+            ? <CompilationEdit
+              compilation={compilation}
+              location={location}
+              loginReducer={loginReducer}
+            />
+            : <CompilationView
+              compilation={compilation}
+              location={location}
+              loginReducer={loginReducer}
+            />
+        }
+      </CompilationLayout>
     )
   }
   return (
@@ -30,6 +46,7 @@ const Compilation = ({ location, compilationId, loginReducer }) => {
 
 Compilation.propTypes = {
   compilationId: PropTypes.string,
+  edit: PropTypes.bool,
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

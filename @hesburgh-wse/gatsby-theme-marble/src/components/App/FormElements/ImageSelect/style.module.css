@@ -1,0 +1,59 @@
+.selectedImage {
+  background-color: #efefef;
+  display: inline-block;
+  margin: 0;
+  margin-right: 1rem;
+  vertical-align: top;
+  width: calc(40% - 1rem);
+}
+.selectedImage img {
+  display: block;
+  margin: 0 auto;
+  max-height: 200px;
+  max-width: 100%;
+}
+
+.imageOptions {
+  border: 1px solid #efefef;
+  display: inline-block;
+  margin: 0;
+  vertical-align: top;
+  width: 60%;
+  max-height: 600px;
+  min-height: 200px;
+  overflow-y: scroll;
+}
+.imageOption {
+  display: inline-block;
+  height: 110px;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  width: 110px;
+}
+.imageOption input {
+  display: none;
+}
+
+.imageOption input ~ img {
+  height: 110px;
+  object-fit: cover;
+  width: 110px;
+}
+.imageOption input:checked ~ img {
+  outline-color: yellow;
+  outline-offset: -3px;
+  outline-width: 3px;
+  outline-style: solid;
+}
+
+@media screen and (max-width: 680px) {
+  .selectedImage {
+    margin-bottom: 1rem;
+  }
+  .selectedImage,
+  .imageOptions {
+    display: block;
+    width: 100%;
+  }
+}
