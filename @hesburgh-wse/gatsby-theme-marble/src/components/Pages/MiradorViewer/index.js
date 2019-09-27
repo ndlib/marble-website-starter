@@ -15,7 +15,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const sideBarOpenByDefault = qs.sidebar !== 'false'
   const thumbnailNavigationPosition = qs.thumbnails === 'true' ? 'far-bottom' : 'off'
   const fullscreen = qs.fullscreen !== 'false'
-  const canvasIndex = qs.cv || 0
+  const canvasIndex = parseInt(qs.cv, 10) || 0
   const viewerView = qs.view || 'default'
   const config = {
     id: 'test',
@@ -39,6 +39,9 @@ const MiradorViewerPage = ({ data, location }) => {
       },
 
     ],
+    workspace: {
+      showZoomControls: true,
+    },
     workspaceControlPanel: {
       enabled: false,
     },
