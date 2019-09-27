@@ -4,6 +4,14 @@ import {
   RefinementListFilter,
 } from 'searchkit'
 
+const listOrder = (list) => {
+  list.sort((a, b) => {
+    return a.key.localeCompare(b.key, undefined, { numeric: true })
+  })
+
+  return list
+}
+
 const SearchRefinementListFilter = ({ field, label, operator, defaultSearch }) => {
   if (defaultSearchIsThisField(defaultSearch, field)) {
     return null
@@ -19,6 +27,7 @@ const SearchRefinementListFilter = ({ field, label, operator, defaultSearch }) =
       id={label.replace(' ', '').toLowerCase()}
       title={label}
       operator={operator}
+      bucketsTransform={listOrder}
     />
   )
 }
