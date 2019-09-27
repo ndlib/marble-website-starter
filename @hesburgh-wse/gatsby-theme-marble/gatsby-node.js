@@ -415,10 +415,35 @@ const defaultLayouts = {
     },
   ],
   collection: [
-    { component: 'ActionButtons' },
-    { component: 'ManifestDescription' },
-    { component: 'ManifestMetaData' },
-    { component: 'ChildManifests' },
+    { component: 'MarkdownHtmlContent' },
+    {
+      component: 'MultiColumn',
+      props: [
+        { label: 'columns', value: '5' },
+      ],
+      components: [
+        {
+          component: 'Column',
+          props: [
+            { label: 'colSpan', value: '2' },
+          ],
+          components: [
+            { component: 'ActionButtons' },
+            { component: 'ManifestDescription' },
+            { component: 'ManifestMetaData' },
+          ],
+        },
+        {
+          component: 'Column',
+          props: [
+            { label: 'colSpan', value: '3' },
+          ],
+          components: [
+            { component: 'ChildManifests' },
+          ],
+        },
+      ],
+    },
   ],
   item: [
     { component: 'MarkdownHtmlContent' },

@@ -19,7 +19,7 @@ export const ChildManifests = ({ iiifManifest, displayReducer }) => {
                 key={manifest.id}
                 iiifManifest={manifest}
               >
-                <div>{manifest.description}</div>
+                <div>{manifest.summary}</div>
               </ManifestCard>
             )
           })

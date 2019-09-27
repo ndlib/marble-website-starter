@@ -6,7 +6,7 @@ import Card from 'components/Shared/Card'
 // import NewCompilationButton from './NewCompilationButton'
 import NoCompilations from './NoCompilations'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
-import { COMPILATION_PAGE } from 'store/actions/displayActions'
+import { COMPILATIONS_LISTING_PAGE } from 'store/actions/displayActions'
 import style from './style.module.css'
 
 const CompilationList = ({
@@ -21,7 +21,7 @@ const CompilationList = ({
           // TODO add 'New Compilation button'
           // isOwner ? <p><NewCompilationButton /></p> : null
         }
-        <DisplayViewToggle defaultDisplay={COMPILATION_PAGE}>
+        <DisplayViewToggle defaultDisplay={COMPILATIONS_LISTING_PAGE}>
           {
             typy(compilations).safeArray
               .filter(c => {
