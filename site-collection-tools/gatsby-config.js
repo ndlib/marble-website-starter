@@ -3,7 +3,7 @@ module.exports = {
   siteMetadata: configuration.siteMetadata,
   plugins: [
     {
-      resolve: '@hesburgh-wse/gatsby-theme-marble',
+      resolve: '@ndlib/gatsby-theme-marble',
       options: {
         useLogin: true,
         useUV: true,

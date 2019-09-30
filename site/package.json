@@ -10,7 +10,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@hesburgh-wse/gatsby-theme-marble": "*",
+    "@ndlib/gatsby-theme-marble": "*",
     "gatsby": "^2.13.61",
     "gatsby-plugin-manifest": "^2.2.5",
     "gatsby-plugin-robots-txt": "^1.5.0",

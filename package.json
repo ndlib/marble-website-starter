@@ -1,8 +1,8 @@
 {
   "private": true,
   "workspaces": [
-    "@hesburgh-wse/gatsby-starter-marble",
-    "@hesburgh-wse/gatsby-theme-marble",
+    "@ndlib/gatsby-starter-marble",
+    "@ndlib/gatsby-theme-marble",
     "site",
     "site-collection-tools",
     "test-site",
