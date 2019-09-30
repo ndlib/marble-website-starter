@@ -40,7 +40,7 @@ yarn install
 
 ### Run unit tests:
 ```
-yarn workspace @hesburgh-wse/gatsby-theme-marble watch
+yarn workspace @ndlib/gatsby-theme-marble watch
 ```
 
 ### Running locally for development:
@@ -60,12 +60,12 @@ _Note: You'll also see a second link:_ `http://localhost:8000/___graphql`. This 
 
 #### Marble Starter:
 ```
-yarn workspace @hesburgh-wse/gatsby-starter-marble develop
+yarn workspace @ndlib/gatsby-starter-marble develop
 ```
 
 Alternatively, if you would like to run `site` and `gatsby-starter-marble` at the same time, you may open a second terminal window and specify a port after the development command:
 ```
-yarn workspace @hesburgh-wse/gatsby-starter-marble develop -p 8001
+yarn workspace @ndlib/gatsby-starter-marble develop -p 8001
 ```
 The starter will then be available at `http://localhost:8000` and it's graphql tool at `http://localhost:8000/___graphql`.
 
@@ -73,7 +73,7 @@ The starter will then be available at `http://localhost:8000` and it's graphql t
 
 ```
 marble-website-starter
-↳ @hesburgh-wse           // Directory scope for publishing to npm
+↳ @ndlib           // Directory scope for publishing to npm
   ↳ gatsby-theme-marble   // The npm module for the Gatsby Theme for a Marble website
   ↳ gatsby-starter-marble // A stand alone Gatsby Starter that consumes `gatsby-theme-marble`
 ↳ site                    // The Gatsby site for Marble that consumes `gatsby-theme-marble`
@@ -104,7 +104,7 @@ Edit the root `package.json` and add the name [NEW_SITE_NAME] to the list of wor
 #### Use the Starter:
 From within the project root run:
 ```
-gatsby new [NEW_SITE_NAME] @hesburgh-wse/gatsby-starter-marble
+gatsby new [NEW_SITE_NAME] @ndlib/gatsby-starter-marble
 ```
 _Note: Gatsby Starters need to live in their own repository, so the code will eventually be split out to make the starter more accessible._
 
@@ -117,19 +117,19 @@ This project is deployed to AWS using a [Code Pipeline](https://aws.amazon.com/c
 Be sure to increment the package to the appropriate version using one of the following:
 
 ```
-yarn workspace @hesburgh-wse/gatsby-theme-marble version --patch
+yarn workspace @ndlib/gatsby-theme-marble version --patch
 ```
 
 ```
-yarn workspace @hesburgh-wse/gatsby-theme-marble version --minor
+yarn workspace @ndlib/gatsby-theme-marble version --minor
 ```
 
 ```
-yarn workspace @hesburgh-wse/gatsby-theme-marble version --major
+yarn workspace @ndlib/gatsby-theme-marble version --major
 ```
 
 ### Publish to NPM
 ```
-cd @hesburgh-wse/gatsby-theme-marble
+cd @ndlib/gatsby-theme-marble
 npm publish --access public
 ```
