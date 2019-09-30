@@ -39,7 +39,7 @@ export const ManifestCard = (props) => {
         imageService={imageService || null}
         {...props}
       >
-        <div>{iiifManifest.description}</div>
+        <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
       </Card>
       <TypeLabel iiifManifest={iiifManifest} />
     </div>

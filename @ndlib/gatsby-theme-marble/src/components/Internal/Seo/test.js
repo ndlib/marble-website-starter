@@ -9,7 +9,6 @@ import Seo, {
   getDescriptionFromMetadata,
 } from './'
 import SeoContent from 'components/Internal/Seo/SeoContent'
-
 describe('Seo', () => {
   const siteMetadata = {
     languages: {
@@ -66,7 +65,9 @@ describe('Seo', () => {
     const description = 'Direct Description'
     const frontmatter = {
       iiifJson: {
-        summary: 'Manifest Description',
+        summary: {
+          none: ['Manifest Description'],
+        },
       },
     }
     const siteMetadata = {
