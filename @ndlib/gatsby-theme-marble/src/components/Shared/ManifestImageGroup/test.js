@@ -6,6 +6,8 @@ import ManifestImage from 'components/Shared/ManifestImage'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
 
+console.error = jest.fn()
+
 const manifest = {
   id: 'id',
   slug: 'slug',

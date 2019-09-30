@@ -381,7 +381,7 @@ const defaultLayouts = {
               components: [
                 {
                   component: 'SearchResults',
-                  props: [{ label: 'defaultDisplay', value: 'grid' }],
+                  props: [{ label: 'defaultDisplay', value: 'list' }],
                 },
               ],
             },
