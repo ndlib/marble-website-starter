@@ -74,9 +74,10 @@ export const getImage = (frontmatter, defaultImage) => {
 
 // eslint-disable-next-line complexity
 export const getDescription = (description, frontmatter, siteMetadata) => {
+  const lang = typy(siteMetadata, 'languages.default').safeString || 'none'
   const metaDescription = description ||
     typy(frontmatter, 'description').safeString ||
-    typy(frontmatter, 'iiifJson.summary').safeString ||
+    typy(frontmatter, `iiifJson.summary[${lang}][0]`).safeString ||
     getDescriptionFromMetadata(frontmatter, siteMetadata) ||
     typy(siteMetadata, 'description').safeString
   if (metaDescription.length > 150) {

@@ -53,7 +53,7 @@ components:
           - label: "image"
             fileValue: "./images/06.jpg"
           - label: "target"
-            value: "/browse/timeperiods"
+            value: "/search?timeperiod[0]=0-5th%20Century"
       - component: Card
         props:
           - label: "label"
@@ -61,7 +61,7 @@ components:
           - label: "image"
             fileValue: "./images/05.jpg"
           - label: "target"
-            value: "/browse/places"
+            value: "/search?place[0]=North%20America"
       - component: Card
         props:
           - label: "label"
@@ -69,5 +69,5 @@ components:
           - label: "image"
             fileValue: "./images/04.jpg"
           - label: "target"
-            value: "/browse/themes"
+            value: "/search?theme[0]=Historical%20Artifacts"
 ---
