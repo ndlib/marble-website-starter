@@ -5,7 +5,7 @@ import style from './style.module.css'
 
 const CardGroup = ({ label, children }) => {
   return (
-    <div className={style.cardGroup}>
+    <div className={`${style.cardGroup} grid`}>
       <h2>{label}</h2>
       <ResponsiveGridList measureBeforeMount>
         {
