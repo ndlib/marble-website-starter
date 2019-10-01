@@ -8,8 +8,22 @@ import {
   DISPLAY_LIST,
 } from 'store/actions/displayActions'
 
-import listIcon from 'assets/icons/svg/baseline-view_list-24px.svg'
-import gridIcon from 'assets/icons/svg/baseline-view_module-24px.svg'
+import listIconActive from 'assets/icons/svg/baseline-view_list-24px-white.svg'
+import gridIconActive from 'assets/icons/svg/baseline-view_module-24px-white.svg'
+import listIconInactive from 'assets/icons/svg/baseline-view_list-24px.svg'
+import gridIconInactive from 'assets/icons/svg/baseline-view_module-24px.svg'
+const options = [
+  {
+    display: DISPLAY_LIST,
+    inactiveIcon: listIconInactive,
+    activeIcon: listIconActive,
+  },
+  {
+    display: DISPLAY_GRID,
+    inactiveIcon: gridIconInactive,
+    activeIcon: gridIconActive,
+  },
+]
 
 test('DisplayViewToggle', () => {
   const page = 'somePage'
@@ -35,12 +49,8 @@ test('DisplayViewToggle', () => {
 
   expect(wrapper.find('.displayViewToggleGroup').exists()).toBeTruthy()
   expect(wrapper.find(ToggleButton).length).toEqual(2)
-  expect(wrapper.find(ToggleButton).at(0).props().icon).toEqual(listIcon)
-  expect(wrapper.find(ToggleButton).at(0).props().option).toEqual(DISPLAY_LIST)
-  expect(wrapper.find(ToggleButton).at(0).props().active).toEqual(false)
-  expect(wrapper.find(ToggleButton).at(1).props().icon).toEqual(gridIcon)
-  expect(wrapper.find(ToggleButton).at(1).props().option).toEqual(DISPLAY_GRID)
-  expect(wrapper.find(ToggleButton).at(1).props().active).toEqual(true)
+  expect(wrapper.find(ToggleButton).at(0).props().option).toEqual(options[0])
+  expect(wrapper.find(ToggleButton).at(1).props().option).toEqual(options[1])
   expect(wrapper.find(DisplayViewToggleGridList).props().activeSettings).toEqual(activeSettings)
   expect(wrapper.find('.kids').text()).toEqual('Child Element')
 })

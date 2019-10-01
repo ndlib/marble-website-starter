@@ -10,28 +10,39 @@ import {
   DISPLAY_LIST,
   setGridListView,
 } from 'store/actions/displayActions'
-
-import listIcon from 'assets/icons/svg/baseline-view_list-24px.svg'
-import gridIcon from 'assets/icons/svg/baseline-view_module-24px.svg'
+import listIconActive from 'assets/icons/svg/baseline-view_list-24px-white.svg'
+import gridIconActive from 'assets/icons/svg/baseline-view_module-24px-white.svg'
+import listIconInactive from 'assets/icons/svg/baseline-view_list-24px.svg'
+import gridIconInactive from 'assets/icons/svg/baseline-view_module-24px.svg'
 
 export const DisplayViewToggleInternal = ({ page, activeSettings, children, layoutClass, displayReducer, dispatch }) => {
-  const activeStyle = displayReducer[page]
-  const options = [DISPLAY_LIST, DISPLAY_GRID]
+  const options = [
+    {
+      display: DISPLAY_LIST,
+      inactiveIcon: listIconInactive,
+      activeIcon: listIconActive,
+    },
+    {
+      display: DISPLAY_GRID,
+      inactiveIcon: gridIconInactive,
+      activeIcon: gridIconActive,
+    },
+  ]
 
   return (
     <div className={layoutClass}>
       <div className={style.displayViewToggleGroup}>
         {
           options.map(opt => {
+            const isActive = (displayReducer[page] === opt.display)
             return (
               <ToggleButton
-                key={opt}
-                icon={opt === DISPLAY_LIST ? listIcon : gridIcon}
+                key={opt.display}
                 option={opt}
                 action={() => {
-                  dispatch(setGridListView(page, opt))
+                  dispatch(setGridListView(page, opt.display))
                 }}
-                active={activeStyle === opt}
+                active={isActive}
               />
             )
           })

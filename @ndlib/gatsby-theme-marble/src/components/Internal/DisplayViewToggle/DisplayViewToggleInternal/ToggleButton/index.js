@@ -1,23 +1,31 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import style from './style.module.css'
-export const ToggleButton = ({ icon, option, action, active }) => {
+import { jsx } from 'theme-ui'
+
+export const ToggleButton = ({ option, action, active }) => {
   return (
     <input
       type='image'
-      src={icon}
-      className={active ? style.selected : style.notSelected}
-      alt={`${option} view`}
+      src={active ? option.activeIcon : option.inactiveIcon}
+      alt={`${option.display} view`}
       onClick={() => {
         action(option)
+      }}
+      sx={active ? {
+        backgroundColor: 'primary',
+        cursor: 'default',
+      } : {
+        backgroundColor:'#dedede',
+        opacity: '.3',
       }}
     />
   )
 }
 
 ToggleButton.propTypes = {
-  icon: PropTypes.string.isRequired,
-  option: PropTypes.string.isRequired,
+  option: PropTypes.object.isRequired,
   action: PropTypes.func.isRequired,
   active: PropTypes.bool,
 }

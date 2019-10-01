@@ -3,15 +3,17 @@ import { shallow } from 'enzyme'
 import ToggleButton from './'
 
 test('ToggleButton', () => {
-  const icon = 'test.svg'
-  const option = 'option 1'
+  const option = {
+    display: 'option 1',
+    inactiveIcon: 'inactive.svg',
+    activeIcon: 'active.svg',
+  }
   const action = jest.fn()
   const active = false
-  const wrapper = shallow(<ToggleButton icon={icon} option={option} action={action} active={active} />)
-
-  expect(wrapper.find('input.notSelected').props().type).toEqual('image')
-  expect(wrapper.find('input').props().src).toEqual(icon)
-  expect(wrapper.find('input').props().alt).toEqual('option 1 view')
-  wrapper.find('input').simulate('click')
+  const wrapper = shallow(<ToggleButton option={option} action={action} active={active} />)
+  expect(wrapper.find('EmotionCssPropInternal').props().type).toEqual('image')
+  expect(wrapper.find('EmotionCssPropInternal').props().src).toEqual('inactive.svg')
+  expect(wrapper.find('EmotionCssPropInternal').props().alt).toEqual('option 1 view')
+  wrapper.find('EmotionCssPropInternal').simulate('click')
   expect(action).toHaveBeenCalled()
 })
