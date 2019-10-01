@@ -43,6 +43,13 @@ code {
   background-color: #efefef;
 }
 
+input[type=image]:focus {
+  outline: none;
+}
+input[type=image]:hover {
+  opacity: 1;
+}
+
 .accessibilityOnly {
   left:-999px;
   position:absolute;
