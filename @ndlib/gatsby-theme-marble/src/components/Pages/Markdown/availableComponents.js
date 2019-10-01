@@ -1,4 +1,5 @@
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
+import CalloutBox from 'components/Shared/CalloutBox'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import ChildManifests from 'components/Shared/ChildManifests'
@@ -19,13 +20,13 @@ import SearchBox from 'components/Shared/SearchBox'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
 import SearchSortingSelector from 'components/Shared/SearchTools/SearchSortingSelector'
-
 import SearchDynamicRangeFilter from 'components/Shared/SearchTools/SearchDynamicRangeFilter'
 import SearchMenuFilter from 'components/Shared/SearchTools/SearchMenuFilter'
 import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefinementListFilter'
 
 export const availableComponents = {
   ActionButtons: ActionButtonGroup,
+  CalloutBox: CalloutBox,
   Card: Card,
   CardGroup: CardGroup,
   ChildManifests: ChildManifests,

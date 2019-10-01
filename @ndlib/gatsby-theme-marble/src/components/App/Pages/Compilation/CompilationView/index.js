@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import MaterialButton from 'components/Internal/MaterialButton'
-import CalloutBox from 'components/Internal/CalloutBox'
+import CalloutBox from 'components/Shared/CalloutBox'
 import { ownsPage } from 'utils/auth'
 import CompilationDisplay from './CompilationDisplay'
 

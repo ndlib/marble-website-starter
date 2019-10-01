@@ -59,12 +59,13 @@ code {
 
 .sk-search-box {
   box-shadow: 0px 2px 6px 0px rgba(0,0,0,.4);
-  margin: 0 auto;
-  width: 80%;
+  margin: 1rem auto;
+}
+.sk-search-box input.sk-search-box__text {
+  font-size: 19px;
 }
 .sk-selected-filters {
   margin: 0 auto;
-  width: 80%;
 }
 
 .sk-search-box input.sk-search-box__text {

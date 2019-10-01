@@ -3,10 +3,13 @@ slug: index
 
 components:
   - component: MarkdownHtmlContent
-  - component: SearchBox
-    props:
-      - label: 'message'
-        value: 'Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.'
+  - component: CalloutBox
+    components:
+      - component: MarkdownHtmlContent
+        props:
+          - label: 'html'
+            value: 'Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.'
+      - component: SearchBox
   - component: CardGroup
     props:
       - label: "label"
