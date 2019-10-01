@@ -19,7 +19,6 @@
   border: none;
   background: #fff;
   margin: 0 auto;
-  width: calc(100% - 40px);
 }
 
 .searchField {
