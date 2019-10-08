@@ -1,35 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
-import { handleLogin } from 'store/actions/loginActions'
 import { isLoggedIn } from 'utils/auth'
+import OktaLogin from './OktaLogin'
+import LogOut from './LogOut'
 import MaterialButton from 'components/Internal/MaterialButton'
 import style from './style.module.css'
 
-export const LoginArea = ({ dispatch, loginReducer }) => {
-  const message = (isLoggedIn(loginReducer)) ? (<p>Hi {loginReducer.user.fullname}</p>) : ''
-
+export const LoginArea = ({ loginReducer }) => {
+  if (isLoggedIn(loginReducer)) {
+    return (
+      <LogOut />
+    )
+  }
   return (
     <div>
-      { message }
       <form className={style.loginArea}>
-        <p>
-          For this demo, please log in with the username <code>gatsby</code> and the
-          password <code>demo</code>.
-        </p>
-        <p>
-          <MaterialButton
-            id='okta'
-            onClick={(e) => {
-              e.preventDefault()
-              dispatch(handleLogin())
-              navigate(`/user`)
-            }}
-            primary
-            wide
-          >Login with Notre Dame Campus Authentication</MaterialButton>
-        </p>
+        <OktaLogin />
         <p>
           <MaterialButton
             disabled
@@ -53,18 +40,12 @@ export const LoginArea = ({ dispatch, loginReducer }) => {
 
 LoginArea.propTypes = {
   loginReducer: PropTypes.object.isRequired,
-  dispatch: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
   return { ...state }
 }
 
-const mapDispatchToProps = dispatch => {
-  return { dispatch }
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
 )(LoginArea)

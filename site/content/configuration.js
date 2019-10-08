@@ -27,6 +27,10 @@ module.exports = {
 
     // paths
     useLogin: true,
+    authClient: {
+      url: `https://dev-283656.okta.com`,
+      clientId: `0oa1i7w7sxc1DGz9C357`,
+    },
     searchPath: 'search',
 
     // branding

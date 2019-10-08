@@ -173,6 +173,10 @@ exports.sourceNodes = ({ actions }) => {
     default: String
     allowed: [String]
   }
+  type authClient @dontInfer {
+    url: String
+    clientId: String
+  }
   type SiteMetadata {
     universalViewerBaseURL: String
     googleMapApiURL: String
@@ -180,6 +184,7 @@ exports.sourceNodes = ({ actions }) => {
     footerText: String
     menus: [menus]
     useLogin: Boolean
+    authClient: authClient
     searchPath: String
     languages: languages
   }

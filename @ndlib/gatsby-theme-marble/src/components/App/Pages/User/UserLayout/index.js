@@ -8,6 +8,7 @@ import Column from 'components/Shared/Column'
 import Gravatar from 'components/Internal/Gravatar'
 import FollowButton from './FollowButton'
 import EditUserButton from './EditUserButton'
+import LogOut from 'components/Shared/LoginArea/LogOut'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 const UserLayout = ({ user, children, location, loginReducer }) => {
@@ -35,6 +36,11 @@ const UserLayout = ({ user, children, location, loginReducer }) => {
             {
             /* Follow or Edit button */
               isOwner ? <EditUserButton username={user.username} /> : <FollowButton username={user.username} showButton={isLoggedIn(loginReducer)} />
+            }
+          </div>
+          <div>
+            {
+              isOwner ? <LogOut /> : null
             }
           </div>
           <div className={style.bio}>{user.bio}</div>
