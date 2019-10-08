@@ -28,7 +28,7 @@ export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
     const authClientSettings = {
       url: url,
       clientId: clientId,
-      redirectUri: `http://localhost:8000/user`, // `${site.siteMetadata.siteUrl}/user`
+      redirectUri: `${location.origin}/user`, // `${site.siteMetadata.siteUrl}/user`
     }
     if (!loginReducer.authClientSettings) {
       dispatch(setAuthClient(authClientSettings))
@@ -64,22 +64,28 @@ export default connect(
 )(AuthWrapper)
 
 export const putLoggedInUserInStore = (loginReducer, location, dispatch) => {
-  const authClient = new OktaAuth({ ...loginReducer.authClientSettings })
-  authClient.tokenManager.get('idToken')
-    .then(idToken => {
-      // If ID Token exists, output it to the console
-      if (idToken) {
-        if (loginReducer.status === 'STATUS_NOT_LOGGED_IN') {
-          dispatch(handleLogin(idToken))
-        }
-      // If ID Token isn't found, try to parse it from the current URL
-      } else if (location.hash) {
-        authClient.token.parseFromUrl()
-          .then(idToken => {
-            // Store parsed token in Token Manager
-            authClient.tokenManager.add('idToken', idToken)
-            dispatch(handleLogin(idToken))
-          })
-      }
-    })
+  if (loginReducer.authClientSettings) {
+    const authClient = new OktaAuth({ ...loginReducer.authClientSettings })
+    try {
+      authClient.tokenManager.get('idToken')
+        .then(idToken => {
+          // If ID Token exists, output it to the console
+          if (idToken) {
+            if (loginReducer.status === 'STATUS_NOT_LOGGED_IN') {
+              dispatch(handleLogin(idToken))
+            }
+          // If ID Token isn't found, try to parse it from the current URL
+          } else if (location.hash) {
+            authClient.token.parseFromUrl()
+              .then(idToken => {
+                // Store parsed token in Token Manager
+                authClient.tokenManager.add('idToken', idToken)
+                dispatch(handleLogin(idToken))
+              })
+          }
+        })
+    } catch {
+      console.error('Could not access tokenManager.')
+    }
+  }
 }

@@ -7,7 +7,7 @@ import {
 } from 'store/actions/loginActions'
 
 export const defaultState = {
-  authClient: null,
+  authClientSettings: null,
   status: STATUS_NOT_LOGGED_IN,
   user: {},
 }
