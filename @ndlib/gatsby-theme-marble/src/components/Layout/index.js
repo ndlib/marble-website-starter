@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Layout as ThemeLayout } from 'theme-ui'
+import AuthWrapper from './AuthWrapper'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
 import ContentWrapper from './ContentWrapper'
@@ -18,24 +19,28 @@ const Layout = ({
 }) => {
   return (
     <ThemeLayout>
-      <PrivateRoute
+      <AuthWrapper
         location={location}
-        requireLogin={requireLogin}
       >
-        <PageWrapper location={location}>
-          <CornerBanner />
-          <ContentWrapper
-            noPadding={noPadding}
-          >
-            <PageContent
-              title={title}
-              location={location}
+        <PrivateRoute
+          location={location}
+          requireLogin={requireLogin}
+        >
+          <PageWrapper location={location}>
+            <CornerBanner />
+            <ContentWrapper
+              noPadding={noPadding}
             >
-              {children}
-            </PageContent>
-          </ContentWrapper>
-        </PageWrapper>
-      </PrivateRoute>
+              <PageContent
+                title={title}
+                location={location}
+              >
+                {children}
+              </PageContent>
+            </ContentWrapper>
+          </PageWrapper>
+        </PrivateRoute>
+      </AuthWrapper>
     </ThemeLayout>
   )
 }

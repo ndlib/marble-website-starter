@@ -2,17 +2,32 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { LoginArea } from './'
 import MaterialButton from 'components/Internal/MaterialButton'
+import LogOut from './LogOut'
+import OktaLogin from './OktaLogin'
 import * as auth from 'utils/auth'
+describe('LoginArea', () => {
+  test('it renders the log out button when the user is logged in', () => {
+    jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
+    const loginReducer = {
+      user: {
+        name: 'username',
+      },
+    }
+    const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)
 
-test('it renders the login page with the user logged in', () => {
-  jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
-  const loginReducer = {
-    user: {
-      fullname: 'username',
-    },
-  }
-  const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)
+    expect(wrapper.find('form').exists()).toBeFalsy()
+    expect(wrapper.find(LogOut).exists()).toBeTruthy()
+  })
 
-  expect(wrapper.find('form').exists()).toBeTruthy()
-  expect(wrapper.find(MaterialButton).length).toEqual(3)
+  test('it renders the login form when the user is not logged in', () => {
+    jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => false)
+    const loginReducer = {
+      user: null,
+    }
+    const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)
+
+    expect(wrapper.find('form').exists()).toBeTruthy()
+    expect(wrapper.find(OktaLogin).exists()).toBeTruthy()
+    expect(wrapper.find(MaterialButton).length).toEqual(2)
+  })
 })

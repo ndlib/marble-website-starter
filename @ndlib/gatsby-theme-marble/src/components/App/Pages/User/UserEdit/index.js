@@ -74,7 +74,7 @@ const UserEdit = (props) => {
             id='profileGravatar'
             className={style.gravatarEdit}
           >
-            <Gravatar email='rfox2@nd.edu' size={100} />
+            <Gravatar email={user.email} size={100} />
             <span>User icons are provided by <a href='https://en.gravatar.com'>Gravatar</a>, the globally recognized avatar service.</span>
           </div>
         </div>
