@@ -76,13 +76,13 @@
     "manifest_ids": [
       "nduspec_eadks65h991878/manifest",
       "collection/theophilus",
-      "nduspec_ead7s75db80w4r/manifest"
+      "003818138/manifest"
     ],
     "tag": "themeTag.keyword:historicaljournals",
     "tagField": "themeTag.keyword",
     "label": "Historical Journals",
     "description": "A collection of historical journals, letters and other personal correspondence",
-    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/nduspec_ead7s75db80w4r%2FMSN-COL_9405-1-B-001v_002r.tif"
+    "thumbnail": "https://image-iiif.library.nd.edu:8182/iiif/2/003818138%2FMSN-COL_9405-1-B-001v_002r.tif"
   },
   {
     "id": "north-america",
@@ -92,7 +92,7 @@
       "1976.057/manifest",
       "collection/theophilus",
       "collection/journals",
-      "nduspec_ead7s75db80w4r/manifest",
+      "003818138/manifest",
       "1934.007.001/manifest",
       "collection/nd-life"
     ],
@@ -135,7 +135,7 @@
       "1934.007.001/manifest",
       "CSOR-04-05-01/manifest",
       "GNDL-45-01/manifest",
-      "nduspec_ead7s75db80w4r/manifest",
+      "003818138/manifest",
       "CTAO-01-28/manifest"
     ],
     "tag": "religiousartifacts",
@@ -151,7 +151,7 @@
       "collection/le-rossignol",
       "1976.057/manifest",
       "nduspec_eadks65h991878/manifest",
-      "nduspec_ead7s75db80w4r/manifest",
+      "003818138/manifest",
       "collection/theophilus"
     ],
     "tag": "historicalartifacts",
@@ -215,7 +215,7 @@
     "manifest_ids": [
       "collection/dante",
       "1999.024/manifest",
-      "nduspec_ead7s75db80w4r/manifest"
+      "003818138/manifest"
     ],
     "tag": "14thcentury 15thcentury 16thcentury 17thcentury",
     "tagField": "centuryTag.keyword",
