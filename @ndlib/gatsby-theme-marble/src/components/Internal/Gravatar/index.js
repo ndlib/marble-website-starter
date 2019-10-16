@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import gravatar from 'gravatar'
 import style from './style.module.css'
-const Gravatar = ({ email, size }) => {
+export const Gravatar = ({ email, size }) => {
   const src = gravatarImg(email, size)
   return (
     <img

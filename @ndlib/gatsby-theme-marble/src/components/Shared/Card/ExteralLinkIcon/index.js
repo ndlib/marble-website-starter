@@ -20,6 +20,6 @@ const ExteralLinkIcon = ({ target }) => {
 }
 
 ExteralLinkIcon.propTypes = {
-  target: PropTypes.string.isRequired,
+  target: PropTypes.string,
 }
 export default ExteralLinkIcon
