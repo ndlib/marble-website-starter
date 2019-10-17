@@ -8,7 +8,7 @@ import CompilationEdit from './CompilationEdit'
 import CompilationUnavailable from './CompilationUnavailable'
 import { getCompilation } from 'utils/appUtils'
 
-const Compilation = ({ compilationId, edit, location, loginReducer }) => {
+export const Compilation = ({ compilationId, edit, location, loginReducer }) => {
   const compilation = getCompilation(compilationId)
   const username = typy(compilation, 'user.username').safeString
   const showCompilation = shouldShow(compilation, ownsPage(loginReducer, username))
