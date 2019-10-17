@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Ownership from './'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
-import Attribution from 'components/Internal/Attribution'
 import UserCartouche from 'components/Internal/UserCartouche'
 import * as Auth from 'utils/auth'
 
