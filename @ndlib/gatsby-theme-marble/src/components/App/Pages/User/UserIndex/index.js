@@ -18,7 +18,7 @@ const UserIndex = (props) => {
   const compilations = getUserCompilations(username)
   return (
     <UserLayout user={user} {...props} >
-      <UserTopMenu username={props.username} />
+      <UserTopMenu username={props.username} location={props.location} />
       <CompilationList
         isOwner={isOwner}
         loggedIn={loggedIn}
