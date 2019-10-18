@@ -40,10 +40,9 @@ export const expandChildren = (availableComponents, row, globalProps, key = 0) =
       <ComponentRenderer
         availableComponents={availableComponents}
         component={row.component}
-        children={childComponents}
         key={`${row.component}-${key}`}
         {...transformProps(globalProps, row.props)}
-      />
+      >{childComponents}</ComponentRenderer>
     )
   }
 
