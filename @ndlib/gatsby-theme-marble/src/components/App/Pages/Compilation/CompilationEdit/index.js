@@ -36,7 +36,6 @@ const CompilationEdit = ({ compilation, loginReducer }) => {
             className={localStyle.settings}
             loginReducer={loginReducer}
           />
-
         </form>
       </div>
     </div>
