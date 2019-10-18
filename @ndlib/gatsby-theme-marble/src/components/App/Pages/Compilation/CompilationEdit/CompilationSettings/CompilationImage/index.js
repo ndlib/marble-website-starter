@@ -6,14 +6,7 @@ import style from 'components/App/FormElements/style.module.css'
 import defaultImage from 'assets/images/noImage.svg'
 
 const CompilationImage = ({ compilation }) => {
-  const items = typy(compilation, 'items').safeArray
-  const safeItems = [...items]
-  if (!safeItems.find(item => item.image === defaultImage)) {
-    safeItems.push({
-      id: `default_image`,
-      image: defaultImage,
-    })
-  }
+  const safeItems = getSafeItems(compilation)
   return (
     <div>
       <label
@@ -37,3 +30,15 @@ CompilationImage.propTypes = {
 }
 
 export default CompilationImage
+
+export const getSafeItems = (compilation) => {
+  const items = typy(compilation, 'items').safeArray
+  const safeItems = [...items]
+  if (!safeItems.find(item => item.image === defaultImage)) {
+    safeItems.push({
+      id: `default_image`,
+      image: defaultImage,
+    })
+  }
+  return safeItems
+}
