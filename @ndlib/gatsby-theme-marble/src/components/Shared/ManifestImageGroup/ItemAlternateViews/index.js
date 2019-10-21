@@ -5,7 +5,7 @@ import AlternateImage from './AlternateImage'
 
 // export max number of images to display so we don't have to update unit
 // tests if/when this number changes
-export const MAX_IMAGES = 4
+export const MAX_IMAGES = 5
 
 const ItemAlternateViews = ({ iiifManifest, viewer, location }) => {
   const canvases = typy(iiifManifest, 'items').safeObject

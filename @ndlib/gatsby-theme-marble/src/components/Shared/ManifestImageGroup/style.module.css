@@ -1,7 +1,25 @@
-.bigImage, .bigImage img {
+.bigImage {
+  background-color: #dedede;
+  display: inline-block;
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
   width: 100%;
-  height: auto;
+}
+
+.bigImage img {
+  height: auto !important;
+  width: auto !important;
+  max-width: 100%;
+  max-height: 60vh;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .link {
+  display: inline-block;
+  margin-bottom: .5rem;
   position: relative;
+  width: 100%;
 }
