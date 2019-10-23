@@ -23,8 +23,8 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 pushd scripts/gatsby-source-iiif
 yarn install
 node getManifests.js
-node getSchema.js
 node generateMD.js
+node getSchema.js
 node indexSearch.js
 node generateMDCategories.js
 popd
