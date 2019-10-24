@@ -23,7 +23,7 @@ const ViewerLink = ({ iiifManifest, index, viewer, className, view, location, ch
 ViewerLink.propTypes = {
   iiifManifest: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    summary: PropTypes.string,
+    summary: PropTypes.object,
     slug: PropTypes.string.isRequired,
   }),
   index: PropTypes.number,
