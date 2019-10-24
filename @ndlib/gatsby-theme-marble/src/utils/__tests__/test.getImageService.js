@@ -5,7 +5,9 @@ describe('getImageService', () => {
     items: [{
       items: [{
         items: [{
-          id: '/image/path.jpg',
+          body: {
+            service: [{ id: '/image/path.jpg' }],
+          },
         }],
       }],
     }],
