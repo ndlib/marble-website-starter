@@ -15,7 +15,7 @@ const user2 = {
 const user3 = {
   name: `Abigail Shelton`,
   username: `ashelto3`,
-  email: `ashelto3@nd.edu `,
+  email: `ashelto3@nd.edu`,
 }
 const items = [
   {
