@@ -19,7 +19,7 @@ const HorizontalSubmenu = ({ options }) => {
               }}
               className={option.isActive ? style.active : style.inactive}
               style={{
-                width: `${100 / options.length}%`,
+                width: `${Math.floor((100 / options.length) * 100) / 100}%`,
               }}
 
             >{option.label}</button>

@@ -7,10 +7,11 @@ import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import LoginArea from 'components/Shared/LoginArea'
 import style from './style.module.css'
 
+export const title = `Compilation Unavailable`
 const CompilationUnavailable = (props) => {
   const { location, loginReducer } = props
   const loggedIn = isLoggedIn(loginReducer)
-  const title = `Compilation Unavailable`
+
   return (
     <Layout
       location={location}
@@ -32,6 +33,5 @@ const CompilationUnavailable = (props) => {
 CompilationUnavailable.propTypes = {
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
 }
 export default CompilationUnavailable

@@ -37,7 +37,6 @@ const UserEdit = (props) => {
           <MaterialButton
             onClick={(e) => {
               e.preventDefault()
-              console.log('save profile')
               navigate(`/user/${username}`)
             }}
             primary

@@ -75,3 +75,11 @@ a.basicCard {
   vertical-align: top;
   width: 100%;
 }
+
+.cardAdditional .fadeOut {
+  height: 100px;
+  background-image: linear-gradient(#ffffff00, #ffffff66, white, white);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

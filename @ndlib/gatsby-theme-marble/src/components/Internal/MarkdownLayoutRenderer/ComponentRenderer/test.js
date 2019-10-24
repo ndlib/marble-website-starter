@@ -29,7 +29,7 @@ describe('ComponentRenderer', () => {
       return (<div>New Component</div>)
     }
     const props = {
-      availableComponents: { 'NewComponent': NewComponent },
+      availableComponents: { NewComponent: NewComponent },
       component: 'NewComponent',
     }
     const wrapper = shallow(<ComponentRenderer {...props} />)

@@ -3,18 +3,17 @@ import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 
-const NoUser = (props) => {
-  const { username, location } = props
-  const title = `User Not Found`
+export const defaultTitle = `User Not Found`
+const NoUser = ({ username, location }) => {
   return (
     <Layout
       location={location}
-      title={title}
+      title={defaultTitle}
     >
       <Seo
         data={{}}
         location={location}
-        title={title}
+        title={defaultTitle}
         noIndex
       />
       <div>

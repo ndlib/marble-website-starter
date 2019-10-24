@@ -15,7 +15,7 @@ describe('LoginArea', () => {
     }
     const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)
 
-    expect(wrapper.find('form').exists()).toBeFalsy()
+    expect(wrapper.find('form').exists()).toBeTruthy()
     expect(wrapper.find(LogOut).exists()).toBeTruthy()
   })
 

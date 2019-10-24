@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import HorizontalSubmenu from './HorizontalSubmenu'
+import HorizontalSubmenu from 'components/Internal/HorizontalSubmenu'
 import EditItems from './EditItems'
 import CompilationSettings from './CompilationSettings'
 import EditControls from './EditControls'
@@ -36,7 +36,6 @@ const CompilationEdit = ({ compilation, loginReducer }) => {
             className={localStyle.settings}
             loginReducer={loginReducer}
           />
-
         </form>
       </div>
     </div>
