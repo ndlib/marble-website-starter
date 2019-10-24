@@ -1,8 +1,8 @@
 // mock data
 const user1 = {
-  name: 'User Name',
-  username: `username`,
-  email: `rfox2@nd.edu`,
+  name: `Jon Hartzler`,
+  username: `jhartzle`,
+  email: `jhartzle@nd.edu`,
   bio: `Some kind of description goes here. Professors can put their class list here maybe, or you could say what kind of things you're interested in. There will be a character limit and it will be editable on the edit page.`,
 }
 const user2 = {
@@ -13,9 +13,9 @@ const user2 = {
 }
 
 const user3 = {
-  name: `Jon Hartzler`,
-  username: `jhartzle`,
-  email: `jhartzle@nd.edu`,
+  name: `Abigail Shelton`,
+  username: `ashelto3`,
+  email: `ashelto3@nd.edu `,
 }
 const items = [
   {
@@ -132,6 +132,33 @@ const compilations = [
     visibility: 'private',
     user: user2,
     description: `This is a private collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    items: items,
+  },
+  {
+    id: 'thing-7',
+    title: `My First Test`,
+    display: `annotated`,
+    visibility: 'public',
+    user: user3,
+    description: `This is a public collection.`,
+    items: items,
+  },
+  {
+    id: 'thing-8',
+    title: `Super Compilation of Stuff`,
+    display: `default`,
+    visibility: 'shared',
+    user: user3,
+    description: `This is a shared collection.`,
+    items: items,
+  },
+  {
+    id: 'thing-9',
+    title: `My Secret Test Stuff`,
+    display: `annotated`,
+    visibility: 'private',
+    user: user3,
+    description: `This is a private collection.`,
     items: items,
   },
 ]
