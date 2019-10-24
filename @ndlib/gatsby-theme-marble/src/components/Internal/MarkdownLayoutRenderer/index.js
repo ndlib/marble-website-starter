@@ -30,30 +30,19 @@ export default MarkdownLayoutRenderer
 
 export const expandChildren = (availableComponents, row, globalProps, key = 0) => {
   const children = row.components
-
+  const childComponents = []
   if (children) {
-    const childComponents = []
     children.forEach((child, i) => {
       childComponents.push(expandChildren(availableComponents, child, globalProps, i))
     })
-    return (
-      <ComponentRenderer
-        availableComponents={availableComponents}
-        component={row.component}
-        children={childComponents}
-        key={`${row.component}-${key}`}
-        {...transformProps(globalProps, row.props)}
-      />
-    )
   }
-
   return (
     <ComponentRenderer
       availableComponents={availableComponents}
       component={row.component}
       key={`${row.component}-${key}`}
       {...transformProps(globalProps, row.props)}
-    />
+    >{childComponents}</ComponentRenderer>
   )
 }
 

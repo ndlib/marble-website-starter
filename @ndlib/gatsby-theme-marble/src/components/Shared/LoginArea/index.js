@@ -10,7 +10,11 @@ import style from './style.module.css'
 export const LoginArea = ({ loginReducer }) => {
   if (isLoggedIn(loginReducer)) {
     return (
-      <LogOut />
+      <div>
+        <form className={style.loginArea}>
+          <LogOut />
+        </form>
+      </div>
     )
   }
   return (

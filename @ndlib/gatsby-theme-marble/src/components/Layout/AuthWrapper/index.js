@@ -12,7 +12,6 @@ export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
       query {
         site {
           siteMetadata {
-            siteUrl
             useLogin
             authClient {
               url
@@ -23,15 +22,10 @@ export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
       }
     `
   )
-  if (typy(site, 'siteMetadata.useLogin').safeBoolean && typy(site, 'siteMetadata.authClient').safeObject) {
-    const { url, clientId } = site.siteMetadata.authClient
-    const authClientSettings = {
-      url: url,
-      clientId: clientId,
-      redirectUri: `${location.origin}/user`, // `${site.siteMetadata.siteUrl}/user`
-    }
+  if (typy(site, 'siteMetadata.useLogin').safeBoolean &&
+  typy(site, 'siteMetadata.authClient').safeObject) {
     if (!loginReducer.authClientSettings) {
-      dispatch(setAuthClient(authClientSettings))
+      putAuthSettingsInStore(site, location, dispatch)
     } else {
       putLoggedInUserInStore(loginReducer, location, dispatch)
     }
@@ -63,13 +57,22 @@ export default connect(
   mapDispatchToProps
 )(AuthWrapper)
 
+export const putAuthSettingsInStore = (site, location, dispatch) => {
+  const { url, clientId } = site.siteMetadata.authClient
+  const authClientSettings = {
+    url: url,
+    clientId: clientId,
+    redirectUri: `${location.origin}/user`,
+  }
+  dispatch(setAuthClient(authClientSettings))
+}
+
 export const putLoggedInUserInStore = (loginReducer, location, dispatch) => {
   if (loginReducer.authClientSettings) {
     const authClient = new OktaAuth({ ...loginReducer.authClientSettings })
     try {
       authClient.tokenManager.get('idToken')
         .then(idToken => {
-          // If ID Token exists, output it to the console
           if (idToken) {
             if (loginReducer.status === 'STATUS_NOT_LOGGED_IN') {
               dispatch(handleLogin(idToken))

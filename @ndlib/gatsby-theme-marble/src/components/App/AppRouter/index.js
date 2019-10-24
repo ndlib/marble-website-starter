@@ -26,10 +26,10 @@ AppRouter.propTypes = {
   loginReducer: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return { ...state }
 }
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return { dispatch }
 }
 export default connect(

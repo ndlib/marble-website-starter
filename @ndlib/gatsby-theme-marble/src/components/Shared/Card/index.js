@@ -30,6 +30,7 @@ const Card = ({
         <figcaption className='cardCaption'>
           <Styled.h3>{label}</Styled.h3>
           <div className='cardAdditional'>
+            <div className='fadeOut' />
             {children}
           </div>
         </figcaption>

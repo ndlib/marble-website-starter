@@ -7,8 +7,8 @@ import style from 'components/App/FormElements/style.module.css'
 const DangerDelete = ({ compilation }) => {
   const [deleteFieldValue, updateDeleteField] = useState(null)
   const warning = `Once you delete this compilation it can not be recovered.`
-  const groupId = `danger-${compilation.id}`
-  const fieldId = `delete-${compilation.id}`
+  const groupId = `danger`
+  const fieldId = `delete`
   return (
     <div>
       <label
