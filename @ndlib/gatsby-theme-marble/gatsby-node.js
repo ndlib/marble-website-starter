@@ -79,7 +79,7 @@ exports.sourceNodes = ({ actions }) => {
     format: String
     width: Int
     height: Int
-    service: iiifServiceJson
+    service: [iiifServiceJson]
   }
 
   type iiifItem @dontInfer {
@@ -121,7 +121,7 @@ exports.sourceNodes = ({ actions }) => {
   }
 
   #react component stuff
-  type prop {
+  type prop @dontInfer {
     label: String
     value: String
     fileValue: File

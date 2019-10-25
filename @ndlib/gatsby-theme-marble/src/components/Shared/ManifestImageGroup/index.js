@@ -47,7 +47,7 @@ export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
 ManifestImageGroup.propTypes = {
   iiifManifest: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    summary: PropTypes.string,
+    summary: PropTypes.object,
     slug: PropTypes.string.isRequired,
   }),
   location: PropTypes.object.isRequired,
