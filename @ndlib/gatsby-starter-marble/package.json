@@ -16,6 +16,6 @@
     "@ndlib/gatsby-theme-marble": "*",
     "gatsby": "^2.13.61",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "16.11"
   }
 }
