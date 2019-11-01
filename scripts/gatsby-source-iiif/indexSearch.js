@@ -1,15 +1,28 @@
 const fs = require('fs')
 const path = require(`path`)
-const { Client } = require('@elastic/elasticsearch')
+const {Client}= require('elasticsearch')
+var AWS = require('aws-sdk');
 const configuration = require('../../site/content/configuration.js')
 
 const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
 
-const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
+//const client = new Client({ node: 'https://search-red-7pbocoy2q5ikdw7dsb6j3a3amu.us-east-1.es.amazonaws.com' })
 const siteIndex = configuration.siteMetadata.searchBase.app
 
+var region = 'us-east-1';
+var domain = 'https://search-red-7pbocoy2q5ikdw7dsb6j3a3amu.us-east-1.es.amazonaws.com';
+
+const options = {
+    host: domain,
+    port:443,
+    protocol:'https',
+    connectionClass: require('http-aws-es'),
+    awsConfig: new AWS.Config({ region })
+};
+const client = Client(options);
+
 const indexMapping = {
-  mapping: {
+  mappings: {
     _doc: {
       searchDate: {
         type: 'integer_range',
@@ -18,6 +31,13 @@ const indexMapping = {
         type: 'geo_point',
       },
     },
+  },
+}
+
+const indexSettings = {
+  settings: {
+    number_of_shards: 1,
+    number_of_replicas: 1
   },
 }
 
@@ -117,25 +137,36 @@ const setupIndex = async () => {
     await client.indices.delete({ index: siteIndex })
   }
   console.log('creating index', siteIndex)
-  await client.indices.create({ index: siteIndex }, indexMapping)
+  await client.indices.create({ index: siteIndex }, indexMapping, indexSettings)
+  // await client.indices.create({ index: siteIndex }).catch((e) => {
+  //   console.log(e)
+  // })
 }
 
 const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  const manifestIndex = loadManifestData()
-  await setupIndex()
+  // const manifestIndex = loadManifestData()
+  const ssm = new AWS.SSM({region: 'us-east-1'});
+  const data = await ssm.getParameter({
+            Name: '/all/static-host/red/someKey',
+        }).promise().catch((err) => {
+            console.error('Failed getting parameter');
+            console.error(err);
+        });
+  console.log(data)
+  //await setupIndex()
+  
+  // const writeData = []
+  // manifestIdsToIndex().forEach((id) => {
+  //   const manifest = manifestIndex[id]
+  //   writeData.push(getSearchDataFromManifest(manifest))
+  // })
 
-  const writeData = []
-  manifestIdsToIndex().forEach((id) => {
-    const manifest = manifestIndex[id]
-    writeData.push(getSearchDataFromManifest(manifest))
-  })
-
-  await indexToElasticSearch(writeData)
-  console.log('Writing Search Data to gatsby')
-  fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
+  // await indexToElasticSearch(writeData)
+  // console.log('Writing Search Data to gatsby')
+  // fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
   resolve()
 }).then(() => {
