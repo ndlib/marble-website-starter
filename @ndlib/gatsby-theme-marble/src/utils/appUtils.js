@@ -24,7 +24,7 @@ const items = [
     label: 'Absolution Under Fire',
     target: '/item/1976.057',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/1976.057%2F1976_057-v0001.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/1976.057%2F1976_057-v0001/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/1976.057/manifest',
   },
   {
@@ -33,7 +33,7 @@ const items = [
     label: 'Theophilus Parsons Journal Volume 2',
     target: '/item/theophilus-journal-v2',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/theophilus-journal-v1%2Fdefault.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/theophilus-journal-v1%2Fdefault/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/theophilus-journal-v2/manifest',
   },
   {
@@ -42,7 +42,7 @@ const items = [
     label: 'Memento Mori: Death Comes to the Table',
     target: '/item/1999.024',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/1999.024%2F1999_024-v0001.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/1999.024%2F1999_024-v0001/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/1999.024/manifest',
   },
   {
@@ -51,7 +51,7 @@ const items = [
     label: 'Toad Effigy Ballgame Yoke',
     target: '/item/1983.053.002',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/1983.053.002%2F1983_053_002-v0001.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/1983.053.002/manifest',
   },
   {
@@ -60,7 +60,7 @@ const items = [
     label: 'Field House Gymnasium Burning',
     target: '/item/GNDL-45-02',
     description: '',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-02%2FGNDL-45-02.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/GNDL-45-02%2FGNDL-45-02/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/GNDL-45-02/manifest',
   },
   {

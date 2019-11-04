@@ -22,7 +22,7 @@ components:
           - component: Image
             props:
             - label: "src"
-              value: "https://image-iiif.library.nd.edu:8182/iiif/2/epistemological-letters-issue-4%2FDec19744thIssue_Page_03.tif/full/1000,/0/default.jpg"
+              value: "https://image-iiif.library.nd.edu/iiif/2/epistemological-letters-issue-4%2FDec19744thIssue_Page_03/full/1000,/0/default.jpg"
 
 ---
 Also, just a note, the custom text from the Markdown file doesn't have to appear above the main content, it can be mixed in anywhere in the layout. This text is part of a multi-column layout with three columns and a 2-1 split.
