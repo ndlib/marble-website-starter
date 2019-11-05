@@ -18,12 +18,14 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ####  src/assets/logos/*
 ####  content/*
 
-## get environment variable from parameter store. 
+## get environment variable from parameter store.
+export APP_CONFIG=${1}
 
 pushd scripts/gatsby-source-iiif
 yarn install
-node getManifests.js
-node generateMD.js
+node setupEnv.js
+# node getManifests.js
+# node generateMD.js
 node indexSearch.js
-node generateMDCategories.js
+# node generateMDCategories.js
 popd

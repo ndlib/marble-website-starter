@@ -1,25 +1,23 @@
 const fs = require('fs')
 const path = require(`path`)
-const {Client}= require('elasticsearch')
-var AWS = require('aws-sdk');
+const { Client } = require('elasticsearch')
+const auth = require('http-aws-es')
+const AWS = require('aws-sdk')
+require('dotenv').config()
 const configuration = require('../../site/content/configuration.js')
 
 const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
 
-//const client = new Client({ node: 'https://search-red-7pbocoy2q5ikdw7dsb6j3a3amu.us-east-1.es.amazonaws.com' })
-const siteIndex = configuration.siteMetadata.searchBase.app
-
-var region = 'us-east-1';
-var domain = 'https://search-red-7pbocoy2q5ikdw7dsb6j3a3amu.us-east-1.es.amazonaws.com';
-
+const siteIndex = process.env.SEARCH_INDEX
+const domain = process.env.SEARCH_URL
 const options = {
-    host: domain,
-    port:443,
-    protocol:'https',
-    connectionClass: require('http-aws-es'),
-    awsConfig: new AWS.Config({ region })
-};
-const client = Client(options);
+  host: domain,
+  port:443,
+  protocol:'https',
+  connectionClass: auth,
+  awsConfig: new AWS.Config({ region: 'us-east-1' }),
+}
+const client = Client(options)
 
 const indexMapping = {
   mappings: {
@@ -37,7 +35,7 @@ const indexMapping = {
 const indexSettings = {
   settings: {
     number_of_shards: 1,
-    number_of_replicas: 1
+    number_of_replicas: 1,
   },
 }
 
@@ -147,26 +145,18 @@ const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  // const manifestIndex = loadManifestData()
-  const ssm = new AWS.SSM({region: 'us-east-1'});
-  const data = await ssm.getParameter({
-            Name: '/all/static-host/red/someKey',
-        }).promise().catch((err) => {
-            console.error('Failed getting parameter');
-            console.error(err);
-        });
-  console.log(data)
-  //await setupIndex()
-  
-  // const writeData = []
-  // manifestIdsToIndex().forEach((id) => {
-  //   const manifest = manifestIndex[id]
-  //   writeData.push(getSearchDataFromManifest(manifest))
-  // })
+  const manifestIndex = loadManifestData()
+  await setupIndex()
 
-  // await indexToElasticSearch(writeData)
-  // console.log('Writing Search Data to gatsby')
-  // fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
+  const writeData = []
+  manifestIdsToIndex().forEach((id) => {
+    const manifest = manifestIndex[id]
+    writeData.push(getSearchDataFromManifest(manifest))
+  })
+
+  await indexToElasticSearch(writeData)
+  console.log('Writing Search Data to gatsby')
+  fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
   resolve()
 }).then(() => {
