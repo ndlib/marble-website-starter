@@ -25,8 +25,8 @@ export APP_CONFIG=${1}
 pushd scripts/gatsby-source-iiif
 yarn install
 node setupEnv.js > ${root_dir}/.env
-# node getManifests.js
-# node generateMD.js
+node getManifests.js
+node generateMD.js
 node indexSearch.js
-# node generateMDCategories.js
+node generateMDCategories.js
 popd
