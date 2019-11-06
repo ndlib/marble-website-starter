@@ -1,7 +1,6 @@
 #!/bin/bash
 magenta=`tput setaf 5`
 reset=`tput sgr0`
-root_dir=`pwd`
 
 echo "${magenta}----- INSTALL -------${reset}"
 
@@ -24,7 +23,7 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 export APP_CONFIG=${1}
 pushd scripts/gatsby-source-iiif
 yarn install
-node setupEnv.js > ${root_dir}/.env
+node setupEnv.js > .env
 node getManifests.js
 node generateMD.js
 node indexSearch.js
