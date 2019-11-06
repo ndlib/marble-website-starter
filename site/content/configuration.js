@@ -1,8 +1,8 @@
 require('dotenv').config()
 
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
-const searchUrl = process.env.SEARCH_URL || 'SOMETHING WRONG'
-const searchIndex = process.env.SEARCH_INDEX || 'INVALID INDEX'
+const searchUrl = process.env.SEARCH_URL || 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com'
+const searchIndex = process.env.SEARCH_INDEX || 'website-test-index'
 
 const menus = require('./menus')
 const themeColor = `#0A233F`
