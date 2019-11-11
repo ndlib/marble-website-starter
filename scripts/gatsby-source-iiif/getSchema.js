@@ -11,15 +11,24 @@ const fetchData = async (seeAlso) => {
   const finalResult = []
   await Promise.all(seeAlso.map(item => {
     console.log('Processing: ' + item)
-    return fetch(item)
+    const result = fetch(item)
       .then(response => response.json())
       .then(data => {
         finalResult.push(data)
       })
-  })
-  )
-  console.log('Result: ' + finalResult)
-  fs.writeFileSync(path.join(__dirname, '/../../site/content/json/schema/schema.json'), JSON.stringify(finalResult))
+      .catch(error => {
+        console.error('fetch error: ', error)
+        return error
+      })
+    return result
+  }))
+    .then(() => {
+      fs.writeFileSync(path.join(__dirname, '/../../site/content/json/schema/schema.json'), JSON.stringify(finalResult))
+    })
+    .catch(error => {
+      console.error('Promise error: ', error)
+      return error
+    })
   return finalResult
 }
 
@@ -42,6 +51,9 @@ const getSchemaSeeAlsoList = (rawIIIF) => {
 new Promise(async (resolve, reject) => {
   const rawIIIF = await loadIIIFData()
   const seeAlso = await getSchemaSeeAlsoList(rawIIIF)
-  await fetchData(seeAlso)
+  const fetchResult = await fetchData(seeAlso)
+  if (!fetchResult) {
+    reject(fetchResult)
+  }
   resolve()
 })
