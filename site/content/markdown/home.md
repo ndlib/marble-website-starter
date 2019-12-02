@@ -2,18 +2,20 @@
 slug: index
 
 components:
-  - component: MarkdownHtmlContent
-  - component: CalloutBox
+  - component: HeroBox  
     components:
       - component: MarkdownHtmlContent
         props:
           - label: 'html'
-            value: 'Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.'
+            value: '<h1> University Of Notre Dame Digital Collections </h1>
+                    Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
+                    '
       - component: SearchBox
+  - component: MarkdownHtmlContent      
   - component: CardGroup
     props:
       - label: "label"
-        value: "Featured Collections"
+        value: "Recent Additions"
     components:
       - component: ManifestCard
         props:
@@ -22,28 +24,11 @@ components:
       - component: ManifestCard
         props:
           - label: "iiifManifest"
-            value: "https://presentation-iiif.library.nd.edu/collection/theophilus"
-      - component: ManifestCard
-        props:
-          - label: "iiifManifest"
-            value: "https://presentation-iiif.library.nd.edu/collection/dante"
-  - component: CardGroup
-    props:
-      - label: "label"
-        value: "Featured Items"
-    components:
-      - component: ManifestCard
-        props:
-          - label: "iiifManifest"
-            value: "https://presentation-iiif.library.nd.edu/1976.057/manifest"
-      - component: ManifestCard
-        props:
-          - label: "iiifManifest"
-            value: "https://presentation-iiif.library.nd.edu/1983.053.002/manifest"
-      - component: ManifestCard
-        props:
-          - label: "iiifManifest"
             value: "https://presentation-iiif.library.nd.edu/1999.024/manifest"
+      - component: ManifestCard
+        props:
+          - label: "iiifManifest"
+            value: "https://presentation-iiif.library.nd.edu/1992.055/manifest"
   - component: CardGroup
     props:
       - label: "label"

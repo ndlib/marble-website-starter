@@ -3,10 +3,7 @@
   "workspaces": [
     "@ndlib/gatsby-starter-marble",
     "@ndlib/gatsby-theme-marble",
-    "site",
-    "site-collection-tools",
-    "test-site",
-    "fake-api"
+    "site"
   ],
   "devDependencies": {
     "@babel/core": "^7.0.0",
