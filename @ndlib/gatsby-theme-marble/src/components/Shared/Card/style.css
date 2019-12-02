@@ -21,7 +21,7 @@ a.basicCard {
   display: block;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   width: 100%;
 }
 .cardCaption {

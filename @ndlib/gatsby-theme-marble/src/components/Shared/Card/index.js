@@ -16,6 +16,7 @@ const Card = ({
   referal,
   cardClass,
   imageService,
+  imageRegion,
 }) => {
   const cardInternal = (
     <article className='cardWrapper'>
@@ -23,6 +24,7 @@ const Card = ({
         <Image
           src={image || null}
           service={imageService || null}
+          region={imageRegion || null}
           alt={label}
           className='cardImage'
         />
@@ -60,6 +62,7 @@ Card.propTypes = {
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
   imageService: PropTypes.string,
+  imageRegion: PropTypes.string,
   children: PropTypes.node,
   location: PropTypes.object,
   referal: PropTypes.object,

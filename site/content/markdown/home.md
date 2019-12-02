@@ -7,8 +7,8 @@ components:
       - component: MarkdownHtmlContent
         props:
           - label: 'html'
-            value: '<h1> University Of Notre Dame Digital Collections </h1>
-                    Explore digitized artwork, rare books, artifacts, and archival materials from the University of Notre Dame.
+            value: '<h1> University of Notre Dame Digital Collections </h1>
+                    Explore our digitized artwork, rare books, artifacts, and archival materials.
                     '
       - component: SearchBox
   - component: MarkdownHtmlContent      
@@ -29,6 +29,8 @@ components:
         props:
           - label: "iiifManifest"
             value: "https://presentation-iiif.library.nd.edu/1992.055/manifest"
+          - label: "imageRegion"
+            value: "0,600,2714,2000"
   - component: CardGroup
     props:
       - label: "label"
