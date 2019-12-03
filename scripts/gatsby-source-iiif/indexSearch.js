@@ -89,7 +89,9 @@ const getSearchDataFromManifest = (manifest) => {
     const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
     const value = row.value[configuration.siteMetadata.languages.default].join('')
 
-    search[label] = value
+    if (!search[label]) {
+      search[label] = value
+    }
     search['allMetadata'] += ' ' + value
   })
   return search
