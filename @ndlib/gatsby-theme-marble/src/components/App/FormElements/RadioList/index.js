@@ -5,7 +5,7 @@ import unchecked from 'assets/icons/svg/baseline-radio_button_unchecked-24px.svg
 import style from './style.module.css'
 
 const RadioList = ({ options, fieldName, onChange }) => {
-  if (!options) {
+  if (!options || options.length < 1) {
     return null
   }
 

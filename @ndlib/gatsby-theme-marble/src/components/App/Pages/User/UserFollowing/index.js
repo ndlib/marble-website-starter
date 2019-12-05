@@ -15,7 +15,10 @@ const UserFollowing = (props) => {
   }
   return (
     <UserLayout user={user} {...props}>
-      <UserTopMenu username={props.username} />
+      <UserTopMenu username={props.username} location={props.location} />
+      {
+        // TODO map real users from API
+      }
       <DisplayViewToggle defaultDisplay={FOLLOWING_PAGE}>
         <Card
           key={0}

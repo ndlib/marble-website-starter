@@ -1,16 +1,12 @@
 .alternateLink {
-  display: inline-block;
-  height: calc( 25% - 1.5rem / 4);
-  width: calc( 25% - 1.5rem / 4);
-  margin: 0 0.25rem;
   position: relative;
 }
 .alternateLink:first-of-type {
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 
 .alternateLink:last-of-type {
-  margin-right: 0;
+  margin-right: 0 !important;
 }
 
 .alternateImage {

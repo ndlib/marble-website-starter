@@ -21,11 +21,13 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 
 ## get environment variable from parameter store.
 export APP_CONFIG=${1}
+
 pushd scripts/gatsby-source-iiif
 yarn install
 node setupEnv.js > .env
 node getManifests.js
 node generateMD.js
+node getSchema.js
 node indexSearch.js
 node generateMDCategories.js
 popd

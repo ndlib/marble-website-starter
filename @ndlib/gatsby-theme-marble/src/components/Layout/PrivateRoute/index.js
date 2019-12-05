@@ -37,9 +37,6 @@ export const checkAndHandleRedirect = (loginReducer, requireLogin, location) => 
   if (!isLoggedIn(loginReducer) && requireLogin && location.pathname !== `/user`) {
     // If we’re not logged in, redirect to the login page.
     navigate(`/user`)
-    return null
-  } else if (isLoggedIn(loginReducer) && location.pathname === `/user`) {
-    navigate(`/user/${loginReducer.user.username}`)
-    return null
   }
+  return null
 }

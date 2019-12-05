@@ -1,8 +1,8 @@
 // mock data
 const user1 = {
-  name: 'User Name',
-  username: `username`,
-  email: `rfox2@nd.edu`,
+  name: `Jon Hartzler`,
+  username: `jhartzle`,
+  email: `jhartzle@nd.edu`,
   bio: `Some kind of description goes here. Professors can put their class list here maybe, or you could say what kind of things you're interested in. There will be a character limit and it will be editable on the edit page.`,
 }
 const user2 = {
@@ -13,9 +13,9 @@ const user2 = {
 }
 
 const user3 = {
-  name: `Jon Hartzler`,
-  username: `jhartzle`,
-  email: `jhartzle@nd.edu`,
+  name: `Abigail Shelton`,
+  username: `ashelto3`,
+  email: `ashelto3@nd.edu`,
 }
 const items = [
   {
@@ -24,7 +24,7 @@ const items = [
     label: 'Absolution Under Fire',
     target: '/item/1976.057',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/1976.057%2F1976_057-v0001.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/1976.057%2F1976_057-v0001/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/1976.057/manifest',
   },
   {
@@ -33,7 +33,7 @@ const items = [
     label: 'Theophilus Parsons Journal Volume 2',
     target: '/item/theophilus-journal-v2',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/theophilus-journal-v1%2Fdefault.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/theophilus-journal-v1%2Fdefault/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/theophilus-journal-v2/manifest',
   },
   {
@@ -42,7 +42,7 @@ const items = [
     label: 'Memento Mori: Death Comes to the Table',
     target: '/item/1999.024',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/1999.024%2F1999_024-v0001.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/1999.024%2F1999_024-v0001/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/1999.024/manifest',
   },
   {
@@ -51,7 +51,7 @@ const items = [
     label: 'Toad Effigy Ballgame Yoke',
     target: '/item/1983.053.002',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/1983.053.002%2F1983_053_002-v0001.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/1983.053.002/manifest',
   },
   {
@@ -60,7 +60,7 @@ const items = [
     label: 'Field House Gymnasium Burning',
     target: '/item/GNDL-45-02',
     description: '',
-    image: 'https://image-iiif.library.nd.edu:8182/iiif/2/GNDL-45-02%2FGNDL-45-02.tif/full/500,/0/default.jpg',
+    image: 'https://image-iiif.library.nd.edu/iiif/2/GNDL-45-02%2FGNDL-45-02/full/500,/0/default.jpg',
     iiifManifest: 'https://presentation-iiif.library.nd.edu/GNDL-45-02/manifest',
   },
   {
@@ -132,6 +132,33 @@ const compilations = [
     visibility: 'private',
     user: user2,
     description: `This is a private collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    items: items,
+  },
+  {
+    id: 'thing-7',
+    title: `My First Test`,
+    display: `annotated`,
+    visibility: 'public',
+    user: user3,
+    description: `This is a public collection.`,
+    items: items,
+  },
+  {
+    id: 'thing-8',
+    title: `Super Compilation of Stuff`,
+    display: `default`,
+    visibility: 'shared',
+    user: user3,
+    description: `This is a shared collection.`,
+    items: items,
+  },
+  {
+    id: 'thing-9',
+    title: `My Secret Test Stuff`,
+    display: `annotated`,
+    visibility: 'private',
+    user: user3,
+    description: `This is a private collection.`,
     items: items,
   },
 ]

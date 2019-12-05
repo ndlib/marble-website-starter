@@ -57,7 +57,7 @@ Image.propTypes = {
 
 Image.defaultProps = {
   region: 'full',
-  size: '500,',
+  size: '1000,',
   alt: 'a static image',
   className: '',
 }

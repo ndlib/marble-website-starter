@@ -1,13 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Internal/Link'
+import { navigate } from 'gatsby'
 import Gravatar from 'components/Internal/Gravatar'
 import style from './style.module.css'
 
 const UserCartouche = ({ user }) => {
   return (
-    <Link
-      to={`/user/${user.username}`}
+    <span
+      role='button'
+      onClick={() => {
+        navigate(`/user/${user.username}`)
+      }}
       className={style.cartouche}
     >
       <span className={style.gravatarWrapper}>
@@ -17,12 +20,16 @@ const UserCartouche = ({ user }) => {
         />
       </span>
       {user.name}
-    </Link>
+    </span>
   )
 }
 
 UserCartouche.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export default UserCartouche
