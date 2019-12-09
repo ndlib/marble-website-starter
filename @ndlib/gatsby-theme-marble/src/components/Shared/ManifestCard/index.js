@@ -20,11 +20,11 @@ export const ManifestCard = (props) => {
     }
   `
   )
+
   const manifestId = typy(props, 'iiifManifest').isString ? props.iiifManifest : props.iiifManifest.id
-  const iiifNode = allIiifJson.nodes.find(manifest => {
-    return manifest.id === manifestId
-  })
-  const iiifManifest = iiifNode || null
+  const imageRegion = typy(props, 'imageRegion').isString ? props.imageRegion : 'full'
+
+  const iiifManifest = findManifest(manifestId, allIiifJson)
   if (!iiifManifest) {
     console.warn('Could not find manifest: ', manifestId)
     return null
@@ -37,6 +37,7 @@ export const ManifestCard = (props) => {
         label={iiifManifest.label[lang][0]}
         target={`/${iiifManifest.slug}`}
         imageService={imageService || null}
+        imageRegion={imageRegion}
         {...props}
       >
         <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
@@ -46,8 +47,15 @@ export const ManifestCard = (props) => {
   )
 }
 
+const findManifest = (manifestId, allIiifJson) => {
+  return allIiifJson.nodes.find(manifest => {
+    return manifest.id === manifestId
+  })
+}
+
 ManifestCard.propTypes = {
   iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  imageRegion: PropTypes.string,
 }
 
 export default ManifestCard

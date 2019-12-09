@@ -1,5 +1,6 @@
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import CalloutBox from 'components/Shared/CalloutBox'
+import HeroBox from 'components/Shared/HeroBox'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import ChildManifests from 'components/Shared/ChildManifests'
@@ -27,6 +28,7 @@ import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefi
 export const availableComponents = {
   ActionButtons: ActionButtonGroup,
   CalloutBox: CalloutBox,
+  HeroBox: HeroBox,
   Card: Card,
   CardGroup: CardGroup,
   ChildManifests: ChildManifests,
