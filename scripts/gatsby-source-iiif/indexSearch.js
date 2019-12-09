@@ -77,7 +77,7 @@ const getSearchDataFromManifest = (manifest) => {
     language: 'en',
     url: manifest.slug,
     place: 'South Bend',
-    repository: availableRepositories[parseInt(Math.random() * availableRepositories.length, 10)],
+    repository: determineRepositoryFromProvider(manifest.provider),
     year: date,
     themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
     centuryTag: objectsByTagTypeAndId['centuryTag.keyword'][tagId],
@@ -93,6 +93,20 @@ const getSearchDataFromManifest = (manifest) => {
     search['allMetadata'] += ' ' + value
   })
   return search
+}
+
+const determineRepositoryFromProvider = (provider) => {
+  if (!provider || !provider.id) {
+    return 'snite'
+  }
+
+  if (provider.id.match(/snite[.]nd[.]edu/)) {
+    return 'snite'
+  } else if (provider.id.match(/archives[.]nd[.]edu/)) {
+    return 'archives'
+  } else if (provider.id.match(/rareboods[.]library[.]nd[.]edu/)) {
+    return 'rbsc'
+  }
 }
 
 const indexToElasticSearch = async (searchData) => {

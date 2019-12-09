@@ -8,6 +8,7 @@ import Image from 'components/Shared/Image'
 import LoginArea from 'components/Shared/LoginArea'
 import ManifestCard from 'components/Shared/ManifestCard'
 import ManifestDescription from 'components/Shared/ManifestDescription'
+import ManifestFullProvider from 'components/Shared/ManifestFullProvider'
 import ManifestImage from 'components/Shared/ManifestImage'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
@@ -35,6 +36,7 @@ export const availableComponents = {
   LoginArea: LoginArea,
   ManifestCard: ManifestCard,
   ManifestDescription: ManifestDescription,
+  ManifestFullProvider: ManifestFullProvider,
   ManifestImage: ManifestImage,
   ManifestImageGroup: ManifestImageGroup,
   ManifestMetaData: ManifestMetaData,

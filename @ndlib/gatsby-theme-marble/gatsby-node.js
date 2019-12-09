@@ -91,7 +91,7 @@ exports.sourceNodes = ({ actions }) => {
   type iiifProviderJson @dontInfer {
     id: String
     type: String
-    label: String
+    label: iiifTranslatedString
     homepage: [ iiifHomepage ]
     logo: [ iiifLogoJson ]
     seeAlso: [ iiifSeeAlso ]
@@ -460,6 +460,7 @@ const defaultLayouts = {
             { component: 'ActionButtons' },
             { component: 'ManifestDescription' },
             { component: 'ManifestMetaData' },
+            { component: 'ManifestFullProvider' },
           ],
         },
         {
@@ -491,6 +492,7 @@ const defaultLayouts = {
           components: [
             { component: 'ManifestDescription' },
             { component: 'ManifestMetaData' },
+            { component: 'ManifestFullProvider' },
           ],
         },
       ],

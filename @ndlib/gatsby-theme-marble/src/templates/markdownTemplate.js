@@ -63,6 +63,48 @@ export const query = graphql`
     }
   }
 
+  fragment iiifProviderJsonFragment on iiifProviderJson {
+    id
+    type
+    label {
+      ...iiifTranslatedStringFragment
+    }
+    homepage {
+      ...iiifHomepageFragment
+    }
+    logo {
+      ...iiifLogoJsonFragment
+    }
+    seeAlso {
+      ...iiifSeeAlsoFragment
+    }
+  }
+
+  fragment iiifLogoJsonFragment on iiifLogoJson {
+    id
+    type
+    height
+    weight
+    format
+  }
+
+  fragment iiifHomepageFragment on iiifHomepage {
+    id
+    type
+    label {
+      ...iiifTranslatedStringFragment
+    }
+    format
+  }
+
+  fragment iiifSeeAlsoFragment on iiifSeeAlso {
+    id
+    type
+    format
+    profile
+  }
+
+
   fragment iiifJsonItemFragment on iiifItem {
     id
     type
@@ -88,6 +130,9 @@ export const query = graphql`
     service {
       ...iiifServiceFragment
     }
+    provider {
+      ...iiifProviderJsonFragment
+    }    
     motivation
     target
     body {
@@ -115,6 +160,9 @@ export const query = graphql`
     viewingDirection
     thumbnail {
       ...iiifThumbnailJsonFragment
+    }
+    provider {
+      ...iiifProviderJsonFragment
     }
   }
 
