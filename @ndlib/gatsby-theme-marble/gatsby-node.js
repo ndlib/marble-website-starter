@@ -374,7 +374,7 @@ const defaultLayouts = {
                   component: 'SearchRefinementListFilter',
                   props: [
                     { label: 'field', value: 'repository.keyword' },
-                    { label: 'label', value: 'Repository' },
+                    { label: 'label', value: 'Campus Location' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },
