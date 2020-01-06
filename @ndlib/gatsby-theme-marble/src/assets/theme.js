@@ -40,6 +40,7 @@ export const theme = {
       fontFamily: 'body',
       fontSize: 0,
       lineHeight: 'body',
+      overflowX: 'hidden',
     },
     Header: {
       backgroundColor: 'primary',
