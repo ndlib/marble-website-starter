@@ -13,11 +13,11 @@ const HeroBox = ({ children }) => {
         borderBottom: '1px solid',
         backgroundColor: '#d3d3d3',
         padding: '1rem',
-        paddingLeft: '10rem',
-        paddingRight: '10rem',
+        paddingLeft: '1000rem',
+        paddingRight: '1000rem',
         marginTop: '-1rem',
-        marginLeft: '-10rem',
-        marginRight: '-10rem',
+        marginLeft: '-1000rem',
+        marginRight: '-1000rem',
       }}>
       {children}
     </div>

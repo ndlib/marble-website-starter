@@ -3,7 +3,7 @@
 }
 .mainPadding {
   background-color: white;
-  margin: 1.8rem auto;
+  margin: 1rem auto;
   min-height: calc(100vh - 50px - 70px - 64px - 1.8rem*2);
   width: calc(100% - 4rem);
 }
