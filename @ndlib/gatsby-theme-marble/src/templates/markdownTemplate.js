@@ -116,6 +116,7 @@ export const query = graphql`
     thumbnail {
       ...iiifThumbnailJsonFragment
     }
+    partiallyDigitized
   }
 
   fragment ComponentFragment on component {

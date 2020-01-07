@@ -142,6 +142,7 @@ exports.sourceNodes = ({ actions }) => {
     metadata: [iiifLabeledString]
     thumbnail: [iiifThumbnailJson]
     items: [iiifItem]
+    partiallyDigitized: String
   }
 
   #react component stuff
@@ -460,6 +461,7 @@ const defaultLayouts = {
             { component: 'ActionButtons' },
             { component: 'ManifestDescription' },
             { component: 'ManifestMetaData' },
+            { component: 'PartiallyDigitized' },
           ],
         },
         {
@@ -491,6 +493,7 @@ const defaultLayouts = {
           components: [
             { component: 'ManifestDescription' },
             { component: 'ManifestMetaData' },
+            { component: 'PartiallyDigitized' },
           ],
         },
       ],

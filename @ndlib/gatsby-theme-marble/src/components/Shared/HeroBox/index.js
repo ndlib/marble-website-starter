@@ -11,7 +11,7 @@ const HeroBox = ({ children }) => {
       className={style.wrapper}
       sx={{
         borderBottom: '1px solid',
-        backgroundColor: '#d3d3d3',
+        backgroundColor: 'gray.1',
         padding: '1rem',
         paddingLeft: '1000rem',
         paddingRight: '1000rem',

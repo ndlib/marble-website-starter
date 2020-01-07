@@ -16,6 +16,7 @@ import Map from 'components/Shared/Map'
 import Menu from 'components/Shared/Menu'
 import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
+import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 import SearchBase from 'components/Shared/SearchBase'
 import SearchBox from 'components/Shared/SearchBox'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
@@ -44,6 +45,7 @@ export const availableComponents = {
   Menu: Menu,
   MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
+  PartiallyDigitized: PartiallyDigitized,
   SearchBase: SearchBase,
   SearchBox: SearchBox,
   SearchDynamicRangeFilter: SearchDynamicRangeFilter,
