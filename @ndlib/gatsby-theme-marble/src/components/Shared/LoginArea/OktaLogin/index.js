@@ -18,6 +18,8 @@ export const OktaLogin = ({ loginReducer }) => {
               'openid',
               'email',
               'profile',
+              'netid',
+              'directory',
             ],
           })
         }}
