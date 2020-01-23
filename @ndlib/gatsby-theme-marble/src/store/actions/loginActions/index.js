@@ -5,21 +5,21 @@ export const STATUS_NOT_LOGGED_IN = 'STATUS_NOT_LOGGED_IN'
 export const STATUS_LOGGED_IN = 'STATUS_LOGGED_IN'
 
 export const handleLogin = (idToken) => {
-  const { claims, issuer } = idToken
   return dispatch => {
-    return dispatch(logUserIn(claims, issuer))
+    return dispatch(logUserIn(idToken))
   }
 }
 
-export const logUserIn = (claims, issuer) => {
-  const usernameParts = claims.email.split('@')
+export const logUserIn = (idToken) => {
+  const { claims, issuer } = idToken
   return {
     type: LOG_USER_IN,
     user: {
-      username: usernameParts[0],
+      username: claims.netid,
       name: claims.name,
       email: claims.email,
       issuer: issuer,
+      token: idToken,
     },
   }
 }

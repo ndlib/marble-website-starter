@@ -16,11 +16,12 @@ export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
             authClient {
               url
               clientId
+              issuer
             }
           }
         }
       }
-    `
+    `,
   )
   if (typy(site, 'siteMetadata.useLogin').safeBoolean &&
   typy(site, 'siteMetadata.authClient').safeObject) {
@@ -54,22 +55,28 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AuthWrapper)
 
 export const putAuthSettingsInStore = (site, location, dispatch) => {
-  const { url, clientId } = site.siteMetadata.authClient
+  const { url, clientId, issuer } = site.siteMetadata.authClient
   const authClientSettings = {
     url: url,
     clientId: clientId,
     redirectUri: `${location.origin}/user`,
+    issuer: issuer,
+    ignoreSignature: true,
+    tokenManager: {
+      storage: 'sessionStorage',
+      storageKey: 'marble',
+    },
   }
   dispatch(setAuthClient(authClientSettings))
 }
 
 export const putLoggedInUserInStore = (loginReducer, location, dispatch) => {
   if (loginReducer.authClientSettings) {
-    const authClient = new OktaAuth({ ...loginReducer.authClientSettings })
+    const authClient = new OktaAuth(loginReducer.authClientSettings)
     try {
       authClient.tokenManager.get('idToken')
         .then(idToken => {

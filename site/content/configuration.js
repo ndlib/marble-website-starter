@@ -28,8 +28,9 @@ module.exports = {
     // paths
     useLogin: true,
     authClient: {
-      url: `https://dev-283656.okta.com`,
-      clientId: `0oa1i7w7sxc1DGz9C357`,
+      url: `https://okta.nd.edu`,
+      clientId: `0oa1f3ut0aKpdwap5357`,
+      issuer: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
     },
     searchPath: 'search',
 

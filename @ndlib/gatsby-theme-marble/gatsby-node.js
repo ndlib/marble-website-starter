@@ -201,6 +201,7 @@ exports.sourceNodes = ({ actions }) => {
   type authClient @dontInfer {
     url: String
     clientId: String
+    issuer: String
   }
   type SiteMetadata {
     universalViewerBaseURL: String

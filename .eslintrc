@@ -21,6 +21,11 @@
     "__PROD__"     : false,
     "__COVERAGE__" : false
   },
+  "settings" : {
+    "react" : {
+      "version" : "16.11"
+    },
+  },
   "rules" : {
     "brace-style"           : [2, "1tbs"],
     "comma-dangle"          : [2, "always-multiline"],

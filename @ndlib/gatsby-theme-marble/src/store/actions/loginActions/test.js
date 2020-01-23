@@ -13,9 +13,14 @@ describe('loginActions', () => {
     const claims = {
       email: 'some@mail.co',
       name: 'Mrs. Person',
+      netid: 'some',
     }
     const issuer = 'authority'
-    const actual = logUserIn(claims, issuer)
+    const idToken = {
+      claims: claims,
+      issuer: issuer,
+    }
+    const actual = logUserIn(idToken)
     const expected = {
       type: LOG_USER_IN,
       user: {
@@ -23,6 +28,7 @@ describe('loginActions', () => {
         name: 'Mrs. Person',
         email: 'some@mail.co',
         issuer: 'authority',
+        token: idToken,
       },
     }
     expect(actual).toEqual(expected)
