@@ -60,7 +60,6 @@ export default connect(
 
 export const putAuthSettingsInStore = (site, location, dispatch) => {
   const { url, clientId, issuer } = site.siteMetadata.authClient
-  console.log(url, clientId, issuer)
   const authClientSettings = {
     url: url,
     clientId: clientId,
