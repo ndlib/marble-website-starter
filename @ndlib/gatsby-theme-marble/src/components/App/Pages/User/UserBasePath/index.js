@@ -19,7 +19,7 @@ import style from './style.module.css'
 
 // eslint-disable-next-line complexity
 const UserBasePath = (props) => {
-  const { location, loginReducer, dispatch } = props
+  const { location, loginReducer } = props
 
   let content = null
   // eslint-disable-next-line complexity
@@ -31,7 +31,7 @@ const UserBasePath = (props) => {
       content = <Loading />
       break
     case STATUS_AUTHENTICATION_FAILED:
-      content = <div>Authentication Failed</div>
+      content = <div className={style.error}>Authentication Failed.</div>
       break
     case STATUS_AUTHENTICATED:
       content = <Loading />
@@ -46,7 +46,7 @@ const UserBasePath = (props) => {
       navigate(`/user/${loginReducer.user.userName}`)
       break
     default:
-      content = <div>Login unavilable.</div>
+      content = <div className={style.error}>Login unavilable.</div>
   }
 
   return (
@@ -59,7 +59,7 @@ const UserBasePath = (props) => {
         title={`Login`}
         noIndex
       />
-      <div className={style.loginArea}>
+      <div className={style.contentBody}>
         {content}
       </div>
     </Layout>
@@ -68,6 +68,5 @@ const UserBasePath = (props) => {
 UserBasePath.propTypes = {
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
 }
 export default UserBasePath

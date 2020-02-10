@@ -11,49 +11,30 @@ import UserFollowing from 'components/App/Pages/User/UserFollowing'
 import Compilation from 'components/App/Pages/Compilation'
 
 export const AppRouter = (props) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            userContentPath
-          }
-        }
-
-      }
-    `,
-  )
-  const userContentPath = typy(site, 'siteMetadata.userContentPath').safeString
   return (
     <Router>
       <UserBasePath
         path='/user'
-        userContentPath={userContentPath}
         {...props}
       />
       <UserIndex
         path='/user/:userName'
-        userContentPath={userContentPath}
         {...props}
       />
       <UserEdit
         path='/user/:userName/edit'
-        userContentPath={userContentPath}
         {...props}
       />
       <UserFollowing
         path='/user/:userName/following'
-        userContentPath={userContentPath}
         {...props}
       />
       <Compilation
         path='/compilation/:compilationId'
-        userContentPath={userContentPath}
         {...props}
       />
       <Compilation
         path='/compilation/:compilationId/edit'
-        userContentPath={userContentPath}
         edit
         {...props}
       />
