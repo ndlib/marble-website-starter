@@ -12,7 +12,7 @@ import LogOut from 'components/Shared/LoginArea/LogOut'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 const UserLayout = ({ user, children, location, loginReducer }) => {
-  const isOwner = ownsPage(loginReducer, user.username)
+  const isOwner = ownsPage(loginReducer, user.userName)
   return (
     <Layout
       location={location}
@@ -20,7 +20,7 @@ const UserLayout = ({ user, children, location, loginReducer }) => {
       <Seo
         data={{}}
         location={location}
-        title={user.username}
+        title={user.userName}
         noIndex
       />
       <MultiColumn columns='5'>
@@ -29,13 +29,13 @@ const UserLayout = ({ user, children, location, loginReducer }) => {
             <Gravatar email={user.email} />
             <div className={style.identity}>
               <Styled.h1>{user.name}</Styled.h1>
-              <Styled.h2>{user.username}</Styled.h2>
+              <Styled.h2>{user.userName}</Styled.h2>
             </div>
           </div>
           <div>
             {
             /* Follow or Edit button */
-              isOwner ? <EditUserButton username={user.username} /> : <FollowButton username={user.username} showButton={isLoggedIn(loginReducer)} />
+              isOwner ? <EditUserButton userName={user.userName} /> : <FollowButton userName={user.userName} showButton={isLoggedIn(loginReducer)} />
             }
           </div>
           <div>

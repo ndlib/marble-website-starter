@@ -8,7 +8,7 @@ import Ownership from './Ownership'
 
 const CompilationLayout = ({ compilation, edit, location, loginReducer, children }) => {
   const { user } = compilation
-  const isOwner = ownsPage(loginReducer, user.username)
+  const isOwner = ownsPage(loginReducer, user.userName)
   if (!isOwner && edit) {
     navigate(`/compilation/${compilation.id}`)
   }

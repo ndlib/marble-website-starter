@@ -32,6 +32,7 @@ module.exports = {
       clientId: `0oa1f3ut0aKpdwap5357`,
       issuer: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
     },
+    userContentPath: `https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/`,
     searchPath: 'search',
 
     // branding

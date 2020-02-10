@@ -5,7 +5,7 @@ import HorizontalSubmenu from 'components/Internal/HorizontalSubmenu'
 
 test('UserTopMenu', () => {
   const props = {
-    username: 'fake_person',
+    userName: 'fake_person',
     location: {
       pathname: '/user/fake_person',
     },

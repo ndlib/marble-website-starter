@@ -9,13 +9,13 @@ import { FOLLOWING_PAGE } from 'store/actions/displayActions'
 import { getUser } from 'utils/appUtils'
 import NoUser from '../NoUser'
 const UserFollowing = (props) => {
-  const user = getUser(props.username)
+  const user = getUser(props.userName)
   if (!user) {
     return (<NoUser {...props} />)
   }
   return (
     <UserLayout user={user} {...props}>
-      <UserTopMenu username={props.username} location={props.location} />
+      <UserTopMenu userName={props.userName} location={props.location} />
       {
         // TODO map real users from API
       }
@@ -37,7 +37,7 @@ const UserFollowing = (props) => {
   )
 }
 UserFollowing.propTypes = {
-  username: PropTypes.string,
+  userName: PropTypes.string,
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

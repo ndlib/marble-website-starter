@@ -8,17 +8,17 @@ import { getUserCompilations, getUser } from 'utils/appUtils'
 import NoUser from '../NoUser'
 
 const UserIndex = (props) => {
-  const { loginReducer, username } = props
-  const user = getUser(username)
+  const { loginReducer, userName } = props
+  const user = getUser(userName)
   if (!user) {
     return (<NoUser {...props} />)
   }
   const loggedIn = isLoggedIn(loginReducer)
-  const isOwner = ownsPage(loginReducer, username)
-  const compilations = getUserCompilations(username)
+  const isOwner = ownsPage(loginReducer, userName)
+  const compilations = getUserCompilations(userName)
   return (
     <UserLayout user={user} {...props} >
-      <UserTopMenu username={props.username} location={props.location} />
+      <UserTopMenu userName={props.userName} location={props.location} />
       <CompilationList
         isOwner={isOwner}
         loggedIn={loggedIn}
@@ -29,7 +29,7 @@ const UserIndex = (props) => {
   )
 }
 UserIndex.propTypes = {
-  username: PropTypes.string,
+  userName: PropTypes.string,
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

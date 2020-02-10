@@ -10,7 +10,7 @@ describe('LoginArea', () => {
     jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
     const loginReducer = {
       user: {
-        name: 'username',
+        name: 'userName',
       },
     }
     const wrapper = shallow(<LoginArea loginReducer={loginReducer} />)

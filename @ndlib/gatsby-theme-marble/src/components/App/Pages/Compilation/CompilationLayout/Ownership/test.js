@@ -7,7 +7,7 @@ import * as Auth from 'utils/auth'
 
 describe('Ownership', () => {
   const fakeUser = {
-    username: 'fake_user',
+    userName: 'fake_user',
     name: 'fake user',
     email: 'user.mail',
   }

@@ -8,7 +8,7 @@ test('UserCartouche', () => {
   const user = {
     email: 'me@service.mail',
     name: 'Dude McGuy',
-    username: 'dude',
+    userName: 'dude',
   }
   navigate.mockImplementationOnce(() => {})
   const wrapper = shallow(<UserCartouche user={user} />)

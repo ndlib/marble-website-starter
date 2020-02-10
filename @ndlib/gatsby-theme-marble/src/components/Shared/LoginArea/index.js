@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { isLoggedIn } from 'utils/auth'
+import {
+  isLoggedIn,
+} from 'utils/auth'
 import OktaLogin from './OktaLogin'
+
 import LogOut from './LogOut'
 import MaterialButton from 'components/Internal/MaterialButton'
 import style from './style.module.css'
@@ -17,6 +20,7 @@ export const LoginArea = ({ loginReducer }) => {
       </div>
     )
   }
+
   return (
     <div>
       <form className={style.loginArea}>

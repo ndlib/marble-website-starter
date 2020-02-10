@@ -7,7 +7,7 @@ import * as Util from 'utils/appUtils'
 
 describe('UserFollowing', () => {
   const props = {
-    username: 'some_one',
+    userName: 'some_one',
     location: {},
     loginReducer: {},
   }
@@ -18,7 +18,7 @@ describe('UserFollowing', () => {
   })
   test('valid user', () => {
     const fakeUser = {
-      username: 'someone_else',
+      userName: 'someone_else',
       name: 'A Person',
       email: 'person@mail.web',
       bio: null,

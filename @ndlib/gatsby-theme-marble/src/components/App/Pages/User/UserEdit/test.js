@@ -13,13 +13,13 @@ describe('UserEdit', () => {
     jest.clearAllMocks()
   })
   const fakeUser = {
-    username: 'someone_else',
+    userName: 'someone_else',
     name: 'A Person',
     email: 'person@mail.web',
     bio: null,
   }
   const props = {
-    username: 'someone_else',
+    userName: 'someone_else',
     location: {},
     loginReducer: {},
   }

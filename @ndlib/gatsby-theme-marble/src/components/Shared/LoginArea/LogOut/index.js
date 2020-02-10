@@ -13,8 +13,7 @@ export const LogOut = ({ dispatch, loginReducer }) => {
         onClick={(e) => {
           e.preventDefault()
           const authClient = new OktaAuth({ ...loginReducer.authClientSettings })
-          authClient.tokenManager.clear()
-          dispatch(logUserOut())
+          dispatch(logUserOut(authClient))
         }}
         primary
         wide
@@ -38,5 +37,5 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LogOut)

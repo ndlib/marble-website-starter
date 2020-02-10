@@ -8,7 +8,7 @@ import style from './style.module.css'
 
 const Ownership = ({ compilation, loginReducer }) => {
   const { visibility, user } = compilation
-  const isOwner = ownsPage(loginReducer, user.username)
+  const isOwner = ownsPage(loginReducer, user.userName)
   if (isOwner) {
     return (
       <div className={style.ownership}>You manage this <VisibilityLabel visibility={visibility} /> compilation.</div>

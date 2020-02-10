@@ -46,7 +46,7 @@ export const getAnnotationsFromIds = (ids) => {
         user: {
           email: 'rfox2@nd.edu',
           name: 'User Name',
-          username: 'username',
+          userName: 'userName',
         },
         compilation: {
           id: `thing-1`,

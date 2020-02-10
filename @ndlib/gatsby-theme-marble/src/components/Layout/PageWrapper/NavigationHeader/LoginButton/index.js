@@ -17,7 +17,7 @@ export const LoginButton = ({ loginReducer }) => {
           }
         }
       }
-    `
+    `,
   )
   if (!site.siteMetadata.useLogin) {
     return null
@@ -26,7 +26,7 @@ export const LoginButton = ({ loginReducer }) => {
     const safeName = getSafeName(loginReducer)
     return (
       <div className={style.loginButton}>
-        <Link to={`/user/${loginReducer.user.username}`}>
+        <Link to={`/user/${loginReducer.user.userName}`}>
           <img
             src={userIcon}
             alt='My Account'
@@ -58,7 +58,7 @@ export default connect(mapStateToProps)(LoginButton)
 
 export const getSafeName = (loginReducer) => {
   return typy(loginReducer, 'user.fullname').safeString ||
-    typy(loginReducer, 'user.username').safeString ||
+    typy(loginReducer, 'user.userName').safeString ||
     typy(loginReducer, 'user.email').safeString ||
     'My Stuff'
 }

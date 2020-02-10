@@ -24,7 +24,7 @@ describe('loginActions', () => {
     const expected = {
       type: LOG_USER_IN,
       user: {
-        username: 'some',
+        userName: 'some',
         name: 'Mrs. Person',
         email: 'some@mail.co',
         issuer: 'authority',

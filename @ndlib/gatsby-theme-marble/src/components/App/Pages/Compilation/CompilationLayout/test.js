@@ -9,7 +9,7 @@ describe('CompilationLayout', () => {
   const props = {
     compilation: {
       user: {
-        username: 'fake_user',
+        userName: 'fake_user',
       },
       id: '1',
       title: 'test title',

@@ -32,7 +32,7 @@ describe('ownsPage', () => {
   test('logged in and ownsPage true', () => {
     const loginReducer = {
       status: STATUS_LOGGED_IN,
-      user: { username: 'jimbob' },
+      user: { userName: 'jimbob' },
     }
     expect(ownsPage(loginReducer, 'jimbob')).toBeTruthy()
   })
@@ -40,7 +40,7 @@ describe('ownsPage', () => {
   test('logged in and ownsPage false', () => {
     const loginReducer = {
       status: STATUS_LOGGED_IN,
-      user: { username: 'bobbyjim' },
+      user: { userName: 'bobbyjim' },
     }
     expect(ownsPage(loginReducer, 'jimbob')).toBeFalsy()
   })
