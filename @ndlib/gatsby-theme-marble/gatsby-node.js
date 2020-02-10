@@ -143,6 +143,7 @@ exports.sourceNodes = ({ actions }) => {
     thumbnail: [iiifThumbnailJson]
     items: [iiifItem]
     partiallyDigitized: String
+    seeAlso: [iiifSeeAlso]
   }
 
   #react component stuff
