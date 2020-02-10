@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import CanonicalLink from './CanonicalLink'
+import SchemaLink from './SchemaLink'
 import MetaTagGroup from './MetaTagGroup'
 import { getOpenGraph, getTwitter } from './data'
 
@@ -15,6 +16,7 @@ export const SeoContent = ({
   siteTitle,
   siteUrl,
   noIndex,
+  seeAlso,
 }) => {
   const openGraph = getOpenGraph(title, description, image)
   const twitter = getTwitter(author, title, description, image)
@@ -28,6 +30,7 @@ export const SeoContent = ({
   // console.log('siteTitle:', siteTitle)
   // console.log('siteUrl:', siteUrl)
   // console.log('noIndex:', noIndex)
+  // console.log('seeAlso:', seeAlso)
   // console.log('=======================================================')
   let indexable = null
   if (noIndex === true) {
@@ -51,6 +54,7 @@ export const SeoContent = ({
         ]}
       />
       <CanonicalLink base={siteUrl} pathname={pathname} />
+      <SchemaLink pathname={seeAlso} />
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
       {indexable}
@@ -68,6 +72,7 @@ SeoContent.propTypes = {
   siteUrl: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
   noIndex: PropTypes.bool,
+  seeAlso: PropTypes.string,
 }
 
 SeoContent.defaultProps = {

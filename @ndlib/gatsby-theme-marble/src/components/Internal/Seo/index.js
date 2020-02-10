@@ -23,6 +23,7 @@ export const Seo = ({
             languages {
               default
             }
+
           }
         }
         file(name: {eq: "openGraphLogo"}) {
@@ -44,6 +45,7 @@ export const Seo = ({
       siteUrl={typy(siteMetadata, 'siteUrl').safeString}
       lang={typy(siteMetadata, 'languages.default').safeString}
       noIndex={noIndex}
+      seeAlso={typy(frontmatter, 'iiifJson.seeAlso[0].id').safeObject}
     />
   )
 }
