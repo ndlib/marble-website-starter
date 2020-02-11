@@ -22,7 +22,6 @@ const UserBasePath = (props) => {
   const { location, loginReducer } = props
 
   let content = null
-  // eslint-disable-next-line complexity
   switch (loginReducer.status) {
     case STATUS_NOT_LOGGED_IN:
       content = <LoginArea {...props} />

@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Router } from '@reach/router'
-import { useStaticQuery, graphql } from 'gatsby'
-import typy from 'typy'
 import UserBasePath from 'components/App/Pages/User/UserBasePath'
 import UserIndex from 'components/App/Pages/User/UserIndex'
 import UserEdit from 'components/App/Pages/User/UserEdit'
@@ -50,10 +48,7 @@ AppRouter.propTypes = {
 export const mapStateToProps = (state) => {
   return { ...state }
 }
-export const mapDispatchToProps = dispatch => {
-  return { dispatch }
-}
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(AppRouter)

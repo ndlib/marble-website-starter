@@ -127,10 +127,10 @@ export const createNewUser = (slug, body, loginReducer) => {
     ).then(response => {
       return response.json()
     }).then(json => {
-      console.log(json)
       return dispatch(logUserIn(json))
     }).catch(error => {
       console.error('Error: ', error)
+      return dispatch(noUser())
     })
   }
 }

@@ -12,7 +12,7 @@ export const LogOut = ({ dispatch, loginReducer }) => {
         id='okta'
         onClick={(e) => {
           e.preventDefault()
-          const authClient = new OktaAuth({ ...loginReducer.authClientSettings })
+          const authClient = new OktaAuth(loginReducer.authClientSettings)
           dispatch(logUserOut(authClient))
         }}
         primary

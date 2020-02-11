@@ -25,7 +25,4 @@ describe('AppRouter', () => {
   test('mapStateToProps', () => {
     expect(mapStateToProps({ some: 'state' })).toEqual({ some: 'state' })
   })
-  test('mapDispatchToProps', () => {
-    expect(mapDispatchToProps(jest.fn)).toEqual({ dispatch: jest.fn })
-  })
 })
