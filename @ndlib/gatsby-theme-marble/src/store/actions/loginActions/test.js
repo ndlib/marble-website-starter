@@ -1,25 +1,19 @@
 import * as Actions from './'
 const {
-  GET_AUTHENTICATION,
+  // GET_AUTHENTICATION,
   AUTHENTICATE_USER,
   GET_USER,
   NO_USER,
   LOG_USER_IN,
   LOG_USER_OUT,
   SET_AUTH_CLIENT,
-  STATUS_NOT_LOGGED_IN,
-  STATUS_TRYING_AUTHENTICATION,
-  STATUS_AUTHENTICATED,
-  STATUS_AUTHENTICATED_TRYING_LOGIN,
-  STATUS_AUTHENTICATED_NOT_LOGGED_IN,
-  STATUS_LOGGED_IN,
+  // putAuthSettingsInStore,
   setAuthClient,
-  getTokenAndPutInStore,
-  storeAuthenticationAndGetLogin,
+  // getTokenAndPutInStore,
   authenticateUser,
   getUser,
-  getUserFromAPI,
-  createNewUser,
+  // storeAuthenticationAndGetLogin,
+  // createNewUser,
   noUser,
   logUserIn,
   logUserOut,
@@ -39,7 +33,12 @@ describe('loginActions', () => {
 
   test.skip('storeAuthenticationAndGetLogin', () => {})
 
-  test.skip('authenticateUser', () => {})
+  test('authenticateUser', () => {
+    expect(authenticateUser('token')).toEqual({
+      type: AUTHENTICATE_USER,
+      token: 'token',
+    })
+  })
 
   test('getUser', () => {
     expect(getUser()).toEqual({
@@ -64,5 +63,14 @@ describe('loginActions', () => {
     })
   })
 
-  test.skip('logUserOut', () => {})
+  test('logUserOut', () => {
+    const authClient = {
+      tokenManager: {
+        clear: jest.fn,
+      },
+    }
+    expect(logUserOut(authClient)).toEqual({
+      type: LOG_USER_OUT,
+    })
+  })
 })

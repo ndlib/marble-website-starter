@@ -4,7 +4,6 @@ import { navigate } from 'gatsby'
 import {
   STATUS_NOT_LOGGED_IN,
   STATUS_TRYING_AUTHENTICATION,
-  STATUS_AUTHENTICATED,
   STATUS_AUTHENTICATION_FAILED,
   STATUS_AUTHENTICATED_TRYING_LOGIN,
   STATUS_AUTHENTICATED_NOT_LOGGED_IN,
@@ -31,9 +30,6 @@ const UserBasePath = (props) => {
       break
     case STATUS_AUTHENTICATION_FAILED:
       content = <div className={style.error}>Authentication Failed.</div>
-      break
-    case STATUS_AUTHENTICATED:
-      content = <Loading />
       break
     case STATUS_AUTHENTICATED_TRYING_LOGIN:
       content = <Loading />

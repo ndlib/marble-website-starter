@@ -67,17 +67,10 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
     }
   }
 }
-export const storeAuthenticationAndGetLogin = (idToken, loginReducer) => {
-  return dispatch => {
-    dispatch(authenticateUser(idToken))
-    dispatch(getUserFromAPI(idToken, loginReducer.userContentPath))
-  }
-}
+
 export const authenticateUser = (idToken) => {
-  const { issuer } = idToken
   return {
     type: AUTHENTICATE_USER,
-    issuer: issuer,
     token: idToken,
   }
 }
@@ -86,10 +79,11 @@ export const getUser = () => {
     type: GET_USER,
   }
 }
-export const getUserFromAPI = (idToken, userContentPath) => {
+export const storeAuthenticationAndGetLogin = (idToken, loginReducer) => {
+  const { userContentPath } = loginReducer
   const url = `${userContentPath}user-id/${userIdFromClaims(idToken.claims)}`
   return dispatch => {
-    dispatch(getUser())
+    dispatch(authenticateUser(idToken))
     return fetch(
       url, {
         method: 'get',

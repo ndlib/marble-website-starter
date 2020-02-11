@@ -8,7 +8,6 @@ import {
   SET_AUTH_CLIENT,
   STATUS_NOT_LOGGED_IN,
   STATUS_TRYING_AUTHENTICATION,
-  STATUS_AUTHENTICATED,
   STATUS_AUTHENTICATED_TRYING_LOGIN,
   STATUS_AUTHENTICATED_NOT_LOGGED_IN,
   STATUS_LOGGED_IN,
@@ -19,7 +18,6 @@ export const defaultState = {
   userContentPath: null,
   status: STATUS_NOT_LOGGED_IN,
   token: null,
-  issuer: null,
   user: {},
 }
 
@@ -34,9 +32,8 @@ export default (state = defaultState, action) => {
     case AUTHENTICATE_USER:
       return {
         ...state,
-        status: STATUS_AUTHENTICATED,
+        status: STATUS_AUTHENTICATED_TRYING_LOGIN,
         token: action.token,
-        issuer: action.issuer,
       }
     case GET_USER:
       return {
