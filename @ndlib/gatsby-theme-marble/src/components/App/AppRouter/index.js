@@ -11,31 +11,12 @@ import Compilation from 'components/App/Pages/Compilation'
 export const AppRouter = (props) => {
   return (
     <Router>
-      <UserBasePath
-        path='/user'
-        {...props}
-      />
-      <UserIndex
-        path='/user/:userName'
-        {...props}
-      />
-      <UserEdit
-        path='/user/:userName/edit'
-        {...props}
-      />
-      <UserFollowing
-        path='/user/:userName/following'
-        {...props}
-      />
-      <Compilation
-        path='/compilation/:compilationId'
-        {...props}
-      />
-      <Compilation
-        path='/compilation/:compilationId/edit'
-        edit
-        {...props}
-      />
+      <UserBasePath path='/user' {...props} />
+      <UserIndex path='/user/:userName' {...props} />
+      <UserEdit path='/user/:userName/edit' {...props} />
+      <UserFollowing path='/user/:userName/following' {...props} />
+      <Compilation path='/compilation/:compilationId' {...props} />
+      <Compilation path='/compilation/:compilationId/edit' edit {...props} />
     </Router>
   )
 }
