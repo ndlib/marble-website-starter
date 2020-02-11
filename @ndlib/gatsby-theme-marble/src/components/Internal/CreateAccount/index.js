@@ -76,6 +76,7 @@ const mapDispatchToProps = dispatch => {
 }
 CreateAccount.propTypes = {
   loginReducer: PropTypes.object,
+  dispatch: PropTypes.func,
 }
 export default connect(
   mapStateToProps,
