@@ -493,8 +493,8 @@ const defaultLayouts = {
         {
           component: 'Column',
           components: [
-            { component: 'ManifestDescription' },
             { component: 'ManifestMetaData' },
+            { component: 'ManifestDescription' },
             { component: 'PartiallyDigitized' },
           ],
         },
