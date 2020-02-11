@@ -15,7 +15,7 @@ const TextField = ({ id, label, onChange, defaultValue = '', disabled = false })
         className={style.editText}
         disabled={disabled}
         defaultValue={defaultValue}
-        onChange={(event) => onChange(event)}
+        onChange={onChange}
       />
     </div>
   )

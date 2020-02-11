@@ -14,7 +14,7 @@ const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false }) 
         className={style.editTextArea}
         defaultValue={defaultValue}
         disabled={disabled}
-        onChange={(event) => onChange(event)}
+        onChange={onChange}
       />
     </div>
   )
