@@ -11,11 +11,6 @@ export const isLoggedIn = (loginReducer) => {
   return (loginReducer.status === STATUS_LOGGED_IN)
 }
 
-export const isAuthenticatedButNotLoggedIn = (loginReducer) => {
-  if (!isBrowser) return false
-  return (loginReducer.status === STATUS_AUTHENTICATED_NOT_LOGGED_IN)
-}
-
 export const ownsPage = (loginReducer, userName) => {
   return isLoggedIn(loginReducer) && typy(loginReducer, 'user.userName').safeString === userName
 }
