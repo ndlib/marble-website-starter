@@ -26,7 +26,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
         }}
       />
       <TextField
-        id='profileUsername'
+        id='profileUserName'
         label='Username'
         defaultValue={claims.netid}
         disabled

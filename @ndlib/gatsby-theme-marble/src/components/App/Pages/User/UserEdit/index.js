@@ -48,7 +48,7 @@ const UserEdit = (props) => {
           defaultValue={user.name}
         />
         <TextField
-          id='profileUsername'
+          id='profileUserName'
           label='Username'
           defaultValue={user.userName}
           disabled
