@@ -1,8 +1,5 @@
 import typy from 'typy'
-import {
-  STATUS_LOGGED_IN,
-  STATUS_AUTHENTICATED_NOT_LOGGED_IN,
-} from 'store/actions/loginActions'
+import { STATUS_LOGGED_IN } from 'store/actions/loginActions'
 
 const isBrowser = typeof window !== `undefined`
 
