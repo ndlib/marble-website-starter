@@ -1,6 +1,7 @@
 import {
   GET_AUTHENTICATION,
   AUTHENTICATE_USER,
+  AUTH_ERROR,
   GET_USER,
   NO_USER,
   LOG_USER_IN,
@@ -8,6 +9,7 @@ import {
   SET_AUTH_CLIENT,
   STATUS_NOT_LOGGED_IN,
   STATUS_TRYING_AUTHENTICATION,
+  STATUS_AUTHENTICATION_FAILED,
   STATUS_AUTHENTICATED_TRYING_LOGIN,
   STATUS_AUTHENTICATED_NOT_LOGGED_IN,
   STATUS_LOGGED_IN,
@@ -34,6 +36,11 @@ export default (state = defaultState, action) => {
         ...state,
         status: STATUS_AUTHENTICATED_TRYING_LOGIN,
         token: action.token,
+      }
+    case AUTH_ERROR:
+      return {
+        ...state,
+        status: STATUS_AUTHENTICATION_FAILED,
       }
     case GET_USER:
       return {

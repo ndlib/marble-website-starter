@@ -4,6 +4,7 @@ import {
 } from 'utils/auth'
 export const GET_AUTHENTICATION = 'GET_AUTHENTICATION'
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER'
+export const AUTH_ERROR = 'AUTH_ERROR'
 export const GET_USER = 'GET_USER'
 export const NO_USER = 'NO_USER'
 export const LOG_USER_IN = 'LOG_USER_IN'
@@ -59,12 +60,22 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                   authClient.tokenManager.add('idToken', idToken)
                   dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
                 })
+                .catch(error => {
+                  console.error(error)
+                  dispatch(authorizationError())
+                })
             }
           })
       } catch {
         console.error('Could not access tokenManager.')
       }
     }
+  }
+}
+
+export const authorizationError = () => {
+  return {
+    type: AUTH_ERROR,
   }
 }
 

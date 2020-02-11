@@ -2,6 +2,7 @@ import * as Actions from './'
 const {
   // GET_AUTHENTICATION,
   AUTHENTICATE_USER,
+  AUTH_ERROR,
   GET_USER,
   NO_USER,
   LOG_USER_IN,
@@ -10,6 +11,7 @@ const {
   // putAuthSettingsInStore,
   setAuthClient,
   // getTokenAndPutInStore,
+  authorizationError,
   authenticateUser,
   getUser,
   // storeAuthenticationAndGetLogin,
@@ -40,6 +42,11 @@ describe('loginActions', () => {
     })
   })
 
+  test('authorizationError', () => {
+    expect(authorizationError()).toEqual({
+      type: AUTH_ERROR,
+    })
+  })
   test('getUser', () => {
     expect(getUser()).toEqual({
       type: GET_USER,
