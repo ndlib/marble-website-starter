@@ -1,18 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { navigate } from 'gatsby'
-import { isLoggedIn } from 'utils/auth'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
-import LoginArea from 'components/Shared/LoginArea'
+import UserBasePathContent from './UserBasePathContent'
 import style from './style.module.css'
 
-const LoginOrRedirect = (props) => {
+const UserBasePath = (props) => {
   const { location, loginReducer } = props
-  if (isLoggedIn(loginReducer)) {
-    navigate(`/user/${loginReducer.user.username}`)
-    return null
-  }
+
   return (
     <Layout
       location={location}
@@ -23,15 +18,14 @@ const LoginOrRedirect = (props) => {
         title={`Login`}
         noIndex
       />
-      <div className={style.loginArea}>
-        <LoginArea {...props} />
+      <div className={style.contentBody}>
+        <UserBasePathContent loginReducer={loginReducer} />
       </div>
     </Layout>
   )
 }
-LoginOrRedirect.propTypes = {
+UserBasePath.propTypes = {
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
 }
-export default LoginOrRedirect
+export default UserBasePath

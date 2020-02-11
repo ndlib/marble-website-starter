@@ -7,7 +7,7 @@ import Seo from 'components/Internal/Seo'
 test('NoUser', () => {
   const props = {
     location: {},
-    username: 'invaliduser',
+    userName: 'invaliduser',
   }
   const wrapper = shallow(<NoUser {...props} />)
   expect(wrapper.find(Layout).props().title).toEqual(defaultTitle)

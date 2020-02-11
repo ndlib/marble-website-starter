@@ -11,7 +11,7 @@ export const OktaLogin = ({ loginReducer }) => {
         id='okta'
         onClick={(e) => {
           e.preventDefault()
-          const authClient = new OktaAuth({ ...loginReducer.authClientSettings })
+          const authClient = new OktaAuth(loginReducer.authClientSettings)
           authClient.token.getWithRedirect({
             responseType: 'id_token',
             scopes: [

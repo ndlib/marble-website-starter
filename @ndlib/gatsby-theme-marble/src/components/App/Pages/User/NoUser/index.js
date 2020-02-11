@@ -4,7 +4,7 @@ import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 
 export const defaultTitle = `User Not Found`
-const NoUser = ({ username, location }) => {
+const NoUser = ({ userName, location }) => {
   return (
     <Layout
       location={location}
@@ -17,13 +17,13 @@ const NoUser = ({ username, location }) => {
         noIndex
       />
       <div>
-        <p>This user <code>{username}</code> does not exist or you are not authorized to see this page.</p>
+        <p>This user <code>{userName}</code> does not exist or you are not authorized to see this page.</p>
       </div>
     </Layout>
   )
 }
 NoUser.propTypes = {
   location: PropTypes.object.isRequired,
-  username: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
 }
 export default NoUser

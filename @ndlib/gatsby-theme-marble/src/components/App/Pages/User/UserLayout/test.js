@@ -14,7 +14,7 @@ import LogOut from 'components/Shared/LoginArea/LogOut'
 describe('UserLayout', () => {
   const props = {
     user: {
-      username: 'person_user',
+      userName: 'person_user',
       email: 'me@email.web',
       name: 'Person User',
       bio: 'some bio',
@@ -35,7 +35,7 @@ describe('UserLayout', () => {
     expect(wrapper.find('.childContent').exists()).toBeTruthy()
     expect(wrapper.find('.bio').html()).toContain('some bio')
     // different for ownership status
-    expect(wrapper.find(EditUserButton).props().username).toEqual('person_user')
+    expect(wrapper.find(EditUserButton).props().userName).toEqual('person_user')
     expect(wrapper.find(FollowButton).exists()).toBeFalsy()
     expect(wrapper.find(LogOut).exists()).toBeTruthy()
   })
@@ -54,7 +54,7 @@ describe('UserLayout', () => {
     expect(wrapper.find('.bio').html()).toContain('some bio')
     // different for ownership status
     expect(wrapper.find(EditUserButton).exists()).toBeFalsy()
-    expect(wrapper.find(FollowButton).props().username).toEqual('person_user')
+    expect(wrapper.find(FollowButton).props().userName).toEqual('person_user')
     expect(wrapper.find(LogOut).exists()).toBeFalsy()
   })
 })

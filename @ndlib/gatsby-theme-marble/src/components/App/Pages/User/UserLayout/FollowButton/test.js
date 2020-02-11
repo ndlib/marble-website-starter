@@ -10,7 +10,7 @@ describe('FollowButton', () => {
   test('!showButton', () => {
     const props = {
       showButton: false,
-      username: 'lieutenant_user',
+      userName: 'lieutenant_user',
     }
     const wrapper = shallow(<FollowButton {...props} />)
     expect(wrapper.find(Link).props().to).toEqual('/user')
@@ -19,7 +19,7 @@ describe('FollowButton', () => {
   test('following', () => {
     const props = {
       showButton: true,
-      username: 'lieutenant_user',
+      userName: 'lieutenant_user',
       following: true,
     }
     const wrapper = shallow(<FollowButton {...props} />)
@@ -30,7 +30,7 @@ describe('FollowButton', () => {
   test('default', () => {
     const props = {
       showButton: true,
-      username: 'lieutenant_user',
+      userName: 'lieutenant_user',
     }
     const wrapper = shallow(<FollowButton {...props} />)
     expect(wrapper.find(MaterialButton).html()).toContain('Follow')

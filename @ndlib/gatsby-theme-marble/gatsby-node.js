@@ -211,6 +211,7 @@ exports.sourceNodes = ({ actions }) => {
     footerText: String
     menus: [menus]
     useLogin: Boolean
+    userContentPath: String
     authClient: authClient
     searchPath: String
     languages: languages

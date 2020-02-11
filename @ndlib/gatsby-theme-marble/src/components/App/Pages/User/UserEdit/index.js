@@ -12,12 +12,12 @@ import TextArea from 'components/App/FormElements/TextArea'
 import style from 'components/App/FormElements/style.module.css'
 
 const UserEdit = (props) => {
-  const { username, loginReducer } = props
-  const user = getUser(username)
+  const { userName, loginReducer } = props
+  const user = getUser(userName)
   if (!user) {
     return (<NoUser {...props} />)
-  } else if (!ownsPage(loginReducer, username)) {
-    navigate(`/user/${username}`)
+  } else if (!ownsPage(loginReducer, userName)) {
+    navigate(`/user/${userName}`)
     return null
   }
   return (
@@ -28,16 +28,16 @@ const UserEdit = (props) => {
             onClick={(e) => {
               e.preventDefault()
               if (window.confirm(
-                `Any unsaved changes you have made will be lost.`
+                `Any unsaved changes you have made will be lost.`,
               )) {
-                navigate(`/user/${username}`)
+                navigate(`/user/${userName}`)
               }
             }}
           >Cancel</MaterialButton>
           <MaterialButton
             onClick={(e) => {
               e.preventDefault()
-              navigate(`/user/${username}`)
+              navigate(`/user/${userName}`)
             }}
             primary
           >Save</MaterialButton>
@@ -48,16 +48,15 @@ const UserEdit = (props) => {
           defaultValue={user.name}
         />
         <TextField
-          id='profileUsername'
+          id='profileUserName'
           label='Username'
-          defaultValue={user.username}
+          defaultValue={user.userName}
           disabled
         />
         <TextField
           id='profileEmail'
           label='Email Address'
           defaultValue={user.email}
-          disabled
         />
         <TextArea
           id='profileBio'
@@ -82,7 +81,7 @@ const UserEdit = (props) => {
   )
 }
 UserEdit.propTypes = {
-  username: PropTypes.string,
+  userName: PropTypes.string,
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

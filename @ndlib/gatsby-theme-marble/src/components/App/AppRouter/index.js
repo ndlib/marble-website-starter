@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Router } from '@reach/router'
-import LoginOrRedirect from 'components/App/Pages/User/LoginOrRedirect'
+import UserBasePath from 'components/App/Pages/User/UserBasePath'
 import UserIndex from 'components/App/Pages/User/UserIndex'
 import UserEdit from 'components/App/Pages/User/UserEdit'
 import UserFollowing from 'components/App/Pages/User/UserFollowing'
@@ -11,10 +11,10 @@ import Compilation from 'components/App/Pages/Compilation'
 export const AppRouter = (props) => {
   return (
     <Router>
-      <LoginOrRedirect path='/user' {...props} />
-      <UserIndex path='/user/:username' {...props} />
-      <UserEdit path='/user/:username/edit' {...props} />
-      <UserFollowing path='/user/:username/following' {...props} />
+      <UserBasePath path='/user' {...props} />
+      <UserIndex path='/user/:userName' {...props} />
+      <UserEdit path='/user/:userName/edit' {...props} />
+      <UserFollowing path='/user/:userName/following' {...props} />
       <Compilation path='/compilation/:compilationId' {...props} />
       <Compilation path='/compilation/:compilationId/edit' edit {...props} />
     </Router>
@@ -29,10 +29,7 @@ AppRouter.propTypes = {
 export const mapStateToProps = (state) => {
   return { ...state }
 }
-export const mapDispatchToProps = dispatch => {
-  return { dispatch }
-}
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
 )(AppRouter)

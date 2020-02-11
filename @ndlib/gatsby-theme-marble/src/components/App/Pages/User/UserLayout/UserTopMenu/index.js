@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import HorizontalSubmenu from 'components/Internal/HorizontalSubmenu'
 
-const UserTopMenu = ({ username, location }) => {
+const UserTopMenu = ({ userName, location }) => {
   const options = makeOptions([
-    { label: 'Compilations', path: `/user/${username}` },
-    { label: 'Following', path: `/user/${username}/following` },
+    { label: 'Compilations', path: `/user/${userName}` },
+    { label: 'Following', path: `/user/${userName}/following` },
   ], location.pathname)
 
   return (
@@ -15,7 +15,7 @@ const UserTopMenu = ({ username, location }) => {
 }
 
 UserTopMenu.propTypes = {
-  username: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
 }
 

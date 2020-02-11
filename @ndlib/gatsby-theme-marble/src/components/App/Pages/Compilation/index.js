@@ -10,8 +10,8 @@ import { getCompilation } from 'utils/appUtils'
 
 export const Compilation = ({ compilationId, edit, location, loginReducer }) => {
   const compilation = getCompilation(compilationId)
-  const username = typy(compilation, 'user.username').safeString
-  const showCompilation = shouldShow(compilation, ownsPage(loginReducer, username))
+  const userName = typy(compilation, 'user.userName').safeString
+  const showCompilation = shouldShow(compilation, ownsPage(loginReducer, userName))
   if (showCompilation) {
     return (
       <CompilationLayout

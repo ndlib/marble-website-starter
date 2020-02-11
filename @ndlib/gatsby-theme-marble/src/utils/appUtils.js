@@ -1,20 +1,20 @@
 // mock data
 const user1 = {
   name: `Jon Hartzler`,
-  username: `jhartzle`,
+  userName: `jhartzle`,
   email: `jhartzle@nd.edu`,
   bio: `Some kind of description goes here. Professors can put their class list here maybe, or you could say what kind of things you're interested in. There will be a character limit and it will be editable on the edit page.`,
 }
 const user2 = {
   name: 'Dan Wolfe',
-  username: `dwolfe2`,
+  userName: `dwolfe2`,
   email: `dwolfe2@nd.edu`,
   bio: `I have a short description, but Jon doesn't have one at all.`,
 }
 
 const user3 = {
   name: `Abigail Shelton`,
-  username: `ashelto3`,
+  userName: `ashelto3`,
   email: `ashelto3@nd.edu`,
 }
 const items = [
@@ -164,9 +164,9 @@ const compilations = [
 ]
 
 // end mock data
-export const getUserCompilations = (username) => {
+export const getUserCompilations = (userName) => {
   return compilations.filter(compilation => {
-    return compilation.user.username === username
+    return compilation.user.userName === userName
   })
 }
 
@@ -176,9 +176,9 @@ export const getCompilation = (compilationId) => {
   })
 }
 
-export const getUser = (username) => {
+export const getUser = (userName) => {
   const users = [user1, user2, user3]
   return users.find(user => {
-    return user.username === username
+    return user.userName === userName
   })
 }

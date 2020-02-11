@@ -8,7 +8,7 @@ import CompilationDisplay from './CompilationDisplay'
 
 const CompilationView = ({ compilation, loginReducer }) => {
   const { description, items, display, user } = compilation
-  const isOwner = ownsPage(loginReducer, user.username)
+  const isOwner = ownsPage(loginReducer, user.userName)
   return (
     <React.Fragment>
       {
