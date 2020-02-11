@@ -42,17 +42,6 @@ describe('UserBasePath', () => {
     expect(wrapper.find('.error').exists()).toBeTruthy()
   })
 
-  test('STATUS_AUTHENTICATED', () => {
-    const props = {
-      location: {},
-      loginReducer: {
-        status: 'STATUS_AUTHENTICATED',
-      },
-    }
-    const wrapper = shallow(<UserBasePath {...props} />)
-    expect(wrapper.find(Loading).exists()).toBeTruthy()
-  })
-
   test('STATUS_AUTHENTICATED_TRYING_LOGIN', () => {
     const props = {
       location: {},
