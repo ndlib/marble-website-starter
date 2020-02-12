@@ -11,6 +11,7 @@ const ManifestDescription = ({ iiifManifest }) => {
   }
   return (
     <React.Fragment>
+      <dt>Description</dt>
       {
         iiifManifest.summary[lang].map((content, index) => {
           return <MarkdownHtmlContent
@@ -26,7 +27,8 @@ const ManifestDescription = ({ iiifManifest }) => {
 
 ManifestDescription.propTypes = {
   iiifManifest: PropTypes.shape(
-    { description: PropTypes.string }
+    { description: PropTypes.string,
+      summary: PropTypes.string },
   ),
 }
 
