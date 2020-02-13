@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { navigate } from 'gatsby'
-import UserBasePathContent from './'
+import { UserBasePathContent } from './'
 import LoginArea from 'components/Shared/LoginArea'
 import CreateAccount from './CreateAccount'
 import Loading from 'components/Internal/Loading'

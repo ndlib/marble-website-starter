@@ -11,7 +11,7 @@ import TextArea from 'components/App/FormElements/TextArea'
 import Unauthorized from './Unauthorized'
 import style from 'components/App/FormElements/style.module.css'
 
-const UserEdit = ({ user, loginReducer }) => {
+export const UserEdit = ({ user, loginReducer }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
   const [fullName, changeName] = useState(user.fullName)
   const [email, changeEmail] = useState(user.email)

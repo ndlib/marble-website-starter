@@ -6,7 +6,7 @@ import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import LoginArea from 'components/Shared/LoginArea'
 import style from './style.module.css'
 
-export const title = `Compilation Unavailable`
+export const title = `Portfolio Unavailable`
 const CompilationUnavailable = (props) => {
   const { location, loginReducer } = props
   const loggedIn = isLoggedIn(loginReducer)

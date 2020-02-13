@@ -17,7 +17,7 @@ import Loading from 'components/Internal/Loading'
 import style from '../style.module.css'
 
 // eslint-disable-next-line complexity
-const UserBasePathContent = ({ loginReducer }) => {
+export const UserBasePathContent = ({ loginReducer }) => {
   switch (loginReducer.status) {
     case STATUS_NOT_LOGGED_IN:
       return <LoginArea loginReducer={loginReducer} />

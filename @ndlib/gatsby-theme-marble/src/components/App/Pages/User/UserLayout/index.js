@@ -11,7 +11,7 @@ import EditUserButton from './EditUserButton'
 import LogOut from 'components/Shared/LoginArea/LogOut'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
-const UserLayout = ({ user, children, location, loginReducer }) => {
+export const UserLayout = ({ user, children, location, loginReducer }) => {
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.userName)
   return (
