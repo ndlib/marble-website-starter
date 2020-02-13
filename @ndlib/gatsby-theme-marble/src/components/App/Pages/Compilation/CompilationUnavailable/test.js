@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import CompilationUnavailable, { title } from './'
+import CompilationUnavailable from './'
 import Seo from 'components/Internal/Seo'
 
 test('CompilationUnavailable', () => {
