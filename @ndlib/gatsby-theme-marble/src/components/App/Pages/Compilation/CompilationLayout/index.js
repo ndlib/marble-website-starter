@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import { ownsPage } from 'utils/auth'
 import Ownership from './Ownership'
@@ -13,10 +12,7 @@ const CompilationLayout = ({ compilation, edit, location, loginReducer, children
     navigate(`/compilation/${compilation.id}`)
   }
   return (
-    <Layout
-      location={location}
-      title={compilation.title}
-    >
+    <React.Fragment>
       <Seo
         title={compilation.title}
         location={location}
@@ -28,7 +24,7 @@ const CompilationLayout = ({ compilation, edit, location, loginReducer, children
         loginReducer={loginReducer}
       />
       {children}
-    </Layout>
+    </React.Fragment>
   )
 }
 

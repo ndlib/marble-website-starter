@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Layout from 'components/Layout'
 import { isLoggedIn } from 'utils/auth'
 import Seo from 'components/Internal/Seo'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
@@ -13,10 +12,7 @@ const CompilationUnavailable = (props) => {
   const loggedIn = isLoggedIn(loginReducer)
 
   return (
-    <Layout
-      location={location}
-      title={title}
-    >
+    <React.Fragment>
       <Seo
         data={{}}
         location={location}
@@ -27,7 +23,7 @@ const CompilationUnavailable = (props) => {
         <p>This compilation is not available either because it is <VisibilityLabel visibility='private' /> or it does not exist.</p>
         { loggedIn ? null : <LoginArea {...props} /> }
       </div>
-    </Layout>
+    </React.Fragment>
   )
 }
 CompilationUnavailable.propTypes = {

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import {
   STATUS_NOT_LOGGED_IN,
@@ -10,7 +11,8 @@ import {
   STATUS_LOGGED_IN,
 } from 'store/actions/loginActions'
 import LoginArea from 'components/Shared/LoginArea'
-import CreateAccount from 'components/Internal/CreateAccount'
+import CreateAccount from './CreateAccount'
+
 import Loading from 'components/Internal/Loading'
 import style from '../style.module.css'
 
@@ -36,4 +38,9 @@ const UserBasePathContent = ({ loginReducer }) => {
 UserBasePathContent.propTypes = {
   loginReducer: PropTypes.object.isRequired,
 }
-export default UserBasePathContent
+const mapStateToProps = (state, ownProps) => {
+  return { ...state, ...ownProps }
+}
+export default connect(
+  mapStateToProps,
+)(UserBasePathContent)

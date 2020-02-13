@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import UserLayout from '../UserLayout'
 import UserTopMenu from '../UserLayout/UserTopMenu'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
@@ -41,4 +42,9 @@ UserFollowing.propTypes = {
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }
-export default UserFollowing
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
+export default connect(
+  mapStateToProps,
+)(UserFollowing)

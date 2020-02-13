@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import typy from 'typy'
 import { ownsPage } from 'utils/auth'
 import CompilationLayout from './CompilationLayout'
@@ -51,7 +52,13 @@ Compilation.propTypes = {
   loginReducer: PropTypes.object.isRequired,
 }
 
-export default Compilation
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
+
+export default connect(
+  mapStateToProps,
+)(Compilation)
 
 export const shouldShow = (compilation, isOwner) => {
   const visibility = typy(compilation, 'visibility').safeString

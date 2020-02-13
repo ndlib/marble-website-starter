@@ -79,7 +79,7 @@ const items = [
     image: 'https://honeypot.library.nd.edu/images/honeycomb/000/067/024/670/SHOWCASE_03c-FerrellMS_03-01r-bk.jpg',
   },
 ]
-const compilations = [
+export const compilations = [
   {
     id: 'thing-1',
     title: `My First Test`,
@@ -165,15 +165,19 @@ const compilations = [
 
 // end mock data
 export const getUserCompilations = (userName) => {
-  return compilations.filter(compilation => {
-    return compilation.user.userName === userName
-  })
+  console.log(userName)
+  return []
+  // return compilations.filter(compilation => {
+  //   return compilation.user.userName === userName
+  // })
 }
 
 export const getCompilation = (compilationId) => {
-  return compilations.find(compilation => {
-    return compilation.id === compilationId
-  })
+  console.log(compilationId)
+  return null
+  // return compilations.find(compilation => {
+  //   return compilation.id === compilationId
+  // })
 }
 
 export const getUser = (userName) => {
