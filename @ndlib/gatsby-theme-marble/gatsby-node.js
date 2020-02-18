@@ -235,8 +235,8 @@ exports.onCreatePage = async ({ page, actions }) => {
     page.matchPath = `/user/*`
     // Update the page.
     createPage(page)
-  } else if (page.path.match(/^\/compilation/)) {
-    page.matchPath = `/compilation/*`
+  } else if (page.path.match(/^\/myportfolio/)) {
+    page.matchPath = `/myportfolio/*`
     // Update the page.
     createPage(page)
   }

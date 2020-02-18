@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CompilationList from './CompilationList'
+import PortfolioList from './PortfolioList'
 import UserEdit from './UserEdit'
 
 const UserBody = ({ user, edit = false }) => {
-  return edit ? <UserEdit user={user} /> : <CompilationList user={user} />
+  return edit ? <UserEdit user={user} /> : <PortfolioList user={user} />
 }
 
 UserBody.propTypes = {

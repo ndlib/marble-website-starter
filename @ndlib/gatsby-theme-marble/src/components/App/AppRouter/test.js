@@ -4,7 +4,7 @@ import AppRouter from './'
 import { Router } from '@reach/router'
 import UserBasePath from 'components/App/Pages/User/UserBasePath'
 import User from 'components/App/Pages/User'
-import Compilation from 'components/App/Pages/Compilation'
+import Portfolio from 'components/App/Pages/Portfolio'
 describe('AppRouter', () => {
   test('AppRouter', () => {
     const props = {
@@ -14,6 +14,6 @@ describe('AppRouter', () => {
     expect(wrapper.find(Router).exists()).toBeTruthy()
     expect(wrapper.find(UserBasePath).props().path).toEqual('/user')
     expect(wrapper.find(User).length).toEqual(2)
-    expect(wrapper.find(Compilation).length).toEqual(2)
+    expect(wrapper.find(Portfolio).length).toEqual(2)
   })
 })
