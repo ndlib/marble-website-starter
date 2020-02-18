@@ -9,6 +9,7 @@ import CompilationEdit from './CompilationEdit'
 import CompilationUnavailable from './CompilationUnavailable'
 
 export const Compilation = ({ compilationId, edit, location, loginReducer }) => {
+  // TODO get compilation from compilationId
   console.log(compilationId)
   const compilation = {}
   const userName = typy(compilation, 'user.userName').safeString
