@@ -1,38 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Router } from '@reach/router'
-import LoginOrRedirect from 'components/App/Pages/User/LoginOrRedirect'
-import UserIndex from 'components/App/Pages/User/UserIndex'
-import UserEdit from 'components/App/Pages/User/UserEdit'
-import UserFollowing from 'components/App/Pages/User/UserFollowing'
-import Compilation from 'components/App/Pages/Compilation'
+import Layout from 'components/Layout'
+import UserBasePath from 'components/App/Pages/User/UserBasePath'
+import User from 'components/App/Pages/User'
+import Portfolio from 'components/App/Pages/Portfolio'
 
 export const AppRouter = (props) => {
   return (
-    <Router>
-      <LoginOrRedirect path='/user' {...props} />
-      <UserIndex path='/user/:username' {...props} />
-      <UserEdit path='/user/:username/edit' {...props} />
-      <UserFollowing path='/user/:username/following' {...props} />
-      <Compilation path='/compilation/:compilationId' {...props} />
-      <Compilation path='/compilation/:compilationId/edit' edit {...props} />
-    </Router>
+    <Layout location={props.location}>
+      <Router>
+        <UserBasePath path='/user' {...props} />
+        <User path='/user/:userName' {...props} />
+        <User path='/user/:userName/edit' edit {...props} />
+        <Portfolio path='/myportfolio/:portfolioId' {...props} />
+        <Portfolio path='/myportfolio/:portfolioId/edit' edit {...props} />
+      </Router>
+    </Layout>
   )
 }
 
 AppRouter.propTypes = {
   location: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-export const mapDispatchToProps = dispatch => {
-  return { dispatch }
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppRouter)
+export default AppRouter

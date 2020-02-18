@@ -1,29 +1,27 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
+import { jsx } from 'theme-ui'
 
-export const defaultTitle = `User Not Found`
-const NoUser = ({ username, location }) => {
+const NoUser = ({ userName }) => {
+  const sx = {
+    border: '1px solid',
+    borderColor: 'gray.1',
+    color: 'gray.4',
+    margin: '1rem',
+    padding: '.5rem',
+    textAlign: 'center',
+    width: 'calc(100% - 2rem)',
+  }
+
   return (
-    <Layout
-      location={location}
-      title={defaultTitle}
-    >
-      <Seo
-        data={{}}
-        location={location}
-        title={defaultTitle}
-        noIndex
-      />
-      <div>
-        <p>This user <code>{username}</code> does not exist or you are not authorized to see this page.</p>
-      </div>
-    </Layout>
+    <div sx={sx}>
+      <p>The user <code>{userName}</code> does not exist or you are not authorized to view this page.</p>
+    </div>
   )
 }
 NoUser.propTypes = {
-  location: PropTypes.object.isRequired,
-  username: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
 }
 export default NoUser

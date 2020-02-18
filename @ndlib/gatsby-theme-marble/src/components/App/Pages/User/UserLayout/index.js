@@ -1,26 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Styled } from 'theme-ui'
-import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Gravatar from 'components/Internal/Gravatar'
-import FollowButton from './FollowButton'
+import PromptLogin from './PromptLogin'
 import EditUserButton from './EditUserButton'
 import LogOut from 'components/Shared/LoginArea/LogOut'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
-const UserLayout = ({ user, children, location, loginReducer }) => {
-  const isOwner = ownsPage(loginReducer, user.username)
+export const UserLayout = ({ user, children, location, loginReducer }) => {
+  const loggedIn = isLoggedIn(loginReducer)
+  const isOwner = ownsPage(loginReducer, user.userName)
   return (
-    <Layout
-      location={location}
-    >
+    <React.Fragment>
       <Seo
         data={{}}
         location={location}
-        title={user.username}
+        title={user.userName}
         noIndex
       />
       <MultiColumn columns='5'>
@@ -28,14 +27,14 @@ const UserLayout = ({ user, children, location, loginReducer }) => {
           <div className={style.identityGroup}>
             <Gravatar email={user.email} />
             <div className={style.identity}>
-              <Styled.h1>{user.name}</Styled.h1>
-              <Styled.h2>{user.username}</Styled.h2>
+              <Styled.h1>{user.fullName}</Styled.h1>
+              <Styled.h2>{user.userName}</Styled.h2>
             </div>
           </div>
           <div>
             {
             /* Follow or Edit button */
-              isOwner ? <EditUserButton username={user.username} /> : <FollowButton username={user.username} showButton={isLoggedIn(loginReducer)} />
+              isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
             }
           </div>
           <div>
@@ -49,7 +48,7 @@ const UserLayout = ({ user, children, location, loginReducer }) => {
           {children}
         </Column>
       </MultiColumn>
-    </Layout>
+    </React.Fragment>
 
   )
 }
@@ -60,4 +59,11 @@ UserLayout.propTypes = {
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }
-export default UserLayout
+
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
+
+export default connect(
+  mapStateToProps,
+)(UserLayout)

@@ -9,7 +9,7 @@ const UserCartouche = ({ user }) => {
     <span
       role='button'
       onClick={() => {
-        navigate(`/user/${user.username}`)
+        navigate(`/user/${user.userName}`)
       }}
       className={style.cartouche}
     >
@@ -28,7 +28,7 @@ UserCartouche.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
   }).isRequired,
 }
 

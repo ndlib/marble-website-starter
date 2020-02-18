@@ -19,7 +19,7 @@ const UserAnnotation = ({ location }) => {
             return (
               <CalloutBox key={index}>
                 <Attribution>
-                  <UserCartouche user={annotation.user} /> provided this annotation from <Link to={`/compilation/${annotation.compilation.id}`}>{annotation.compilation.label}</Link>.
+                  <UserCartouche user={annotation.user} /> provided this annotation from <Link to={`/myportfolio/${annotation.portfolio.id}`}>{annotation.portfolio.label}</Link>.
                 </Attribution>
                 <p>{annotation.description}</p>
               </CalloutBox>
@@ -46,14 +46,14 @@ export const getAnnotationsFromIds = (ids) => {
         user: {
           email: 'rfox2@nd.edu',
           name: 'User Name',
-          username: 'username',
+          userName: 'userName',
         },
-        compilation: {
+        portfolio: {
           id: `thing-1`,
           label: 'My First Test',
         },
         description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-      }
+      },
     )
   })
   return annotations

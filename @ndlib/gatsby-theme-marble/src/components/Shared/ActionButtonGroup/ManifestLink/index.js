@@ -9,18 +9,26 @@ const ManifestLink = ({ manifestUrl }) => {
     return null
   }
   return (
-    <Link
-      to={manifestUrl}
-      target='_blank'
-      className={style.manifestLink}
-    >
-      <img
-        src={imgIIIF}
-        alt='Download IIIF manifest.'
-        title='Download IIIF manifest.'
+    <React.Fragment>
+      <Link
+        to={manifestUrl}
+        target='_blank'
+        className={style.manifestLink}
+      >
+        <img
+          src={imgIIIF}
+          alt='Download IIIF manifest.'
+          title='Download IIIF manifest.'
 
-      />
-    </Link>
+        />
+      </Link>
+      <a
+        className={style.manifestLink}
+        href='https://sites.nd.edu/marble/iiif-at-notre-dame-or-the-heart-of-marble/'
+      >
+        What is IIIF
+      </a>
+    </React.Fragment>
   )
 }
 

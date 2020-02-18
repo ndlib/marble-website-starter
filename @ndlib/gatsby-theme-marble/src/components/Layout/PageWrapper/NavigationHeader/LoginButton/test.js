@@ -33,7 +33,7 @@ describe('LoginButton', () => {
       status: 'STATUS_LOGGED_IN',
       user: {
         fullname: 'Johnny Logged In',
-        username: 'jloggedin',
+        userName: 'jloggedin',
       },
     }
     const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
@@ -66,7 +66,7 @@ describe('getSafeName', () => {
     const reducer = {
       user: {
         fullname: 'Ms. Fancy User',
-        username: 'fancyUser',
+        userName: 'fancyUser',
         email: 'fancy@pants.com',
       },
     }
@@ -74,10 +74,10 @@ describe('getSafeName', () => {
     expect(safeName).toEqual('Ms. Fancy User')
   })
 
-  test('username', () => {
+  test('userName', () => {
     const reducer = {
       user: {
-        username: 'fancyUser',
+        userName: 'fancyUser',
         email: 'fancy@pants.com',
       },
     }

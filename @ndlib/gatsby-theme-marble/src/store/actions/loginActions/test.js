@@ -1,47 +1,83 @@
 import * as Actions from './'
 const {
+  // GET_AUTHENTICATION,
+  AUTHENTICATE_USER,
+  AUTH_ERROR,
+  GET_USER,
+  NO_USER,
   LOG_USER_IN,
   LOG_USER_OUT,
   SET_AUTH_CLIENT,
+  // putAuthSettingsInStore,
+  setAuthClient,
+  // getTokenAndPutInStore,
+  authorizationError,
+  authenticateUser,
+  getUser,
+  // storeAuthenticationAndGetLogin,
+  // createNewUser,
+  noUser,
   logUserIn,
   logUserOut,
-  setAuthClient,
 } = Actions
 
 describe('loginActions', () => {
+  test.skip('putAuthSettingsInStore', () => {})
+
+  test('setAuthClient', () => {
+    expect(setAuthClient({ some: 'settings' }, { more: 'things' })).toEqual({
+      type: SET_AUTH_CLIENT,
+      authClientSettings: { some: 'settings' },
+      userContentPath: { more: 'things' },
+    })
+  })
+  test.skip('getTokenAndPutInStore', () => {})
+
+  test.skip('storeAuthenticationAndGetLogin', () => {})
+
+  test('authenticateUser', () => {
+    expect(authenticateUser('token')).toEqual({
+      type: AUTHENTICATE_USER,
+      token: 'token',
+    })
+  })
+
+  test('authorizationError', () => {
+    expect(authorizationError()).toEqual({
+      type: AUTH_ERROR,
+    })
+  })
+  test('getUser', () => {
+    expect(getUser()).toEqual({
+      type: GET_USER,
+    })
+  })
+
+  test.skip('getUserFromAPI', () => {})
+
+  test.skip('createNewUser', () => {})
+
+  test('noUser', () => {
+    expect(noUser()).toEqual({
+      type: NO_USER,
+    })
+  })
+
   test('logUserIn', () => {
-    const claims = {
-      email: 'some@mail.co',
-      name: 'Mrs. Person',
-      netid: 'some',
-    }
-    const issuer = 'authority'
-    const idToken = {
-      claims: claims,
-      issuer: issuer,
-    }
-    const actual = logUserIn(idToken)
-    const expected = {
+    expect(logUserIn({ uuid: '123' })).toEqual({
       type: LOG_USER_IN,
-      user: {
-        username: 'some',
-        name: 'Mrs. Person',
-        email: 'some@mail.co',
-        issuer: 'authority',
-        token: idToken,
-      },
-    }
-    expect(actual).toEqual(expected)
+      user: { uuid: '123' },
+    })
   })
 
   test('logUserOut', () => {
-    expect(logUserOut()).toEqual({ type: LOG_USER_OUT })
-  })
-
-  test('setAuthClient', () => {
-    expect(setAuthClient({ some: 'settings' })).toEqual({
-      type: SET_AUTH_CLIENT,
-      authClientSettings: { some: 'settings' },
+    const authClient = {
+      tokenManager: {
+        clear: jest.fn,
+      },
+    }
+    expect(logUserOut(authClient)).toEqual({
+      type: LOG_USER_OUT,
     })
   })
 })

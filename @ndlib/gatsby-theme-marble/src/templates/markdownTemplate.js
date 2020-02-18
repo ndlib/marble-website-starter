@@ -99,6 +99,9 @@ export const query = graphql`
     id
     type
     slug
+    seeAlso {
+      id
+    }
     label {
       ...iiifTranslatedStringFragment
     }

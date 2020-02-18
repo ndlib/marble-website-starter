@@ -6,7 +6,7 @@ import Link from 'components/Internal/Link'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { jsx } from 'theme-ui'
 
-export const FollowButton = ({ username, showButton, following = false }) => {
+export const FollowButton = ({ userName, showButton, following = false }) => {
   if (!showButton) {
     return (
       <div
@@ -22,14 +22,14 @@ export const FollowButton = ({ username, showButton, following = false }) => {
   } else if (following) {
     return (
       <MaterialButton
-        onClick={() => unfollowAction(username)}
+        onClick={() => unfollowAction(userName)}
         wide
       >Unfollow</MaterialButton>
     )
   }
   return (
     <MaterialButton
-      onClick={() => followAction(username)}
+      onClick={() => followAction(userName)}
       wide
     >Follow</MaterialButton>
   )
@@ -37,15 +37,15 @@ export const FollowButton = ({ username, showButton, following = false }) => {
 
 FollowButton.propTypes = {
   showButton: PropTypes.bool.isRequired,
-  username: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
   following: PropTypes.bool,
 }
 export default FollowButton
 
-export const followAction = (username) => {
-  console.log(`follow ${username}`)
+export const followAction = (userName) => {
+  console.log(`follow ${userName}`)
 }
 
-export const unfollowAction = (username) => {
-  console.log(`unfollow ${username}`)
+export const unfollowAction = (userName) => {
+  console.log(`unfollow ${userName}`)
 }
