@@ -16,9 +16,8 @@ const NoCompilations = ({ isOwner = false }) => {
   }
   if (isOwner) {
     return (
-      <div sx={sx}
-      >
-        <p>You have not created any compilations yet.</p>
+      <div sx={sx}>
+        <p>You have not created any portfolios yet.</p>
         <p>
           <NewCompilationButton />
         </p>
@@ -27,7 +26,7 @@ const NoCompilations = ({ isOwner = false }) => {
   }
   return (
     <div sx={sx}>
-      <p>This user does not yet have any available public compilations.</p>
+      <p>This user does not have any public portfolios.</p>
     </div>
   )
 }

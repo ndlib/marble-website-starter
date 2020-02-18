@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { navigate } from 'gatsby'
 import CompilationLayout from './'
+import Seo from 'components/Internal/Seo'
 import * as Auth from 'utils/auth'
-import Layout from 'components/Layout'
 
 describe('CompilationLayout', () => {
   const props = {
@@ -26,6 +26,6 @@ describe('CompilationLayout', () => {
   test('display', () => {
     jest.spyOn(Auth, 'ownsPage').mockImplementationOnce(() => true)
     const wrapper = shallow(<CompilationLayout {...props}><div className='childDiv' /></CompilationLayout>)
-    expect(wrapper.find(Layout).props().title).toEqual('test title')
+    expect(wrapper.find(Seo).props().title).toEqual('test title')
   })
 })

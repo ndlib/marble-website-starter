@@ -10,7 +10,7 @@ import style from 'components/App/FormElements/style.module.css'
 
 const CreateAccount = ({ loginReducer, dispatch }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
-  const [name, changeName] = useState(claims.name)
+  const [fullName, changeName] = useState(claims.fullName)
   const [email, changeEmail] = useState(claims.email)
   const [bio, changeBio] = useState('')
 
@@ -20,7 +20,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
       <TextField
         id='profileName'
         label='Name'
-        defaultValue={name}
+        defaultValue={fullName}
         onChange={(event) => {
           changeName(event.target.value)
         }}
@@ -53,7 +53,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
           onClick={(event) => {
             event.preventDefault()
             const body = {
-              fullName: name,
+              fullName: fullName,
               email: email,
               bio: bio || null,
               uuid: `${claims.sub}.${btoa(claims.iss)}`,

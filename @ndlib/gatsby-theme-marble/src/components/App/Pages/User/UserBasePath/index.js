@@ -1,17 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Layout from 'components/Layout'
+
 import Seo from 'components/Internal/Seo'
 import UserBasePathContent from './UserBasePathContent'
 import style from './style.module.css'
 
-const UserBasePath = (props) => {
-  const { location, loginReducer } = props
-
+const UserBasePath = ({ location }) => {
   return (
-    <Layout
-      location={location}
-    >
+    <React.Fragment>
       <Seo
         data={{}}
         location={location}
@@ -19,13 +15,13 @@ const UserBasePath = (props) => {
         noIndex
       />
       <div className={style.contentBody}>
-        <UserBasePathContent loginReducer={loginReducer} />
+        <UserBasePathContent />
       </div>
-    </Layout>
+    </React.Fragment>
   )
 }
 UserBasePath.propTypes = {
   location: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
+
 export default UserBasePath
