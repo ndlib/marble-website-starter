@@ -124,7 +124,7 @@ const patchData = (loginReducer, body) => {
   fetch(
     `${loginReducer.userContentPath}user/${userName}`,
     {
-      method: 'PATCH', // TODO CHANGE TO PATCH AND GET TO WORK
+      method: 'PATCH',
       headers: {
         Authorization: loginReducer.token.idToken,
         'Access-Control-Request-Method': 'PATCH',
