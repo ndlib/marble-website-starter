@@ -5,7 +5,7 @@ import HorizontalSubmenu from 'components/Internal/HorizontalSubmenu'
 
 const UserTopMenu = ({ userName, location }) => {
   const options = makeOptions([
-    { label: 'Compilations', path: `/user/${userName}` },
+    { label: 'Portfolios', path: `/user/${userName}` },
     { label: 'Following', path: `/user/${userName}/following` },
   ], location.pathname)
 
