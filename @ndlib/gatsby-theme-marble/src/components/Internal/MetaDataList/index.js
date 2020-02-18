@@ -4,7 +4,6 @@ import MetaDataField from './MetaDataField'
 import './style.module.css'
 const MetaDataList = ({ metadata, className, skipHtml }) => {
   if (metadata) {
-    console.log(metadata)
     return (
       <dl className={className}>
         {
