@@ -383,14 +383,6 @@ const defaultLayouts = {
                 {
                   component: 'SearchRefinementListFilter',
                   props: [
-                    { label: 'field', value: 'language.keyword' },
-                    { label: 'label', value: 'Language' },
-                    { label: 'operator', value: 'OR' },
-                  ],
-                },
-                {
-                  component: 'SearchRefinementListFilter',
-                  props: [
                     { label: 'field', value: 'continentTag.keyword' },
                     { label: 'label', value: 'Place' },
                     { label: 'operator', value: 'OR' },

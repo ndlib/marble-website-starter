@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types'
 import MetaDataField from './MetaDataField'
 const MetaDataList = ({ metadata, className, skipHtml }) => {
   if (metadata) {
+    console.log(metadata)
     return (
       <dl className={className}>
         {

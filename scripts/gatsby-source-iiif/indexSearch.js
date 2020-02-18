@@ -3,8 +3,6 @@ const path = require(`path`)
 const { Client } = require('@elastic/elasticsearch')
 const configuration = require('../../site/content/configuration.js')
 
-const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
-
 const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
 const siteIndex = configuration.siteMetadata.searchBase.app
 
@@ -19,6 +17,43 @@ const indexMapping = {
       },
     },
   },
+}
+
+const archives = ['CSOR-04-05-01', 'GNDL-45-01', 'CEDW-30-16-01', 'GNDL-45-02', 'CEDW-20-02-08', 'nd-life', 'GNDL-45-04', 'CTAO-01-28', 'GNDL-45-05']
+
+const determineProvider = (manifest) => {
+  if (manifest.id.match(/\/[0-9]{4}[.](.*)\/manifest$/)) {
+    return 'Snite Museum of Art'
+  }
+
+  const res = archives.find((testId) => {
+    if (manifest.id.includes(testId)) {
+      return true
+    }
+    return false
+  })
+  if (res) {
+    return 'University Archives'
+  }
+  return 'Rare Books and Special Collections'
+}
+
+const getNumberWithOrdinal = (n) => {
+  const s = ['th', 'st', 'nd', 'rd']
+  const v = n % 100
+  return n + (s[(v - 20) % 10] || s[v] || s[0])
+}
+
+const getCenturyTags = (dates) => {
+  let years = dates.match(/([0-9]{4})/g).map((year) => {
+    year = Math.ceil(year / 100)
+    return getNumberWithOrdinal(year) + 'Century'
+  })
+  if (years.length === 0) {
+    years = ['undated']
+  }
+
+  return years
 }
 
 const loadManifestData = () => {
@@ -65,7 +100,7 @@ const objectsByTagTypeAndId = loadCategories()
 
 const getSearchDataFromManifest = (manifest) => {
   const identifier = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-  const date = Math.floor(1700 + Math.random() * 300)
+  const date = Math.floor(1200 + Math.random() * 700)
 
   const tagId = manifest.id.replace('https://presentation-iiif.library.nd.edu/', '')
   const search = {
@@ -76,11 +111,10 @@ const getSearchDataFromManifest = (manifest) => {
     type: manifest.type,
     language: 'en',
     url: manifest.slug,
-    place: 'South Bend',
-    repository: availableRepositories[parseInt(Math.random() * availableRepositories.length, 10)],
+    repository: determineProvider(manifest),
     year: date,
     themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
-    centuryTag: objectsByTagTypeAndId['centuryTag.keyword'][tagId],
+    centuryTag: getCenturyTags(date.toString()),
     continentTag: objectsByTagTypeAndId['continentTag.keyword'][tagId],
   }
   search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
@@ -132,7 +166,9 @@ new Promise(async (resolve, reject) => {
   const writeData = []
   manifestIdsToIndex().forEach((id) => {
     const manifest = manifestIndex[id]
-    writeData.push(getSearchDataFromManifest(manifest))
+    if (manifest) {
+      writeData.push(getSearchDataFromManifest(manifest))
+    }
   })
 
   await indexToElasticSearch(writeData)
