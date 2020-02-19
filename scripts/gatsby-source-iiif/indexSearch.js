@@ -1,11 +1,14 @@
 const fs = require('fs')
 const path = require(`path`)
+const directory = process.argv.slice(2)[0]
+const clienturl = process.argv.slice(3)[0]
+
 const { Client } = require('@elastic/elasticsearch')
-const configuration = require('../../site/content/configuration.js')
+const configuration = require(path.join(directory, '/content/configuration.js'))
 
 const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
 
-const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
+const client = new Client({ node: clienturl })
 const siteIndex = configuration.siteMetadata.searchBase.app
 
 const indexMapping = {
@@ -23,7 +26,7 @@ const indexMapping = {
 
 const loadManifestData = () => {
   const idReferencedObject = {}
-  const data = fs.readFileSync(path.join(__dirname, '/../../site/content/json/iiif/iiif.json'))
+  const data = fs.readFileSync(path.join(directory, '/content/json/iiif/iiif.json'))
   const manifestData = JSON.parse(data.toString())
 
   manifestData.forEach((manifest) => {
@@ -34,13 +37,13 @@ const loadManifestData = () => {
 }
 
 const manifestIdsToIndex = () => {
-  const contents = fs.readFileSync(path.join(__dirname, '/../../site/content/manifests.json'))
+  const contents = fs.readFileSync(path.join(directory, '/content/manifests.json'))
   return JSON.parse(contents).manifests
 }
 
 const loadCategories = () => {
   const objectsByTagTypeAndId = {}
-  const data = fs.readFileSync(path.join(__dirname, '/../../site/content/categories.json'))
+  const data = fs.readFileSync(path.join(directory, '/content/categories.json'))
   const categories = JSON.parse(data)
   categories.forEach((row) => {
     if (!row.tagField) {
@@ -74,14 +77,15 @@ const getSearchDataFromManifest = (manifest) => {
     thumbnail: manifest.thumbnail[0].id,
     identifier: identifier,
     type: manifest.type,
-    language: 'en',
+    // language: 'en',
     url: manifest.slug,
     place: 'South Bend',
     repository: availableRepositories[parseInt(Math.random() * availableRepositories.length, 10)],
     year: date,
     themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
     centuryTag: objectsByTagTypeAndId['centuryTag.keyword'][tagId],
-    continentTag: objectsByTagTypeAndId['continentTag.keyword'][tagId],
+    // continentTag: objectsByTagTypeAndId['continentTag.keyword'][tagId],
+    formatTag: objectsByTagTypeAndId['formatTag.keyword'][tagId],
   }
   search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
 
@@ -122,7 +126,7 @@ const setupIndex = async () => {
   await client.indices.create({ index: siteIndex }, indexMapping)
 }
 
-const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
+const writeDirectory = path.join(directory, '/content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {

@@ -1,6 +1,9 @@
 const fs = require('fs')
 const path = require(`path`)
-const configuration = require('../../site/content/configuration.js')
+
+const directory = process.argv.slice(2)[0]
+
+const configuration = require(path.join(directory, '/content/configuration.js'))
 
 const getMDFile = (manifest) => {
   const mdFile = `---
@@ -13,8 +16,8 @@ layout: "${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'ite
   return mdFile
 }
 
-const readFile = path.join(__dirname, '/../../site/content/json/iiif/iiif.json')
-const writeDirectory = path.join(__dirname, '/../../site/content/markdown/iiif/')
+const readFile = path.join(directory, '/content/json/iiif/iiif.json')
+const writeDirectory = path.join(directory, '/content/markdown/iiif/')
 
 const data = fs.readFileSync(readFile)
 const manifestData = JSON.parse(data.toString())

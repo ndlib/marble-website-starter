@@ -19,12 +19,15 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ####  content/*
 
 ## get environment variable from parameter store.
+## setting stativ variables for now
+client="https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com"
+site="../../site"
 
 pushd scripts/gatsby-source-iiif
 yarn install
-node getManifests.js
-node generateMD.js
-node getSchema.js
-node indexSearch.js
-node generateMDCategories.js
+node getManifests.js $site
+node generateMD.js $site
+node getSchema.js $site
+node indexSearch.js $site $client
+node generateMDCategories.js $site
 popd

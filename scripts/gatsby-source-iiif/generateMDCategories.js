@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require(`path`)
 
+const directory = process.argv.slice(2)[0]
+
 const getMDFile = (manifest) => {
   let mdFile = `---
 title: "${manifest.label}"
@@ -46,8 +48,8 @@ const getManifest = (id) => {
   })
 }
 
-const readFile = path.join(__dirname, '/../../site/content/categories.json')
-const writeDirectory = path.join(__dirname, '/../../site/content/markdown/browse/')
+const readFile = path.join(directory, '/content/categories.json')
+const writeDirectory = path.join(directory, '/content/markdown/browse/')
 
 const data = fs.readFileSync(readFile)
 const manifestData = JSON.parse(data.toString())

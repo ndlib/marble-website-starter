@@ -1,18 +1,19 @@
 const fs = require('fs')
 const fetchData = require('./src/fetchManifests')
 const path = require(`path`)
+const directory = process.argv.slice(2)[0]
 
 const loadManifestsFile = () => {
-  const contents = fs.readFileSync(path.join(__dirname, '/../../site/content/manifests.json'))
+  const contents = fs.readFileSync(path.join(directory, '/content/manifests.json'))
   return JSON.parse(contents)
 }
 
 const ensureDirectoryStructure = async () => {
   return Promise.all([
-    fs.promises.mkdir(path.join(__dirname, '/../../site/content/json/iiif/'), { recursive: true }),
-    fs.promises.mkdir(path.join(__dirname, '/../../site/content/markdown/iiif/'), { recursive: true }),
-    fs.promises.mkdir(path.join(__dirname, '/../../site/content/json/search/'), { recursive: true }),
-    fs.promises.mkdir(path.join(__dirname, '/../../site/content/markdown/browse/'), { recursive: true }),
+    fs.promises.mkdir(path.join(directory, '/content/json/iiif/'), { recursive: true }),
+    fs.promises.mkdir(path.join(directory, '/content/markdown/iiif/'), { recursive: true }),
+    fs.promises.mkdir(path.join(directory, '/content/json/search/'), { recursive: true }),
+    fs.promises.mkdir(path.join(directory, '/content/markdown/browse/'), { recursive: true }),
   ])
 }
 
@@ -23,7 +24,7 @@ new Promise(async (resolve, reject) => {
 
   const manifestData = await fetchData(manifestList.manifests)
   const data = JSON.stringify(manifestData)
-  fs.writeFileSync(path.join(__dirname, '/../../site/content/json/iiif/iiif.json'), data)
+  fs.writeFileSync(path.join(directory, '/content/json/iiif/iiif.json'), data)
 
   resolve()
 })
