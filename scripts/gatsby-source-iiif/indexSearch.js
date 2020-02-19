@@ -1,15 +1,26 @@
 const fs = require('fs')
 const path = require(`path`)
-const { Client } = require('@elastic/elasticsearch')
+const { Client } = require('elasticsearch')
+const auth = require('http-aws-es')
+const AWS = require('aws-sdk')
+require('dotenv').config()
 const configuration = require('../../site/content/configuration.js')
 
 const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
 
-const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
-const siteIndex = configuration.siteMetadata.searchBase.app
+const siteIndex = process.env.SEARCH_INDEX
+const domain = process.env.SEARCH_URL
+const options = {
+  host: domain,
+  port:443,
+  protocol:'https',
+  connectionClass: auth,
+  awsConfig: new AWS.Config({ region: 'us-east-1' }),
+}
+const client = Client(options)
 
 const indexMapping = {
-  mapping: {
+  mappings: {
     _doc: {
       searchDate: {
         type: 'integer_range',
@@ -18,6 +29,13 @@ const indexMapping = {
         type: 'geo_point',
       },
     },
+  },
+}
+
+const indexSettings = {
+  settings: {
+    number_of_shards: 1,
+    number_of_replicas: 1,
   },
 }
 
@@ -119,7 +137,10 @@ const setupIndex = async () => {
     await client.indices.delete({ index: siteIndex })
   }
   console.log('creating index', siteIndex)
-  await client.indices.create({ index: siteIndex }, indexMapping)
+  await client.indices.create({ index: siteIndex }, indexMapping, indexSettings)
+  // await client.indices.create({ index: siteIndex }).catch((e) => {
+  //   console.log(e)
+  // })
 }
 
 const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
