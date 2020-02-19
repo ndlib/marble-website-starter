@@ -96,6 +96,20 @@ const loadCategories = () => {
   return objectsByTagTypeAndId
 }
 
+const getCreator = (metadata) => {
+  const options = ['creator']
+  return metadata.reduce((creator, row) => {
+    const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
+
+    if (options.includes(label)) {
+      console.log(row.value[configuration.siteMetadata.languages.default])
+      return creator.concat(row.value[configuration.siteMetadata.languages.default].join(''))
+    }
+
+    return creator
+  }, [])
+}
+
 const objectsByTagTypeAndId = loadCategories()
 
 const getSearchDataFromManifest = (manifest) => {
@@ -106,6 +120,7 @@ const getSearchDataFromManifest = (manifest) => {
   const search = {
     id: manifest.id,
     name: manifest.label[configuration.siteMetadata.languages.default].join(),
+    creator: getCreator(manifest.metadata),
     thumbnail: manifest.thumbnail[0].id,
     identifier: identifier,
     type: manifest.type,
