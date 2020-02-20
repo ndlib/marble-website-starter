@@ -22,13 +22,12 @@ const ManifestLink = ({ manifestUrl }) => {
 
         />
       </Link>
-      <Link
+      <a
         className={style.manifestLink}
-        to='https://sites.nd.edu/marble/iiif-at-notre-dame-or-the-heart-of-marble/'
-        target='_blank'
+        href='https://sites.nd.edu/marble/iiif-at-notre-dame-or-the-heart-of-marble/'
       >
         What is IIIF
-      </Link>
+      </a>
     </React.Fragment>
   )
 }
