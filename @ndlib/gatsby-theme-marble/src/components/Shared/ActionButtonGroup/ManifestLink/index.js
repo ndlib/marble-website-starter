@@ -25,6 +25,7 @@ const ManifestLink = ({ manifestUrl }) => {
       <Link
         className={style.manifestLink}
         to='https://sites.nd.edu/marble/iiif-at-notre-dame-or-the-heart-of-marble/'
+        target='_blank'
       >
         What is IIIF
       </Link>
