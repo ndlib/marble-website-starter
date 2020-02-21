@@ -1,6 +1,7 @@
 #!/bin/bash
 magenta=`tput setaf 5`
 reset=`tput sgr0`
+
 echo "${magenta}----- INSTALL -------${reset}"
 
 ## install yarn
@@ -19,15 +20,16 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ####  content/*
 
 ## get environment variable from parameter store.
-## setting stativ variables for now
-client="https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com"
+
 site="../../site"
+export APP_CONFIG=${1}
 
 pushd scripts/gatsby-source-iiif
 yarn install
+node setupEnv.js > .env
 node getManifests.js $site
 node generateMD.js $site
 node getSchema.js $site
-node indexSearch.js $site $client
+node indexSearch.js $site
 node generateMDCategories.js $site
 popd
