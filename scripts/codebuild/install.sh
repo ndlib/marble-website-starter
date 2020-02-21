@@ -1,6 +1,7 @@
 #!/bin/bash
 magenta=`tput setaf 5`
 reset=`tput sgr0`
+
 echo "${magenta}----- INSTALL -------${reset}"
 
 ## install yarn
@@ -19,9 +20,11 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ####  content/*
 
 ## get environment variable from parameter store.
+export APP_CONFIG=${1}
 
 pushd scripts/gatsby-source-iiif
 yarn install
+node setupEnv.js > .env
 node getManifests.js
 node generateMD.js
 node getSchema.js
