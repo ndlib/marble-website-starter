@@ -49,8 +49,6 @@ const getSchemaSeeAlsoList = (rawIIIF) => {
 }
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  resolve()
-  return
   const rawIIIF = await loadIIIFData()
   const seeAlso = await getSchemaSeeAlsoList(rawIIIF)
   const fetchResult = await fetchData(seeAlso)
