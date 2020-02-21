@@ -6,6 +6,12 @@ const configuration = require('../../site/content/configuration.js')
 const client = new Client({ node: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com' })
 const siteIndex = configuration.siteMetadata.searchBase.app
 
+// save
+// https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com
+// website-test-index
+// export SEARCH_INDEX=website-test-index
+// export SEARCH_URL=https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com
+
 const indexMapping = {
   mapping: {
     _doc: {
@@ -110,6 +116,21 @@ const getCreator = (metadata) => {
   }, [])
 }
 
+const themeFromSubjectTags = (metadata) => {
+  const options = ['subjects']
+  const subjects = metadata.reduce((creator, row) => {
+    const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
+
+    if (options.includes(label)) {
+      console.log(row.value[configuration.siteMetadata.languages.default])
+      return creator.concat(row.value[configuration.siteMetadata.languages.default].join(''))
+    }
+
+    return creator
+  }, [])
+  console.log(subjects)
+}
+
 const objectsByTagTypeAndId = loadCategories()
 
 const getSearchDataFromManifest = (manifest) => {
@@ -130,10 +151,8 @@ const getSearchDataFromManifest = (manifest) => {
     year: date,
     themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
     centuryTag: getCenturyTags(date.toString()),
-    continentTag: objectsByTagTypeAndId['continentTag.keyword'][tagId],
   }
   search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
-
   manifest.metadata.forEach((row) => {
     const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
     const value = row.value[configuration.siteMetadata.languages.default].join('')
