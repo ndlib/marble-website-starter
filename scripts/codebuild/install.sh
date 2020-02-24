@@ -27,7 +27,7 @@ yarn install
 echo "yarn install complete"
 echo "retrieving elasticsearch parameters"
 node setupEnv.js > .env
-cat .env
+echo "$(cat .env)"
 echo "setup complete"
 echo "retrieving manifest"
 node getManifests.js
