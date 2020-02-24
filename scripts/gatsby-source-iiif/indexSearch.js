@@ -8,8 +8,8 @@ const configuration = require('../../site/content/configuration.js')
 
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
-console.log("SITE INDEX = " + siteIndex)
-console.log("DOMAIN = " + domain)
+console.log('SITE INDEX = ' + siteIndex)
+console.log('DOMAIN = ' + domain)
 
 const options = {
   host: domain,
