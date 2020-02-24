@@ -24,10 +24,20 @@ export APP_CONFIG=${1}
 
 pushd scripts/gatsby-source-iiif
 yarn install
+echo "yarn install complete"
+echo "retrieving elasticsearch parameters"
 node setupEnv.js > .env
+cat .env
+echo "setup complete"
+echo "retrieving manifest"
 node getManifests.js
+echo "generating markdown files for manifest"
 node generateMD.js
+echo "generating schema.json files"
 node getSchema.js
+echo "adding data to elasticsearch"
 node indexSearch.js
+echo "generating markdown categories"
 node generateMDCategories.js
+echo "completed customizations"
 popd
