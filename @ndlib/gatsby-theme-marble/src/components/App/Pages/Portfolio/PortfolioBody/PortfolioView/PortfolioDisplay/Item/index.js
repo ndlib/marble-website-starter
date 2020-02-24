@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import typy from 'typy'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Card from 'components/Shared/Card'
@@ -7,19 +8,19 @@ import UserCartouche from 'components/Internal/UserCartouche'
 import ViewerButtons from './ViewerButtons'
 import style from './style.module.css'
 
-const Item = ({ item, user, annotated = false }) => {
-  const finalTarget = targetWithAnnotation(item)
+const Item = ({ item, userId, annotated = false }) => {
+  const finalTarget = targetWithAnnotation(item, userId)
   const card = (
     <Card
-      label={item.label}
+      label={item.title}
       target={finalTarget}
       image={item.image}
     >
       {
-        item.description
+        item.annotation
           ? <React.Fragment>
-            <UserCartouche user={user} />
-            <p>{item.description}</p>
+            <UserCartouche user={{ uuid: userId }} />
+            <p>{item.annotation}</p>
           </React.Fragment> : null
       }
     </Card>
@@ -28,10 +29,10 @@ const Item = ({ item, user, annotated = false }) => {
     return (
       <div className={style.item}>
         <MultiColumn columns='5'>
-          <Column colSpan='3'>{item.description}</Column>
+          <Column colSpan='3'>{item.annotation}</Column>
           <Column colSpan='2'>
             {card}
-            <ViewerButtons iiifManifest={item.iiifManifest} />
+            <ViewerButtons iiifManifest={item.manifest} />
           </Column>
         </MultiColumn>
       </div>
@@ -42,14 +43,14 @@ const Item = ({ item, user, annotated = false }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
+  userId: PropTypes.string.isRequired,
   annotated: PropTypes.bool,
 }
 export default Item
 
-export const targetWithAnnotation = (item) => {
-  if (item.description && !item.target.startsWith('http')) {
-    return `${item.target}?a=${item.id}`
+export const targetWithAnnotation = (item, userId) => {
+  if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
+    return `${item.link}?${userId}${item.uuid}`
   }
-  return item.target
+  return item.link
 }

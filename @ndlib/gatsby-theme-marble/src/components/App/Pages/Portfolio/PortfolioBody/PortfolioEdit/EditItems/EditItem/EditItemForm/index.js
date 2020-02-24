@@ -7,11 +7,12 @@ import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
 import closeIcon from 'assets/icons/svg/baseline-done-24px.svg'
 import style from 'components/App/FormElements/style.module.css'
 
-const EditItemForm = ({ label, description, image, iiifManifest, target, id, closeFunc }) => {
+const EditItemForm = ({ item, closeFunc }) => {
+  const { title, annotation, image, manifest, target, uuid } = item
   return (
     <div style={{ margin: '1rem auto', maxWidth: '800px' }}>
       <div className={style.buttonGroup}>
-        <MaterialButton onClick={() => deleteItem(id)}>
+        <MaterialButton onClick={(e) => deleteItem(e, uuid)}>
           <img src={deleteIcon} alt='Delete' />
         </MaterialButton>
         <MaterialButton onClick={(e) => closeFunc(e)}>
@@ -21,12 +22,12 @@ const EditItemForm = ({ label, description, image, iiifManifest, target, id, clo
       <TextField
         id='label'
         label='Title'
-        defaultValue={label}
+        defaultValue={title}
       />
       <TextArea
         id='description'
         label='Annotation'
-        defaultValue={description}
+        defaultValue={annotation}
       />
       <TextField
         id='image'
@@ -41,24 +42,27 @@ const EditItemForm = ({ label, description, image, iiifManifest, target, id, clo
       <TextField
         id='iiifManifest'
         label='IIIF Manifest'
-        defaultValue={iiifManifest}
+        defaultValue={manifest}
       />
     </div>
   )
 }
 EditItemForm.propTypes = {
-  label: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  iiifManifest: PropTypes.string,
-  target: PropTypes.string,
-  id: PropTypes.string,
+  item: PropTypes.shape({
+    title: PropTypes.string,
+    annotation: PropTypes.string,
+    image: PropTypes.string,
+    manifest: PropTypes.string,
+    target: PropTypes.string,
+    uuid: PropTypes.string,
+  }),
   closeFunc: PropTypes.func.isRequired,
 }
 export default EditItemForm
 
-export const deleteItem = (id) => {
+export const deleteItem = (e, uuid) => {
+  e.preventDefault()
   if (window.confirm(`This action cannot be undone.`)) {
-    console.log(`delete ${id}`)
+    console.log(`delete ${uuid}`)
   }
 }

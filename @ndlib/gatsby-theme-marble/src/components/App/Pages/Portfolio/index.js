@@ -1,48 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import { ownsPage } from 'utils/auth'
 import PortfolioLayout from './PortfolioLayout'
-import PortfolioView from './PortfolioView'
-import PortfolioEdit from './PortfolioEdit'
+import PortfolioBody from './PortfolioBody'
 import PortfolioUnavailable from './PortfolioUnavailable'
+import Loading from 'components/Internal/Loading'
 
 export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
-  // TODO get portfolio from portfolioId
-  console.log(portfolioId)
-  const portfolio = {}
-  const userName = typy(portfolio, 'user.userName').safeString
-  const showPortfolio = shouldShow(portfolio, ownsPage(loginReducer, userName))
-  if (showPortfolio) {
-    return (
-      <PortfolioLayout
-        portfolio={portfolio}
-        edit={edit}
-        location={location}
-        loginReducer={loginReducer}
-      >
-        {
-          edit
-            ? <PortfolioEdit
-              portfolio={portfolio}
-              location={location}
-              loginReducer={loginReducer}
-            />
-            : <PortfolioView
-              portfolio={portfolio}
-              location={location}
-              loginReducer={loginReducer}
-            />
-        }
-      </PortfolioLayout>
-    )
-  }
+  const [portfolio, setPortfolio] = useState({})
+  const [content, setContent] = useState(<Loading />)
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    const fetchData = async () => {
+      if (loginReducer.userContentPath) {
+        fetch(`${loginReducer.userContentPath}collection/${portfolioId}`)
+          .then(result => {
+            return result.json()
+          })
+          .then(portfolioData => {
+            setPortfolio(portfolioData)
+            console.log(portfolioData)
+            setContent(<PortfolioBody
+              portfolio={portfolioData}
+              edit={edit}
+            />)
+          })
+          .catch(() => {
+            setContent(<PortfolioUnavailable />)
+          })
+      }
+    }
+
+    fetchData()
+    return () => {
+      abortController.abort()
+    }
+  }, [loginReducer.userContentPath, portfolioId, edit])
+
   return (
-    <PortfolioUnavailable
+    <PortfolioLayout
+      portfolio={portfolio}
+      edit={edit}
       location={location}
-      loginReducer={loginReducer}
-    />
+    >
+      {content}
+    </PortfolioLayout>
   )
 }
 

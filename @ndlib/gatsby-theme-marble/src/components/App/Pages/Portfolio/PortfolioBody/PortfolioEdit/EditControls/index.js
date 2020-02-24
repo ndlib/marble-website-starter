@@ -12,7 +12,7 @@ const EditControls = ({ portfolio }) => {
         onClick={(e) => {
           e.preventDefault()
           if (window.confirm(`Any unsaved changes will be lost.`)) {
-            navigate(`/myportfolio/${portfolio.id}/`)
+            navigate(`/myportfolio/${portfolio.uuid}/`)
           }
         }}
       >Cancel</MaterialButton>
@@ -20,7 +20,7 @@ const EditControls = ({ portfolio }) => {
         onClick={(e) => {
           e.preventDefault()
           console.log('save then navigate')
-          navigate(`/myportfolio/${portfolio.id}/`)
+          navigate(`/myportfolio/${portfolio.uuid}/`)
         }}
         primary
       >Save</MaterialButton>

@@ -10,7 +10,8 @@ export const ToggleButton = ({ option, action, active }) => {
       type='image'
       src={active ? option.activeIcon : option.inactiveIcon}
       alt={`${option.display} view`}
-      onClick={() => {
+      onClick={(e) => {
+        e.preventDefault()
         action(option)
       }}
       sx={active ? {

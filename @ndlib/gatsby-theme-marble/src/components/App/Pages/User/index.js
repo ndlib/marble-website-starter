@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import UserLayout from './UserLayout'
@@ -10,28 +10,32 @@ const User = ({ loginReducer, userName, location, edit }) => {
   const [user, setUser] = useState({ userName: userName })
   const [content, setContent] = useState(<Loading />)
 
-  const fetchData = useCallback(() => {
-    if (loginReducer.userContentPath) {
-      fetch(`${loginReducer.userContentPath}user/${userName}`)
-        .then(result => {
-          return result.json()
-        })
-        .then(userData => {
-          setUser(userData)
-          setContent(<UserBody
-            user={userData}
-            edit={edit}
-          />)
-        })
-        .catch(() => {
-          setContent(<NoUser userName={userName} />)
-        })
+  useEffect(() => {
+    const abortController = new AbortController()
+    const fetchData = async () => {
+      if (loginReducer.userContentPath) {
+        fetch(`${loginReducer.userContentPath}user/${userName}`)
+          .then(result => {
+            return result.json()
+          })
+          .then(userData => {
+            setUser(userData)
+            setContent(<UserBody
+              user={userData}
+              edit={edit}
+            />)
+          })
+          .catch(() => {
+            setContent(<NoUser userName={userName} />)
+          })
+      }
+    }
+
+    fetchData()
+    return () => {
+      abortController.abort()
     }
   }, [loginReducer.userContentPath, userName, edit])
-
-  useEffect(() => {
-    fetchData()
-  }, [fetchData])
 
   return (
     <UserLayout

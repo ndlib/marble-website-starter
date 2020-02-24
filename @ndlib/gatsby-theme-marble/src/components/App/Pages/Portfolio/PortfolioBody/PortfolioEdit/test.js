@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import PortfolioEdit from './'
+import { PortfolioEdit } from './'
 
 test('PortfolioEdit', () => {
   const props = {

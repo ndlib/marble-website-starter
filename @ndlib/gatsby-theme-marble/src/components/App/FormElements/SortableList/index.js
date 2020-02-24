@@ -23,7 +23,7 @@ const SortableList = ({ items, itemComponent, onUpdate }) => {
       const newItems = reorder(
         orderedItems,
         result.source.index,
-        result.destination.index
+        result.destination.index,
       )
       setItemOrder(newItems)
       onUpdate(newItems)
@@ -55,6 +55,7 @@ const SortableList = ({ items, itemComponent, onUpdate }) => {
 
 SortableList.propTypes = {
   items: PropTypes.array.isRequired,
+  itemComponent: PropTypes.node.isRequired,
   onUpdate: PropTypes.func,
 }
 export default SortableList

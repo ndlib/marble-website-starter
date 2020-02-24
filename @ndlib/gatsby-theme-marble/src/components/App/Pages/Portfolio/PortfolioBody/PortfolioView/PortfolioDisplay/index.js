@@ -1,13 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Item from './Item'
+import NoItems from './NoItems'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import { COMPILATION_PAGE } from 'store/actions/displayActions'
-const PortfolioDisplay = ({ items, user, display }) => {
+const PortfolioDisplay = ({ items, layout, userId }) => {
+  if (items.length === 0) {
+    return (
+      <NoItems />
+    )
+  }
+
   const sortedItems = items.sort((i1, i2) => {
-    return i1.index - i2.index
+    return i1.created - i2.created
   })
-  if (display === 'annotated') {
+  if (layout === 'annotated') {
     return (
       <div className='grid'>
         {
@@ -16,8 +23,8 @@ const PortfolioDisplay = ({ items, user, display }) => {
               <Item
                 item={item}
                 annotated
-                key={item.id}
-                user={user}
+                key={item.uuid}
+                userId={userId}
               />
             )
           })
@@ -32,8 +39,8 @@ const PortfolioDisplay = ({ items, user, display }) => {
           return (
             <Item
               item={item}
-              user={user}
-              key={item.id}
+              key={item.uuid}
+              userId={userId}
             />
           )
         })
@@ -44,10 +51,10 @@ const PortfolioDisplay = ({ items, user, display }) => {
 
 PortfolioDisplay.propTypes = {
   items: PropTypes.array.isRequired,
-  user: PropTypes.object.isRequired,
-  display: PropTypes.oneOf([
+  layout: PropTypes.oneOf([
     'default',
     'annotated',
   ]),
+  userId: PropTypes.string.isRequired,
 }
 export default PortfolioDisplay

@@ -5,7 +5,7 @@ import ImageSelect from 'components/App/FormElements/ImageSelect'
 import style from 'components/App/FormElements/style.module.css'
 import defaultImage from 'assets/images/noImage.svg'
 
-const PortfolioImage = ({ portfolio }) => {
+const PortfolioImage = ({ portfolio, onChange }) => {
   const safeItems = getSafeItems(portfolio)
   return (
     <div>
@@ -15,11 +15,9 @@ const PortfolioImage = ({ portfolio }) => {
       >Image</label>
       <ImageSelect
         items={safeItems}
-        currentImage={defaultImage}
+        currentImage={portfolio.image || defaultImage}
         fieldName={`portfolioImage`}
-        onChange={(v) => {
-          console.log(v)
-        }}
+        onChange={onChange}
       />
     </div>
   )
@@ -27,6 +25,7 @@ const PortfolioImage = ({ portfolio }) => {
 
 PortfolioImage.propTypes = {
   portfolio: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default PortfolioImage
@@ -36,7 +35,7 @@ export const getSafeItems = (portfolio) => {
   const safeItems = [...items]
   if (!safeItems.find(item => item.image === defaultImage)) {
     safeItems.push({
-      id: `default_image`,
+      uuid: `default_image`,
       image: defaultImage,
     })
   }

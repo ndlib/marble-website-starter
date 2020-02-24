@@ -3,44 +3,41 @@ import PropTypes from 'prop-types'
 import EditItemForm from './EditItemForm'
 import Card from 'components/Shared/Card'
 
-const EditItem = (props) => {
-  const { label, description, image } = props
+const EditItem = ({ item }) => {
+  const { title, annotation, image } = item
   const [editing, toggleEdit] = useState(false)
   return (
-    <div className='list'>
+    <div>
       {
         editing
           ? <EditItemForm
-            {...props}
+            item={item}
             closeFunc={(e) => {
               e.preventDefault()
               toggleEdit(false)
             }}
           />
-          : <div
+          : <Card
+            label={title}
+            image={image}
             onClick={(e) => {
               e.preventDefault()
               toggleEdit(true)
             }}
-            style={{ cursor: 'pointer' }}
-            role='button'
           >
-            <Card
-              label={label}
-              image={image}
-            >
-              {description}
-            </Card>
-          </div>
+            {annotation}
+          </Card>
       }
     </div>
   )
 }
 EditItem.propTypes = {
-  label: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  iiifManifest: PropTypes.string,
-  target: PropTypes.string,
+  item: PropTypes.shape({
+    title: PropTypes.string,
+    annotation: PropTypes.string,
+    image: PropTypes.string,
+    manifest: PropTypes.string,
+    target: PropTypes.string,
+  }),
 }
 export default EditItem

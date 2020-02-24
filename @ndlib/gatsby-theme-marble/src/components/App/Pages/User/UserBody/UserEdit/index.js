@@ -18,7 +18,7 @@ export const UserEdit = ({ user, loginReducer }) => {
   const [bio, changeBio] = useState(user.bio)
   const [patching, setPatching] = useState(false)
 
-  if (!ownsPage(loginReducer, user.userName)) {
+  if (!ownsPage(loginReducer, user.uuid)) {
     return (<Unauthorized />)
   }
 

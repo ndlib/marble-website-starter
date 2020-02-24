@@ -17,21 +17,20 @@ export const options = [
     description: `Anyone may view this portfolio. It will be listed on your user page. Search engines may discover this page and present it in search results.`,
   },
 ]
-const VisibilitySettings = ({ portfolio }) => {
+const VisibilitySettings = ({ portfolio, onChange }) => {
   const formattedOptions = getFormattedOptions(options, portfolio)
   return (
     <RadioList
       options={formattedOptions}
       fieldName='visibility'
-      onChange={(v) => {
-        console.log(v)
-      }}
+      onChange={onChange}
     />
   )
 }
 
 VisibilitySettings.propTypes = {
   portfolio: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default VisibilitySettings
@@ -41,7 +40,7 @@ export const getFormattedOptions = (options, portfolio) => {
     return {
       value: option.value,
       formattedLabel: FormattedLabel(option),
-      checked: portfolio.visibility === option.value,
+      checked: portfolio.privacy === option.value,
     }
   })
 }
