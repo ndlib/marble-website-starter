@@ -10,7 +10,7 @@ before_script:
   # Do nothing
 script:
   # Run the same scripts as the code pipeline
-  - ./scripts/local.sh APP_CONFIG=/all/static-host/super-test
+  - ./scripts/local.sh APP_CONFIG="/all/static-host/super-test"
 after_script:
   # Generate test coverage and send to code climate
   - pushd @ndlib/gatsby-theme-marble
