@@ -8,6 +8,7 @@ test('VisibilitySettings', () => {
     portfolio: {
       visibility: 'shared',
     },
+    onChange: jest.fn(),
   }
   const wrapper = shallow(<VisibilitySettings {...props} />)
   expect(wrapper.find(RadioList).props().fieldName).toEqual('visibility')

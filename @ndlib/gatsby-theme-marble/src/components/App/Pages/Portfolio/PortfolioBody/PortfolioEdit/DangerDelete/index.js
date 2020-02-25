@@ -5,7 +5,7 @@ import { navigate } from 'gatsby'
 import MaterialButton from 'components/Internal/MaterialButton'
 import style from 'components/App/FormElements/style.module.css'
 
-const DangerDelete = ({ portfolio, loginReducer }) => {
+export const DangerDelete = ({ portfolio, loginReducer }) => {
   const [deleteFieldValue, updateDeleteField] = useState(null)
   const warning = `Once you delete this portfolio it can not be recovered.`
   const groupId = `danger`

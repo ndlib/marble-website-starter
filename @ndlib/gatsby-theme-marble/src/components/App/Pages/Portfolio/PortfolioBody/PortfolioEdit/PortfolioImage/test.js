@@ -11,6 +11,7 @@ describe('PortfolioImage', () => {
         { id: '1', image: '/image2.png' },
       ],
     },
+    onChange: jest.fn(),
   }
   test('simulate change', () => {
     const wrapper = shallow(<PortfolioImage {...props} />)

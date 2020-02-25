@@ -11,8 +11,4 @@ test('PortfolioEdit', () => {
   }
   const wrapper = mount(<PortfolioEdit {...props} />)
   expect(wrapper.find('.wrapper'))
-  // click one button
-  wrapper.find('button.inactive').simulate('click')
-  // click the other
-  wrapper.find('button.inactive').simulate('click')
 })

@@ -8,6 +8,7 @@ test('LayoutSettings', () => {
     portfolio: {
       display: 'shared',
     },
+    onChange: jest.fn(),
   }
   const wrapper = shallow(<LayoutSettings {...props} />)
   expect(wrapper.find(RadioList).props().fieldName).toEqual('layoutDisplay')
