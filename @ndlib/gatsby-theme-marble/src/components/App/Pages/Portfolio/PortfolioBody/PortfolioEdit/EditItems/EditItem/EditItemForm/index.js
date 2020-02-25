@@ -16,7 +16,6 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
             return result.json()
           })
           .then(itemData => {
-            console.log(itemData)
             setContent(<EditItemFormContent
               item={itemData}
               closeFunc={closeFunc}

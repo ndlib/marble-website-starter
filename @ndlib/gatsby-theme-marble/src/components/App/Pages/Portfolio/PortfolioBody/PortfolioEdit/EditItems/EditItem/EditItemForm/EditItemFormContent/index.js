@@ -27,6 +27,7 @@ export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer 
           <img src={deleteIcon} alt='Delete' />
         </MaterialButton>
         <MaterialButton onClick={
+          // eslint-disable-next-line complexity
           (e) => {
             e.preventDefault()
             const body = {

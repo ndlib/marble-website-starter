@@ -21,7 +21,6 @@ export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
           })
           .then(portfolioData => {
             setPortfolio(portfolioData)
-            console.log(portfolioData)
             setContent(<PortfolioBody
               portfolio={portfolioData}
               edit={edit}
