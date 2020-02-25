@@ -26,7 +26,6 @@ site="../../site"
 export APP_CONFIG=${1}
 if [ -z $APP_CONFIG ]; then
   echo "ERROR, variable empty"
-  exit 1
 fi
 pushd scripts/gatsby-source-iiif
 yarn install
