@@ -82,6 +82,10 @@ export const PortfolioEdit = ({ portfolio, loginReducer }) => {
             disabled={patching}
           />
         </div>
+        <label
+          htmlFor='editItems'
+          className={style.editLabel}
+        >Items</label>
         <EditItems
           portfolio={portfolio}
           className={localStyle.items}

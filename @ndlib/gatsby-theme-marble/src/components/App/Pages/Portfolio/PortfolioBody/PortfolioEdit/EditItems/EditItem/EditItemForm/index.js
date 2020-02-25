@@ -1,68 +1,62 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import TextField from 'components/App/FormElements/TextField'
-import TextArea from 'components/App/FormElements/TextArea'
-import MaterialButton from 'components/Internal/MaterialButton'
-import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
-import closeIcon from 'assets/icons/svg/baseline-done-24px.svg'
-import style from 'components/App/FormElements/style.module.css'
+import { connect } from 'react-redux'
+import EditItemFormContent from './EditItemFormContent'
+import Loading from 'components/Internal/Loading'
 
-const EditItemForm = ({ item, closeFunc }) => {
-  const { title, annotation, image, manifest, target, uuid } = item
+export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
+  const [content, setContent] = useState(<Loading />)
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    const fetchData = async () => {
+      if (loginReducer.userContentPath) {
+        fetch(`${loginReducer.userContentPath}item/${uuid}`)
+          .then(result => {
+            return result.json()
+          })
+          .then(itemData => {
+            console.log(itemData)
+            setContent(<EditItemFormContent
+              item={itemData}
+              closeFunc={closeFunc}
+              deleteFunc={deleteFunc}
+            />)
+          })
+          .catch(() => {
+            setContent(<div>Error</div>)
+          })
+      }
+    }
+    fetchData()
+    return () => {
+      abortController.abort()
+    }
+  }, [closeFunc, deleteFunc, loginReducer.userContentPath, uuid])
+
   return (
-    <div style={{ margin: '1rem auto', maxWidth: '800px' }}>
-      <div className={style.buttonGroup}>
-        <MaterialButton onClick={(e) => deleteItem(e, uuid)}>
-          <img src={deleteIcon} alt='Delete' />
-        </MaterialButton>
-        <MaterialButton onClick={(e) => closeFunc(e)}>
-          <img src={closeIcon} alt='Close editing form' />
-        </MaterialButton>
-      </div>
-      <TextField
-        id='label'
-        label='Title'
-        defaultValue={title}
-      />
-      <TextArea
-        id='description'
-        label='Annotation'
-        defaultValue={annotation}
-      />
-      <TextField
-        id='image'
-        label='Image'
-        defaultValue={image}
-      />
-      <TextField
-        id='target'
-        label='Link'
-        defaultValue={target}
-      />
-      <TextField
-        id='iiifManifest'
-        label='IIIF Manifest'
-        defaultValue={manifest}
-      />
+    <div style={{
+      border: '1px solid #dedede',
+      height: '352px',
+      margin: '0',
+      maxWidth: '800px',
+      overflowY: 'scroll',
+      padding: '1rem',
+    }}>
+      {content}
     </div>
   )
 }
 EditItemForm.propTypes = {
-  item: PropTypes.shape({
-    title: PropTypes.string,
-    annotation: PropTypes.string,
-    image: PropTypes.string,
-    manifest: PropTypes.string,
-    target: PropTypes.string,
-    uuid: PropTypes.string,
-  }),
+  uuid: PropTypes.string.isRequired,
+  deleteFunc: PropTypes.func.isRequired,
   closeFunc: PropTypes.func.isRequired,
+  loginReducer: PropTypes.object.isRequired,
 }
-export default EditItemForm
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
 
-export const deleteItem = (e, uuid) => {
-  e.preventDefault()
-  if (window.confirm(`This action cannot be undone.`)) {
-    console.log(`delete ${uuid}`)
-  }
-}
+export default connect(
+  mapStateToProps,
+)(EditItemForm)

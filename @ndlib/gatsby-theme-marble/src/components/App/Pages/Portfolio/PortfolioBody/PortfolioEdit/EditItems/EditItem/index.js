@@ -6,15 +6,36 @@ import Card from 'components/Shared/Card'
 const EditItem = ({ item }) => {
   const { title, annotation, image } = item
   const [editing, toggleEdit] = useState(false)
+  const [deleted, setDeleted] = useState(false)
+  if (deleted) {
+    return (
+      <div style={{
+        backgroundColor: '#dedede',
+        color: 'white',
+        border: '1px solid #dedede',
+        height: '352px',
+        lineHeight: '302px',
+        margin: '0',
+        maxWidth: '800px',
+        overflowY: 'scroll',
+        padding: '1rem',
+        textAlign: 'center',
+        width: '100%',
+      }}>Deleted</div>
+    )
+  }
   return (
     <div>
       {
         editing
           ? <EditItemForm
-            item={item}
+            uuid={item.uuid}
             closeFunc={(e) => {
               e.preventDefault()
               toggleEdit(false)
+            }}
+            deleteFunc={() => {
+              setDeleted(true)
             }}
           />
           : <Card
@@ -38,6 +59,7 @@ EditItem.propTypes = {
     image: PropTypes.string,
     manifest: PropTypes.string,
     target: PropTypes.string,
+    uuid: PropTypes.string,
   }),
 }
 export default EditItem
