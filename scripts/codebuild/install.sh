@@ -2,6 +2,7 @@
 magenta=`tput setaf 5`
 reset=`tput sgr0`
 
+
 echo "${magenta}----- INSTALL -------${reset}"
 
 ## install yarn
@@ -22,8 +23,11 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ## get environment variable from parameter store.
 
 site="../../site"
-
-
+export APP_CONFIG=${1}
+if [ -z $APP_CONFIG ]; then
+  echo "ERROR, variable empty"
+  exit 1
+fi
 pushd scripts/gatsby-source-iiif
 yarn install
 

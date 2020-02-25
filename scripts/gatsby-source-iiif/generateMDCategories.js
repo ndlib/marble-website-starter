@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require(`path`)
 
 const directory = process.argv.slice(2)[0]
+console.log(directory)
 
 const getMDFile = (manifest) => {
   let mdFile = `---
