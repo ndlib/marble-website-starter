@@ -24,9 +24,7 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 
 site="../../site"
 export APP_CONFIG=${1}
-if [ -z $APP_CONFIG ]; then
-  echo "ERROR, variable empty"
-fi
+[ -z $APP_CONFIG ] && echo "ERROR, variable empty"
 pushd scripts/gatsby-source-iiif
 yarn install
 
