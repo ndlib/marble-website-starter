@@ -6,16 +6,16 @@ const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
 require('dotenv').config()
 
-const availableRepositories = ['Snite Museum of Art', 'University Archives', 'Rare Books and Special Collections Department']
-
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
+
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
   return
 }
 
 const configuration = require(path.join(domain, '/content/configuration.js'))
+
 const options = {
   host: domain,
   port:443,
@@ -24,6 +24,12 @@ const options = {
   awsConfig: new AWS.Config({ region: 'us-east-1' }),
 }
 const client = Client(options)
+
+// save
+// https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com
+// website-test-index
+// export SEARCH_INDEX=website-test-index
+// export SEARCH_URL=https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com
 
 const indexMapping = {
   mappings: {
@@ -36,6 +42,42 @@ const indexMapping = {
       },
     },
   },
+}
+
+const archives = ['CSOR-04-05-01', 'GNDL-45-01', 'CEDW-30-16-01', 'GNDL-45-02', 'CEDW-20-02-08', 'nd-life', 'GNDL-45-04', 'CTAO-01-28', 'GNDL-45-05']
+const determineProvider = (manifest) => {
+  if (manifest.id.match(/\/[0-9]{4}[.](.*)\/manifest$/)) {
+    return 'Snite Museum of Art'
+  }
+
+  const res = archives.find((testId) => {
+    if (manifest.id.includes(testId)) {
+      return true
+    }
+    return false
+  })
+  if (res) {
+    return 'University Archives'
+  }
+  return 'Rare Books and Special Collections'
+}
+
+const getNumberWithOrdinal = (n) => {
+  const s = ['th', 'st', 'nd', 'rd']
+  const v = n % 100
+  return n + (s[(v - 20) % 10] || s[v] || s[0])
+}
+
+const getCenturyTags = (dates) => {
+  let years = dates.match(/([0-9]{4})/g).map((year) => {
+    year = Math.ceil(year / 100)
+    return getNumberWithOrdinal(year) + 'Century'
+  })
+  if (years.length === 0) {
+    years = ['undated']
+  }
+
+  return years
 }
 
 const indexSettings = {
@@ -85,31 +127,58 @@ const loadCategories = () => {
   return objectsByTagTypeAndId
 }
 
+const getCreator = (metadata) => {
+  const options = ['creator']
+  return metadata.reduce((creator, row) => {
+    const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
+
+    if (options.includes(label)) {
+      console.log(row.value[configuration.siteMetadata.languages.default])
+      return creator.concat(row.value[configuration.siteMetadata.languages.default].join(''))
+    }
+
+    return creator
+  }, [])
+}
+
+const themeFromSubjectTags = (metadata) => {
+  const options = ['subjects']
+  const subjects = metadata.reduce((creator, row) => {
+    const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
+
+    if (options.includes(label)) {
+      console.log(row.value[configuration.siteMetadata.languages.default])
+      return creator.concat(row.value[configuration.siteMetadata.languages.default].join(''))
+    }
+
+    return creator
+  }, [])
+  console.log(subjects)
+}
+
 const objectsByTagTypeAndId = loadCategories()
 
 const getSearchDataFromManifest = (manifest) => {
   const identifier = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-  const date = Math.floor(1700 + Math.random() * 300)
+  const date = Math.floor(1200 + Math.random() * 700)
 
   const tagId = manifest.id.replace('https://presentation-iiif.library.nd.edu/', '')
   const search = {
     id: manifest.id,
     name: manifest.label[configuration.siteMetadata.languages.default].join(),
+    creator: getCreator(manifest.metadata),
     thumbnail: manifest.thumbnail[0].id,
     identifier: identifier,
     type: manifest.type,
     // language: 'en',
     url: manifest.slug,
-    place: 'South Bend',
-    repository: availableRepositories[parseInt(Math.random() * availableRepositories.length, 10)],
+    repository: determineProvider(manifest),
     year: date,
     themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
-    centuryTag: objectsByTagTypeAndId['centuryTag.keyword'][tagId],
-    // continentTag: objectsByTagTypeAndId['continentTag.keyword'][tagId],
-    formatTag: objectsByTagTypeAndId['formatTag.keyword'][tagId],
+    centuryTag: getCenturyTags(date.toString()),
+
   }
   search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
-
   manifest.metadata.forEach((row) => {
     const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
     const value = row.value[configuration.siteMetadata.languages.default].join('')
@@ -160,7 +229,9 @@ new Promise(async (resolve, reject) => {
   const writeData = []
   manifestIdsToIndex().forEach((id) => {
     const manifest = manifestIndex[id]
-    writeData.push(getSearchDataFromManifest(manifest))
+    if (manifest) {
+      writeData.push(getSearchDataFromManifest(manifest))
+    }
   })
 
   await indexToElasticSearch(writeData)
