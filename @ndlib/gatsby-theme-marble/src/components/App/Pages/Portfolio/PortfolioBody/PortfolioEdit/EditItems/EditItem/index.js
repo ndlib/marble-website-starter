@@ -30,8 +30,7 @@ const EditItem = ({ item }) => {
         editing
           ? <EditItemForm
             uuid={item.uuid}
-            closeFunc={(e) => {
-              e.preventDefault()
+            closeFunc={() => {
               toggleEdit(false)
             }}
             deleteFunc={() => {
@@ -41,8 +40,7 @@ const EditItem = ({ item }) => {
           : <Card
             label={title}
             image={image}
-            onClick={(e) => {
-              e.preventDefault()
+            onClick={() => {
               toggleEdit(true)
             }}
           >

@@ -13,6 +13,7 @@ import DangerDelete from './DangerDelete'
 import TextField from 'components/App/FormElements/TextField'
 import TextArea from 'components/App/FormElements/TextArea'
 import { ownsPage } from 'utils/auth'
+import { patchData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 import localStyle from './style.module.css'
 
@@ -48,14 +49,24 @@ export const PortfolioEdit = ({ portfolio, loginReducer }) => {
             e.preventDefault()
             setPatching(true)
             const body = {
-              uuid: portfolio.uuid,
               title: title,
               description: description || null,
               image: image || null,
               privacy: privacy || 'private',
               layout: layout || 'default',
             }
-            patchData(loginReducer, body)
+            patchData(
+              loginReducer,
+              'collection',
+              portfolio.uuid,
+              body,
+              () => {
+                navigate(`/myportfolio/${portfolio.uuid}`)
+              },
+              (e) => {
+                console.error(e)
+              },
+            )
           }}
           disabled={patching}
           primary
@@ -131,28 +142,3 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(PortfolioEdit)
-
-const patchData = (loginReducer, body) => {
-  fetch(
-    `${loginReducer.userContentPath}collection/${body.uuid}`,
-    {
-      method: 'PATCH',
-      headers: {
-        Authorization: loginReducer.token.idToken,
-        'Access-Control-Request-Method': 'PATCH',
-        'Access-Control-Request-Headers': 'Authorization',
-      },
-      mode: 'cors',
-      body: JSON.stringify(body),
-    },
-  )
-    .then(result => {
-      return result.json()
-    })
-    .then(() => {
-      navigate(`/myportfolio/${body.uuid}`)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-}

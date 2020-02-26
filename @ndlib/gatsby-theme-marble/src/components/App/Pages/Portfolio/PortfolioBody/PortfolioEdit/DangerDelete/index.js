@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import MaterialButton from 'components/Internal/MaterialButton'
+import { deleteData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 
 export const DangerDelete = ({ portfolio, loginReducer }) => {
@@ -37,7 +38,17 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
             onClick={(e) => {
               e.preventDefault()
               if (window.confirm(warning)) {
-                deleteData(loginReducer, portfolio.uuid)
+                deleteData(
+                  loginReducer,
+                  'collection',
+                  portfolio.uuid,
+                  () => {
+                    navigate(`/user/${loginReducer.user.userName}`)
+                  },
+                  (e) => {
+                    console.error(e)
+                  },
+                )
               }
               console.log(`Cancel delete on ${deleteFieldValue}`)
             }}
@@ -61,28 +72,3 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(DangerDelete)
-
-const deleteData = (loginReducer, uuid) => {
-  fetch(
-    `${loginReducer.userContentPath}collection/${uuid}`,
-    {
-      method: 'DELETE',
-      headers: {
-        Authorization: loginReducer.token.idToken,
-        'Access-Control-Request-Method': 'DELETE',
-        'Access-Control-Request-Headers': 'Authorization',
-      },
-      mode: 'cors',
-    },
-  )
-    .then(async (result) => {
-      if (result.status === 204) {
-        navigate(`/user/${loginReducer.user.userName}`)
-      } else {
-        console.error('Item may not have deleted')
-      }
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-}

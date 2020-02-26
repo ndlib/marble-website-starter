@@ -6,6 +6,7 @@ import TextArea from 'components/App/FormElements/TextArea'
 import MaterialButton from 'components/Internal/MaterialButton'
 import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
 import closeIcon from 'assets/icons/svg/baseline-done-24px.svg'
+import { patchData, deleteData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 
 export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer }) => {
@@ -38,7 +39,7 @@ export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer 
               manifest: manifest || null,
               link: link || null,
             }
-            patchData(e, loginReducer, body, changePatching, closeFunc)
+            updateItem(e, loginReducer, body, changePatching, closeFunc)
           }
         }>
           <img src={closeIcon} alt='Close editing form' />
@@ -116,56 +117,32 @@ export default connect(
 export const deleteItem = (event, loginReducer, uuid, patchingFunc, deleteFunc, closeFunc) => {
   patchingFunc(true)
   if (window.confirm(`This action cannot be undone.`)) {
-    fetch(
-      `${loginReducer.userContentPath}item/${uuid}`,
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization: loginReducer.token.idToken,
-          'Access-Control-Request-Method': 'DELETE',
-          'Access-Control-Request-Headers': 'Authorization',
-        },
-        mode: 'cors',
+    deleteData(
+      loginReducer,
+      'item',
+      uuid,
+      deleteFunc,
+      (e) => {
+        console.error(e)
       },
     )
-      .then(async (result) => {
-        if (result.status === 204) {
-          deleteFunc()
-        } else {
-          closeFunc(event)
-          console.error('Item may not have deleted')
-        }
-      })
-      .catch((error) => {
-        console.error(error)
-      })
   }
   patchingFunc(false)
   closeFunc(event)
 }
 
-const patchData = (event, loginReducer, body, patchingFunc, closeFunc) => {
+const updateItem = (event, loginReducer, body, patchingFunc, closeFunc) => {
   patchingFunc(true)
-  fetch(
-    `${loginReducer.userContentPath}item/${body.uuid}`,
-    {
-      method: 'PATCH',
-      headers: {
-        Authorization: loginReducer.token.idToken,
-        'Access-Control-Request-Method': 'PATCH',
-        'Access-Control-Request-Headers': 'Authorization',
-      },
-      mode: 'cors',
-      body: JSON.stringify(body),
+  patchData(
+    loginReducer,
+    'item',
+    body.uuid,
+    body,
+    (event) => {
+      closeFunc(event)
+    },
+    (e) => {
+      console.error(e)
     },
   )
-    .then(result => {
-      return result.json()
-    })
-    .then(() => {
-      closeFunc(event)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
 }
