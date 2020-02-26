@@ -6,6 +6,7 @@ import CalloutBox from 'components/Shared/CalloutBox'
 import Attribution from 'components/Internal/Attribution'
 import Link from 'components/Internal/Link'
 import UserCartouche from 'components/Internal/UserCartouche'
+import { getData } from 'utils/api'
 
 export const UserAnnotation = ({ location, loginReducer }) => {
   const [item, setItem] = useState(null)
@@ -13,25 +14,21 @@ export const UserAnnotation = ({ location, loginReducer }) => {
   const [userId] = useState(Object.keys(qs)[0])
   useEffect(() => {
     const abortController = new AbortController()
-    const fetchData = async () => {
-      if (loginReducer.userContentPath && userId) {
-        fetch(`${loginReducer.userContentPath}item/${qs[userId]}`)
-          .then(result => {
-            return result.json()
-          })
-          .then(itemData => {
-            setItem(itemData)
-          })
-          .catch(() => {
-            console.warn(`Query string item not found`)
-          })
-      }
-    }
-    fetchData()
+    getData({
+      loginReducer: loginReducer,
+      contentType: 'item',
+      id: qs[userId],
+      successFunc: (data) => {
+        setItem(data)
+      },
+      errofFunc: () => {
+        console.warn(`Query string item not found`)
+      },
+    })
     return () => {
       abortController.abort()
     }
-  }, [loginReducer.userContentPath, qs, userId])
+  }, [loginReducer, qs, userId])
 
   if (item) {
     return (

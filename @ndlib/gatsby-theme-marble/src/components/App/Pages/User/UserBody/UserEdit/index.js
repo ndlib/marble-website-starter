@@ -48,18 +48,18 @@ export const UserEdit = ({ user, loginReducer }) => {
               uuid: `${claims.sub}.${btoa(claims.iss)}`,
               userName: claims.netid,
             }
-            patchData(
-              loginReducer,
-              'user',
-              claims.netid,
-              body,
-              () => {
+            patchData({
+              loginReducer: loginReducer,
+              contentType: 'user',
+              id: claims.netid,
+              body: body,
+              successFunc: () => {
                 navigate(`/user/${body.userName}`)
               },
-              (e) => {
+              errorFunc: (e) => {
                 console.error(e)
               },
-            )
+            })
           }}
           disabled={patching}
           primary

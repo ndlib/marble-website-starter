@@ -6,6 +6,7 @@ import PortfolioLayout from './PortfolioLayout'
 import PortfolioBody from './PortfolioBody'
 import PortfolioUnavailable from './PortfolioUnavailable'
 import Loading from 'components/Internal/Loading'
+import { getData } from 'utils/api'
 
 export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
   const [portfolio, setPortfolio] = useState({})
@@ -13,30 +14,25 @@ export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
 
   useEffect(() => {
     const abortController = new AbortController()
-    const fetchData = async () => {
-      if (loginReducer.userContentPath) {
-        fetch(`${loginReducer.userContentPath}collection/${portfolioId}`)
-          .then(result => {
-            return result.json()
-          })
-          .then(portfolioData => {
-            setPortfolio(portfolioData)
-            setContent(<PortfolioBody
-              portfolio={portfolioData}
-              edit={edit}
-            />)
-          })
-          .catch(() => {
-            setContent(<PortfolioUnavailable />)
-          })
-      }
-    }
-
-    fetchData()
+    getData({
+      loginReducer: loginReducer,
+      contentType: 'collection',
+      id: portfolioId,
+      successFunc: (data) => {
+        setPortfolio(data)
+        setContent(<PortfolioBody
+          portfolio={data}
+          edit={edit}
+        />)
+      },
+      errofFunc: () => {
+        setContent(<PortfolioUnavailable />)
+      },
+    })
     return () => {
       abortController.abort()
     }
-  }, [loginReducer.userContentPath, portfolioId, edit])
+  }, [portfolioId, edit, loginReducer])
 
   return (
     <PortfolioLayout

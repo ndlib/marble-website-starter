@@ -3,35 +3,32 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import EditItemFormContent from './EditItemFormContent'
 import Loading from 'components/Internal/Loading'
+import { getData } from 'utils/api'
 
 export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
   const [content, setContent] = useState(<Loading />)
 
   useEffect(() => {
     const abortController = new AbortController()
-    const fetchData = async () => {
-      if (loginReducer.userContentPath) {
-        fetch(`${loginReducer.userContentPath}item/${uuid}`)
-          .then(result => {
-            return result.json()
-          })
-          .then(itemData => {
-            setContent(<EditItemFormContent
-              item={itemData}
-              closeFunc={closeFunc}
-              deleteFunc={deleteFunc}
-            />)
-          })
-          .catch(() => {
-            setContent(<div>Error</div>)
-          })
-      }
-    }
-    fetchData()
+    getData({
+      loginReducer: loginReducer,
+      contentType: 'item',
+      id: uuid,
+      successFunc: (data) => {
+        setContent(<EditItemFormContent
+          item={data}
+          closeFunc={closeFunc}
+          deleteFunc={deleteFunc}
+        />)
+      },
+      errofFunc: () => {
+        setContent(<div>Error</div>)
+      },
+    })
     return () => {
       abortController.abort()
     }
-  }, [closeFunc, deleteFunc, loginReducer.userContentPath, uuid])
+  }, [closeFunc, deleteFunc, loginReducer, uuid])
 
   return (
     <div style={{

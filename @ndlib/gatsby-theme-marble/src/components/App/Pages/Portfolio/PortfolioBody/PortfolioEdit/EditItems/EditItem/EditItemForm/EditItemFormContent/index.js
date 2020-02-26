@@ -117,15 +117,15 @@ export default connect(
 export const deleteItem = (event, loginReducer, uuid, patchingFunc, deleteFunc, closeFunc) => {
   patchingFunc(true)
   if (window.confirm(`This action cannot be undone.`)) {
-    deleteData(
-      loginReducer,
-      'item',
-      uuid,
-      deleteFunc,
-      (e) => {
+    deleteData({
+      loginReducer: loginReducer,
+      contentType: 'item',
+      id: uuid,
+      successFunc: deleteFunc,
+      errorFunc: (e) => {
         console.error(e)
       },
-    )
+    })
   }
   patchingFunc(false)
   closeFunc(event)
@@ -133,16 +133,16 @@ export const deleteItem = (event, loginReducer, uuid, patchingFunc, deleteFunc, 
 
 const updateItem = (event, loginReducer, body, patchingFunc, closeFunc) => {
   patchingFunc(true)
-  patchData(
-    loginReducer,
-    'item',
-    body.uuid,
-    body,
-    (event) => {
+  patchData({
+    loginReducer: loginReducer,
+    contentType: 'item',
+    id: body.uuid,
+    body: body,
+    successFunc: (event) => {
       closeFunc(event)
     },
-    (e) => {
+    errorFunc: (e) => {
       console.error(e)
     },
-  )
+  })
 }

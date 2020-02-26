@@ -38,17 +38,17 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
             onClick={(e) => {
               e.preventDefault()
               if (window.confirm(warning)) {
-                deleteData(
-                  loginReducer,
-                  'collection',
-                  portfolio.uuid,
-                  () => {
+                deleteData({
+                  loginReducer: loginReducer,
+                  contentType: 'collection',
+                  id: portfolio.uuid,
+                  successFunc: () => {
                     navigate(`/user/${loginReducer.user.userName}`)
                   },
-                  (e) => {
+                  errorFunc: (e) => {
                     console.error(e)
                   },
-                )
+                })
               }
               console.log(`Cancel delete on ${deleteFieldValue}`)
             }}

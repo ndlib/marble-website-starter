@@ -5,6 +5,7 @@ import UserLayout from './UserLayout'
 import UserBody from './UserBody'
 import NoUser from './NoUser'
 import Loading from 'components/Internal/Loading'
+import { getData } from 'utils/api'
 
 const User = ({ loginReducer, userName, location, edit }) => {
   const [user, setUser] = useState({ userName: userName })
@@ -12,30 +13,25 @@ const User = ({ loginReducer, userName, location, edit }) => {
 
   useEffect(() => {
     const abortController = new AbortController()
-    const fetchData = async () => {
-      if (loginReducer.userContentPath) {
-        fetch(`${loginReducer.userContentPath}user/${userName}`)
-          .then(result => {
-            return result.json()
-          })
-          .then(userData => {
-            setUser(userData)
-            setContent(<UserBody
-              user={userData}
-              edit={edit}
-            />)
-          })
-          .catch(() => {
-            setContent(<NoUser userName={userName} />)
-          })
-      }
-    }
-
-    fetchData()
+    getData({
+      loginReducer: loginReducer,
+      contentType: 'user',
+      id: userName,
+      successFunc: (data) => {
+        setUser(data)
+        setContent(<UserBody
+          user={data}
+          edit={edit}
+        />)
+      },
+      errofFunc: () => {
+        setContent(<NoUser userName={userName} />)
+      },
+    })
     return () => {
       abortController.abort()
     }
-  }, [loginReducer.userContentPath, userName, edit])
+  }, [loginReducer, userName, edit])
 
   return (
     <UserLayout

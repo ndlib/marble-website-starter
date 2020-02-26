@@ -55,18 +55,18 @@ export const PortfolioEdit = ({ portfolio, loginReducer }) => {
               privacy: privacy || 'private',
               layout: layout || 'default',
             }
-            patchData(
-              loginReducer,
-              'collection',
-              portfolio.uuid,
-              body,
-              () => {
+            patchData({
+              loginReducer: loginReducer,
+              contentType: 'collection',
+              id: portfolio.uuid,
+              body: body,
+              successFunc: () => {
                 navigate(`/myportfolio/${portfolio.uuid}`)
               },
-              (e) => {
+              errorFunc: (e) => {
                 console.error(e)
               },
-            )
+            })
           }}
           disabled={patching}
           primary

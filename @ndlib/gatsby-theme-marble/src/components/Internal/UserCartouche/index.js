@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import Gravatar from 'components/Internal/Gravatar'
+import { getData } from 'utils/api'
 import style from './style.module.css'
 
 export const UserCartouche = ({ user, loginReducer }) => {
@@ -10,28 +11,22 @@ export const UserCartouche = ({ user, loginReducer }) => {
 
   useEffect(() => {
     const abortController = new AbortController()
-    const fetchData = async () => {
-      if (!user.userName && loginReducer.userContentPath && user.uuid) {
-        fetch(`${loginReducer.userContentPath}user-id/${user.uuid}`,
-          { signal: abortController.signal })
-          .then(result => {
-            return result.json()
-          })
-          .then(userData => {
-            setUser(userData)
-          })
-          .catch(error => {
-            if (!abortController.signal.aborted) {
-              console.error(error)
-            }
-          })
-      }
-    }
-    fetchData()
+    getData({
+      loginReducer: loginReducer,
+      contentType: 'user-id',
+      id: user.uuid,
+      successFunc: (data) => {
+        setUser(data)
+      },
+      errorFunc: (e) => {
+        console.error(e)
+      },
+      signal: abortController.signal,
+    })
     return () => {
       abortController.abort()
     }
-  }, [loginReducer.userContentPath, user.userName, user.uuid])
+  }, [loginReducer, user.uuid])
 
   if (!fullUser.userName || !fullUser.email || !fullUser.fullName) {
     return null
