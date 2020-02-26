@@ -22,10 +22,10 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 
 ## get environment variable from parameter store.
 
-site="../../site"
 export APP_CONFIG=${1}
 [ -z $APP_CONFIG ] && echo "ERROR, variable empty"
 pushd scripts/gatsby-source-iiif
 yarn install
 
-sh ../gatsby-source-iiif/generate.sh
+site="../../site"
+sh ../gatsby-source-iiif/generate.sh site
