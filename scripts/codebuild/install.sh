@@ -28,4 +28,4 @@ pushd scripts/gatsby-source-iiif
 yarn install
 
 site="../../site"
-sh ../gatsby-source-iiif/generate.sh site
+sh ../gatsby-source-iiif/generate.sh ${site}

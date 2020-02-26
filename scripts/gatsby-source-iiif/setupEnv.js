@@ -4,7 +4,9 @@ const appConfig = process.env.APP_CONFIG
 
 const retrieveStageParameters = async () => {
   let data = {}
+  console.log("APP_CONFIG = " + appConfig)
   if('local' == appConfig) {
+    console.log("using local config settings")
     data = { Parameters: [
         {
           'Name': '/all/static-host/super-test/search_url',
