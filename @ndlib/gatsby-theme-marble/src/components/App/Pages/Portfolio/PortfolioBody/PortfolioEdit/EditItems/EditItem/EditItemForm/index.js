@@ -1,6 +1,9 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { jsx } from 'theme-ui'
 import EditItemFormContent from './EditItemFormContent'
 import Loading from 'components/Internal/Loading'
 import { getData } from 'utils/api'
@@ -31,8 +34,8 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
   }, [closeFunc, deleteFunc, loginReducer, uuid])
 
   return (
-    <div style={{
-      border: '1px solid #dedede',
+    <div sx={{
+      border: '1px solid gray.1',
       height: '352px',
       margin: '0',
       maxWidth: '800px',

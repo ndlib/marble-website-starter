@@ -11,21 +11,25 @@ const EditItems = ({ portfolio, className }) => {
       {
         // TODO add "Add Item" button
 
-        items.length > 0 ? <ResponsiveGridList measureBeforeMount>
-          {
-            items.map(item => {
-              return (
-                <div
-                  key={item.uuid}
-                >
-                  <EditItem
-                    item={item}
-                  />
-                </div>
-              )
-            })
-          }
-        </ResponsiveGridList> : <NoItems />
+        items.length > 0 ? (
+          <ResponsiveGridList measureBeforeMount>
+            {
+              items.map(item => {
+                return (
+                  <div
+                    key={item.uuid}
+                  >
+                    <EditItem
+                      item={item}
+                    />
+                  </div>
+                )
+              })
+            }
+          </ResponsiveGridList>
+        ) : (
+          <NoItems />
+        )
       }
     </div>
   )
