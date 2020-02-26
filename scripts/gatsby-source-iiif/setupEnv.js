@@ -3,6 +3,7 @@ const AWS = require('aws-sdk')
 const appConfig = process.env.APP_CONFIG
 
 const retrieveStageParameters = async () => {
+  let data = {}
   if('local' == appConfig) {
     data = { Parameters: [
         {
@@ -16,7 +17,7 @@ const retrieveStageParameters = async () => {
     ]}
   } else {
     const ssm = new AWS.SSM({ region: 'us-east-1' })
-    const data = await ssm.getParametersByPath({
+    data = await ssm.getParametersByPath({
       Path: appConfig,
       Recursive: true,
       WithDecryption: true,
