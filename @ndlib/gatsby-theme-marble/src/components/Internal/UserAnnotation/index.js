@@ -1,32 +1,43 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import typy from 'typy'
+import { connect } from 'react-redux'
 import queryString from 'query-string'
 import CalloutBox from 'components/Shared/CalloutBox'
 import Attribution from 'components/Internal/Attribution'
 import Link from 'components/Internal/Link'
 import UserCartouche from 'components/Internal/UserCartouche'
+import { getData } from 'utils/api'
 
-const UserAnnotation = ({ location }) => {
-  const qs = queryString.parse(location.search)
-  if (qs.a) {
-    // fetch annotations
-    const annotations = getAnnotationsFromIds(qs.a.split(','))
+export const UserAnnotation = ({ location, loginReducer }) => {
+  const [item, setItem] = useState(null)
+  const [qs] = useState(queryString.parse(location.search) || {})
+  const [userId] = useState(Object.keys(qs)[0])
+  useEffect(() => {
+    const abortController = new AbortController()
+    getData({
+      loginReducer: loginReducer,
+      contentType: 'item',
+      id: qs[userId],
+      successFunc: (data) => {
+        setItem(data)
+      },
+      errofFunc: () => {
+        console.warn(`Query string item not found`)
+      },
+    })
+    return () => {
+      abortController.abort()
+    }
+  }, [loginReducer, qs, userId])
+
+  if (item) {
     return (
-      <React.Fragment>
-        {
-          typy(annotations).safeArray.map((annotation, index) => {
-            return (
-              <CalloutBox key={index}>
-                <Attribution>
-                  <UserCartouche user={annotation.user} /> provided this annotation from <Link to={`/myportfolio/${annotation.portfolio.id}`}>{annotation.portfolio.label}</Link>.
-                </Attribution>
-                <p>{annotation.description}</p>
-              </CalloutBox>
-            )
-          })
-        }
-      </React.Fragment>
+      <CalloutBox>
+        <Attribution>
+          <UserCartouche user={{ uuid: `${userId}=` }} /> provided the annotation:</Attribution>
+        <p>{item.annotation}</p>
+        <Attribution>See <Link to={`/myportfolio/${item.collectionId}`}>portfolio</Link>.</Attribution>
+      </CalloutBox>
     )
   }
   return null
@@ -34,27 +45,12 @@ const UserAnnotation = ({ location }) => {
 
 UserAnnotation.propTypes = {
   location: PropTypes.object.isRequired,
+  loginReducer: PropTypes.object.isRequired,
 }
-export default UserAnnotation
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
 
-export const getAnnotationsFromIds = (ids) => {
-  const annotations = []
-  ids.forEach(id => {
-    annotations.push(
-      {
-        id: id,
-        user: {
-          email: 'rfox2@nd.edu',
-          name: 'User Name',
-          userName: 'userName',
-        },
-        portfolio: {
-          id: `thing-1`,
-          label: 'My First Test',
-        },
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-      },
-    )
-  })
-  return annotations
-}
+export default connect(
+  mapStateToProps,
+)(UserAnnotation)

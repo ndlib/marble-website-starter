@@ -1,33 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { isLoggedIn } from 'utils/auth'
-import Seo from 'components/Internal/Seo'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
-import LoginArea from 'components/Shared/LoginArea'
 import style from './style.module.css'
 
 export const title = `Portfolio Unavailable`
-const PortfolioUnavailable = (props) => {
-  const { location, loginReducer } = props
-  const loggedIn = isLoggedIn(loginReducer)
-
+const PortfolioUnavailable = () => {
   return (
-    <React.Fragment>
-      <Seo
-        data={{}}
-        location={location}
-        title={title}
-        noIndex
-      />
-      <div className={style.contentArea}>
-        <p>This portfolio is not available either because it is <VisibilityLabel visibility='private' /> or it does not exist.</p>
-        { loggedIn ? null : <LoginArea {...props} /> }
-      </div>
-    </React.Fragment>
+    <div className={style.contentArea}>
+      <p>This portfolio is not available either because it is <VisibilityLabel visibility='private' /> or it does not exist.</p>
+    </div>
   )
 }
-PortfolioUnavailable.propTypes = {
-  location: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
-}
+
 export default PortfolioUnavailable

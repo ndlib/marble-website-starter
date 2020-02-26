@@ -22,7 +22,7 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
             if (item.image) {
               return (
                 <label
-                  key={item.id}
+                  key={item.uuid}
                   className={localStyle.imageOption}
                 >
                   <input
@@ -31,9 +31,9 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
                     value={item.image}
                     defaultChecked={selectedImage === item.image}
                     onChange={
-                      () => {
-                        selectImage(item.image)
-                        onChange(item.image)
+                      (event) => {
+                        selectImage(event.target.value)
+                        onChange(event.target.value)
                       }
                     }
                   />

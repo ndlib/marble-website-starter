@@ -7,6 +7,7 @@ import ExteralLinkIcon from './ExteralLinkIcon'
 import buildReferalState from 'utils/buildReferalState'
 import './style.css'
 
+// eslint-disable-next-line complexity
 const Card = ({
   target,
   label,
@@ -17,6 +18,7 @@ const Card = ({
   cardClass,
   imageService,
   imageRegion,
+  onClick,
 }) => {
   const cardInternal = (
     <article className='cardWrapper'>
@@ -39,7 +41,20 @@ const Card = ({
       </figure>
     </article>
   )
-  if (!target) {
+  if (!target && onClick) {
+    return (
+      <div
+        role='button'
+        className={cardClass}
+        style={{ cursor: 'pointer' }}
+        onClick={(e) => {
+          onClick(e)
+        }}
+      >
+        {cardInternal}
+      </div>
+    )
+  } else if (!target) {
     return (
       <div className={cardClass}>
         {cardInternal}
@@ -67,6 +82,7 @@ Card.propTypes = {
   location: PropTypes.object,
   referal: PropTypes.object,
   cardClass: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 Card.defaultProps = {

@@ -9,6 +9,7 @@ import { ownsPage } from 'utils/auth'
 import TextField from 'components/App/FormElements/TextField'
 import TextArea from 'components/App/FormElements/TextArea'
 import Unauthorized from './Unauthorized'
+import { patchData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 
 export const UserEdit = ({ user, loginReducer }) => {
@@ -18,7 +19,7 @@ export const UserEdit = ({ user, loginReducer }) => {
   const [bio, changeBio] = useState(user.bio)
   const [patching, setPatching] = useState(false)
 
-  if (!ownsPage(loginReducer, user.userName)) {
+  if (!ownsPage(loginReducer, user.uuid)) {
     return (<Unauthorized />)
   }
 
@@ -47,7 +48,18 @@ export const UserEdit = ({ user, loginReducer }) => {
               uuid: `${claims.sub}.${btoa(claims.iss)}`,
               userName: claims.netid,
             }
-            patchData(loginReducer, body)
+            patchData({
+              loginReducer: loginReducer,
+              contentType: 'user',
+              id: claims.netid,
+              body: body,
+              successFunc: () => {
+                navigate(`/user/${body.userName}`)
+              },
+              errorFunc: (e) => {
+                console.error(e)
+              },
+            })
           }}
           disabled={patching}
           primary
@@ -118,29 +130,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(UserEdit)
-
-const patchData = (loginReducer, body) => {
-  const userName = body.uuid
-  fetch(
-    `${loginReducer.userContentPath}user/${userName}`,
-    {
-      method: 'PATCH',
-      headers: {
-        Authorization: loginReducer.token.idToken,
-        'Access-Control-Request-Method': 'PATCH',
-        'Access-Control-Request-Headers': 'Authorization',
-      },
-      mode: 'cors',
-      body: JSON.stringify(body),
-    },
-  )
-    .then(result => {
-      return result.json()
-    })
-    .then(() => {
-      navigate(`/user/${body.userName}`)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-}

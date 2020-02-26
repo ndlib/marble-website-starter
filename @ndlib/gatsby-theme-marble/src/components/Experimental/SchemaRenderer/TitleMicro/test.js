@@ -3,7 +3,7 @@ import TitleMicro from './'
 import { shallow } from 'enzyme'
 
 const meta = { id: 2, label: 'Title', renderer: 'title', key: ['headline'] }
-const schema = { 'headline': 'A Title' }
+const schema = { headline: 'A Title' }
 
 test('TitleMicro Renders Properly', () => {
   const wrapper = shallow(<TitleMicro schema={schema} meta={meta} />)
