@@ -1,5 +1,5 @@
 site=$1
-pushd scripts/gatsby-source-iiif
+pushd
 yarn install
 node setupEnv.js > .env
 node getManifests.js $site
