@@ -50,7 +50,6 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
                   },
                 })
               }
-              console.log(`Cancel delete on ${deleteFieldValue}`)
             }}
             disabled={deleteFieldValue !== portfolio.title}
           >Delete</MaterialButton>

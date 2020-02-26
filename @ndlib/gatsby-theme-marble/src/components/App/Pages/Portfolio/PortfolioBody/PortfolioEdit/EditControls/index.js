@@ -19,7 +19,6 @@ const EditControls = ({ portfolio }) => {
       <MaterialButton
         onClick={(e) => {
           e.preventDefault()
-          console.log('save then navigate')
           navigate(`/myportfolio/${portfolio.uuid}/`)
         }}
         primary
