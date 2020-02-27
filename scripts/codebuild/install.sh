@@ -26,8 +26,11 @@ pushd scripts/gatsby-source-iiif
 yarn install
 node setupEnv.js > .env
 node getManifests.js
+echo "${magenta}----- GENERATE MD FILES -------${reset}"
 node generateMD.js
 node getSchema.js
+echo "${magenta}----- INDEX SEARCH -------${reset}"
 node indexSearch.js
+exit 0
 node generateMDCategories.js
 popd

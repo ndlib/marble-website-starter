@@ -18,7 +18,6 @@ const ManifestDescription = ({ iiifManifest }) => {
         })
       }
     </div>
-
   )
 }
 

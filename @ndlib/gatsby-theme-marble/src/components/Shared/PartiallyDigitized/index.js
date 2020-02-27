@@ -4,6 +4,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 const PartiallyDigitized = ({ iiifManifest }) => {
+  if (!iiifManifest) {
+    return null
+  }
+
   if (iiifManifest.partiallyDigitized) {
     return (
       <div

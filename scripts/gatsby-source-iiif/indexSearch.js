@@ -70,6 +70,7 @@ const getCenturyTags = (dates) => {
   }
 
   return years
+}
 
 const indexSettings = {
   settings: {
@@ -158,7 +159,7 @@ const getSearchDataFromManifest = (manifest) => {
     id: manifest.id,
     name: manifest.label[configuration.siteMetadata.languages.default].join(),
     creator: getCreator(manifest.metadata),
-    thumbnail: manifest.thumbnail[0].id,
+    thumbnail: (manifest.thumbnail && manifest.thumbnail[0]) ? manifest.thumbnail[0].id : '',
     identifier: identifier,
     type: manifest.type,
     language: 'en',
@@ -203,10 +204,10 @@ const setupIndex = async () => {
     await client.indices.delete({ index: siteIndex })
   }
   console.log('creating index', siteIndex)
-  await client.indices.create({ index: siteIndex }, indexMapping, indexSettings)
-  // await client.indices.create({ index: siteIndex }).catch((e) => {
-  //   console.log(e)
-  // })
+  // await client.indices.create({ index: siteIndex }, indexMapping, indexSettings)
+  await client.indices.create({ index: siteIndex }).catch((e) => {
+    console.log(e)
+  })
 }
 
 const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
@@ -215,7 +216,7 @@ const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
 new Promise(async (resolve, reject) => {
   const manifestIndex = loadManifestData()
   await setupIndex()
-
+  console.log('write')
   const writeData = []
   manifestIdsToIndex().forEach((id) => {
     const manifest = manifestIndex[id]
