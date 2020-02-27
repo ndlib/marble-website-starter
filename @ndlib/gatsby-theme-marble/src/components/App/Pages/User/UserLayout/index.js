@@ -13,7 +13,7 @@ import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 export const UserLayout = ({ user, children, location, loginReducer }) => {
   const loggedIn = isLoggedIn(loginReducer)
-  const isOwner = ownsPage(loginReducer, user.userName)
+  const isOwner = ownsPage(loginReducer, user.uuid)
   return (
     <React.Fragment>
       <Seo

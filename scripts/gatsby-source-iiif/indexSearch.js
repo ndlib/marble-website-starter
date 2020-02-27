@@ -1,13 +1,21 @@
 const fs = require('fs')
 const path = require(`path`)
+
 const { Client } = require('elasticsearch')
 const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
 require('dotenv').config()
-const configuration = require('../../site/content/configuration.js')
 
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
+
+if (!domain || !siteIndex) {
+  console.log('Required parameters were not passed in')
+  return
+}
+
+const configuration = require(path.join(domain, '/content/configuration.js'))
+
 const options = {
   host: domain,
   port:443,
@@ -81,7 +89,7 @@ const indexSettings = {
 
 const loadManifestData = () => {
   const idReferencedObject = {}
-  const data = fs.readFileSync(path.join(__dirname, '/../../site/content/json/iiif/iiif.json'))
+  const data = fs.readFileSync(path.join(domain, '/content/json/iiif/iiif.json'))
   const manifestData = JSON.parse(data.toString())
 
   manifestData.forEach((manifest) => {
@@ -92,13 +100,13 @@ const loadManifestData = () => {
 }
 
 const manifestIdsToIndex = () => {
-  const contents = fs.readFileSync(path.join(__dirname, '/../../site/content/manifests.json'))
+  const contents = fs.readFileSync(path.join(domain, '/content/manifests.json'))
   return JSON.parse(contents).manifests
 }
 
 const loadCategories = () => {
   const objectsByTagTypeAndId = {}
-  const data = fs.readFileSync(path.join(__dirname, '/../../site/content/categories.json'))
+  const data = fs.readFileSync(path.join(domain, '/content/categories.json'))
   const categories = JSON.parse(data)
   categories.forEach((row) => {
     if (!row.tagField) {
@@ -162,12 +170,13 @@ const getSearchDataFromManifest = (manifest) => {
     thumbnail: (manifest.thumbnail && manifest.thumbnail[0]) ? manifest.thumbnail[0].id : '',
     identifier: identifier,
     type: manifest.type,
-    language: 'en',
+    // language: 'en',
     url: manifest.slug,
     repository: determineProvider(manifest),
     year: date,
     themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
     centuryTag: getCenturyTags(date.toString()),
+
   }
   search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
   manifest.metadata.forEach((row) => {
@@ -210,7 +219,7 @@ const setupIndex = async () => {
   })
 }
 
-const writeDirectory = path.join(__dirname, '/../../site/content/json/search/')
+const writeDirectory = path.join(domain, '/content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {

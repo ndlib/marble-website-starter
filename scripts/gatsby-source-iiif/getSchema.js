@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require(`path`)
 const fetch = require('node-fetch')
+const directory = process.argv.slice(2)[0]
 
 const loadManifestsFile = () => {
   const contents = fs.readFileSync(path.join(__dirname, '/../../site/content/manifests.json'))
@@ -24,7 +25,7 @@ const fetchData = async (seeAlso) => {
     return result
   }))
     .then(() => {
-      fs.writeFileSync(path.join(__dirname, '/../../site/content/json/schema/schema.json'), JSON.stringify(finalResult))
+      fs.writeFileSync(path.join(directory, '/content/json/schema/schema.json'), JSON.stringify(finalResult))
     })
     .catch(error => {
       console.error('Promise error: ', error)
