@@ -232,15 +232,4 @@
     "description": "Artifacts that have their origin in or reference the 20th century",
     "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/epistemological-letters-issue-2%2FMay19742ndIssue_Page_01"
   },
-  {
-    "id": "notre-dame",
-    "manifest_ids": [
-      "1976.057/manifest"
-    ],
-    "tag": "canvas",
-    "tagField": "formatTag.keyword",
-    "label": "Canvas",
-    "description": "Artifacts on",
-    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/1976.057.001%2F1976_057_001-v0001"
-  },
 ]
