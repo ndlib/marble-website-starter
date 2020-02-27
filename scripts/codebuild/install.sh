@@ -2,6 +2,7 @@
 magenta=`tput setaf 5`
 reset=`tput sgr0`
 
+
 echo "${magenta}----- INSTALL -------${reset}"
 
 ## install yarn
@@ -20,17 +21,10 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 ####  content/*
 
 ## get environment variable from parameter store.
-export APP_CONFIG=${1}
 
+export APP_CONFIG=${1}
+[ -z $APP_CONFIG ] && echo "ERROR, variable empty"
 pushd scripts/gatsby-source-iiif
 yarn install
-node setupEnv.js > .env
-node getManifests.js
-echo "${magenta}----- GENERATE MD FILES -------${reset}"
-node generateMD.js
-node getSchema.js
-echo "${magenta}----- INDEX SEARCH -------${reset}"
-node indexSearch.js
-exit 0
-node generateMDCategories.js
-popd
+site="../../site"
+sh ../gatsby-source-iiif/generate.sh ${site}
