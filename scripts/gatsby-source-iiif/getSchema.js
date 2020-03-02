@@ -8,6 +8,17 @@ const loadManifestsFile = () => {
   return JSON.parse(contents)
 }
 
+const renameChildren = (data) => {
+  if (data.children) {
+    data.children.map(c => {
+      renameChildren(c)
+      return c
+    })
+    data['items'] = data.children
+    delete data.children
+  }
+}
+
 const fetchData = async (seeAlso) => {
   const finalResult = []
   await Promise.all(seeAlso.map(item => {
@@ -16,6 +27,8 @@ const fetchData = async (seeAlso) => {
     const result = fetch(url)
       .then(response => response.json())
       .then(data => {
+        renameChildren(data)
+        console.log('c=', data.children, data.items[0])
         finalResult.push(data)
       })
       .catch(error => {
@@ -25,7 +38,7 @@ const fetchData = async (seeAlso) => {
     return result
   }))
     .then(() => {
-      fs.writeFileSync(path.join(directory, '/content/json/schema/schema.json'), JSON.stringify(finalResult))
+      fs.writeFileSync(path.join(directory, '/content/json/items/items.json'), JSON.stringify(finalResult))
     })
     .catch(error => {
       console.error('Promise error: ', error)
