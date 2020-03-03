@@ -5,6 +5,7 @@
   margin: 5px 5px 15px 0px;
   padding: 10px;
   border-radius: 30px;
+  user-select: none;
   vertical-align: top;
 }
 .actionButton:focus,
