@@ -11,7 +11,6 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
       onClick={
         () => {
           setCreating(true)
-          console.log('Create new Portfolio')
           createData({
             loginReducer: loginReducer,
             contentType: 'collection',
