@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { NewPortfolioButton } from './'
 import MaterialButton from 'components/Internal/MaterialButton'
 
-test('NewPortfolioButton', () => {
+test.skip('NewPortfolioButton', () => {
   console.log = jest.fn()
   const onClickSpy = jest.spyOn(console, 'log')
   const props = {
