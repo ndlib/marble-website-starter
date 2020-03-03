@@ -66,12 +66,12 @@ const getNumberWithOrdinal = (n) => {
 
 const getCenturyTags = (dates) => {
   if (!dates) {
-    return 'undated'
+    return ['undated']
   }
   const mappedDates = dates.match(/([0-9]{4})/g)
   if (!mappedDates) {
     console.error('date not mapped', dates)
-    return 'undated'
+    return ['undated']
   }
 
   let years = dates.match(/([0-9]{4})/g).map((year) => {
@@ -130,11 +130,14 @@ const getSearchDataFromManifest = (manifest) => {
     date: manifest.dateCreated,
     identifier: manifest.uniqueIdentifier,
     type: manifest.level,
-    // language: 'en',
     url: '/item/' + manifest.id,
     repository: determineProvider(manifest),
     themeTag: themeFromSubjectTags(manifest),
     centuryTag: getCenturyTags(manifest.dateCreated),
+  }
+
+  if (manifest.workType) {
+    search['formatTag'] = [manifest.workType]
   }
 
   allMetadataKeys.forEach((key) => {

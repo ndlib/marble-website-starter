@@ -378,7 +378,7 @@ const defaultLayouts = {
                   component: 'SearchRefinementListFilter',
                   props: [
                     { label: 'field', value: 'themeTag.keyword' },
-                    { label: 'label', value: 'Theme' },
+                    { label: 'label', value: 'Keywords' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },

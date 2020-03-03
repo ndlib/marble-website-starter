@@ -86,7 +86,6 @@ const findDates = (manifest, lang) => {
 
 const findManifest = (manifestId, allIiifJson) => {
   return allIiifJson.nodes.find(manifest => {
-    console.log(manifest.id)
     return manifest.id === manifestId
   })
 }
