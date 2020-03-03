@@ -5,8 +5,6 @@ import ActionButton from './ActionButton'
 import ManifestLink from './ManifestLink'
 import print from 'assets/icons/svg/baseline-print-24px.svg'
 import share from 'assets/icons/svg/baseline-share-24px.svg'
-// import bookmark from 'assets/icons/svg/baseline-bookmark_border-24px.svg'
-// import bookmarkActive from 'assets/icons/svg/baseline-bookmark-24px.svg'
 import downloadImg from 'assets/icons/svg/baseline-save_alt-24px.svg'
 
 import style from './style.module.css'
