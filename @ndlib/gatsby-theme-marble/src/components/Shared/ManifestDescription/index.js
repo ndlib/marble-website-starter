@@ -22,10 +22,10 @@ const ManifestDescription = ({ iiifManifest }) => {
 }
 
 ManifestDescription.propTypes = {
-  iiifManifest: PropTypes.shape(
-    { description: PropTypes.string,
-      summary: PropTypes.string },
-  ),
+  iiifManifest: PropTypes.shape({
+    description: PropTypes.string,
+    summary: PropTypes.object,
+  }),
 }
 
 export default ManifestDescription

@@ -24,7 +24,7 @@ const User = ({ loginReducer, userName, location, edit }) => {
           edit={edit}
         />)
       },
-      errofFunc: () => {
+      errorFunc: () => {
         setContent(<NoUser userName={userName} />)
       },
     })

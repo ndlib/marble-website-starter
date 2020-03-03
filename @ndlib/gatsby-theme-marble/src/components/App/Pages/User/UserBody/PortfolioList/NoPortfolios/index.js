@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import NewPortfolioButton from '../NewPortfolioButton'
 import { jsx } from 'theme-ui'
 const NoPortfolios = ({ isOwner = false }) => {
   const sx = {
@@ -18,9 +17,6 @@ const NoPortfolios = ({ isOwner = false }) => {
     return (
       <div sx={sx}>
         <p>You have not created any portfolios yet.</p>
-        <p>
-          <NewPortfolioButton />
-        </p>
       </div>
     )
   }
