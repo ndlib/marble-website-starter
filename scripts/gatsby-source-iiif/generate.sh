@@ -5,4 +5,3 @@ node getManifests.js $site
 node generateMD.js $site
 node getSchema.js $site
 node indexSearch.js $site
-node generateMDCategories.js $site

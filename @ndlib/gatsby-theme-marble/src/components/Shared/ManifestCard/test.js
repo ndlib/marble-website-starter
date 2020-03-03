@@ -12,6 +12,8 @@ describe('ManifestCard', () => {
           label: {
             none: ['label'],
           },
+          metadata: [
+          ],
           slug: 'slug-1',
         },
       ],

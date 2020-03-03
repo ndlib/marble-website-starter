@@ -28,7 +28,6 @@ const fetchData = async (seeAlso) => {
       .then(response => response.json())
       .then(data => {
         renameChildren(data)
-        console.log('c=', data.children, data.items[0])
         finalResult.push(data)
       })
       .catch(error => {
