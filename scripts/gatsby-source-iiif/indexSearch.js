@@ -6,16 +6,15 @@ const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
 require('dotenv').config()
 
-const siteIndex = process.env.SEARCH_INDEX
-const domain = process.env.SEARCH_URL
 const directory = process.argv.slice(2)[0]
+const configuration = require(path.join(directory, '/content/configuration.js'))
+const siteIndex = configuration.siteMetadata.searchBase.url
+const domain = configuration.siteMetadata.searchBase.app
 
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
   return
 }
-
-const configuration = require(path.join(directory, '/content/configuration.js'))
 
 const options = {
   host: domain,
