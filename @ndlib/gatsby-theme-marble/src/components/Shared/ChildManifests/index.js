@@ -6,7 +6,7 @@ import ManifestCard from '../ManifestCard'
 import getLanguage from 'utils/getLanguage'
 
 export const ChildManifests = ({ iiifManifest, displayReducer }) => {
-  if (!typy(iiifManifest, 'items').isArray) {
+  if (!iiifManifest || !typy(iiifManifest, 'items').isArray) {
     return null
   }
   const lang = getLanguage()
@@ -16,6 +16,9 @@ export const ChildManifests = ({ iiifManifest, displayReducer }) => {
       <DisplayViewToggle>
         {
           typy(iiifManifest, 'items').safeArray.map(manifest => {
+            if (!manifest) {
+              return null
+            }
             return (
               <ManifestCard
                 key={manifest.id}

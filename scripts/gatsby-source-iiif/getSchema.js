@@ -3,18 +3,32 @@ const path = require(`path`)
 const fetch = require('node-fetch')
 const directory = process.argv.slice(2)[0]
 
-const loadIIIFData = () => {
-  const contents = fs.readFileSync(path.join(directory, '/content/json/iiif/iiif.json'))
+const loadManifestsFile = () => {
+  const contents = fs.readFileSync(path.join(__dirname, '/../../site/content/manifests.json'))
   return JSON.parse(contents)
+}
+
+const renameChildren = (data) => {
+  if (data.children) {
+    data.children.map(c => {
+      renameChildren(c)
+      return c
+    })
+    data['items'] = data.children
+    delete data.children
+  }
 }
 
 const fetchData = async (seeAlso) => {
   const finalResult = []
   await Promise.all(seeAlso.map(item => {
     console.log('Processing: ' + item)
-    const result = fetch(item)
+    const url = 'https://presentation-iiif.library.nd.edu/' + item + '/nd'
+    const result = fetch(url)
       .then(response => response.json())
       .then(data => {
+        renameChildren(data)
+        console.log('c=', data.children, data.items[0])
         finalResult.push(data)
       })
       .catch(error => {
@@ -24,7 +38,7 @@ const fetchData = async (seeAlso) => {
     return result
   }))
     .then(() => {
-      fs.writeFileSync(path.join(directory, '/content/json/schema/schema.json'), JSON.stringify(finalResult))
+      fs.writeFileSync(path.join(directory, '/content/json/items/items.json'), JSON.stringify(finalResult))
     })
     .catch(error => {
       console.error('Promise error: ', error)
@@ -33,26 +47,10 @@ const fetchData = async (seeAlso) => {
   return finalResult
 }
 
-const getSchemaSeeAlsoList = (rawIIIF) => {
-  const seeAlsoSchema = []
-  rawIIIF.forEach(function (entry) {
-    if ('seeAlso' in entry) {
-      const seeAlso = entry.seeAlso
-      seeAlso.forEach(function (eachSeeAlso) {
-        if (eachSeeAlso.profile === 'https://schema.org/') {
-          console.log('Extracting: ' + eachSeeAlso.id)
-          seeAlsoSchema.push(eachSeeAlso.id)
-        }
-      })
-    }
-  })
-  return seeAlsoSchema
-}
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  const rawIIIF = await loadIIIFData()
-  const seeAlso = await getSchemaSeeAlsoList(rawIIIF)
-  const fetchResult = await fetchData(seeAlso)
+  const rawIds = await loadManifestsFile()
+  const fetchResult = await fetchData(rawIds.manifest_ids)
   if (!fetchResult) {
     reject(fetchResult)
   }

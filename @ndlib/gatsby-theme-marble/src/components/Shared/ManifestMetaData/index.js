@@ -4,6 +4,10 @@ import MetaDataList from 'components/Internal/MetaDataList'
 import MetaDataField from 'components/Internal/MetaDataList/MetaDataField'
 
 const ManifestMetaData = ({ iiifManifest, skipHtml }) => {
+  if (!iiifManifest) {
+    return null
+  }
+
   return (
     <React.Fragment>
       <h2 className='accessibilityOnly'>Metadata</h2>

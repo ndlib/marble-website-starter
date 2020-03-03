@@ -26,6 +26,5 @@ export APP_CONFIG=${1}
 [ -z $APP_CONFIG ] && echo "ERROR, variable empty"
 pushd scripts/gatsby-source-iiif
 yarn install
-
 site="../../site"
 sh ../gatsby-source-iiif/generate.sh ${site}
