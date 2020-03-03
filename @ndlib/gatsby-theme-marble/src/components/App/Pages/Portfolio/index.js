@@ -25,7 +25,7 @@ export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
           edit={edit}
         />)
       },
-      errofFunc: () => {
+      errorFunc: () => {
         setContent(<PortfolioUnavailable />)
       },
     })

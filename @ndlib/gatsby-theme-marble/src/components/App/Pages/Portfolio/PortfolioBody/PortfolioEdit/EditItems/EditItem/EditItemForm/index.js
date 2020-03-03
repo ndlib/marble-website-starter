@@ -24,7 +24,7 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
           deleteFunc={deleteFunc}
         />)
       },
-      errofFunc: () => {
+      errorFunc: () => {
         setContent(<div>Error</div>)
       },
     })
@@ -35,7 +35,8 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
 
   return (
     <div sx={{
-      border: '1px solid gray.1',
+      border: '1px solid',
+      borderColor: 'gray.1',
       height: '352px',
       margin: '0',
       maxWidth: '800px',

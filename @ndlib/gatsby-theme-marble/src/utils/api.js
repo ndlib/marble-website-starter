@@ -74,7 +74,7 @@ export const patchData = ({ loginReducer, contentType, id, body, successFunc, er
   }
 }
 
-export const deleteData = (loginReducer, contentType, id, successFunc, errorFunc) => {
+export const deleteData = ({ loginReducer, contentType, id, successFunc, errorFunc }) => {
   if (loginReducer.userContentPath && contentType && id) {
     fetch(
       `${loginReducer.userContentPath}${contentType}/${id}`,

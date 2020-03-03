@@ -20,9 +20,9 @@ ansi-styles@^2.2.1:
   integrity sha1-tDLdM1i2NM914eRmQ2gkBTPB3b4=
 
 aws-sdk@^2.561.0:
-  version "2.623.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.623.0.tgz#c03f91d813727f0931d9b36d904764291e44aa5f"
-  integrity sha512-tncfZvqupRD3DLQM+8ZYgDwH7OjjIxLanzmUPsOw1GpJW3xqTzRYyja4drywSpnR4roSVUpBPE2H2/iMOXtepQ==
+  version "2.630.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.630.0.tgz#108ccd50b585226db8d1798def73f7b873a2efa6"
+  integrity sha512-7BDPUIqmMZfZf+KN2Z3RpGDYGkEucQORLM2EqXuE91ETW5ySvoNd771+EaE3OS+FUx3JejfcVk8Rr2ZFU38RjA==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"

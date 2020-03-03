@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import Card from 'components/Shared/Card'
-// import NewPortfolioButton from './NewPortfolioButton'
+import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import { COMPILATIONS_LISTING_PAGE } from 'store/actions/displayActions'
@@ -15,21 +15,30 @@ const PortfolioList = ({
   user,
   loginReducer,
 }) => {
-  const portfolios = user.collections || []
+  const [portfolios, setPortfolios] = useState(user.collections || [])
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
   if (portfolios.length > 0) {
     return (
       <React.Fragment>
         {
-          // TODO add 'New Portfolio button'
-          // isOwner ? <p><NewPortfolioButton /></p> : null
+          isOwner ? (
+            <p>
+              <NewPortfolioButton
+                addFunc={setPortfolios}
+                portfolios={portfolios}
+              />
+            </p>
+          ) : null
         }
         <DisplayViewToggle defaultDisplay={COMPILATIONS_LISTING_PAGE}>
           {
             typy(portfolios).safeArray
               .filter(c => {
                 return viewable(c, loggedIn, isOwner)
+              })
+              .sort((a, b) => {
+                return b.updated - a.updated
               })
               .map((c, index) => {
                 return (

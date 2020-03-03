@@ -2,6 +2,7 @@
   font-size: 1rem;
   max-width: 100%;
   padding: .5rem;
+  user-select: none;
   cursor: pointer;
 }
 .materialButton:focus {

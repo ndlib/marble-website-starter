@@ -6,6 +6,7 @@
   padding: 10px;
   border-radius: 30px;
   vertical-align: top;
+  user-select: none;
   float: right;
 }
 .manifestLink:hover {
