@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import BookmarkButton from './BookmarkButton'
+import NewPortfolioButton from 'components/App/Pages/User/UserBody/PortfolioList/NewPortfolioButton'
 import { getData } from 'utils/api'
 import { isLoggedIn } from 'utils/auth'
 import icon from 'assets/icons/svg/baseline-bookmark-24px-white.svg'
@@ -10,7 +11,7 @@ import style from './style.module.css'
 
 const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
   const [open, setOpen] = useState(false)
-  const [collections, setCollections] = useState([])
+  const [portfolios, setPortfolios] = useState([])
 
   useEffect(() => {
     const abortController = new AbortController()
@@ -19,7 +20,10 @@ const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
       contentType: 'user',
       id: typy(loginReducer, 'user.userName').safeString,
       successFunc: (data) => {
-        setCollections(data.collections)
+        const ps = typy(data, 'collections').safeArray.sort((a, b) => {
+          return b.updated - a.updated
+        })
+        setPortfolios(ps)
       },
       errorFunc: (e) => {
         console.error(e)
@@ -40,7 +44,6 @@ const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
           setOpen(false)
-          console.log('blur')
         }
       }}
       tabIndex={0}
@@ -56,8 +59,8 @@ const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
       </div>
       <div className={style.options}>
         {
-          collections.length > 0 ? (
-            collections.map(
+          portfolios.length > 0 ? (
+            portfolios.map(
               collection => {
                 return (
                   <BookmarkButton
@@ -67,8 +70,14 @@ const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
                   />
                 )
               })
-          ) : null
+          ) : (
+            <div className={style.noPortfolios}>You do not have any portfolios.</div>
+          )
         }
+        <NewPortfolioButton
+          addFunc={setPortfolios}
+          portfolios={portfolios}
+        />
       </div>
     </div>
 

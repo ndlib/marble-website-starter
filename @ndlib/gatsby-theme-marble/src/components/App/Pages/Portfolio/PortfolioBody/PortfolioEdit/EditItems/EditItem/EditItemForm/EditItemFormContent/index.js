@@ -70,7 +70,7 @@ export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer 
         onChange={(event) => {
           changeImage(event.target.value)
         }}
-        disabled={patching}
+        disabled
       />
       <TextField
         id='link'
@@ -79,7 +79,7 @@ export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer 
         onChange={(event) => {
           changeLink(event.target.value)
         }}
-        disabled={patching}
+        disabled
       />
       <TextField
         id='manifest'
@@ -88,7 +88,7 @@ export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer 
         onChange={(event) => {
           changeManifest(event.target.value)
         }}
-        disabled={patching}
+        disabled
       />
     </React.Fragment>
   )
