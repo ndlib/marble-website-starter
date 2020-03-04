@@ -11,7 +11,7 @@
     ],
     "label": "Time Periods",
     "description": "",
-    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-04%2FGNDL-45-04"
+    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/1976.057.001%2F1976_057_001-v0001"
   },
   {
     "id": "places",
@@ -22,12 +22,11 @@
     ],
     "label": "Places",
     "description": "",
-    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-04%2FGNDL-45-04"
+    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001"
   },
   {
     "id": "themes",
     "subcategories": [
-      "nd-life",
       "notre-dame",
       "religious-paintings",
       "historical-artifacts",
@@ -37,26 +36,6 @@
     ],
     "label": "Themes",
     "description": "",
-    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-04%2FGNDL-45-04"
-  },
-  {
-    "id": "nd-life",
-    "manifest_ids": [
-      "CEDW-20-02-08/manifest",
-      "CEDW-30-16-01/manifest",
-      "CSOR-04-05-01/manifest",
-      "CTAO-01-28/manifest",
-      "GNDL-45-01/manifest",
-      "GNDL-45-02/manifest",
-      "GNDL-45-03/manifest",
-      "GNDL-45-04/manifest",
-      "GNDL-45-05/manifest",
-      "GNDL-45-06/manifest"
-    ],
-    "label": "Notre Dame Life Collection",
-    "tag": "ndlife",
-    "tagField": "themeTag.keyword",
-    "description": "The Notre Dame Life Collection represents historical moments the university's past. Most of the images and artifacts are representative of 19th century moments closely following the founding of the university.",
     "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-04%2FGNDL-45-04"
   },
   {
@@ -133,8 +112,6 @@
       "1986.059.001/manifest",
       "1982.072.001/manifest",
       "1934.007.001/manifest",
-      "CSOR-04-05-01/manifest",
-      "GNDL-45-01/manifest",
       "003818138/manifest",
       "CTAO-01-28/manifest"
     ],
@@ -142,7 +119,7 @@
     "tagField": "themeTag.keyword",
     "label": "Religious Artifacts",
     "description": "From liturgical dress to altar ornamentation to sermon manuscripts; explore the rich collections at the University of Notre Dame used in religious ceremonies and inspired by world religions.",
-    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/CSOR-04-05-01%2FCSOR-04-05-01"
+    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/1986.059.001%2F1986_059_001-v0001"
   },
   {
     "id": "historical-artifacts",
@@ -158,7 +135,7 @@
     "tagField": "themeTag.keyword",
     "label": "Historical Artifacts",
     "description": "Artifacts that have particular historical significance",
-    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-05%2FGNDL-45-05"
+    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001"
   },
   {
     "id": "science",
@@ -175,17 +152,13 @@
   {
     "id": "notre-dame",
     "manifest_ids": [
-      "GNDL-45-02/manifest",
-      "GNDL-45-04/manifest",
-      "GNDL-45-05/manifest",
-      "CEDW-20-02-08/manifest",
       "1976.057/manifest"
     ],
     "tag": "noterdame",
     "tagField": "themeTag.keyword",
     "label": "Notre Dame",
     "description": "The University of Notre Dame was founded in 1842 by a small group of priests from the Congregation of the Holy Cross. Well-known for its sports programs and Catholic heritage, the university today is a site for cutting-edge research and rigorous liberal arts scholarship. The University of Notre Dame holds most of the photographs, documents, and related materials chronicling the university’s long history. The Snite Museum of Art also stewards many important portraits, prints, and paintings relating to significant figures in the university’s history.",
-    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-04%2FGNDL-45-04"
+    "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/1976.057.001%2F1976_057_001-v0001"
   },
   {
     "id": "ancient-time-period",
