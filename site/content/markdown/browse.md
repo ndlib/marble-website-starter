@@ -41,17 +41,9 @@ components:
     - component: Card
       props:
         - label: "label"
-          value: "Notre Dame Life Collection"
-        - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-04%2FGNDL-45-04/full/500,/0/default.jpg"
-        - label: "target"
-          value: "search?theme[0]=Notre%20Dame%20Life%20Collection"
-    - component: Card
-      props:
-        - label: "label"
           value: "Notre Dame"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-04%2FGNDL-45-04/full/500,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/1976.057.001%2F1976_057_001-v0001/full/500,/0/default.jpg"
         - label: "target"
           value: "search?theme[0]=Notre%20Dame"
     - component: Card
@@ -67,7 +59,7 @@ components:
         - label: "label"
           value: "Historical Artifacts"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/GNDL-45-05%2FGNDL-45-05/full/500,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001/full/500,/0/default.jpg"
         - label: "target"
           value: "search?theme[0]=Historical%20Artifacts"
     - component: Card
