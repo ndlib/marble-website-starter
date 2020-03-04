@@ -44,12 +44,14 @@ const indexMapping = {
   },
 }
 
+// TODO list below contains only nd-list items. Needs changed or deleted
 // const archives = ['CSOR-04-05-01', 'GNDL-45-01', 'CEDW-30-16-01', 'GNDL-45-02', 'CEDW-20-02-08', 'nd-life', 'GNDL-45-04', 'CTAO-01-28', 'GNDL-45-05']
 const determineProvider = (manifest) => {
   if (manifest.id.match(/\/[0-9]{4}[.](.*)\/manifest$/)) {
     return 'Snite Museum of Art'
   }
 
+  // TODO Following code deals with variable removed above. Needs changed or deleted
   // const res = archives.find((testId) => {
   //   if (manifest.id.includes(testId)) {
   //     return true
