@@ -36,6 +36,7 @@
 
 .open button:hover {
   background: #efefef;
+  opacity: 1.0;
 }
 .open button:last-of-type {
   border-bottom: none;
@@ -63,4 +64,14 @@
 }
 .mainLabel {
   padding-left: .5rem;
+}
+
+.noPortfolios {
+  background-color: white;
+  border-bottom: 1px solid;
+  font-size: .85rem;
+  font-style: italic;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
 }
