@@ -1,24 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { navigate } from 'gatsby'
 import MaterialButton from 'components/Internal/MaterialButton'
 import style from '../style.module.css'
 
-const ViewerButtons = ({ iiifManifest }) => {
-  if (iiifManifest) {
+const ViewerButtons = ({ link }) => {
+  if (link) {
     return (
       <div className={style.viewerButtons}>
         <MaterialButton
           onClick={() => {
-            console.log('mirador')
+            navigate(`${link}/mirador`)
           }}
           wide
-        >Mirador</MaterialButton>
-        <MaterialButton
-          onClick={() => {
-            console.log('uv')
-          }}
-          wide
-        >Universal Viewer</MaterialButton>
+        >View in Mirador</MaterialButton>
       </div>
     )
   }
@@ -26,6 +21,6 @@ const ViewerButtons = ({ iiifManifest }) => {
 }
 
 ViewerButtons.propTypes = {
-  iiifManifest: PropTypes.string,
+  link: PropTypes.string,
 }
 export default ViewerButtons
