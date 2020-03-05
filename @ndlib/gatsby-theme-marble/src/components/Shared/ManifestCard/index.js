@@ -31,6 +31,8 @@ export const ManifestCard = (props) => {
   }
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const lang = getLanguage()
+  const creator = findCreator(iiifManifest, lang)
+  const dates = findDates(iiifManifest, lang)
   return (
     <div className={style.manifestCardWrapper}>
       <Card
@@ -40,11 +42,46 @@ export const ManifestCard = (props) => {
         imageRegion={imageRegion}
         {...props}
       >
+        <p>{creator}</p>
+        <p>{dates}</p>
         <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
       </Card>
       <TypeLabel iiifManifest={iiifManifest} />
     </div>
   )
+}
+
+const findCreator = (manifest, lang) => {
+  const options = ['creator']
+  if (!manifest.metadata) {
+    return []
+  }
+
+  return manifest.metadata.reduce((creator, row) => {
+    const label = row.label[lang].join('').toLowerCase()
+
+    if (options.includes(label)) {
+      return creator.concat(row.value[lang].join(''))
+    }
+
+    return creator
+  }, [])
+}
+
+const findDates = (manifest, lang) => {
+  const options = ['date', 'dates']
+  if (!manifest.metadata) {
+    return []
+  }
+
+  return manifest.metadata.reduce((dates, row) => {
+    const label = row.label[lang].join('').toLowerCase().trim()
+    if (options.includes(label)) {
+      return dates.concat(row.value[lang].join(''))
+    }
+
+    return dates
+  }, [])
 }
 
 const findManifest = (manifestId, allIiifJson) => {

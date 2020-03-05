@@ -15,30 +15,6 @@ exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
 
   const typeDefs = `
-  #schema stuff
-  type SchemaJson implements Node @dontinfer {
-    _id: ID!
-    identifier: String
-    name: String
-    alternateName: String
-    creator: String
-    dateCreated: String
-    temporalCoverage: String
-    description: String
-    material: String
-    materialExtent: String
-    copyrightHolder: String
-    conditionOfAccess: String
-    sponsor: String
-    provider: String
-    thumbnail: String
-    license: String
-    publisher: String
-    hasPart: [ String ]
-    keywords: [ String ]
-    url: String
-  }
-
   # iiif stuff
   type iiifTranslatedString @dontInfer {
     en: [ String ]
@@ -402,7 +378,7 @@ const defaultLayouts = {
                   component: 'SearchRefinementListFilter',
                   props: [
                     { label: 'field', value: 'themeTag.keyword' },
-                    { label: 'label', value: 'Theme' },
+                    { label: 'label', value: 'Keywords' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },

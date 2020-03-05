@@ -1,6 +1,8 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
+    - SEARCH_URL="travis-test-no-index"
+    - SEARCH_INDEX="travis-test-no-index"
 language: node_js
 node_js:
   - "10"

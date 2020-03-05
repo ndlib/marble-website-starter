@@ -20,7 +20,7 @@ components:
       - component: ManifestCard
         props:
           - label: "iiifManifest"
-            value: "https://presentation-iiif.library.nd.edu/collection/le-rossignol"
+            value: "https://presentation-iiif.library.nd.edu/BPP1001_EAD/manifest"
       - component: ManifestCard
         props:
           - label: "iiifManifest"

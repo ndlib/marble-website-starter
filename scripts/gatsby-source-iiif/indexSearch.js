@@ -6,15 +6,15 @@ const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
 require('dotenv').config()
 
-const siteIndex = process.env.SEARCH_INDEX
-const domain = process.env.SEARCH_URL
+const directory = process.argv.slice(2)[0]
+const configuration = require(path.join(directory, '/content/configuration.js'))
+const siteIndex = configuration.siteMetadata.searchBase.app
+const domain = configuration.siteMetadata.searchBase.url
 
-if (!domain || !siteIndex) {
+if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
   console.log('Required parameters were not passed in')
   return
 }
-
-const configuration = require(path.join(domain, '/content/configuration.js'))
 
 const options = {
   host: domain,
@@ -44,23 +44,16 @@ const indexMapping = {
   },
 }
 
-// TODO list below contains only nd-list items. Needs changed or deleted
-// const archives = ['CSOR-04-05-01', 'GNDL-45-01', 'CEDW-30-16-01', 'GNDL-45-02', 'CEDW-20-02-08', 'nd-life', 'GNDL-45-04', 'CTAO-01-28', 'GNDL-45-05']
 const determineProvider = (manifest) => {
-  if (manifest.id.match(/\/[0-9]{4}[.](.*)\/manifest$/)) {
+  // snite repositories
+  if (['museum', 'snite'].includes(manifest.repository.toLowerCase())) {
     return 'Snite Museum of Art'
   }
 
-  // TODO Following code deals with variable removed above. Needs changed or deleted
-  // const res = archives.find((testId) => {
-  //   if (manifest.id.includes(testId)) {
-  //     return true
-  //   }
-  //   return false
-  // })
-  // if (res) {
-  //   return 'University Archives'
-  // }
+  if (['unda'].includes(manifest.repository.toLowerCase())) {
+    return 'University Archives'
+  }
+
   return 'Rare Books and Special Collections'
 }
 
@@ -71,9 +64,18 @@ const getNumberWithOrdinal = (n) => {
 }
 
 const getCenturyTags = (dates) => {
+  if (!dates) {
+    return ['undated']
+  }
+  const mappedDates = dates.match(/([0-9]{4})/g)
+  if (!mappedDates) {
+    console.error('date not mapped', dates)
+    return ['undated']
+  }
+
   let years = dates.match(/([0-9]{4})/g).map((year) => {
     year = Math.ceil(year / 100)
-    return getNumberWithOrdinal(year) + 'Century'
+    return getNumberWithOrdinal(year) + ' Century'
   })
   if (years.length === 0) {
     years = ['undated']
@@ -90,106 +92,60 @@ const indexSettings = {
 }
 
 const loadManifestData = () => {
-  const idReferencedObject = {}
-  const data = fs.readFileSync(path.join(domain, '/content/json/iiif/iiif.json'))
+  const data = fs.readFileSync(path.join(directory, '/content/json/items/items.json'))
   const manifestData = JSON.parse(data.toString())
+  return manifestData
+}
 
-  manifestData.forEach((manifest) => {
-    idReferencedObject[manifest.id] = manifest
+const themeFromSubjectTags = (manifest) => {
+  if (!manifest.subjects) {
+    return []
+  }
+  const subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
+  return subjects.map(m => {
+    return m.term
   })
-
-  return idReferencedObject
 }
 
-const manifestIdsToIndex = () => {
-  const contents = fs.readFileSync(path.join(domain, '/content/manifests.json'))
-  return JSON.parse(contents).manifests
+const loadSubItemTitles = (manifest) => {
+  return manifest.items.reduce((titles, item) => {
+    if (item.title) {
+      return titles + ' ' + item.title
+    }
+    return titles
+  }, '')
 }
 
-const loadCategories = () => {
-  const objectsByTagTypeAndId = {}
-  const data = fs.readFileSync(path.join(domain, '/content/categories.json'))
-  const categories = JSON.parse(data)
-  categories.forEach((row) => {
-    if (!row.tagField) {
-      return
-    }
-    if (!objectsByTagTypeAndId[row.tagField]) {
-      objectsByTagTypeAndId[row.tagField] = {}
-    }
-    if (row.manifest_ids) {
-      row.manifest_ids.forEach((manifestId) => {
-        if (!objectsByTagTypeAndId[row.tagField][manifestId]) {
-          objectsByTagTypeAndId[row.tagField][manifestId] = []
-        }
-        objectsByTagTypeAndId[row.tagField][manifestId].push(row.label)
-      })
-    }
-  })
-  return objectsByTagTypeAndId
-}
-
-const getCreator = (metadata) => {
-  const options = ['creator']
-  return metadata.reduce((creator, row) => {
-    const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
-
-    if (options.includes(label)) {
-      console.log(row.value[configuration.siteMetadata.languages.default])
-      return creator.concat(row.value[configuration.siteMetadata.languages.default].join(''))
-    }
-
-    return creator
-  }, [])
-}
-
-const themeFromSubjectTags = (metadata) => {
-  const options = ['subjects']
-  const subjects = metadata.reduce((creator, row) => {
-    const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
-
-    if (options.includes(label)) {
-      console.log(row.value[configuration.siteMetadata.languages.default])
-      return creator.concat(row.value[configuration.siteMetadata.languages.default].join(''))
-    }
-
-    return creator
-  }, [])
-  console.log(subjects)
-}
-
-const objectsByTagTypeAndId = loadCategories()
+const allMetadataKeys = [
+  'description', 'collectionId', 'id', 'creator', 'uniqueIdentifier', 'dimensions',
+  'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
+]
 
 const getSearchDataFromManifest = (manifest) => {
-  const identifier = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '')
-  const date = Math.floor(1200 + Math.random() * 700)
-
-  const tagId = manifest.id.replace('https://presentation-iiif.library.nd.edu/', '')
   const search = {
-    id: manifest.id,
-    name: manifest.label[configuration.siteMetadata.languages.default].join(),
-    creator: getCreator(manifest.metadata),
-    thumbnail: (manifest.thumbnail && manifest.thumbnail[0]) ? manifest.thumbnail[0].id : '',
-    identifier: identifier,
-    type: manifest.type,
-    // language: 'en',
-    url: manifest.slug,
+    id: manifest.iiifUri,
+    name: manifest.title,
+    creator: manifest.creator,
+    date: manifest.dateCreated,
+    identifier: manifest.uniqueIdentifier,
+    type: manifest.level,
+    url: '/item/' + manifest.id,
     repository: determineProvider(manifest),
-    year: date,
-    themeTag: objectsByTagTypeAndId['themeTag.keyword'][tagId],
-    centuryTag: getCenturyTags(date.toString()),
-
+    themeTag: themeFromSubjectTags(manifest),
+    centuryTag: getCenturyTags(manifest.dateCreated),
   }
-  search['allMetadata'] = (manifest.summary) ? manifest.summary.en[0] : ''
-  manifest.metadata.forEach((row) => {
-    const label = row.label[configuration.siteMetadata.languages.default].join('').toLowerCase()
-    const value = row.value[configuration.siteMetadata.languages.default].join('')
 
-    if (!search[label]) {
-      search[label] = value
+  if (manifest.workType) {
+    search['formatTag'] = [manifest.workType]
+  }
+
+  allMetadataKeys.forEach((key) => {
+    if (manifest[key]) {
+      search['allMetadata'] += ' ' + manifest[key]
     }
-    search['allMetadata'] += ' ' + value
   })
+  search['allMetadata'] += loadSubItemTitles(manifest)
+
   return search
 }
 
@@ -210,7 +166,7 @@ const indexToElasticSearch = async (searchData) => {
 
 const setupIndex = async () => {
   const indexExists = await client.indices.exists({ index: siteIndex })
-  if (indexExists.body) {
+  if (indexExists) {
     console.log('removing index', siteIndex)
     await client.indices.delete({ index: siteIndex })
   }
@@ -221,21 +177,19 @@ const setupIndex = async () => {
   })
 }
 
-const writeDirectory = path.join(domain, '/content/json/search/')
+const writeDirectory = path.join(directory, '/content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
-  const manifestIndex = loadManifestData()
+  const manifests = loadManifestData()
   await setupIndex()
-  console.log('write')
+
   const writeData = []
-  manifestIdsToIndex().forEach((id) => {
-    const manifest = manifestIndex[id]
+  manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
     }
   })
-
   await indexToElasticSearch(writeData)
   console.log('Writing Search Data to gatsby')
   fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
