@@ -220,6 +220,7 @@ exports.onCreatePage = async ({ page, actions }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
+
   return graphql(`
     {
       allRemarkMarblePage {
@@ -260,8 +261,6 @@ exports.createPages = ({ graphql, actions }) => {
       }
     })
   })
-
-  // non manifest tags
 }
 
 exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
