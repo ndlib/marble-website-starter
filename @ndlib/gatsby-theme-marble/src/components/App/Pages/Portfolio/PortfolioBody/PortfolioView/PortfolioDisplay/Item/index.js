@@ -32,7 +32,7 @@ const Item = ({ item, userId, annotated = false }) => {
           <Column colSpan='3'>{item.annotation}</Column>
           <Column colSpan='2'>
             {card}
-            <ViewerButtons iiifManifest={item.manifest} />
+            <ViewerButtons link={item.link} />
           </Column>
         </MultiColumn>
       </div>
