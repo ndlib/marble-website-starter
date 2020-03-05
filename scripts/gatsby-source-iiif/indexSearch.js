@@ -8,8 +8,8 @@ require('dotenv').config()
 
 const directory = process.argv.slice(2)[0]
 const configuration = require(path.join(directory, '/content/configuration.js'))
-const siteIndex = configuration.siteMetadata.searchBase.url
-const domain = configuration.siteMetadata.searchBase.app
+const siteIndex = configuration.siteMetadata.searchBase.app
+const domain = configuration.siteMetadata.searchBase.url
 
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
