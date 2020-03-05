@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Link from 'components/Internal/Link'
 
@@ -17,6 +18,10 @@ export const AllPage = ({
       <ul>{Posts}</ul>
     </div>
   )
+}
+
+AllPage.propTypes = {
+  data: PropTypes.object.isRequired,
 }
 
 export default AllPage
