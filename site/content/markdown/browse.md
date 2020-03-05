@@ -43,7 +43,7 @@ components:
         - label: "label"
           value: "Notre Dame"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/1976.057.001%2F1976_057_001-v0001/full/500,/0/default.jpg"
+          value: "/static/03-3e4a3d5380e87c004072f3adc371c87d.jpg"
         - label: "target"
           value: "search?theme[0]=Notre%20Dame"
     - component: Card
@@ -75,7 +75,7 @@ components:
         - label: "label"
           value: "Religious Artifacts"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/CSOR-04-05-01%2FCSOR-04-05-01/full/500,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/1934.007.001%2F1934_007_001-v0001/full/500,/0/default.jpg"
         - label: "target"
           value: "search?theme[0]=Religious%20Artifacts"
     - component: Card
