@@ -49,6 +49,11 @@ module.exports = [
         label: 'Help',
         link: '/help',
       },
+      {
+        id: 'footer-sitemap',
+        label: 'Site Map',
+        link: '/sitemap',
+      },
     ],
   },
   {

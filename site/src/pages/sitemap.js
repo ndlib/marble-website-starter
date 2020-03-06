@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import Link from 'components/Internal/Link'
+import miradorIcon from 'assets/icons/svg/mirador-24px.svg'
 
 export const AllPage = ({
   data: {
@@ -21,10 +22,11 @@ export const AllPage = ({
         case 'collection':
           return !!edge.node.frontmatter.slug.match(/collection\//)
         case 'browse':
-          return !!edge.node.frontmatter.slug.match(/browse\//)
+          return !!edge.node.frontmatter.slug.match(/browse/)
         default:
           return !edge.node.frontmatter.slug.match(/item\//) && !edge.node.frontmatter.slug.match(/collection\//) &&
-          !edge.node.frontmatter.slug.match(/browse\//) && edge.node.frontmatter.title
+          !edge.node.frontmatter.slug.match(/browse/) &&
+            !edge.node.frontmatter.slug.match(/404.html/) && edge.node.frontmatter.title
       }
     })
     .sort((a, b) => {
@@ -38,7 +40,31 @@ export const AllPage = ({
       }
       return 0
     })
-    .map(edge => <li key={edge.node.id}><Link to={edge.node.frontmatter.slug} >{edge.node.frontmatter.title}</Link></li>)
+    .map(edge => {
+      return (
+        <li key={edge.node.id}>
+          <Link to={edge.node.frontmatter.slug} >{edge.node.frontmatter.title}</Link>
+          {
+            edge.node.frontmatter.slug.match(/item\//) ? (
+              <React.Fragment>
+                <span>&nbsp;</span>
+                <Link to={`${edge.node.frontmatter.slug}/mirador`} >
+                  <img
+                    src={miradorIcon}
+                    alt='Open in Mirador'
+                    style={{
+                      height: '16px',
+                      width: '16px',
+                      verticalAlign: 'text-bottom',
+                    }}
+                  />
+                </Link>
+              </React.Fragment>
+            ) : null
+          }
+        </li>
+      )
+    })
 
   return (
     <Layout
@@ -53,10 +79,8 @@ export const AllPage = ({
       <ul>{posts('collection')}</ul>
       <h2>Items</h2>
       <ul>{posts('item')}</ul>
-      {
-        // <h2>Browse Pages</h2>
-        // <ul>{posts('browse')}</ul>
-      }
+      <h2>Browse Pages</h2>
+      <ul>{posts('browse')}</ul>
       <h2>Other Content</h2>
       <ul>{posts()}</ul>
     </Layout>
@@ -69,7 +93,7 @@ AllPage.propTypes = {
 }
 
 export default AllPage
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     allMarkdownRemark {
       edges {
