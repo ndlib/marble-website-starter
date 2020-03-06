@@ -21,6 +21,7 @@ export const SearchResults = ({ defaultDisplay }) => {
       <Hits
         hitsPerPage={50}
         sourceFilter={['name']}
+        highlightFields={['allMetadata']}
         listComponent={displayComponent}
       />
       <NoHits

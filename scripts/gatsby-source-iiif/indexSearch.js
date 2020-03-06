@@ -117,7 +117,7 @@ const loadSubItemTitles = (manifest) => {
 }
 
 const allMetadataKeys = [
-  'description', 'collectionId', 'id', 'creator', 'uniqueIdentifier', 'dimensions',
+  'title', 'creator', 'description', 'collectionId', 'id', 'uniqueIdentifier', 'dimensions',
   'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
 ]
 
@@ -144,7 +144,10 @@ const getSearchDataFromManifest = (manifest) => {
       search['allMetadata'] += ' ' + manifest[key]
     }
   })
-  search['allMetadata'] += loadSubItemTitles(manifest)
+  search['allMetadata'] += ' ' + loadSubItemTitles(manifest)
+  search['allMetadata'] += ' ' + search.repository
+  search['allMetadata'] += ' ' + search.centuryTag.join(' ')
+  search['allMetadata'] += ' ' + search.themeTag.join(' ')
 
   return search
 }
