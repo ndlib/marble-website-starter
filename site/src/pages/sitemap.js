@@ -75,12 +75,16 @@ export const AllPage = ({
         data={{}}
         location={location}
       />
-      <h2>Collections</h2>
-      <ul>{posts('collection')}</ul>
+      {
+      // <h2>Collections</h2>
+      // <ul>{posts('collection')}</ul>
+      }
       <h2>Items</h2>
       <ul>{posts('item')}</ul>
-      <h2>Browse Pages</h2>
-      <ul>{posts('browse')}</ul>
+      {
+      // <h2>Browse Pages</h2>
+      // <ul>{posts('browse')}</ul>
+      }
       <h2>Other Content</h2>
       <ul>{posts()}</ul>
     </Layout>
