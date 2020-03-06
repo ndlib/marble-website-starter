@@ -4,7 +4,6 @@ import ManifestCard from 'components/Shared/ManifestCard'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
-  console.log(hits)
   return (
     <DisplayViewToggle
       defaultDisplay={defaultDisplay}
