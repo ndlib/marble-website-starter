@@ -26,10 +26,10 @@ const manifestData = JSON.parse(data.toString())
 
 manifestData.forEach((manifest) => {
   const filename = manifest.id.replace(/http[s]?:\/\/.*?\//, '').replace('/manifest', '').replace('collection/', '').replace('/', '-')
-  console.log('filename', filename)
-  console.log('slug', manifest.slug)
+  // console.log('filename', filename)
+  // console.log('slug', manifest.slug)
   fs.writeFile(path.join(writeDirectory, filename + '.md'), getMDFile(manifest), (err) => {
-    console.log('Writing: ', filename + '.md')
+    // console.log('Writing: ', filename + '.md')
     if (err) {
       console.log(err)
     }

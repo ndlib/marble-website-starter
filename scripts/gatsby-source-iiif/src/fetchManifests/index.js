@@ -8,7 +8,7 @@ module.exports = async (urls) => {
     if (!url) {
       return
     }
-    console.log('Fetching:', url)
+    // console.log('Fetching:', url)
     return fetch(url)
       .then(response => response.json())
       .then((data) => {
@@ -43,7 +43,7 @@ module.exports = async (urls) => {
   }
 
   const expandManifestTree = (manifest) => {
-    console.log('Expanding:', manifest.id)
+    // console.log('Expanding:', manifest.id)
     manifest.items = manifest.items.map((item) => {
       if (item.type.toLowerCase() === 'manifest') {
         return result[item.id]
