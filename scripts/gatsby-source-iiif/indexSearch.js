@@ -10,6 +10,10 @@ const directory = process.argv.slice(2)[0]
 const configuration = require(path.join(directory, '/content/configuration.js'))
 const siteIndex = configuration.siteMetadata.searchBase.app
 const domain = configuration.siteMetadata.searchBase.url
+console.log('env url: ' + process.env.SEARCH_URL)
+console.log('domain: ' + domain)
+console.log('env index: ' + process.env.SEARCH_INDEX)
+console.log('site index: ' + siteIndex)
 
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
   console.log('Required parameters were not passed in')
@@ -163,6 +167,8 @@ const indexToElasticSearch = async (searchData) => {
 
   await client.bulk({
     body: indexData,
+  }).catch((e) => {
+    console.log(e)
   })
   console.log('Finished Index')
 }
@@ -173,7 +179,8 @@ const setupIndex = async () => {
     console.log('removing index', siteIndex)
     await client.indices.delete({ index: siteIndex })
   }
-  console.log('creating index', siteIndex)
+
+  console.log('creating index ' + siteIndex)
   // await client.indices.create({ index: siteIndex }, indexMapping, indexSettings)
   await client.indices.create({ index: siteIndex }).catch((e) => {
     console.log(e)
