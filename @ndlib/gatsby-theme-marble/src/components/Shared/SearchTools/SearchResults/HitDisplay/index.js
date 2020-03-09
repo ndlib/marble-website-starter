@@ -12,7 +12,11 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
         <ManifestCard
           iiifManifest={hit._id}
           key={index}
-        />
+        >
+          {Object.values(hit.highlight).map((row, index) => (
+            <div key={index} dangerouslySetInnerHTML={{ __html: row }} />
+          ))}
+        </ManifestCard>
       ))}
     </DisplayViewToggle>
   )

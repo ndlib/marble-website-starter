@@ -139,6 +139,7 @@ const getSearchDataFromManifest = (manifest) => {
     search['formatTag'] = [manifest.workType]
   }
 
+  search['allMetadata'] = ''
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
       search['allMetadata'] += ' ' + manifest[key]
