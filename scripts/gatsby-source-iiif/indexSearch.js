@@ -112,6 +112,10 @@ const themeFromSubjectTags = (manifest) => {
 }
 
 const loadSubItemTitles = (manifest) => {
+  if (!manifest.items) {
+    return ''
+  }
+
   return manifest.items.reduce((titles, item) => {
     if (item.title) {
       return titles + ' ' + item.title
