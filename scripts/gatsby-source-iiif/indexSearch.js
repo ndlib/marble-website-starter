@@ -4,7 +4,6 @@ const path = require(`path`)
 const { Client } = require('elasticsearch')
 const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
-require('dotenv').config()
 
 const directory = process.argv.slice(2)[0]
 const configuration = require(path.join(directory, '/content/configuration.js'))
