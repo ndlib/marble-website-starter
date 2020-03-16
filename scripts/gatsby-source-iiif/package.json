@@ -5,7 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.561.0",
-    "dotenv": "^8.2.0",
     "elasticsearch": "^16.5.0",
     "http-aws-es": "^6.0.0",
     "md5": "^2.2.1",
