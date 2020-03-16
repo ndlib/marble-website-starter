@@ -3,9 +3,10 @@ magenta=`tput setaf 5`
 reset=`tput sgr0`
 echo "${magenta}----- BUILD -----${reset}"
 
-# set in install.sh
-echo "BUILD DOTENV: ${DOTENV_CONFIG}"
-source ${DOTENV_CONFIG}
+# generated in install.sh
+ENV_FILE="${PWD}.env"
+echo "BUILD ENV: ${ENV_FILE}"
+source ${ENV_FILE}
 
 # build
 yarn workspace site build || { echo "Gatsby build failed" ;exit 1; }

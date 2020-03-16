@@ -4,10 +4,8 @@ reset=`tput sgr0`
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}/"
-DOTENV_FILE="${BASE_DIR}.env"
-echo "BASE_DIR: ${BASE_DIR}"
-echo "DOTENV_FILE: ${DOTENV_FILE}"
-export DOTENV_CONFIG="${DOTENV_FILE}"
+ENV_FILE="${BASE_DIR}.env"
+echo "ENV_FILE: ${ENV_FILE}"
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
 # must contain search_url and search_index key/values
@@ -31,6 +29,7 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 pushd scripts/gatsby-source-iiif/
 yarn install
-node setupEnv.js ${1} > ${DOTENV_FILE}
+node setupEnv.js ${1} > ${ENV_FILE}
+source ${ENV_FILE}
 ./generate.sh
 popd
