@@ -30,6 +30,7 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 
 echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 pushd scripts/gatsby-source-iiif/
+yarn install
 node setupEnv.js ${1} > ${DOTENV_FILE}
 ./generate.sh
 popd
