@@ -8,7 +8,8 @@ ENV_FILE="${PWD}/.env"
 echo "BUILD ENV: ${ENV_FILE}"
 source ${ENV_FILE}
 export $(cut -d= -f1 ${ENV_FILE})
-env | grep SEARCH
+echo "BUILD SEARCH URL: ${SEARCH_URL}"
+echo "BUILD SEARCH INDEX: ${SEARCH_INDEX}"
 
 # build
 yarn workspace site build || { echo "Gatsby build failed" ;exit 1; }
