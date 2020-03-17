@@ -32,5 +32,5 @@ yarn install
 node setupEnv.js ${1} > ${ENV_FILE}
 source ${ENV_FILE}
 export $(cut -d= -f1 ${ENV_FILE})
-./generate.sh
+./generate.sh ${1}
 popd
