@@ -111,6 +111,10 @@ const themeFromSubjectTags = (manifest) => {
 }
 
 const loadSubItemTitles = (manifest) => {
+  if (!manifest.items) {
+    return ''
+  }
+
   return manifest.items.reduce((titles, item) => {
     if (item.title) {
       return titles + ' ' + item.title
@@ -142,6 +146,7 @@ const getSearchDataFromManifest = (manifest) => {
     search['formatTag'] = [manifest.workType]
   }
 
+  search['allMetadata'] = ''
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
       search['allMetadata'] += ' ' + manifest[key]

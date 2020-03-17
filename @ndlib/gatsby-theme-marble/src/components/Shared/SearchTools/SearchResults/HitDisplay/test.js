@@ -5,9 +5,9 @@ import ManifestCard from 'components/Shared/ManifestCard'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 
 const hits = [
-  { _id: 'a' },
-  { _id: 'b' },
-  { _id: 'c' },
+  { _id: 'a', highlight: { allMetadata: ['data'] } },
+  { _id: 'b', highlight: { allMetadata: ['data'] } },
+  { _id: 'c', highlight: { allMetadata: ['data'] } },
 ]
 test('HitList', () => {
   const wrapper = shallow(<HitList hits={hits} />)

@@ -33,6 +33,15 @@ export const ManifestCard = (props) => {
   const lang = getLanguage()
   const creator = findCreator(iiifManifest, lang)
   const dates = findDates(iiifManifest, lang)
+
+  let children = (
+    <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
+  )
+
+  if (props.children) {
+    children = props.children
+  }
+
   return (
     <div className={style.manifestCardWrapper}>
       <Card
@@ -44,7 +53,8 @@ export const ManifestCard = (props) => {
       >
         <p>{creator}</p>
         <p>{dates}</p>
-        <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
+
+        {children}
       </Card>
       <TypeLabel iiifManifest={iiifManifest} />
     </div>

@@ -8,26 +8,14 @@ const loadManifestsFile = () => {
   return JSON.parse(contents)
 }
 
-const renameChildren = (data) => {
-  if (data.children) {
-    data.children.map(c => {
-      renameChildren(c)
-      return c
-    })
-    data['items'] = data.children
-    delete data.children
-  }
-}
-
 const fetchData = async (seeAlso) => {
   const finalResult = []
   await Promise.all(seeAlso.map(item => {
-    console.log('Processing: ' + item)
+    // console.log('Processing: ' + item)
     const url = 'https://presentation-iiif.library.nd.edu/' + item + '/nd'
     const result = fetch(url)
       .then(response => response.json())
       .then(data => {
-        renameChildren(data)
         finalResult.push(data)
       })
       .catch(error => {
