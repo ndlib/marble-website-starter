@@ -15,11 +15,9 @@ describe('NavigationHeader', () => {
 
   test('renders', () => {
     expect(wrapper.find(Header).exists()).toBeTruthy()
-    expect(wrapper.find('.navBarInner').exists()).toBeTruthy()
     expect(wrapper.find(SiteLogo).exists()).toBeTruthy()
     expect(wrapper.find(Menu).props().menu).toEqual('top')
     expect(wrapper.find(LoginButton).exists()).toBeTruthy()
-    expect(wrapper.find('.hamburgerInnerClosed').exists()).toBeTruthy()
     expect(wrapper.find(HamburgerButton).exists()).toBeTruthy()
   })
 })

@@ -18,9 +18,5 @@ test('Footer renders some divs with markdown text', () => {
   const wrapper = shallow(<Footer />)
 
   expect(wrapper.find(ThemeFooter).exists()).toBeTruthy()
-  expect(wrapper.find('.footerInner').exists()).toBeTruthy()
-  expect(wrapper.find('.footerText').exists()).toBeTruthy()
-  expect(wrapper.find('.footerText').html()).toEqual('<div class="footerText"><span><p>footer!!</p></span></div>')
-  expect(wrapper.find('.footerLinks').exists()).toBeTruthy()
   expect(wrapper.find(Menu).props().menu).toEqual('footer')
 })

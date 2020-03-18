@@ -1,9 +1,11 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
 import { LoginButton, getSafeName } from './'
 import Link from 'components/Internal/Link'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
+
+console.error = jest.fn()
 
 describe('LoginButton', () => {
   test('no button', () => {
@@ -15,7 +17,7 @@ describe('LoginButton', () => {
       }
     })
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
-    const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
+    const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find('.loginButton').exists()).toBeFalsy()
   })
 
@@ -36,8 +38,7 @@ describe('LoginButton', () => {
         userName: 'jloggedin',
       },
     }
-    const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
-    expect(wrapper.find('.loginButton').exists()).toBeTruthy()
+    const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find(Link).props().to).toEqual('/user/jloggedin')
     expect(wrapper.find('span').text()).toEqual('Johnny Logged In')
     expect(wrapper.find('img').props().src).toEqual(userIcon)
@@ -54,8 +55,7 @@ describe('LoginButton', () => {
       }
     })
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
-    const wrapper = shallow(<LoginButton loginReducer={loginReducer} />)
-    expect(wrapper.find('.loginButton').exists()).toBeTruthy()
+    const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find(Link).props().to).toEqual('/user')
     expect(wrapper.find(Link).props().children).toEqual('Login')
   })

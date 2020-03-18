@@ -1,8 +1,36 @@
-// const breakpoints = ['800px', '1024px', '1600px']
 export const theme = {
   space: [0, 4, 8, 16, 32],
+  breakpoints: ['780px', '1024px', '1600px'],
+  flexDirection: ['column', 'row', 'column-reverse'],
+  textAlign: ['left', 'center', 'right'],
   fonts: {
     body: `
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
+    `,
+    heading: `
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
+    `,
+    menu: `
       -apple-system,
       BlinkMacSystemFont,
       Segoe UI,
@@ -25,15 +53,11 @@ export const theme = {
     gray: ['#efefef', '#dedede', '#666', '#333', '#111'],
     background: '#fff',
     primary: '#ae9142',
+    primaryText: ['#fff', 'rgba(255, 255, 255, 0.5)'],
     secondary: '#302205',
     highlight: '#d39f10',
     highlightWithOpacity: '#d39f1052',
   },
-  // mediaQueries: {
-  //   small: `@media screen and (max-width: ${breakpoints[0]})`,
-  //   medium: `@media screen and (max-width: ${breakpoints[1]})`,
-  //   large: `@media screen and (min-width: ${breakpoints[2]})`,
-  // },
   styles: {
     Layout: {
       color: 'gray.4',
@@ -45,6 +69,7 @@ export const theme = {
     Header: {
       backgroundColor: 'primary',
       color: 'background',
+      fontFamliy: 'menu',
       fontWeight: 'bold',
       margin: '0 auto',
       padding: 0,
@@ -55,15 +80,13 @@ export const theme = {
     },
     Main: {
       margin: '0 auto',
-      width: '100$',
+      width: '100%',
     },
-
     Footer: {
       backgroundColor: 'secondary',
       bottom: 0,
       color: 'background',
       left: 0,
-      lineHeight: '1.5rem',
       minHeight: '64px',
       overflow: 'hidden',
       position: 'static',
@@ -71,20 +94,29 @@ export const theme = {
         color: 'background',
         textDecoration: 'none',
       },
+      img: {
+        margin: '40px',
+      },
+    },
+    a: {
+      color: 'primary',
     },
     h1: {
       color: 'gray.4',
+      fontFamily: 'heading',
       fontSize: 5,
-      fontWeight: '500',
+      fontWeight: '600',
       lineHeight: 'heading',
       margin: '1rem 0 0',
     },
     h2: {
+      fontFamily: 'heading',
       fontSize: 4,
       fontWeight: '600',
       lineHeight: 'heading',
     },
     h3: {
+      fontFamily: 'body',
       fontSize: 1,
       fontWeight: '600',
       lineHeight: 'heading',

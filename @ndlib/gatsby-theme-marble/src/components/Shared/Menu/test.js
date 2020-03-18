@@ -1,8 +1,10 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
 import { Styled } from 'theme-ui'
 import { Menu, findNavInData } from './'
+
+console.error = jest.fn()
 
 const sq = {
   site: {
@@ -49,7 +51,7 @@ describe('Menu', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
-    const wrapper = shallow(<Menu menu='nolabel' />)
+    const wrapper = mount(<Menu menu='nolabel' />)
 
     expect(wrapper.find('nav').exists()).toBeTruthy()
     expect(wrapper.find('Link')).toHaveLength(2)
@@ -61,7 +63,7 @@ describe('Menu', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
-    const wrapper = shallow(<Menu menu='label' />)
+    const wrapper = mount(<Menu menu='label' />)
 
     expect(wrapper.find(Styled.h3).exists()).toBeTruthy()
     expect(wrapper.find(Styled.h3).text()).toEqual('label')
@@ -74,19 +76,11 @@ describe('Menu', () => {
     expect(findNavInData('not-there', sq.site.siteMetadata.menus)).toEqual(undefined)
   })
 
-  test('it allows for a class name to be passed into the object', () => {
-    useStaticQuery.mockImplementationOnce(() => {
-      return sq
-    })
-    const wrapper = shallow(<Menu menu='nolabel' navClass='the-class' />)
-    expect(wrapper.find('nav').prop('className')).toEqual('the-class')
-  })
-
   test('menu not found', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
-    const wrapper = shallow(<Menu menu='badlabel' />)
+    const wrapper = mount(<Menu menu='badlabel' />)
     expect(wrapper.find('nav').exists()).toBeFalsy()
   })
 })

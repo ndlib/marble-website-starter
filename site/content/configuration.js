@@ -38,9 +38,6 @@ module.exports = {
     userContentPath: `https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/`,
     searchPath: 'search',
 
-    // branding
-    footerText: '<p>© 2019 University of Notre Dame</p><address>Notre Dame, IN 46556 USA</address><p><a href="/help/contact-us">Contact Us</a></p>',
-
     // menus
     menus: menus,
 

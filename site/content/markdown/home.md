@@ -3,15 +3,20 @@ slug: index
 
 components:
   - component: HeroBox  
+    props:
+      - label: 'backgroundImage'
+        fileValue: './images/banner.swirl.png'
     components:
       - component: MarkdownHtmlContent
         props:
           - label: 'html'
-            value: '<h1> University of Notre Dame Digital Collections </h1>
-                    Explore our digitized artwork, rare books, artifacts, and archival materials.
-                    '
+            value: '<h1>University of Notre Dame Digital Collections</h1>'
       - component: SearchBox
-  - component: MarkdownHtmlContent      
+      - component: MarkdownHtmlContent
+        props:
+          - label: 'html'
+            value: 'Explore our digitized artwork, rare books, artifacts, and archival materials.'
+  - component: MarkdownHtmlContent
   - component: CardGroup
     props:
       - label: "label"
