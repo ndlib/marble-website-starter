@@ -1,7 +1,6 @@
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import CalloutBox from 'components/Shared/CalloutBox'
 import HeroBox from 'components/Shared/HeroBox'
-import CampusLocation from 'components/Shared/CampusLocation'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import ChildManifests from 'components/Shared/ChildManifests'
