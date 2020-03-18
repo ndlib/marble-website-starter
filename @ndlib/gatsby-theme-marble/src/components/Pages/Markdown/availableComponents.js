@@ -1,6 +1,7 @@
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import CalloutBox from 'components/Shared/CalloutBox'
 import HeroBox from 'components/Shared/HeroBox'
+import CampusLocation from 'components/Shared/CampusLocation'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import ChildManifests from 'components/Shared/ChildManifests'
@@ -17,7 +18,6 @@ import Menu from 'components/Shared/Menu'
 import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
-import CampusLocation from 'components/Shared/CampusLocation'
 import SearchBase from 'components/Shared/SearchBase'
 import SearchBox from 'components/Shared/SearchBox'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
@@ -47,7 +47,6 @@ export const availableComponents = {
   MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
   PartiallyDigitized: PartiallyDigitized,
-  CampusLocation: CampusLocation,
   SearchBase: SearchBase,
   SearchBox: SearchBox,
   SearchDynamicRangeFilter: SearchDynamicRangeFilter,

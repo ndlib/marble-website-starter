@@ -10,9 +10,7 @@ const CampusLocation = ({ metadata }) => {
   )
 }
 CampusLocation.propTypes = {
-  iiifManifest: PropTypes.shape({
-    provider: PropTypes.object,
-  }),
+  metadata: PropTypes.string,
 }
 
 export default CampusLocation
