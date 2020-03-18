@@ -1,0 +1,50 @@
+@font-face {
+  font-family: GPCBook;
+  src: url("https://static.nd.edu/fonts/gp-min/gpc-book.woff2");
+  src:url("https://static.nd.edu/fonts/gp-min/gpc-book.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-min/gpc-book.woff") format("woff"),url("https://static.nd.edu/fonts/gp-min/gpc-book.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: GPCMed;
+  src: url("https://static.nd.edu/fonts/gp-min/gpc-medium.woff2");
+  src:url("https://static.nd.edu/fonts/gp-min/gpc-medium.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-min/gpc-medium.woff") format("woff"),url("https://static.nd.edu/fonts/gp-min/gpc-medium.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: GPCBold;
+  src: url("https://static.nd.edu/fonts/gp-min/gpc-bold.woff2");
+  src:url("https://static.nd.edu/fonts/gp-min/gpc-bold.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-min/gpc-bold.woff") format("woff"),url("https://static.nd.edu/fonts/gp-min/gpc-bold.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: GPCHeavy;
+  src: url("https://static.nd.edu/fonts/gp-min/gpc-heavy.woff2");
+  src:url("https://static.nd.edu/fonts/gp-min/gpc-heavy.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-min/gpc-heavy.woff") format("woff"),url("https://static.nd.edu/fonts/gp-min/gpc-heavy.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: GPMed;
+  src: url("https://static.nd.edu/fonts/gp-min/gp-medium.woff2");
+  src:url("https://static.nd.edu/fonts/gp-min/gp-medium.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-min/gp-medium.woff") format("woff"),url("https://static.nd.edu/fonts/gp-min/gp-medium.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: GPBook;
+  src: url("https://static.nd.edu/fonts/gp-min/gp-book.woff2");
+  src:url("https://static.nd.edu/fonts/gp-min/gp-book.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-min/gp-book.woff") format("woff"),url("https://static.nd.edu/fonts/gp-min/gp-book.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: GPBold;
+  src: url("https://static.nd.edu/fonts/gp-min/gp-bold.woff2");
+  src:url("https://static.nd.edu/fonts/gp-min/gp-bold.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-min/gp-bold.woff") format("woff"),url("https://static.nd.edu/fonts/gp-min/gp-bold.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: GPHeavy;
+  src: url("https://static.nd.edu/fonts/gp-heavy/gp-heavy.woff2");
+  src:url("https://static.nd.edu/fonts/gp-heavy/gp-heavy.woff2") format("woff2"),url("https://static.nd.edu/fonts/gp-heavy/gp-heavy.woff") format("woff"),url("https://static.nd.edu/fonts/gp-heavy/gp-heavy.ttf") format("truetype")
+}
+
+/* Garamond */
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap');

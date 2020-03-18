@@ -1,10 +1,10 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
-import style from './style.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
-import { Footer as ThemeFooter } from 'theme-ui'
-import ResponsiveGridList from 'components/Internal/ResponsiveGridList'
+import { Footer as ThemeFooter, jsx } from 'theme-ui'
 import Menu from 'components/Shared/Menu'
-
+import sx from './sx'
 export const Footer = () => {
   const { site } = useStaticQuery(
     graphql`
@@ -15,47 +15,20 @@ export const Footer = () => {
         }
       }
     }
-  `
+  `,
   )
   const footerText = site.siteMetadata.footerText
-  const layouts = {
-    lg: [
-      { i: 'footerText', x: 0, y: 0, w: 6, h: 1, static: true },
-      { i: 'footerNavigation', x: 8, y: 0, w: 4, h: 1, static: true },
-    ],
-    md: [
-      { i: 'footerText', x: 0, y: 1, w:10, h: 1, static: true },
-      { i: 'footerNavigation', x: 0, y: 0, w: 10, h: 1, static: true },
-    ],
-  }
-
   return (
-    <footer>
-      <ThemeFooter>
-        <div className={style.footerInner}>
-          <ResponsiveGridList
-            layouts={layouts}
-            measureBeforeMount
-            rowHeight={400}
-          >
-            <div
-              key='footerText'
-              className={style.footerText}
-            >
-              <span
-                dangerouslySetInnerHTML={{ __html: footerText }}
-              />
-            </div>
-            <div
-              key='footerNavigation'
-              className={style.footerLinks}
-            >
-              <Menu menu='footer' />
-            </div>
-          </ResponsiveGridList>
+    <ThemeFooter>
+      <div sx={sx.flexWrapper}>
+        <div sx={sx.textWrapper}>
+          <span dangerouslySetInnerHTML={{ __html: footerText }} />
         </div>
-      </ThemeFooter>
-    </footer>
+        <div sx={sx.menuWrapper}>
+          <Menu menu='footer' />
+        </div>
+      </div>
+    </ThemeFooter>
   )
 }
 

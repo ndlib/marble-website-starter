@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
+import { Styled } from 'theme-ui'
 import Link from 'components/Internal/Link'
 import miradorIcon from 'assets/icons/svg/mirador-24px.svg'
 
@@ -43,7 +44,7 @@ export const AllPage = ({
     .map(edge => {
       return (
         <li key={edge.node.id}>
-          <Link to={edge.node.frontmatter.slug} >{edge.node.frontmatter.title}</Link>
+          <Styled.a as={Link} to={edge.node.frontmatter.slug} >{edge.node.frontmatter.title}</Styled.a>
           {
             edge.node.frontmatter.slug.match(/item\//) ? (
               <React.Fragment>

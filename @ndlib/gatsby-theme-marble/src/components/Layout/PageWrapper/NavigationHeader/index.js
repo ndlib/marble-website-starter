@@ -8,37 +8,35 @@ import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
 import Menu from 'components/Shared/Menu'
 import HamburgerButton from './HamburgerButton'
-import style from './style.module.css'
+import sx from './sx'
 
 export const NavigationHeader = ({ location }) => {
   const [hamburgerOpen, toggleHamburger] = useState(false)
 
   return (
-    <header>
-      <Header>
-        <div className={style.navBarInner}>
-          <SiteLogo />
-          <div className={style.hamburger}>
-            <HamburgerButton
-              onClick={() => {
-                toggleHamburger(!hamburgerOpen)
-              }}
-              onBlur={(e) => {
-                closeOnBlur(e, toggleHamburger, location)
-              }}
-              className={style.hamburgerIcon}
-            />
-            <span
-              className={hamburgerOpen ? style.hamburgerInnerOpen : style.hamburgerInnerClosed}
-              sx={{ backgroundColor: 'primary' }}
-            >
-              <Menu menu='top' />
-              <LoginButton />
-            </span>
-          </div>
+    <Header>
+      <div sx={sx.flexWrapper}>
+        <SiteLogo />
+        <div
+          sx={sx.content}>
+          <HamburgerButton
+            onClick={() => {
+              toggleHamburger(!hamburgerOpen)
+            }}
+            onBlur={(e) => {
+              closeOnBlur(e, toggleHamburger, location)
+            }}
+            sxStyle={sx.hamburgerButton}
+          />
+          <span
+            sx={sx.menu(hamburgerOpen)}
+          >
+            <Menu menu='top' />
+            <LoginButton />
+          </span>
         </div>
-      </Header>
-    </header>
+      </div>
+    </Header>
   )
 }
 

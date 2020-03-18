@@ -8,7 +8,6 @@ describe('HamburgerButton', () => {
   let sq
   const onClick = jest.fn()
   const onBlur = jest.fn()
-  const className = 'myClass'
 
   test('top menu exists', () => {
     sq = {
@@ -22,9 +21,9 @@ describe('HamburgerButton', () => {
       },
     }
     useStaticQuery.mockImplementationOnce(() => sq)
-    const wrapper = shallow(<HamburgerButton onClick={() => onClick()} onBlur={() => onBlur()} className={className} />)
-    expect(wrapper.find('img.myClass').props().src).toEqual(hamburgerIcon)
-    expect(wrapper.find('img.myClass').props().alt).toEqual('Show Menu')
+    const wrapper = shallow(<HamburgerButton onClick={() => onClick()} onBlur={() => onBlur()} />)
+    expect(wrapper.find('img').props().src).toEqual(hamburgerIcon)
+    expect(wrapper.find('img').props().alt).toEqual('Show Menu')
     wrapper.find('.hamburgerButton').simulate('click')
     expect(onClick).toHaveBeenCalled()
     wrapper.find('.hamburgerButton').simulate('blur')
@@ -42,13 +41,13 @@ describe('HamburgerButton', () => {
       },
     }
     useStaticQuery.mockImplementationOnce(() => sq)
-    const wrapper = shallow(<HamburgerButton onClick={() => onClick()} onBlur={() => onBlur()} className={className} />)
+    const wrapper = shallow(<HamburgerButton onClick={() => onClick()} onBlur={() => onBlur()} />)
     expect(wrapper.find('.hamburgerButton').exists()).toBeFalsy()
   })
   test('no top menu', () => {
     sq = { site: {} }
     useStaticQuery.mockImplementationOnce(() => sq)
-    const wrapper = shallow(<HamburgerButton onClick={() => onClick()} onBlur={() => onBlur()} className={className} />)
+    const wrapper = shallow(<HamburgerButton onClick={() => onClick()} onBlur={() => onBlur()} />)
     expect(wrapper.find('.hamburgerButton').exists()).toBeFalsy()
   })
 })

@@ -25,7 +25,7 @@ export const menuQuery = graphql`
   }
 `
 
-const HamburgerButton = ({ onClick, onBlur, className }) => {
+const HamburgerButton = ({ onClick, onBlur, sxStyle }) => {
   const { site } = useStaticQuery(menuQuery)
   const menus = typy(site, 'siteMetadata.menus').safeArray
   const topMenu = findNavInData('top', menus)
@@ -39,13 +39,12 @@ const HamburgerButton = ({ onClick, onBlur, className }) => {
       className='hamburgerButton'
       onClick={(e) => onClick(e)}
       onBlur={(e) => onBlur(e)}
-      sx={{ backgroundColor: 'primary' }}
+      sx={sxStyle}
     >
       <img
         src={hamburgerIcon}
         alt='Show Menu'
         title='Show Menu'
-        className={className}
       />
     </button>
   )
@@ -54,6 +53,6 @@ const HamburgerButton = ({ onClick, onBlur, className }) => {
 HamburgerButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  className: PropTypes.string.isRequired,
+  sxStyle: PropTypes.object,
 }
 export default HamburgerButton
