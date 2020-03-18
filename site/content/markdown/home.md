@@ -6,8 +6,6 @@ components:
     props:
       - label: 'backgroundImage'
         fileValue: './images/banner.swirl.png'
-      - label: 'dark'
-        value: true
     components:
       - component: MarkdownHtmlContent
         props:

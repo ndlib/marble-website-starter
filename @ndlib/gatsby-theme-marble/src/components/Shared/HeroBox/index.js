@@ -4,16 +4,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 
-const HeroBox = ({ children, backgroundImage, dark = false }) => {
+const HeroBox = ({ children, backgroundImage }) => {
   return (
     <div
       sx={{
         borderBottom: '14px solid',
         borderColor: 'primary',
-        backgroundColor: dark ? 'gray.1' : 'gray.1',
+        backgroundColor: 'primary',
         backgroundImage: backgroundImage ? `url('${backgroundImage}')` : null,
         backgroundPosition: 'center',
-        color: dark ? 'white' : 'black',
+        color: 'primaryText.0',
         padding: '1rem',
         paddingLeft: '1000rem',
         paddingRight: '1000rem',
@@ -28,10 +28,6 @@ const HeroBox = ({ children, backgroundImage, dark = false }) => {
 
 HeroBox.propTypes = {
   children: PropTypes.node,
-  dark: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
   backgroundImage: PropTypes.string,
 }
 
