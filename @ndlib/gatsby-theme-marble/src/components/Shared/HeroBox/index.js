@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 
 const HeroBox = ({ children, backgroundImage, dark = false }) => {
-  console.log('x', backgroundImage)
   return (
     <div
       sx={{
