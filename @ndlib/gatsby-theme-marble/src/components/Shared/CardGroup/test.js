@@ -12,6 +12,6 @@ test('CardGroup', () => {
 
   const wrapper = shallow(<CardGroup label={label}>{children}</CardGroup>)
   expect(wrapper.find('.cardGroup').exists()).toBeTruthy()
-  expect(wrapper.find('h2').text()).toEqual('A Card Group')
+  expect(wrapper.find('ForwardRef').text()).toEqual('A Card Group')
   expect(wrapper.find('.cardWrapper').length).toEqual(3)
 })

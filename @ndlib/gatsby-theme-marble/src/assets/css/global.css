@@ -36,7 +36,6 @@ dl div {
 }
 dl div:nth-child(2n) {
   background-color: #f0f0f0;
-
 }
 
 code {
@@ -50,6 +49,9 @@ input[type=image]:hover {
   opacity: 1;
 }
 
+address {
+  font-style: normal;
+}
 .accessibilityOnly {
   left:-999px;
   position:absolute;

@@ -176,6 +176,13 @@ export const query = graphql`
         description
         author
         iiifJson {
+          provider {
+            homepage {
+              label {
+                en
+              }
+            }
+          }
           ...iiifJsonFragment
           items {
             ...iiifJsonItemFragment

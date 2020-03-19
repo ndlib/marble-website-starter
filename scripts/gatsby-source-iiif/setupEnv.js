@@ -1,6 +1,6 @@
 const AWS = require('aws-sdk')
 
-const appConfig = process.env.APP_CONFIG
+const appConfig = process.argv.slice(2)[0]
 
 const retrieveStageParameters = async () => {
   let data = {}

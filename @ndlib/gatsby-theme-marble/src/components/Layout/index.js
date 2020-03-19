@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Layout as ThemeLayout } from 'theme-ui'
 import AuthWrapper from './AuthWrapper'
@@ -17,6 +17,10 @@ const Layout = ({
   requireLogin, // bool to test login
   location,
 }) => {
+  useEffect(() => {
+    document.querySelector('#gatsby-focus-wrapper').scrollTop = 0
+  })
+
   return (
     <ThemeLayout>
       <AuthWrapper

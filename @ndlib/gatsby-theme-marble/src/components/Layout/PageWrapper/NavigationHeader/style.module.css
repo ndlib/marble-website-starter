@@ -15,7 +15,7 @@
   font-size : 1rem;
 }
 .navBarInner nav a {
-  padding: 16px;
+  padding: 0 16px;
 }
 
 .hamburger {
@@ -28,6 +28,10 @@
 
 .hamburger button {
   display: none;
+}
+
+.hamburgerInnerClosed {
+  height: 70px;
 }
 
 @media (min-width: 1600px) {
@@ -56,13 +60,6 @@
     outline: none;
   }
 
-  .hamburgerIcon {
-    display: inline-block;
-    float: right;
-    height: 30px;
-    margin: 20px;
-    width: 30px;
-  }
 
   .hamburgerInnerOpen {
     display: block;

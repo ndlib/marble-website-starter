@@ -1,10 +1,13 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { Styled } from 'theme-ui'
+import { Styled, jsx } from 'theme-ui'
 import typy from 'typy'
 import Link from 'components/Internal/Link'
-import './style.css'
+import sx from './sx'
+
 export const menuQuery = graphql`
   query {
     site {
@@ -22,6 +25,7 @@ export const menuQuery = graphql`
     }
   }
 `
+
 export const Menu = ({ menu, navClass }) => {
   const { site } = useStaticQuery(menuQuery)
   const menus = typy(site, 'siteMetadata.menus').safeArray
@@ -29,11 +33,21 @@ export const Menu = ({ menu, navClass }) => {
   if (!expandedMenu) {
     return null
   }
+
+  const vertical = navClass === 'verticalMenu'
+  const flex = menu === 'top'
   return (
-    <nav className={navClass}>
+    <nav
+      sx={sx.base(vertical, flex)}
+    >
       { expandedMenu.label ? <Styled.h3>{expandedMenu.label}</Styled.h3> : null }
       { expandedMenu.items.map(l => {
-        return <Link to={l.link} key={l.id}>{l.label}</Link>
+        return <Styled.a
+          as={Link}
+          to={l.link}
+          key={l.id}
+          sx={sx.item(vertical, flex)}
+        >{l.label}</Styled.a>
       })}
     </nav>
   )

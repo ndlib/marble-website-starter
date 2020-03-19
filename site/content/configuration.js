@@ -1,9 +1,9 @@
-require('dotenv').config()
-
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
 const searchUrl = process.env.SEARCH_URL || 'https://search-testy-search-testy-u2vq42wckv4epdwlul2nthzvsi.us-east-1.es.amazonaws.com'
 // set this to be a website-local-index so we stop busting the main website.
 const searchIndex = process.env.SEARCH_INDEX || 'marble-website'
+console.log('CONFIG SEARCH_URL: ' + searchUrl)
+console.log('CONFIG SEARCH INDEX: ' + searchIndex)
 
 const menus = require('./menus')
 const themeColor = `#0A233F`
@@ -37,9 +37,6 @@ module.exports = {
     },
     userContentPath: `https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/`,
     searchPath: 'search',
-
-    // branding
-    footerText: '<p>© 2019 University of Notre Dame</p><address>Notre Dame, IN 46556 USA</address><p><a href="/help/contact-us">Contact Us</a></p>',
 
     // menus
     menus: menus,
