@@ -9,7 +9,7 @@ const menus = require('./menus')
 const themeColor = `#0A233F`
 const languages = {
   default: 'en',
-  allowed: ['en', 'en-US', 'en-GB', 'fr', 'none'],
+  allowed: ['en'],
 }
 
 module.exports = {

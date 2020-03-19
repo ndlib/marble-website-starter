@@ -14,6 +14,11 @@ console.log('domain: ' + domain)
 console.log('env index: ' + process.env.SEARCH_INDEX)
 console.log('site index: ' + siteIndex)
 
+const appConfig = process.env.APP_CONFIG
+if (appConfig === 'local') {
+  return
+}
+
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
   console.log('Required parameters were not passed in')
   return

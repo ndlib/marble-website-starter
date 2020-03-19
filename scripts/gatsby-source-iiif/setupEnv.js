@@ -4,13 +4,13 @@ const appConfig = process.argv.slice(2)[0]
 
 const retrieveStageParameters = async () => {
   let data = {}
-  console.log('APP_CONFIG=' + appConfig)
+  console.log('APP_CONFIG = ' + appConfig)
   if (appConfig === 'local') {
-    console.log('Using local config settings')
+    console.log('using local config settings')
     data = { Parameters: [
       {
         Name: '/all/static-host/super-test/search_url',
-        Value: 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com',
+        Value: 'https://search-marble-elasticsearch-test-e3urdt7kb667o7verxgn6bjoee.us-east-1.es.amazonaws.com',
       },
       {
         Name: '/all/static-host/super-test/search_index',

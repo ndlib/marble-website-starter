@@ -18,10 +18,6 @@ exports.sourceNodes = ({ actions }) => {
   # iiif stuff
   type iiifTranslatedString @dontInfer {
     en: [ String ]
-    en_GB: [ String ]
-    en_US: [ String ]
-    fr: [ String ]
-    none: [ String ]
   }
 
   type iiifLabeledString @dontInfer {

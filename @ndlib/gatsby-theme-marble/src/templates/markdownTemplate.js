@@ -22,10 +22,6 @@ export default MarkdownTemplate
 export const query = graphql`
   fragment iiifTranslatedStringFragment on iiifTranslatedString {
     en
-    en_GB
-    en_US
-    fr
-    none
   }
 
   fragment iiifLabeledStringFragment on iiifLabeledString {
