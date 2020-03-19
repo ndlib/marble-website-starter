@@ -7,7 +7,7 @@ import Seo from 'components/Internal/Seo'
 import IndexPage from 'components/Pages/IndexPage'
 
 const Home = ({ data, location }) => {
-  const title = typy(data, 'remarkMarblePage.frontmatter.title').safeString || null
+  const title = typy(data, 'site.siteMetadata.title').safeString || null
 
   return (
     <Layout
