@@ -15,6 +15,9 @@ export default merge({}, theme, {
     heading: `
       EB Garamond
     `,
+    logo: `
+      GPCBold
+    `,
     menu: `
       GPCBook
     `,

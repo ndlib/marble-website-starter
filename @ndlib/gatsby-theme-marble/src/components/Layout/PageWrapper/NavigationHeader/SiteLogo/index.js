@@ -14,6 +14,7 @@ export const SiteLogo = () => {
         site {
           siteMetadata {
             title
+            hideLogo
           }
         }
       }
@@ -27,19 +28,34 @@ export const SiteLogo = () => {
         display: 'inline-flex',
         height: '70px',
         margin: '0',
-        width: '200px',
+        textDecoration: 'none',
       }}>
-      <img
-        sx={{
-          height: '50px',
-          width: '200px',
-          maxWidth: '200px',
-          margin: '10px 0',
-        }}
-        alt={title}
-        title={title}
-        src={siteLogo}
-      />
+      {
+        site.siteMetadata.hideLogo ? (
+          <div
+            sx={{
+              fontFamily: 'logo',
+              fontSize: '24px',
+              lineHeight: '70px',
+              minWidth: '240px',
+              textAlign: 'center',
+              verticalAlign: 'middle',
+            }}
+          >{title}</div>
+        ) : (
+          <img
+            sx={{
+              height: '50px',
+              width: '200px',
+              maxWidth: '200px',
+              margin: '20px 0',
+            }}
+            alt={title}
+            title={title}
+            src={siteLogo}
+          />
+        )
+      }
     </Link>
   )
 }

@@ -30,6 +30,19 @@ export const theme = {
       Helvetica Neue,
       sans-serif
     `,
+    logo: `
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
+    `,
     menu: `
       -apple-system,
       BlinkMacSystemFont,
