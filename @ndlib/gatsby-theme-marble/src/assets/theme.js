@@ -55,6 +55,7 @@ export const theme = {
     primary: '#ae9142',
     primaryText: ['#fff', 'rgba(255, 255, 255, 0.5)'],
     secondary: '#302205',
+    attention: '#aa272f',
     highlight: '#d39f10',
     highlightWithOpacity: '#d39f1052',
   },

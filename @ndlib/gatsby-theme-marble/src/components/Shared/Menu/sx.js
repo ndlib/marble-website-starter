@@ -21,7 +21,7 @@ const itemFlex = {
   borderTop: ['1px solid', '0', '0'],
   borderColor: 'primaryText.1',
   display: 'inline-flex',
-  fontSize: ['20px', '16px', '16px'],
+  fontSize: ['20px', '18px', '18px'],
   lineHeight: '70px',
   padding: '0 16px',
 }

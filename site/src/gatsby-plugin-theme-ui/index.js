@@ -4,6 +4,7 @@ export default merge({}, theme, {
   colors: {
     primary: '#437D8A',
     secondary: '#575656',
+    attention: '#aa272f',
     highlight: '#D39F10',
   },
   flexD: ['row', 'column'],
