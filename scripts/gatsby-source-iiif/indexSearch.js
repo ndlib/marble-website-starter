@@ -11,6 +11,11 @@ const configuration = require(path.join(directory, '/content/configuration.js'))
 const siteIndex = configuration.siteMetadata.searchBase.app
 const domain = configuration.siteMetadata.searchBase.url
 
+const appConfig = process.env.APP_CONFIG
+if (appConfig === 'local') {
+  return
+}
+
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
   console.log('Required parameters were not passed in')
   return

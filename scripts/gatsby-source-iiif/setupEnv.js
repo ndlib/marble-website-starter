@@ -4,19 +4,19 @@ const appConfig = process.env.APP_CONFIG
 
 const retrieveStageParameters = async () => {
   let data = {}
-  console.log("APP_CONFIG = " + appConfig)
-  if('local' == appConfig) {
-    console.log("using local config settings")
+  console.log('APP_CONFIG = ' + appConfig)
+  if (appConfig === 'local') {
+    console.log('using local config settings')
     data = { Parameters: [
-        {
-          'Name': '/all/static-host/super-test/search_url',
-          'Value': 'https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com'
-        },
-        {
-          'Name': '/all/static-host/super-test/search_index',
-          'Value': 'test_index'
-        }
-    ]}
+      {
+        Name: '/all/static-host/super-test/search_url',
+        Value: 'https://search-marble-elasticsearch-test-e3urdt7kb667o7verxgn6bjoee.us-east-1.es.amazonaws.com',
+      },
+      {
+        Name: '/all/static-host/super-test/search_index',
+        Value: 'test_index',
+      },
+    ] }
   } else {
     const ssm = new AWS.SSM({ region: 'us-east-1' })
     data = await ssm.getParametersByPath({
