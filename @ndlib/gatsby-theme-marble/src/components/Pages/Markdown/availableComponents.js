@@ -1,10 +1,12 @@
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
+import BlockQuote from 'components/Shared/BlockQuote'
 import CalloutBox from 'components/Shared/CalloutBox'
-import HeroBox from 'components/Shared/HeroBox'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import ChildManifests from 'components/Shared/ChildManifests'
 import Column from 'components/Shared/Column'
+import HeroBox from 'components/Shared/HeroBox'
+import HorizontalRule from 'components/Shared/HorizontalRule'
 import Image from 'components/Shared/Image'
 import LoginArea from 'components/Shared/LoginArea'
 import ManifestCard from 'components/Shared/ManifestCard'
@@ -28,12 +30,14 @@ import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefi
 
 export const availableComponents = {
   ActionButtons: ActionButtonGroup,
+  BlockQuote: BlockQuote,
   CalloutBox: CalloutBox,
-  HeroBox: HeroBox,
   Card: Card,
   CardGroup: CardGroup,
   ChildManifests: ChildManifests,
   Column: Column,
+  HeroBox: HeroBox,
+  HorizontalRule: HorizontalRule,
   Image: Image,
   LoginArea: LoginArea,
   ManifestCard: ManifestCard,

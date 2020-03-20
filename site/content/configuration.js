@@ -16,6 +16,7 @@ module.exports = {
   // siteMetadata
   siteMetadata: {
     title: `Digital Collections`,
+    hideLogo: true,
     author: `ndlib`,
     description: `Notre Dame Digital Collections`,
     siteUrl: `https://marble.library.nd.edu`,
