@@ -3,7 +3,7 @@ module.exports = {
     display: 'flex',
     flexDirection: [2, 1, 1],
     justifyContent: 'space-evenly',
-    margin: '0 auto',
+    margin: '0 auto 2rem',
     maxWidth: '1540px',
     width: 'calc(100vw - 60px)',
   },
