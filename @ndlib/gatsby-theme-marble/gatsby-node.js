@@ -373,16 +373,16 @@ const defaultLayouts = {
                 {
                   component: 'SearchRefinementListFilter',
                   props: [
-                    { label: 'field', value: 'themeTag.keyword' },
-                    { label: 'label', value: 'Keywords' },
+                    { label: 'field', value: 'formatTag.keyword' },
+                    { label: 'label', value: 'Format' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },
                 {
                   component: 'SearchRefinementListFilter',
                   props: [
-                    { label: 'field', value: 'formatTag.keyword' },
-                    { label: 'label', value: 'Format' },
+                    { label: 'field', value: 'themeTag.keyword' },
+                    { label: 'label', value: 'Keywords' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },
