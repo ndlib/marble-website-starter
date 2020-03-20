@@ -2,12 +2,13 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
+import typy from 'typy'
 import { useThemeUI, jsx } from 'theme-ui'
 import HorizontalRule from 'components/Shared/HorizontalRule'
 
 const BlockQuote = ({ children }) => {
   const context = useThemeUI()
-  const { theme } = context
+  const color = typy(context, 'theme.colors.attention').safeString || '#000'
 
   return (
     <blockquote
@@ -19,9 +20,9 @@ const BlockQuote = ({ children }) => {
         textAlign: 'center',
       }}
     >
-      <HorizontalRule color={theme.colors.attention} />
+      <HorizontalRule color={color} />
       {children}
-      <HorizontalRule color={theme.colors.attention} />
+      <HorizontalRule color={color} />
     </blockquote>
   )
 }

@@ -2,13 +2,14 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
+import typy from 'typy'
 import { useThemeUI, jsx } from 'theme-ui'
 
 const HorizontalRule = ({ color }) => {
   const context = useThemeUI()
-  const { theme } = context
+  const displayColor = color || typy(context, 'theme.colors.primary').safeString || '#000'
+  const backgroundColor = typy(context, 'theme.colors.background').safeString || '#fff'
 
-  const displayColor = color || theme.colors.primary
   return (
     <React.Fragment>
       <hr sx={{
@@ -31,7 +32,7 @@ const HorizontalRule = ({ color }) => {
       >
         <path
           d='M0,0H24V24H0Z'
-          fill={theme.colors.background}
+          fill={backgroundColor}
         />
         <path
           d='M12,13.26l-5,5,5,5,5-5ZM.69,12l5,5,5-5-5-5ZM12,.69l-5,5,5,5,5-5ZM18.29,7l-5,5,5,5,5-5Z'
