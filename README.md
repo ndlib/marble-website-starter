@@ -45,9 +45,17 @@ yarn workspace @ndlib/gatsby-theme-marble watch
 
 ### Running locally for development:
 #### Main Marble Website:
-Download the iiif manifests and create pages for them:
+The marble site uses elasticsearch for searching. You'll need to have an elasticsearch instance up and running; instructions can be found [here](https://github.com/ndlib/marble-elasticsearch/blob/master/README.md#deployment). Once you have an instance running we'll need to create parameter store key/value pairs the website install process references.
+| Parameter Store Key  | Parameter Store Value |
+| ------------- | ------------- |
+| /all/static-host/&lt;stackname&gt;/search_url  | https://someelasticsearch-url.us-east-1.es.amazonaws.com/  |
+| /all/static-host/&lt;stackname&gt;/search_index  | &lt;stackname&gt;-index  |
+
+Note that multiple indices can utilize the same elasticsearch instance. Each stack would reference their own index under the same elasticsearch instance.
+
+Now we're ready to download the iiif manifests and create pages for them:
 ```
-./scripts/local.sh
+./scripts/local.sh /all/static-host/<stackname>/
 ```
 
 Start the development server:
