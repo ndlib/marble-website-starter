@@ -12,7 +12,7 @@ const listOrder = (list) => {
   return list
 }
 
-const SearchRefinementListFilter = ({ field, label, operator, defaultSearch }) => {
+const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, size }) => {
   if (defaultSearchIsThisField(defaultSearch, field)) {
     return null
   }
@@ -28,6 +28,7 @@ const SearchRefinementListFilter = ({ field, label, operator, defaultSearch }) =
       title={label}
       operator={operator}
       bucketsTransform={listOrder}
+      size={size}
     />
   )
 }
@@ -36,6 +37,7 @@ SearchRefinementListFilter.propTypes = {
   label: PropTypes.string.isRequired,
   defaultSearch: PropTypes.array,
   operator: PropTypes.string,
+  size: PropTypes.string,
 }
 
 SearchRefinementListFilter.defaultProps = {

@@ -383,6 +383,7 @@ const defaultLayouts = {
                   props: [
                     { label: 'field', value: 'themeTag.keyword' },
                     { label: 'label', value: 'Keywords' },
+                    { label: 'size', value: null },
                     { label: 'operator', value: 'OR' },
                   ],
                 },
