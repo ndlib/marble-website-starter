@@ -6,6 +6,14 @@ import {
 } from 'searchkit'
 
 test('SearchPreMain', () => {
-  const wrapper = shallow(<SearchRefinementListFilter />)
+  const wrapper = shallow(<SearchRefinementListFilter
+    label='testLabel'
+    field='test'
+    id='test'
+    title='TestTitle'
+    operator='OR'
+    bucketsTransform='testy'
+    size='12' />
+  )
   expect(wrapper.find(RefinementListFilter).exists()).toBeTruthy()
 })
