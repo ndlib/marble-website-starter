@@ -23,6 +23,10 @@ npm install -g yarn || { echo "Npm install failed" ;exit 1; }
 # install gatsby
 yarn global add gatsby-cli || { echo "FATAL: Could not install Gatsby Command Line Tools";exit 1; }
 
+# set yarn as default package manager for gatsby
+mkdir ~/.config/gatsby
+cp config.json ~/.config/gatsby/ || { echo "FAILED TO COPY config.json to ~/.config/gatsby/" }
+
 # install app dependencies
 yarn install || { echo "yarn install failed" ;exit 1; }
 
