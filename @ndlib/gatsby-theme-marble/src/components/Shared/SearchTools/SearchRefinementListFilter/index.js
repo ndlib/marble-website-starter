@@ -28,7 +28,7 @@ const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, siz
       title={label}
       operator={operator}
       bucketsTransform={listOrder}
-      size={parseInt(size)}
+      size={parseInt(size, 10)}
     />
   )
 }
