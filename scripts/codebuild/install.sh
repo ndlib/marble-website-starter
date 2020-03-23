@@ -25,7 +25,7 @@ yarn global add gatsby-cli || { echo "FATAL: Could not install Gatsby Command Li
 
 # set yarn as default package manager for gatsby
 mkdir ~/.config/gatsby
-cp config.json ~/.config/gatsby/
+cp ./scripts/codebuild/config.json ~/.config/gatsby/
 
 # install app dependencies
 yarn install || { echo "yarn install failed" ;exit 1; }
