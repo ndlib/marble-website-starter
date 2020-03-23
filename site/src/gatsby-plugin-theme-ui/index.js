@@ -10,16 +10,65 @@ export default merge({}, theme, {
   flexD: ['row', 'column'],
   fonts: {
     body: `
-      GPBook
+      GPBook,
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
     `,
     heading: `
-      EB Garamond
+      EB Garamond,
+      georgia,
+      serif
     `,
     logo: `
-      GPCBold
+      GPCBold,
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
     `,
     menu: `
-      GPCBook
+      GPCBook,
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
+    `,
+    tagline: `
+    GPCMed,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif
     `,
   },
 })
