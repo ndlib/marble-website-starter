@@ -16,6 +16,7 @@ module.exports = {
     color: 'primaryText.0',
     display: 'inline-block',
     fontFamily: 'menu',
+    fontSize: ['20px', '18px', '18px'],
     height: '70px',
     lineHeight: '70px',
     padding: ['0 0 0 20px', '0 24px', '0 24px'],
@@ -41,6 +42,7 @@ module.exports = {
   safeName: {
     display: ['inline-block', 'none', 'none'],
     fontFamily: 'menu',
+    fontSize: ['20px', '18px', '18px'],
     paddingLeft: '1rem',
     verticalAlign: ['middle', 'top', 'top'],
   },

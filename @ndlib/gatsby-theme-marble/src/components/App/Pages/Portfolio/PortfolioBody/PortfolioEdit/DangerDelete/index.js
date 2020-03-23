@@ -23,7 +23,7 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
       >
         <label htmlFor={fieldId}>
           <p><strong>{warning}</strong></p>
-          <p>Type the the portfolio name <code>{portfolio.title}</code> in the field bellow and press the button to delete.</p>
+          <p>Type the the portfolio name <code>{portfolio.title}</code> in the field below and press the button to delete.</p>
         </label>
         <input
           type='text'
