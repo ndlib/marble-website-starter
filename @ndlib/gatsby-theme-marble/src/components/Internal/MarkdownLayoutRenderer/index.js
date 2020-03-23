@@ -49,7 +49,7 @@ export const expandChildren = (availableComponents, row, globalProps, key = 0) =
 export const transformProps = (globalProps, propObjectArr) => {
   const props = Object.assign({}, globalProps)
   typy(propObjectArr).safeArray.forEach(propObject => {
-    props[propObject.label] = propObject.value || propObject.fileValue.publicURL
+    props[propObject.label] = propObject.value || typy(propObject, 'fileValue.publicURL').safeString
   })
   return props
 }
