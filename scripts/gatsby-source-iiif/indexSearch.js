@@ -21,7 +21,6 @@ if (appConfig === 'local') {
 
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
   console.log('Required parameters were not passed in')
-  return
 }
 
 const options = {
@@ -75,6 +74,13 @@ const getCenturyTags = (dates) => {
   if (!dates) {
     return ['undated']
   }
+  console.log(dates)
+  if (Array.isArray(dates)) {
+    console.log(dates)
+    dates = dates[0]
+  }
+  dates = dates.toString()
+  console.log(dates)
   const mappedDates = dates.match(/([0-9]{4})/g)
   if (!mappedDates) {
     console.error('date not mapped', dates)
@@ -106,9 +112,11 @@ const loadManifestData = () => {
 }
 
 const themeFromSubjectTags = (manifest) => {
+  return ['theme']
   if (!manifest.subjects) {
     return []
   }
+  console.log(manifest.subjects)
   const subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
   return subjects.map(m => {
     return m.term
