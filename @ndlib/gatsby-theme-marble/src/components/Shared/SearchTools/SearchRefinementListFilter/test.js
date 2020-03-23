@@ -5,7 +5,7 @@ import {
   RefinementListFilter,
 } from 'searchkit'
 
-test('SearchPreMain', () => {
+test.skip('SearchPreMain', () => {
   const wrapper = shallow(<SearchRefinementListFilter />)
   expect(wrapper.find(RefinementListFilter).exists()).toBeTruthy()
 })
