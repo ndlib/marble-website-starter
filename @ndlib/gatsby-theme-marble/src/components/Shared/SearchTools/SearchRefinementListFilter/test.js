@@ -13,7 +13,7 @@ test('SearchPreMain', () => {
     title='TestTitle'
     operator='OR'
     bucketsTransform='testy'
-    size='12' />
-  )
+    size='12'
+  />)
   expect(wrapper.find(RefinementListFilter).exists()).toBeTruthy()
 })
