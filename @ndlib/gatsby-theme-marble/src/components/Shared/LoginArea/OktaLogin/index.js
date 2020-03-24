@@ -25,7 +25,7 @@ export const OktaLogin = ({ loginReducer }) => {
         }}
         primary
         wide
-      >Login with Notre Dame Campus Authentication</MaterialButton>
+      >Log in with Notre Dame Campus Authentication</MaterialButton>
     </p>
   )
 }

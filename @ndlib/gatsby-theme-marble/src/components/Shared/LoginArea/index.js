@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { isLoggedIn } from 'utils/auth'
 import OktaLogin from './OktaLogin'
 import LogOut from './LogOut'
-import MaterialButton from 'components/Internal/MaterialButton'
 import style from './style.module.css'
 
 export const LoginArea = ({ loginReducer }) => {
@@ -20,23 +19,8 @@ export const LoginArea = ({ loginReducer }) => {
   return (
     <div>
       <form className={style.loginArea}>
+        <div className={style.message}>Log in to create, save, and share personalized portfolios.</div>
         <OktaLogin />
-        <p>
-          <MaterialButton
-            disabled
-            id='google'
-            onClick={() => console.log('Login With Google')}
-            wide
-          >Login with Google</MaterialButton>
-        </p>
-        <p>
-          <MaterialButton
-            disabled
-            id='facebook'
-            onClick={() => console.log('Login With Facebook')}
-            wide
-          >Login with Facebook</MaterialButton>
-        </p>
       </form>
     </div>
   )
