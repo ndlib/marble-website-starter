@@ -26,7 +26,6 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
             successFunc: (data) => {
               const ps = [...portfolios]
               ps.unshift(data)
-              console.log(data)
               addFunc(ps)
               setCreating(false)
               navigate(`myportfolio/${data.uuid}/edit`)
