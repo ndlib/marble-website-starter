@@ -23,13 +23,12 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
               layout: 'default',
               privacy: 'private',
             },
-            successFunc: (data) => {
-              const ps = [...portfolios]
-              ps.unshift(data)
-              addFunc(ps)
-              setCreating(false)
-              navigate(`/myportfolio/${data.uuid}/edit`)
-            },
+            successFunc: (data) => successFunc({
+              data: data,
+              portfolios: portfolios,
+              addFunc: addFunc,
+              setCreating: setCreating,
+            }),
             errorFunc: (e) => {
               console.error(e)
             },
@@ -54,3 +53,11 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(NewPortfolioButton)
+
+export const successFunc = ({ data, portfolios, addFunc, setCreating }) => {
+  const ps = [...portfolios]
+  ps.unshift(data)
+  addFunc(ps)
+  setCreating(false)
+  navigate(`/myportfolio/${data.uuid}/edit`)
+}
