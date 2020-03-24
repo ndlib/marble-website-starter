@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import typy from 'typy'
 import queryString from 'query-string'
 import CalloutBox from 'components/Shared/CalloutBox'
 import Attribution from 'components/Internal/Attribution'
@@ -9,28 +10,31 @@ import UserCartouche from 'components/Internal/UserCartouche'
 import { getData } from 'utils/api'
 
 export const UserAnnotation = ({ location, loginReducer }) => {
+  const [shouldShow] = useState(typy(location, 'pathname').safeString.includes('/item/'))
   const [item, setItem] = useState(null)
   const [qs] = useState(queryString.parse(location.search) || {})
   const [userId] = useState(Object.keys(qs)[0])
   useEffect(() => {
     const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'item',
-      id: qs[userId],
-      successFunc: (data) => {
-        setItem(data)
-      },
-      errorFunc: () => {
-        console.warn(`Query string item not found`)
-      },
-    })
-    return () => {
-      abortController.abort()
+    if (shouldShow) {
+      getData({
+        loginReducer: loginReducer,
+        contentType: 'item',
+        id: qs[userId],
+        successFunc: (data) => {
+          setItem(data)
+        },
+        errorFunc: () => {
+          console.warn(`Query string item not found`)
+        },
+      })
+      return () => {
+        abortController.abort()
+      }
     }
-  }, [loginReducer, qs, userId])
+  }, [loginReducer, qs, shouldShow, userId])
 
-  if (item) {
+  if (shouldShow && item) {
     return (
       <CalloutBox>
         <Attribution>

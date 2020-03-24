@@ -2,23 +2,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ManifestCard from 'components/Shared/ManifestCard'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
-import typy from 'typy'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   return (
     <DisplayViewToggle
       defaultDisplay={defaultDisplay}
     >
-      {hits.map((hit, index) => (
-        <ManifestCard
-          iiifManifest={hit._id}
-          key={index}
-        >
-          {Object.values(typy(hit, 'highlight').safeObject).map((row, index) => (
-            <div key={index} dangerouslySetInnerHTML={{ __html: row }} />
-          ))}
-        </ManifestCard>
-      ))}
+      {
+        hits ? hits.map(
+          (hit, index) => (
+            <ManifestCard
+              iiifManifest={hit._id}
+              key={index}
+            >
+              {
+                hit.highlight ? Object.values(hit.highlight)
+                  .map(
+                    (row) => {
+                      return row ? (
+                        <div key={row} dangerouslySetInnerHTML={{ __html: row }} />
+                      ) : null
+                    },
+                  ) : null
+              }
+            </ManifestCard>
+          ),
+        ) : null
+      }
     </DisplayViewToggle>
   )
 }
