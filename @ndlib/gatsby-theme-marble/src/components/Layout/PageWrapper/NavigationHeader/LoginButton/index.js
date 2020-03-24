@@ -49,7 +49,7 @@ export const LoginButton = ({ loginReducer }) => {
       <Link
         to={`/user`}
         sx={sx.link}
-      >Login</Link>
+      >Log in</Link>
     </div>
   )
 }

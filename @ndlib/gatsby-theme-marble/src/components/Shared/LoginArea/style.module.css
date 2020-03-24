@@ -1,4 +1,9 @@
-form.loginArea {
+.loginArea {
   border: 1px solid #dedede;
+  padding: 1rem;
   text-align: center;
+}
+
+.message {
+  margin: 0 auto 2rem;
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { LoginArea } from './'
-import MaterialButton from 'components/Internal/MaterialButton'
 import LogOut from './LogOut'
 import OktaLogin from './OktaLogin'
 import * as auth from 'utils/auth'
@@ -28,6 +27,5 @@ describe('LoginArea', () => {
 
     expect(wrapper.find('form').exists()).toBeTruthy()
     expect(wrapper.find(OktaLogin).exists()).toBeTruthy()
-    expect(wrapper.find(MaterialButton).length).toEqual(2)
   })
 })
