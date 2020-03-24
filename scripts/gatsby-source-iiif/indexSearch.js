@@ -74,13 +74,10 @@ const getCenturyTags = (dates) => {
   if (!dates) {
     return ['undated']
   }
-  console.log(dates)
   if (Array.isArray(dates)) {
-    console.log(dates)
     dates = dates[0]
   }
   dates = dates.toString()
-  console.log(dates)
   const mappedDates = dates.match(/([0-9]{4})/g)
   if (!mappedDates) {
     console.error('date not mapped', dates)
@@ -112,13 +109,15 @@ const loadManifestData = () => {
 }
 
 const themeFromSubjectTags = (manifest) => {
-  return ['theme']
   if (!manifest.subjects) {
     return []
   }
-  console.log(manifest.subjects)
-  const subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
-  return subjects.map(m => {
+
+  if (typeof manifest.subjects === 'string' || manifest.subjects instanceof String) {
+    manifest.subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
+  }
+
+  return manifest.subjects.map(m => {
     return m.term
   })
 }
@@ -154,7 +153,6 @@ const getSearchDataFromManifest = (manifest) => {
     themeTag: themeFromSubjectTags(manifest),
     centuryTag: getCenturyTags(manifest.dateCreated),
   }
-
   if (manifest.workType) {
     search['formatTag'] = [manifest.workType]
   }
@@ -209,14 +207,14 @@ const writeDirectory = path.join(directory, '/content/json/search/')
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
   const manifests = loadManifestData()
-  await setupIndex()
-
   const writeData = []
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
     }
   })
+
+  await setupIndex()
   await indexToElasticSearch(writeData)
   console.log('Writing Search Data to gatsby')
   fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
