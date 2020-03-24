@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { navigate } from 'gatsby'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { createData } from 'utils/api'
 
@@ -22,12 +23,12 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
               layout: 'default',
               privacy: 'private',
             },
-            successFunc: (data) => {
-              const ps = [...portfolios]
-              ps.unshift(data)
-              addFunc(ps)
-              setCreating(false)
-            },
+            successFunc: (data) => successFunc({
+              data: data,
+              portfolios: portfolios,
+              addFunc: addFunc,
+              setCreating: setCreating,
+            }),
             errorFunc: (e) => {
               console.error(e)
             },
@@ -52,3 +53,11 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(NewPortfolioButton)
+
+export const successFunc = ({ data, portfolios, addFunc, setCreating }) => {
+  const ps = [...portfolios]
+  ps.unshift(data)
+  addFunc(ps)
+  setCreating(false)
+  navigate(`/myportfolio/${data.uuid}/edit`)
+}
