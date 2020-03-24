@@ -1,7 +1,10 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import { jsx } from 'theme-ui'
 import {
   createData,
   deleteData,
@@ -38,7 +41,18 @@ const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
         e.stopPropagation()
         item ? deleteItem(item, setItem, loginReducer) : addItem(collection, iiifManifest, setItem, loginReducer)
       }}
-    >{item ? '- ' : '+ '}{collection.title}</button>
+    >
+      <span
+        sx={{
+          fontSize: '.75rem',
+          fontVariant: 'small-caps',
+          fontWeight: '800',
+          lineHeight: '1rem',
+          margin: '0 1em 0 0',
+          verticalAlign: 'middle',
+        }}>{item ? 'remove' : 'add'}</span>
+      {collection.title}
+    </button>
   )
 }
 
