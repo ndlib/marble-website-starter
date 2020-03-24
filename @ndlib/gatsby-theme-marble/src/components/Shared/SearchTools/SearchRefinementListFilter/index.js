@@ -42,7 +42,7 @@ SearchRefinementListFilter.propTypes = {
 
 SearchRefinementListFilter.defaultProps = {
   operator: 'OR',
-  size: '20',
+  size: '10',
 }
 
 const defaultSearchIsThisField = (defaultSearch, field) => {
