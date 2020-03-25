@@ -14,7 +14,7 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import sx from './sx'
 
-import banner from 'assets/images/banner.swirl.png'
+import banner from 'assets/images/banner.swirl.webp'
 import timeImage from 'assets/images/06.jpg'
 import themeImage from 'assets/images/04.jpg'
 
