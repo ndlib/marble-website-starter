@@ -18,7 +18,7 @@ console.log('site index: ' + siteIndex)
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local') {
-  // return
+  return
 }
 
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
