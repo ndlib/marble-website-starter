@@ -66,13 +66,6 @@ const determineProvider = (manifest) => {
   return 'Rare Books and Special Collections'
 }
 
-const indexSettings = {
-  settings: {
-    number_of_shards: 1,
-    number_of_replicas: 1,
-  },
-}
-
 const loadManifestData = () => {
   const data = fs.readFileSync(path.join(directory, '/content/json/items/items.json'))
   const manifestData = JSON.parse(data.toString())
