@@ -4,15 +4,17 @@ import {
   RefinementListFilter,
 } from 'searchkit'
 
-const listOrder = (list) => {
-  list.sort((a, b) => {
-    return a.key.localeCompare(b.key, undefined, { numeric: true })
-  })
+const listOrder = (list, sort) => {
+  if (sort === 'a-z') {
+    list.sort((a, b) => {
+      return a.key.localeCompare(b.key, undefined, { numeric: true })
+    })
+  }
 
   return list
 }
 
-const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, size }) => {
+const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, size, sort }) => {
   if (defaultSearchIsThisField(defaultSearch, field)) {
     return null
   }
@@ -29,6 +31,7 @@ const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, siz
       operator={operator}
       bucketsTransform={listOrder}
       size={parseInt(size, 10)}
+      sort={sort}
     />
   )
 }
@@ -38,6 +41,7 @@ SearchRefinementListFilter.propTypes = {
   defaultSearch: PropTypes.array,
   operator: PropTypes.string,
   size: PropTypes.string,
+  sort: PropTypes.string,
 }
 
 SearchRefinementListFilter.defaultProps = {
