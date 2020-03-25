@@ -95,13 +95,6 @@ const getCenturyTags = (dates) => {
   return years
 }
 
-const indexSettings = {
-  settings: {
-    number_of_shards: 1,
-    number_of_replicas: 1,
-  },
-}
-
 const loadManifestData = () => {
   const data = fs.readFileSync(path.join(directory, '/content/json/items/items.json'))
   const manifestData = JSON.parse(data.toString())
@@ -195,11 +188,34 @@ const setupIndex = async () => {
     await client.indices.delete({ index: siteIndex })
   }
 
+  const indexSettings = await configIndexSettings()
+
   console.log('creating index ' + siteIndex)
+  console.log('index settings ' + JSON.stringify({ index: siteIndex, body: indexSettings }))
   // await client.indices.create({ index: siteIndex }, indexMapping, indexSettings)
-  await client.indices.create({ index: siteIndex }).catch((e) => {
+  await client.indices.create({ index: siteIndex, body: indexSettings }).catch((e) => {
     console.log(e)
   })
+}
+
+const configIndexSettings = async () => {
+  const indexSettings = {
+    settings: {
+      index: {
+        number_of_shards: 1,
+      },
+    },
+  }
+  let nodeInfo = await client.cluster.health().catch((e) => {
+    console.log(e)
+    nodeInfo = { number_of_nodes: 1 }
+  })
+  if (nodeInfo['number_of_nodes'] > 1) {
+    indexSettings.settings.index['number_of_replicas'] = 1
+  } else {
+    indexSettings.settings.index['number_of_replicas'] = 0
+  }
+  return indexSettings
 }
 
 const writeDirectory = path.join(directory, '/content/json/search/')
