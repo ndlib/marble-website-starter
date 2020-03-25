@@ -1,7 +1,12 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { jsx } from 'theme-ui'
 import EditItemForm from './EditItemForm'
 import Card from 'components/Shared/Card'
+import editIcon from 'assets/icons/svg/baseline-edit-24px.svg'
+import sx from './sx'
 
 const EditItem = ({ item }) => {
   const { title, annotation, image } = item
@@ -9,26 +14,14 @@ const EditItem = ({ item }) => {
   const [deleted, setDeleted] = useState(false)
   if (deleted) {
     return (
-      <div style={{
-        backgroundColor: '#dedede',
-        color: 'white',
-        border: '1px solid #dedede',
-        height: '352px',
-        lineHeight: '302px',
-        margin: '0',
-        maxWidth: '800px',
-        overflowY: 'scroll',
-        padding: '1rem',
-        textAlign: 'center',
-        width: '100%',
-      }}>Deleted</div>
+      <div sx={sx.deleted}>Deleted</div>
     )
   }
   return (
     <div>
       {
-        editing
-          ? <EditItemForm
+        editing ? (
+          <EditItemForm
             uuid={item.uuid}
             closeFunc={() => {
               toggleEdit(false)
@@ -37,15 +30,28 @@ const EditItem = ({ item }) => {
               setDeleted(true)
             }}
           />
-          : <Card
-            label={title}
-            image={image}
+        ) : (
+          <div
+            role='button'
             onClick={() => {
               toggleEdit(true)
             }}
+            sx={sx.wrapper}
           >
-            {annotation}
-          </Card>
+            <Card
+              label={title}
+              image={image}
+            >
+              {annotation}
+            </Card>
+            <img
+              src={editIcon}
+              title=''
+              alt=''
+              sx={sx.image}
+            />
+          </div>
+        )
       }
     </div>
   )
