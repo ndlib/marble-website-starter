@@ -384,6 +384,7 @@ const defaultLayouts = {
                     { label: 'field', value: 'themeTag.keyword' },
                     { label: 'label', value: 'Keywords' },
                     { label: 'size', value: '10' },
+                    { label: 'sort', value: 'default' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },
