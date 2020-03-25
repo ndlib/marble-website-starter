@@ -4,7 +4,7 @@ const appConfig = process.argv.slice(2)[0]
 
 const retrieveStageParameters = async () => {
   let data = {}
-  console.log('APP_CONFIG = ' + appConfig)
+  console.log('APP_CONFIG=' + appConfig)
   if (appConfig === 'local') {
     console.log('using local config settings')
     data = { Parameters: [
