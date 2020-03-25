@@ -18,7 +18,7 @@ module.exports = (dates) => {
 
   let tags = dates.map((d) => {
     return d.map((year) => {
-      year = parseInt(year)
+      year = parseInt(year, 10)
       // if it is 1900 it needs to say 20th centiury so add 1 for calculation
       if (year % 100 === 0) {
         year += 1
