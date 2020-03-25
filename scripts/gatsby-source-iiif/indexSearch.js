@@ -4,6 +4,8 @@ const path = require(`path`)
 const { Client } = require('elasticsearch')
 const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
+const getCenturyTags = require('./src/getCenturyTagsFromDate')
+const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 
 const directory = process.argv.slice(2)[0]
 const configuration = require(path.join(directory, '/content/configuration.js'))
@@ -16,7 +18,7 @@ console.log('site index: ' + siteIndex)
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local') {
-  return
+  // return
 }
 
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
@@ -64,37 +66,6 @@ const determineProvider = (manifest) => {
   return 'Rare Books and Special Collections'
 }
 
-const getNumberWithOrdinal = (n) => {
-  const s = ['th', 'st', 'nd', 'rd']
-  const v = n % 100
-  return n + (s[(v - 20) % 10] || s[v] || s[0])
-}
-
-const getCenturyTags = (dates) => {
-  if (!dates) {
-    return ['undated']
-  }
-  if (Array.isArray(dates)) {
-    dates = dates[0]
-  }
-  dates = dates.toString()
-  const mappedDates = dates.match(/([0-9]{4})/g)
-  if (!mappedDates) {
-    console.error('date not mapped', dates)
-    return ['undated']
-  }
-
-  let years = dates.match(/([0-9]{4})/g).map((year) => {
-    year = Math.ceil(year / 100)
-    return getNumberWithOrdinal(year) + ' Century'
-  })
-  if (years.length === 0) {
-    years = ['undated']
-  }
-
-  return years
-}
-
 const indexSettings = {
   settings: {
     number_of_shards: 1,
@@ -106,20 +77,6 @@ const loadManifestData = () => {
   const data = fs.readFileSync(path.join(directory, '/content/json/items/items.json'))
   const manifestData = JSON.parse(data.toString())
   return manifestData
-}
-
-const themeFromSubjectTags = (manifest) => {
-  if (!manifest.subjects) {
-    return []
-  }
-
-  if (typeof manifest.subjects === 'string' || manifest.subjects instanceof String) {
-    manifest.subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
-  }
-
-  return manifest.subjects.map(m => {
-    return m.term
-  })
 }
 
 const loadSubItemTitles = (manifest) => {
@@ -147,10 +104,11 @@ const getSearchDataFromManifest = (manifest) => {
     creator: manifest.creator,
     date: manifest.dateCreated,
     identifier: manifest.uniqueIdentifier,
+    thumbnail: '',
     type: manifest.level,
     url: '/item/' + manifest.id,
     repository: determineProvider(manifest),
-    themeTag: themeFromSubjectTags(manifest),
+    themeTag: getKeywordsFromSubjects(manifest),
     centuryTag: getCenturyTags(manifest.dateCreated),
   }
   if (manifest.workType) {
