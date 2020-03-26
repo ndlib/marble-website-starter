@@ -32,6 +32,8 @@ module.exports = {
     border: '4px solid',
     borderColor: 'primary',
     width: '100%',
+    height: ['20rem', '15rem', '20rem'],
+    objectFit: 'cover',
   },
   browseLabel: {
     bottom: '0.25rem',

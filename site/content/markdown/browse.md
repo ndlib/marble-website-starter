@@ -7,85 +7,53 @@ components:
 - component: CardGroup
   props:
     - label: 'label'
-      value: 'Places'
+      value: 'Format'
   components:
     - component: Card
       props:
         - label: "label"
-          value: "North America"
+          value: "Paintings"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/1976.057%2F1976_057-v0001/full/500,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/1999.024%2F1999_024-v0001/full/250,/0/default.jpg"
         - label: "target"
-          value: "search?place[0]=North%20America"
+          value: "search?format[0]=Paintings"
     - component: Card
       props:
         - label: "label"
-          value: "South America"
+          value: "Prints"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001/full/500,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/2012.105%2F2012_105-v0001/full/250,/0/default.jpg"
         - label: "target"
-          value: "search?place[0]=South%20America"
+          value: "search?format[0]=Prints"
     - component: Card
       props:
         - label: "label"
-          value: "Europe"
+          value: "Sculpture"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/ils-000909884%2FBOO_000909884-1-inf-02a/full/500,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/1988.012%2F1988_012-v0001/full/250,/0/default.jpg"
         - label: "target"
-          value: "search?place[0]=Europe"
+          value: "search?place[0]=Sculpture"
 - component: CardGroup
   props:
     - label: 'label'
-      value: 'Theme'
+      value: 'Campus Location'
   components:
     - component: Card
       props:
         - label: "label"
-          value: "Notre Dame"
+          value: "Rare Books and Special Collections"
         - label: "image"
-          value: "/static/03-3e4a3d5380e87c004072f3adc371c87d.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/002097132%2FBOO_002097132-00a/full/250,/0/default.jpg"
         - label: "target"
-          value: "search?theme[0]=Notre%20Dame"
+          value: "search?campuslocation[0]=Rare%20Books%20and%20Special%20Collections"
     - component: Card
       props:
         - label: "label"
-          value: "Religious Paintings"
+          value: "Snite Museum of Art"
         - label: "image"
           value: "https://image-iiif.library.nd.edu/iiif/2/1976.057%2F1976_057-v0001/full/500,/0/default.jpg"
         - label: "target"
-          value: "search?theme[0]=Religious%20Paintings"
-    - component: Card
-      props:
-        - label: "label"
-          value: "Historical Artifacts"
-        - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001/full/500,/0/default.jpg"
-        - label: "target"
-          value: "search?theme[0]=Historical%20Artifacts"
-    - component: Card
-      props:
-        - label: "label"
-          value: "Historical Journals"
-        - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/nduspec_ead7s75db80w4r%2FMSN-COL_9405-1-B-001v_002r/full/500,/0/default.jpg"
-        - label: "target"
-          value: "search?theme[0]=Historical%20Journals"
-    - component: Card
-      props:
-        - label: "label"
-          value: "Religious Artifacts"
-        - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/1934.007.001%2F1934_007_001-v0001/full/500,/0/default.jpg"
-        - label: "target"
-          value: "search?theme[0]=Religious%20Artifacts"
-    - component: Card
-      props:
-        - label: "label"
-          value: "Scientific Artifacts"
-        - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/epistemological-letters-issue-2%2FMay19742ndIssue_Page_01/full/500,/0/default.jpg"
-        - label: "target"
-          value: "search?theme[0]=Scientific%20Artifacts"          
+          value: "search?campuslocation[0]=Snite%20Museum%20of%20Art"          
 - component: CardGroup
   props:
     - label: 'label'
