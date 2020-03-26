@@ -32,7 +32,7 @@ export const NavigationHeader = ({ location }) => {
             sx={sx.menu(hamburgerOpen)}
           >
             <Menu menu='top' />
-            <LoginButton />
+            <LoginButton location={location} />
           </span>
         </div>
       </div>
