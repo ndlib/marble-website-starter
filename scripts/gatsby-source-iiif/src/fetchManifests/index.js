@@ -12,7 +12,6 @@ module.exports = async (urls) => {
     return fetch(url)
       .then(response => response.json())
       .then((data) => {
-        console.log(url)
         data['parentId'] = parentId
         data['slug'] = getFilenameFromId(data['id'])
 
