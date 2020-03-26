@@ -26,7 +26,6 @@ export const LogOut = ({ dispatch, loginReducer }) => {
     width: 'calc(100% - 2rem)',
   }
 
-  // useEffect should always have been called before render, but just in case
   // render Loading if the dispatch is taking too long
   if (loginReducer.user.userName) {
     return <Loading />
