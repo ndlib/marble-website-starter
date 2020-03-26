@@ -7,7 +7,7 @@ import {
 const listOrder = (list, sort) => {
   if (sort === 'a-z') {
     list.sort((a, b) => {
-      return a.key.localeCompare(b.key, undefined, { numeric: true })
+      return a.key && b.key ? a.key.localeCompare(b.key, undefined, { numeric: true }) : 0
     })
   }
 
