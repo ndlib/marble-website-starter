@@ -2,8 +2,6 @@ const fs = require('fs')
 const fetchData = require('./src/fetchManifests')
 const path = require(`path`)
 const directory = process.argv.slice(2)[0]
-// temp
-const fetch = require('node-fetch')
 
 const loadManifestsFile = () => {
   const contents = fs.readFileSync(path.join(directory, '/content/manifests.json'))
