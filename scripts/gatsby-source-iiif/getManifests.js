@@ -12,7 +12,7 @@ const ensureDirectoryStructure = async () => {
   return Promise.all([
     fs.promises.mkdir(path.join(directory, '/content/json/iiif/'), { recursive: true }),
     fs.promises.mkdir(path.join(directory, '/content/markdown/iiif/'), { recursive: true }),
-    fs.promises.mkdir(path.join(directory, '/content/json/search/'), { recursive: true }),
+    fs.promises.mkdir(path.join(directory, '/content/json/items/'), { recursive: true }),
     fs.promises.mkdir(path.join(directory, '/content/markdown/browse/'), { recursive: true }),
   ])
 }

@@ -8,7 +8,6 @@
    "https://presentation-iiif.library.nd.edu/004789783/manifest",
    "https://presentation-iiif.library.nd.edu/004862474/manifest",
    "https://presentation-iiif.library.nd.edu/001614725/manifest",
-   "https://presentation-iiif.library.nd.edu/000297305/manifest",
    "https://presentation-iiif.library.nd.edu/002468275/manifest",
    "https://presentation-iiif.library.nd.edu/1934.007.001/manifest",
    "https://presentation-iiif.library.nd.edu/1957.058/manifest",
@@ -85,7 +84,6 @@
    "https://presentation-iiif.library.nd.edu/MSNMN5004_EAD/manifest"
  ],
  "manifest_ids": [
-    "000297305",
     "001016383",
     "001591353",
     "001614725",
@@ -172,6 +170,7 @@
   "saved": [
     "https://presentation-iiif.library.nd.edu/MSNCOL2717_EAD/manifest",
     "https://presentation-iiif.library.nd.edu/MSNCW5014_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/MSNCW5013_EAD/manifest"
+    "https://presentation-iiif.library.nd.edu/MSNCW5013_EAD/manifest",
+    "https://presentation-iiif.library.nd.edu/000297305/manifest"
   ]
 }
