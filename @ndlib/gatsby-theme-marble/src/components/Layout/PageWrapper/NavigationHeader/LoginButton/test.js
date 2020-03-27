@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
-import { LoginButton, getSafeName } from './'
+import { LoginButton } from './'
 import Link from 'components/Internal/Link'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 
@@ -39,9 +39,11 @@ describe('LoginButton', () => {
       },
     }
     const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
-    expect(wrapper.find(Link).props().to).toEqual('/user/jloggedin')
-    expect(wrapper.find('span').text()).toEqual('Johnny Logged In')
     expect(wrapper.find('img').props().src).toEqual(userIcon)
+    expect(wrapper.find(Link).length).toEqual(3)
+    expect(wrapper.find(Link).at(0).props().to).toEqual('/user/jloggedin')
+    expect(wrapper.find(Link).at(1).props().to).toEqual('/user/jloggedin/edit')
+    expect(wrapper.find(Link).at(2).props().to).toEqual('/user/logout')
   })
 
   test('not logged in', () => {
@@ -58,46 +60,5 @@ describe('LoginButton', () => {
     const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find(Link).props().to).toEqual('/user')
     expect(wrapper.find(Link).props().children).toEqual('Log in')
-  })
-})
-
-describe('getSafeName', () => {
-  test('fullname', () => {
-    const reducer = {
-      user: {
-        fullname: 'Ms. Fancy User',
-        userName: 'fancyUser',
-        email: 'fancy@pants.com',
-      },
-    }
-    const safeName = getSafeName(reducer)
-    expect(safeName).toEqual('Ms. Fancy User')
-  })
-
-  test('userName', () => {
-    const reducer = {
-      user: {
-        userName: 'fancyUser',
-        email: 'fancy@pants.com',
-      },
-    }
-    const safeName = getSafeName(reducer)
-    expect(safeName).toEqual('fancyUser')
-  })
-
-  test('email', () => {
-    const reducer = {
-      user: {
-        email: 'fancy@pants.com',
-      },
-    }
-    const safeName = getSafeName(reducer)
-    expect(safeName).toEqual('fancy@pants.com')
-  })
-
-  test('fallback', () => {
-    const reducer = {}
-    const safeName = getSafeName(reducer)
-    expect(safeName).toEqual('My Stuff')
   })
 })
