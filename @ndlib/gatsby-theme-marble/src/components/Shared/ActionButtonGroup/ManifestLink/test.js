@@ -2,13 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ManifestLink from './'
 import imgIIIF from './iiif.png'
-import Link from 'components/Internal/Link'
-
+console.error = jest.fn()
 const url = 'http://test.manifest'
-const wrapper = shallow(<ManifestLink manifestUrl={url} />)
 
 test('Link to manifest with icon', () => {
-  expect(wrapper.find(Link).props().to).toEqual(url)
-  expect(wrapper.find(Link).props().target).toEqual('_blank')
-  expect(wrapper.find('img').props().src).toEqual(imgIIIF)
+  const wrapper = shallow(<ManifestLink manifestUrl={url} />)
+  expect(wrapper.find('EmotionCssPropInternal').at(1).props().to).toEqual(url)
+  expect(wrapper.find('EmotionCssPropInternal').at(1).props().target).toEqual('_blank')
+  expect(wrapper.find('EmotionCssPropInternal').at(1).prop('aria-label')).toEqual('Download IIIF manifest.')
+  expect(wrapper.find('EmotionCssPropInternal').at(2).props().src).toEqual(imgIIIF)
 })
