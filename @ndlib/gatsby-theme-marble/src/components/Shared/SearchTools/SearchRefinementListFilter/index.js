@@ -4,8 +4,7 @@ import {
   RefinementListFilter,
 } from 'searchkit'
 
-const listOrder = (list, sort) => {
-  console.log(list, sort)
+export const listOrder = (list, sort) => {
   if (sort === 'a-z') {
     list.sort((a, b) => {
       return a.key && b.key ? a.key.localeCompare(b.key, undefined, { numeric: true }) : 0
@@ -15,7 +14,7 @@ const listOrder = (list, sort) => {
   return list
 }
 
-const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, size, sort }) => {
+export const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, size, sort }) => {
   if (defaultSearchIsThisField(defaultSearch, field)) {
     return null
   }
