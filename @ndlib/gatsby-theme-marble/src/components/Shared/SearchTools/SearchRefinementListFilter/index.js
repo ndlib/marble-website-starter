@@ -5,6 +5,7 @@ import {
 } from 'searchkit'
 
 const listOrder = (list, sort) => {
+  console.log(list, sort)
   if (sort === 'a-z') {
     list.sort((a, b) => {
       return a.key && b.key ? a.key.localeCompare(b.key, undefined, { numeric: true }) : 0
@@ -29,7 +30,9 @@ const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, siz
       id={label.replace(' ', '').toLowerCase()}
       title={label}
       operator={operator}
-      bucketsTransform={listOrder}
+      bucketsTransform={(list) => {
+        return listOrder(list, sort)
+      }}
       size={parseInt(size, 10)}
       sort={sort}
     />
@@ -47,6 +50,7 @@ SearchRefinementListFilter.propTypes = {
 SearchRefinementListFilter.defaultProps = {
   operator: 'OR',
   size: '10',
+  sort: 'default',
 }
 
 const defaultSearchIsThisField = (defaultSearch, field) => {
