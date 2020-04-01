@@ -16,13 +16,6 @@ module.exports = {
     marginLeft: '0',
     marginTop: '-2px',
   },
-  tagLine: {
-    fontFamily: 'tagline',
-    fontSize: '20px',
-    margin: '1rem !important',
-    textAlign: 'center',
-    textShadow: '-1px 2px #00000066',
-  },
   browseLink: {
     position: 'relative',
     textDecoration: 'none',

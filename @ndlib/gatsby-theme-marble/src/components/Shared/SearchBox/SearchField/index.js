@@ -1,12 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
 import { updateInput } from 'store/actions/searchActions'
 
 // You should only have one search field on a page.
 export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch, className, location }) => {
   const { rawInput } = searchReducer
-  const fieldLabel = 'Search the Collections'
+  const { site } = useStaticQuery(
+    graphql`
+    query {
+      site {
+        siteMetadata {
+          searchBoxDefaultText
+        }
+      }
+    }
+  `,
+  )
+  const fieldLabel = (site.siteMetadata.searchBoxDefaultText !== null) ? site.siteMetadata.searchBoxDefaultText : 'Search'
   return (
     <React.Fragment>
       <label
