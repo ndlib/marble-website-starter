@@ -34,6 +34,9 @@ echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 pushd scripts/gatsby-source-iiif/
 yarn install
 node setupEnv.js ${1} > ${ENV_FILE}
+echo "-----CHECK:"
+echo $1
+echo "$(cat ${ENV_FILE})"
 source ${ENV_FILE}
 export $(cut -d= -f1 ${ENV_FILE})
 ./generate.sh ${1}
