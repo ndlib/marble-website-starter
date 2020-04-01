@@ -189,6 +189,7 @@ exports.sourceNodes = ({ actions }) => {
     authClient: authClient
     searchPath: String
     languages: languages
+    searchBoxDefaultText: String
   }
   type Site implements Node {
     siteMetadata: SiteMetadata
