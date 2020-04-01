@@ -1,11 +1,21 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { useStaticQuery } from 'gatsby'
 import { SearchField } from './'
 
 const searchReducer = {}
 const dispatch = jest.fn()
 const action = jest.fn()
 const location = {}
+useStaticQuery.mockImplementationOnce(() => {
+  return {
+    site: {
+      siteMetadata: {
+        searchBoxDefaultText: 'Search our digitized artwork, rare books, artifacts, and archival materials',
+      },
+    },
+  }
+})
 const wrapper = shallow(
   <SearchField
     searchReducer={searchReducer}
