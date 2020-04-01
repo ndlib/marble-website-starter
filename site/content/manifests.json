@@ -32,7 +32,6 @@
    "https://presentation-iiif.library.nd.edu/MSNCOL2718_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCOL8500_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCOL8501_EAD/manifest",
-   "https://presentation-iiif.library.nd.edu/MSNCW1004_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW2000_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW2002_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW2013_EAD/manifest",
@@ -64,7 +63,6 @@
    "https://presentation-iiif.library.nd.edu/MSNCW5061_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW5066_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW8000_EAD/manifest",
-   "https://presentation-iiif.library.nd.edu/MSNCW8001_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW8002_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW8003_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNCW8007_EAD/manifest",
@@ -73,12 +71,10 @@
    "https://presentation-iiif.library.nd.edu/MSNEA0500_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNEA0504_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNEA0526_EAD/manifest",
-   "https://presentation-iiif.library.nd.edu/MSNEA5002_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNEA5022_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNEA5031_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNEA8006_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNEA8011_EAD/manifest",
-   "https://presentation-iiif.library.nd.edu/MSNEA8014_EAD/manifest",
    "https://presentation-iiif.library.nd.edu/MSNMN5004_EAD/manifest"
  ],
  "manifest_ids": [
@@ -114,7 +110,6 @@
     "MSNCOL2718_EAD",
     "MSNCOL8500_EAD",
     "MSNCOL8501_EAD",
-    "MSNCW1004_EAD",
     "MSNCW2000_EAD",
     "MSNCW2002_EAD",
     "MSNCW2013_EAD",
@@ -155,18 +150,20 @@
     "MSNEA0500_EAD",
     "MSNEA0504_EAD",
     "MSNEA0526_EAD",
-    "MSNEA5002_EAD",
     "MSNEA5022_EAD",
     "MSNEA5031_EAD",
     "MSNEA8006_EAD",
     "MSNEA8011_EAD",
-    "MSNEA8014_EAD",
     "MSNMN5004_EAD"
   ],
   "saved": [
     "https://presentation-iiif.library.nd.edu/MSNCOL2717_EAD/manifest",
     "https://presentation-iiif.library.nd.edu/MSNCW5014_EAD/manifest",
     "https://presentation-iiif.library.nd.edu/MSNCW5013_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/000297305/manifest"
+    "https://presentation-iiif.library.nd.edu/000297305/manifest",
+    "https://presentation-iiif.library.nd.edu/MSNEA8014_EAD/manifest",
+    "https://presentation-iiif.library.nd.edu/MSNCW8001_EAD/manifest",
+    "https://presentation-iiif.library.nd.edu/MSNEA5002_EAD/manifest",
+    "https://presentation-iiif.library.nd.edu/MSNCW1004_EAD/manifest"
   ]
 }

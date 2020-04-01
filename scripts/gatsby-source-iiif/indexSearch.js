@@ -17,6 +17,8 @@ if (appConfig === 'local') {
   return
 }
 
+console.log(siteIndex, domain)
+
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
   console.log('Required parameters were not passed in')
 }
