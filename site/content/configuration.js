@@ -39,7 +39,7 @@ module.exports = {
     iiifHelpURL: 'https://sites.nd.edu/marble/iiif-at-notre-dame-or-the-heart-of-marble/',
     // menus
     menus: menus,
-
+    footerText: '',
     //
     languages: languages,
   },

@@ -17,7 +17,7 @@ new Promise(async (resolve, reject) => {
     fetch('https://presentation-iiif.library.nd.edu/000000_temp_build_documents/items')
       .then(response => response.text())
       .then((data) => {
-        fs.writeFileSync(path.join(directory, '/content/json/items/items.json'), data)
+        fs.writeFileSync(path.join(directory, '/content/items/items.json'), data)
 
         return true
       }).catch(err => console.log('fetch error', err)),

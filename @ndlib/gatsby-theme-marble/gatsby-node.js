@@ -176,7 +176,7 @@ exports.sourceNodes = ({ actions }) => {
     clientId: String
     issuer: String
   }
-  type SiteMetadata {
+  type SiteMetadata @dontInfer {
     universalViewerBaseURL: String
     googleMapApiURL: String
     iiifHelpURL: String
