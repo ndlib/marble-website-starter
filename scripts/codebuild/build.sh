@@ -13,4 +13,4 @@ echo "BUILD SEARCH URL: ${SEARCH_URL}"
 echo "BUILD SEARCH INDEX: ${SEARCH_INDEX}"
 
 # build
-yarn workspace site build &> test_results.log || { echo "\e[31mGatsby build failed${reset}"; cat build.log; exit 1; } 
+yarn workspace site build &>> test_results.log || { echo "\e[31mGatsby build failed${reset}"; cat test_results.log; exit 1; } 
