@@ -22,9 +22,9 @@ const IndexPage = ({ location }) => {
     'https://presentation-iiif.library.nd.edu/1999.024/manifest',
     'https://presentation-iiif.library.nd.edu/1992.055/manifest',
   ]
-  const dateImage = 'https://image-iiif.library.nd.edu/iiif/2/2015.045.003%2F2015_045_003-v0002/full/250,/0/default.jpg'
-  const formatImage = 'https://image-iiif.library.nd.edu/iiif/2/2017.025.667%2F2017_025_667-v0015/full/250,/0/default.jpg'
-  const campuslocationImage = 'https://image-iiif.library.nd.edu/iiif/2/MSNMN5004_EAD%2FMSN-MN_5004-04.a.150/full/250,/0/default.jpg'
+  const dateImage = 'https://image-iiif.library.nd.edu/iiif/2/2015.045.003%2F2015_045_003-v0002/full/1000,/0/default.jpg'
+  const formatImage = 'https://image-iiif.library.nd.edu/iiif/2/2017.025.667%2F2017_025_667-v0015/full/1000,/0/default.jpg'
+  const campuslocationImage = 'https://image-iiif.library.nd.edu/iiif/2/MSNMN5004_EAD%2FMSN-MN_5004-04.a.150/full/1000,/0/default.jpg'
 
   return (
     <React.Fragment>
@@ -32,9 +32,6 @@ const IndexPage = ({ location }) => {
         <h1 sx={sx.h1}>University of Notre Dame<span sx={sx.h2} >Digital Collections</span></h1>
 
         <SearchBox location={location} />
-        <div
-          sx={sx.tagLine}
-        >Explore our digitized artwork, rare books, artifacts, and archival materials.</div>
       </HeroBox>
       <CardGroup
         label='Recent Additions'

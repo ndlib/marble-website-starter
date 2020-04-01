@@ -6,7 +6,7 @@ import { updateInput } from 'store/actions/searchActions'
 // You should only have one search field on a page.
 export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch, className, location }) => {
   const { rawInput } = searchReducer
-  const fieldLabel = 'Search the Collections'
+  const fieldLabel = 'Search our digitized artwork, rare books, artifacts, and archival materials'
   return (
     <React.Fragment>
       <label
