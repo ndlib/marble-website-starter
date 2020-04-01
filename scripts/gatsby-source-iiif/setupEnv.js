@@ -4,7 +4,6 @@ const appConfig = process.argv.slice(2)[0]
 
 const retrieveStageParameters = async () => {
   let data = {}
-  console.log('APP_CONFIG=' + appConfig)
   if (appConfig === 'local') {
     data = { Parameters: [
       {
@@ -17,7 +16,6 @@ const retrieveStageParameters = async () => {
       },
     ] }
   } else {
-    console.log('Search Info: ', appConfig)
     const ssm = new AWS.SSM({ region: 'us-east-1' })
     data = await ssm.getParametersByPath({
       Path: appConfig,
