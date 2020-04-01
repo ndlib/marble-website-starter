@@ -21,6 +21,7 @@ test('takes a string year and gets a tag for it', () => {
     // ['0'], ['1st Century']
     // ['1950', 1970, '2001'], ['20th Century', 21st Century']
     // ['mid-20th Century'], ['20th Century']
+    // ['no date'], ['undated']
 
   ].forEach((testData) => {
     expect(getCenturyTags(testData[0])).toEqual(testData[1])

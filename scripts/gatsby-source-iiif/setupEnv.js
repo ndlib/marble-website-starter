@@ -6,7 +6,6 @@ const retrieveStageParameters = async () => {
   let data = {}
   console.log('APP_CONFIG=' + appConfig)
   if (appConfig === 'local') {
-    console.log('using local config settings')
     data = { Parameters: [
       {
         Name: '/all/static-host/super-test/search_url',
@@ -18,6 +17,7 @@ const retrieveStageParameters = async () => {
       },
     ] }
   } else {
+    console.log('Search Info: ', appConfig)
     const ssm = new AWS.SSM({ region: 'us-east-1' })
     data = await ssm.getParametersByPath({
       Path: appConfig,
