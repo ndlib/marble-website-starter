@@ -18,7 +18,7 @@ const wrapper = shallow(
 )
 describe('SearchField', () => {
   test('render input and label', () => {
-    expect(wrapper.find('label').text()).toEqual('Search the Collections')
+    expect(wrapper.find('label').text()).toEqual('Search our digitized artwork, rare books, artifacts, and archival materials')
     expect(wrapper.find('input').props().type).toEqual('text')
   })
 
