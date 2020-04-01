@@ -14,6 +14,5 @@ test('HelpLink', () => {
     }
   })
   const wrapper = shallow(<HelpLink />)
-  console.log(wrapper.debug())
   expect(wrapper.find('EmotionCssPropInternal').prop('href')).toEqual('http://help.iiif')
 })

@@ -5,15 +5,14 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import { jsx } from 'theme-ui'
-import BookmarkButton from './BookmarkButton'
-import NewPortfolioButton from 'components/App/Pages/User/UserBody/PortfolioList/NewPortfolioButton'
+import DropDown from 'components/Internal/DropDown'
+import BookmarkLabel from './BookmarkLabel'
+import BookmarkOptions from './BookmarkOptions'
 import { getData } from 'utils/api'
 import { isLoggedIn } from 'utils/auth'
-import icon from 'assets/icons/svg/baseline-bookmark-24px-white.svg'
 import sx from './sx'
 
-const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
-  const [open, setOpen] = useState(false)
+export const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
   const [portfolios, setPortfolios] = useState([])
 
   useEffect(() => {
@@ -23,10 +22,7 @@ const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
       contentType: 'user',
       id: typy(loginReducer, 'user.userName').safeString,
       successFunc: (data) => {
-        const ps = typy(data, 'collections').safeArray.sort((a, b) => {
-          return b.updated - a.updated
-        })
-        setPortfolios(ps)
+        setPortfolios(sortCollections(data))
       },
       errorFunc: (e) => {
         console.error(e)
@@ -42,52 +38,19 @@ const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
   }
 
   return (
-    <div
-      sx={sx.wrapper}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-          setOpen(false)
-        }
-      }}
-      tabIndex={0}
-      role='listbox'
-    >
-      <div
-        role='button'
-        onClick={() => setOpen(!open)}
-        sx={sx.toggle}
-      >
-        <img
-          src={icon}
-          alt=''
-          sx={sx.image}
-        />
-        <span sx={sx.label}>Save to a portfolio</span>
-      </div>
-      <div sx={open ? sx.optionsOpen : sx.optionsClosed}>
-        {
-          portfolios.length > 0 ? (
-            portfolios.map(
-              collection => {
-                return (
-                  <BookmarkButton
-                    key={collection.uuid}
-                    iiifManifest={iiifManifest}
-                    collection={collection}
-                  />
-                )
-              })
-          ) : (
-            <div sx={sx.noPortfolios}>You do not have any portfolios.</div>
-          )
-        }
-        <NewPortfolioButton
-          addFunc={setPortfolios}
+    <DropDown
+      sxStyle={sx}
+      buttonLabel={(
+        <BookmarkLabel sxStyle={sx} />
+      )}
+      options={(
+        <BookmarkOptions
           portfolios={portfolios}
+          iiifManifest={iiifManifest}
+          setFunc={setPortfolios}
         />
-      </div>
-    </div>
-
+      )}
+    />
   )
 }
 
@@ -103,3 +66,10 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(BookmarkGroup)
+
+// sort by timestamp most recent first
+export const sortCollections = (data) => {
+  return typy(data, 'collections').safeArray.sort((a, b) => {
+    return b.updated - a.updated
+  })
+}
