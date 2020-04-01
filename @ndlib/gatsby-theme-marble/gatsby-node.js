@@ -179,6 +179,7 @@ exports.sourceNodes = ({ actions }) => {
   type SiteMetadata {
     universalViewerBaseURL: String
     googleMapApiURL: String
+    iiifHelpURL: String
     searchBase: searchBase
     footerText: String
     menus: [menus]
@@ -344,6 +345,7 @@ const defaultLayouts = {
                     { label: 'field', value: 'centuryTag.keyword' },
                     { label: 'label', value: 'Time Period' },
                     { label: 'operator', value: 'OR' },
+                    { label: 'sort', value: 'a-z' },
                   ],
                 },
                 {
@@ -354,22 +356,6 @@ const defaultLayouts = {
                     { label: 'operator', value: 'OR' },
                   ],
                 },
-                // {
-                //   component: 'SearchRefinementListFilter',
-                //   props: [
-                //     { label: 'field', value: 'language.keyword' },
-                //     { label: 'label', value: 'Language' },
-                //     { label: 'operator', value: 'OR' },
-                //   ],
-                // },
-                // {
-                //   component: 'SearchRefinementListFilter',
-                //   props: [
-                //     { label: 'field', value: 'continentTag.keyword' },
-                //     { label: 'label', value: 'Place' },
-                //     { label: 'operator', value: 'OR' },
-                //   ],
-                // },
                 {
                   component: 'SearchRefinementListFilter',
                   props: [
@@ -384,6 +370,7 @@ const defaultLayouts = {
                     { label: 'field', value: 'themeTag.keyword' },
                     { label: 'label', value: 'Keywords' },
                     { label: 'size', value: '10' },
+                    { label: 'sort', value: 'default' },
                     { label: 'operator', value: 'OR' },
                   ],
                 },

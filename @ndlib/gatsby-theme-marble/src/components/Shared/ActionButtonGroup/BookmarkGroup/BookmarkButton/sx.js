@@ -1,0 +1,30 @@
+module.exports = {
+  button: {
+    backgroundColor: 'white',
+    border: 'none',
+    borderBottom: '1px solid',
+    borderColor: 'gray.1',
+    cursor: 'pointer',
+    fontSize: '1rem',
+    overflow: 'hidden',
+    outline: 'none',
+    padding: '.5rem 1rem',
+    textAlign: 'left',
+    textOverflow: 'ellipsis',
+    userSelect: 'none',
+    whiteSpace: 'nowrap',
+    width: '250px',
+    '&:hover': {
+      backgroundColor: 'gray.0',
+      opacity: '1.0',
+    },
+  },
+  text: {
+    fontSize: '.75rem',
+    fontVariant: 'small-caps',
+    fontWeight: '800',
+    lineHeight: '1rem',
+    margin: '0 1em 0 0',
+    verticalAlign: 'middle',
+  },
+}

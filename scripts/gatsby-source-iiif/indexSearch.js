@@ -11,10 +11,6 @@ const directory = process.argv.slice(2)[0]
 const configuration = require(path.join(directory, '/content/configuration.js'))
 const siteIndex = configuration.siteMetadata.searchBase.app
 const domain = configuration.siteMetadata.searchBase.url
-console.log('env url: ' + process.env.SEARCH_URL)
-console.log('domain: ' + domain)
-console.log('env index: ' + process.env.SEARCH_INDEX)
-console.log('site index: ' + siteIndex)
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local') {
@@ -39,19 +35,6 @@ const client = Client(options)
 // website-test-index
 // export SEARCH_INDEX=website-test-index
 // export SEARCH_URL=https://search-super-testy-search-test-xweemgolqgtta6mzqnuvc6ogbq.us-east-1.es.amazonaws.com
-
-const indexMapping = {
-  mappings: {
-    _doc: {
-      searchDate: {
-        type: 'integer_range',
-      },
-      searchLocation: {
-        type: 'geo_point',
-      },
-    },
-  },
-}
 
 const determineProvider = (manifest) => {
   // snite repositories
@@ -142,25 +125,33 @@ const indexToElasticSearch = async (searchData) => {
 const setupIndex = async () => {
   const indexExists = await client.indices.exists({ index: siteIndex })
   if (indexExists) {
-    console.log('removing index', siteIndex)
+    console.log('removing index' + siteIndex)
     await client.indices.delete({ index: siteIndex })
   }
 
-  const indexSettings = await configIndexSettings()
+  const node = {}
+  node.settings = await configIndexSettings()
+  node.mappings = await configIndexMappings()
+  const index = { index: siteIndex, body: node }
 
   console.log('creating index ' + siteIndex)
-  console.log('index settings ' + JSON.stringify({ index: siteIndex, body: indexSettings }))
-  // await client.indices.create({ index: siteIndex }, indexMapping, indexSettings)
-  await client.indices.create({ index: siteIndex, body: indexSettings }).catch((e) => {
+  console.log('index properties ' + JSON.stringify(index))
+  await client.indices.create(index).catch((e) => {
     console.log(e)
   })
 }
 
 const configIndexSettings = async () => {
-  const indexSettings = {
-    settings: {
-      index: {
-        number_of_shards: 1,
+  const settings = {
+    index: {
+      number_of_shards: 1,
+    },
+    analysis: {
+      analyzer: {
+        stopword_analyzer: {
+          type: 'standard',
+          stopwords: '_english_',
+        },
       },
     },
   }
@@ -169,11 +160,23 @@ const configIndexSettings = async () => {
     nodeInfo = { number_of_nodes: 1 }
   })
   if (nodeInfo['number_of_nodes'] > 1) {
-    indexSettings.settings.index['number_of_replicas'] = 1
+    settings.index['number_of_replicas'] = 1
   } else {
-    indexSettings.settings.index['number_of_replicas'] = 0
+    settings.index['number_of_replicas'] = 0
   }
-  return indexSettings
+  return settings
+}
+
+const configIndexMappings = async () => {
+  const mappings = {
+    properties : {
+      allMetadata : {
+        type: 'text',
+        analyzer: 'stopword_analyzer',
+      },
+    },
+  }
+  return mappings
 }
 
 const writeDirectory = path.join(directory, '/content/json/search/')

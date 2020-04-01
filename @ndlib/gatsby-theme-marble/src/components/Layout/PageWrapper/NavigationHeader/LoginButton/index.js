@@ -1,6 +1,6 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
@@ -10,7 +10,8 @@ import { jsx } from 'theme-ui'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 import sx from './sx.js'
 
-export const LoginButton = ({ loginReducer }) => {
+export const LoginButton = ({ location, loginReducer }) => {
+  const [isOpen, setOpen] = useState(false)
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,21 +27,38 @@ export const LoginButton = ({ loginReducer }) => {
     return null
   }
   if (loginReducer.status === 'STATUS_LOGGED_IN') {
-    const safeName = getSafeName(loginReducer)
     return (
-      <div sx={sx.button}>
-        <Link
-          to={`/user/${loginReducer.user.userName}`}
-          sx={sx.imageLink}
+      <div>
+        <button
+          sx={sx.button}
+          onClick={() => {
+            setOpen(!isOpen)
+          }}
+          onBlur={(e) => {
+            closeOnBlur(e, setOpen, location)
+          }}
         >
           <img
             src={userIcon}
-            alt='My Account'
-            title='My Account'
+            alt='My Profile'
+            title='My Profile'
             sx={sx.image}
           />
-          <span sx={sx.safeName}>{safeName}</span>
-        </Link>
+        </button>
+        <div sx={isOpen ? sx.submenu : sx.hiddenMenu}>
+          <Link
+            to={`/user/${loginReducer.user.userName}`}
+            sx={sx.submenuItem}
+          >My Portfolios</Link>
+          <Link
+            to={`/user/${loginReducer.user.userName}/edit`}
+            sx={sx.submenuItem}
+          >Edit Profile</Link>
+          <Link
+            to={`/user/logout`}
+            sx={sx.submenuItem}
+          >Log Out</Link>
+        </div>
       </div>
     )
   }
@@ -55,6 +73,7 @@ export const LoginButton = ({ loginReducer }) => {
 }
 
 LoginButton.propTypes = {
+  location: PropTypes.object.isRequired,
   loginReducer: PropTypes.shape({
     status: PropTypes.string.isRequired,
     user: PropTypes.object,
@@ -67,9 +86,13 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(LoginButton)
 
-export const getSafeName = (loginReducer) => {
-  return typy(loginReducer, 'user.fullname').safeString ||
-    typy(loginReducer, 'user.userName').safeString ||
-    typy(loginReducer, 'user.email').safeString ||
-    'My Stuff'
+export const closeOnBlur = (e, setOpen, location) => {
+  const linkTarget = typy(e, 'relatedTarget.href').safeString
+  // Close if:
+  //   No related target - clicking browser's native UI
+  //   Clicking a something that is not a link
+  //   Clicking a link to the current page - a normal link triggers a re-render resetting the default state. Clicking a link to the current page need to be closed manually
+  if (!e.relatedTarget || !linkTarget || linkTarget === location.href) {
+    setOpen(false)
+  }
 }
