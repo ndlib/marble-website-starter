@@ -10,6 +10,7 @@ import {
   deleteData,
   getData,
 } from 'utils/api'
+import sx from './sx'
 
 const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
   const [item, setItem] = useState(null)
@@ -41,16 +42,10 @@ const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
         e.stopPropagation()
         item ? deleteItem(item, setItem, loginReducer) : addItem(collection, iiifManifest, setItem, loginReducer)
       }}
+      sx={sx.button}
     >
       <span
-        sx={{
-          fontSize: '.75rem',
-          fontVariant: 'small-caps',
-          fontWeight: '800',
-          lineHeight: '1rem',
-          margin: '0 1em 0 0',
-          verticalAlign: 'middle',
-        }}>{item ? 'remove' : 'add'}</span>
+        sx={sx.text}>{item ? 'remove' : 'add'}</span>
       {collection.title}
     </button>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown/with-html'
+import { Styled } from 'theme-ui'
 
 const MetaDataValue = ({ values, skipHtml }) => {
   return (
@@ -13,6 +14,7 @@ const MetaDataValue = ({ values, skipHtml }) => {
                 source={val}
                 escapeHtml={false}
                 skipHtml={skipHtml}
+                renderers={{ link: Styled.a }}
               />
             </dd>
           )

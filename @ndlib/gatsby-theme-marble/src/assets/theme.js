@@ -114,6 +114,7 @@ export const theme = {
     },
     a: {
       color: 'primary',
+      wordBreak: 'break-word',
     },
     h1: {
       color: 'gray.4',

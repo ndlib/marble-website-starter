@@ -36,7 +36,7 @@ module.exports = {
     },
     userContentPath: `https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/`,
     searchPath: 'search',
-
+    iiifHelpURL: 'https://sites.nd.edu/marble/iiif-at-notre-dame-or-the-heart-of-marble/',
     // menus
     menus: menus,
 

@@ -1,5 +1,8 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
+import { jsx } from 'theme-ui'
 import BookmarkGroup from './BookmarkGroup'
 import ActionButton from './ActionButton'
 import ManifestLink from './ManifestLink'
@@ -7,14 +10,15 @@ import print from 'assets/icons/svg/baseline-print-24px.svg'
 import share from 'assets/icons/svg/baseline-share-24px.svg'
 import downloadImg from 'assets/icons/svg/baseline-save_alt-24px.svg'
 
-import style from './style.module.css'
-
 const ActionButtonGroup = ({ iiifManifest }) => {
   if (!iiifManifest) {
     return null
   }
   return (
-    <section className={style.actionButtons}>
+    <section sx={{
+      display: 'flex',
+      width: '100%',
+    }}>
       <BookmarkGroup iiifManifest={iiifManifest} />
       <ActionButton
         name='Share'

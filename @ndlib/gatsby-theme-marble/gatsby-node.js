@@ -179,6 +179,7 @@ exports.sourceNodes = ({ actions }) => {
   type SiteMetadata {
     universalViewerBaseURL: String
     googleMapApiURL: String
+    iiifHelpURL: String
     searchBase: searchBase
     footerText: String
     menus: [menus]
