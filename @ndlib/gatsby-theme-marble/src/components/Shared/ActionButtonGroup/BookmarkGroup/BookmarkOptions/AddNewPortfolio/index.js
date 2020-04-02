@@ -11,17 +11,27 @@ const defaultTitle = 'My Portfolio'
 
 export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
   const [editable, setEditable] = useState(false)
+  const [error, setError] = useState(false)
   const [creating, setCreating] = useState(false)
   const [title, setTitle] = useState(defaultTitle)
   if (!editable) {
     return (
       <button
+        className='add-button'
         onClick={() => setEditable(true)}
         sx={sx.createButton}
       >Create A New Portfolio</button>
     )
   }
-
+  if (error) {
+    return (
+      <button
+        className='add-button'
+        onClick={() => setError(false)}
+        sx={sx.errorButton}
+      >An error occured.</button>
+    )
+  }
   return (
     <div
       sx={sx.wrapper}
@@ -36,6 +46,7 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
         sx={sx.input}
       />
       <button
+        className='submit-button'
         onClick={
           () => {
             setCreating(true)
@@ -60,6 +71,7 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
               }),
               errorFunc: (e) => {
                 console.error(e)
+                setError(true)
               },
             })
           }
