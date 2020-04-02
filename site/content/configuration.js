@@ -3,6 +3,8 @@ const searchUrl = process.env.SEARCH_URL || 'https://search-testy-search-testy-u
 // set this to be a website-local-index so we stop busting the main website.
 const searchIndex = process.env.SEARCH_INDEX || 'marble-website'
 
+console.log('ENVSSSSS: ', process.env)
+
 const menus = require('./menus')
 const themeColor = `#0A233F`
 const languages = {
