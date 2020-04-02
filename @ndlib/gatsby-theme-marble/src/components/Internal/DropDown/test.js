@@ -30,9 +30,7 @@ describe('DropDown', () => {
 
     // simulate click
     act(() => {
-      wrapper.findWhere(c => {
-        return c.prop('role') === 'button'
-      }).props().onClick()
+      wrapper.find('.dropdown-toggle').props().onClick()
     })
 
     // expcect it to be open

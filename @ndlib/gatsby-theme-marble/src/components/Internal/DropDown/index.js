@@ -18,6 +18,7 @@ const DropDown = ({ sxStyle, buttonLabel, options }) => {
       }}
     >
       <button
+        className='dropdown-toggle'
         onClick={() => setOpen(!open)}
         sx={sxStyle.toggle}
       >
