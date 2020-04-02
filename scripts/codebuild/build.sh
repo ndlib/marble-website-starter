@@ -17,4 +17,7 @@ export SEARCH_INDEX=${SEARCH_INDEX}
 # build
 yarn workspace site clean
 rm -rf ./public
+rm -rf .cache
+node site/content/configuration.js
+
 yarn workspace site build || { echo "\e[31mGatsby build failed${reset}"; exit 1; }
