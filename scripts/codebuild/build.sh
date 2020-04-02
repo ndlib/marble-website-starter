@@ -15,4 +15,5 @@ echo "BUILD SEARCH INDEX: ${SEARCH_INDEX}"
 export SEARCH_URL=${SEARCH_URL}
 export SEARCH_INDEX=${SEARCH_INDEX}
 # build
+yarn workspace site clean
 yarn workspace site build || { echo "\e[31mGatsby build failed${reset}"; exit 1; }
