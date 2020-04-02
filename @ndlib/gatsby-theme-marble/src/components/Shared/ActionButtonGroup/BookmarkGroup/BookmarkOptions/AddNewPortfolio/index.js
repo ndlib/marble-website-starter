@@ -26,7 +26,7 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
   if (error) {
     return (
       <button
-        className='add-button'
+        className='error-button'
         onClick={() => setError(false)}
         sx={sx.errorButton}
       >An error occured.</button>
