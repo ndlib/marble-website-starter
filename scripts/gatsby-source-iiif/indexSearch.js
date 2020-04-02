@@ -52,7 +52,7 @@ const determineProvider = (manifest) => {
 }
 
 const loadManifestData = () => {
-  const data = fs.readFileSync(path.join(directory, '/content/json/items/items.json'))
+  const data = fs.readFileSync(path.join(directory, '/content/items/items.json'))
   const manifestData = JSON.parse(data.toString())
   return manifestData
 }
@@ -181,7 +181,7 @@ const configIndexMappings = async () => {
   return mappings
 }
 
-const writeDirectory = path.join(directory, '/content/json/search/')
+const writeDirectory = path.join(directory, '/content/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {

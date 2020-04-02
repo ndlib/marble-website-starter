@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@ndlib/gatsby-theme-marble": "*",
-    "gatsby": "^2.13.61",
+    "gatsby": "^2.20.10",
     "react": "16.11",
     "react-dom": "16.11"
   }
