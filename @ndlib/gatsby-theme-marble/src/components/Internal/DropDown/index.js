@@ -17,13 +17,12 @@ const DropDown = ({ sxStyle, buttonLabel, options }) => {
         }
       }}
     >
-      <div
-        role='button'
+      <button
         onClick={() => setOpen(!open)}
         sx={sxStyle.toggle}
       >
         { buttonLabel }
-      </div>
+      </button>
       <div
         role='listbox'
         sx={open ? sxStyle.optionsOpen : sxStyle.optionsClosed}>
