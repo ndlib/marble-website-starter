@@ -1,11 +1,12 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import icon from 'assets/icons/svg/baseline-bookmark-24px-white.svg'
 import sx from './sx'
 
-const BookmarkLabel = () => {
+const BookmarkLabel = ({ text }) => {
   return (
     <React.Fragment>
       <img
@@ -13,13 +14,12 @@ const BookmarkLabel = () => {
         alt=''
         sx={sx.image}
       />
-      <span sx={sx.label}>Save to a portfolio</span>
+      <span sx={sx.label}>{text}</span>
     </React.Fragment>
   )
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
+BookmarkLabel.propTypes = {
+  text: PropTypes.string.isRequired,
 }
-
 export default BookmarkLabel

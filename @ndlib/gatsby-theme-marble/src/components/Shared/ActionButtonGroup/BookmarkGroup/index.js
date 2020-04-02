@@ -41,7 +41,10 @@ export const BookmarkGroup = ({ iiifManifest, loginReducer }) => {
     <DropDown
       sxStyle={sx}
       buttonLabel={(
-        <BookmarkLabel sxStyle={sx} />
+        <BookmarkLabel
+          sxStyle={sx}
+          text='Save to a portfolio'
+        />
       )}
       options={(
         <BookmarkOptions
