@@ -7,18 +7,17 @@ const AWS = require('aws-sdk')
 const getCenturyTags = require('./src/getCenturyTagsFromDate')
 const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 
-const directory = process.argv.slice(2)[0]
-require('dotenv').config({
-  path: path.join(directory, '.env.production'),
-})
-
-const siteIndex = process.env.SEARCH_INDEX
-const domain = process.env.SEARCH_URL
-
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local') {
   return
 }
+
+const directory = process.argv.slice(2)[0]
+require('dotenv').config({
+  path: path.join(directory, '.env.production'),
+})
+const siteIndex = process.env.SEARCH_INDEX
+const domain = process.env.SEARCH_URL
 
 console.log(siteIndex, domain)
 
