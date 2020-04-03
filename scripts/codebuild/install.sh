@@ -41,5 +41,3 @@ source ${ENV_FILE}
 export $(cut -d= -f1 ${ENV_FILE})
 ./generate.sh ${1}
 popd
-
-echo "" &> ./test_results.log
