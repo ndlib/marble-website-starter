@@ -1,7 +1,17 @@
+// configure environment variables
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
+console.log(`Using environment config: '${activeEnv}'`)
+require('dotenv').config({
+  path: `.env.${activeEnv}`,
+})
+
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
-const searchUrl = process.env.SEARCH_URL || 'https://search-testy-search-testy-u2vq42wckv4epdwlul2nthzvsi.us-east-1.es.amazonaws.com'
+const searchUrl = process.env.SEARCH_URL || ''
 // set this to be a website-local-index so we stop busting the main website.
-const searchIndex = process.env.SEARCH_INDEX || 'marble-website'
+const searchIndex = process.env.SEARCH_INDEX || ''
+console.log(`SEARCH_INDEX: '${searchIndex}'`)
+console.log(`SEARCH_URL: '${searchUrl}'`)
 const menus = require('./menus')
 const themeColor = `#0A233F`
 const languages = {

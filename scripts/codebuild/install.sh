@@ -38,3 +38,6 @@ source ${ENV_FILE}
 export $(cut -d= -f1 ${ENV_FILE})
 ./generate.sh ${1}
 popd
+
+echo "Copy .env to site for Gatsby"
+cp ./.env ./site/.env.production
