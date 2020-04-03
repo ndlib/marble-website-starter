@@ -7,13 +7,12 @@ echo "${magenta}----- BUILD -----${reset}"
 # generated in install.sh
 ENV_FILE="${PWD}/.env"
 echo "BUILD ENV: ${ENV_FILE}"
-source ${ENV_FILE}
-export $(cut -d= -f1 ${ENV_FILE})
-echo "Export"
-echo $?
+# source ${ENV_FILE}
+# export $(cut -d= -f1 ${ENV_FILE})
+
 echo "$(cat ${ENV_FILE})"
 echo "BUILD SEARCH URL: ${SEARCH_URL}"
 echo "BUILD SEARCH INDEX: ${SEARCH_INDEX}"
 
 # build
-yarn workspace site build   
+yarn workspace site build
