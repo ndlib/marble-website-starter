@@ -8,13 +8,8 @@ node generateMD.js ${site}
 echo "Generate MD"
 echo $?
 
-#node getSchema.js ${site}
-#echo "Get Scheme"
-#echo $?
+node getSchema.js ${site}
 
 if [ "${1}" != "local" ]; then
-  #node indexSearch.js ${site}
-  #echo "Index"
-  #echo $?
-
+  node indexSearch.js ${site}
 fi

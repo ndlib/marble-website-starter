@@ -16,7 +16,4 @@ echo "BUILD SEARCH URL: ${SEARCH_URL}"
 echo "BUILD SEARCH INDEX: ${SEARCH_INDEX}"
 
 # build
-yarn workspace site build 
-
-echo "Build:"
-echo $?
+yarn workspace site build   
