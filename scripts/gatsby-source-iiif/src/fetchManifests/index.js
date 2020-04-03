@@ -18,7 +18,7 @@ module.exports = async (urls) => {
         result[data['id']] = {}
         result[data['id']] = data
 
-        return data
+        return recursiveFetchChildren(data)
       }).catch(err => console.log('fetch error', url, err))
   }
 
@@ -62,9 +62,8 @@ module.exports = async (urls) => {
   const manifestTree = []
   try {
     Object.keys(result).forEach(key => {
-      const manifest = result[key]
-      // const manifest = expandManifestTree(result[key])
-      // traverseAndFixData(manifest)
+      const manifest = expandManifestTree(result[key])
+      traverseAndFixData(manifest)
 
       manifestTree.push(manifest)
     })

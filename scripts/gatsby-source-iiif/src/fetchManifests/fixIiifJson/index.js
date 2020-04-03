@@ -7,6 +7,7 @@ const traverseAndFixData = (o) => {
     } else if (continueTraversing(o[i])) {
       // going one step down in the object tree!!
       traverseAndFixData(o[i])
+      removeProvider(o[i])
     }
   }
 }
@@ -43,6 +44,14 @@ const fixLanguage = (data) => {
     }
   })
   return ret
+}
+
+const removeProvider = (data) => {
+  if (data.provider && (!data.type || data.type === 'Canvas')) {
+    delete data.provider
+  }
+
+  return data
 }
 
 module.exports = traverseAndFixData
