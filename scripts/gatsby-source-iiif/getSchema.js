@@ -25,7 +25,7 @@ const fetchData = async (seeAlso) => {
     return result
   }))
     .then(() => {
-      fs.writeFileSync(path.join(directory, '/content/json/items/items.json'), JSON.stringify(finalResult))
+      fs.writeFileSync(path.join(directory, '/content/items/items.json'), JSON.stringify(finalResult))
     })
     .catch(error => {
       console.error('Promise error: ', error)
