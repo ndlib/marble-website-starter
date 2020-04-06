@@ -4,6 +4,7 @@ module.exports = {
     display: 'inline-block',
     margin: '.5rem',
     marginLeft: '0',
+    maxWidth: '85vw',
     outline: 'none',
     position: 'relative',
     textAlign: 'center',
@@ -13,9 +14,9 @@ module.exports = {
   optionsOpen: {
     border: '1px solid',
     borderColor: 'gray.1',
+    display: 'block',
     outline: 'none',
     position: 'absolute',
-    display: 'block',
     zIndex: '1',
   },
   optionsClosed: {
@@ -28,21 +29,5 @@ module.exports = {
     outline: 'none',
     padding: '.5rem',
     width: '200px',
-  },
-  label: {
-    paddingLeft: '.5rem',
-  },
-  image: {
-    height: '20px',
-    verticalAlign: 'text-bottom',
-  },
-  noPortfolios: {
-    backgroundColor: 'white',
-    borderBottom: '1px solid',
-    fontSize: '.85rem',
-    fontStyle: 'italic',
-    height: '50px',
-    lineHeight: '50px',
-    verticalAlign: 'middle',
   },
 }
