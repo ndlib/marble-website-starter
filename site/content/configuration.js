@@ -7,11 +7,13 @@ require('dotenv').config({
 })
 
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
+
 const searchUrl = process.env.SEARCH_URL || ''
 // set this to be a website-local-index so we stop busting the main website.
 const searchIndex = process.env.SEARCH_INDEX || ''
 console.log(`SEARCH_INDEX: '${searchIndex}'`)
 console.log(`SEARCH_URL: '${searchUrl}'`)
+
 const menus = require('./menus')
 const themeColor = `#0A233F`
 const languages = {
