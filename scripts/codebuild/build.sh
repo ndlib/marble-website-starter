@@ -7,8 +7,8 @@ echo "${magenta}----- BUILD -----${reset}"
 # generated in install.sh
 ENV_FILE="${PWD}/.env"
 echo "BUILD ENV: ${ENV_FILE}"
-# source ${ENV_FILE}
-# export $(cut -d= -f1 ${ENV_FILE})
+source ${ENV_FILE}
+export $(cut -d= -f1 ${ENV_FILE})
 
 echo "$(cat ${ENV_FILE})"
 echo "BUILD SEARCH URL: ${SEARCH_URL}"
