@@ -47,8 +47,11 @@ const fixLanguage = (data) => {
 }
 
 const removeProvider = (data) => {
+  // delete data['@context']
+  // delete data.seeAlso
+
   if (data.provider && (!data.type || data.type === 'Canvas')) {
-    delete data.provider
+    // delete data.provider
   }
 
   return data

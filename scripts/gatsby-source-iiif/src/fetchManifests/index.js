@@ -8,7 +8,6 @@ module.exports = async (urls) => {
     if (!url) {
       return
     }
-    // console.log('Fetching:', url)
     return fetch(url)
       .then(response => response.json())
       .then((data) => {

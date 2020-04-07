@@ -14,7 +14,7 @@ const domain = configuration.siteMetadata.searchBase.url
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local') {
-  return
+  // return
 }
 
 console.log(siteIndex, domain)
@@ -111,6 +111,7 @@ const indexToElasticSearch = async (searchData) => {
   console.log('Indexing')
   // convert the data to bulk index format
   const indexData = []
+  console.log(searchData.length)
   searchData.forEach((manifest) => {
     indexData.push({ index:  { _index: siteIndex, _type: '_doc', _id: manifest.id } })
     indexData.push(manifest)
@@ -187,6 +188,7 @@ const writeDirectory = path.join(directory, '/content/search/')
 new Promise(async (resolve, reject) => {
   const manifests = loadManifestData()
   const writeData = []
+  console.log(manifests.length)
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
