@@ -8,7 +8,7 @@ const getCenturyTags = require('./src/getCenturyTagsFromDate')
 const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 
 const appConfig = process.env.APP_CONFIG
-if (appConfig === 'local') {
+if (appConfig === 'local' || process.env.TRAVIS_RUN) {
   return
 }
 
@@ -19,10 +19,9 @@ require('dotenv').config({
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 
-console.log(siteIndex, domain)
-
-if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
+if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
+  return
 }
 
 const options = {
@@ -197,7 +196,7 @@ new Promise(async (resolve, reject) => {
 
   await setupIndex()
   await indexToElasticSearch(writeData)
-  console.log('Writing Search Data to gatsby')
+  // console.log('Writing Search Data to gatsby')
   // fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
   resolve()

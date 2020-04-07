@@ -23,7 +23,6 @@ const SearchBase = ({ children, defaultSearch }) => {
       }
     `
   )
-  console.log('here', site)
   const searchBase = typy(site, 'siteMetadata.searchBase').safeObject
   if (!typy(searchBase, 'url').isString || !typy(searchBase, 'app').isString) {
     return (

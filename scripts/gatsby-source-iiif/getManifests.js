@@ -22,7 +22,16 @@ new Promise(async (resolve, reject) => {
   await ensureDirectoryStructure()
   const manifestList = loadManifestsFile()
 
-  const manifestData = await fetchData(manifestList.manifests)
+  let manifestIds = manifestList.manifest_ids
+  if (process.env.TRAVIS_RUN) {
+    manifestIds = manifestList.travis_manfest_ids
+  }
+
+  const manifests = manifestIds.map((id) => {
+    return 'https://presentation-iiif.library.nd.edu/' + id + '/manifest'
+  })
+
+  const manifestData = await fetchData(manifests)
   const data = JSON.stringify(manifestData)
   fs.writeFileSync(path.join(directory, '/content/json/iiif/iiif.json'), data)
 
