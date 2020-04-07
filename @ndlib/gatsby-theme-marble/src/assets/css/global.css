@@ -80,6 +80,15 @@ address {
 .sk-search-box input.sk-search-box__text {
   color: black !important;
 }
+
+.sk-search-box input.sk-search-box__text::placeholder {
+  text-align: center;
+}
+
+.sk-search-box:focus-within {
+  border-radius: 10px;
+}
+
 .sk-panel {
   border-bottom: 1px solid #999;
   margin-bottom: 1rem;
