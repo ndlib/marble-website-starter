@@ -17,8 +17,6 @@ if (appConfig === 'local') {
   return
 }
 
-console.log(siteIndex, domain)
-
 if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
   console.log('Required parameters were not passed in')
 }
@@ -111,7 +109,6 @@ const indexToElasticSearch = async (searchData) => {
   console.log('Indexing')
   // convert the data to bulk index format
   const indexData = []
-  console.log(searchData.length)
   searchData.forEach((manifest) => {
     indexData.push({ index:  { _index: siteIndex, _type: '_doc', _id: manifest.id } })
     indexData.push(manifest)
@@ -188,7 +185,6 @@ const writeDirectory = path.join(directory, '/content/search/')
 new Promise(async (resolve, reject) => {
   const manifests = loadManifestData()
   const writeData = []
-  console.log(manifests.length)
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
@@ -197,7 +193,7 @@ new Promise(async (resolve, reject) => {
 
   await setupIndex()
   await indexToElasticSearch(writeData)
-  console.log('Writing Search Data to gatsby')
+  // console.log('Writing Search Data to gatsby')
   // fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
   resolve()
