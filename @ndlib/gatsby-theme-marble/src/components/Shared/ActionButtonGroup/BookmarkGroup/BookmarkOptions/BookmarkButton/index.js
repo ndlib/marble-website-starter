@@ -12,7 +12,7 @@ import {
 } from 'utils/api'
 import sx from './sx'
 
-const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
+export const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
   const [item, setItem] = useState(null)
 
   useEffect(() => {
@@ -38,14 +38,14 @@ const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
 
   return (
     <button
-      onClick={(e) => {
-        e.stopPropagation()
+      onClick={() => {
         item ? deleteItem(item, setItem, loginReducer) : addItem(collection, iiifManifest, setItem, loginReducer)
       }}
       sx={sx.button}
     >
-      <span
-        sx={sx.text}>{item ? 'remove' : 'add'}</span>
+      <span sx={sx.text}>
+        {item ? 'remove' : 'add'}
+      </span>
       {collection.title}
     </button>
   )
