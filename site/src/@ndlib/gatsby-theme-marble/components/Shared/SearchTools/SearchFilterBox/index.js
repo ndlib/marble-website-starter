@@ -4,7 +4,7 @@ import {
   SelectedFilters,
   ResetFilters,
 } from 'searchkit'
-import HeroBox from '../../HeroBox'
+import HeroBox from 'components/shared/HeroBox'
 
 import banner from 'assets/images/banner.swirl.png'
 
