@@ -8,7 +8,6 @@
     "000297305",
     "001016383",
     "001591353",
-    "001614725",
     "002097132",
     "002468275",
     "003701271",
@@ -415,12 +414,7 @@
     "MSNMN5004_EAD"
   ],
   "saved": [
-    "https://presentation-iiif.library.nd.edu/MSNCOL2717_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/MSNCW5014_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/MSNCW5013_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/MSNCW5058_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/MSNCW5061_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/MSNCW5066_EAD/manifest",
-    "https://presentation-iiif.library.nd.edu/000297305/manifest"
+    "001614725",
+    "003701271",    
   ]
 }
