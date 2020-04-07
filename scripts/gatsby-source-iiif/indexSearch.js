@@ -8,7 +8,7 @@ const getCenturyTags = require('./src/getCenturyTagsFromDate')
 const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 
 const appConfig = process.env.APP_CONFIG
-if (appConfig === 'local') {
+if (appConfig === 'local' || process.env.TRAVIS_RUN) {
   return
 }
 
@@ -19,8 +19,9 @@ require('dotenv').config({
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 
-if (!domain || !siteIndex || process.env.TRAVIS_RUN) {
+if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
+  return
 }
 
 const options = {
