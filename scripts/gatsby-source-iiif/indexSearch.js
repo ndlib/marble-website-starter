@@ -14,7 +14,7 @@ const domain = configuration.siteMetadata.searchBase.url
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local') {
-  // return
+  return
 }
 
 console.log(siteIndex, domain)
