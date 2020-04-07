@@ -19,7 +19,7 @@ require('dotenv').config({
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 
-if (!domain || !siteIndex || domain === 'travis-test-no-index' || siteIndex === 'travis-test-no-index') {
+if (!domain || !siteIndex || process.env.TRAVIS_RUN) {
   console.log('Required parameters were not passed in')
 }
 
