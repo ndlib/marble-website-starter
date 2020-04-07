@@ -13,7 +13,7 @@ module.exports = {
     textOverflow: 'ellipsis',
     userSelect: 'none',
     whiteSpace: 'nowrap',
-    width: '250px',
+    width: '100%',
     '&:hover': {
       backgroundColor: 'gray.0',
       opacity: '1.0',
