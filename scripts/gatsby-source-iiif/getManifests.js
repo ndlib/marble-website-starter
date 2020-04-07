@@ -22,7 +22,12 @@ new Promise(async (resolve, reject) => {
   await ensureDirectoryStructure()
   const manifestList = loadManifestsFile()
 
-  const manifests = manifestList.manifest_ids.map((id) => {
+  let manifestIds = manifestList.manifest_ids
+  if (process.env.TRAVIS_RUN) {
+    manifestIds = manifestList.travis_manfest_ids
+  }
+
+  const manifests = manifestIds.map((id) => {
     return 'https://presentation-iiif.library.nd.edu/' + id + '/manifest'
   })
 
