@@ -5,6 +5,7 @@ import {
   ResetFilters,
 } from 'searchkit'
 import HeroBox from '@ndlib/gatsby-theme-marble/src/components/Shared/HeroBox'
+import { customQueryBuilder } from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchFilterBox'
 
 import banner from 'assets/images/banner.swirl.png'
 
@@ -20,38 +21,6 @@ const SearchFilterBox = () => {
       <ResetFilters />
     </HeroBox>
   )
-}
-
-const customQueryBuilder = (query, options) => {
-  return {
-    bool : {
-      should : [
-        {
-          multi_match: {
-            query: query,
-            fields: [
-              'name^3',
-              'creator^2',
-              'allMetadata',
-            ],
-            slop: 5,
-            type: 'phrase',
-            boost: 4,
-          },
-        },
-        {
-          multi_match: {
-            query: query,
-            fields: [
-              'name^2',
-              'creator^1',
-              'allMetadata',
-            ],
-          },
-        },
-      ],
-    },
-  }
 }
 
 export default SearchFilterBox
