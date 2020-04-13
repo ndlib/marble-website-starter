@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ToggleButton from './ToggleButton'
-import style from './style.module.css'
+import sx from './sx.js'
 import { jsx } from 'theme-ui'
 import {
   DISPLAY_GRID,
@@ -16,7 +16,7 @@ import gridIconActive from 'assets/icons/svg/baseline-view_module-24px-white.svg
 import listIconInactive from 'assets/icons/svg/baseline-view_list-24px.svg'
 import gridIconInactive from 'assets/icons/svg/baseline-view_module-24px.svg'
 
-export const DisplayViewToggleInternal = ({ page, children, layoutClass, displayReducer, dispatch }) => {
+export const DisplayViewToggleInternal = ({ page, children, displayReducer, dispatch }) => {
   const options = [
     {
       display: DISPLAY_LIST,
@@ -30,8 +30,8 @@ export const DisplayViewToggleInternal = ({ page, children, layoutClass, display
     },
   ]
   return (
-    <div className={layoutClass}>
-      <div className={style.displayViewToggleGroup}>
+    <div>
+      <div sx={sx.wrapper}>
         {
           options.map(opt => {
             const isActive = (displayReducer[page] === opt.display)
@@ -49,20 +49,13 @@ export const DisplayViewToggleInternal = ({ page, children, layoutClass, display
         }
       </div>
       <br className='clearfix' />
-      <div sx={{ margin: '0 -1rem' }}>
+      <div sx={sx.group}>
         {
           children ? (children.map((child, index) => {
             return (
               <div
                 key={index}
-                sx={displayReducer[page] === 'list' ? {
-                  padding: '1rem',
-                  width: '100%',
-                } : {
-                  display: 'inline-block',
-                  padding: '1rem',
-                  width: ['100%', '50%', '33.33%'],
-                }}
+                sx={sx.item(displayReducer[page])}
               >{child}</div>
             )
           })
@@ -75,7 +68,6 @@ export const DisplayViewToggleInternal = ({ page, children, layoutClass, display
 
 DisplayViewToggleInternal.propTypes = {
   page: PropTypes.string.isRequired,
-  layoutClass: PropTypes.string,
   children: PropTypes.node.isRequired,
   dispatch: PropTypes.func.isRequired,
   displayReducer: PropTypes.object.isRequired,

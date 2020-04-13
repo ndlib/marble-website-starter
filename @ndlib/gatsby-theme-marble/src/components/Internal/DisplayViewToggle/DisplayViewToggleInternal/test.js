@@ -46,7 +46,6 @@ test('DisplayViewToggle', () => {
     >{[children]}</DisplayViewToggleInternal>,
   )
 
-  expect(wrapper.find('.displayViewToggleGroup').exists()).toBeTruthy()
   expect(wrapper.find(ToggleButton).length).toEqual(2)
   expect(wrapper.find(ToggleButton).at(0).props().option).toEqual(options[0])
   expect(wrapper.find(ToggleButton).at(1).props().option).toEqual(options[1])

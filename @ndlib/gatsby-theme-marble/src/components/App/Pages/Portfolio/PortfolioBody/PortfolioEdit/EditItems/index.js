@@ -5,24 +5,21 @@ import PropTypes from 'prop-types'
 import EditItem from './EditItem'
 import NoItems from 'components/App/Pages/Portfolio/PortfolioBody/PortfolioView/PortfolioDisplay/NoItems'
 import { jsx } from 'theme-ui'
+import sx from './sx.js'
 
-const EditItems = ({ portfolio, className }) => {
+const EditItems = ({ portfolio }) => {
   const { items } = portfolio
   return (
     <div>
       {
         items.length > 0 ? (
-          <div sx={{ margin: '0 -1rem' }}>
+          <div sx={sx.group}>
             {
               items.map(item => {
                 return (
                   <div
                     key={item.uuid}
-                    sx={{
-                      display: 'inline-block',
-                      padding: '1rem',
-                      width: ['100%', '50%', '33.33%'],
-                    }}
+                    sx={sx.item}
                   >
                     <EditItem
                       item={item}
@@ -42,6 +39,5 @@ const EditItems = ({ portfolio, className }) => {
 
 EditItems.propTypes = {
   portfolio: PropTypes.object.isRequired,
-  className: PropTypes.string,
 }
 export default EditItems
