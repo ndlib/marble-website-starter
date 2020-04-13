@@ -12,9 +12,8 @@ test('UserCartouche', () => {
   }
   navigate.mockImplementationOnce(() => {})
   const wrapper = shallow(<UserCartouche user={user} loginReducer={{}} />)
-  expect(wrapper.find('.cartouche').props().role).toEqual('button')
   expect(wrapper.find(Gravatar).props().email).toEqual('me@service.mail')
-  expect(wrapper.find('.cartouche').html()).toContain('Dude McGuy')
+  expect(wrapper.find('button').html()).toContain('Dude McGuy')
   wrapper.find('.cartouche').simulate('click')
   expect(navigate).toBeCalled()
 })

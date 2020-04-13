@@ -37,8 +37,7 @@ const Card = ({
           <ExteralLinkIcon target={target} />
           <figcaption sx={sx.figcaption(wide)}>
             <Styled.h3>{label}</Styled.h3>
-            <div className='cardAdditional'>
-              <div className='fadeOut' />
+            <div>
               {children}
             </div>
           </figcaption>
