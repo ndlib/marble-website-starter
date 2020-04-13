@@ -5,7 +5,7 @@ export default merge({}, theme, {
     primary: '#437D8A',
     secondary: '#575656',
     attention: '#aa272f',
-    highlight: '#D39F10',
+    highlight: '#fff190',
   },
   flexD: ['row', 'column'],
   fonts: {
