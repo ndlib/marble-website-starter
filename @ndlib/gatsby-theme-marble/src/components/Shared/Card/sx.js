@@ -67,6 +67,7 @@ module.exports = {
         borderColor: 'background',
         height: '248px',
         objectFit: 'cover',
+        objectPosition: 'top',
         width: '348px',
       },
     } : {
@@ -83,6 +84,7 @@ module.exports = {
         borderColor: 'background',
         height: '248px',
         objectFit: 'cover',
+        objectPosition: 'top',
         width: 'calc(100% - 2px)',
       },
     }

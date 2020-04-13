@@ -5,9 +5,7 @@ import typy from 'typy'
 import DisplayViewToggleInternal from './DisplayViewToggleInternal'
 import {
   COLLECTION_PAGE,
-  // SEARCH_PAGE,
   DISPLAY_GRID,
-  // DISPLAY_LIST,
 } from 'store/actions/displayActions'
 
 export const LayoutContext = React.createContext(DISPLAY_GRID)
@@ -22,10 +20,7 @@ export const DisplayView = ({ children, defaultDisplay, displayReducer }) => {
   const layoutClass = displayReducer[defaultDisplay] || DISPLAY_GRID
   return (
     <LayoutContext.Provider value={layoutClass}>
-      <DisplayViewToggleInternal
-        page={defaultDisplay}
-        layoutClass={layoutClass}
-      >
+      <DisplayViewToggleInternal page={defaultDisplay}>
         {
           typy(children).safeArray.map((child, index) => {
             return (<div key={index}>{child}</div>)

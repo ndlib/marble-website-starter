@@ -40,6 +40,7 @@ const Image = ({
     fontFamily: 'heading',
     fontSize: '1.5rem',
     lineHeight: '3rem',
+    maxWidth: '100%',
     textAlign: 'center',
   }, sxStyle.image)
   return (
