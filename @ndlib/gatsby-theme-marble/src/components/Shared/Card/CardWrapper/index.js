@@ -14,7 +14,7 @@ const CardWrapper = ({
   referal,
   onClick,
 }) => {
-  if (!target && onClick) {
+  if (onClick) {
     return (
       <button
         sx={sx.clickableWrapper}
@@ -25,21 +25,21 @@ const CardWrapper = ({
         {children}
       </button>
     )
-  } else if (!target) {
+  } else if (target) {
     return (
-      <React.Fragment>
+      <Link
+        to={target}
+        state={buildReferalState(location, referal)}
+        sx={sx.clickableWrapper}
+      >
         {children}
-      </React.Fragment>
+      </Link>
     )
   }
   return (
-    <Link
-      to={target}
-      state={buildReferalState(location, referal)}
-      sx={sx.clickableWrapper}
-    >
+    <React.Fragment>
       {children}
-    </Link>
+    </React.Fragment>
   )
 }
 
