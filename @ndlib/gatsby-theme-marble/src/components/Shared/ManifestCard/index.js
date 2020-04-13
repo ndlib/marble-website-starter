@@ -1,12 +1,15 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
+import { jsx } from 'theme-ui'
 import Card from 'components/Shared/Card'
 import TypeLabel from './TypeLabel'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
 import getLanguage from 'utils/getLanguage'
-import style from './style.module.css'
+import sx from './sx'
 
 export const ManifestCard = (props) => {
   const { allIiifJson } = useStaticQuery(
@@ -18,7 +21,7 @@ export const ManifestCard = (props) => {
         }
       }
     }
-  `
+  `,
   )
 
   const manifestId = typy(props, 'iiifManifest').isString ? props.iiifManifest : props.iiifManifest.id
@@ -34,16 +37,16 @@ export const ManifestCard = (props) => {
   const creator = findCreator(iiifManifest, lang)
   const dates = findDates(iiifManifest, lang)
 
-  let children = (
-    <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
-  )
-
-  if (props.children) {
-    children = props.children
-  }
+  // let children = (
+  //   <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
+  // )
+  //
+  // if (props.children) {
+  //   children = props.children
+  // }
 
   return (
-    <div className={style.manifestCardWrapper}>
+    <div sx={sx.wrapper}>
       <Card
         label={iiifManifest.label[lang][0]}
         target={`/${iiifManifest.slug}`}
@@ -51,10 +54,9 @@ export const ManifestCard = (props) => {
         imageRegion={imageRegion}
         {...props}
       >
-        <p>{creator}</p>
-        <p>{dates}</p>
-
-        {children}
+        <p sx={sx.lineStyle}>{creator}</p>
+        <p sx={sx.lineStyle}>{dates}</p>
+        { /* children */ }
       </Card>
       <TypeLabel iiifManifest={iiifManifest} />
     </div>

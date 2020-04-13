@@ -1,7 +1,10 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Waypoint } from 'react-waypoint'
 import noImage from 'assets/images/noImage.svg'
+import { jsx } from 'theme-ui'
 
 // Image component takes either an iiif image service and the basic parameters to render OR an src.
 // iiif image service requires a region and a width OR a height.
@@ -18,7 +21,7 @@ const Image = ({
   src, // src to use if no service provided
   alt, // alt text for the image
   title, // title attribute on iamge
-  className, // class on the outer picture element
+  sxStyle, // sx style
 }) => {
   // derive image from image service OR src OR use the default noImage
   const imageSrc = src || serviceURL(service, region, size) || noImage
@@ -30,15 +33,24 @@ const Image = ({
   const onEnter = () => {
     setSrcSet(srcSet)
   }
+  const imageStyle = Object.assign({
+    backgroundColor: 'gray.2',
+    color: 'background',
+    display: 'block',
+    fontFamily: 'heading',
+    fontSize: '1.5rem',
+    lineHeight: '3rem',
+    textAlign: 'center',
+  }, sxStyle.image)
   return (
     <Waypoint onEnter={onEnter}>
-      <picture className={className}>
+      <picture sx={sxStyle.wrapper}>
         <img
           src={imageSrc}
           srcSet={activeSrcSet}
           alt={alt || title}
           title={title || alt}
-          style={{ width: '100%' }}
+          sx={imageStyle}
         />
       </picture>
     </Waypoint>
@@ -52,7 +64,7 @@ Image.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
   title: PropTypes.string,
-  className: PropTypes.string,
+  sxStyle: PropTypes.object,
 }
 
 Image.defaultProps = {
@@ -60,6 +72,10 @@ Image.defaultProps = {
   size: '1000,',
   alt: 'a static image',
   className: '',
+  sxStyle: {
+    wrapper: {},
+    image: {},
+  },
 }
 export default Image
 
@@ -79,7 +95,7 @@ export const sourceSet = (service, region, size) => {
     xDescriptors.forEach(xD => {
       const newSize = resize(size, xD)
       set.push(
-        `${serviceURL(service, region, newSize)} ${xD}x`
+        `${serviceURL(service, region, newSize)} ${xD}x`,
       )
     })
     return set.join(', ')

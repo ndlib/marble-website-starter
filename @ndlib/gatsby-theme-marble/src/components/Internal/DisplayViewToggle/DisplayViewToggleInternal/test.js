@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { DisplayViewToggleInternal } from './'
-import DisplayViewToggleGridList from './DisplayViewToggleGridList'
 import ToggleButton from './ToggleButton'
 import {
   DISPLAY_GRID,
@@ -33,7 +32,7 @@ test('DisplayViewToggle', () => {
     rowHeight: 5,
     cardWidth: 1,
   }
-  const children = <div className='kids'>Child Element</div>
+  const children = <div className='kids' key='1'>Child Element</div>
   const displayReducer = {
     somePage: DISPLAY_GRID,
   }
@@ -44,13 +43,12 @@ test('DisplayViewToggle', () => {
       activeSettings={activeSettings}
       displayReducer={displayReducer}
       dispatch={dispatch}
-    >{children}</DisplayViewToggleInternal>
+    >{[children]}</DisplayViewToggleInternal>,
   )
 
   expect(wrapper.find('.displayViewToggleGroup').exists()).toBeTruthy()
   expect(wrapper.find(ToggleButton).length).toEqual(2)
   expect(wrapper.find(ToggleButton).at(0).props().option).toEqual(options[0])
   expect(wrapper.find(ToggleButton).at(1).props().option).toEqual(options[1])
-  expect(wrapper.find(DisplayViewToggleGridList).props().activeSettings).toEqual(activeSettings)
   expect(wrapper.find('.kids').text()).toEqual('Child Element')
 })

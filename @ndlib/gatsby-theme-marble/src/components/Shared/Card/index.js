@@ -1,11 +1,14 @@
-import React from 'react'
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Styled } from 'theme-ui'
+import { BaseStyles, jsx, Styled } from 'theme-ui'
 import Link from 'components/Internal/Link'
 import Image from 'components/Shared/Image'
 import ExteralLinkIcon from './ExteralLinkIcon'
 import buildReferalState from 'utils/buildReferalState'
-import './style.css'
+import { LayoutContext } from 'components/Internal/DisplayViewToggle'
+import sx from './sx'
 
 // eslint-disable-next-line complexity
 const Card = ({
@@ -15,40 +18,44 @@ const Card = ({
   children,
   location,
   referal,
-  cardClass,
   imageService,
   imageRegion,
   onClick,
 }) => {
+  const wide = useContext(LayoutContext) === 'list'
   const cardInternal = (
-    <article className='cardWrapper'>
-      <figure className='cardFigure'>
-        <Image
-          src={image || null}
-          service={imageService || null}
-          region={imageRegion || null}
-          alt={label}
-          className='cardImage'
-        />
-        <ExteralLinkIcon target={target} />
-        <figcaption className='cardCaption'>
-          <Styled.h3>{label}</Styled.h3>
-          <div className='cardAdditional'>
-            <div className='fadeOut' />
-            {children}
-          </div>
-        </figcaption>
-      </figure>
-    </article>
+    <BaseStyles>
+      <article sx={sx.wrapper(wide)}>
+        <figure sx={sx.figure}>
+          <Image
+            src={image || null}
+            service={imageService || null}
+            region={imageRegion || null}
+            alt={label}
+            sxStyle={sx.imageStyle(wide)}
+          />
+          <ExteralLinkIcon target={target} />
+          <figcaption sx={sx.figcaption(wide)}>
+            <Styled.h3>{label}</Styled.h3>
+            <div className='cardAdditional'>
+              <div className='fadeOut' />
+              {children}
+            </div>
+          </figcaption>
+        </figure>
+      </article>
+    </BaseStyles>
   )
   if (!target && onClick) {
     return (
       <div
         role='button'
-        className={cardClass}
-        style={{ cursor: 'pointer' }}
+        sx={sx.clickableWrapper}
         onClick={(e) => {
           onClick(e)
+        }}
+        onButtonDown={(e) => {
+          console.log(e)
         }}
       >
         {cardInternal}
@@ -56,16 +63,16 @@ const Card = ({
     )
   } else if (!target) {
     return (
-      <div className={cardClass}>
+      <React.Fragment>
         {cardInternal}
-      </div>
+      </React.Fragment>
     )
   }
   return (
     <Link
       to={target}
       state={buildReferalState(location, referal)}
-      className={cardClass}
+      sx={sx.clickableWrapper}
     >
       {cardInternal}
     </Link>
@@ -81,7 +88,6 @@ Card.propTypes = {
   children: PropTypes.node,
   location: PropTypes.object,
   referal: PropTypes.object,
-  cardClass: PropTypes.string,
   onClick: PropTypes.func,
 }
 

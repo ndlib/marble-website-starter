@@ -11,6 +11,7 @@ const DropDown = ({ sxStyle, buttonLabel, options }) => {
     <div
       className='wrapper'
       sx={sxStyle.wrapper}
+      role='button'
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
           setOpen(false)

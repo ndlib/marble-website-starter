@@ -132,9 +132,10 @@ export const theme = {
     },
     h3: {
       fontFamily: 'body',
-      fontSize: 1,
+      fontSize: 2,
       fontWeight: '600',
       lineHeight: 'heading',
+      margin: '.5rem 0',
     },
 
   },

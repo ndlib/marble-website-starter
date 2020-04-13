@@ -1,28 +1,31 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import ResponsiveGridList from 'components/Internal/ResponsiveGridList'
-import { Styled } from 'theme-ui'
-import style from './style.module.css'
-
+import { Styled, jsx } from 'theme-ui'
+import sx from './sx'
 const CardGroup = ({ label, children }) => {
   return (
-    <div className={`${style.cardGroup} grid`}>
+    <React.Fragment>
       <Styled.h2>{label}</Styled.h2>
-      <ResponsiveGridList measureBeforeMount>
+      <div
+        className='cardGroup'
+        sx={sx.wrapper}
+      >
         {
           children.map((card, index) => {
             return (
               <div
                 key={index}
-                className={style.cardWrapper}
+                sx={sx.card}
               >
                 {card}
               </div>
             )
           })
         }
-      </ResponsiveGridList>
-    </div>
+      </div>
+    </React.Fragment>
   )
 }
 

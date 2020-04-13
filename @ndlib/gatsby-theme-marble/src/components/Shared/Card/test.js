@@ -1,10 +1,11 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import { Styled } from 'theme-ui'
+import { mount } from 'enzyme'
+import { BaseStyles, Styled } from 'theme-ui'
 import Card from './'
 import Image from 'components/Shared/Image'
 import ExteralLinkIcon from './ExteralLinkIcon'
 
+console.error = jest.fn()
 test('Card', () => {
   const props = {
     target: '/some-item',
@@ -12,16 +13,14 @@ test('Card', () => {
     image: 'img.png',
     children: <div className='childContent'>More Stuff</div>,
     location: {},
-    cardClass: 'test-card',
   }
-  const wrapper = shallow(<Card {...props} />)
-
-  expect(wrapper.find('.test-card').props().to).toEqual('/some-item')
-  expect(wrapper.find('article.cardWrapper').exists()).toBeTruthy()
-  expect(wrapper.find('figure.cardFigure').exists()).toBeTruthy()
+  const wrapper = mount(<Card {...props} />)
+  expect(wrapper.find(BaseStyles).exists()).toBeTruthy()
+  expect(wrapper.find('article').exists()).toBeTruthy()
+  expect(wrapper.find('figure').exists()).toBeTruthy()
   expect(wrapper.find(Image).props().src).toEqual('img.png')
   expect(wrapper.find(ExteralLinkIcon).props().target).toEqual('/some-item')
-  expect(wrapper.find('figcaption.cardCaption').exists()).toBeTruthy()
+  expect(wrapper.find('figcaption').exists()).toBeTruthy()
   expect(wrapper.find(Styled.h3).text()).toEqual('Card Label')
   expect(wrapper.find('.childContent').text()).toEqual('More Stuff')
 })
