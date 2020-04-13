@@ -24,6 +24,13 @@ module.exports = {
   figure: {
     margin: '0',
   },
+  fadeOut: {
+    height: '20px',
+    backgroundImage: 'linear-gradient(#ffffff00, #ffffff66, white, white)',
+    position: 'absolute',
+    bottom: '0',
+    width: '100%',
+  },
   figcaption: (wide) => {
     return wide ? {
       borderBottom: '6px solid',
@@ -33,6 +40,7 @@ module.exports = {
       marginLeft: '1.5rem',
       overflow: 'hidden',
       padding: '.5rem',
+      position: 'relative',
       width: 'calc(100% - 350px - 1.5rem)',
     } : {
       borderBottom: '6px solid',
@@ -40,6 +48,7 @@ module.exports = {
       height: '150px',
       overflow: 'hidden',
       padding: '.5rem',
+      position: 'relative',
     }
   },
   imageStyle: (wide) => {

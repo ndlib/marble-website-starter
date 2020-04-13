@@ -11,6 +11,7 @@ import { getImageServiceFromThumbnail } from 'utils/getImageService'
 import getLanguage from 'utils/getLanguage'
 import sx from './sx'
 
+// eslint-disable-next-line complexity
 export const ManifestCard = (props) => {
   const { allIiifJson } = useStaticQuery(
     graphql`
@@ -34,16 +35,7 @@ export const ManifestCard = (props) => {
   }
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const lang = getLanguage()
-  const creator = findCreator(iiifManifest, lang)
-  const dates = findDates(iiifManifest, lang)
-
-  // let children = (
-  //   <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
-  // )
-  //
-  // if (props.children) {
-  //   children = props.children
-  // }
+  const children = figureOutChildren(props, iiifManifest)
 
   return (
     <div sx={sx.wrapper}>
@@ -54,9 +46,8 @@ export const ManifestCard = (props) => {
         imageRegion={imageRegion}
         {...props}
       >
-        <p sx={sx.lineStyle}>{creator}</p>
-        <p sx={sx.lineStyle}>{dates}</p>
-        { /* children */ }
+
+        { children }
       </Card>
       <TypeLabel iiifManifest={iiifManifest} />
     </div>
@@ -96,6 +87,23 @@ const findDates = (manifest, lang) => {
   }, [])
 }
 
+const figureOutChildren = (props, iiifManifest) => {
+  const lang = getLanguage()
+  const creator = findCreator(iiifManifest, lang)
+  const dates = findDates(iiifManifest, lang)
+  let children = (
+    <React.Fragment>
+      { props.showCreator ? <p sx={sx.lineStyle}>{creator}</p> : null }
+      { props.showDate ? <p sx={sx.lineStyle}>{dates}</p> : null }
+      { props.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null }
+    </React.Fragment>
+  )
+
+  if (props.children) {
+    children = props.children
+  }
+  return children
+}
 const findManifest = (manifestId, allIiifJson) => {
   return allIiifJson.nodes.find(manifest => {
     return manifest.id === manifestId
@@ -105,6 +113,14 @@ const findManifest = (manifestId, allIiifJson) => {
 ManifestCard.propTypes = {
   iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   imageRegion: PropTypes.string,
+  showCreator: PropTypes.bool,
+  showDate: PropTypes.bool,
+  showSummary: PropTypes.bool,
+  children: PropTypes.node,
 }
-
+ManifestCard.defaultProps = {
+  showCreator: true,
+  showDate: true,
+  showSummary: false,
+}
 export default ManifestCard
