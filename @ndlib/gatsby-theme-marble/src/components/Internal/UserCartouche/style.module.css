@@ -7,9 +7,11 @@
   font-size: 1rem;
   font-style: normal;
   line-height: 1.45rem;
+  margin: 0 0.5rem;
+  outline: none;
   padding: 0.25rem 1rem;
   text-decoration: none;
-  vertical-align: top;
+  vertical-align: baseline;
 }
 .gravatarWrapper {
   display: inline-block;

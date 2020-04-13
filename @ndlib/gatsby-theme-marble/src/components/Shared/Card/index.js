@@ -48,18 +48,14 @@ const Card = ({
   )
   if (!target && onClick) {
     return (
-      <div
-        role='button'
+      <button
         sx={sx.clickableWrapper}
         onClick={(e) => {
           onClick(e)
         }}
-        onButtonDown={(e) => {
-          console.log(e)
-        }}
       >
         {cardInternal}
-      </div>
+      </button>
     )
   } else if (!target) {
     return (

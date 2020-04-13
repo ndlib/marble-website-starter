@@ -1,11 +1,14 @@
 module.exports = {
   clickableWrapper: {
     color: 'gray.4',
+    cursor: 'pointer',
+    backgroundColor: 'background',
+    border: 'none',
     display: 'block',
+    outline: 'none',
+    textAlign: 'left',
     textDecoration: 'none',
-    '&:hover': {
-      boxShadow: '0px 0px 5px 1px rgba(0,0,0,0.1)',
-    },
+    width: '100%',
   },
   wrapper: (wide) => {
     return wide ? {

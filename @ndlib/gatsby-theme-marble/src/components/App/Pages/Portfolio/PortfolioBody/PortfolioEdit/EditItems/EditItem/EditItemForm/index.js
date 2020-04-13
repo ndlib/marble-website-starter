@@ -37,7 +37,7 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
     <div sx={{
       border: '1px solid',
       borderColor: 'gray.1',
-      height: '352px',
+      height: '400px',
       margin: '0',
       maxWidth: '800px',
       overflowY: 'scroll',
