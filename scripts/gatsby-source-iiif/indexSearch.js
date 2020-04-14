@@ -19,8 +19,6 @@ require('dotenv').config({
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 
-console.log(domain)
-
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
 }
@@ -199,8 +197,8 @@ new Promise(async (resolve, reject) => {
     }
   })
 
-  // await setupIndex()
-  // await indexToElasticSearch(writeData)
+  await setupIndex()
+  await indexToElasticSearch(writeData)
   // console.log('Writing Search Data to gatsby')
   // fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
