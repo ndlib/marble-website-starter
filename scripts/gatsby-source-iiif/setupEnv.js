@@ -19,10 +19,6 @@ const retrieveStageParameters = async () => {
         Value: 'AIzaSyDU35NMls6bvw0KBu6ImPoJN8dGmNA6f3s',
       },
       {
-        Name: '/all/static-host/super-test/google_map_api_url',
-        Value: 'https://maps.googleapis.com/maps/api/js?key='+GOOGLE_MAP_KEY+'&v=3.exp&libraries=geometry,drawing,places',
-      },
-      {
         Name: '/all/static-host/super-test/user_content_path',
         Value: 'https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/',
       },
