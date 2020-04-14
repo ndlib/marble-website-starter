@@ -63,7 +63,7 @@ const findCreator = (manifest, lang) => {
     const label = row.label[lang].join('').toLowerCase()
 
     if (options.includes(label)) {
-      return creator.concat(row.value[lang].join(', '))
+      return creator.concat(row.value[lang].join('<br/>'))
     }
 
     return creator
@@ -79,7 +79,7 @@ const findDates = (manifest, lang) => {
   return manifest.metadata.reduce((dates, row) => {
     const label = row.label[lang].join('').toLowerCase().trim()
     if (options.includes(label)) {
-      return dates.concat(row.value[lang].join(', '))
+      return dates.concat(row.value[lang].join('<br/>'))
     }
 
     return dates
@@ -89,18 +89,28 @@ const findDates = (manifest, lang) => {
 export const figureOutChildren = (props, iiifManifest, lang) => {
   const creator = findCreator(iiifManifest, lang)
   const dates = findDates(iiifManifest, lang)
-  let children = (
+  return (
     <React.Fragment>
-      { props.showCreator ? <p sx={sx.lineStyle}>{creator}</p> : null }
-      { props.showDate ? <p sx={sx.lineStyle}>{dates}</p> : null }
+      {
+        props.showCreator ? (
+          <p
+            sx={sx.lineStyle}
+            dangerouslySetInnerHTML={{ __html: creator }}
+          />
+        ) : null
+      }
+      {
+        props.showDate ? (
+          <p
+            sx={sx.lineStyle}
+            dangerouslySetInnerHTML={{ __html: dates }}
+          />
+        ) : null
+      }
       { props.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null }
+      { props.children ? props.children : null }
     </React.Fragment>
   )
-
-  if (props.children) {
-    children = props.children
-  }
-  return children
 }
 
 const findManifest = (manifestId, allIiifJson) => {

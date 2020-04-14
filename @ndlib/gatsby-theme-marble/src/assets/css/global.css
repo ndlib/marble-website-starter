@@ -67,26 +67,32 @@ address {
 }
 
 .sk-search-box {
-  box-shadow: 0px 2px 6px 0px rgba(0,0,0,.4);
+  background-color: white;
+  border-radius: 10px;
+  color: black !important;
   margin: 1rem auto;
 }
-.sk-search-box input.sk-search-box__text {
+.sk-search-box input.sk-search-box__text,
+.sk-search-box input.sk-search-box__text::placeholder {
+  color: black;
   font-size: 19px;
+}
+.sk-selected-filters-option,
+.sk-selected-filters-option__name,
+.sk-selected-filters-option__remove-action,
+.sk-selected-filters-option__remove-action:hover {
+  background: white;
+  color: black;
+}
+.sk-reset-filters {
+  color: white;
 }
 .sk-selected-filters {
   margin: 0 auto;
 }
 
-.sk-search-box input.sk-search-box__text {
-  color: black !important;
-}
-
 .sk-search-box input.sk-search-box__text::placeholder {
   text-align: center;
-}
-
-.sk-search-box:focus-within {
-  border-radius: 10px;
 }
 
 .sk-panel {
