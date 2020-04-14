@@ -14,6 +14,30 @@ const retrieveStageParameters = async () => {
         Name: '/all/static-host/super-test/search_index',
         Value: 'test_index',
       },
+      {
+        Name: '/all/static-host/super-test/google_map_key',
+        Value: 'AIzaSyDU35NMls6bvw0KBu6ImPoJN8dGmNA6f3s',
+      },
+      {
+        Name: '/all/static-host/super-test/google_map_api_url',
+        Value: 'https://maps.googleapis.com/maps/api/js?key='+GOOGLE_MAP_KEY+'&v=3.exp&libraries=geometry,drawing,places',
+      },
+      {
+        Name: '/all/static-host/super-test/user_content_path',
+        Value: 'https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/',
+      },
+      {
+        Name: '/all/static-host/super-test/auth_client_url',
+        Value: 'https://okta.nd.edu',
+      },
+      {
+        Name: '/all/static-host/super-test/auth_client_id',
+        Value: '0oa1f3ut0aKpdwap5357',
+      },
+      {
+        Name: '/all/static-host/super-test/auth_client_issuer',
+        Value: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
+      },
     ] }
   } else {
     const ssm = new AWS.SSM({ region: 'us-east-1' })
