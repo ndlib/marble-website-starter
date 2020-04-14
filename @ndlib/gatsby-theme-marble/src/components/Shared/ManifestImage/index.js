@@ -5,7 +5,6 @@ import getImageService from 'utils/getImageService'
 
 const ManifestImage = ({
   iiifManifest,
-  className,
   alt,
   title,
   index = 0,
@@ -16,7 +15,7 @@ const ManifestImage = ({
     <Image
       service={getImageService(iiifManifest, index)}
       alt={newAlt}
-      className={className}
+      sxStyle={{}}
       title={newTitle}
       iiifManifest={iiifManifest}
     />
@@ -26,7 +25,6 @@ const ManifestImage = ({
 ManifestImage.propTypes = {
   iiifManifest: PropTypes.object.isRequired,
   index: PropTypes.number,
-  className: PropTypes.string,
   alt: PropTypes.string,
   title: PropTypes.string,
 }
