@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { Waypoint } from 'react-waypoint'
 import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
+import sx from './sx'
 
 // Image component takes either an iiif image service and the basic parameters to render OR an src.
 // iiif image service requires a region and a width OR a height.
@@ -33,16 +34,7 @@ const Image = ({
   const onEnter = () => {
     setSrcSet(srcSet)
   }
-  const imageStyle = Object.assign({
-    backgroundColor: 'gray.2',
-    color: 'background',
-    display: 'block',
-    fontFamily: 'heading',
-    fontSize: '1.5rem',
-    lineHeight: '3rem',
-    maxWidth: '100%',
-    textAlign: 'center',
-  }, sxStyle.image)
+  const imageStyle = Object.assign(sx.imageDefault, sxStyle.image)
   return (
     <Waypoint onEnter={onEnter}>
       <picture sx={sxStyle.wrapper}>

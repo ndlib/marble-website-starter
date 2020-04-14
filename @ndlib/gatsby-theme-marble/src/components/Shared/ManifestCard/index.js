@@ -11,7 +11,6 @@ import { getImageServiceFromThumbnail } from 'utils/getImageService'
 import getLanguage from 'utils/getLanguage'
 import sx from './sx'
 
-// eslint-disable-next-line complexity
 export const ManifestCard = (props) => {
   const { allIiifJson } = useStaticQuery(
     graphql`
@@ -35,7 +34,7 @@ export const ManifestCard = (props) => {
   }
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const lang = getLanguage()
-  const children = figureOutChildren(props, iiifManifest)
+  const children = figureOutChildren(props, iiifManifest, lang)
 
   return (
     <div sx={sx.wrapper}>
@@ -64,7 +63,7 @@ const findCreator = (manifest, lang) => {
     const label = row.label[lang].join('').toLowerCase()
 
     if (options.includes(label)) {
-      return creator.concat(row.value[lang].join(''))
+      return creator.concat(row.value[lang].join(', '))
     }
 
     return creator
@@ -80,15 +79,14 @@ const findDates = (manifest, lang) => {
   return manifest.metadata.reduce((dates, row) => {
     const label = row.label[lang].join('').toLowerCase().trim()
     if (options.includes(label)) {
-      return dates.concat(row.value[lang].join(''))
+      return dates.concat(row.value[lang].join(', '))
     }
 
     return dates
   }, [])
 }
 
-const figureOutChildren = (props, iiifManifest) => {
-  const lang = getLanguage()
+export const figureOutChildren = (props, iiifManifest, lang) => {
   const creator = findCreator(iiifManifest, lang)
   const dates = findDates(iiifManifest, lang)
   let children = (
@@ -104,6 +102,7 @@ const figureOutChildren = (props, iiifManifest) => {
   }
   return children
 }
+
 const findManifest = (manifestId, allIiifJson) => {
   return allIiifJson.nodes.find(manifest => {
     return manifest.id === manifestId
