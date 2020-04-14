@@ -18,7 +18,7 @@ export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch,
     }
   `,
   )
-  const fieldLabel = (site.siteMetadata.searchBoxDefaultText !== null) ? site.siteMetadata.searchBoxDefaultText : 'Search'
+  const fieldLabel = (site.siteMetadata.searchBoxDefaultText !== null) ? site.siteMetadata.searchBoxDefaultText : 'Search the Collections'
   return (
     <React.Fragment>
       <label
