@@ -90,7 +90,6 @@ describe('figureOutChildren', () => {
     }
     const actual = figureOutChildren(props, iiifManifest, 'en')
     const wrapper = mount(actual)
-    console.log(wrapper.debug())
     expect(wrapper.find('p').at(0).text()).toEqual('Johnny Horton, Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
     expect(wrapper.find('div').text()).toEqual('In 1814 we took a little trip,')
