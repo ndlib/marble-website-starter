@@ -1,8 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-import {
-  SortingSelector,
-} from 'searchkit'
+import { SortingSelector } from 'searchkit'
 
 const SearchSortingSelector = () => {
   return (
@@ -16,12 +13,6 @@ const SearchSortingSelector = () => {
         { label:'Date (oldest)', field:'type.keyword', order:'desc' },
       ]} />
   )
-}
-
-SearchSortingSelector.propTypes = {
-}
-
-SearchSortingSelector.defaultProps = {
 }
 
 export default SearchSortingSelector

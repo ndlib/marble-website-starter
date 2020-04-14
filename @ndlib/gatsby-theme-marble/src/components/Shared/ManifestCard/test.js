@@ -74,14 +74,32 @@ describe('figureOutChildren', () => {
       },
     ],
   }
-  test('children', () => {
+  test('children no additional', () => {
     const props = {
       children: <div className='child'>children are loud</div>,
     }
     const actual = figureOutChildren(props, iiifManifest, 'en')
-    const wrapper = shallow(actual)
+    const wrapper = mount(actual)
     expect(wrapper.find('.child').text()).toEqual('children are loud')
   })
+
+  test('children + additional', () => {
+    const props = {
+      showCreator: true,
+      showDate: true,
+      showSummary: false,
+      children: <div className='child'>A song about an alligator.</div>,
+    }
+    const actual = figureOutChildren(props, iiifManifest, 'en')
+    const wrapper = mount(actual)
+    expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
+    expect(wrapper.find('p').at(1).text()).toEqual('1814')
+    expect(wrapper.findWhere(c => {
+      return c.text() === 'In 1814 we took a little trip,'
+    }).exists()).toBeFalsy()
+    expect(wrapper.find('.child').text()).toEqual('A song about an alligator.')
+  })
+
   test('no children', () => {
     const props = {
       showCreator: true,
@@ -90,8 +108,10 @@ describe('figureOutChildren', () => {
     }
     const actual = figureOutChildren(props, iiifManifest, 'en')
     const wrapper = mount(actual)
-    expect(wrapper.find('p').at(0).text()).toEqual('Johnny Horton, Andrew Jackson')
+    expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
-    expect(wrapper.find('div').text()).toEqual('In 1814 we took a little trip,')
+    expect(wrapper.findWhere(c => {
+      return c.text() === 'In 1814 we took a little trip,'
+    }).exists()).toBeTruthy()
   })
 })

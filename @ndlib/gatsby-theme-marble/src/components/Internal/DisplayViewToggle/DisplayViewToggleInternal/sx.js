@@ -9,6 +9,9 @@ module.exports = {
       padding: '2px',
       width : '30px',
     },
+    '& > div': {
+      margin: '2px 1rem',
+    },
   },
   group: {
     margin: '0 -1rem',

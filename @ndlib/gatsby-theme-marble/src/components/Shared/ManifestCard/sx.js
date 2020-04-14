@@ -5,5 +5,6 @@ module.exports = {
   },
   lineStyle: {
     margin: '0',
+    marginBottom: '.25rem',
   },
 }
