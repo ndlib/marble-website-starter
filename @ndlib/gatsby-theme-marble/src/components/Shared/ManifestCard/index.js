@@ -1,12 +1,15 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
+import { jsx } from 'theme-ui'
 import Card from 'components/Shared/Card'
 import TypeLabel from './TypeLabel'
 import { getImageServiceFromThumbnail } from 'utils/getImageService'
 import getLanguage from 'utils/getLanguage'
-import style from './style.module.css'
+import sx from './sx'
 
 export const ManifestCard = (props) => {
   const { allIiifJson } = useStaticQuery(
@@ -18,7 +21,7 @@ export const ManifestCard = (props) => {
         }
       }
     }
-  `
+  `,
   )
 
   const manifestId = typy(props, 'iiifManifest').isString ? props.iiifManifest : props.iiifManifest.id
@@ -31,19 +34,10 @@ export const ManifestCard = (props) => {
   }
   const imageService = getImageServiceFromThumbnail(iiifManifest)
   const lang = getLanguage()
-  const creator = findCreator(iiifManifest, lang)
-  const dates = findDates(iiifManifest, lang)
-
-  let children = (
-    <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div>
-  )
-
-  if (props.children) {
-    children = props.children
-  }
+  const children = figureOutChildren(props, iiifManifest, lang)
 
   return (
-    <div className={style.manifestCardWrapper}>
+    <div sx={sx.wrapper}>
       <Card
         label={iiifManifest.label[lang][0]}
         target={`/${iiifManifest.slug}`}
@@ -51,10 +45,8 @@ export const ManifestCard = (props) => {
         imageRegion={imageRegion}
         {...props}
       >
-        <p>{creator}</p>
-        <p>{dates}</p>
 
-        {children}
+        { children }
       </Card>
       <TypeLabel iiifManifest={iiifManifest} />
     </div>
@@ -71,7 +63,7 @@ const findCreator = (manifest, lang) => {
     const label = row.label[lang].join('').toLowerCase()
 
     if (options.includes(label)) {
-      return creator.concat(row.value[lang].join(''))
+      return creator.concat(row.value[lang].join(', '))
     }
 
     return creator
@@ -87,11 +79,28 @@ const findDates = (manifest, lang) => {
   return manifest.metadata.reduce((dates, row) => {
     const label = row.label[lang].join('').toLowerCase().trim()
     if (options.includes(label)) {
-      return dates.concat(row.value[lang].join(''))
+      return dates.concat(row.value[lang].join(', '))
     }
 
     return dates
   }, [])
+}
+
+export const figureOutChildren = (props, iiifManifest, lang) => {
+  const creator = findCreator(iiifManifest, lang)
+  const dates = findDates(iiifManifest, lang)
+  let children = (
+    <React.Fragment>
+      { props.showCreator ? <p sx={sx.lineStyle}>{creator}</p> : null }
+      { props.showDate ? <p sx={sx.lineStyle}>{dates}</p> : null }
+      { props.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null }
+    </React.Fragment>
+  )
+
+  if (props.children) {
+    children = props.children
+  }
+  return children
 }
 
 const findManifest = (manifestId, allIiifJson) => {
@@ -103,6 +112,14 @@ const findManifest = (manifestId, allIiifJson) => {
 ManifestCard.propTypes = {
   iiifManifest: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   imageRegion: PropTypes.string,
+  showCreator: PropTypes.bool,
+  showDate: PropTypes.bool,
+  showSummary: PropTypes.bool,
+  children: PropTypes.node,
 }
-
+ManifestCard.defaultProps = {
+  showCreator: true,
+  showDate: true,
+  showSummary: false,
+}
 export default ManifestCard

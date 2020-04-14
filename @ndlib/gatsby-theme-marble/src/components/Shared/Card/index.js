@@ -1,13 +1,14 @@
-import React from 'react'
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Styled } from 'theme-ui'
-import Link from 'components/Internal/Link'
+import { BaseStyles, jsx, Styled } from 'theme-ui'
+import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
 import ExteralLinkIcon from './ExteralLinkIcon'
-import buildReferalState from 'utils/buildReferalState'
-import './style.css'
+import { LayoutContext } from 'components/Internal/DisplayViewToggle'
+import sx from './sx'
 
-// eslint-disable-next-line complexity
 const Card = ({
   target,
   label,
@@ -15,60 +16,40 @@ const Card = ({
   children,
   location,
   referal,
-  cardClass,
   imageService,
   imageRegion,
   onClick,
 }) => {
-  const cardInternal = (
-    <article className='cardWrapper'>
-      <figure className='cardFigure'>
-        <Image
-          src={image || null}
-          service={imageService || null}
-          region={imageRegion || null}
-          alt={label}
-          className='cardImage'
-        />
-        <ExteralLinkIcon target={target} />
-        <figcaption className='cardCaption'>
-          <Styled.h3>{label}</Styled.h3>
-          <div className='cardAdditional'>
-            <div className='fadeOut' />
-            {children}
-          </div>
-        </figcaption>
-      </figure>
-    </article>
-  )
-  if (!target && onClick) {
-    return (
-      <div
-        role='button'
-        className={cardClass}
-        style={{ cursor: 'pointer' }}
-        onClick={(e) => {
-          onClick(e)
-        }}
-      >
-        {cardInternal}
-      </div>
-    )
-  } else if (!target) {
-    return (
-      <div className={cardClass}>
-        {cardInternal}
-      </div>
-    )
-  }
+  const wide = useContext(LayoutContext) === 'list'
   return (
-    <Link
-      to={target}
-      state={buildReferalState(location, referal)}
-      className={cardClass}
+    <CardWrapper
+      target={target}
+      location={location}
+      referal={referal}
+      onClick={onClick}
     >
-      {cardInternal}
-    </Link>
+      <BaseStyles>
+        <article sx={sx.wrapper(wide)}>
+          <figure sx={sx.figure}>
+            <Image
+              src={image || null}
+              service={imageService || null}
+              region={imageRegion || null}
+              alt={label}
+              sxStyle={sx.imageStyle(wide)}
+            />
+            <ExteralLinkIcon target={target} />
+            <figcaption sx={sx.figcaption(wide)}>
+              <Styled.h3>{label}</Styled.h3>
+              <div>
+                {children}
+              </div>
+              <div className='fade' sx={sx.fadeOut} />
+            </figcaption>
+          </figure>
+        </article>
+      </BaseStyles>
+    </CardWrapper>
   )
 }
 
@@ -81,7 +62,6 @@ Card.propTypes = {
   children: PropTypes.node,
   location: PropTypes.object,
   referal: PropTypes.object,
-  cardClass: PropTypes.string,
   onClick: PropTypes.func,
 }
 

@@ -68,7 +68,6 @@
     "react-dev-utils": "^9.0.2",
     "react-dom": "16.11",
     "react-google-maps": "^9.4.5",
-    "react-grid-layout": "^0.16.6",
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^4.12.11",
     "react-markdown": "^4.0.8",

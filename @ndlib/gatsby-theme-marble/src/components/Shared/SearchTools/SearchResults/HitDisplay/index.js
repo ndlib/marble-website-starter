@@ -1,7 +1,10 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import ManifestCard from 'components/Shared/ManifestCard'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
+import { jsx } from 'theme-ui'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   return (
@@ -20,7 +23,15 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
                   .map(
                     (row) => {
                       return row ? (
-                        <div key={row} dangerouslySetInnerHTML={{ __html: row }} />
+                        <div
+                          key={row}
+                          dangerouslySetInnerHTML={{ __html: row }}
+                          sx={{
+                            '& > em': {
+                              backgroundColor: 'highlight',
+                            },
+                          }}
+                        />
                       ) : null
                     },
                   ) : null

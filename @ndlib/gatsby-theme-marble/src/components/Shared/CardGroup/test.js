@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import CardGroup from './'
 
 test('CardGroup', () => {
@@ -10,8 +10,16 @@ test('CardGroup', () => {
   ]
   const label = 'A Card Group'
 
-  const wrapper = shallow(<CardGroup label={label}>{children}</CardGroup>)
+  const wrapper = mount(<CardGroup label={label}>{children}</CardGroup>)
   expect(wrapper.find('.cardGroup').exists()).toBeTruthy()
-  expect(wrapper.find('ForwardRef').text()).toEqual('A Card Group')
-  expect(wrapper.find('.cardWrapper').length).toEqual(3)
+  expect(wrapper.find('h2').text()).toEqual('A Card Group')
+  expect(wrapper.findWhere(c => {
+    return c.text() === 'Card 1'
+  }).exists()).toBeTruthy()
+  expect(wrapper.findWhere(c => {
+    return c.text() === 'Card 2'
+  }).exists()).toBeTruthy()
+  expect(wrapper.findWhere(c => {
+    return c.text() === 'Card 3'
+  }).exists()).toBeTruthy()
 })

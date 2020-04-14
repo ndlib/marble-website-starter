@@ -32,8 +32,7 @@ export const UserCartouche = ({ user, loginReducer }) => {
     return null
   }
   return (
-    <span
-      role='button'
+    <button
       onClick={() => {
         navigate(`/user/${fullUser.userName}`)
       }}
@@ -46,7 +45,7 @@ export const UserCartouche = ({ user, loginReducer }) => {
         />
       </span>
       {fullUser.fullName}
-    </span>
+    </button>
   )
 }
 

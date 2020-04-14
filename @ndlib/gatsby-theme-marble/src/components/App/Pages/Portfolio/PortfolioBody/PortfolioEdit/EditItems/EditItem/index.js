@@ -32,15 +32,14 @@ const EditItem = ({ item }) => {
           />
         ) : (
           <div
-            role='button'
-            onClick={() => {
-              toggleEdit(true)
-            }}
             sx={sx.wrapper}
           >
             <Card
               label={title}
               image={image}
+              onClick={() => {
+                toggleEdit(true)
+              }}
             >
               {annotation}
             </Card>

@@ -36,11 +36,13 @@
 }
 
 .imageOption input ~ img {
+  cursor: pointer;
   height: 110px;
   object-fit: cover;
   width: 110px;
 }
 .imageOption input:checked ~ img {
+  cursor: default;
   outline-color: yellow;
   outline-offset: -3px;
   outline-width: 3px;
