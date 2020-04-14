@@ -65,7 +65,9 @@ address {
 .clearfix {
   clear: both;
 }
-
+.sk-select {
+  vertical-align: top;
+}
 .sk-search-box {
   background-color: white;
   border-radius: 10px;

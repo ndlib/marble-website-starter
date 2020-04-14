@@ -9,7 +9,7 @@ import {
 } from 'store/actions/displayActions'
 
 export const LayoutContext = React.createContext(DISPLAY_GRID)
-export const DisplayView = ({ children, defaultDisplay, displayReducer }) => {
+export const DisplayView = ({ extraControls, children, defaultDisplay, displayReducer }) => {
   if (!typy(children).isArray) {
     return null
   }
@@ -20,7 +20,10 @@ export const DisplayView = ({ children, defaultDisplay, displayReducer }) => {
   const layoutClass = displayReducer[defaultDisplay] || DISPLAY_GRID
   return (
     <LayoutContext.Provider value={layoutClass}>
-      <DisplayViewToggleInternal page={defaultDisplay}>
+      <DisplayViewToggleInternal
+        page={defaultDisplay}
+        extraControls={extraControls}
+      >
         {
           typy(children).safeArray.map((child, index) => {
             return (<div key={index}>{child}</div>)
@@ -35,6 +38,7 @@ DisplayView.propTypes = {
   children: PropTypes.node,
   defaultDisplay: PropTypes.string,
   displayReducer: PropTypes.object,
+  extraControls: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {

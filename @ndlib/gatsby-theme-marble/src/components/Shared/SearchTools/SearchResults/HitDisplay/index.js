@@ -4,12 +4,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ManifestCard from 'components/Shared/ManifestCard'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
+import SearchSortingSelector from 'components/Shared/SearchTools/SearchSortingSelector'
 import { jsx } from 'theme-ui'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   return (
     <DisplayViewToggle
       defaultDisplay={defaultDisplay}
+      extraControls={SearchSortingSelector}
     >
       {
         hits ? hits.map(
