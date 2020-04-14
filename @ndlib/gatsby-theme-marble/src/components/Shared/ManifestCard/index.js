@@ -86,13 +86,13 @@ const findDates = (manifest, lang) => {
   }, [])
 }
 
-export const figureOutChildren = (props, iiifManifest, lang) => {
+export const figureOutChildren = (parentProps, iiifManifest, lang) => {
   const creator = findCreator(iiifManifest, lang)
   const dates = findDates(iiifManifest, lang)
   return (
     <React.Fragment>
       {
-        props.showCreator ? (
+        parentProps.showCreator ? (
           <p
             sx={sx.lineStyle}
             dangerouslySetInnerHTML={{ __html: creator }}
@@ -100,15 +100,15 @@ export const figureOutChildren = (props, iiifManifest, lang) => {
         ) : null
       }
       {
-        props.showDate ? (
+        parentProps.showDate ? (
           <p
             sx={sx.lineStyle}
             dangerouslySetInnerHTML={{ __html: dates }}
           />
         ) : null
       }
-      { props.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null }
-      { props.children ? props.children : null }
+      { parentProps.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null }
+      { parentProps.children ? parentProps.children : null }
     </React.Fragment>
   )
 }
