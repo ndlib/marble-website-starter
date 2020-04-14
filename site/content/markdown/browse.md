@@ -66,7 +66,7 @@ components:
         - label: "image"
           value: "https://image-iiif.library.nd.edu/iiif/2/1983.053.002%2F1983_053_002-v0001/full/500,/0/default.jpg"
         - label: "target"
-          value: "search?timeperiod[0]=0-5th%20Century"
+          value: "search?timeperiod[0]=3rd%20Century"
     - component: Card
       props:
         - label: "label"
@@ -74,7 +74,7 @@ components:
         - label: "image"
           value: "https://image-iiif.library.nd.edu/iiif/2/1934.007.001%2F1934_007_001-v0001/full/500,/0/default.jpg"
         - label: "target"
-          value: "search?timeperiod[0]=5th%20Century-14th%20Century"
+          value: "search?timeperiod[0]=?timeperiod[0]=14th%20Century&timeperiod"
     - component: Card
       props:
         - label: "label"

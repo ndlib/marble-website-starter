@@ -4,7 +4,7 @@ const path = require(`path`)
 const { Client } = require('elasticsearch')
 const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
-const getCenturyTags = require('./src/getCenturyTagsFromDate')
+const realDatesFromCatalogedDates = require('./src/realDatesFromCatalogedDates')
 const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 
 const appConfig = process.env.APP_CONFIG
@@ -14,14 +14,15 @@ if (appConfig === 'local' || process.env.TRAVIS_RUN) {
 
 const directory = process.argv.slice(2)[0]
 require('dotenv').config({
-  path: path.join(directory, '.env.production'),
+  path: path.join(directory, '.env.development'),
 })
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 
+console.log(domain)
+
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
-  return
 }
 
 const options = {
@@ -77,18 +78,22 @@ const allMetadataKeys = [
 ]
 
 const getSearchDataFromManifest = (manifest) => {
+  const dateData = realDatesFromCatalogedDates(manifest.dateCreated)
+
   const search = {
     id: manifest.iiifUri,
     name: manifest.title,
     creator: manifest.creator,
     date: manifest.dateCreated,
+    // lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
+    // highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
     identifier: manifest.uniqueIdentifier,
-    thumbnail: '',
+    thumbnail: manifest.iiifImageUri,
     type: manifest.level,
     url: '/item/' + manifest.id,
     repository: determineProvider(manifest),
     themeTag: getKeywordsFromSubjects(manifest),
-    centuryTag: getCenturyTags(manifest.dateCreated),
+    centuryTag: dateData.centuryTags,
   }
   if (manifest.workType) {
     search['formatTag'] = [manifest.workType]
@@ -194,8 +199,8 @@ new Promise(async (resolve, reject) => {
     }
   })
 
-  await setupIndex()
-  await indexToElasticSearch(writeData)
+  // await setupIndex()
+  // await indexToElasticSearch(writeData)
   // console.log('Writing Search Data to gatsby')
   // fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
