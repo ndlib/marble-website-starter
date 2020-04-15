@@ -1,9 +1,9 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import ViewerLink from './'
-import Link from 'components/Internal/Link'
 
 describe('ViewerLink', () => {
+  console.error = jest.fn()
   const iiifManifest = {
     id: 'someId',
     slug: 'someSlug',
@@ -11,13 +11,13 @@ describe('ViewerLink', () => {
   const className = 'myClass'
   const children = <div className='child' />
   test('mirador and 0 index', () => {
-    const wrapper = shallow(<ViewerLink iiifManifest={iiifManifest} className={className} location={{}}>{children}</ViewerLink>)
-    expect(wrapper.find(Link).props().to).toEqual('/someSlug/mirador?cv=0&view=default')
-    expect(wrapper.find('.myClass').props().rel).toEqual('alternate')
+    const wrapper = mount(<ViewerLink iiifManifest={iiifManifest} className={className} location={{}}>{children}</ViewerLink>)
+    expect(wrapper.find('a').props().href).toEqual('/someSlug/mirador?cv=0&view=default')
+    expect(wrapper.find('a').props().rel).toEqual('alternate')
   })
   test('universal viewer and nonzero index', () => {
-    const wrapper = shallow(<ViewerLink iiifManifest={iiifManifest} className={className} location={{}} index={1} viewer='uv'>{children}</ViewerLink>)
-    expect(wrapper.find(Link).props().to).toEqual('/viewer?manifest=someId&cv=1')
-    expect(wrapper.find('.myClass').props().rel).toEqual('nofollow')
+    const wrapper = mount(<ViewerLink iiifManifest={iiifManifest} className={className} location={{}} index={1} viewer='uv'>{children}</ViewerLink>)
+    expect(wrapper.find('a').props().href).toEqual('/viewer?manifest=someId&cv=1')
+    expect(wrapper.find('a').props().rel).toEqual('nofollow')
   })
 })
