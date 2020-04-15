@@ -1,3 +1,5 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
@@ -5,8 +7,8 @@ import ManifestImage from 'components/Shared/ManifestImage'
 import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
-import style from './style.module.css'
 import getLanguage from 'utils/getLanguage'
+import { jsx } from 'theme-ui'
 
 export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
   if (!iiifManifest || !iiifManifest.id) {
@@ -22,7 +24,6 @@ export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
       <h2 className='accessibilityOnly'>Images</h2>
       <ViewerLink
         iiifManifest={iiifManifest}
-        className={style.link}
         viewer={viewer}
         location={location}
       >
@@ -30,7 +31,6 @@ export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
           iiifManifest={iiifManifest}
           index={0}
           alt={typy(iiifManifest, `summary[${getLanguage()}][0]`).safeString}
-          className={style.bigImage}
           title={label}
         />
         <ExpandIcon label={label} />

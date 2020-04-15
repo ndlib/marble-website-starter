@@ -22,7 +22,7 @@ const Image = ({
   src, // src to use if no service provided
   alt, // alt text for the image
   title, // title attribute on iamge
-  sxStyle, // sx style
+  inCard, // image is in a card and need different styling
 }) => {
   // derive image from image service OR src OR use the default noImage
   const imageSrc = src || serviceURL(service, region, size) || noImage
@@ -34,16 +34,15 @@ const Image = ({
   const onEnter = () => {
     setSrcSet(srcSet)
   }
-  const imageStyle = Object.assign(sx.imageDefault, sxStyle.image)
   return (
     <Waypoint onEnter={onEnter}>
-      <picture sx={sxStyle.wrapper}>
+      <picture sx={sx.picture(inCard)}>
         <img
           src={imageSrc}
           srcSet={activeSrcSet}
           alt={alt || title}
           title={title || alt}
-          sx={imageStyle}
+          sx={sx.image(inCard)}
         />
       </picture>
     </Waypoint>
@@ -57,18 +56,14 @@ Image.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
   title: PropTypes.string,
-  sxStyle: PropTypes.object,
+  inCard: PropTypes.bool,
 }
 
 Image.defaultProps = {
   region: 'full',
   size: '1000,',
   alt: 'a static image',
-  className: '',
-  sxStyle: {
-    wrapper: {},
-    image: {},
-  },
+  inCard: false,
 }
 export default Image
 

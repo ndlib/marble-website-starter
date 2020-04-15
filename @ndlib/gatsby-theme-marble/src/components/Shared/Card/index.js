@@ -31,13 +31,15 @@ const Card = ({
       <BaseStyles>
         <article sx={sx.wrapper(wide)}>
           <figure sx={sx.figure}>
-            <Image
-              src={image || null}
-              service={imageService || null}
-              region={imageRegion || null}
-              alt={label}
-              sxStyle={sx.imageStyle(wide)}
-            />
+            <div sx={sx.imageWrapper(wide)}>
+              <Image
+                src={image || null}
+                service={imageService || null}
+                region={imageRegion || null}
+                alt={label}
+                inCard
+              />
+            </div>
             <ExteralLinkIcon target={target} />
             <figcaption sx={sx.figcaption(wide)}>
               <Styled.h3>{label}</Styled.h3>

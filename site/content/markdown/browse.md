@@ -14,7 +14,7 @@ components:
         - label: "label"
           value: "Paintings"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/1999.024%2F1999_024-v0001/full/250,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/1999.024%2F1999_024-v0001/full/500,/0/default.jpg"
         - label: "target"
           value: "search?format[0]=Paintings"
     - component: Card
@@ -22,7 +22,7 @@ components:
         - label: "label"
           value: "Prints"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/2012.105%2F2012_105-v0001/full/250,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/2012.105%2F2012_105-v0001/full/500,/0/default.jpg"
         - label: "target"
           value: "search?format[0]=Prints"
     - component: Card
@@ -30,7 +30,7 @@ components:
         - label: "label"
           value: "Sculpture"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/1988.012%2F1988_012-v0001/full/250,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/1988.012%2F1988_012-v0001/full/500,/0/default.jpg"
         - label: "target"
           value: "search?place[0]=Sculpture"
 - component: CardGroup
@@ -43,7 +43,7 @@ components:
         - label: "label"
           value: "Rare Books and Special Collections"
         - label: "image"
-          value: "https://image-iiif.library.nd.edu/iiif/2/002097132%2FBOO_002097132-00a/full/250,/0/default.jpg"
+          value: "https://image-iiif.library.nd.edu/iiif/2/002097132%2FBOO_002097132-00a/full/500,/0/default.jpg"
         - label: "target"
           value: "search?campuslocation[0]=Rare%20Books%20and%20Special%20Collections"
     - component: Card

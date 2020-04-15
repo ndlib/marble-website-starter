@@ -1,3 +1,5 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import ViewerLink from 'components/Shared/ManifestImageGroup/ViewerLink'
@@ -5,7 +7,8 @@ import Image from 'components/Shared/Image'
 import AlternateOverlay from './AlternateOverlay'
 import getImageService from 'utils/getImageService'
 import buildReferalState from 'utils/buildReferalState'
-import style from './style.module.css'
+import { jsx } from 'theme-ui'
+import sx from './sx'
 
 export const AlternateImage = ({ iiifManifest, index, max, length, viewer, location }) => {
   if (length > 1) {
@@ -13,13 +16,7 @@ export const AlternateImage = ({ iiifManifest, index, max, length, viewer, locat
     const spacing = 0.25
     return (
       <div
-        className={style.alternateLink}
-        style={{
-          display: 'inline-block',
-          margin: `0 ${spacing}rem`,
-          height: `calc(100% / ${max} - ${(max - 1) * (spacing * 2)}rem / ${max})`,
-          width: `calc(100% / ${max} - ${(max - 1) * (spacing * 2)}rem / ${max})`,
-        }}>
+        sx={sx.wrapper(spacing, max)}>
         <ViewerLink
           iiifManifest={iiifManifest}
           viewer={viewer}
@@ -40,7 +37,6 @@ export const AlternateImage = ({ iiifManifest, index, max, length, viewer, locat
             size='125,'
             alt={`Alternate View ${index}`}
             title={`Alternate View ${index}`}
-            className={style.alternateImage}
           />
         </ViewerLink>
       </div>
