@@ -1,7 +1,10 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/Internal/Link'
 import buildReferalState from 'utils/buildReferalState'
+import { jsx } from 'theme-ui'
 
 const ViewerLink = ({ iiifManifest, index, viewer, className, view, location, children }) => {
   let viewerLink = `/${iiifManifest.slug}/mirador?cv=${index}&view=${view}`
@@ -14,6 +17,11 @@ const ViewerLink = ({ iiifManifest, index, viewer, className, view, location, ch
       className={className}
       state={buildReferalState(location, { type: 'item', backLink: location.href })}
       rel={index > 0 ? 'nofollow' : 'alternate'}
+      sx={{
+        color: 'background',
+        position: 'relative',
+        verticalAlign: 'top',
+      }}
     >
       {children}
     </Link>

@@ -1,12 +1,42 @@
 module.exports = {
-  imageDefault: {
-    backgroundColor: 'gray.2',
-    color: 'background',
-    display: 'block',
-    fontFamily: 'heading',
-    fontSize: '1.5rem',
-    lineHeight: '3rem',
-    maxWidth: '100%',
-    textAlign: 'center',
+  picture: (inCard) => {
+    return inCard ? {
+      border: '1px solid',
+      borderColor: 'gray.2',
+      display: 'block',
+      height: '250px',
+      position: 'relative',
+      verticalAlign: 'top',
+    } : {
+      display: 'inline-block',
+    }
+  },
+  image: (inCard) => {
+    return inCard ? {
+      backgroundColor: 'gray.2',
+      border: '4px solid',
+      borderColor: 'background',
+      color: 'background',
+      display: 'block',
+      fontFamily: 'heading',
+      fontSize: '1.5rem',
+      height: '248px',
+      lineHeight: '2rem',
+      objectFit: 'cover',
+      objectPosition: 'top',
+      overflow: 'hidden',
+      textAlign: 'center',
+      width: '100%',
+    } : {
+      backgroundColor: 'gray.2',
+      border: 'none',
+      display: 'block',
+      fontFamily: 'heading',
+      fontSize: '1.5rem',
+      height: 'auto',
+      lineHeight: '2rem',
+      textAlign: 'center',
+      width: '100%',
+    }
   },
 }

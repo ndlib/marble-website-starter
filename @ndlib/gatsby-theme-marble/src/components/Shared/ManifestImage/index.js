@@ -15,7 +15,6 @@ const ManifestImage = ({
     <Image
       service={getImageService(iiifManifest, index)}
       alt={newAlt}
-      sxStyle={{}}
       title={newTitle}
       iiifManifest={iiifManifest}
     />
