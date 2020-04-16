@@ -14,8 +14,10 @@ module.exports = {
   optionsOpen: {
     border: '1px solid',
     borderColor: 'gray.1',
+    borderRadius: '.5rem',
     display: 'block',
     outline: 'none',
+    overflow: 'hidden',
     position: 'absolute',
     zIndex: '1',
   },
@@ -24,6 +26,7 @@ module.exports = {
   },
   toggle: {
     backgroundColor: 'primary',
+    borderRadius: '.5rem',
     color: 'primaryText.0',
     fontSize: '1rem',
     outline: 'none',

@@ -8,7 +8,6 @@ import Column from 'components/Shared/Column'
 import Gravatar from 'components/Internal/Gravatar'
 import PromptLogin from './PromptLogin'
 import EditUserButton from './EditUserButton'
-import LogOut from 'components/Shared/LoginArea/LogOut'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 export const UserLayout = ({ user, children, location, loginReducer }) => {
@@ -31,18 +30,14 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
               <Styled.h2>{user.userName}</Styled.h2>
             </div>
           </div>
+          <div className={style.bio}>{user.bio}</div>
           <div>
             {
             /* Follow or Edit button */
               isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
             }
           </div>
-          <div>
-            {
-              isOwner ? <LogOut /> : null
-            }
-          </div>
-          <div className={style.bio}>{user.bio}</div>
+
         </Column>
         <Column colSpan='4'>
           {children}

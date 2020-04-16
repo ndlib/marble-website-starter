@@ -21,17 +21,24 @@ const PortfolioList = ({
   if (portfolios.length > 0) {
     return (
       <React.Fragment>
-        {
-          isOwner ? (
-            <p>
-              <NewPortfolioButton
-                addFunc={setPortfolios}
-                portfolios={portfolios}
-              />
-            </p>
-          ) : null
-        }
-        <DisplayViewToggle defaultDisplay={COMPILATIONS_LISTING_PAGE}>
+        <DisplayViewToggle
+          defaultDisplay={COMPILATIONS_LISTING_PAGE}
+          extraControls={isOwner ? () => {
+            return (
+              <span style={{
+                float: 'left',
+                verticalAlign: 'top',
+              }}>
+                <NewPortfolioButton
+                  addFunc={setPortfolios}
+                  portfolios={portfolios}
+                />
+              </span>
+            )
+          } : () => {
+            return null
+          }}
+        >
           {
             typy(portfolios).safeArray
               .filter(c => {

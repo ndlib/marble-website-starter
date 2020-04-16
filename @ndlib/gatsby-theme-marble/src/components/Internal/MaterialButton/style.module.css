@@ -1,5 +1,6 @@
 .materialButton {
   background-color: white;
+  border-radius: .5rem;
   font-size: 1rem;
   max-width: 100%;
   padding: .5rem;

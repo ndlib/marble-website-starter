@@ -7,7 +7,6 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Gravatar from 'components/Internal/Gravatar'
 import EditUserButton from './EditUserButton'
-import LogOut from 'components/Shared/LoginArea/LogOut'
 
 describe('UserLayout', () => {
   test('ownsPage', () => {
@@ -37,7 +36,6 @@ describe('UserLayout', () => {
     expect(wrapper.find('.bio').html()).toContain('some bio')
     // different for ownership status
     expect(wrapper.find(EditUserButton).props().userName).toEqual('person_user')
-    expect(wrapper.find(LogOut).exists()).toBeTruthy()
   })
   test('does not ownsPage', () => {
     const props = {
@@ -63,6 +61,5 @@ describe('UserLayout', () => {
     expect(wrapper.find('.bio').html()).toContain('some bio')
     // different for ownership status
     expect(wrapper.find(EditUserButton).exists()).toBeFalsy()
-    expect(wrapper.find(LogOut).exists()).toBeFalsy()
   })
 })
