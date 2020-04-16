@@ -6,7 +6,7 @@ require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
 
-const googleMapApiURL = process.env.GOOGLE_MAP_API_URL || ''
+const googleMapKey = process.env.GOOGLE_MAP_KEY || ''
 const userContentPath = process.env.USER_CONTENT_PATH || ''
 const authClientURL = process.env.AUTH_CLIENT_URL || ''
 const authClientClientId = process.env.AUTH_CLIENT_ID || ''
@@ -18,7 +18,7 @@ const searchIndex = process.env.SEARCH_INDEX || ''
 console.table([
   { variable: 'SEARCH_INDEX:', value: searchIndex },
   { variable: 'SEARCH_URL:', value: searchUrl },
-  { variable: 'GOOGLE_MAP_API_URL:', value: googleMapApiURL },
+  { variable: 'GOOGLE_MAP_KEY:', value: googleMapKey },
   { variable: 'USER_CONTENT_PATH:', value: userContentPath },
   { variable: 'AUTH_CLIENT_URL:', value: authClientURL },
   { variable: 'AUTH_CLIENT_ID:', value: authClientClientId },
@@ -43,7 +43,7 @@ module.exports = {
     searchBoxDefaultText: 'Search our digitized artwork, rare books, artifacts, and archival materials',
     // apis and embedded urls
     universalViewerBaseURL: `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
-    googleMapApiURL: googleMapApiURL,
+    googleMapApiURL: `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&v=3.exp&libraries=geometry,drawing,places`,
     searchBase: {
       app: searchIndex,
       url: searchUrl,
