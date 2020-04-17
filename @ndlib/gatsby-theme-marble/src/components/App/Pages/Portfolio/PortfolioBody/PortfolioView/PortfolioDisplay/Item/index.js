@@ -19,7 +19,6 @@ const Item = ({ item, userId, annotated = false }) => {
       {
         item.annotation
           ? <React.Fragment>
-            <UserCartouche user={{ uuid: userId }} />
             <p>{item.annotation}</p>
           </React.Fragment> : null
       }

@@ -13,12 +13,6 @@ export const PortfolioView = ({ portfolio, loginReducer }) => {
   return (
     <React.Fragment>
       {
-        isOwner
-          ? <p style={{ textAlign: 'right' }}>
-            <MaterialButton onClick={() => navigate(`/myportfolio/${portfolio.uuid}/edit`)}>Edit</MaterialButton>
-          </p> : null
-      }
-      {
         description ? <div><CalloutBox><p>{description}</p></CalloutBox></div> : null
       }
       <PortfolioDisplay
