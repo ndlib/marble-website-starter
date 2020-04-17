@@ -1,15 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { navigate } from 'gatsby'
-import MaterialButton from 'components/Internal/MaterialButton'
 import CalloutBox from 'components/Shared/CalloutBox'
-import { ownsPage } from 'utils/auth'
 import PortfolioDisplay from './PortfolioDisplay'
 
-export const PortfolioView = ({ portfolio, loginReducer }) => {
+export const PortfolioView = ({ portfolio }) => {
   const { description, items, layout, userId } = portfolio
-  const isOwner = ownsPage(loginReducer, portfolio.userId)
   return (
     <React.Fragment>
       {
@@ -26,13 +21,6 @@ export const PortfolioView = ({ portfolio, loginReducer }) => {
 
 PortfolioView.propTypes = {
   portfolio: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(PortfolioView)
+export default PortfolioView
