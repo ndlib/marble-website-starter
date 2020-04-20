@@ -6,13 +6,24 @@ require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
 
-const googleMapKey = process.env.GOOGLE_MAP_KEY || ``
+const googleMapKey = process.env.GOOGLE_MAP_KEY || ''
+const userContentPath = process.env.USER_CONTENT_PATH || ''
+const authClientURL = process.env.AUTH_CLIENT_URL || ''
+const authClientClientId = process.env.AUTH_CLIENT_ID || ''
+const authClientIssuer = process.env.AUTH_CLIENT_ISSUER || ''
 
 const searchUrl = process.env.SEARCH_URL || ''
 // set this to be a website-local-index so we stop busting the main website.
 const searchIndex = process.env.SEARCH_INDEX || ''
-console.log(`SEARCH_INDEX: '${searchIndex}'`)
-console.log(`SEARCH_URL: '${searchUrl}'`)
+console.table([
+  { variable: 'SEARCH_INDEX:', value: searchIndex },
+  { variable: 'SEARCH_URL:', value: searchUrl },
+  { variable: 'GOOGLE_MAP_KEY:', value: googleMapKey },
+  { variable: 'USER_CONTENT_PATH:', value: userContentPath },
+  { variable: 'AUTH_CLIENT_URL:', value: authClientURL },
+  { variable: 'AUTH_CLIENT_ID:', value: authClientClientId },
+  { variable: 'AUTH_CLIENT_ISSUER:', value: authClientIssuer },
+])
 
 const menus = require('./menus')
 const themeColor = `#0A233F`
@@ -41,11 +52,11 @@ module.exports = {
     // paths
     useLogin: true,
     authClient: {
-      url: `https://okta.nd.edu`,
-      clientId: `0oa1f3ut0aKpdwap5357`,
-      issuer: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
+      url: authClientURL,
+      clientId: authClientClientId,
+      issuer: authClientIssuer,
     },
-    userContentPath: `https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/`,
+    userContentPath: userContentPath,
     searchPath: 'search',
     iiifHelpURL: 'https://sites.nd.edu/marble/iiif-at-notre-dame-or-the-heart-of-marble/',
     // menus
