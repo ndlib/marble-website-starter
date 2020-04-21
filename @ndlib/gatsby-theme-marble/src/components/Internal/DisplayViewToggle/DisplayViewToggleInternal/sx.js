@@ -1,10 +1,12 @@
 module.exports = {
   wrapper: {
-    float: 'right',
     marginLeft: 'auto',
     margin: '10px',
     display: 'block',
+    textAlign: 'right',
+    width: '100%',
     '& > input': {
+      borderRadius: '.25rem',
       margin: '2px',
       padding: '2px',
       width : '30px',

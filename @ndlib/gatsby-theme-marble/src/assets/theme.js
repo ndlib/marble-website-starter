@@ -17,6 +17,19 @@ export const theme = {
       Helvetica Neue,
       sans-serif
     `,
+    bold: `
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif
+    `,
     heading: `
       -apple-system,
       BlinkMacSystemFont,
@@ -65,7 +78,7 @@ export const theme = {
   colors: {
     gray: ['#efefef', '#dedede', '#666', '#333', '#111'],
     background: '#fff',
-    primary: '#ae9142',
+    primary: ['#ae914266', '#ae9142'],
     primaryText: ['#fff', 'rgba(255, 255, 255, 0.5)'],
     secondary: '#302205',
     attention: '#aa272f',

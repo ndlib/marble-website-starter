@@ -50,8 +50,8 @@ export const PortfolioEdit = ({ portfolio, loginReducer }) => {
             setPatching(true)
             const body = {
               title: title,
-              description: description || null,
-              image: image || null,
+              description: description || '',
+              image: image || '',
               privacy: privacy || 'private',
               layout: layout || 'default',
             }

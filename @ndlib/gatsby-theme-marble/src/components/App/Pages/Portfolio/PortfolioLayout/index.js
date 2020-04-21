@@ -13,7 +13,10 @@ const PortfolioLayout = ({ portfolio, location, children }) => {
         noIndex // = {portfolio.privacy !== 'public'}
       />
       <h1>{portfolio.title}</h1>
-      <Ownership portfolio={portfolio} />
+      <Ownership
+        portfolio={portfolio}
+        location={location}
+      />
       {children}
     </React.Fragment>
   )

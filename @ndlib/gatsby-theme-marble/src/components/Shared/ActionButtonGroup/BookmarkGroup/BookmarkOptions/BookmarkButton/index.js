@@ -25,7 +25,7 @@ export const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
         const i = data.items.find(item => {
           return item.manifest === iiifManifest.id
         })
-        setItem(i || null)
+        setItem(i || '')
       },
       errorFunc: (e) => {
         console.error(e)
@@ -71,8 +71,8 @@ export const addItem = (collection, manifest, func, loginReducer) => {
     contentType: 'item',
     id: collection.uuid,
     body: {
-      title: typy(manifest, 'label[\'en\'][0]').safeString || null,
-      image: typy(manifest, 'thumbnail[0].id').safeString.replace('/250,/', /500,/) || null,
+      title: typy(manifest, 'label[\'en\'][0]').safeString || '',
+      image: typy(manifest, 'thumbnail[0].id').safeString.replace('/250,/', '/500,/') || '',
       link: manifest.slug,
       manifest: manifest.id,
       annotation: null,

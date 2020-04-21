@@ -44,7 +44,7 @@ export const UserEdit = ({ user, loginReducer }) => {
             const body = {
               fullName: fullName,
               email: email,
-              bio: bio || null,
+              bio: bio || '',
               uuid: `${claims.sub}.${btoa(claims.iss)}`,
               userName: claims.netid,
             }

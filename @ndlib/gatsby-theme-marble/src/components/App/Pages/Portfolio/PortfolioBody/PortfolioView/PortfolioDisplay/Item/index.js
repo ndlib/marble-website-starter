@@ -4,7 +4,6 @@ import typy from 'typy'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Card from 'components/Shared/Card'
-import UserCartouche from 'components/Internal/UserCartouche'
 import ViewerButtons from './ViewerButtons'
 import style from './style.module.css'
 
@@ -19,7 +18,6 @@ const Item = ({ item, userId, annotated = false }) => {
       {
         item.annotation
           ? <React.Fragment>
-            <UserCartouche user={{ uuid: userId }} />
             <p>{item.annotation}</p>
           </React.Fragment> : null
       }

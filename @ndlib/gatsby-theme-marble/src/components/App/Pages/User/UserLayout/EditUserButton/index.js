@@ -7,6 +7,7 @@ const EditUserButton = ({ userName }) => {
     <MaterialButton
       onClick={() => navigate(`/user/${userName}/edit`)}
       wide
+      primary
     >Edit Profile</MaterialButton>
   )
 }

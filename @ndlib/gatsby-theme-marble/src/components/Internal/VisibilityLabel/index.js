@@ -1,18 +1,20 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import style from './style.module.css'
+import { jsx } from 'theme-ui'
 
 const VisibilityLabel = ({ visibility }) => {
-  switch (visibility) {
-    case 'public':
-      return <strong className={style.isPublic}>PUBLIC</strong>
-    case 'shared':
-      return <strong className={style.isPublic}>SHARED</strong>
-    case 'private':
-      return <strong className={style.isPrivate}>PRIVATE</strong>
-    default:
-      return null
-  }
+  return <strong sx={{
+    color: 'gray.4',
+    backgroundColor: 'primary.0',
+    borderRadius: '10px',
+    fontFamily: 'bold',
+    fontSize: '.75rem',
+    fontVariant: 'small-caps',
+    padding: '0.5rem 1rem',
+    verticalAlign: 'middle',
+  }}>{visibility.toUpperCase()}</strong>
 }
 
 VisibilityLabel.propTypes = {

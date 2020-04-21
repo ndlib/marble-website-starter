@@ -28,7 +28,7 @@ export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer 
             e.preventDefault()
             const body = {
               uuid: item.uuid,
-              annotation: annotation || null,
+              annotation: annotation || '',
             }
             updateItem(e, loginReducer, body, changePatching, closeFunc)
           }

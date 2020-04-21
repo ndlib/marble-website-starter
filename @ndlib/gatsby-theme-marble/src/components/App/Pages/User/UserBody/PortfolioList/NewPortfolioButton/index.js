@@ -36,6 +36,7 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
         }
       }
       wide
+      primary
       disabled={creating}
     >Create New Portfolio</MaterialButton>
   )
