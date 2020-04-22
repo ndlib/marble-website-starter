@@ -113,7 +113,7 @@ address {
   transition: opacity 200ms ease-in-out;
 }
 .ReactModal__Content {
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -100px);
   transition: 200ms ease-in-out;
 }
 
@@ -121,12 +121,12 @@ address {
   opacity: 1;
 }
 .ReactModal__Content--after-open {
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 }
 
 .ReactModal__Overlay--before-close{
   opacity: 0;
 }
 .ReactModal__Content--before-close {
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -100px);
 }
