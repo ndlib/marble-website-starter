@@ -71,6 +71,7 @@
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^4.12.11",
     "react-markdown": "^4.0.8",
+    "react-modal": "^3.11.2",
     "react-reconciler": "^0.21.0",
     "react-redux": "^7.0.2",
     "react-select": "^3.0.4",
