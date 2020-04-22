@@ -71,7 +71,7 @@ ShareModalContent.propTypes = {
 
 export default ShareModalContent
 
-const onClick = (ref, callbackFunc) => {
+export const onClick = (ref, callbackFunc) => {
   ref.current.select()
   document ? document.execCommand('copy') : console.warn('document not defined')
   ref.current.focus()
