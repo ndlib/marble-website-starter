@@ -1,4 +1,5 @@
 yarn install
+
 site="../../site"
 node getManifests.js ${site}
 node generateMD.js ${site}
