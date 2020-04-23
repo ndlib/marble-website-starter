@@ -120,7 +120,7 @@ export const createNewUser = (slug, body, loginReducer) => {
   return dispatch => {
     dispatch(getUser())
     fetch(
-      `${loginReducer.userContentPath}/user/${slug}`,
+      `${loginReducer.userContentPath}user/${slug}`,
       {
         method: 'post',
         body: JSON.stringify(body),
