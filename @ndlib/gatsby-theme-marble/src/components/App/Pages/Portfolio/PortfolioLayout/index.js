@@ -17,6 +17,7 @@ const PortfolioLayout = ({ portfolio, location, children }) => {
         portfolio={portfolio}
         location={location}
       />
+      <div className='clearfix' />
       {children}
     </React.Fragment>
   )
