@@ -10,7 +10,7 @@ import style from 'components/App/FormElements/style.module.css'
 
 const CreateAccount = ({ loginReducer, dispatch }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
-  const [fullName, changeName] = useState(claims.fullName)
+  const [fullName, changeName] = useState(claims.name)
   const [email, changeEmail] = useState(claims.email)
   const [bio, changeBio] = useState('')
 
