@@ -44,14 +44,14 @@ export const UserEdit = ({ user, loginReducer }) => {
             const body = {
               fullName: fullName,
               email: email,
-              bio: bio || '',
+              bio: bio,
               uuid: `${claims.sub}.${btoa(claims.iss)}`,
               userName: claims.netid,
             }
             patchData({
               loginReducer: loginReducer,
               contentType: 'user',
-              id: claims.netid,
+              id: body.uuid,
               body: body,
               successFunc: () => {
                 navigate(`/user/${body.userName}`)
