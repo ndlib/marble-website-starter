@@ -4,6 +4,7 @@ test('takes a string year(s) and gets a highest and lowest values for it', () =>
   [
     ['1790-1890', 1790, 1890],
     ['19--?', 1900, 1999],
+    ['[19--?].', 1900, 1999],
     ['1745-1750; 1780; 1790-1800', 1745, 1800],
     ['ca. 1899-1900', 1899, 1900],
     [1342, 1342, 1342],
@@ -53,6 +54,7 @@ test('takes a string year and gets a tag for it', () => {
     ['1937.', ['20th Century']],
     ['ca. 1899-1900', ['19th Century', '20th Century']],
     ['19--?', ['20th Century']],
+    ['[19--?].', ['20th Century']],
     ['176-?', ['18th Century']],
     [1342, ['14th Century']],
     ['1900', ['20th Century']],
