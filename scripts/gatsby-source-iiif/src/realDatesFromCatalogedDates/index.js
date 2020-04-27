@@ -103,7 +103,8 @@ const isDashedQuestionMarkDate = (d) => {
 
 // replace all the dashed question marks with the range
 const extractDashedQuestionMarkDate = (d) => {
-  return [d.replace(/[-]{2}\?/, '00').replace(/[-]\?/, '0'), d.replace(/[-]{2}\?/, '99').replace(/[-]\?/, '9')]
+  // replace -- with 00 or - with 0 and remove all non integer characters.
+  return [d.replace(/[-]{2}\?/, '00').replace(/[-]\?/, '0').replace(/[^0-9]+/g, ''), d.replace(/[-]{2}\?/, '99').replace(/[-]\?/, '9').replace(/[^0-9]+/g, '')]
 }
 
 // some items come with ordinal numbers as the dates.
