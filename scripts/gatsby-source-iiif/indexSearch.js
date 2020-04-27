@@ -6,6 +6,7 @@ const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
 const realDatesFromCatalogedDates = require('./src/realDatesFromCatalogedDates')
 const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
+const getCreators = require('./src/getCreators')
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
@@ -71,17 +72,17 @@ const loadSubItemTitles = (manifest) => {
 }
 
 const allMetadataKeys = [
-  'title', 'creator', 'description', 'collectionId', 'id', 'uniqueIdentifier', 'dimensions',
+  'description', 'collectionId', 'id', 'uniqueIdentifier', 'dimensions',
   'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
 ]
 
 const getSearchDataFromManifest = (manifest) => {
   const dateData = realDatesFromCatalogedDates(manifest.dateCreated)
-
+  const creators = getCreators(manifest.creators)
   const search = {
     id: manifest.iiifUri,
     name: manifest.title,
-    creator: manifest.creator,
+    creator: creators,
     date: manifest.dateCreated,
     // lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
     // highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
@@ -98,6 +99,7 @@ const getSearchDataFromManifest = (manifest) => {
   }
 
   search['allMetadata'] = ''
+  search['allMetadata'] = creators.join(' ')
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
       search['allMetadata'] += ' ' + manifest[key]
