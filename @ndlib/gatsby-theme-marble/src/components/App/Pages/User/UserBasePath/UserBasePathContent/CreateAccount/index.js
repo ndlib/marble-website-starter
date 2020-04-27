@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import WelcomeMessage from './WelcomeMessage'
 import MaterialButton from 'components/Internal/MaterialButton'
 import TextField from 'components/App/FormElements/TextField'
 import TextArea from 'components/App/FormElements/TextArea'
@@ -16,7 +17,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
 
   return (
     <form className={style.loginArea}>
-      <p>Welcome new user.</p>
+      <WelcomeMessage />
       <TextField
         id='profileName'
         label='Name'
