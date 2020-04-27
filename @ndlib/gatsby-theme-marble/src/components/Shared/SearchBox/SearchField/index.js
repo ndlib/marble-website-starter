@@ -34,7 +34,7 @@ export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch,
         onChange={(e) => dispatch(updateInput(e.target.value))}
         value={decodeURIComponent(rawInput)}
         onKeyDown={(e) => {
-        // Submit on enter key press
+          // Submit on enter key press
           if (e.keyCode === 13) {
             submitSearch(location, rawInput, searchPath)
           }
