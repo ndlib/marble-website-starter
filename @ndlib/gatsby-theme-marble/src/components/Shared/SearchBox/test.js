@@ -6,7 +6,7 @@ import SearchButton from './SearchButton'
 import SearchField from './SearchField'
 
 describe('SearchBox', () => {
-  test('renders the expected classes and subcomponents', () => {
+  test('renders the expected components', () => {
     useStaticQuery.mockImplementationOnce(() => {
       return {
         site: {
@@ -17,8 +17,6 @@ describe('SearchBox', () => {
       }
     })
     const wrapper = shallow(<SearchBox location={{}} />)
-    expect(wrapper.find('.searchComponent').exists()).toBeTruthy()
-    expect(wrapper.find('.searchBox').exists()).toBeTruthy()
     expect(wrapper.find(SearchButton).exists()).toBeTruthy()
     expect(wrapper.find(SearchField).exists()).toBeTruthy()
   })

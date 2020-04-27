@@ -12,17 +12,16 @@ const wrapper = shallow(
     submitSearch={action}
     className='submitSearch'
     searchPath='search'
-  />
+  />,
 )
 
 describe('SearchButton', () => {
   test('render the button', () => {
-    expect(wrapper.find('button').exists()).toBeTruthy()
-    expect(wrapper.find('img').props().className).toEqual('searchIcon')
+    expect(wrapper.find('div').props().role).toEqual('button')
   })
 
   test('simulate click event', () => {
-    wrapper.find('button').simulate('click')
+    wrapper.find('div').simulate('click')
     expect(action).toHaveBeenCalled()
   })
 })
