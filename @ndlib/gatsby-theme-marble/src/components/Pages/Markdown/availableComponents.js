@@ -16,6 +16,7 @@ import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import Map from 'components/Shared/Map'
 import Menu from 'components/Shared/Menu'
+import MiniCard from 'components/Shared/MiniCard'
 import MiradorViewer from 'components/Shared/MiradorViewer'
 import MultiColumn from 'components/Shared/MultiColumn'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
@@ -47,6 +48,7 @@ export const availableComponents = {
   ManifestMetaData: ManifestMetaData,
   Map: Map,
   Menu: Menu,
+  MiniCard: MiniCard,
   MiradorViewer: MiradorViewer,
   MultiColumn: MultiColumn,
   PartiallyDigitized: PartiallyDigitized,
