@@ -3,18 +3,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Styled, jsx } from 'theme-ui'
-import { Link } from 'gatsby'
+import Link from 'components/Internal/Link'
 import HeroBox from 'components/Shared/HeroBox'
 import SearchBox from 'components/Shared/SearchBox'
 import CardGroup from 'components/Shared/CardGroup'
-// import Card from 'components/Shared/Card'
 import ManifestCard from 'components/Shared/ManifestCard'
 import BlockQuote from 'components/Shared/BlockQuote'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import sx from './sx'
 
-import banner from 'assets/images/banner.swirl.png'
+import banner from 'assets/images/banner.swirl.webp'
 
 const IndexPage = ({ location }) => {
   const recentAdditions = [
@@ -56,7 +55,7 @@ const IndexPage = ({ location }) => {
       <MultiColumn columns='3'>
         <Column>
           <Link
-            to='/search?timeperiod[0]=0-5th%20Century'
+            to='/browse#date'
             sx={sx.browseLink}
           >
             <img
@@ -70,7 +69,7 @@ const IndexPage = ({ location }) => {
         </Column>
         <Column>
           <Link
-            to='/search?format[0]=Paintings'
+            to='/browse#format'
             sx={sx.browseLink}
           >
             <img
@@ -84,7 +83,7 @@ const IndexPage = ({ location }) => {
         </Column>
         <Column>
           <Link
-            to='/search?campuslocation[0]=Rare%20Books%20and%20Special%20Collections'
+            to='/browse#location'
             sx={sx.browseLink}
           >
             <img
