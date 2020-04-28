@@ -71,9 +71,9 @@ module.exports = [
         link: '/help/search-tips',
       },
       {
-        id: 'help-creating-collections',
-        label: 'Creating Collections',
-        link: '/help/creating-collections',
+        id: 'help-creating-portfolios',
+        label: 'Creating Personal Portfolioss',
+        link: '/help/creating-personal-portfolios',
       },
       {
         id: 'help-copyright-and-permissions',
