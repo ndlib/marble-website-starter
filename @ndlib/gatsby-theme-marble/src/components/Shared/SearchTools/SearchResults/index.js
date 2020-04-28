@@ -10,6 +10,7 @@ import {
   HitList,
   HitGrid,
 } from './HitDisplay'
+import Pager from './Pager'
 
 export const SearchResults = ({ defaultDisplay }) => {
   let displayComponent = HitGrid
@@ -23,11 +24,13 @@ export const SearchResults = ({ defaultDisplay }) => {
         sourceFilter={['name']}
         highlightFields={['allMetadata']}
         listComponent={displayComponent}
+        scrollTo='#gatsby-focus-wrapper'
       />
       <NoHits
         suggestionsField='name'
       />
       <InitialLoader component={Loading} />
+      <Pager />
     </React.Fragment>
   )
 }
