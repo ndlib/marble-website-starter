@@ -33,7 +33,7 @@ module.exports = {
     display: 'block',
     fontFamily: 'heading',
     fontSize: '3rem',
-    fontWeight: '800',
+    fontWeight: '200',
     margin: '0.75rem 1rem',
     position: 'absolute',
     textShadow: '-1px 2px #00000066',

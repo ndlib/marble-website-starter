@@ -16,6 +16,7 @@ module.exports = {
     borderColor: 'gray.1',
     borderRadius: '.5rem',
     display: 'block',
+    maxWidth: ['90vw', '600px', '600px'],
     outline: 'none',
     overflow: 'hidden',
     position: 'absolute',
@@ -26,6 +27,7 @@ module.exports = {
   },
   toggle: {
     backgroundColor: 'primary',
+    border: 'none',
     borderRadius: '.5rem',
     color: 'primaryText.0',
     fontSize: '1rem',

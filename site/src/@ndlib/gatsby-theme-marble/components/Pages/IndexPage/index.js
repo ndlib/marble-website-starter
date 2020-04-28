@@ -13,7 +13,7 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import sx from './sx'
 
-import banner from 'assets/images/banner.swirl.webp'
+import banner from 'assets/images/banner.swirl.png'
 
 const IndexPage = ({ location }) => {
   const recentAdditions = [

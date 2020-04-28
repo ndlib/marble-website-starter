@@ -1,6 +1,6 @@
 module.exports = {
   none: {
-    backgroundColor: 'white',
+    backgroundColor: 'background',
     borderBottom: '1px solid',
     borderColor: 'gray.1',
     fontSize: '.85rem',

@@ -7,7 +7,7 @@ import {
 import { useStaticQuery, graphql } from 'gatsby'
 import HeroBox from '@ndlib/gatsby-theme-marble/src/components/Shared/HeroBox'
 import { customQueryBuilder } from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchFilterBox'
-import banner from 'assets/images/banner.swirl.webp'
+import banner from 'assets/images/banner.swirl.png'
 
 const SearchFilterBox = () => {
   const { site } = useStaticQuery(
