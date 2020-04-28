@@ -4,7 +4,7 @@ components:
 - component: HeroBox
   props:
     - label: "backgroundImage"
-      fileValue: "./images/banner.swirl.webp"
+      fileValue: "./images/banner.swirl.png"
   components:
   - component: SearchBox
 - component: MultiColumn

@@ -20,6 +20,7 @@ const MaterialButton = ({
       onClick={(e) => onClick(e)}
       sx={{
         backgroundColor: primary ? 'primary' : 'gray.0',
+        border: 'none',
         color: primary ? 'white' : 'gray.4',
         width: wide ? '250px' : '100px',
       }}

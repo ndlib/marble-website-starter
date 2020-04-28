@@ -19,6 +19,7 @@ const ViewerLink = ({ iiifManifest, index, viewer, className, view, location, ch
       rel={index > 0 ? 'nofollow' : 'alternate'}
       sx={{
         color: 'background',
+        display: 'block',
         position: 'relative',
         verticalAlign: 'top',
       }}

@@ -6,6 +6,7 @@ module.exports = {
     borderColor: 'gray.1',
     cursor: 'pointer',
     fontSize: '1rem',
+    margin: '0',
     overflow: 'hidden',
     outline: 'none',
     padding: '.5rem 1rem',
@@ -22,7 +23,7 @@ module.exports = {
   text: {
     fontSize: '.75rem',
     fontVariant: 'small-caps',
-    fontWeight: '800',
+    fontWeight: '200',
     lineHeight: '1rem',
     margin: '0 1em 0 0',
     verticalAlign: 'middle',

@@ -1,5 +1,6 @@
 module.exports = {
   createButton: {
+    backgroundColor: 'background',
     border: 'none',
     cursor: 'pointer',
     fontSize: '16px',
