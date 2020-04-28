@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 const CampusLocation = ({ metadata }) => {
   return (
     <React.Fragment>
-      <dt key='CampusLocation'>Campus Location</dt>
-      <dd key={metadata}>{metadata}</dd>
+      <dl>
+        <dt key='CampusLocation'>Campus Location</dt>
+        <dd key={metadata}>{metadata}</dd>
+      </dl>
     </React.Fragment>
   )
 }

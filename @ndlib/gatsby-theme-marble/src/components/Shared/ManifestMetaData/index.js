@@ -16,7 +16,7 @@ const ManifestMetaData = ({ iiifManifest, skipHtml }) => {
         metadata={iiifManifest.metadata}
         skipHtml={skipHtml}
       />
-      { typy(iiifManifest, 'provider.homepage[0].label.en').isString ? <CampusLocation metadata={typy(iiifManifest, 'provider.homepage[0].label.en').safeString} /> : null }
+      { typy(iiifManifest, 'provider[0].homepage[0].label.en[0]').isString ? <CampusLocation metadata={typy(iiifManifest, 'provider[0].homepage[0].label.en[0]').safeString} /> : null }
       { iiifManifest.requiredStatement ? <MetaDataField metadata={iiifManifest.requiredStatement} /> : null }
       { iiifManifest.rights ? <p dangerouslySetInnerHTML={{ __html: iiifManifest.rights }} /> : null}
     </React.Fragment>
