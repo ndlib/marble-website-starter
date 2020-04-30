@@ -3,6 +3,7 @@ body {
   margin: 0;
   overflow: hidden;
   position: fixed;
+  -webkit-font-smoothing: antialiased !important;
 }
 #gatsby-focus-wrapper {
   height: 100vh;
