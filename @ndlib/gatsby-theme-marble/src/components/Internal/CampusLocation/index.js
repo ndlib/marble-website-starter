@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 
 const CampusLocation = ({ metadata }) => {
   return (
-    <React.Fragment>
-      <dl>
-        <dt key='CampusLocation'>Campus Location</dt>
-        <dd key={metadata}>{metadata}</dd>
-      </dl>
-    </React.Fragment>
+    <dl>
+      <dt key='CampusLocation'>Campus Location</dt>
+      <dd key={metadata}>{metadata}</dd>
+    </dl>
   )
 }
 CampusLocation.propTypes = {
