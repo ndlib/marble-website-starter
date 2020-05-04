@@ -3,10 +3,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Styled, jsx } from 'theme-ui'
-import Link from 'components/Internal/Link'
 import HeroBox from 'components/Shared/HeroBox'
 import SearchBox from 'components/Shared/SearchBox'
 import CardGroup from 'components/Shared/CardGroup'
+import Card from 'components/Shared/Card'
 import ManifestCard from 'components/Shared/ManifestCard'
 import BlockQuote from 'components/Shared/BlockQuote'
 import MultiColumn from 'components/Shared/MultiColumn'
@@ -54,46 +54,25 @@ const IndexPage = ({ location }) => {
       <Styled.h2>Browse By</Styled.h2>
       <MultiColumn columns='3'>
         <Column>
-          <Link
-            to='/browse#date'
-            sx={sx.browseLink}
-          >
-            <img
-              src={dateImage}
-              alt='Date'
-              title=''
-              sx={sx.browseImage}
-            />
-            <span sx={sx.browseLabel}>Date</span>
-          </Link>
+          <Card
+            label='Date'
+            target='/browse#date'
+            image={dateImage}
+          />
         </Column>
         <Column>
-          <Link
-            to='/browse#format'
-            sx={sx.browseLink}
-          >
-            <img
-              src={formatImage}
-              alt='Format'
-              title=''
-              sx={sx.browseImage}
-            />
-            <span sx={sx.browseLabel}>Format</span>
-          </Link>
+          <Card
+            label='Format'
+            target='/browse#format'
+            image={formatImage}
+          />
         </Column>
         <Column>
-          <Link
-            to='/browse#location'
-            sx={sx.browseLink}
-          >
-            <img
-              src={campuslocationImage}
-              alt='Campus Location'
-              title=''
-              sx={sx.browseImage}
-            />
-            <span sx={sx.browseLabel}>Campus Location</span>
-          </Link>
+          <Card
+            label='Campus Location'
+            target='/browse#location'
+            image={campuslocationImage}
+          />
         </Column>
       </MultiColumn>
     </React.Fragment>
