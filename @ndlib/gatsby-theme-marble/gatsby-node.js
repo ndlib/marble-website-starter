@@ -63,7 +63,7 @@ exports.sourceNodes = ({ actions }) => {
   type iiifProviderJson @dontInfer {
     id: String
     type: String
-    label: String
+    label: iiifTranslatedString
     homepage: [ iiifHomepage ]
     logo: [ iiifLogoJson ]
     seeAlso: [ iiifSeeAlso ]
@@ -86,7 +86,7 @@ exports.sourceNodes = ({ actions }) => {
     width: Int
     summary: iiifTranslatedString
     requiredStatement: iiifLabeledString
-    provider: iiifProviderJson
+    provider: [iiifProviderJson]
     rights: String
     viewingDirection: String
     service: iiifServiceJson
@@ -108,7 +108,7 @@ exports.sourceNodes = ({ actions }) => {
     label: iiifTranslatedString!
     summary: iiifTranslatedString
     requiredStatement: iiifLabeledString
-    provider: iiifProviderJson
+    provider: [iiifProviderJson]
     rights: String
     viewingDirection: String
     metadata: [iiifLabeledString]
