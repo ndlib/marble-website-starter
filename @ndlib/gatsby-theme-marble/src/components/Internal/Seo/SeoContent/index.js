@@ -54,7 +54,7 @@ export const SeoContent = ({
         ]}
       />
       <CanonicalLink base={siteUrl} pathname={pathname} />
-      <SchemaLink pathname={seeAlso} />
+      {/* <SchemaLink pathname={seeAlso} /> */}
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
       {indexable}
