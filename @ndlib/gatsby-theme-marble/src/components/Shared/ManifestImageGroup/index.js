@@ -3,12 +3,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import ManifestImage from 'components/Shared/ManifestImage'
 import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
 import getLanguage from 'utils/getLanguage'
+import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
+import sx from './sx'
 
 export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
   if (!iiifManifest || !iiifManifest.id) {
@@ -22,19 +23,23 @@ export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
   return (
     <section>
       <h2 className='accessibilityOnly'>Images</h2>
+
       <ViewerLink
         iiifManifest={iiifManifest}
         viewer={viewer}
         location={location}
       >
-        <ManifestImage
-          iiifManifest={iiifManifest}
-          index={0}
-          alt={typy(iiifManifest, `summary[${getLanguage()}][0]`).safeString}
-          title={label}
-        />
-        <ExpandIcon label={label} />
+        <picture sx={sx.wrapper}>
+          <img
+            src={typy(iiifManifest, 'items[0].items[0].items[0].body.id').safeString || noImage}
+            alt={typy(iiifManifest, `summary[${getLanguage()}][0]`).safeString}
+            title={label}
+            sx={sx.image}
+          />
+          <ExpandIcon label={label} />
+        </picture>
       </ViewerLink>
+
       <ItemAlternateViews
         iiifManifest={iiifManifest}
         location={location}

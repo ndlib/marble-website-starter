@@ -8,7 +8,7 @@ module.exports = {
       position: 'relative',
       verticalAlign: 'top',
     } : {
-      display: 'inline-block',
+      display: 'inline',
     }
   },
   image: (inCard) => {
@@ -34,6 +34,7 @@ module.exports = {
       fontFamily: 'heading',
       fontSize: '1.5rem',
       height: 'auto',
+      margin: '0 auto',
       lineHeight: '2rem',
       textAlign: 'center',
       width: '100%',
