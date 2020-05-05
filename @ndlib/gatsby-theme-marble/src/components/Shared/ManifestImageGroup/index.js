@@ -7,6 +7,7 @@ import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
 import getLanguage from 'utils/getLanguage'
+import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
@@ -30,7 +31,7 @@ export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
       >
         <picture sx={sx.wrapper}>
           <img
-            src={typy(iiifManifest, 'items[0].items[0].items[0].body.id').safeString}
+            src={typy(iiifManifest, 'items[0].items[0].items[0].body.id').safeString || noImage}
             alt={typy(iiifManifest, `summary[${getLanguage()}][0]`).safeString}
             title={label}
             sx={sx.image}
