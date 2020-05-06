@@ -8,11 +8,7 @@ const print = jest.fn()
 const window = global.window || {}
 Object.defineProperty(window, 'print', { value: print })
 
-const manifest = {
-  id: 'https://iiif.iiif',
-  slug: 'item/3',
-}
-const wrapper = shallow(<PrintButton iiifManifest={manifest} />)
+const wrapper = shallow(<PrintButton />)
 describe('PrintButton', () => {
   test('renders', () => {
     expect(wrapper.find(ActionButton).props().icon).toEqual(printImg)
