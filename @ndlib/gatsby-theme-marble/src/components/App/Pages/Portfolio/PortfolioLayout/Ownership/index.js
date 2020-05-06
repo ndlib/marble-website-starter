@@ -15,16 +15,24 @@ import { jsx } from 'theme-ui'
 export const Ownership = ({ portfolio, loginReducer, location }) => {
   const { privacy, userId } = portfolio
   const isOwner = ownsPage(loginReducer, userId)
+  let content = (
+    <React.Fragment>
+      <Attribution>
+        Portfolio collected and annotated by <UserCartouche user={{ uuid: userId }} />
+      </Attribution>
+    </React.Fragment>
+  )
   if (isOwner) {
-    return (
-      <div sx={{
-        width: '100%',
-      }}>
+    content = (
+      <React.Fragment>
         <div
           sx={{
             display: 'inline-block',
           }}
-        >This is your <VisibilityLabel visibility={privacy} /> portfolio.</div> {
+        >
+          This is your <VisibilityLabel visibility={privacy} /> portfolio.
+        </div>
+        {
           typy(location, 'pathname').safeString.includes('edit') ? null : (
             <div sx={{
               display: 'inline-block',
@@ -39,13 +47,13 @@ export const Ownership = ({ portfolio, loginReducer, location }) => {
             </div>
           )
         }
-      </div>
+      </React.Fragment>
     )
   }
   return (
-    <Attribution>
-      Portfolio collected and annotated by <UserCartouche user={{ uuid: userId }} />
-    </Attribution>
+    <div sx={{ width: '100%' }}>
+      {content}
+    </div>
   )
 }
 
