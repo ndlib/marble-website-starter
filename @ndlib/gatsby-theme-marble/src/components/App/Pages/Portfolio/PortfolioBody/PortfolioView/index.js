@@ -4,16 +4,14 @@ import CalloutBox from 'components/Shared/CalloutBox'
 import PortfolioDisplay from './PortfolioDisplay'
 
 export const PortfolioView = ({ portfolio }) => {
-  const { description, items, layout, userId } = portfolio
+  const { description } = portfolio
   return (
     <React.Fragment>
       {
         description ? <div><CalloutBox><p>{description}</p></CalloutBox></div> : null
       }
       <PortfolioDisplay
-        layout={layout}
-        items={items}
-        userId={userId}
+        portfolio={portfolio}
       />
     </React.Fragment>
   )

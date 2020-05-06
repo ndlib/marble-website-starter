@@ -2,15 +2,14 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
 import ShareModalContent, { onClick } from './'
+
 describe('ShareModalContent', () => {
   const copyFunc = jest.fn()
   beforeEach(() => {
     Object.defineProperty(global.document, 'execCommand', { value: copyFunc })
   })
   test('render', () => {
-    const iiifManifest = {
-      slug: 'item/1',
-    }
+    const path = 'item/1'
     const sq = {
       site: {
         siteMetadata: {
@@ -22,7 +21,7 @@ describe('ShareModalContent', () => {
       return sq
     })
 
-    const wrapper = mount(<ShareModalContent iiifManifest={iiifManifest} />)
+    const wrapper = mount(<ShareModalContent path={path} />)
     expect(wrapper.find('input').props().value).toEqual('http://example.com/item/1')
     expect(wrapper.find('button').exists()).toBeTruthy()
     expect(wrapper.find('svg').exists()).toBeTruthy()

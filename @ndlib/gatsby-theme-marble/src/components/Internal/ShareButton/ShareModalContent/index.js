@@ -7,7 +7,7 @@ import typy from 'typy'
 import { useThemeUI, jsx } from 'theme-ui'
 import sx from './sx'
 
-const ShareModalContent = ({ iiifManifest }) => {
+const ShareModalContent = ({ path }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -21,7 +21,7 @@ const ShareModalContent = ({ iiifManifest }) => {
   )
   const [isCopied, setIsCopied] = useState(false)
   const inputRef = useRef(null)
-  const fullPath = `${typy(site, 'siteMetadata.siteUrl').safeString}/${typy(iiifManifest, 'slug').safeString}`
+  const fullPath = `${typy(site, 'siteMetadata.siteUrl').safeString}/${path}`
   const context = useThemeUI()
   const iconColor = typy(context, 'theme.colors.background').safeString || '#fff'
   return (
@@ -64,9 +64,7 @@ const ShareModalContent = ({ iiifManifest }) => {
 }
 
 ShareModalContent.propTypes = {
-  iiifManifest: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
-  }).isRequired,
+  path: PropTypes.string.isRequired,
 }
 
 export default ShareModalContent
