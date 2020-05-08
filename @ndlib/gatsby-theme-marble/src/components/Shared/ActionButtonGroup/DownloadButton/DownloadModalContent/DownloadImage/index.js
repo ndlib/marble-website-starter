@@ -6,7 +6,7 @@ import ImagePreview from './ImagePreview'
 import ImagePager from './ImagePager'
 import ImageSettings from './ImageSettings'
 import MaterialButton from 'components/Internal/MaterialButton'
-import download from 'utils/download'
+import { download } from 'utils/download'
 import {
   copyrightCanDownload,
   imageUrl,
