@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import CanonicalLink from './CanonicalLink'
-import SchemaLink from './SchemaLink'
+// import SchemaLink from './SchemaLink'
 import MetaTagGroup from './MetaTagGroup'
 import { getOpenGraph, getTwitter } from './data'
 
@@ -16,7 +16,7 @@ export const SeoContent = ({
   siteTitle,
   siteUrl,
   noIndex,
-  seeAlso,
+  // seeAlso,
 }) => {
   const openGraph = getOpenGraph(title, description, image)
   const twitter = getTwitter(author, title, description, image)

@@ -3,7 +3,9 @@ module.exports = {
     backgroundColor: 'primary',
     display: 'block',
     overflow: 'hidden',
+    position: 'absolute',
     width: '100%',
+    zIndex: '1',
   },
   heading: {
     color: 'background',
@@ -13,6 +15,7 @@ module.exports = {
     lineHeight: '1.5rem',
     margin: '0',
     padding: '1rem',
+    position: 'fixed',
   },
   button: {
     backgroundColor: 'primary',
@@ -29,6 +32,11 @@ module.exports = {
     verticalAlign: 'middle',
   },
   content: {
+    maxHeight: 'calc(100vh - 80px - 3rem)',
+    marginTop: '3rem',
     padding: '1rem',
+    overflowX: 'hidden',
+    overflowY: 'scroll',
+    position: 'relative',
   },
 }

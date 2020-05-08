@@ -1,0 +1,35 @@
+module.exports = {
+  wrapper: {
+    backgroundColor: 'gray.1',
+    display: 'flex',
+    height: 'calc(100vh - 390px)',
+    marginBottom: '1rem',
+    maxHeight: '600px',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    width: '100%',
+  },
+  image: {
+    margin: 'auto',
+    maxHeight: '100%',
+    maxWidth: '100%',
+  },
+  controlWrapper: {
+    marginBottom: '.5rem',
+    textAlign: 'center',
+    width: '100%',
+  },
+  select: {
+    fontSize: '18px',
+    border: '1px solid',
+    borderColor: 'gray.1',
+    backgroundColor: 'background',
+    color: 'gray.4',
+    height: '32px',
+    margin: '0 1rem',
+    padding: '0 2rem',
+    textAlignLast: 'center',
+    WebkitAppearance: 'none',
+    MozAppearance: 'none',
+  },
+}
