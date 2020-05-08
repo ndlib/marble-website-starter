@@ -27,8 +27,7 @@ const ActionModal = ({
       onRequestClose={closeFunc}
       shouldCloseOnOverlayClick
     >
-      <div
-        sx={sx.wrapper}>
+      <div sx={sx.wrapper}>
         <h1
           sx={sx.heading}
         >{contentLabel}</h1>
@@ -54,8 +53,7 @@ const ActionModal = ({
         </button>
       </div>
       <BaseStyles>
-        <div
-          sx={sx.content}>{ children }</div>
+        <div sx={sx.content}>{ children }</div>
       </BaseStyles>
     </ReactModal>
   )
@@ -86,6 +84,8 @@ export const modalStyle = (fullscreen) => {
       right: 'auto',
       bottom: fullscreen ? '40px' : 'auto',
       marginRight: '-50%',
+      position: 'absolute',
+      overflow: 'hidden',
       height: fullscreen ? 'calc(100vh - 80px)' : 'auto',
       width: fullscreen ? '95vw' : '500px',
       maxWidth: '95vw',
