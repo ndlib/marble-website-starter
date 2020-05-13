@@ -10,84 +10,13 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0",
-    "@emotion/core": "^10.0.15",
-    "@emotion/styled": "^10.0.15",
-    "@mdx-js/react": "^1.3.1",
     "@ndlib/gatsby-theme-marble": "*",
-    "@okta/okta-auth-js": "^2.9.0",
-    "@types/googlemaps": "^3.0.0",
-    "@types/markerclustererplus": "^2.1.29",
-    "babel-eslint": "^10.0.2",
-    "babel-jest": "^24.7.1",
-    "babel-preset-gatsby": "^0.2.8",
-    "crypto": "^1.0.1",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
-    "eslint": "^6.1.0",
-    "eslint-config-react-app": "^5.0.0",
-    "eslint-plugin-flowtype": "^4.2.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-react": "^7.x",
-    "eslint-plugin-standard": "^4.0.0",
-    "fetch": "^1.1.0",
     "gatsby": "^2.20.10",
-    "gatsby-cli": "^2.7.30",
-    "gatsby-graphiql-explorer": "^0.2.3",
-    "gatsby-image": "^2.2.8",
-    "gatsby-link": "^2.2.4",
-    "gatsby-node-helpers": "^0.3.0",
-    "gatsby-page-utils": "^0.0.5",
-    "gatsby-plugin-accessibilityjs": "^1.0.3",
     "gatsby-plugin-manifest": "^2.2.5",
-    "gatsby-plugin-node-fields": "^2.0.1",
-    "gatsby-plugin-offline": "^2.2.5",
-    "gatsby-plugin-page-creator": "^2.1.16",
-    "gatsby-plugin-react-helmet": "^3.1.3",
     "gatsby-plugin-robots-txt": "^1.5.0",
-    "gatsby-plugin-sharp": "^2.5.3",
-    "gatsby-plugin-sitemap": "^2.2.6",
-    "gatsby-plugin-theme-ui": "^0.2.33",
     "gatsby-plugin-typography": "^2.3.2",
-    "gatsby-react-router-scroll": "^2.1.3",
-    "gatsby-remark-copy-linked-files": "^2.1.5",
-    "gatsby-remark-images": "^3.1.10",
-    "gatsby-source-filesystem": "^2.1.9",
-    "gatsby-transformer-json": "^2.3.1",
-    "gatsby-transformer-remark": "^2.6.13",
-    "gatsby-transformer-sharp": "^2.2.6",
-    "gravatar": "^1.8.0",
-    "jest": "^24.7.1",
-    "jest-environment-enzyme": "^7.0.2",
-    "jest-enzyme": "^7.0.2",
-    "js-file-downloader": "^1.1.7",
     "lodash.merge": "^4.6.2",
-    "md5": "^2.2.1",
-    "mirador": "3.0.0-beta.6",
-    "moment": "^2.24.0",
-    "prettier": "^1.16.4",
-    "prop-types": "^15.7.2",
-    "query-string": "^6.4.2",
-    "react": "16.11",
-    "react-beautiful-dnd": "^11.0.5",
-    "react-dev-utils": "^9.0.2",
-    "react-dom": "16.11",
-    "react-google-maps": "^9.4.5",
-    "react-helmet": "^5.2.0",
-    "react-hot-loader": "^4.12.11",
-    "react-markdown": "^4.0.8",
-    "react-modal": "^3.11.2",
-    "react-reconciler": "^0.21.0",
-    "react-redux": "^7.0.2",
-    "react-select": "^3.0.4",
-    "react-typography": "^0.16.19",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "searchkit": "2.4.1-alpha.4",
-    "theme-ui": "^0.2.33",
-    "typography": "^0.16.19",
-    "typy": "^3.1.0"
+    "react": "16.11"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -115,10 +44,41 @@
     "jest": "^24.7.1",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "react-dev-utils": "^9.0.2"
   },
   "scripts": {
     "test": "jest",
     "watch": "jest --watchAll --coverage"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/jest/preprocess.js"
+    },
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js"
+    },
+    "testPathIgnorePatterns": [
+      "node_modules",
+      ".cache"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(gatsby)/)"
+    ],
+    "globals": {
+      "__PATH_PREFIX__": ""
+    },
+    "testURL": "http://localhost",
+    "setupFilesAfterEnv": [
+      "./jest/enzyme-setup.js"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest/loadershim.js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
   }
 }
