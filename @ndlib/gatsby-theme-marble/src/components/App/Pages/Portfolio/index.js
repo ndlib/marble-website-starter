@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import PortfolioLayout from './PortfolioLayout'
 import PortfolioBody from './PortfolioBody'
 import PortfolioUnavailable from './PortfolioUnavailable'
 import Loading from 'components/Internal/Loading'
 import { getData } from 'utils/api'
+import { ownsPage } from 'utils/auth'
 
-export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
-  const [portfolio, setPortfolio] = useState({})
+export const Portfolio = ({ portfolioId, location, loginReducer }) => {
   const [content, setContent] = useState(<Loading />)
 
   useEffect(() => {
@@ -19,11 +18,17 @@ export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
       contentType: 'collection',
       id: portfolioId,
       successFunc: (data) => {
-        setPortfolio(data)
-        setContent(<PortfolioBody
-          portfolio={data}
-          edit={edit}
-        />)
+        const { privacy, userId } = data
+        const isOwner = ownsPage(loginReducer, userId)
+        if (privacy === 'private' && !isOwner) {
+          setContent(<PortfolioUnavailable />)
+        } else {
+          setContent(<PortfolioBody
+            location={location}
+            portfolio={data}
+            isOwner={isOwner}
+          />)
+        }
       },
       errorFunc: () => {
         setContent(<PortfolioUnavailable />)
@@ -32,22 +37,17 @@ export const Portfolio = ({ portfolioId, edit, location, loginReducer }) => {
     return () => {
       abortController.abort()
     }
-  }, [portfolioId, edit, loginReducer])
+  }, [portfolioId, loginReducer, location])
 
   return (
-    <PortfolioLayout
-      portfolio={portfolio}
-      edit={edit}
-      location={location}
-    >
+    <React.Fragment>
       {content}
-    </PortfolioLayout>
+    </React.Fragment>
   )
 }
 
 Portfolio.propTypes = {
   portfolioId: PropTypes.string,
-  edit: PropTypes.bool,
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

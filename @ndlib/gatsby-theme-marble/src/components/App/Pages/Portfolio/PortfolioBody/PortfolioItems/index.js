@@ -6,11 +6,10 @@ import { jsx } from 'theme-ui'
 import Item from './Item'
 import NoItems from './NoItems'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
-import ShareButton from 'components/Internal/ShareButton'
-import PrintButton from 'components/Internal/PrintButton'
 import { COMPILATION_PAGE } from 'store/actions/displayActions'
-const PortfolioDisplay = ({ portfolio }) => {
-  const { items, layout, userId, uuid } = portfolio
+
+const PortfolioItems = ({ portfolio, isOwner }) => {
+  const { items, layout, userId } = portfolio
   if (items.length === 0) {
     return (
       <NoItems />
@@ -39,25 +38,7 @@ const PortfolioDisplay = ({ portfolio }) => {
     )
   }
   return (
-    <DisplayViewToggle
-      defaultDisplay={COMPILATION_PAGE}
-      extraControls={
-        () => {
-          return (
-            <div
-              sx={{
-                display: 'inline-flex',
-                float: 'left',
-                margin: '0 !important',
-              }}
-            >
-              <ShareButton path={`myportfolio/${uuid}`} />
-              <PrintButton />
-            </div>
-          )
-        }
-      }
-    >
+    <DisplayViewToggle defaultDisplay={COMPILATION_PAGE}>
       {
         sortedItems.map(item => {
           return (
@@ -73,7 +54,7 @@ const PortfolioDisplay = ({ portfolio }) => {
   )
 }
 
-PortfolioDisplay.propTypes = {
+PortfolioItems.propTypes = {
   portfolio: PropTypes.shape({
     items: PropTypes.array.isRequired,
     layout: PropTypes.oneOf([
@@ -81,8 +62,7 @@ PortfolioDisplay.propTypes = {
       'annotated',
     ]),
     userId: PropTypes.string.isRequired,
-    uuid: PropTypes.string.isRequired,
   }),
-
+  isOwner: PropTypes.bool,
 }
-export default PortfolioDisplay
+export default PortfolioItems

@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import EditItem from './EditItem'
-import NoItems from 'components/App/Pages/Portfolio/PortfolioBody/PortfolioView/PortfolioDisplay/NoItems'
+import NoItems from 'components/App/Pages/Portfolio/PortfolioBody/PortfolioItems/NoItems'
 import { jsx } from 'theme-ui'
 import sx from './sx.js'
 
