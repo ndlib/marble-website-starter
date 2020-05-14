@@ -8,7 +8,7 @@ import EditItemFormContent from './EditItemFormContent'
 import Loading from 'components/Internal/Loading'
 import { getData } from 'utils/api'
 
-export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
+export const EditItemForm = ({ uuid, closeFunc, loginReducer }) => {
   const [content, setContent] = useState(<Loading />)
 
   useEffect(() => {
@@ -21,7 +21,6 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
         setContent(<EditItemFormContent
           item={data}
           closeFunc={closeFunc}
-          deleteFunc={deleteFunc}
         />)
       },
       errorFunc: () => {
@@ -31,7 +30,7 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
     return () => {
       abortController.abort()
     }
-  }, [closeFunc, deleteFunc, loginReducer, uuid])
+  }, [closeFunc, loginReducer, uuid])
 
   return (
     <div sx={{
@@ -39,9 +38,9 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
       borderColor: 'gray.1',
       height: '400px',
       margin: '0',
-      maxWidth: '800px',
       overflowY: 'scroll',
       padding: '1rem',
+      width: '100%',
     }}>
       {content}
     </div>
@@ -49,7 +48,6 @@ export const EditItemForm = ({ uuid, closeFunc, deleteFunc, loginReducer }) => {
 }
 EditItemForm.propTypes = {
   uuid: PropTypes.string.isRequired,
-  deleteFunc: PropTypes.func.isRequired,
   closeFunc: PropTypes.func.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

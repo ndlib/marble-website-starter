@@ -43,7 +43,6 @@ const PortfolioBody = ({ portfolio, location, isOwner }) => {
         isOwner={isOwner}
       />
       <PortfolioItems
-        portfolio={portfolio}
         isOwner={isOwner}
       />
     </PortfolioContext.Provider>

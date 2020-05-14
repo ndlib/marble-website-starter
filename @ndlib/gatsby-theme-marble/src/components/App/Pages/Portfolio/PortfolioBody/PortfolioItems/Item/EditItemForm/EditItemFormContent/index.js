@@ -3,37 +3,33 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import TextArea from 'components/App/FormElements/TextArea'
 import MaterialButton from 'components/Internal/MaterialButton'
-import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
+// import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
 import closeIcon from 'assets/icons/svg/baseline-done-24px.svg'
 import { patchData, deleteData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 
-export const EditItemFormContent = ({ item, closeFunc, deleteFunc, loginReducer }) => {
+export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   const [annotation, changeAnnotation] = useState(item.annotation)
   const [patching, changePatching] = useState(false)
   return (
     <React.Fragment>
       <div className={style.buttonGroup}>
-        <MaterialButton onClick={
-          (e) => {
-            e.preventDefault()
-            deleteItem(e, loginReducer, item.uuid, changePatching, deleteFunc, closeFunc)
-          }
-        }>
-          <img src={deleteIcon} alt='Delete' />
+        <MaterialButton onClick={() => closeFunc()}>
+          Cancel
         </MaterialButton>
-        <MaterialButton onClick={
-          // eslint-disable-next-line complexity
-          (e) => {
-            e.preventDefault()
-            const body = {
-              uuid: item.uuid,
-              annotation: annotation || '',
+        <MaterialButton
+          primary
+          onClick={
+            (e) => {
+              e.preventDefault()
+              const body = {
+                uuid: item.uuid,
+                annotation: annotation || '',
+              }
+              updateItem(e, loginReducer, body, changePatching, closeFunc)
             }
-            updateItem(e, loginReducer, body, changePatching, closeFunc)
-          }
-        }>
-          <img src={closeIcon} alt='Close editing form' />
+          }>
+          Save
         </MaterialButton>
       </div>
       <TextArea
@@ -57,7 +53,6 @@ EditItemFormContent.propTypes = {
     link: PropTypes.string,
     uuid: PropTypes.string,
   }),
-  deleteFunc: PropTypes.func.isRequired,
   closeFunc: PropTypes.func.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

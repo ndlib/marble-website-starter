@@ -13,7 +13,6 @@ import { PortfolioContext } from '../'
 const PortfolioItems = ({ isOwner }) => {
   const { portfolio, updatePortfolio } = useContext(PortfolioContext)
   const { items, layout, userId } = portfolio
-  console.log(portfolio)
   if (typy(portfolio, 'items').safeArray.length === 0) {
     return (
       <NoItems />
@@ -34,6 +33,7 @@ const PortfolioItems = ({ isOwner }) => {
                 annotated
                 key={item.uuid}
                 userId={userId}
+                isOwner={isOwner}
               />
             )
           })
@@ -50,6 +50,7 @@ const PortfolioItems = ({ isOwner }) => {
               item={item}
               key={item.uuid}
               userId={userId}
+              isOwner={isOwner}
             />
           )
         })
