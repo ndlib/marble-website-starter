@@ -1,6 +1,5 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Footer as ThemeFooter } from 'theme-ui'
 import Footer from './'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 
