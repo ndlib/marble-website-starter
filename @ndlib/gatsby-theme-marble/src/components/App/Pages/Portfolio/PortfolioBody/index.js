@@ -40,7 +40,6 @@ const PortfolioBody = ({ portfolio, location, isOwner }) => {
       />
       <div className='clearfix' />
       <PortfolioDescription
-        portfolio={portfolio}
         isOwner={isOwner}
       />
       <PortfolioItems

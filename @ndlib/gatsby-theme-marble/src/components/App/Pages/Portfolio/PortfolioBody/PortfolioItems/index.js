@@ -1,16 +1,20 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import typy from 'typy'
 import Item from './Item'
 import NoItems from './NoItems'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import { COMPILATION_PAGE } from 'store/actions/displayActions'
+import { PortfolioContext } from '../'
 
-const PortfolioItems = ({ portfolio, isOwner }) => {
+const PortfolioItems = ({ isOwner }) => {
+  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
   const { items, layout, userId } = portfolio
-  if (items.length === 0) {
+  console.log(portfolio)
+  if (typy(portfolio, 'items').safeArray.length === 0) {
     return (
       <NoItems />
     )
@@ -55,14 +59,6 @@ const PortfolioItems = ({ portfolio, isOwner }) => {
 }
 
 PortfolioItems.propTypes = {
-  portfolio: PropTypes.shape({
-    items: PropTypes.array.isRequired,
-    layout: PropTypes.oneOf([
-      'default',
-      'annotated',
-    ]),
-    userId: PropTypes.string.isRequired,
-  }),
   isOwner: PropTypes.bool,
 }
 export default PortfolioItems

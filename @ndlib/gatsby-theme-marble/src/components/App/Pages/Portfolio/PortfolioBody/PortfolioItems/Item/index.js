@@ -4,7 +4,6 @@ import typy from 'typy'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Card from 'components/Shared/Card'
-import ViewerButtons from './ViewerButtons'
 import style from './style.module.css'
 
 const Item = ({ item, userId, annotated = false }) => {
@@ -30,7 +29,6 @@ const Item = ({ item, userId, annotated = false }) => {
           <Column colSpan='3'>{item.annotation}</Column>
           <Column colSpan='2'>
             {card}
-            <ViewerButtons link={item.link} />
           </Column>
         </MultiColumn>
       </div>
