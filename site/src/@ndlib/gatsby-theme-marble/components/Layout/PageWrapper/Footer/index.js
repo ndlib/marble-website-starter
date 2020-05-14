@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { Footer as ThemeFooter, jsx } from 'theme-ui'
-import Menu from 'components/Shared/Menu'
+import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import sniteLogo from 'assets/svg/Snite.One.Line.W.svg'
 import libraryLogo from 'assets/images/library.logo.png'
 import sx from './sx'

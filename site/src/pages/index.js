@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
+import Layout from '@ndlib/gatsby-theme-marble/src/components/Layout'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Internal/Seo'
 import IndexPage from 'components/Pages/IndexPage'
 
 const Home = ({ data, location }) => {
