@@ -1,18 +1,19 @@
+/** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import TextArea from 'components/App/FormElements/TextArea'
 import MaterialButton from 'components/Internal/MaterialButton'
-// import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
-import closeIcon from 'assets/icons/svg/baseline-done-24px.svg'
-import { patchData, deleteData } from 'utils/api'
+import { patchData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
+import { Styled, jsx } from 'theme-ui'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   const [annotation, changeAnnotation] = useState(item.annotation)
   const [patching, changePatching] = useState(false)
   return (
     <React.Fragment>
+      <Styled.h2>{item.title}</Styled.h2>
       <div className={style.buttonGroup}>
         <MaterialButton onClick={() => closeFunc()}>
           Cancel
@@ -63,23 +64,6 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(EditItemFormContent)
-
-export const deleteItem = (event, loginReducer, uuid, patchingFunc, deleteFunc, closeFunc) => {
-  patchingFunc(true)
-  if (window.confirm(`This action cannot be undone.`)) {
-    deleteData({
-      loginReducer: loginReducer,
-      contentType: 'item',
-      id: uuid,
-      successFunc: deleteFunc,
-      errorFunc: (e) => {
-        console.error(e)
-      },
-    })
-  }
-  patchingFunc(false)
-  closeFunc(event)
-}
 
 const updateItem = (event, loginReducer, body, patchingFunc, closeFunc) => {
   patchingFunc(true)

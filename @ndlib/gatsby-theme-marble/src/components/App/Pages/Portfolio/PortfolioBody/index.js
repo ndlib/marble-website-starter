@@ -7,6 +7,7 @@ import PortfolioDescription from './PortfolioDescription'
 import PortfolioItems from './PortfolioItems'
 import Seo from 'components/Internal/Seo'
 import Ownership from './Ownership'
+
 const initialContext = { portfolio: {}, updatePortfolio: () => {} }
 export const PortfolioContext = React.createContext({
   portfolio: {},

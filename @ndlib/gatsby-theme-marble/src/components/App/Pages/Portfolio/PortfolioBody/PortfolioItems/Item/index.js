@@ -6,7 +6,7 @@ import Column from 'components/Shared/Column'
 import Card from 'components/Shared/Card'
 import style from './style.module.css'
 import EditItemForm from './EditItemForm'
-import { patchData, deleteData } from 'utils/api'
+import DeleteItemButton from './DeleteItemButton'
 
 const Item = ({ item, userId, isOwner, annotated = false }) => {
   const [editing, setEditing] = useState(false)
@@ -20,16 +20,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
         <button
           onClick={() => setEditing(true)}
         >Edit</button>
-        <button
-          onClick={
-            () => {
-              if (window.confirm(`This action cannot be undone`)) {
-                // deleteItem(e, loginReducer, item.uuid, changePatching, deleteFunc, closeFunc)
-                console.log('delete')
-              }
-            }
-          }
-        >Delete</button>
+        <DeleteItemButton item={item} />
       </span>
     )
   }
@@ -87,21 +78,4 @@ export const targetWithAnnotation = (item, userId) => {
     return `${item.link}?${userId}${item.uuid}`
   }
   return item.link
-}
-
-export const deleteItem = (event, loginReducer, uuid, patchingFunc, deleteFunc, closeFunc) => {
-  patchingFunc(true)
-  if (window.confirm(`This action cannot be undone.`)) {
-    deleteData({
-      loginReducer: loginReducer,
-      contentType: 'item',
-      id: uuid,
-      successFunc: deleteFunc,
-      errorFunc: (e) => {
-        console.error(e)
-      },
-    })
-  }
-  patchingFunc(false)
-  closeFunc(event)
 }

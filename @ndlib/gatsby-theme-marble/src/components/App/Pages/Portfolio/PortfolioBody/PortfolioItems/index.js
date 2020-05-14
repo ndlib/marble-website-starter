@@ -11,7 +11,7 @@ import { COMPILATION_PAGE } from 'store/actions/displayActions'
 import { PortfolioContext } from '../'
 
 const PortfolioItems = ({ isOwner }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
+  const { portfolio } = useContext(PortfolioContext)
   const { items, layout, userId } = portfolio
   if (typy(portfolio, 'items').safeArray.length === 0) {
     return (
