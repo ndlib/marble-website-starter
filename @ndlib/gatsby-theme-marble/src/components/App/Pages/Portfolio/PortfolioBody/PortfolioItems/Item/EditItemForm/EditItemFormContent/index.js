@@ -1,16 +1,33 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import TextArea from 'components/App/FormElements/TextArea'
 import MaterialButton from 'components/Internal/MaterialButton'
-import { patchData } from 'utils/api'
+import { patchData, getData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 import { Styled, jsx } from 'theme-ui'
+import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
+  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
   const [annotation, changeAnnotation] = useState(item.annotation)
   const [patching, changePatching] = useState(false)
+
+  const callBack = () => {
+    getData({
+      loginReducer: loginReducer,
+      contentType: 'collection',
+      id: portfolio.uuid,
+      successFunc: (data) => {
+        updatePortfolio(data)
+        closeFunc()
+      },
+      errorFunc: (e) => {
+        console.error(e)
+      },
+    })
+  }
   return (
     <React.Fragment>
       <Styled.h2>{item.title}</Styled.h2>
@@ -27,7 +44,7 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
                 uuid: item.uuid,
                 annotation: annotation || '',
               }
-              updateItem(e, loginReducer, body, changePatching, closeFunc)
+              updateItem(e, loginReducer, body, changePatching, callBack)
             }
           }>
           Save
