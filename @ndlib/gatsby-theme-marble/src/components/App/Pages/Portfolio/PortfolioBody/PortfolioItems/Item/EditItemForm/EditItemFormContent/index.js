@@ -8,6 +8,7 @@ import { patchData, getData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 import { Styled, jsx } from 'theme-ui'
 import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import SetPortfolioImage from './SetPortfolioImage'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   const { portfolio, updatePortfolio } = useContext(PortfolioContext)
@@ -59,6 +60,7 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
         }}
         disabled={patching}
       />
+      <SetPortfolioImage item={item} />
     </React.Fragment>
   )
 }
