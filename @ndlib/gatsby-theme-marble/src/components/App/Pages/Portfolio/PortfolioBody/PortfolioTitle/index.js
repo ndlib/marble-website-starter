@@ -4,9 +4,8 @@ import React, { useState, useContext } from 'react'
 import { Styled, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
-import editIcon from 'assets/icons/svg/baseline-edit-24px.svg'
-import sx from './sx'
 import TitleEdit from './TitleEdit'
+import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
 
 const PortfolioTitle = ({ isOwner }) => {
   const { portfolio } = useContext(PortfolioContext)
@@ -16,31 +15,19 @@ const PortfolioTitle = ({ isOwner }) => {
     return <TitleEdit closeFunc={() => setEditing(false)} />
   }
 
-  let editButton = null
-  if (isOwner) {
-    editButton = (
-      <button
-        onClick={() => setEditing(true)}
-        sx={sx.editButton}
-      >
-        <img
-          src={editIcon}
-          alt='edit'
-        />
-      </button>
-    )
-  }
-
   return (
-    <Styled.h1>{portfolio.title}{editButton}</Styled.h1>
+    <Styled.h1>
+      {portfolio.title}
+      <EditButton
+        isOwner={isOwner}
+        setEditFunc={() => setEditing(true)}
+      />
+    </Styled.h1>
   )
 }
 
 PortfolioTitle.propTypes = {
   isOwner: PropTypes.bool,
-}
-export const mapStateToProps = (state) => {
-  return { ...state }
 }
 
 export default PortfolioTitle

@@ -2,15 +2,13 @@
 import { useState, useContext } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { patchData } from 'utils/api'
-import MaterialButton from 'components/Internal/MaterialButton'
 import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
-const TitleEdit = ({ closeFunc, loginReducer }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
+const TitleEdit = ({ closeFunc }) => {
+  const { portfolio } = useContext(PortfolioContext)
   const defaultTitle = portfolio.title
   const [newTitle, setNewTitle] = useState(defaultTitle)
   const [patching, setPatching] = useState(false)
@@ -33,37 +31,15 @@ const TitleEdit = ({ closeFunc, loginReducer }) => {
         disabled={patching}
         sx={sx.input(valid)}
       />
-      <span
-        sx={sx.buttonWrapper}
-      >
-        <MaterialButton
-          onClick={() => closeFunc()}
-          disabled={patching}
-        >Cancel</MaterialButton>
-        <MaterialButton
-          onClick={() => {
-            if (valid) {
-              setPatching(true)
-              const body = { title: newTitle }
-              patchData({
-                loginReducer: loginReducer,
-                contentType: 'collection',
-                id: portfolio.uuid,
-                body: body,
-                successFunc: (result) => {
-                  updatePortfolio(result)
-                  setPatching(false)
-                  closeFunc()
-                },
-                errorFunc: (e) => {
-                  console.error(e)
-                },
-              })
-            }
-          }}
-          primary
-          disabled={!valid || patching || defaultTitle === newTitle}
-        >Save</MaterialButton>
+      <span sx={sx.buttonWrapper}>
+        <SaveOrCancelButtons
+          closeFunc={closeFunc}
+          patching={patching}
+          setPatching={setPatching}
+          body={{ title: newTitle }}
+          valid={valid}
+          changed={defaultTitle !== newTitle}
+        />
       </span>
       { valid ? null : <div sx={sx.warning}><em>Title cannot be blank.</em></div> }
     </div>
@@ -71,13 +47,7 @@ const TitleEdit = ({ closeFunc, loginReducer }) => {
 }
 
 TitleEdit.propTypes = {
-  loginReducer: PropTypes.object.isRequired,
   closeFunc: PropTypes.func.isRequired,
 }
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
 
-export default connect(
-  mapStateToProps,
-)(TitleEdit)
+export default TitleEdit
