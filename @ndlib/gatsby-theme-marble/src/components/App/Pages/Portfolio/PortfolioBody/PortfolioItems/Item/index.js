@@ -1,44 +1,38 @@
+/** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { jsx } from 'theme-ui'
 import typy from 'typy'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Card from 'components/Shared/Card'
-import style from './style.module.css'
 import EditItemForm from './EditItemForm'
-import DeleteItemButton from './DeleteItemButton'
+import ItemControls from './ItemControls'
+import sx from './sx'
 
 const Item = ({ item, userId, isOwner, annotated = false }) => {
   const [editing, setEditing] = useState(false)
   const finalTarget = targetWithAnnotation(item, userId)
 
-  let buttons = null
-
-  if (isOwner) {
-    buttons = (
-      <span>
-        <button
-          onClick={() => setEditing(true)}
-        >Edit</button>
-        <DeleteItemButton item={item} />
-      </span>
-    )
-  }
   let card = (
-    <div>
+    <div sx={sx.cardWrapper}>
       <Card
         label={item.title}
         target={finalTarget}
         image={item.image}
       >
         {
-          item.annotation
+          item.annotation && !annotated
             ? <React.Fragment>
               <p>{item.annotation}</p>
             </React.Fragment> : null
         }
       </Card>
-      {buttons}
+      <ItemControls
+        item={item}
+        isOwner={isOwner}
+        setEditFunc={() => setEditing(true)}
+      />
     </div>
   )
 
@@ -52,7 +46,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
   }
   if (annotated) {
     return (
-      <div className={style.item}>
+      <div sx={sx.item}>
         <MultiColumn columns='5'>
           <Column colSpan='3'>{item.annotation}</Column>
           <Column colSpan='2'>

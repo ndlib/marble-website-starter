@@ -2,13 +2,13 @@
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import TextArea from 'components/App/FormElements/TextArea'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { patchData, getData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 import { Styled, jsx } from 'theme-ui'
 import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
 import SetPortfolioImage from './SetPortfolioImage'
+import sx from './sx'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   const { portfolio, updatePortfolio } = useContext(PortfolioContext)
@@ -31,7 +31,6 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   }
   return (
     <React.Fragment>
-      <Styled.h2>{item.title}</Styled.h2>
       <div className={style.buttonGroup}>
         <MaterialButton onClick={() => closeFunc()}>
           Cancel
@@ -51,14 +50,19 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
           Save
         </MaterialButton>
       </div>
-      <TextArea
+      <Styled.h2>{item.title}</Styled.h2>
+      <label
+        htmlFor='annotation'
+        className='accessibilityOnly'
+      >Annotation</label>
+      <textarea
         id='annotation'
-        label='Annotation'
         defaultValue={annotation}
         onChange={(event) => {
           changeAnnotation(event.target.value)
         }}
         disabled={patching}
+        sx={sx.textArea}
       />
       <SetPortfolioImage item={item} />
     </React.Fragment>

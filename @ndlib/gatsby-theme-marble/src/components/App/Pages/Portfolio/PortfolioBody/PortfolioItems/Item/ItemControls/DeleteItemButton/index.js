@@ -1,8 +1,12 @@
-import React, { useState, useContext } from 'react'
+/** @jsx jsx */
+import { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { jsx } from 'theme-ui'
 import { deleteData, getData } from 'utils/api'
 import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
+import sx from './sx'
 
 const DeleteItemButton = ({ item, loginReducer }) => {
   const { portfolio, updatePortfolio } = useContext(PortfolioContext)
@@ -26,7 +30,13 @@ const DeleteItemButton = ({ item, loginReducer }) => {
       onClick={(e) => {
         deleteItem(e, loginReducer, item.uuid, setPatching, callBack)
       }}
-    >Delete</button>
+      sx={sx.deleteButton}
+    >
+      <img
+        src={deleteIcon}
+        alt='delete'
+      />
+    </button>
   )
 }
 

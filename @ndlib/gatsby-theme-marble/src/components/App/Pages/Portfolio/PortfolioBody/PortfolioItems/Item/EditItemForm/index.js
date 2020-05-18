@@ -34,6 +34,7 @@ export const EditItemForm = ({ uuid, closeFunc, loginReducer }) => {
 
   return (
     <div sx={{
+      backgroundColor: 'background',
       border: '1px solid',
       borderColor: 'gray.1',
       height: '400px',
