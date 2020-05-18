@@ -1,101 +1,46 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useContext } from 'react'
 import { Styled, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import TextField from 'components/App/FormElements/TextField'
-import { patchData } from 'utils/api'
-import { PortfolioContext } from '../'
+import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import editIcon from 'assets/icons/svg/baseline-edit-24px.svg'
+import sx from './sx'
+import TitleEdit from './TitleEdit'
 
-// eslint-disable-next-line complexity
-const PortfolioTitle = ({ isOwner, loginReducer }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
-  const [title, setTitle] = useState(portfolio.title)
-  const [newTitle, setNewTitle] = useState(portfolio.title)
+const PortfolioTitle = ({ isOwner }) => {
+  const { portfolio } = useContext(PortfolioContext)
   const [editing, setEditing] = useState(false)
-  const [patching, setPatching] = useState(false)
-  const [valid, setValid] = useState(true)
+
+  if (editing) {
+    return <TitleEdit closeFunc={() => setEditing(false)} />
+  }
 
   let editButton = null
   if (isOwner) {
     editButton = (
       <button
-        onClick={() => {
-          setEditing(true)
-          if (title !== '') {
-            setValid(true)
-          }
-        }}
-      >Edit</button>
-    )
-  }
-  if (editing) {
-    return (
-      <React.Fragment>
-        <TextField
-          id='portfolioName'
-          label='Title'
-          defaultValue={newTitle}
-          onChange={(event) => {
-            setValid(event.target.value !== '')
-            setNewTitle(event.target.value)
-          }}
-          disabled={patching}
+        onClick={() => setEditing(true)}
+        sx={sx.editButton}
+      >
+        <img
+          src={editIcon}
+          alt='edit'
         />
-        <button
-          onClick={() => {
-            if (valid) {
-              setPatching(true)
-              const body = { title: newTitle }
-              setTitle(body.title)
-              patchData({
-                loginReducer: loginReducer,
-                contentType: 'collection',
-                id: portfolio.uuid,
-                body: body,
-                successFunc: (result) => {
-                  updatePortfolio(result)
-                  setEditing(false)
-                  setPatching(false)
-                },
-                errorFunc: (e) => {
-                  console.error(e)
-                },
-              })
-            }
-          }}
-
-          disabled={!valid || patching || title === newTitle}
-        >Save</button>
-        <button
-          onClick={() => {
-            setEditing(false)
-            setNewTitle(title)
-          }}
-          disabled={patching}
-        >Cancel</button>
-        {
-          valid ? null : <div>Invalid Title</div>
-        }
-      </React.Fragment>
+      </button>
     )
   }
+
   return (
-    <React.Fragment>
-      <Styled.h1>{title}</Styled.h1>
-      {editButton}
-    </React.Fragment>
+    <Styled.h1>{portfolio.title}{editButton}</Styled.h1>
   )
 }
 
 PortfolioTitle.propTypes = {
   isOwner: PropTypes.bool,
-  loginReducer: PropTypes.object.isRequired,
 }
 export const mapStateToProps = (state) => {
   return { ...state }
 }
 
-export default connect(
-  mapStateToProps,
-)(PortfolioTitle)
+export default PortfolioTitle
