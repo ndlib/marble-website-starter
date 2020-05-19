@@ -8,10 +8,10 @@ import Item from './Item'
 import NoItems from './NoItems'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import { COMPILATION_PAGE } from 'store/actions/displayActions'
-import { PortfolioContext } from '../'
+import { usePortfolioContext } from 'context/PortfolioContext'
 
 const PortfolioItems = ({ isOwner }) => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const { items, layout, userId } = portfolio
   if (typy(portfolio, 'items').safeArray.length === 0) {
     return (

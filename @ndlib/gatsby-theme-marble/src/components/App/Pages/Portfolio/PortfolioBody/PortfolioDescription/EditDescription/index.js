@@ -2,12 +2,12 @@
 import { useContext, useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
 import sx from './sx'
 
 const EditDescription = ({ closeFunc }) => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const description = portfolio.description
   const [newDescription, setNewDescription] = useState(description)
   const [patching, setPatching] = useState(false)

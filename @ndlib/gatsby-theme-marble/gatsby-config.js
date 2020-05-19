@@ -11,6 +11,7 @@ module.exports = ({
       options: {
         src: path.join(__dirname, 'src'),
         assets: path.join(__dirname, 'src/assets'),
+        context: path.join(__dirname, 'src/context'),
         components: path.join(__dirname, 'src/components'),
         pages: path.join(__dirname, 'src/pages'),
         store: path.join(__dirname, 'src/store'),

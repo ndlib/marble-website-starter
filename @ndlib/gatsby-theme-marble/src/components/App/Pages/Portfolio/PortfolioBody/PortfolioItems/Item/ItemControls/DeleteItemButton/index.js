@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import { deleteData, getData } from 'utils/api'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
 import sx from './sx'
 
 const DeleteItemButton = ({ item, loginReducer }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const [patching, setPatching] = useState(false)
   const callBack = () => {
     getData({

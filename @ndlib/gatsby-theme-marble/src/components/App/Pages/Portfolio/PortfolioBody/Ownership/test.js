@@ -3,24 +3,16 @@ import { shallow } from 'enzyme'
 import { Ownership } from './'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import UserCartouche from 'components/Internal/UserCartouche'
-import * as Auth from 'utils/auth'
 
+console.error = jest.fn()
 describe('Ownership', () => {
-  const props = {
-    portfolio: {
-      userId: 'fakeUserId',
-      privacy: 'public',
-    },
-    loginReducer: {},
-  }
-  test.skip('isOwner', () => {
-    jest.spyOn(Auth, 'ownsPage').mockImplementationOnce(() => true)
-    const wrapper = shallow(<Ownership {...props} />)
-    expect(wrapper.find(VisibilityLabel).props().visibility).toEqual('public')
+  test('isOwner', () => {
+    const wrapper = shallow(<Ownership isOwner />)
+    expect(wrapper.find(VisibilityLabel).exists()).toBeTruthy()
   })
-  test.skip('not isOwner', () => {
-    jest.spyOn(Auth, 'ownsPage').mockImplementationOnce(() => false)
-    const wrapper = shallow(<Ownership {...props} />)
-    expect(wrapper.find(UserCartouche).props().user).toEqual({ uuid: 'fakeUserId' })
+
+  test('not isOwner', () => {
+    const wrapper = shallow(<Ownership />)
+    expect(wrapper.find(UserCartouche).exists()).toBeTruthy()
   })
 })

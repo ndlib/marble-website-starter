@@ -3,13 +3,13 @@ import { useContext, useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import MaterialButton from 'components/Internal/MaterialButton'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
 import EditDescription from './EditDescription'
 import sx from './sx'
 
 const PortfolioDescription = ({ isOwner }) => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
   const { description } = portfolio
 

@@ -2,13 +2,13 @@
 import { useState, useContext } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
 const TitleEdit = ({ closeFunc }) => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const defaultTitle = portfolio.title
   const [newTitle, setNewTitle] = useState(defaultTitle)
   const [patching, setPatching] = useState(false)

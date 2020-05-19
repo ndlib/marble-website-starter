@@ -9,11 +9,11 @@ import PortfolioEditSettings from '../PortfolioEditSettings'
 import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
 import { jsx } from 'theme-ui'
-import { PortfolioContext } from '../'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import sx from './sx'
 
 export const Ownership = ({ isOwner }) => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const { privacy, userId, uuid } = portfolio
   if (isOwner) {
     return (
@@ -26,7 +26,7 @@ export const Ownership = ({ isOwner }) => {
           <PrintButton />
         </div>
         <div sx={sx.editWrapper}>
-          <PortfolioEditSettings portfolio={portfolio} />
+          <PortfolioEditSettings />
         </div>
       </div>
     )

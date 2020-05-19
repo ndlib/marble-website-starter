@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import PortfolioTitle from './PortfolioTitle'
@@ -7,12 +7,7 @@ import PortfolioDescription from './PortfolioDescription'
 import PortfolioItems from './PortfolioItems'
 import Seo from 'components/Internal/Seo'
 import Ownership from './Ownership'
-
-const initialContext = { portfolio: {}, updatePortfolio: () => {} }
-export const PortfolioContext = React.createContext({
-  portfolio: {},
-  updatePortfolio: () => {},
-})
+import PortfolioContext, { initialContext } from 'context/PortfolioContext'
 
 const PortfolioBody = ({ portfolio, location, isOwner }) => {
   const updatePortfolio = (portfolio) => {

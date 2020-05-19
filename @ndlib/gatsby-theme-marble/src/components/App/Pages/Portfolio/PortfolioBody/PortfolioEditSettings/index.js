@@ -3,12 +3,12 @@
 import React, { useState, useContext } from 'react'
 import { jsx } from 'theme-ui'
 import PortfolioSettingsContent from './PortfolioSettingsContent'
-import { PortfolioContext } from '../'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import MaterialButton from 'components/Internal/MaterialButton'
 import ActionModal from 'components/Internal/ActionModal'
 
 export const PortfolioEditSettings = () => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const [settingsOpen, setSettingsOpen] = useState(false)
   return (
     <React.Fragment>

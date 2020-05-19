@@ -7,12 +7,12 @@ import Column from 'components/Shared/Column'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
 import DangerDelete from './DangerDelete'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
 import sx from './sx'
 
 const PortfolioSettingsContent = ({ callBack }) => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const [layout, changeLayout] = useState(portfolio.layout)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
   const [patching, setPatching] = useState(false)

@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import React, { useContext } from 'react'
+import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { patchData } from 'utils/api'
 import MaterialButton from 'components/Internal/MaterialButton'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 
 // eslint-disable-next-line complexity
 const SaveOrCancelButtons = ({
@@ -17,7 +17,7 @@ const SaveOrCancelButtons = ({
   changed,
   loginReducer,
 }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   return (
     <React.Fragment>
       <MaterialButton

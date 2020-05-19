@@ -3,12 +3,12 @@
 import React, { useState, useContext } from 'react'
 import { Styled, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import TitleEdit from './TitleEdit'
 import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
 
 const PortfolioTitle = ({ isOwner }) => {
-  const { portfolio } = useContext(PortfolioContext)
+  const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
 
   if (editing) {

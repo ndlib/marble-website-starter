@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { patchData } from 'utils/api'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import sx from './sx'
 
 const SetPortfolioImage = ({ item, loginReducer }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const [patching, setPatching] = useState(false)
   if (!item.image) {
     return null

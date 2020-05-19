@@ -6,12 +6,12 @@ import MaterialButton from 'components/Internal/MaterialButton'
 import { patchData, getData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 import { Styled, jsx } from 'theme-ui'
-import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import { usePortfolioContext } from 'context/PortfolioContext'
 import SetPortfolioImage from './SetPortfolioImage'
 import sx from './sx'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const [annotation, changeAnnotation] = useState(item.annotation)
   const [patching, changePatching] = useState(false)
 
