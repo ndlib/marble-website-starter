@@ -1,6 +1,5 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PortfolioSettingsContent from './PortfolioSettingsContent'
 import { usePortfolioContext } from 'context/PortfolioContext'

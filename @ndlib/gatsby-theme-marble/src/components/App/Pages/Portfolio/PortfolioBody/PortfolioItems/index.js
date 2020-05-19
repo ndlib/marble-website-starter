@@ -1,8 +1,6 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import PropTypes from 'prop-types'
 import typy from 'typy'
 import Item from './Item'
 import NoItems from './NoItems'

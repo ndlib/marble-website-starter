@@ -1,6 +1,5 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React, { useContext } from 'react'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import Attribution from 'components/Internal/Attribution'
@@ -8,7 +7,7 @@ import UserCartouche from 'components/Internal/UserCartouche'
 import PortfolioEditSettings from '../PortfolioEditSettings'
 import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
-import { jsx } from 'theme-ui'
+
 import { usePortfolioContext } from 'context/PortfolioContext'
 import sx from './sx'
 

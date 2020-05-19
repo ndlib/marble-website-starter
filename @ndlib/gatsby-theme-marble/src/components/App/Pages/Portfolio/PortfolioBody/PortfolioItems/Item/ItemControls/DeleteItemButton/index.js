@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import MaterialButton from 'components/Internal/MaterialButton'

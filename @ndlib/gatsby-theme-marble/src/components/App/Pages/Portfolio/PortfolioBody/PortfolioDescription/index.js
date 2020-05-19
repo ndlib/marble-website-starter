@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import MaterialButton from 'components/Internal/MaterialButton'

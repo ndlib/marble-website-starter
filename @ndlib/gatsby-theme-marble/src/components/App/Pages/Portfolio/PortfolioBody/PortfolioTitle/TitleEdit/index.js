@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from 'context/PortfolioContext'
