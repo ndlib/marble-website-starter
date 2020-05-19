@@ -1,82 +1,68 @@
+/** @jsx jsx */
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import MaterialButton from 'components/Internal/MaterialButton'
+import { Styled, jsx } from 'theme-ui'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
 import DangerDelete from './DangerDelete'
-import { patchData } from 'utils/api'
-import { PortfolioContext } from '../../'
+import { PortfolioContext } from 'components/App/Pages/Portfolio/PortfolioBody'
+import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
+import sx from './sx'
 
-const PortfolioSettingsContent = ({ callBack, loginReducer }) => {
-  const { portfolio, updatePortfolio } = useContext(PortfolioContext)
+const PortfolioSettingsContent = ({ callBack }) => {
+  const { portfolio } = useContext(PortfolioContext)
   const [layout, changeLayout] = useState(portfolio.layout)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
   const [patching, setPatching] = useState(false)
 
   return (
     <React.Fragment>
-      <MaterialButton
-        onClick={(e) => {
-          e.preventDefault()
-          setPatching(true)
-          const body = {
+      <div sx={sx.buttonWrapper}>
+        <SaveOrCancelButtons
+          closeFunc={callBack}
+          patching={patching}
+          setPatching={setPatching}
+          body={{
             privacy: privacy || 'private',
             layout: layout || 'default',
-          }
-          patchData({
-            loginReducer: loginReducer,
-            contentType: 'collection',
-            id: portfolio.uuid,
-            body: body,
-            successFunc: (result) => {
-              // navigate(`/myportfolio/${portfolio.uuid}`)
-              updatePortfolio(result)
-              callBack()
-            },
-            errorFunc: (e) => {
-              console.error(e)
-            },
-          })
-        }}
-        disabled={patching}
-        primary
-      >Save</MaterialButton>
+          }}
+          valid
+          changed={layout !== portfolio.layout || privacy !== portfolio.privacy}
+        />
+      </div>
       <MultiColumn columns='2'>
         <Column>
-          <label
-            htmlFor='layoutDisplay'
-          >Layout</label>
-          <LayoutSettings
-            portfolio={portfolio}
-            onChange={changeLayout}
-          />
+          <label>
+            <Styled.h2>Layout</Styled.h2>
+            <LayoutSettings
+              portfolio={portfolio}
+              onChange={changeLayout}
+            />
+          </label>
+          <label>
+            <h2>Privacy</h2>
+            <VisibilitySettings
+              portfolio={portfolio}
+              onChange={changePrivacy}
+            />
+          </label>
         </Column>
         <Column>
-          <label
-            htmlFor='visibility'
-          >Privacy</label>
-          <VisibilitySettings
-            portfolio={portfolio}
-            onChange={changePrivacy}
-          />
+          <label>
+            <h2>Danger Zone</h2>
+            <DangerDelete portfolio={portfolio} />
+          </label>
         </Column>
       </MultiColumn>
-      <DangerDelete portfolio={portfolio} />
+
     </React.Fragment>
   )
 }
 
 PortfolioSettingsContent.propTypes = {
   callBack: PropTypes.func.isRequired,
-  loginReducer: PropTypes.object.isRequired,
-}
-export const mapStateToProps = (state) => {
-  return { ...state }
 }
 
-export default connect(
-  mapStateToProps,
-)(PortfolioSettingsContent)
+export default PortfolioSettingsContent

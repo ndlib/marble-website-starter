@@ -12,48 +12,42 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
   const groupId = `danger`
   const fieldId = `delete`
   return (
-    <div>
-      <label
-        htmlFor={groupId}
-        className={style.editLabel}
-      >Danger Zone</label>
-      <div
-        id={groupId}
-        className={style.editGroup}
-      >
-        <label htmlFor={fieldId}>
-          <p><strong>{warning}</strong></p>
-          <p>Type the the portfolio name <code>{portfolio.title}</code> in the field below and press the button to delete.</p>
-        </label>
-        <input
-          type='text'
-          id={fieldId}
-          onChange={(e) => {
+    <div
+      id={groupId}
+      className={style.editGroup}
+    >
+      <label htmlFor={fieldId}>
+        <p><strong>{warning}</strong></p>
+        <p>Type the the portfolio name <code>{portfolio.title}</code> in the field below and press the button to delete.</p>
+      </label>
+      <input
+        type='text'
+        id={fieldId}
+        onChange={(e) => {
+          e.preventDefault()
+          updateDeleteField(e.target.value)
+        }}
+      />
+      <div className={style.buttonGroup}>
+        <MaterialButton
+          onClick={(e) => {
             e.preventDefault()
-            updateDeleteField(e.target.value)
+            if (window.confirm(warning)) {
+              deleteData({
+                loginReducer: loginReducer,
+                contentType: 'collection',
+                id: portfolio.uuid,
+                successFunc: () => {
+                  navigate(`/user/${loginReducer.user.userName}`)
+                },
+                errorFunc: (e) => {
+                  console.error(e)
+                },
+              })
+            }
           }}
-        />
-        <div className={style.buttonGroup}>
-          <MaterialButton
-            onClick={(e) => {
-              e.preventDefault()
-              if (window.confirm(warning)) {
-                deleteData({
-                  loginReducer: loginReducer,
-                  contentType: 'collection',
-                  id: portfolio.uuid,
-                  successFunc: () => {
-                    navigate(`/user/${loginReducer.user.userName}`)
-                  },
-                  errorFunc: (e) => {
-                    console.error(e)
-                  },
-                })
-              }
-            }}
-            disabled={deleteFieldValue !== portfolio.title}
-          >Delete</MaterialButton>
-        </div>
+          disabled={deleteFieldValue !== portfolio.title}
+        >Delete</MaterialButton>
       </div>
     </div>
   )

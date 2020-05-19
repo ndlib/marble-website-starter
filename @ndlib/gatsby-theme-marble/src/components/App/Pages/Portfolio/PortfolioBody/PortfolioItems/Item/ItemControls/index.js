@@ -9,11 +9,11 @@ const ItemControls = ({ item, isOwner, setEditFunc }) => {
   if (isOwner) {
     return (
       <span sx={sx.wrapper}>
-        <DeleteItemButton item={item} />
         <EditButton
           isOwner={isOwner}
           setEditFunc={setEditFunc}
         />
+        <DeleteItemButton item={item} />
       </span>
     )
   }

@@ -11,6 +11,9 @@ import sx from './sx'
 const SetPortfolioImage = ({ item, loginReducer }) => {
   const { portfolio, updatePortfolio } = useContext(PortfolioContext)
   const [patching, setPatching] = useState(false)
+  if (!item.image) {
+    return null
+  }
   if (portfolio.image === item.image) {
     return (
       <div sx={sx.wrapper}>
