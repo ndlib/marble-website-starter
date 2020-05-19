@@ -25,7 +25,6 @@ export const PortfolioEditSettings = () => {
         <PortfolioSettingsContent
           callBack={() => {
             setSettingsOpen(false)
-            // window.location.reload(true)
           }}
         />
       </ActionModal>
