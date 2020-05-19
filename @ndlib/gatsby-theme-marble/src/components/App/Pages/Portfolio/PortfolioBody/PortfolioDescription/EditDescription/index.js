@@ -19,7 +19,7 @@ const EditDescription = ({ closeFunc }) => {
         className='accessibilityOnly'
       >Description</label>
       <textarea
-        name='PortfolioDescription'
+        name='portfolioDescription'
         defaultValue={newDescription}
         onChange={(event) => {
           setNewDescription(event.target.value)
@@ -43,9 +43,6 @@ const EditDescription = ({ closeFunc }) => {
 
 EditDescription.propTypes = {
   closeFunc: PropTypes.func.isRequired,
-}
-export const mapStateToProps = (state) => {
-  return { ...state }
 }
 
 export default EditDescription
