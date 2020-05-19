@@ -1,13 +1,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Ownership } from './'
-import * as PC from 'context/PortfolioContext'
+import Ownership from './'
+import * as PortfolioContext from 'context/PortfolioContext'
 import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import UserCartouche from 'components/Internal/UserCartouche'
 
 describe('Ownership', () => {
   test('isOwner', () => {
-    jest.spyOn(PC, 'usePortfolioContext').mockImplementationOnce(() => {
+    jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
         portfolio: {
           privacy: 'public',
@@ -19,7 +19,7 @@ describe('Ownership', () => {
   })
 
   test('not isOwner', () => {
-    jest.spyOn(PC, 'usePortfolioContext').mockImplementationOnce(() => {
+    jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
         portfolio: {
           userId: 'pete',
