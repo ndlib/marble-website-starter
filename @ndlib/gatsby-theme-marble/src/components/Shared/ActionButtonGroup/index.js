@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import { jsx } from 'theme-ui'
 import BookmarkGroup from './BookmarkGroup'
-import ManifestLink from './ManifestLink'
 import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
 import DownloadButton from './DownloadButton'
@@ -24,7 +23,6 @@ const ActionButtonGroup = ({ iiifManifest }) => {
         <ShareButton path={`${typy(iiifManifest, 'slug').safeString}`} />
         <PrintButton />
         <DownloadButton iiifManifest={iiifManifest} />
-        <ManifestLink manifestUrl={iiifManifest.id} />
       </section>
     </React.Fragment>
   )
