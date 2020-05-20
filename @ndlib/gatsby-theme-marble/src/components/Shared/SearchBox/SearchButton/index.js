@@ -9,9 +9,7 @@ export const SearchButton = ({ searchReducer, submitSearch, searchPath, classNam
       className={className}
       onClick={() => submitSearch(location, rawInput, searchPath)}
     >
-      <span
-        className='accessibilityOnly'
-      >Submit Search</span>
+      <span className='accessibilityOnly'>Submit Search</span>
     </button>
   )
 }
