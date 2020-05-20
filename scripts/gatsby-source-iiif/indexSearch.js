@@ -110,9 +110,6 @@ const getSearchDataFromManifest = (manifest) => {
   search['allMetadata'] += ' ' + search.centuryTag.join(' ')
   search['allMetadata'] += ' ' + search.themeTag.join(' ')
 
-  if (manifest.id === '005069928') {
-    console.log(search)
-  }
   return search
 }
 
@@ -125,8 +122,7 @@ const indexToElasticSearch = async (searchData) => {
     body.push(manifest)
   })
 
-  const { body: bulkResponse } = await client.bulk({ refresh: true, body })
-
+  const bulkResponse = await client.bulk({ refresh: true, body })
   if (bulkResponse.errors) {
     const erroredDocuments = []
     // The items array has the same order of the dataset we just indexed.
@@ -146,7 +142,7 @@ const indexToElasticSearch = async (searchData) => {
         })
       }
     })
-    console.log(erroredDocuments)
+    console.log('error documents', erroredDocuments)
   }
 
   console.log('Finished Index')
