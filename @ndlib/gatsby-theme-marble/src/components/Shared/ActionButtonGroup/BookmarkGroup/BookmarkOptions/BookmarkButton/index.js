@@ -8,13 +8,13 @@ import { jsx } from 'theme-ui'
 import {
   createData,
   deleteData,
+  patchData,
   getData,
 } from 'utils/api'
 import sx from './sx'
 
 export const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
   const [item, setItem] = useState(null)
-
   useEffect(() => {
     const abortController = new AbortController()
     getData({
@@ -66,19 +66,35 @@ export default connect(
 )(BookmarkButton)
 
 export const addItem = (collection, manifest, func, loginReducer) => {
+  const image = typy(manifest, 'thumbnail[0].id').safeString.replace('/250,/', '/500,/') || ''
   createData({
     loginReducer: loginReducer,
     contentType: 'item',
     id: collection.uuid,
     body: {
       title: typy(manifest, 'label[\'en\'][0]').safeString || '',
-      image: typy(manifest, 'thumbnail[0].id').safeString.replace('/250,/', '/500,/') || '',
+      image: image,
       link: manifest.slug,
       manifest: manifest.id,
       annotation: null,
     },
     successFunc: (data) => {
       func(data)
+      if (!collection.image) {
+        const body = { image: image }
+        patchData({
+          loginReducer: loginReducer,
+          contentType: 'collection',
+          id: collection.uuid,
+          body: body,
+          successFunc: () => {
+            console.log('updated collection image')
+          },
+          errorFunc: (e) => {
+            console.error(e)
+          },
+        })
+      }
     },
     errorFunc: (e) => {
       console.error(e)

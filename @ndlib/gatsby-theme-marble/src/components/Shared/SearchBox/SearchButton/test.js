@@ -17,11 +17,11 @@ const wrapper = shallow(
 
 describe('SearchButton', () => {
   test('render the button', () => {
-    expect(wrapper.find('div').props().role).toEqual('button')
+    expect(wrapper.find('button').exists()).toBeTruthy()
   })
 
   test('simulate click event', () => {
-    wrapper.find('div').simulate('click')
+    wrapper.find('button').simulate('click')
     expect(action).toHaveBeenCalled()
   })
 })

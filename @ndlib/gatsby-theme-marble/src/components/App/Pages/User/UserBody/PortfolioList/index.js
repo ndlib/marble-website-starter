@@ -18,6 +18,7 @@ const PortfolioList = ({
   const [portfolios, setPortfolios] = useState(user.collections || [])
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
+  console.log(portfolios)
   if (portfolios.length > 0) {
     return (
       <React.Fragment>
