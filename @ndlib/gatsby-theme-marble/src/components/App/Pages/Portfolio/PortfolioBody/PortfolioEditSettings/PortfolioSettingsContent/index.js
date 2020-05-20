@@ -34,14 +34,14 @@ const PortfolioSettingsContent = ({ callBack }) => {
       </div>
       <MultiColumn columns='2'>
         <Column>
-          <label>
+          <label htmlFor='layoutDisplay'>
             <Styled.h2>Layout</Styled.h2>
             <LayoutSettings
               portfolio={portfolio}
               onChange={changeLayout}
             />
           </label>
-          <label>
+          <label htmlFor='visibility'>
             <h2>Privacy</h2>
             <VisibilitySettings
               portfolio={portfolio}
@@ -50,7 +50,7 @@ const PortfolioSettingsContent = ({ callBack }) => {
           </label>
         </Column>
         <Column>
-          <label>
+          <label htmlFor='delete'>
             <h2>Danger Zone</h2>
             <DangerDelete portfolio={portfolio} />
           </label>

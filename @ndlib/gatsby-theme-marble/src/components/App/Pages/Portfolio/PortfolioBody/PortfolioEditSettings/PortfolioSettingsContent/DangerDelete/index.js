@@ -23,6 +23,7 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
       <input
         type='text'
         id={fieldId}
+        name={fieldId}
         onChange={(e) => {
           e.preventDefault()
           updateDeleteField(e.target.value)

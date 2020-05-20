@@ -80,6 +80,13 @@ address {
   color: black;
   font-size: 19px;
 }
+button.sk-search-box__icon {
+  border: none;
+  background-color: white;
+  margin-top: 0;
+  outline: none;
+}
+
 .sk-selected-filters-option,
 .sk-selected-filters-option__name,
 .sk-selected-filters-option__remove-action,
