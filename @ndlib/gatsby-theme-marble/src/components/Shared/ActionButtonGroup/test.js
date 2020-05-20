@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import ActionButtonGroup from './'
-import ActionButton from './ActionButton'
 import BookmarkGroup from './BookmarkGroup'
 import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
