@@ -56,21 +56,21 @@ const IndexPage = ({ location }) => {
         <Column>
           <Card
             label='Date'
-            target='/browse#date'
+            target='/browse?scrollto=date'
             image={dateImage}
           />
         </Column>
         <Column>
           <Card
             label='Format'
-            target='/browse#format'
+            target='/browse?scrollto=format'
             image={formatImage}
           />
         </Column>
         <Column>
           <Card
             label='Campus Location'
-            target='/browse#location'
+            target='/browse?scrollto=location'
             image={campuslocationImage}
           />
         </Column>
