@@ -13,27 +13,29 @@ export const Portfolio = ({ portfolioId, location, loginReducer }) => {
 
   useEffect(() => {
     const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'collection',
-      id: portfolioId,
-      successFunc: (data) => {
-        const { privacy, userId } = data
-        const isOwner = ownsPage(loginReducer, userId)
-        if (privacy === 'private' && !isOwner) {
+    if (loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === 'STATUS_LOGGED_IN') {
+      getData({
+        loginReducer: loginReducer,
+        contentType: 'collection',
+        id: portfolioId,
+        successFunc: (data) => {
+          const { privacy, userId } = data
+          const isOwner = ownsPage(loginReducer, userId)
+          if (privacy === 'private' && !isOwner) {
+            setContent(<PortfolioUnavailable />)
+          } else {
+            setContent(<PortfolioBody
+              location={location}
+              portfolio={data}
+              isOwner={isOwner}
+            />)
+          }
+        },
+        errorFunc: () => {
           setContent(<PortfolioUnavailable />)
-        } else {
-          setContent(<PortfolioBody
-            location={location}
-            portfolio={data}
-            isOwner={isOwner}
-          />)
-        }
-      },
-      errorFunc: () => {
-        setContent(<PortfolioUnavailable />)
-      },
-    })
+        },
+      })
+    }
     return () => {
       abortController.abort()
     }

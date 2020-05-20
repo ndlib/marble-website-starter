@@ -5,11 +5,13 @@ import {
 export const GET_AUTHENTICATION = 'GET_AUTHENTICATION'
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER'
 export const AUTH_ERROR = 'AUTH_ERROR'
+export const SET_NOT_LOGGED_IN = 'SET_NOT_LOGGED_IN'
 export const GET_USER = 'GET_USER'
 export const NO_USER = 'NO_USER'
 export const LOG_USER_IN = 'LOG_USER_IN'
 export const LOG_USER_OUT = 'LOG_USER_OUT'
 export const SET_AUTH_CLIENT = 'SET_AUTH_CLIENT'
+export const STATUS_FRESH_LOAD_NOT_LOGGED_IN = 'STATUS_FRESH_LOAD_NOT_LOGGED_IN'
 export const STATUS_NOT_LOGGED_IN = 'STATUS_NOT_LOGGED_IN'
 export const STATUS_TRYING_AUTHENTICATION = 'STATUS_TRYING_AUTHENTICATION'
 export const STATUS_AUTHENTICATED = 'STATUS_AUTHENTICATED'
@@ -49,14 +51,14 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
         authClient.tokenManager.get('idToken')
           .then(idToken => {
             if (idToken) {
-              if (loginReducer.status === 'STATUS_NOT_LOGGED_IN') {
+              if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
                 dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
               }
               // If ID Token isn't found, try to parse it from the current URL
             } else if (location.hash) {
               authClient.token.parseFromUrl()
                 .then(idToken => {
-                // Store parsed token in Token Manager
+                  // Store parsed token in Token Manager
                   authClient.tokenManager.add('idToken', idToken)
                   dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
                 })
@@ -64,6 +66,9 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                   console.error(error)
                   dispatch(authorizationError())
                 })
+              // No token and user has not tried to login
+            } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
+              dispatch(setNotLoggedIn())
             }
           })
       } catch {
@@ -73,6 +78,11 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
   }
 }
 
+export const setNotLoggedIn = () => {
+  return {
+    type: SET_NOT_LOGGED_IN,
+  }
+}
 export const authorizationError = () => {
   return {
     type: AUTH_ERROR,
