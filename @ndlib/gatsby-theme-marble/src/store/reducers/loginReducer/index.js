@@ -6,7 +6,9 @@ import {
   NO_USER,
   LOG_USER_IN,
   LOG_USER_OUT,
+  SET_NOT_LOGGED_IN,
   SET_AUTH_CLIENT,
+  STATUS_FRESH_LOAD_NOT_LOGGED_IN,
   STATUS_NOT_LOGGED_IN,
   STATUS_TRYING_AUTHENTICATION,
   STATUS_AUTHENTICATION_FAILED,
@@ -18,7 +20,7 @@ import {
 export const defaultState = {
   authClientSettings: null,
   userContentPath: null,
-  status: STATUS_NOT_LOGGED_IN,
+  status: STATUS_FRESH_LOAD_NOT_LOGGED_IN,
   token: null,
   user: {},
 }
@@ -26,6 +28,11 @@ export const defaultState = {
 // eslint-disable-next-line complexity
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case SET_NOT_LOGGED_IN:
+      return {
+        ...state,
+        status: STATUS_NOT_LOGGED_IN,
+      }
     case GET_AUTHENTICATION:
       return {
         ...state,

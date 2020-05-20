@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import {
   STATUS_NOT_LOGGED_IN,
+  STATUS_FRESH_LOAD_NOT_LOGGED_IN,
   STATUS_TRYING_AUTHENTICATION,
   STATUS_AUTHENTICATION_FAILED,
   STATUS_AUTHENTICATED_TRYING_LOGIN,
@@ -21,6 +22,7 @@ export const UserBasePathContent = ({ loginReducer }) => {
   switch (loginReducer.status) {
     case STATUS_NOT_LOGGED_IN:
       return <LoginArea loginReducer={loginReducer} />
+    case STATUS_FRESH_LOAD_NOT_LOGGED_IN:
     case STATUS_TRYING_AUTHENTICATION:
     case STATUS_AUTHENTICATED_TRYING_LOGIN:
       return <Loading />
