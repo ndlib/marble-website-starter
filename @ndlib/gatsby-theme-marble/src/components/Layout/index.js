@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Layout as ThemeLayout } from 'theme-ui'
+import queryString from 'query-string'
 import AuthWrapper from './AuthWrapper'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
@@ -17,8 +18,14 @@ const Layout = ({
   requireLogin, // bool to test login
   location,
 }) => {
+  const [qs] = useState(queryString.parse(location.search) || {})
   useEffect(() => {
-    document.querySelector('#gatsby-focus-wrapper').scrollTop = 0
+    const scrollTo = document.querySelector(`#${qs.scrollto}`)
+    if (scrollTo) {
+      scrollTo.scrollIntoView()
+    } else {
+      document.querySelector('#gatsby-focus-wrapper').scrollTop = 0
+    }
   })
 
   return (

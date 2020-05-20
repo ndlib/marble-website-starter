@@ -17,7 +17,7 @@ components:
         - component: MarkdownHtmlContent
           props:
             - label: "html"
-              value: "<div><a name='date'></a><h2>Browse By Date</h2></div>"
+              value: "<div id='date'><h2>Browse By Date</h2></div>"
     - component: Column
       props:
         - label: 'colSpan'
@@ -89,7 +89,7 @@ components:
         - component: MarkdownHtmlContent
           props:
             - label: "html"
-              value: "<div><a name='format'></a><h2>Browse By Format</h2></div>"
+              value: "<div id='format'><h2>Browse By Format</h2></div>"
     - component: Column
       props:
         - label: 'colSpan'
@@ -131,7 +131,7 @@ components:
         - component: MarkdownHtmlContent
           props:
             - label: "html"
-              value: "<div><a name='location'></a><h2>Browse By Location</h2></div>"
+              value: "<div id='location'><h2>Browse By Location</h2></div>"
     - component: Column
       props:
         - label: 'colSpan'
