@@ -200,8 +200,12 @@ const configIndexMappings = async () => {
         type: 'text',
         analyzer: 'stopword_analyzer',
       },
+      date: {
+        type: 'text',
+      },
     },
   }
+
   return mappings
 }
 
