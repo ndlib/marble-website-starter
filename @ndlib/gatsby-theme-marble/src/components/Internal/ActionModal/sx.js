@@ -14,8 +14,12 @@ module.exports = {
     fontSize: '1.5rem',
     lineHeight: '1.5rem',
     margin: '0',
+    maxWidth: 'calc(100% - 50px)',
+    overflow: 'hidden',
     padding: '1rem',
     position: 'fixed',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   button: {
     backgroundColor: 'primary',

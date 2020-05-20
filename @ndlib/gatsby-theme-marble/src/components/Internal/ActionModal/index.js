@@ -30,7 +30,8 @@ const ActionModal = ({
       <div sx={sx.wrapper}>
         <h1
           sx={sx.heading}
-        >{contentLabel}</h1>
+          dangerouslySetInnerHTML={{ __html: contentLabel }}
+        />
         <button
           onClick={closeFunc}
           sx={sx.button}

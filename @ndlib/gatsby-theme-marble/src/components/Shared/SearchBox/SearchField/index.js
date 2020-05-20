@@ -27,6 +27,7 @@ export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch,
       >{fieldLabel}</label>
       <input
         id='searchField'
+        name='searchField'
         type='text'
         className={className}
         autoComplete='off'
