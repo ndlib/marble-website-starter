@@ -5,11 +5,12 @@ import { connect } from 'react-redux'
 export const SearchButton = ({ searchReducer, submitSearch, searchPath, className, location }) => {
   const { rawInput } = searchReducer
   return (
-    <div
-      role='button'
+    <button
       className={className}
       onClick={() => submitSearch(location, rawInput, searchPath)}
-    />
+    >
+      <span className='accessibilityOnly'>Submit Search</span>
+    </button>
   )
 }
 
