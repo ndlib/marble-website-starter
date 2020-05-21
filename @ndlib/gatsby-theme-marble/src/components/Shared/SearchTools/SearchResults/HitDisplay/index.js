@@ -9,7 +9,6 @@ import { jsx } from 'theme-ui'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   const referal = { type: 'search', query: window.location.search }
-  console.log('r', referal)
   return (
     <DisplayViewToggle
       defaultDisplay={defaultDisplay}
