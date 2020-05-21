@@ -9,7 +9,6 @@ const PageContent = ({
   children,
   location,
 }) => {
-  console.log(location)
   return (
     <Main id='mainContent'>
       <ReturnToSearch location={location} />
