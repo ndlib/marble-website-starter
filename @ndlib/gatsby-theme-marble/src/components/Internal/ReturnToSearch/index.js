@@ -5,6 +5,7 @@ import Link from 'components/Internal/Link'
 import style from './style.module.css'
 
 export const ReturnToSearch = ({ location }) => {
+  console.log('l', location)
   if (typy(location, 'state.referal.type').safeString === 'search') {
     return (
       <nav className={style.returnToSearch}>

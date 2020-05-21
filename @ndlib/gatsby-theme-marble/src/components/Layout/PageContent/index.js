@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Main, Styled } from 'theme-ui'
 import UserAnnotation from 'components/Internal/UserAnnotation'
-
+import ReturnToSearch from 'components/Internal/ReturnToSearch'
 const PageContent = ({
   title,
   children,
@@ -11,6 +11,7 @@ const PageContent = ({
   return (
     <Main id='mainContent'>
       {title ? <Styled.h1>{title}</Styled.h1> : null}
+      <ReturnToSearch location={location} />
       <UserAnnotation location={location} />
       <article>{children}</article>
     </Main>
