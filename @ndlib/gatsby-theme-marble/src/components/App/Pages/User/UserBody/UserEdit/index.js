@@ -18,6 +18,7 @@ export const UserEdit = ({ user, loginReducer }) => {
   const [email, changeEmail] = useState(user.email)
   const [bio, changeBio] = useState(user.bio)
   const [patching, setPatching] = useState(false)
+  const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
   if (!ownsPage(loginReducer, user.uuid)) {
     return (<Unauthorized />)
@@ -61,7 +62,7 @@ export const UserEdit = ({ user, loginReducer }) => {
               },
             })
           }}
-          disabled={patching}
+          disabled={patching || !email.match(emailRegex) || fullName === ''}
           primary
         >Save</MaterialButton>
       </div>
@@ -73,6 +74,8 @@ export const UserEdit = ({ user, loginReducer }) => {
           changeName(event.target.value)
         }}
         disabled={patching}
+        valid={fullName !== ''}
+        warning='Name cannot be blank.'
       />
       <TextField
         id='profileUserName'
@@ -88,6 +91,8 @@ export const UserEdit = ({ user, loginReducer }) => {
           changeEmail(event.target.value)
         }}
         disabled={patching}
+        valid={email.match(emailRegex)}
+        warning='Email must be a valid address.'
       />
       <TextArea
         id='profileBio'

@@ -14,6 +14,8 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
   const [fullName, changeName] = useState(claims.name)
   const [email, changeEmail] = useState(claims.email)
   const [bio, changeBio] = useState('')
+  const [patching, setPatching] = useState(false)
+  const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
   return (
     <form className={style.loginArea}>
@@ -25,6 +27,9 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
         onChange={(event) => {
           changeName(event.target.value)
         }}
+        disabled={patching}
+        valid={fullName !== ''}
+        warning='Name cannot be blank.'
       />
       <TextField
         id='profileUserName'
@@ -39,6 +44,9 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
         onChange={(event) => {
           changeEmail(event.target.value)
         }}
+        disabled={patching}
+        valid={email.match(emailRegex)}
+        warning='Email must be a valid address.'
       />
       <TextArea
         id='profileBio'
@@ -47,12 +55,14 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
         onChange={(event) => {
           changeBio(event.target.value)
         }}
+        disabled={patching}
       />
       <p>
         <MaterialButton
           id='createAccount'
           onClick={(event) => {
             event.preventDefault()
+            setPatching(true)
             const body = {
               fullName: fullName,
               email: email,
@@ -64,6 +74,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
           }}
           primary
           wide
+          disabled={patching || !email.match(emailRegex) || fullName === ''}
         >Create Account</MaterialButton>
       </p>
     </form>

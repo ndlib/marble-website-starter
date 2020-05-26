@@ -12,7 +12,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const manifestTitle = typy(data, `remarkMarblePage.frontmatter.iiifJson.label[${lang}][0]`).safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
-  const sideBarOpenByDefault = qs.sidebar !== 'false'
+  const sideBarOpenByDefault = qs.sidebar === 'true'
   const thumbnailNavigationPosition = qs.thumbnails === 'true' ? 'far-bottom' : 'off'
   const fullscreen = qs.fullscreen !== 'false'
   const canvasIndex = parseInt(qs.cv, 10) || 0
@@ -25,6 +25,7 @@ const MiradorViewerPage = ({ data, location }) => {
       allowMaximize: false,
       hideWindowTitle: hideWindowTitle,
       sideBarOpenByDefault: sideBarOpenByDefault,
+      defaultSideBarPanel: 'canvas',
     },
     responseHeaders: {
       'Content-Type': 'text/json',
