@@ -25,7 +25,6 @@ const CardWrapper = ({
       </button>
     )
   } else if (target) {
-    console.log(buildReferalState(location, referal))
     return (
       <Link
         to={target}
