@@ -8,6 +8,7 @@ import SearchSortingSelector from 'components/Shared/SearchTools/SearchSortingSe
 import { jsx } from 'theme-ui'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
+  const referal = { type: 'search', query: window.location.search }
   return (
     <DisplayViewToggle
       defaultDisplay={defaultDisplay}
@@ -19,6 +20,7 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
             <ManifestCard
               iiifManifest={hit._id}
               key={index}
+              referal={referal}
             >
               {
                 hit.highlight ? Object.values(hit.highlight)
