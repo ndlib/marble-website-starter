@@ -19,6 +19,10 @@ const MiradorViewerPage = ({ data, location }) => {
   const viewerView = qs.view || 'default'
   const config = {
     id: 'test',
+    companionWindows:
+      {
+        position: 'right',
+      },
     window: {
       allowClose: false,
       allowFullscreen: fullscreen,
