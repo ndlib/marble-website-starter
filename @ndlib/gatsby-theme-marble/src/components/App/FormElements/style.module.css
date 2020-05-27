@@ -4,42 +4,6 @@
   width: 800px;
 }
 
-input.editText {
-  background: #fff;
-  bborder: 1px solid #dedede;
-  font-size: 19px;
-  height: 40px;
-  margin-bottom: 2rem;
-  max-width: 100%;
-  outline: none;
-  padding-left: 10px;
-  vertical-align: top;
-  width: 800px;
-
-}
-
-textarea.editTextArea {
-  background: #fff;
-  border: 1px solid #dedede;
-  font-size: 16px;
-  height: 14rem;
-  line-height: 1.45rem;
-  margin-bottom: 2rem;
-  max-width: 100%;
-  min-height: 6rem;
-  outline: none;
-  overflow: auto;
-  padding: 1rem;
-  resize: vertical;
-  vertical-align: top;
-  width: 800px;
-}
-textarea.editTextArea:disabled,
-input.editText:disabled {
-  background: #efefef;
-  cursor: not-allowed;
-}
-
 .editLabel {
   display: block;
   margin-bottom: .5rem;

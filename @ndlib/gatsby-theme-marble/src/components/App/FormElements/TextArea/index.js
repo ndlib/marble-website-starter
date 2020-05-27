@@ -1,17 +1,18 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import style from 'components/App/FormElements/style.module.css'
+import sx from './sx'
 
 const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false }) => {
   return (
-    <div>
+    <div sx={sx.wrapper}>
       <label
         htmlFor={id}
-        className={style.editLabel}
+        sx={sx.label}
       >{label}</label>
       <textarea
         id={id}
-        className={style.editTextArea}
+        sx={sx.textArea}
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={onChange}

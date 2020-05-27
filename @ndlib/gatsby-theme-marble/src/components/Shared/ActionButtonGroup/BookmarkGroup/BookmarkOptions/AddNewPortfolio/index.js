@@ -1,6 +1,5 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
@@ -9,11 +8,13 @@ import sx from './sx'
 
 const defaultTitle = 'My Portfolio'
 
+// eslint-disable-next-line complexity
 export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
   const [editable, setEditable] = useState(false)
   const [error, setError] = useState(false)
   const [creating, setCreating] = useState(false)
   const [title, setTitle] = useState(defaultTitle)
+  const [valid, setValid] = useState(true)
   if (!editable) {
     return (
       <button
@@ -41,9 +42,10 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
         disabled={creating}
         defaultValue={title}
         onChange={(event) => {
+          setValid(event.target.value !== '')
           setTitle(event.target.value)
         }}
-        sx={sx.input}
+        sx={valid ? sx.input : sx.inputInvalid}
       />
       <button
         className='submit-button'
@@ -76,8 +78,8 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
             })
           }
         }
-        disabled={creating}
-        sx={sx.submitButton}
+        disabled={creating || !valid}
+        sx={creating || !valid ? sx.submitButtonDisabled : sx.submitButton}
       >create</button>
     </div>
   )

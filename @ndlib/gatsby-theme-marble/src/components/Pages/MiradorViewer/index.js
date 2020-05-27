@@ -29,7 +29,7 @@ const MiradorViewerPage = ({ data, location }) => {
       allowMaximize: false,
       hideWindowTitle: hideWindowTitle,
       sideBarOpenByDefault: sideBarOpenByDefault,
-      defaultSidebarPanel: 'canvas',
+      defaultSideBarPanel: 'canvas',
     },
     responseHeaders: {
       'Content-Type': 'text/json',

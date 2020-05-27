@@ -1,22 +1,34 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import style from 'components/App/FormElements/style.module.css'
+import sx from './sx'
 
-const TextField = ({ id, label, onChange, defaultValue = '', disabled = false }) => {
+const TextField = ({
+  id,
+  label,
+  onChange,
+  defaultValue = '',
+  disabled = false,
+  valid = true,
+  warning = 'Field cannot be blank.',
+}) => {
   return (
-    <div>
+    <div sx={sx.wrapper}>
       <label
         htmlFor={id}
-        className={style.editLabel}
+        sx={sx.label}
       >{label}</label>
       <input
         id={id}
         type='text'
-        className={style.editText}
+        sx={valid ? sx.input : sx.inputInvalid}
         disabled={disabled}
         defaultValue={defaultValue}
         onChange={onChange}
       />
+      {
+        valid ? null : <em sx={sx.warning}>{warning}</em>
+      }
     </div>
   )
 }
@@ -27,6 +39,8 @@ TextField.propTypes = {
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
+  valid: PropTypes.bool,
+  warning: PropTypes.string,
 }
 
 TextField.defaultProps = {
