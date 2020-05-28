@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, useThemeUI } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import queryString from 'query-string'
@@ -20,8 +20,20 @@ const MiradorViewerPage = ({ data, location }) => {
   const fullscreen = qs.fullscreen !== 'false'
   const canvasIndex = parseInt(qs.cv, 10) || 0
   const viewerView = qs.view || 'default'
+  const context = useThemeUI()
+  const themeColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
   const config = {
     id: 'test',
+    themes: {
+      light: {
+        palette: {
+          type: 'light',
+          primary: {
+            main: themeColor,
+          },
+        },
+      },
+    },
     companionWindows:
       {
         position: 'right',
