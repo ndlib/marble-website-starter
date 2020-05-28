@@ -1,10 +1,13 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, useThemeUI } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import queryString from 'query-string'
+import Layout from 'components/Layout'
 import MiradorWrapper from './MiradorWrapper'
 import Seo from 'components/Internal/Seo'
 import getLanguage from 'utils/getLanguage'
+import sx from './sx'
 
 const MiradorViewerPage = ({ data, location }) => {
   const lang = getLanguage()
@@ -17,8 +20,20 @@ const MiradorViewerPage = ({ data, location }) => {
   const fullscreen = qs.fullscreen !== 'false'
   const canvasIndex = parseInt(qs.cv, 10) || 0
   const viewerView = qs.view || 'default'
+  const context = useThemeUI()
+  const themeColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
   const config = {
     id: 'test',
+    themes: {
+      light: {
+        palette: {
+          type: 'light',
+          primary: {
+            main: themeColor,
+          },
+        },
+      },
+    },
     companionWindows:
       {
         position: 'right',
@@ -38,7 +53,7 @@ const MiradorViewerPage = ({ data, location }) => {
       {
         manifestId: manifestId,
         canvasIndex: canvasIndex,
-        maximized: true,
+        maximized: false,
         thumbnailNavigationPosition: thumbnailNavigationPosition,
         view: viewerView,
       },
@@ -52,7 +67,7 @@ const MiradorViewerPage = ({ data, location }) => {
     },
   }
   return (
-    <React.Fragment>
+    <Layout data={data} location={location}>
       <Seo
         data={data}
         location={location}
@@ -61,11 +76,13 @@ const MiradorViewerPage = ({ data, location }) => {
         image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
         noIndex
       />
-      <MiradorWrapper
-        config={config}
-        plugins={[]}
-      />
-    </React.Fragment>
+      <div className='sizeWrapper' sx={sx.div}>
+        <MiradorWrapper
+          config={config}
+          plugins={[]}
+        />
+      </div>
+    </Layout>
   )
 }
 
