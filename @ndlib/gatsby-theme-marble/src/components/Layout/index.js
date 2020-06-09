@@ -12,7 +12,7 @@ import PageContent from './PageContent'
 /// CONSTRUCTION BANNER
 import CornerBanner from './CornerBanner'
 
-const Layout = ({
+export const Layout = ({
   title, // page title to be placed inside main
   noPadding, // bool used to avoid padding page content
   children,
