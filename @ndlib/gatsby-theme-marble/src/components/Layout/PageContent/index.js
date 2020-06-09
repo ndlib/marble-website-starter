@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Main, Styled } from 'theme-ui'
 import UserAnnotation from 'components/Internal/UserAnnotation'
 import ReturnToSearch from 'components/Internal/ReturnToSearch'
+
 const PageContent = ({
   title,
   children,
