@@ -1,0 +1,8 @@
+{
+  "loginMenu": {
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "userEdit": "Editar Perfil",
+    "userPage": "Mis Carteras"
+  }
+}
