@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Layout as ThemeLayout } from 'theme-ui'
 import queryString from 'query-string'
+import { withI18nTranslation } from 'i18n/withI18nTranslation'
 import AuthWrapper from './AuthWrapper'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
@@ -68,4 +69,4 @@ Layout.defaultProps = {
   requireLogin: false,
 }
 
-export default Layout
+export default withI18nTranslation(Layout)
