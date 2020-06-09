@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import ReturnToSearch from './'
-import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
+import { BaseStyles } from 'theme-ui'
 import Link from 'components/Internal/Link'
 
 describe('ReturnToSearch', () => {
@@ -13,10 +13,10 @@ describe('ReturnToSearch', () => {
   test('location with search reference', () => {
     const location = {
       state: {
-        key: "1591659506194",
+        key: '1591659506194',
         referal: {
-          query: "?q=",
-          type: "search",
+          query: '?q=',
+          type: 'search',
         },
       },
     }
