@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import typy from 'typy'
 import Link from 'components/Internal/Link'
 import { jsx } from 'theme-ui'
@@ -11,6 +12,7 @@ import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 import sx from './sx.js'
 
 export const LoginButton = ({ location, loginReducer }) => {
+  const { t } = useTranslation()
   const [isOpen, setOpen] = useState(false)
   const { site } = useStaticQuery(
     graphql`
@@ -49,15 +51,15 @@ export const LoginButton = ({ location, loginReducer }) => {
           <Link
             to={`/user/${loginReducer.user.userName}`}
             sx={sx.submenuItem}
-          >My Portfolios</Link>
+          >{ t('common:loginMenu.userPage') }</Link>
           <Link
             to={`/user/${loginReducer.user.userName}/edit`}
             sx={sx.submenuItem}
-          >Edit Profile</Link>
+          >{ t('common:loginMenu.userEdit') }</Link>
           <Link
             to={`/user/logout`}
             sx={sx.submenuItem}
-          >Log Out</Link>
+          >{ t('common:loginMenu.logout') }</Link>
         </div>
       </div>
     )
@@ -67,7 +69,7 @@ export const LoginButton = ({ location, loginReducer }) => {
       <Link
         to={`/user`}
         sx={sx.link}
-      >Log in</Link>
+      >{ t('common:loginMenu.login') }</Link>
     </div>
   )
 }

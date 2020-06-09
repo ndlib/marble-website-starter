@@ -1,5 +1,8 @@
 {
-  "button": {
-    "login": "Log In"
+  "loginMenu": {
+    "login": "Log In",
+    "logout": "Log Out",
+    "userEdit": "Edit Profile",
+    "userPage": "My Portfolios"
   }
 }
