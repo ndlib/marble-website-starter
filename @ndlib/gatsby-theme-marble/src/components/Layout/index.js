@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Layout as ThemeLayout } from 'theme-ui'
 import queryString from 'query-string'
+import { withI18nTranslation } from 'i18n/withI18nTranslation'
 import AuthWrapper from './AuthWrapper'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
@@ -11,7 +12,7 @@ import PageContent from './PageContent'
 /// CONSTRUCTION BANNER
 import CornerBanner from './CornerBanner'
 
-const Layout = ({
+export const Layout = ({
   title, // page title to be placed inside main
   noPadding, // bool used to avoid padding page content
   children,
@@ -68,4 +69,4 @@ Layout.defaultProps = {
   requireLogin: false,
 }
 
-export default Layout
+export default withI18nTranslation(Layout)

@@ -59,6 +59,6 @@ describe('LoginButton', () => {
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
     const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
     expect(wrapper.find(Link).props().to).toEqual('/user')
-    expect(wrapper.find(Link).props().children).toEqual('Log in')
+    expect(wrapper.find(Link).props().children).toEqual('common:loginMenu.login')
   })
 })
