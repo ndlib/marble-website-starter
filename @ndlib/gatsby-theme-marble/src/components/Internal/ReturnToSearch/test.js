@@ -13,7 +13,11 @@ describe('ReturnToSearch', () => {
   test('location with search reference', () => {
     const location = {
       state: {
-        referal: { type: 'search', query: '?query&string' },
+        key: '1591659506194',
+        referal: {
+          query: '?q=',
+          type: 'search',
+        },
       },
     }
     const wrapper = shallow(<ReturnToSearch location={location} />)
