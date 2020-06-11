@@ -3,6 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import { Trans } from 'react-i18next'
 
 const NoUser = ({ userName }) => {
   const sx = {
@@ -17,7 +18,11 @@ const NoUser = ({ userName }) => {
 
   return (
     <div sx={sx}>
-      <p>The user <code>{userName}</code> does not exist or you are not authorized to view this page.</p>
+      <p>
+        <Trans i18nKey='text:noUserPage'>
+          The user <code>{{ userName }}</code> does not exist.
+        </Trans>
+      </p>
     </div>
   )
 }

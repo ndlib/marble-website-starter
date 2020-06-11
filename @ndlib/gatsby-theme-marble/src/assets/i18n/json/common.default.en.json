@@ -1,8 +1,15 @@
 {
+  "button": {
+    "createPortfolio": "Create New Portfolio",
+    "userEdit": "Edit Profile"
+  },
   "loginMenu": {
     "login": "Log In",
     "logout": "Log Out",
     "userEdit": "Edit Profile",
     "userPage": "My Portfolios"
+  },
+  "search": {
+    "prompt": "Search the Collections"
   }
 }

@@ -4,23 +4,13 @@ import {
   SelectedFilters,
   ResetFilters,
 } from 'searchkit'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useTranslation } from 'react-i18next'
 import HeroBox from '@ndlib/gatsby-theme-marble/src/components/Shared/HeroBox'
 import banner from 'assets/images/banner.swirl.png'
 
 const SearchFilterBox = () => {
-  const { site } = useStaticQuery(
-    graphql`
-    query {
-      site {
-        siteMetadata {
-          searchBoxDefaultText
-        }
-      }
-    }
-  `,
-  )
-  const fieldLabel = (site.siteMetadata.searchBoxDefaultText !== null) ? site.siteMetadata.searchBoxDefaultText : 'Search the Collections'
+  const { t } = useTranslation()
+  const fieldLabel = t('commone:search.prompt')
   const fields = ['name', 'creator', 'allMetadata']
 
   return (

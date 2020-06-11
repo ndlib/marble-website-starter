@@ -7,13 +7,13 @@ import Footer from './Footer'
 
 const PageWrapper = ({ children, location }) => {
   return (
-    <React.Fragment>
+    <>
       <SkipToMain />
       <BrandingHeader />
       <NavigationHeader location={location} />
       {children}
       <Footer />
-    </React.Fragment>
+    </>
   )
 }
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import OktaAuth from '@okta/okta-auth-js'
 import MaterialButton from 'components/Internal/MaterialButton'
 
 export const OktaLogin = ({ loginReducer }) => {
+  const { t } = useTranslation()
   return (
     <p>
       <MaterialButton
@@ -25,7 +27,8 @@ export const OktaLogin = ({ loginReducer }) => {
         }}
         primary
         wide
-      >Log in with Notre Dame Campus Authentication</MaterialButton>
+      >{t('text:loginPage.button')}
+      </MaterialButton>
     </p>
   )
 }
