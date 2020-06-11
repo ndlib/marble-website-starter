@@ -13,6 +13,6 @@ describe('searchBoxDefaultText', () => {
     expect(wrapper.find(SearchBox).exists()).toBeTruthy()
     expect(wrapper.find(SelectedFilters).exists()).toBeTruthy()
     expect(wrapper.find(ResetFilters).exists()).toBeTruthy()
-    expect(wrapper.find(SearchBox).props().placeholder).toEqual('Default Searchbox text')
+    expect(wrapper.find(SearchBox).props().placeholder).toEqual('commone:search.prompt')
   })
 })
