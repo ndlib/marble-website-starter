@@ -29,6 +29,9 @@ export const putAuthSettingsInStore = (site, location) => {
       redirectUri: `${location.origin}/user`,
       issuer: issuer,
       ignoreSignature: true,
+      responseType: 'id_token',
+      responseMode: 'fragment',
+      pkce: true,
     }
     const { userContentPath } = site.siteMetadata
     dispatch(setAuthClient(authClientSettings, userContentPath))
@@ -57,8 +60,9 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
               // If ID Token isn't found, try to parse it from the current URL
             } else if (location.hash) {
               authClient.token.parseFromUrl()
-                .then(idToken => {
+                .then(res => {
                   // Store parsed token in Token Manager
+                  const { idToken } = res.tokens
                   authClient.tokenManager.add('idToken', idToken)
                   dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
                 })
