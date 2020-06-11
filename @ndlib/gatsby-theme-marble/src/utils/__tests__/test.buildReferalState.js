@@ -3,7 +3,7 @@ import buildReferalState from '../buildReferalState'
 describe('buildReferalState', () => {
   test('empty', () => {
     const nullResult = buildReferalState(null, null)
-    expect(nullResult).toEqual(null)
+    expect(nullResult).toEqual({ referal: null })
   })
   test('referal', () => {
     const result = buildReferalState({ some: 'location' }, { my: 'referal' })

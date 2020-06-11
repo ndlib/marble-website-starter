@@ -3,12 +3,14 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import OktaAuth from '@okta/okta-auth-js'
 import Loading from 'components/Internal/Loading'
 import { logUserOut } from 'store/actions/loginActions'
 import { jsx } from 'theme-ui'
 
 export const LogOut = ({ dispatch, loginReducer }) => {
+  const { t } = useTranslation()
   useEffect(() => {
     if (loginReducer.user.userName) {
       const authClient = new OktaAuth(loginReducer.authClientSettings)
@@ -33,7 +35,7 @@ export const LogOut = ({ dispatch, loginReducer }) => {
 
   return (
     <div sx={sx}>
-      <p>You have been successfully logged out.</p>
+      <p>{ t('text:userLogoutPage')}</p>
     </div>
   )
 }

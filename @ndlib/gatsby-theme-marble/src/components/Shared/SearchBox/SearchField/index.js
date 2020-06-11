@@ -1,30 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { updateInput } from 'store/actions/searchActions'
 
 // You should only have one search field on a page.
 export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch, className, location }) => {
+  const { t } = useTranslation()
   const { rawInput } = searchReducer
-  const { site } = useStaticQuery(
-    graphql`
-    query {
-      site {
-        siteMetadata {
-          searchBoxDefaultText
-        }
-      }
-    }
-  `,
-  )
-  const fieldLabel = (site.siteMetadata.searchBoxDefaultText !== null) ? site.siteMetadata.searchBoxDefaultText : 'Search the Collections'
+  const fieldLabel = t('common:search.prompt')
   return (
-    <React.Fragment>
+    <>
       <label
         htmlFor='searchField'
         className='accessibilityOnly'
-      >{fieldLabel}</label>
+      >{fieldLabel}
+      </label>
       <input
         id='searchField'
         name='searchField'
@@ -41,7 +32,7 @@ export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch,
           }
         }}
       />
-    </React.Fragment>
+    </>
   )
 }
 

@@ -28,7 +28,7 @@ const IndexPage = ({ location }) => {
   return (
     <React.Fragment>
       <HeroBox backgroundImage={banner}>
-        <h1 sx={sx.h1}>University of Notre Dame<span sx={sx.h2} >Digital Collections</span></h1>
+        <h1 sx={sx.h1}>University of Notre Dame<span sx={sx.h2}>Digital Collections</span></h1>
         <SearchBox location={location} />
       </HeroBox>
       <CardGroup

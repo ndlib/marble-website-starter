@@ -1,14 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
+import { useTranslation } from 'react-i18next'
 import MaterialButton from 'components/Internal/MaterialButton'
 const EditUserButton = ({ userName }) => {
+  const { t } = useTranslation()
   return (
     <MaterialButton
       onClick={() => navigate(`/user/${userName}/edit`)}
       wide
       primary
-    >Edit Profile</MaterialButton>
+    >{t('common:button.userEdit')}
+    </MaterialButton>
   )
 }
 

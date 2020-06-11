@@ -1,8 +1,10 @@
 import React from 'react'
 import { navigate } from 'gatsby'
+import { useTranslation } from 'react-i18next'
 import MaterialButton from 'components/Internal/MaterialButton'
 
 export const LogOut = () => {
+  const { t } = useTranslation()
   return (
     <p>
       <MaterialButton
@@ -12,7 +14,9 @@ export const LogOut = () => {
         }}
         primary
         wide
-      >Log Out</MaterialButton>
+      >
+        {t('common:loginMenu.logout')}
+      </MaterialButton>
     </p>
   )
 }

@@ -1,6 +1,6 @@
 const fs = require('fs')
 const crypto = require('crypto')
-const { attachFields } = require(`gatsby-plugin-node-fields`)
+const { attachFields } = require('gatsby-plugin-node-fields')
 const merge = require('lodash.merge')
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
@@ -189,7 +189,6 @@ exports.sourceNodes = ({ actions }) => {
     authClient: authClient
     searchPath: String
     languages: languages
-    searchBoxDefaultText: String
   }
   type Site implements Node {
     siteMetadata: SiteMetadata
@@ -207,11 +206,11 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions
 
   if (page.path.match(/^\/user/)) {
-    page.matchPath = `/user/*`
+    page.matchPath = '/user/*'
     // Update the page.
     createPage(page)
   } else if (page.path.match(/^\/myportfolio/)) {
-    page.matchPath = `/myportfolio/*`
+    page.matchPath = '/myportfolio/*'
     // Update the page.
     createPage(page)
   }
@@ -240,7 +239,7 @@ exports.createPages = ({ graphql, actions }) => {
       const pagePath = node.frontmatter.slug === 'index' ? '/' : node.frontmatter.slug
       createPage({
         path: pagePath,
-        component: require.resolve(`./src/templates/markdownTemplate.js`),
+        component: require.resolve('./src/templates/markdownTemplate.js'),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
@@ -252,7 +251,7 @@ exports.createPages = ({ graphql, actions }) => {
       if (node.frontmatter.iiifJson) {
         createPage({
           path: `${node.frontmatter.slug}/mirador`,
-          component: require.resolve(`./src/templates/miradorTemplate.js`),
+          component: require.resolve('./src/templates/miradorTemplate.js'),
           context: {
             slug: node.frontmatter.slug,
           },
@@ -264,7 +263,7 @@ exports.createPages = ({ graphql, actions }) => {
 
 exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
   const { createNode } = actions
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === 'MarkdownRemark') {
     const fieldData = {
       frontmatter: node.frontmatter,
     }
@@ -275,13 +274,13 @@ exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
       parent: node.id,
       children: [],
       internal: {
-        type: `RemarkMarblePage`,
+        type: 'RemarkMarblePage',
         contentDigest: crypto
-          .createHash(`md5`)
+          .createHash('md5')
           .update(JSON.stringify(fieldData))
-          .digest(`hex`),
+          .digest('hex'),
         content: JSON.stringify(fieldData),
-        description: `Enhanced markdown pages with react components`,
+        description: 'Enhanced markdown pages with react components',
       },
     })
   }
