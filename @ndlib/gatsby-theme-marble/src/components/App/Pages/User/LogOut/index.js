@@ -35,7 +35,7 @@ export const LogOut = ({ dispatch, loginReducer }) => {
 
   return (
     <div sx={sx}>
-      <p>{ t('text:userLogoutPage')}</p>
+      <p>{t('text:userLogoutPage')}</p>
     </div>
   )
 }
