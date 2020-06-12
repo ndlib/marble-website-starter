@@ -3,7 +3,6 @@ import { shallow } from 'enzyme'
 import DownloadCitation from './'
 
 describe('DownloadCitation', () => {
-
   test('Unrendered', () => {
     const manifest = {}
     const wrapper = shallow(<DownloadCitation iiifManifest={manifest} />)

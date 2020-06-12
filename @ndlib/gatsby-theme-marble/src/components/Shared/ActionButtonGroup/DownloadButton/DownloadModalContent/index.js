@@ -25,7 +25,7 @@ const DownloadModalContent = ({ iiifManifest }) => {
           </div>
           <Styled.h2 sx={sx.header}>Citation</Styled.h2>
           <div sx={sx.metadata}>
-          <DownloadCitation iiifManifest={iiifManifest} />
+            <DownloadCitation iiifManifest={iiifManifest} />
           </div>
         </Column>
       </MultiColumn>
