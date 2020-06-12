@@ -14,6 +14,7 @@ const DownloadCitation = ({ iiifManifest }) => {
     if (typy(iiifManifest, 'provider[0].homepage[0]label.en[0]').isString) {
       iiifManifest.metadata.map((md) => {
         metadata[(md.label.en[0].trim())] = md.value.en[0]
+        return metadata
       })
       if (iiifManifest.provider[0].homepage[0].label.en[0] === 'Snite Museum of Art') {
         biblio = metadata.Creator + ', ' + iiifManifest.label.en[0] + ', ' + metadata.Medium + '. ' +
