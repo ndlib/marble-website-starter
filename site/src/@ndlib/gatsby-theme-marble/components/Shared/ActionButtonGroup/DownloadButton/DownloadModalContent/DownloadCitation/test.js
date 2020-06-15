@@ -1,13 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import DownloadCitation from './'
+import { useStaticQuery } from 'gatsby'
 
 describe('DownloadCitation', () => {
-  test('Unrendered', () => {
-    const manifest = {}
-    const wrapper = shallow(<DownloadCitation iiifManifest={manifest} />)
-    expect(wrapper.find('.citation').text()).toEqual('Unable to render citation')
-  })
   test('Collection', () => {
     const manifest = {
       type: 'Collection',
@@ -23,9 +19,11 @@ describe('DownloadCitation', () => {
         }],
       }],
     }
+    useStaticQuery.mockImplementation(() => {
+      return manifest
+    })
     const wrapper = shallow(<DownloadCitation iiifManifest={manifest} />)
-    expect(wrapper.find('.citation').text()).toEqual('Title, slug. location, Hesburgh Libraries, University of Notre Dame, South Bend, IN. ' +
-      window.location.href)
+    expect(wrapper.find('.citation').text()).toEqual('Title, slug. location, Hesburgh Libraries, University of Notre Dame, South Bend, IN. /item/slug')
   })
   test('Snite Manifest', () => {
     const manifest = {
@@ -71,10 +69,13 @@ describe('DownloadCitation', () => {
         },
       }],
     }
+    useStaticQuery.mockImplementation(() => {
+      return manifest
+    })
     const wrapper = shallow(<DownloadCitation iiifManifest={manifest} />)
     expect(wrapper.find('.citation').text()).toEqual('Creator, Title, Medium. Snite Museum of Art, University of Notre Dame. Credit Line, Accession number.')
   })
-  test('Snite Manifest', () => {
+  test('RBSC Manifest', () => {
     const manifest = {
       type: 'Manifest',
       slug: 'item/slug',
@@ -111,8 +112,10 @@ describe('DownloadCitation', () => {
         },
       }],
     }
+    useStaticQuery.mockImplementation(() => {
+      return manifest
+    })
     const wrapper = shallow(<DownloadCitation iiifManifest={manifest} />)
-    expect(wrapper.find('.citation').text()).toEqual('Creator. Title, Date. Collection. Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame, South Bend, IN.' +
-      window.location.href)
+    expect(wrapper.find('.citation').text()).toEqual('Creator. Title, Date. Collection. Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame, South Bend, IN. /item/slug')
   })
 })
