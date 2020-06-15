@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { jsx } from 'theme-ui'
+import { Styled, jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import sx from './sx'
@@ -37,7 +37,8 @@ const DownloadCitation = ({ iiifManifest }) => {
     return null
   } else {
     return (
-      <div>
+      <div sx={sx.metadata}>
+        <Styled.h2 sx={sx.header}>Citation</Styled.h2>
         Bibliography Citation, Chicago Style 17th ed. We are making assumptions about
         the genre of these works and as result the citation may not fit your needs.
         Please verify for accuracy before including them in your work.
