@@ -1,7 +1,8 @@
 const fs = require('fs')
-const path = require(`path`)
+const path = require('path')
 const fetch = require('node-fetch')
 const directory = process.argv.slice(2)[0]
+const retryLimit = 4
 
 const loadManifestsFile = () => {
   const contents = fs.readFileSync(path.join(__dirname, '/../../site/content/manifests.json'))
@@ -10,18 +11,11 @@ const loadManifestsFile = () => {
 
 const fetchData = async (seeAlso) => {
   const finalResult = []
-  await Promise.all(seeAlso.map(item => {
+  const errorResult = []
+  await Promise.all(seeAlso.map(async item => {
     // console.log('Processing: ' + item)
     const url = 'https://presentation-iiif.library.nd.edu/' + item + '/nd'
-    const result = fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        finalResult.push(data)
-      })
-      .catch(error => {
-        console.error('fetch error: ', error)
-        return error
-      })
+    const result = await fetchUntilGood(url, finalResult, errorResult, 0)
     return result
   }))
     .then(() => {
@@ -31,7 +25,33 @@ const fetchData = async (seeAlso) => {
       console.error('Promise error: ', error)
       return error
     })
+
+  // Log errors for now
+  errorResult.length > 0 ? console.error('Could not process the following: [' + errorResult.join(', ') + '].') : console.log('Successfully processed all items.')
+
+  console.log('Processed Items: ', finalResult.length)
+
   return finalResult
+}
+
+const fetchUntilGood = async (url, myArray, badArray, count = 0) => {
+  if (count <= retryLimit) {
+    await fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        myArray.push(data)
+      })
+      .catch(error => {
+        if (count === retryLimit) {
+          console.error('Reached retry limit of "' + retryLimit + '" for ' + url)
+          badArray.push(url)
+        } else {
+          console.error('fetch error (' + count + '), retrying:', url)
+          fetchUntilGood(url, myArray, badArray, ++count)
+        }
+        return error
+      })
+  }
 }
 
 // eslint-disable-next-line
