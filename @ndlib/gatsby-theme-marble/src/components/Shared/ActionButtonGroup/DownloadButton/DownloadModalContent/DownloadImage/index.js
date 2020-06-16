@@ -15,17 +15,17 @@ import {
 } from './utils'
 import sx from './sx'
 
-const DownloadImage = ({ iiifManifest }) => {
+const DownloadImage = ({ ndJson }) => {
   const [images, setImages] = useState([])
   const [selected, setSelected] = useState(0)
   const [size, setSize] = useState('full')
   const [format, setFormat] = useState('jpg')
 
   useEffect(() => {
-    setImages(getImagesFromManifest(iiifManifest))
-  }, [iiifManifest])
+    setImages(getImagesFromManifest(ndJson))
+  }, [ndJson])
 
-  if (images.length < 1 || !copyrightCanDownload(iiifManifest)) {
+  if (images.length < 1 || !copyrightCanDownload(ndJson)) {
     return (
       <div sx={sx.wrapper}>
         <p sx={sx.image}>Image Download Unavailable.</p>
@@ -57,19 +57,20 @@ const DownloadImage = ({ iiifManifest }) => {
           onClick={() => {
             download(
               imageUrl(images, selected, size, format),
-              imageName(iiifManifest, images, selected, format),
+              imageName(ndJson, images, selected, format),
             )
           }}
           primary
           wide
-        >Download Image</MaterialButton>
+        >Download Image
+        </MaterialButton>
       </div>
     </React.Fragment>
   )
 }
 
 DownloadImage.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  ndJson: PropTypes.object.isRequired,
 }
 
 export default DownloadImage

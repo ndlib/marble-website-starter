@@ -15,15 +15,12 @@ MiradorTemplate.propTypes = {
 export default MiradorTemplate
 
 export const query = graphql`
-  query($slug: String!) {
-    remarkMarblePage(frontmatter: { slug: { eq: $slug } }) {
-      frontmatter {
-        iiifJson {
-          ...iiifJsonFragment
-          items {
-            ...iiifJsonItemFragment
-          }
-        }
+  query($id: String!) {
+    marbleItem( id: { eq: $id }) {
+      id
+      ndJson {
+        title
+        iiifUri
       }
     }
   }

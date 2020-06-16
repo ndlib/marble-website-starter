@@ -7,10 +7,12 @@ import {
   ResetFilters,
 } from 'searchkit'
 
-test('SearchPreMain', () => {
-  const wrapper = shallow(<SearchFilterBox />)
-  expect(wrapper.find('.searchHead').exists()).toBeTruthy()
-  expect(wrapper.find(SearchBox).exists()).toBeTruthy()
-  expect(wrapper.find(SelectedFilters).exists()).toBeTruthy()
-  expect(wrapper.find(ResetFilters).exists()).toBeTruthy()
+describe('searchBoxDefaultText', () => {
+  test('SearchFilterBox', () => {
+    const wrapper = shallow(<SearchFilterBox />)
+    expect(wrapper.find(SearchBox).exists()).toBeTruthy()
+    expect(wrapper.find(SelectedFilters).exists()).toBeTruthy()
+    expect(wrapper.find(ResetFilters).exists()).toBeTruthy()
+    expect(wrapper.find(SearchBox).props().placeholder).toEqual('common:search.prompt')
+  })
 })

@@ -1,11 +1,8 @@
 import typy from 'typy'
-import getLanguage from 'utils/getLanguage'
 
-export const copyrightCanDownload = (iiifManifest) => {
-  const lang = getLanguage()
-  const rsLabel = typy(iiifManifest, `requiredStatement.label[${lang}][0]`).safeString
-  const rsValue = typy(iiifManifest, `requiredStatement.value[${lang}][0]`).safeString
-  if (rsLabel.toLowerCase() === 'copyright' && rsValue.toLowerCase() === 'copyright') {
+export const copyrightCanDownload = (ndJson) => {
+  const rsValue = typy(ndJson, 'copyrightStatus').safeString
+  if (rsValue.toLowerCase() === 'copyright') {
     return false
   }
   return true
@@ -15,20 +12,20 @@ export const imageUrl = (images, index, size, format) => {
   return images[index].replace('full/full', `full/${size}`).replace('default.jpg', `default.${format}`)
 }
 
-export const imageName = (iiifManifest, images, index, format) => {
+export const imageName = (ndJson, images, index, format) => {
   const numDigits = ('' + images.length).length
   const num = `${index + 1}`.padStart(numDigits, '0')
-  return `${typy(iiifManifest, 'slug').safeString.replace('item/', '')}_${num}.${format}`
+  return `${typy(ndJson, 'id').safeString}_${num}.${format}`
 }
 
-export const getImagesFromManifest = (iiifManifest) => {
-  if (typy(iiifManifest, 'type').safeString.toLowerCase() === 'manifest') {
-    return typy(iiifManifest, 'items').safeArray.map(item => {
-      return typy(item, 'items[0].items[0].body.id').safeString
+export const getImagesFromManifest = (ndJson) => {
+  if (typy(ndJson, 'level').safeString.toLowerCase() === 'manifest') {
+    return typy(ndJson, 'items').safeArray.map(item => {
+      return typy(item, 'iiifImageUri').isString ? `${item.iiifImageUri}/full/full/0/default.jpg` : null
     })
   } else {
-    return typy(iiifManifest, 'items').safeArray.map(item => {
-      return typy(item, 'items[0].items[0].items[0].body.id').safeString
+    return typy(ndJson, 'items').safeArray.map(item => {
+      return typy(item, '.items[0].iiifImageUri').isString ? `${item.items[0].iiifImageUri}/full/full/0/default.jpg` : null
     })
   }
 }

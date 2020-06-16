@@ -6,25 +6,25 @@ import AlternateImage from './AlternateImage'
 describe('ItemAlternateViews', () => {
   const location = {}
   test('no more canvases', () => {
-    const manifest = {
-      slug: '/slug',
+    const ndJson = {
+      id: 'a',
     }
-    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} viewer='mirador' location={location} />)
+    const wrapper = shallow(<ItemAlternateViews ndJson={ndJson} viewer='mirador' location={location} />)
 
     expect(wrapper.find('div').exists()).toBeFalsy()
     expect(wrapper.find(AlternateImage).exists()).toBeFalsy()
   })
 
   test('some canvases', () => {
-    const manifest = {
-      slug: '/slug',
+    const ndJson = {
+      id: 'a',
       items: [
-        { id: 'a', slug: '/a' },
-        { id: 'b', slug: '/b' },
-        { id: 'c', slug: '/c' },
+        { id: 'a', iiifUri: '/a' },
+        { id: 'b', iiifUri: '/b' },
+        { id: 'c', iiifUri: '/c' },
       ],
     }
-    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} viewer='mirador' location={location} />)
+    const wrapper = shallow(<ItemAlternateViews ndJson={ndJson} viewer='mirador' location={location} />)
 
     expect(wrapper.find('div').exists()).toBeTruthy()
     expect(wrapper.find(AlternateImage).length).toEqual(2)

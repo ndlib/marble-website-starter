@@ -6,10 +6,10 @@ import Link from 'components/Internal/Link'
 import buildReferalState from 'utils/buildReferalState'
 import { jsx } from 'theme-ui'
 
-const ViewerLink = ({ iiifManifest, index, viewer, className, view, location, children }) => {
-  let viewerLink = `/${iiifManifest.slug}/mirador?cv=${index}&view=${view}`
+const ViewerLink = ({ ndJson, index, viewer, className, view, location, children }) => {
+  let viewerLink = `/item/${ndJson.id}/mirador?cv=${index}&view=${view}`
   if (viewer === 'uv') {
-    viewerLink = `/viewer?manifest=${encodeURIComponent(iiifManifest.id)}&cv=${index}`
+    viewerLink = `/viewer?manifest=${encodeURIComponent(ndJson.iiifUri)}&cv=${index}`
   }
   return (
     <Link
@@ -30,10 +30,9 @@ const ViewerLink = ({ iiifManifest, index, viewer, className, view, location, ch
 }
 
 ViewerLink.propTypes = {
-  iiifManifest: PropTypes.shape({
+  ndJson: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    summary: PropTypes.object,
-    slug: PropTypes.string.isRequired,
+    iiifUri: PropTypes.string.isRequired,
   }),
   index: PropTypes.number,
   className: PropTypes.string,

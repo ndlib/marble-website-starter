@@ -4,12 +4,12 @@ import TypeLabel from './'
 
 describe('TypeLabel', () => {
   test('Collection', () => {
-    const wrapper = mount(<TypeLabel iiifManifest={{ type: 'Collection' }} />)
+    const wrapper = mount(<TypeLabel type='Collection' />)
     expect(wrapper.find('div').exists()).toBeTruthy()
     expect(wrapper.find('img').exists()).toBeTruthy()
   })
   test('Not Collection', () => {
-    const wrapper = mount(<TypeLabel iiifManifest={{ type: 'Item' }} />)
+    const wrapper = mount(<TypeLabel type='Item' />)
     expect(wrapper.find('div').exists()).toBeFalsy()
     expect(wrapper.find('img').exists()).toBeFalsy()
   })

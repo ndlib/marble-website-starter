@@ -15,139 +15,6 @@ exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
 
   const typeDefs = `
-  # iiif stuff
-  type iiifTranslatedString @dontInfer {
-    en: [ String ]
-  }
-
-  type iiifLabeledString @dontInfer {
-    label: iiifTranslatedString
-    value: iiifTranslatedString
-  }
-
-  type iiifServiceJson @dontInfer {
-    id: String
-    _context: String
-    profile: String
-  }
-
-  type iiifThumbnailJson @dontInfer {
-    id: String
-    type: String
-    format: String
-    service: [iiifServiceJson]
-  }
-
-  type iiifLogoJson @dontInfer {
-    id: String
-    type: String
-    height: Int
-    weight: Int
-    format: String
-  }
-
-  type iiifHomepage @dontInfer {
-    id: String
-    type: String
-    label: iiifTranslatedString
-    format: String
-  }
-
-  type iiifSeeAlso @dontInfer {
-    id: String
-    type: String
-    format: String
-    profile: String
-  }
-
-  type iiifProviderJson @dontInfer {
-    id: String
-    type: String
-    label: iiifTranslatedString
-    homepage: [ iiifHomepage ]
-    logo: [ iiifLogoJson ]
-    seeAlso: [ iiifSeeAlso ]
-  }
-
-  type iiifItemAnnotationPageBody @dontInfer {
-    id: String
-    type: String
-    format: String
-    width: Int
-    height: Int
-    service: [iiifServiceJson]
-  }
-
-  type iiifItem @dontInfer {
-    id: ID!
-    type: String
-    label: iiifTranslatedString
-    height: Int
-    width: Int
-    summary: iiifTranslatedString
-    requiredStatement: iiifLabeledString
-    provider: [iiifProviderJson]
-    rights: String
-    viewingDirection: String
-    service: iiifServiceJson
-    motivation: String
-    target: String
-    body: iiifItemAnnotationPageBody
-    seeAlso: [ iiifSeeAlso ]
-    metadata: [iiifLabeledString]
-    thumbnail: [iiifThumbnailJson]
-    items: [iiifItem]
-  }
-
-  type IiifJson implements Node @dontInfer {
-    # However Node fields are optional and you don't have to add them
-    id: ID!
-    _context: String
-    type: String!
-    slug: String!
-    label: iiifTranslatedString!
-    summary: iiifTranslatedString
-    requiredStatement: iiifLabeledString
-    provider: [iiifProviderJson]
-    rights: String
-    viewingDirection: String
-    metadata: [iiifLabeledString]
-    thumbnail: [iiifThumbnailJson]
-    items: [iiifItem]
-    partiallyDigitized: String
-    seeAlso: [iiifSeeAlso]
-  }
-
-  #react component stuff
-  type prop @dontInfer {
-    label: String
-    value: String
-    fileValue: File
-  }
-
-  type component {
-    component: String
-    props: [prop]
-    components: [component]
-  }
-
-  type customFrontmatter {
-    author: String
-    components: [component]
-    description: String
-    defaultSearch: [defaultSearch]
-    layout: String
-    menu: String
-    slug: String
-    title: String
-    iiifJson: IiifJson
-  }
-
-  type RemarkMarblePage implements Node {
-    frontmatter: customFrontmatter
-    fields: customFrontmatter
-  }
-
 
   # things expected to be there
   type searchBase @dontInfer {
@@ -221,19 +88,28 @@ exports.createPages = ({ graphql, actions }) => {
 
   return graphql(`
     {
-      allRemarkMarblePage {
+      allMarbleCollection {
+        nodes {
+          id
+          slug
+        }
+      }
+      allMarbleItem {
+        nodes {
+          id
+          slug
+        }
+      }
+      allMarkdownRemark {
         nodes {
           frontmatter{
             slug
-            iiifJson {
-              id
-            }
           }
         }
       }
     }
   `).then(result => {
-    const pages = result.data.allRemarkMarblePage.nodes
+    const pages = result.data.allMarkdownRemark.nodes
 
     pages.forEach(node => {
       const pagePath = node.frontmatter.slug === 'index' ? '/' : node.frontmatter.slug
@@ -247,226 +123,233 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-    pages.forEach(node => {
-      if (node.frontmatter.iiifJson) {
+
+    // const ndJsonPages = result.data.allNdJson.nodes
+    // ndJsonPages.forEach(node => {
+    //   if (node.id) {
+    //     // item page
+    //     createPage({
+    //       path: `item/${node.id}`,
+    //       component: require.resolve('./src/templates/ndJson.js'),
+    //       context: {
+    //         // Data passed to context is available
+    //         // in page queries as GraphQL variables.
+    //         id: node.id,
+    //         iiifUri: node.iiifUri,
+    //       },
+    //     })
+    //     // mirador page
+    //     createPage({
+    //       path: `item/${node.id}/mirador`,
+    //       component: require.resolve('./src/templates/miradorTemplate.js'),
+    //       context: {
+    //         id: node.id,
+    //       },
+    //     })
+    //   }
+    // })
+
+    const marbleItems = result.data.allMarbleItem.nodes
+    marbleItems.forEach(node => {
+      ///
+      if (node.id) {
+        // item page
         createPage({
-          path: `${node.frontmatter.slug}/mirador`,
+          path: node.slug,
+          component: require.resolve('./src/templates/marbleItem.js'),
+          context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            slug: node.slug,
+            id: node.id,
+            iiifUri: node.iiifUri,
+          },
+        })
+        // mirador page
+        createPage({
+          path: `${node.slug}/mirador`,
           component: require.resolve('./src/templates/miradorTemplate.js'),
           context: {
-            slug: node.frontmatter.slug,
+            id: node.id,
           },
         })
       }
+      ///
     })
   })
 }
 
-exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
+exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, options) => {
   const { createNode } = actions
-  if (node.internal.type === 'MarkdownRemark') {
-    const fieldData = {
-      frontmatter: node.frontmatter,
-    }
-    createNode({
-      ...fieldData,
-      // Required fields.
-      id: createNodeId(`${node.id} >>> RemarkMarblePage`),
-      parent: node.id,
-      children: [],
+
+  // function to normalize node
+  const normalizeNode = ({ newId, type, ndJson }) => {
+    const mappedFields = mapFieldsToMarble(ndJson)
+    return {
+      ...mappedFields,
+      id: createNodeId(newId),
+      marbleId: newId,
+      ndJson: ndJson,
+      slug: `item/${newId}`,
       internal: {
-        type: 'RemarkMarblePage',
-        contentDigest: crypto
-          .createHash('md5')
-          .update(JSON.stringify(fieldData))
-          .digest('hex'),
-        content: JSON.stringify(fieldData),
-        description: 'Enhanced markdown pages with react components',
+        type: type,
       },
+    }
+  }
+
+  if (node.internal.type === 'NdJson') {
+    if (node.level.toLowerCase() === 'collection') {
+      // create parent collection
+      const normalizedTypeNode = normalizeNode({
+        newId: node.id,
+        type: 'MarbleCollection',
+        ndJson: node,
+      })
+      normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
+      createNode(normalizedTypeNode)
+
+      // create sub items
+      node.items.forEach(item => {
+        ///
+        const newId = `${item.collectionId}/${item.id}`
+        const normalizedTypeNode = normalizeNode({
+          newId: newId,
+          type: 'MarbleItem',
+          ndJson: item,
+        })
+        normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
+        createNode(normalizedTypeNode)
+        ///
+      })
+    } else {
+      const normalizedTypeNode = normalizeNode({
+        newId: node.id,
+        type: 'MarbleItem',
+        ndJson: node,
+      })
+      normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
+      createNode(normalizedTypeNode)
+    }
+  }
+}
+
+const mapFieldsToMarble = (ndJson) => {
+  return {
+    title: ndJson.title,
+    description: 'ndJson description',
+    annotation: 'comes from another source system or user entered',
+    display: ndJson.level,
+    iiifUri: ndJson.iiifUri,
+    copyrightRestricted: false,
+    partiallyDigitized: true,
+    image: buildImageFields(ndJson),
+    allImages: buildAllImages(ndJson),
+    metadata: [
+      {
+        label: 'Artist',
+        value: 'Señor Senior, Sr.',
+        type: 'artist',
+      },
+      {
+        label: 'field 1',
+        value: 'value 1',
+        type: '',
+      },
+      {
+        label: 'field 2',
+        value: 'value 2',
+        type: '',
+      },
+    ],
+    seeAlso: buildSeeAlso(ndJson),
+  }
+}
+
+const buildSeeAlso = (ndJson) => {
+  // if collection return child items
+  // if item in collection return siblings
+  // if top level item maybe run a search based on a set of fields
+  return [
+    'relatedId1',
+    'relatedId2',
+  ]
+}
+
+const buildImageFields = (ndJson, index = 0) => {
+  // This will need to search for the first child (or grandchild) that has a valid image
+  return {
+    default: 'https://image.default.big',
+    service: 'https://image.default',
+    thumbnail: 'https://image.default.small',
+  }
+}
+
+// Probably will not be able to reuse buildImageFields in a real scenario since buildImageFields will need to search for first good image.
+const buildAllImages = (ndJson) => {
+  const allImages = []
+  if (ndJson.items) {
+    ndJson.items.forEach((item, i) => {
+      allImages.push(buildImageFields(ndJson, i))
     })
   }
-
-  const descriptors = [
-    {
-      predicate: node => node.frontmatter,
-      fields: [
-        {
-          name: 'components',
-          getter: node => {
-            return getComponents(node, options)
-          },
-          defaultValue: [{ component: 'MarkdownHtmlContent' }],
-        },
-      ],
-    },
-  ]
-  attachFields(node, actions, descriptors)
+  return allImages
 }
+// exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
+// const { createNode } = actions
+// if (node.internal.type === 'MarkdownRemark') {
+//   const fieldData = {
+//     frontmatter: node.frontmatter,
+//   }
+//   createNode({
+//     ...fieldData,
+//     // Required fields.
+//     id: createNodeId(`${node.id} >>> RemarkMarblePage`),
+//     parent: node.id,
+//     children: [],
+//     internal: {
+//       type: 'RemarkMarblePage',
+//       contentDigest: crypto
+//         .createHash('md5')
+//         .update(JSON.stringify(fieldData))
+//         .digest('hex'),
+//       content: JSON.stringify(fieldData),
+//       description: 'Enhanced markdown pages with react components',
+//     },
+//   })
+// }
 
-const getComponents = (node, options) => {
-  if (node && node.frontmatter) {
-    if (node.frontmatter.components) {
-      return node.frontmatter.components
-    } else if (node.frontmatter.layout) {
-      return getComponentsFromLayout(node.frontmatter.layout, options)
-    }
-  }
-  return [{ component: 'MarkdownHtmlContent' }]
-}
+// const descriptors = [
+//   {
+//     predicate: node => node.frontmatter,
+//     fields: [
+//       {
+//         name: 'components',
+//         getter: node => {
+//           return getComponents(node, options)
+//         },
+//         defaultValue: [{ component: 'MarkdownHtmlContent' }],
+//       },
+//     ],
+//   },
+// ]
+// attachFields(node, actions, descriptors)
+// }
 
-const getComponentsFromLayout = (layout, options) => {
-  let availableLayouts = defaultLayouts
-  if (options.layouts) {
-    availableLayouts = merge({}, defaultLayouts, options.layouts)
-  }
-  return availableLayouts[layout] || availableLayouts.default
-}
+// const getComponents = (node, options) => {
+//   if (node && node.frontmatter) {
+//     if (node.frontmatter.components) {
+//       return node.frontmatter.components
+//     } else if (node.frontmatter.layout) {
+//       return getComponentsFromLayout(node.frontmatter.layout, options)
+//     }
+//   }
+//   return [{ component: 'MarkdownHtmlContent' }]
+// }
 
-const defaultLayouts = {
-  default: [
-    { component: 'MarkdownHtmlContent' },
-  ],
-  browseSearchPage: [
-    { component: 'MarkdownHtmlContent' },
-    {
-      component: 'SearchBase',
-      components: [
-        { component: 'SearchFilterBox' },
-        {
-          component: 'MultiColumn',
-          props: [{ label: 'columns', value: '4' }],
-          components: [
-            {
-              component: 'Column',
-              components: [
-                {
-                  component: 'SearchRefinementListFilter',
-                  props: [
-                    { label: 'field', value: 'centuryTag.keyword' },
-                    { label: 'label', value: 'Time Period' },
-                    { label: 'operator', value: 'OR' },
-                    { label: 'sort', value: 'a-z' },
-                  ],
-                },
-                {
-                  component: 'SearchRefinementListFilter',
-                  props: [
-                    { label: 'field', value: 'repository.keyword' },
-                    { label: 'label', value: 'Campus Location' },
-                    { label: 'operator', value: 'OR' },
-                  ],
-                },
-                {
-                  component: 'SearchRefinementListFilter',
-                  props: [
-                    { label: 'field', value: 'formatTag.keyword' },
-                    { label: 'label', value: 'Format' },
-                    { label: 'operator', value: 'OR' },
-                  ],
-                },
-                {
-                  component: 'SearchRefinementListFilter',
-                  props: [
-                    { label: 'field', value: 'themeTag.keyword' },
-                    { label: 'label', value: 'Keywords' },
-                    { label: 'size', value: '10' },
-                    { label: 'sort', value: 'default' },
-                    { label: 'operator', value: 'OR' },
-                  ],
-                },
-              ],
-            },
-            {
-              component: 'Column',
-              props: [{ label: 'colSpan', value: '3' }],
-              components: [
-                {
-                  component: 'SearchResults',
-                  props: [{ label: 'defaultDisplay', value: 'list' }],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-  markdownWithMenu: [
-    {
-      component: 'MultiColumn',
-      props: [{ label: 'columns', value: '5' }],
-      components: [
-        {
-          component: 'Column',
-          components: [
-            {
-              component: 'Menu',
-              props: [{ label: 'navClass', value: 'verticalMenu' }],
-            },
-          ],
-        },
-        {
-          component: 'Column',
-          props: [{ label: 'colSpan', value: '3' }],
-          components: [
-            { component: 'MarkdownHtmlContent' },
-          ],
-        },
-      ],
-    },
-  ],
-  collection: [
-    { component: 'MarkdownHtmlContent' },
-    {
-      component: 'MultiColumn',
-      props: [
-        { label: 'columns', value: '5' },
-      ],
-      components: [
-        {
-          component: 'Column',
-          props: [
-            { label: 'colSpan', value: '2' },
-          ],
-          components: [
-            { component: 'ActionButtons' },
-            { component: 'ManifestDescription' },
-            { component: 'ManifestMetaData' },
-            { component: 'PartiallyDigitized' },
-          ],
-        },
-        {
-          component: 'Column',
-          props: [
-            { label: 'colSpan', value: '3' },
-          ],
-          components: [
-            { component: 'ChildManifests' },
-          ],
-        },
-      ],
-    },
-  ],
-  item: [
-    { component: 'MarkdownHtmlContent' },
-    {
-      component: 'MultiColumn',
-      components: [
-        {
-          component: 'Column',
-          components: [
-            { component: 'ActionButtons' },
-            { component: 'ManifestImageGroup' },
-          ],
-        },
-        {
-          component: 'Column',
-          components: [
-            { component: 'ManifestMetaData' },
-            { component: 'PartiallyDigitized' },
-          ],
-        },
-      ],
-    },
-    { component: 'ManifestDescription' },
-  ],
-}
+// const getComponentsFromLayout = (layout, options) => {
+//   let availableLayouts = defaultLayouts
+//   if (options.layouts) {
+//     availableLayouts = merge({}, defaultLayouts, options.layouts)
+//   }
+//   return availableLayouts[layout] || availableLayouts.default
+// }

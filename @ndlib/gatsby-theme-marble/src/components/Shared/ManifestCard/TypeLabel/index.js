@@ -1,15 +1,11 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React from 'react'
-import typy from 'typy'
 import PropTypes from 'prop-types'
 import icon from 'assets/icons/svg/baseline-collections-modified-24px.svg'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-const TypeLabel = ({ iiifManifest }) => {
-  const type = typy(iiifManifest, 'type').safeString.toLowerCase()
-  if (type === 'collection') {
+const TypeLabel = ({ type }) => {
+  if (type.toLowerCase() === 'collection') {
     return (
       <div sx={sx.wrapper}>
         <img
@@ -24,7 +20,7 @@ const TypeLabel = ({ iiifManifest }) => {
 }
 
 TypeLabel.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
 }
 
 export default TypeLabel

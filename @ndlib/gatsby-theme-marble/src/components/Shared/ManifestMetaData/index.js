@@ -5,25 +5,40 @@ import MetaDataField from 'components/Internal/MetaDataList/MetaDataField'
 import CampusLocation from 'components/Internal/CampusLocation'
 import typy from 'typy'
 
-const ManifestMetaData = ({ iiifManifest, skipHtml }) => {
-  if (!iiifManifest) {
+const ManifestMetaData = ({ ndJson, skipHtml }) => {
+  if (!ndJson) {
     return null
   }
   return (
-    <React.Fragment>
+    <>
       <h2 className='accessibilityOnly'>Metadata</h2>
       <MetaDataList
-        metadata={iiifManifest.metadata}
+        metadata={ndJson.metadata}
         skipHtml={skipHtml}
       />
-      { typy(iiifManifest, 'provider[0].homepage[0].label.en[0]').isString ? <CampusLocation metadata={typy(iiifManifest, 'provider[0].homepage[0].label.en[0]').safeString} /> : null }
-      { iiifManifest.requiredStatement ? <MetaDataField metadata={iiifManifest.requiredStatement} /> : null }
-      { iiifManifest.rights ? <p dangerouslySetInnerHTML={{ __html: iiifManifest.rights }} /> : null}
-    </React.Fragment>
+      {
+        typy(ndJson, 'provider[0].homepage[0].label.en[0]').isString ? (
+          <CampusLocation metadata={typy(ndJson, 'provider[0].homepage[0].label.en[0]').safeString} />
+        ) : null
+      }
+      {
+        ndJson.requiredStatement ? (
+          <MetaDataField metadata={ndJson.requiredStatement} />
+        ) : null
+      }
+      {
+        ndJson.copyrightStatus ? (
+          <div>
+            <dt>Copyright</dt>
+            <dd>{ndJson.copyrightStatus}</dd>
+          </div>
+        ) : null
+      }
+    </>
   )
 }
 ManifestMetaData.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  ndJson: PropTypes.object.isRequired,
   skipHtml: PropTypes.bool,
 }
 

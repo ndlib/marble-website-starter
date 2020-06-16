@@ -7,10 +7,10 @@ import DownloadModalContent from './DownloadModalContent'
 import downloadImg from 'assets/icons/svg/baseline-share-24px.svg'
 
 test('DownloadButton', () => {
-  const iiifManifest = { id: 'test' }
-  const wrapper = shallow(<DownloadButton iiifManifest={iiifManifest} />)
+  const ndJson = { id: 'test' }
+  const wrapper = shallow(<DownloadButton ndJson={ndJson} />)
   expect(wrapper.find(ActionButton).props().icon).toEqual(downloadImg)
   expect(wrapper.find(ActionButton).props().name).toEqual('Download')
   expect(wrapper.find(ActionModal).props().contentLabel).toEqual('Download')
-  expect(wrapper.find(DownloadModalContent).props().iiifManifest).toEqual(iiifManifest)
+  expect(wrapper.find(DownloadModalContent).props().ndJson).toEqual(ndJson)
 })

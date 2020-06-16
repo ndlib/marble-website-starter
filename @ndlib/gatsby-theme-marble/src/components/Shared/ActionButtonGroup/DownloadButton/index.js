@@ -5,10 +5,10 @@ import ActionModal from 'components/Internal/ActionModal'
 import DownloadModalContent from './DownloadModalContent'
 import downloadImg from 'assets/icons/svg/baseline-save_alt-24px.svg'
 
-const DownloadButton = ({ iiifManifest }) => {
+const DownloadButton = ({ ndJson }) => {
   const [downloadOpen, setDownloadOpen] = useState(false)
   return (
-    <React.Fragment>
+    <>
       <ActionButton
         name='Download'
         action={() => setDownloadOpen(true)}
@@ -21,14 +21,14 @@ const DownloadButton = ({ iiifManifest }) => {
         fullscreen
       >
         <DownloadModalContent
-          iiifManifest={iiifManifest}
+          ndJson={ndJson}
         />
       </ActionModal>
-    </React.Fragment>
+    </>
   )
 }
 
 DownloadButton.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  ndJson: PropTypes.object.isRequired,
 }
 export default DownloadButton

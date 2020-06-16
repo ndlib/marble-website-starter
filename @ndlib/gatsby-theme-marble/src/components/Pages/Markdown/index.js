@@ -1,14 +1,12 @@
-import React from 'react'
+/** @jsx jsx */
+import { BaseStyles, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
-import MarkdownLayoutRenderer from 'components/Internal/MarkdownLayoutRenderer'
-import availableComponents from './availableComponents'
 
 const Markdown = ({ data, location }) => {
-  const title = typy(data, 'remarkMarblePage.frontmatter.title').safeString || null
-  const globalProps = getglobalProps(data, location)
+  const title = typy(data, 'markdownRemark.frontmatter.title').safeString || null
   return (
     <Layout
       title={title}
@@ -18,12 +16,9 @@ const Markdown = ({ data, location }) => {
         data={data}
         location={location}
       />
-      <MarkdownLayoutRenderer
-        markdownRemark={data.remarkMarblePage}
-        location={location}
-        availableComponents={availableComponents}
-        globalProps={globalProps}
-      />
+      <BaseStyles>
+        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+      </BaseStyles>
     </Layout>
   )
 }
@@ -33,14 +28,3 @@ Markdown.propTypes = {
   location: PropTypes.object.isRequired,
 }
 export default Markdown
-
-export const getglobalProps = (data, location) => {
-  return {
-    html: typy(data, 'markdownRemark.html').safeString,
-    menu: typy(data, 'remarkMarblePage.frontmatter.menu').safeString,
-    defaultSearch: typy(data, 'remarkMarblePage.frontmatter.defaultSearch').safeArray,
-    title: typy(data, 'remarkMarblePage.frontmatter.title').safeString,
-    iiifManifest: typy(data, 'remarkMarblePage.frontmatter.iiifJson').safeObject,
-    location: location,
-  }
-}

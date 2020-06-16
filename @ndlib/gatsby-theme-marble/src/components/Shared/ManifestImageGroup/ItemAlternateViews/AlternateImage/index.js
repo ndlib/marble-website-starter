@@ -5,20 +5,19 @@ import PropTypes from 'prop-types'
 import ViewerLink from 'components/Shared/ManifestImageGroup/ViewerLink'
 import Image from 'components/Shared/Image'
 import AlternateOverlay from './AlternateOverlay'
-import getImageService from 'utils/getImageService'
+// import getImageService from 'utils/getImageService'
 import buildReferalState from 'utils/buildReferalState'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-export const AlternateImage = ({ iiifManifest, index, max, length, viewer, location }) => {
+export const AlternateImage = ({ ndJson, index, max, length, viewer, location }) => {
   if (length > 1) {
     const isLast = max === index && max + 1 !== length
     const spacing = 0.25
     return (
-      <div
-        sx={sx.wrapper(spacing, max)}>
+      <div sx={sx.wrapper(spacing, max)}>
         <ViewerLink
-          iiifManifest={iiifManifest}
+          ndJson={ndJson}
           viewer={viewer}
           location={location}
           index={index}
@@ -30,9 +29,9 @@ export const AlternateImage = ({ iiifManifest, index, max, length, viewer, locat
             overlayNumber={length - max}
           />
           <Image
-            iiifManifest={iiifManifest}
+            ndJson={ndJson}
             index={index}
-            service={getImageService(iiifManifest, index)}
+            service={ndJson.items[index].iiifImageUri}
             region='square'
             size='125,'
             alt={`Alternate View ${index}`}
@@ -45,7 +44,7 @@ export const AlternateImage = ({ iiifManifest, index, max, length, viewer, locat
 }
 
 AlternateImage.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  ndJson: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,

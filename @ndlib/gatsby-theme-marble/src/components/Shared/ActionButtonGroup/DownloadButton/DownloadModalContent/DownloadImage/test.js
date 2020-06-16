@@ -21,20 +21,14 @@ describe('DownloadImage', () => {
 
   test('images', () => {
     const downloadSpy = jest.spyOn(download, 'download')
-    const iiifManifest = {
-      type: 'manifest',
+    const ndJson = {
+      level: 'manifest',
       items: [{
-        items: [{
-          items: [{
-            body: {
-              id: 'image.image',
-            },
-          }],
-        }],
+        iiifImageUri: 'http://image.place/1',
       }],
     }
-    const images = ['image.image']
-    const wrapper = mount(<DownloadImage iiifManifest={iiifManifest} />)
+    const images = ['http://image.place/1/full/full/0/default.jpg']
+    const wrapper = mount(<DownloadImage ndJson={ndJson} />)
     expect(wrapper.find(ImagePreview).props().images).toEqual(images)
     expect(wrapper.find(ImagePager).props().images).toEqual(images)
     expect(wrapper.find(ImageSettings).exists()).toBeTruthy()

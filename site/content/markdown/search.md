@@ -1,4 +1,0 @@
----
-slug: search
-layout: "browseSearchPage"
----

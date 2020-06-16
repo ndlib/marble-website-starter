@@ -7,115 +7,119 @@ import typy from 'typy'
 import { jsx } from 'theme-ui'
 import Card from 'components/Shared/Card'
 import TypeLabel from './TypeLabel'
-import { getImageServiceFromThumbnail } from 'utils/getImageService'
-import getLanguage from 'utils/getLanguage'
+// import { getImageServiceFromThumbnail } from 'utils/getImageService'
+// import getLanguage from 'utils/getLanguage'
 import sx from './sx'
 
 export const ManifestCard = (props) => {
-  const { allIiifJson } = useStaticQuery(
+  console.log(props.iiifManifest)
+  const { allNdJson } = useStaticQuery(
     graphql`
     query {
-      allIiifJson {
+      allNdJson {
         nodes {
-          ...iiifJsonFragment
+          id
+          title
+          iiifUri
+          level
+          items {
+            iiifImageUri
+          }
         }
       }
     }
   `,
   )
-
-  const manifestId = typy(props, 'iiifManifest').isString ? props.iiifManifest : props.iiifManifest.id
-  const imageRegion = typy(props, 'imageRegion').isString ? props.imageRegion : 'full'
-
-  const iiifManifest = findManifest(manifestId, allIiifJson)
-  if (!iiifManifest) {
-    console.warn('Could not find manifest: ', manifestId)
+  const item = findItem(props.iiifManifest, allNdJson)
+  if (!item) {
+    console.warn('Could not find manifest: ', props.iiifManifest)
     return null
   }
-  const imageService = getImageServiceFromThumbnail(iiifManifest)
-  const lang = getLanguage()
-  const children = figureOutChildren(props, iiifManifest, lang)
+  // const children = figureOutChildren(props, iiifManifest, lang)
 
+  // TODO Fix image path for collections
   return (
     <div sx={sx.wrapper}>
       <Card
-        label={iiifManifest.label[lang][0]}
-        target={`/${iiifManifest.slug}`}
-        imageService={imageService || null}
-        imageRegion={imageRegion}
+        label={item.title}
+        target={`/item/${item.id}`}
+        imageService={typy(item, 'items[0].iiifImageUri').safeString}
+        imageRegion='full'
         {...props}
       >
-
-        { children }
+        {
+          // TODO deal with children and show creator(s)/date(s) by default
+          // children
+        }
       </Card>
-      <TypeLabel iiifManifest={iiifManifest} />
+      <TypeLabel type={item.level} />
     </div>
   )
 }
 
-const findCreator = (manifest, lang) => {
-  const options = ['creator']
-  if (!manifest.metadata) {
-    return []
-  }
+// const findCreator = (manifest, lang) => {
+//   const options = ['creator']
+//   if (!manifest.metadata) {
+//     return []
+//   }
+//
+//   return manifest.metadata.reduce((creator, row) => {
+//     const label = row.label[lang].join('').toLowerCase()
+//
+//     if (options.includes(label)) {
+//       return creator.concat(row.value[lang].join('<br/>'))
+//     }
+//
+//     return creator
+//   }, [])
+// }
 
-  return manifest.metadata.reduce((creator, row) => {
-    const label = row.label[lang].join('').toLowerCase()
+// const findDates = (manifest, lang) => {
+//   const options = ['date', 'dates']
+//   if (!manifest.metadata) {
+//     return []
+//   }
+//
+//   return manifest.metadata.reduce((dates, row) => {
+//     const label = row.label[lang].join('').toLowerCase().trim()
+//     if (options.includes(label)) {
+//       return dates.concat(row.value[lang].join('<br/>'))
+//     }
+//
+//     return dates
+//   }, [])
+// }
 
-    if (options.includes(label)) {
-      return creator.concat(row.value[lang].join('<br/>'))
-    }
+// export const figureOutChildren = (parentProps, iiifManifest, lang) => {
+//   const creator = findCreator(iiifManifest, lang)
+//   const dates = findDates(iiifManifest, lang)
+//   return (
+//     <React.Fragment>
+//       {
+//         parentProps.showCreator ? (
+//           <p
+//             sx={sx.lineStyle}
+//             dangerouslySetInnerHTML={{ __html: creator }}
+//           />
+//         ) : null
+//       }
+//       {
+//         parentProps.showDate ? (
+//           <p
+//             sx={sx.lineStyle}
+//             dangerouslySetInnerHTML={{ __html: dates }}
+//           />
+//         ) : null
+//       }
+//       {parentProps.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null}
+//       {parentProps.children ? parentProps.children : null}
+//     </React.Fragment>
+//   )
+// }
 
-    return creator
-  }, [])
-}
-
-const findDates = (manifest, lang) => {
-  const options = ['date', 'dates']
-  if (!manifest.metadata) {
-    return []
-  }
-
-  return manifest.metadata.reduce((dates, row) => {
-    const label = row.label[lang].join('').toLowerCase().trim()
-    if (options.includes(label)) {
-      return dates.concat(row.value[lang].join('<br/>'))
-    }
-
-    return dates
-  }, [])
-}
-
-export const figureOutChildren = (parentProps, iiifManifest, lang) => {
-  const creator = findCreator(iiifManifest, lang)
-  const dates = findDates(iiifManifest, lang)
-  return (
-    <React.Fragment>
-      {
-        parentProps.showCreator ? (
-          <p
-            sx={sx.lineStyle}
-            dangerouslySetInnerHTML={{ __html: creator }}
-          />
-        ) : null
-      }
-      {
-        parentProps.showDate ? (
-          <p
-            sx={sx.lineStyle}
-            dangerouslySetInnerHTML={{ __html: dates }}
-          />
-        ) : null
-      }
-      { parentProps.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null }
-      { parentProps.children ? parentProps.children : null }
-    </React.Fragment>
-  )
-}
-
-const findManifest = (manifestId, allIiifJson) => {
-  return allIiifJson.nodes.find(manifest => {
-    return manifest.id === manifestId
+const findItem = (manifestId, allNdJson) => {
+  return allNdJson.nodes.find(item => {
+    return item.iiifUri === manifestId
   })
 }
 

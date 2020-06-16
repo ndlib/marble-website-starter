@@ -21,37 +21,44 @@ module.exports = ({
         utils: path.join(__dirname, 'src/utils'),
       },
     },
-    `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-json`,
+    'gatsby-plugin-theme-ui',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-react-helmet',
+    'gatsby-transformer-json',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `iiif`,
-        path: `${contentPath}/json/`,
+        name: 'nd',
+        path: `${contentPath}/json/nd`,
       },
     },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     name: 'iiif',
+    //     path: `${contentPath}/json/`,
+    //   },
+    // },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${contentPath}/images`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `pages`,
+        name: 'pages',
         path: `${contentPath}/markdown`,
       },
     },
-    `gatsby-remark-copy-linked-files`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-remark-copy-linked-files',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     // Markdown pages
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         tableOfContents: {
           pathToSlugField: 'frontmatter.slug',
@@ -75,7 +82,7 @@ module.exports = ({
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    'gatsby-plugin-offline',
     // {
     //   resolve: `gatsby-plugin-typography`,
     //   options: {
@@ -85,14 +92,9 @@ module.exports = ({
     // this plugin highlights accessibility errors on the rendered pages
     // It should probably be removed from production
     {
-      resolve: `gatsby-plugin-accessibilityjs`,
+      resolve: 'gatsby-plugin-accessibilityjs',
       options: {
-        injectStyles: `
-          .accessibility-error {
-            border: 3px solid #f00;
-          }
-        `,
-        errorClassName: `accessibility-error`,
+        errorClassName: 'accessibility-error',
         onError: (error) => {
           console.warn(error)
         },

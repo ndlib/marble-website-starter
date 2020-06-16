@@ -8,31 +8,13 @@ import Link from 'components/Internal/Link'
 import miradorIcon from 'assets/icons/svg/mirador-24px.svg'
 
 export const AllPage = ({
-  data: {
-    allMarkdownRemark: { edges },
-  },
+  data,
   location,
 }) => {
-  const posts = (type) => edges
-    // eslint-disable-next-line complexity
-    .filter(edge => {
-      // You can filter your posts based on some criteria
-      switch (type) {
-        case 'item':
-          return !!edge.node.frontmatter.slug.match(/item\//)
-        case 'collection':
-          return !!edge.node.frontmatter.slug.match(/collection\//)
-        case 'browse':
-          return !!edge.node.frontmatter.slug.match(/browse/)
-        default:
-          return !edge.node.frontmatter.slug.match(/item\//) && !edge.node.frontmatter.slug.match(/collection\//) &&
-          !edge.node.frontmatter.slug.match(/browse/) &&
-            !edge.node.frontmatter.slug.match(/404.html/) && edge.node.frontmatter.title
-      }
-    })
+  const items = () => data.allNdJson.edges
     .sort((a, b) => {
-      const cleanA = a.node.frontmatter.title.replace('"', '')
-      const cleanB = b.node.frontmatter.title.replace('"', '')
+      const cleanA = cleanString(a.node.title)
+      const cleanB = cleanString(b.node.title)
       if (cleanA < cleanB) {
         return -1
       }
@@ -44,25 +26,24 @@ export const AllPage = ({
     .map(edge => {
       return (
         <li key={edge.node.id}>
-          <Styled.a as={Link} to={edge.node.frontmatter.slug} >{edge.node.frontmatter.title}</Styled.a>
-          {
-            edge.node.frontmatter.slug.match(/item\//) ? (
-              <React.Fragment>
-                <span>&nbsp;</span>
-                <Link to={`${edge.node.frontmatter.slug}/mirador`} >
-                  <img
-                    src={miradorIcon}
-                    alt='Open in Mirador'
-                    style={{
-                      height: '16px',
-                      width: '16px',
-                      verticalAlign: 'text-bottom',
-                    }}
-                  />
-                </Link>
-              </React.Fragment>
-            ) : null
-          }
+          <Styled.a
+            as={Link}
+            to={`item/${edge.node.id}`}
+          >
+            {edge.node.title}
+          </Styled.a>
+          <span>&nbsp;</span>
+          <Link to={`item/${edge.node.id}/mirador`}>
+            <img
+              src={miradorIcon}
+              alt='Open in Mirador'
+              style={{
+                height: '16px',
+                width: '16px',
+                verticalAlign: 'text-bottom',
+              }}
+            />
+          </Link>
         </li>
       )
     })
@@ -77,17 +58,12 @@ export const AllPage = ({
         location={location}
       />
       {
-      // <h2>Collections</h2>
-      // <ul>{posts('collection')}</ul>
+      // <h2>Items</h2>
       }
-      <h2>Items</h2>
-      <ul>{posts('item')}</ul>
+      <ul>{items()}</ul>
       {
-      // <h2>Browse Pages</h2>
-      // <ul>{posts('browse')}</ul>
+        // Todo add other kinds of pages???
       }
-      <h2>Other Content</h2>
-      <ul>{posts()}</ul>
     </Layout>
   )
 }
@@ -100,6 +76,14 @@ AllPage.propTypes = {
 export default AllPage
 export const query = graphql`
   query {
+    allNdJson {
+      edges {
+        node {
+          id
+          title
+        }
+      }
+    }
     allMarkdownRemark {
       edges {
         node {
@@ -113,3 +97,11 @@ export const query = graphql`
     }
   }
 `
+
+const cleanString = (myString) => {
+  const regex = /[[\]"'`()_\-.…,¡!:;*&$@~]/g
+  return myString
+    .toLowerCase()
+    .replace(regex, ' ')
+    .trim()
+}

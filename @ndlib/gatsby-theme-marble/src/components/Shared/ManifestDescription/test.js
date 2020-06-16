@@ -1,22 +1,19 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import ManifestDescription from './'
-import MarkdownHtmlContent from 'components/Internal/MarkdownLayoutRenderer/ComponentRenderer/MarkdownHtmlContent/'
 
 describe('ManifestDescription', () => {
   console.error = jest.fn()
   test('with description', () => {
-    const iiifManifest = {
-      summary: {
-        none: ['This is the description of the manifest.'],
-      },
+    const ndJson = {
+      description: 'This is the description of the manifest.',
     }
-    const wrapper = shallow(<ManifestDescription iiifManifest={iiifManifest} />)
-    expect(wrapper.html()).toEqual('<div class="descriptionBlock"><p>' + iiifManifest.summary.none[0] + '</p></div>')
+    const wrapper = shallow(<ManifestDescription ndJson={ndJson} />)
+    expect(wrapper.html()).toEqual('<div class="descriptionBlock"><p>' + ndJson.description + '</p></div>')
   })
   test('without description', () => {
-    const iiifManifest = {}
-    const wrapper = shallow(<ManifestDescription iiifManifest={iiifManifest} />)
+    const ndJson = {}
+    const wrapper = shallow(<ManifestDescription ndJson={ndJson} />)
     expect(wrapper.find(ManifestDescription).exists()).toBeFalsy()
   })
 })

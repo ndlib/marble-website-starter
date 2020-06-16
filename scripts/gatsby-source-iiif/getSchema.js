@@ -19,7 +19,15 @@ const fetchData = async (seeAlso) => {
     return result
   }))
     .then(() => {
+      // one big blob
       fs.writeFileSync(path.join(directory, '/content/items/items.json'), JSON.stringify(finalResult))
+      // individual files
+      finalResult.forEach(result => {
+        // escape is not useless but required
+        // eslint-disable-next-line no-useless-escape
+        const regex = new RegExp('[.\s]', 'g')
+        fs.writeFileSync(path.join(directory, `/content/json/nd/${result.id.trim().replace(regex, '_')}.json`), JSON.stringify(result, null, 2))
+      })
     })
     .catch(error => {
       console.error('Promise error: ', error)

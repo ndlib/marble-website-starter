@@ -6,13 +6,12 @@ import queryString from 'query-string'
 import Layout from 'components/Layout'
 import MiradorWrapper from './MiradorWrapper'
 import Seo from 'components/Internal/Seo'
-import getLanguage from 'utils/getLanguage'
 import sx from './sx'
 
 const MiradorViewerPage = ({ data, location }) => {
-  const lang = getLanguage()
-  const manifestId = typy(data, 'remarkMarblePage.frontmatter.iiifJson.id').safeString
-  const manifestTitle = typy(data, `remarkMarblePage.frontmatter.iiifJson.label[${lang}][0]`).safeString
+  const manifestId = `${typy(data, 'marbleItem.ndJson.iiifUri').safeString}/`
+  console.log(data)
+  const manifestTitle = typy(data, 'marbleItem.ndJson.title').safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
   const sideBarOpenByDefault = qs.sidebar === 'true'

@@ -6,11 +6,10 @@ import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
 import DownloadButton from './DownloadButton'
 
-const manifest = {
-  id: 'https://iiif.iiif',
-  slug: 'item/3',
+const ndJson = {
+  id: '123',
 }
-const wrapper = shallow(<ActionButtonGroup iiifManifest={manifest} />)
+const wrapper = shallow(<ActionButtonGroup ndJson={ndJson} />)
 describe('ActionButtonGroup', () => {
   test('Renders', () => {
     expect(wrapper.find('actionButton')).toBeTruthy()

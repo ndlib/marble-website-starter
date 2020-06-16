@@ -10,18 +10,18 @@ import DownloadMetadata from './DownloadMetadata'
 import Copyright from './Copyright'
 import sx from './sx'
 
-const DownloadModalContent = ({ iiifManifest }) => {
+const DownloadModalContent = ({ ndJson }) => {
   return (
     <React.Fragment>
       <MultiColumn columns='2'>
         <Column>
           <Styled.h2 sx={sx.header}>Image</Styled.h2>
-          <DownloadImage iiifManifest={iiifManifest} />
+          <DownloadImage ndJson={ndJson} />
         </Column>
         <Column>
           <Styled.h2 sx={sx.header}>Metadata</Styled.h2>
           <div sx={sx.metadata}>
-            <DownloadMetadata iiifManifest={iiifManifest} />
+            <DownloadMetadata ndJson={ndJson} />
           </div>
           {
           // <Styled.h2 sx={sx.header}>Citation</Styled.h2>
@@ -35,7 +35,7 @@ const DownloadModalContent = ({ iiifManifest }) => {
 }
 
 DownloadModalContent.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  ndJson: PropTypes.object.isRequired,
 }
 
 export default DownloadModalContent

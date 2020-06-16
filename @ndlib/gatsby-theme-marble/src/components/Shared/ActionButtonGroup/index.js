@@ -9,8 +9,8 @@ import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
 import DownloadButton from './DownloadButton'
 
-const ActionButtonGroup = ({ iiifManifest }) => {
-  if (!iiifManifest) {
+const ActionButtonGroup = ({ ndJson }) => {
+  if (!ndJson) {
     return null
   }
   return (
@@ -18,18 +18,19 @@ const ActionButtonGroup = ({ iiifManifest }) => {
       <section sx={{
         display: 'flex',
         width: '100%',
-      }}>
-        <BookmarkGroup iiifManifest={iiifManifest} />
-        <ShareButton path={`${typy(iiifManifest, 'slug').safeString}`} />
+      }}
+      >
+        <BookmarkGroup ndJson={ndJson} />
+        <ShareButton path={`item/${typy(ndJson, 'id').safeString}`} />
         <PrintButton />
-        <DownloadButton iiifManifest={iiifManifest} />
+        <DownloadButton ndJson={ndJson} />
       </section>
     </React.Fragment>
   )
 }
 
 ActionButtonGroup.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  ndJson: PropTypes.object.isRequired,
 }
 
 export default ActionButtonGroup

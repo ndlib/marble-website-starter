@@ -7,7 +7,7 @@ import BookmarkButton from './BookmarkButton'
 import AddNewPortfolio from './AddNewPortfolio'
 import sx from './sx'
 
-const BookmarkOptions = ({ portfolios, iiifManifest, setFunc }) => {
+const BookmarkOptions = ({ portfolios, ndJson, setFunc }) => {
   return (
     <React.Fragment>
       {
@@ -17,7 +17,7 @@ const BookmarkOptions = ({ portfolios, iiifManifest, setFunc }) => {
               return (
                 <BookmarkButton
                   key={collection.uuid}
-                  iiifManifest={iiifManifest}
+                  ndJson={ndJson}
                   collection={collection}
                 />
               )
@@ -35,7 +35,7 @@ const BookmarkOptions = ({ portfolios, iiifManifest, setFunc }) => {
 }
 
 BookmarkOptions.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  ndJson: PropTypes.object.isRequired,
   portfolios: PropTypes.array,
   setFunc: PropTypes.func.isRequired,
 }

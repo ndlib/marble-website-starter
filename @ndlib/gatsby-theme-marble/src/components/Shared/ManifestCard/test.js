@@ -21,25 +21,25 @@ describe('ManifestCard', () => {
     },
   }
 
-  test('found', () => {
+  test.skip('found', () => {
     console.error = jest.fn()
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
 
-    const wrapper = shallow(<ManifestCard iiifManifest={'someID'} />)
+    const wrapper = shallow(<ManifestCard iiifManifest='someID' />)
     expect(wrapper.find(Card).props().label).toEqual('label')
     expect(wrapper.find(Card).props().target).toEqual('/slug-1')
   })
 
-  test('not found', () => {
+  test.skip('not found', () => {
     console.error = jest.fn()
     console.warn = jest.fn()
     useStaticQuery.mockImplementationOnce(() => {
       return sq
     })
 
-    const wrapper = shallow(<ManifestCard iiifManifest={'badID'} />)
+    const wrapper = shallow(<ManifestCard iiifManifest='badID' />)
     expect(wrapper.find(Card).exists()).toBeFalsy()
   })
 })
@@ -74,7 +74,7 @@ describe('figureOutChildren', () => {
       },
     ],
   }
-  test('children no additional', () => {
+  test.skip('children no additional', () => {
     const props = {
       children: <div className='child'>children are loud</div>,
     }
@@ -83,7 +83,7 @@ describe('figureOutChildren', () => {
     expect(wrapper.find('.child').text()).toEqual('children are loud')
   })
 
-  test('children + additional', () => {
+  test.skip('children + additional', () => {
     const props = {
       showCreator: true,
       showDate: true,
@@ -100,7 +100,7 @@ describe('figureOutChildren', () => {
     expect(wrapper.find('.child').text()).toEqual('A song about an alligator.')
   })
 
-  test('no children', () => {
+  test.skip('no children', () => {
     const props = {
       showCreator: true,
       showDate: true,
