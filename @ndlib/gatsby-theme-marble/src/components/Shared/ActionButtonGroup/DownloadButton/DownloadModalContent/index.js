@@ -6,7 +6,7 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import DownloadImage from './DownloadImage'
 import DownloadMetadata from './DownloadMetadata'
-// import DownloadCitation from './DownloadCitation'
+import DownloadCitation from './DownloadCitation'
 import Copyright from './Copyright'
 import sx from './sx'
 
@@ -23,10 +23,7 @@ const DownloadModalContent = ({ iiifManifest }) => {
           <div sx={sx.metadata}>
             <DownloadMetadata iiifManifest={iiifManifest} />
           </div>
-          {
-          // <Styled.h2 sx={sx.header}>Citation</Styled.h2>
-          // <DownloadCitation iiifManifest={iiifManifest} />
-          }
+          <DownloadCitation iiifManifest={iiifManifest} />
         </Column>
       </MultiColumn>
       <Copyright />

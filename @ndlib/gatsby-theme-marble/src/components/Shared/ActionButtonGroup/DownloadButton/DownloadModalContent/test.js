@@ -5,16 +5,20 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import DownloadImage from './DownloadImage'
 import DownloadMetadata from './DownloadMetadata'
-// import DownloadCitation from './DownloadCitation'
+import DownloadCitation from './DownloadCitation'
 import Copyright from './Copyright'
+import { useStaticQuery } from 'gatsby'
 
 test('DownloadModalContent', () => {
   const iiifManifest = {}
+  useStaticQuery.mockImplementation(() => {
+    return iiifManifest
+  })
   const wrapper = mount(<DownloadModalContent iiifManifest={iiifManifest} />)
   expect(wrapper.find(MultiColumn).props().columns).toEqual('2')
   expect(wrapper.find(Column).length).toEqual(2)
   expect(wrapper.find(DownloadImage).props().iiifManifest).toEqual(iiifManifest)
   expect(wrapper.find(DownloadMetadata).props().iiifManifest).toEqual(iiifManifest)
-  // expect(wrapper.find(DownloadCitation).props().iiifManifest).toEqual(iiifManifest)
+  expect(wrapper.find(DownloadCitation).props().iiifManifest).toEqual(iiifManifest)
   expect(wrapper.find(Copyright).exists()).toBeTruthy()
 })
