@@ -77,13 +77,13 @@ const allMetadataKeys = [
 ]
 
 const getSearchDataFromManifest = (manifest) => {
-  const dateData = realDatesFromCatalogedDates(manifest.dateCreated)
+  const dateData = realDatesFromCatalogedDates(manifest.createdDate)
   const creators = getCreators(manifest.creators)
   const search = {
     id: manifest.iiifUri,
     name: manifest.title,
     creator: creators,
-    date: manifest.dateCreated,
+    date: manifest.createdDate,
     lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
     identifier: manifest.uniqueIdentifier,
