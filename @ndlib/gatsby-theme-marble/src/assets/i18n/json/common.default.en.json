@@ -11,5 +11,8 @@
   },
   "search": {
     "prompt": "Search the Collections"
+  },
+  "item": {
+    "returnToSearch": "Return to search"
   }
 }

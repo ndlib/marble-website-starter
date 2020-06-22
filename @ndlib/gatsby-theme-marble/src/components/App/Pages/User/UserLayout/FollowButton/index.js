@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Link from 'components/Internal/Link'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { jsx } from 'theme-ui'
+import { Trans } from 'react-i18next'
 
 export const FollowButton = ({ userName, showButton, following = false }) => {
   if (!showButton) {
@@ -16,7 +17,9 @@ export const FollowButton = ({ userName, showButton, following = false }) => {
           padding: '.5rem',
         }}
       >
-        <p><Link to={`/user`}>Log in</Link> to follow users or access and edit your own content.</p>
+        <Trans i18nKey='text:userPage:followPrompt'>
+          <Link to={'/user'}>Log in</Link>.
+        </Trans>
       </div>
     )
   } else if (following) {
