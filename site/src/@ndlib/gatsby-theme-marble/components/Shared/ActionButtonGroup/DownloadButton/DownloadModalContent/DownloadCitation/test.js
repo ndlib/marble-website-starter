@@ -48,6 +48,13 @@ describe('DownloadCitation', () => {
         },
       }, {
         label:{
+          en:['Date'],
+        },
+        value:{
+          en:['Date'],
+        },
+      }, {
+        label:{
           en:['Medium'],
         },
         value:{
@@ -73,7 +80,7 @@ describe('DownloadCitation', () => {
       return manifest
     })
     const wrapper = shallow(<DownloadCitation iiifManifest={manifest} />)
-    expect(wrapper.find('.citation').text()).toEqual('Creator, Title, Medium. Snite Museum of Art, University of Notre Dame. Credit Line, Accession number.')
+    expect(wrapper.find('.citation').text()).toEqual('Creator, Title, Date, Medium. Snite Museum of Art, University of Notre Dame. Credit Line, Accession number.')
   })
   test('RBSC Manifest', () => {
     const manifest = {
