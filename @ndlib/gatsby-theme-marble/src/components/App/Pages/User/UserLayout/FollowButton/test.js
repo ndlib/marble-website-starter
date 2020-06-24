@@ -3,7 +3,6 @@ import { shallow } from 'enzyme'
 import FollowButton from './'
 import Link from 'components/Internal/Link'
 import MaterialButton from 'components/Internal/MaterialButton'
-import { Trans, useTranslation } from 'react-i18next'
 
 describe('FollowButton', () => {
   console.log = jest.fn()
