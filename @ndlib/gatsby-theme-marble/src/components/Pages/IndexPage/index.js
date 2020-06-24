@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { Styled, jsx } from 'theme-ui'
 import HeroBox from 'components/Shared/HeroBox'
 import SearchBox from 'components/Shared/SearchBox'
@@ -16,6 +17,7 @@ import sx from './sx'
 import banner from 'assets/images/banner.swirl.png'
 
 const IndexPage = ({ location }) => {
+  const { t } = useTranslation()
   const recentAdditions = [
     'https://presentation-iiif.library.nd.edu/BPP1001_EAD/manifest',
     'https://presentation-iiif.library.nd.edu/1999.024/manifest',
@@ -28,7 +30,7 @@ const IndexPage = ({ location }) => {
   return (
     <React.Fragment>
       <HeroBox backgroundImage={banner}>
-        <h1 sx={sx.h1}>University of Notre Dame<span sx={sx.h2}>Digital Collections</span></h1>
+        <h1 sx={sx.h1}>{t('text:index.nd')}<span sx={sx.h2}>{t('text:index.title')}</span></h1>
         <SearchBox location={location} />
       </HeroBox>
       <CardGroup
@@ -48,7 +50,7 @@ const IndexPage = ({ location }) => {
       </CardGroup>
 
       <BlockQuote>
-        Explore digitized rare materials from the University of Notre Dame, from books to manuscripts, sculptures to paintings, photographs to ephemera.
+        {t('text:index.blockQuote')}
       </BlockQuote>
 
       <Styled.h2>Browse By</Styled.h2>
