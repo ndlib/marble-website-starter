@@ -27,7 +27,7 @@ const DownloadCitation = ({ iiifManifest }) => {
       return metadata
     })
     if (typy(iiifManifest, 'provider[0].homepage[0].label.en[0]').safeString === 'Snite Museum of Art') {
-      biblio = `${typy(metadata, 'Creator').safeString}, ${typy(iiifManifest, 'label.en[0]').safeString}, ${typy(metadata, 'Medium').safeString}. Snite Museum of Art, University of Notre Dame. ${typy(metadata, 'Credit Line').safeString}, ${typy(metadata, 'Accession number').safeString}.`
+      biblio = `${typy(metadata, 'Creator').safeString}, ${typy(iiifManifest, 'label.en[0]').safeString}, ${typy(metadata, 'Date').safeString}, ${typy(metadata, 'Medium').safeString}. Snite Museum of Art, University of Notre Dame. ${typy(metadata, 'Credit Line').safeString}, ${typy(metadata, 'Accession number').safeString}.`
     }
     if (typy(iiifManifest, 'provider[0].homepage[0].label.en[0]').safeString === 'Rare Books and Special Collections' | 'University of Notre Dame Archives') {
       biblio = `${typy(metadata, 'Creator').safeString}. ${typy(iiifManifest, 'label.en[0]').safeString}, ${typy(metadata, 'Date').safeString}. ${typy(metadata, 'Collection').safeString}. ${typy(iiifManifest, 'provider[0].homepage[0].label.en[0]').safeString}, Hesburgh Libraries, University of Notre Dame, South Bend, IN. ${typy(site, 'siteMetadata.siteUrl').safeString}/${typy(iiifManifest, 'slug').safeString}`
