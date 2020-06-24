@@ -18,8 +18,8 @@ export const FollowButton = ({ userName, showButton, following = false }) => {
           padding: '.5rem',
         }}
       >
-        <Trans i18nKey='text:userPage.followrompt'>
-          <Link to={`/user`}>Log in</Link>.
+        <Trans i18nKey='text:userPage.followPrompt'>
+          <Link to='/user'>Log in</Link>.
         </Trans>
       </div>
     )

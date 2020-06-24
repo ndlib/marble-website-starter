@@ -8,15 +8,15 @@ const VisibilitySettings = ({ portfolio, onChange }) => {
   const { t } = useTranslation()
   const options = [
     {
-      value: t('text:portfolioPage.visibilityPrivate.value'),
+      value: 'private',
       description: t('text:portfolioPage.visibilityPrivate.description'),
     },
     {
-      value: t('text:portfolioPage.visibilityShared.value'),
+      value: 'shared',
       description: t('text:portfolioPage.visibilityShared.description'),
     },
     {
-      value: t('text:portfolioPage.visibilityPublic.value'),
+      value: 'public',
       description: t('text:portfolioPage.visibilityPublic.description'),
     },
   ]
