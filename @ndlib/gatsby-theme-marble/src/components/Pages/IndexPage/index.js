@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next'
 import { Styled, jsx } from 'theme-ui'
 import HeroBox from 'components/Shared/HeroBox'
 import SearchBox from 'components/Shared/SearchBox'
@@ -12,6 +11,7 @@ import ManifestCard from 'components/Shared/ManifestCard'
 import BlockQuote from 'components/Shared/BlockQuote'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
+import { useTranslation } from 'react-i18next'
 import sx from './sx'
 
 import banner from 'assets/images/banner.swirl.png'
@@ -34,7 +34,7 @@ const IndexPage = ({ location }) => {
         <SearchBox location={location} />
       </HeroBox>
       <CardGroup
-        label='Recent Additions'
+        label={t('common:search.recentAdditions')}
       >
         {
           recentAdditions.map(manifest => {
@@ -53,7 +53,7 @@ const IndexPage = ({ location }) => {
         {t('text:index.blockQuote')}
       </BlockQuote>
 
-      <Styled.h2>Browse By</Styled.h2>
+      <Styled.h2>{t('common:search.browseBy')}</Styled.h2>
       <MultiColumn columns='3'>
         <Column>
           <Card
