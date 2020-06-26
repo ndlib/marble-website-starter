@@ -17,5 +17,8 @@
     "prompt": "Search the Collections",
     "browseBy": "Browse By",
     "recentAdditions": "Recent Additions"
+  },
+  "item": {
+    "returnToSearch": "Return to search"
   }
 }

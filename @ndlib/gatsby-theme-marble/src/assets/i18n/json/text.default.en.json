@@ -7,10 +7,33 @@
   "userLogoutPage": "You have been successfully logged out.",
   "userPage": {
     "loginPrompt": "<0>Log in</0> to access and edit your own content."
+    "followPrompt": "<0>Log in</0> to follow users or access and edit your own content."
   },
   "index": {
     "nd": "University of Notre Dame",
     "title": "Digital Collections",
     "blockQuote": "Explore digitized rare materials from the University of Notre Dame, from books to manuscripts, sculptures to paintings, photographs to ephemera."
+  },
+  "portfolioPage": {
+    "defaultLayout": {
+      "value": "Default",
+      "description": "Shows only the items themselves."
+    },
+    "annotatedLayout": {
+      "value": "Annotated",
+      "description": "Shows a list with a larger area for your annotations and direct links to iiif viewers if applicable."
+    },
+    "visibilityPrivate": {
+      "value": "private",
+      "description": "Only you can see this portfolio page. It will not appear in the list of portfolios on your user page except for you. This is the default visibility of any portfolio unless you change it."
+    },
+    "visibilityShared": {
+      "value": "shared",
+      "description": "Anyone who knows the url of this portfolio may view this page. This portfolio will appear in the list on your user page for any logged in user. Search engines are discouraged from adding this page to their index."
+    },
+    "visibilityPublic": {
+      "value": "public",
+      "description": "Anyone may view this portfolio. It will be listed on your user page. Search engines may discover this page and present it in search results."
+    }
   }
 }
