@@ -11,7 +11,6 @@ import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 const ItemLayout = ({ location, marbleItem }) => {
   return (
     <>
-      <div><p>{marbleItem.annotation}</p></div>
       <MultiColumn>
         <Column>
           <ActionButtonGroup marbleItem={marbleItem} />
