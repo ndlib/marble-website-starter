@@ -1,7 +1,7 @@
 const fs = require('fs')
-const crypto = require('crypto')
-const { attachFields } = require('gatsby-plugin-node-fields')
-const merge = require('lodash.merge')
+// const crypto = require('crypto')
+// const { attachFields } = require('gatsby-plugin-node-fields')
+// const merge = require('lodash.merge')
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
   const contentPath = options.contentPath || 'content'
