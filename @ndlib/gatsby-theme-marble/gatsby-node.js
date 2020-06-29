@@ -151,7 +151,6 @@ exports.createPages = ({ graphql, actions }) => {
 
     const marbleItems = result.data.allMarbleItem.nodes
     marbleItems.forEach(node => {
-      ///
       if (node.id) {
         // item page
         createPage({
@@ -174,7 +173,6 @@ exports.createPages = ({ graphql, actions }) => {
           },
         })
       }
-      ///
     })
   })
 }
@@ -210,7 +208,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
 
       // create sub items
       node.items.forEach(item => {
-        ///
         const newId = `${item.collectionId}/${item.id}`
         const normalizedTypeNode = normalizeNode({
           newId: newId,
@@ -219,7 +216,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
         })
         normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
         createNode(normalizedTypeNode)
-        ///
       })
     } else {
       const normalizedTypeNode = normalizeNode({
