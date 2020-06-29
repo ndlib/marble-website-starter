@@ -6,12 +6,11 @@ import Seo from 'components/Internal/Seo'
 import CollectionLayout from './CollectionLayout'
 import ItemLayout from './ItemLayout'
 
-const NDJson = ({ data, location }) => {
-  const { ndJson } = data.marbleItem
-  console.log('n', ndJson)
+const MarbleItem = ({ data, location }) => {
+  const { marbleItem } = data
   return (
     <Layout
-      title={ndJson.title}
+      title={marbleItem.title}
       location={location}
     >
       <Seo
@@ -21,7 +20,7 @@ const NDJson = ({ data, location }) => {
       <BaseStyles>
         <ItemLayout
           location={location}
-          ndJson={ndJson}
+          marbleItem={marbleItem}
         />
         <code><pre>{JSON.stringify(data, null, 2)}</pre></code>
         <div />
@@ -31,9 +30,9 @@ const NDJson = ({ data, location }) => {
   )
 }
 
-NDJson.propTypes = {
+MarbleItem.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 }
 
-export default NDJson
+export default MarbleItem

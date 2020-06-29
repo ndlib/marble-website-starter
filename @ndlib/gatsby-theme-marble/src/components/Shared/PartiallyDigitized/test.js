@@ -4,7 +4,7 @@ import PartiallyDigitized from './'
 
 describe('PartiallyDigitized', () => {
   test.skip('is partially digitized', () => {
-    const wrapper = mount(<PartiallyDigitized iiifManifest={{ partiallyDigitized: 'http://partially.digitized.url' }} />)
+    const wrapper = mount(<PartiallyDigitized iiifManifest={{ partiallyDigitized: true }} />)
     expect(wrapper.find('div').exists()).toBeTruthy()
   })
   test.skip('is completely digitized', () => {

@@ -8,30 +8,30 @@ import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 
-const ItemLayout = ({ location, ndJson }) => {
+const ItemLayout = ({ location, marbleItem }) => {
   return (
     <>
-      <div><p>ITEM Text previously from markdown</p></div>
+      <div><p>{marbleItem.annotation}</p></div>
       <MultiColumn>
         <Column>
-          <ActionButtonGroup ndJson={ndJson} />
+          <ActionButtonGroup marbleItem={marbleItem} />
           <ManifestImageGroup
             location={location}
-            ndJson={ndJson}
+            marbleItem={marbleItem}
           />
         </Column>
         <Column>
-          <ManifestMetaData ndJson={ndJson} />
-          <PartiallyDigitized ndJson={ndJson} />
+          <ManifestMetaData marbleItem={marbleItem} />
+          <PartiallyDigitized marbleItem={marbleItem} />
         </Column>
       </MultiColumn>
-      <ManifestDescription ndJson={ndJson} />
+      <ManifestDescription marbleItem={marbleItem} />
     </>
   )
 }
 
 ItemLayout.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 }
 export default ItemLayout

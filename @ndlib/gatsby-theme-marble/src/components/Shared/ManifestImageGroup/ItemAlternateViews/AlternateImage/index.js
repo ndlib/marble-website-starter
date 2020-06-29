@@ -10,14 +10,14 @@ import buildReferalState from 'utils/buildReferalState'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-export const AlternateImage = ({ ndJson, index, max, length, viewer, location }) => {
+export const AlternateImage = ({ marbleItem, index, max, length, viewer, location }) => {
   if (length > 1) {
     const isLast = max === index && max + 1 !== length
     const spacing = 0.25
     return (
       <div sx={sx.wrapper(spacing, max)}>
         <ViewerLink
-          ndJson={ndJson}
+          marbleItem={marbleItem}
           viewer={viewer}
           location={location}
           index={index}
@@ -29,9 +29,9 @@ export const AlternateImage = ({ ndJson, index, max, length, viewer, location })
             overlayNumber={length - max}
           />
           <Image
-            ndJson={ndJson}
+            marbleItem={marbleItem}
             index={index}
-            service={ndJson.items[index].iiifImageUri}
+            service={marbleItem.allImages[index].service}
             region='square'
             size='125,'
             alt={`Alternate View ${index}`}
@@ -44,7 +44,9 @@ export const AlternateImage = ({ ndJson, index, max, length, viewer, location })
 }
 
 AlternateImage.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.shape({
+    allImages: PropTypes.array,
+  }).isRequired,
   index: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,

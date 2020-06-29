@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import style from './style.module.css'
 
-const ManifestDescription = ({ ndJson }) => {
-  if (ndJson && ndJson.description) {
+const ManifestDescription = ({ marbleItem }) => {
+  if (marbleItem && marbleItem.description) {
     return (
       <div className={style.descriptionBlock}>
-        <p>{ndJson.description}</p>
+        <p>{marbleItem.description}</p>
       </div>
     )
   }
