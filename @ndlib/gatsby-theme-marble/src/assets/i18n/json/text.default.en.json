@@ -6,11 +6,7 @@
   "noUserPage": "The user <1>{{ userName }}</1> does not exist or you are not authorized to view this page.",
   "userLogoutPage": "You have been successfully logged out.",
   "userPage": {
-<<<<<<< HEAD
     "loginPrompt": "<0>Log in</0> to access and edit your own content.",
-=======
-    "loginPrompt": "<0>Log in</0> to access and edit your own content."
->>>>>>> b4d45a4aca4f4f9a25aa42221ee82e1f8e880f8e
     "followPrompt": "<0>Log in</0> to follow users or access and edit your own content."
   },
   "index": {
