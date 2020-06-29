@@ -1,5 +1,10 @@
 {
   "loginPage": {
     "button": "Log in with Notre Dame Campus Authentication"
+  },
+  "index": {
+    "nd": "University of Notre Dame",
+    "title": "Digital Collections",
+    "blockQuote": "Explore digitized rare materials from the University of Notre Dame, from books to manuscripts, sculptures to paintings, photographs to ephemera."
   }
 }
