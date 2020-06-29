@@ -23,7 +23,7 @@ const DownloadModalContent = ({ ndJson }) => {
           <div sx={sx.metadata}>
             <DownloadMetadata ndJson={ndJson} />
           </div>
-          <DownloadCitation iiifManifest={iiifManifest} />
+          <DownloadCitation ndJson={ndJson} />
         </Column>
       </MultiColumn>
       <Copyright />
