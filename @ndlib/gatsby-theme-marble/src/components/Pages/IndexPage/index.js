@@ -11,11 +11,13 @@ import ManifestCard from 'components/Shared/ManifestCard'
 import BlockQuote from 'components/Shared/BlockQuote'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
+import { useTranslation } from 'react-i18next'
 import sx from './sx'
 
 import banner from 'assets/images/banner.swirl.png'
 
 const IndexPage = ({ location }) => {
+  const { t } = useTranslation()
   const recentAdditions = [
     'https://presentation-iiif.library.nd.edu/BPP1001_EAD/manifest',
     'https://presentation-iiif.library.nd.edu/1999.024/manifest',
@@ -28,11 +30,11 @@ const IndexPage = ({ location }) => {
   return (
     <React.Fragment>
       <HeroBox backgroundImage={banner}>
-        <h1 sx={sx.h1}>University of Notre Dame<span sx={sx.h2}>Digital Collections</span></h1>
+        <h1 sx={sx.h1}>{t('text:index.nd')}<span sx={sx.h2}>{t('text:index.title')}</span></h1>
         <SearchBox location={location} />
       </HeroBox>
       <CardGroup
-        label='Recent Additions'
+        label={t('common:search.recentAdditions')}
       >
         {
           recentAdditions.map(manifest => {
@@ -48,10 +50,10 @@ const IndexPage = ({ location }) => {
       </CardGroup>
 
       <BlockQuote>
-        Explore digitized rare materials from the University of Notre Dame, from books to manuscripts, sculptures to paintings, photographs to ephemera.
+        {t('text:index.blockQuote')}
       </BlockQuote>
 
-      <Styled.h2>Browse By</Styled.h2>
+      <Styled.h2>{t('common:search.browseBy')}</Styled.h2>
       <MultiColumn columns='3'>
         <Column>
           <Card
