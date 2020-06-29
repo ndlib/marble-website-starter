@@ -6,7 +6,7 @@ import MaterialButton from 'components/Internal/MaterialButton'
 
 describe('FollowButton', () => {
   console.log = jest.fn()
-
+  jest.mock('react-i18next', () => ({ useTranslation: () => ({ t: key => key }) }))
   test('!showButton', () => {
     const props = {
       showButton: false,
@@ -23,7 +23,7 @@ describe('FollowButton', () => {
       following: true,
     }
     const wrapper = shallow(<FollowButton {...props} />)
-    expect(wrapper.find(MaterialButton).html()).toContain('Unfollow')
+    expect(wrapper.find(MaterialButton).html()).toContain('common:userMenu.unfollow')
     wrapper.find(MaterialButton).simulate('click')
   })
 
@@ -33,7 +33,7 @@ describe('FollowButton', () => {
       userName: 'lieutenant_user',
     }
     const wrapper = shallow(<FollowButton {...props} />)
-    expect(wrapper.find(MaterialButton).html()).toContain('Follow')
+    expect(wrapper.find(MaterialButton).html()).toContain('common:userMenu.follow')
     wrapper.find(MaterialButton).simulate('click')
   })
 })

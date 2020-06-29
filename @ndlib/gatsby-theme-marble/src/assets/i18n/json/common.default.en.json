@@ -9,7 +9,14 @@
     "userEdit": "Edit Profile",
     "userPage": "My Portfolios"
   },
+  "userMenu": {
+    "follow": "Follow",
+    "unfollow": "Unfollow"
+  },
   "search": {
     "prompt": "Search the Collections"
+  },
+  "item": {
+    "returnToSearch": "Return to search"
   }
 }

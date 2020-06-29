@@ -2,20 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RadioList from 'components/App/FormElements/RadioList'
 import FormattedLabel from './FormattedLabel'
+import { useTranslation } from 'react-i18next'
 
-export const options = [
-  {
-    value: `default`,
-    displayValue: `Default`,
-    description: `Shows only the items themselves.`,
-  },
-  {
-    value: `annotated`,
-    displayValue: `Annotated`,
-    description: `Shows a list with a larger area for your annotations and direct links to iiif viewers if applicable.`,
-  },
-]
 const LayoutSettings = ({ portfolio, onChange }) => {
+  const { t } = useTranslation()
+  const options = [
+    {
+      value: `default`,
+      displayValue: t('text:portfolioPage.defaultLayout.value'),
+      description: t('text:portfolioPage.defaultLayout.description'),
+    },
+    {
+      value: `annotated`,
+      displayValue: t('text:portfolioPage.annotatedLayout.value'),
+      description: t('text:portfolioPage.annotatedLayout.description'),
+    },
+  ]
   const formattedOptions = getFormattedOptions(options, portfolio)
   return (
     <RadioList

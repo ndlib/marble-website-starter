@@ -5,8 +5,9 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import DownloadImage from './DownloadImage'
 import DownloadMetadata from './DownloadMetadata'
-// import DownloadCitation from './DownloadCitation'
+import DownloadCitation from './DownloadCitation'
 import Copyright from './Copyright'
+import { useStaticQuery } from 'gatsby'
 
 test('DownloadModalContent', () => {
   const ndJson = {}
@@ -15,5 +16,6 @@ test('DownloadModalContent', () => {
   expect(wrapper.find(Column).length).toEqual(2)
   expect(wrapper.find(DownloadImage).props().ndJson).toEqual(ndJson)
   expect(wrapper.find(DownloadMetadata).props().ndJson).toEqual(ndJson)
+  expect(wrapper.find(DownloadCitation).props().iiifManifest).toEqual(ndJson)
   expect(wrapper.find(Copyright).exists()).toBeTruthy()
 })
