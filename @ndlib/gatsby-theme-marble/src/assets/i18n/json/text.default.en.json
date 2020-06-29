@@ -6,7 +6,8 @@
   "noUserPage": "The user <1>{{ userName }}</1> does not exist or you are not authorized to view this page.",
   "userLogoutPage": "You have been successfully logged out.",
   "userPage": {
-    "loginPrompt": "<0>Log in</0> to access and edit your own content."
+    "loginPrompt": "<0>Log in</0> to access and edit your own content.",
+    "followPrompt": "<0>Log in</0> to follow users or access and edit your own content."
   },
   "index": {
     "nd": "University of Notre Dame",
