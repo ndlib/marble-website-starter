@@ -14,7 +14,7 @@ const ManifestDescription = ({ marbleItem }) => {
 }
 
 ManifestDescription.propTypes = {
-  ndJson: PropTypes.shape({
+  marbleItem: PropTypes.shape({
     description: PropTypes.string,
   }),
 }
