@@ -5,7 +5,7 @@ import ActionModal from 'components/Internal/ActionModal'
 import DownloadModalContent from './DownloadModalContent'
 import downloadImg from 'assets/icons/svg/baseline-save_alt-24px.svg'
 
-const DownloadButton = ({ ndJson }) => {
+const DownloadButton = ({ marbleItem }) => {
   const [downloadOpen, setDownloadOpen] = useState(false)
   return (
     <>
@@ -21,7 +21,7 @@ const DownloadButton = ({ ndJson }) => {
         fullscreen
       >
         <DownloadModalContent
-          ndJson={ndJson}
+          marbleItem={marbleItem}
         />
       </ActionModal>
     </>
@@ -29,6 +29,6 @@ const DownloadButton = ({ ndJson }) => {
 }
 
 DownloadButton.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 export default DownloadButton

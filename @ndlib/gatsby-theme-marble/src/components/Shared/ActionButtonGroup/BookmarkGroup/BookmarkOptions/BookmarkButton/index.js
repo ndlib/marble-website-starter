@@ -13,7 +13,7 @@ import {
 } from 'utils/api'
 import sx from './sx'
 
-export const BookmarkButton = ({ collection, ndJson, loginReducer }) => {
+export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
   const [item, setItem] = useState(null)
   useEffect(() => {
     const abortController = new AbortController()
@@ -23,7 +23,7 @@ export const BookmarkButton = ({ collection, ndJson, loginReducer }) => {
       id: collection.uuid,
       successFunc: (data) => {
         const i = data.items.find(item => {
-          return item.manifest === ndJson.iiifUri
+          return item.manifest === marbleItem.iiifUri
         })
         setItem(i || '')
       },
@@ -34,12 +34,12 @@ export const BookmarkButton = ({ collection, ndJson, loginReducer }) => {
     return () => {
       abortController.abort()
     }
-  }, [collection.uuid, ndJson.iiifUri, loginReducer])
+  }, [collection.uuid, marbleItem.iiifUri, loginReducer])
 
   return (
     <button
       onClick={() => {
-        item ? deleteItem(item, setItem, loginReducer) : addItem(collection, ndJson, setItem, loginReducer)
+        item ? deleteItem(item, setItem, loginReducer) : addItem(collection, marbleItem, setItem, loginReducer)
       }}
       sx={sx.button}
     >
@@ -52,7 +52,7 @@ export const BookmarkButton = ({ collection, ndJson, loginReducer }) => {
 }
 
 BookmarkButton.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
   collection: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }
@@ -65,17 +65,17 @@ export default connect(
   mapStateToProps,
 )(BookmarkButton)
 
-export const addItem = (collection, ndJson, func, loginReducer) => {
-  const image = typy(ndJson, 'items[0].iiifImageUri').isString ? `${ndJson.items[0].iiifImageUri}/full/500,/0/default.jpg` : ''
+export const addItem = (collection, marbleItem, func, loginReducer) => {
+  const image = typy(marbleItem, 'image.default').safeString
   createData({
     loginReducer: loginReducer,
     contentType: 'item',
     id: collection.uuid,
     body: {
-      title: typy(ndJson, 'title').safeString || '',
+      title: typy(marbleItem, 'title').safeString || '',
       image: image,
-      link: `item/${ndJson.id}`,
-      manifest: ndJson.iiifUri,
+      link: marbleItem.slug,
+      manifest: marbleItem.iiifUri,
       annotation: null,
     },
     successFunc: (data) => {
