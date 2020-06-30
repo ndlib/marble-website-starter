@@ -2,10 +2,12 @@
 import PropTypes from 'prop-types'
 import { Styled, jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useTranslation } from 'react-i18next'
 import typy from 'typy'
 import sx from './sx'
 
 const DownloadCitation = ({ iiifManifest }) => {
+  const { t } = useTranslation()
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -38,10 +40,8 @@ const DownloadCitation = ({ iiifManifest }) => {
   } else {
     return (
       <div sx={sx.metadata}>
-        <Styled.h2 sx={sx.header}>Citation</Styled.h2>
-        Bibliography Citation, Chicago Style 17th ed. We are making assumptions about
-        the genre of these works and as result the citation may not fit your needs.
-        Please verify for accuracy before including them in your work.
+        <Styled.h2 sx={sx.header}>{t('text:actionGroup.citationHead')}</Styled.h2>
+        {t('text:actionGroup.citationBody')}
         <div className='citation' sx={sx.citation}>{biblio}</div>
       </div>
     )
