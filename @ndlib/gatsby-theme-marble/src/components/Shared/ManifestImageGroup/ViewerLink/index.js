@@ -7,7 +7,7 @@ import buildReferalState from 'utils/buildReferalState'
 import { jsx } from 'theme-ui'
 
 const ViewerLink = ({ marbleItem, index, viewer, className, view, location, children }) => {
-  let viewerLink = `/item/${marbleItem.id}/mirador?cv=${index}&view=${view}`
+  let viewerLink = `${marbleItem.slug}/mirador?cv=${index}&view=${view}`
   if (viewer === 'uv') {
     viewerLink = `/viewer?manifest=${encodeURIComponent(marbleItem.iiifUri)}&cv=${index}`
   }
@@ -31,7 +31,7 @@ const ViewerLink = ({ marbleItem, index, viewer, className, view, location, chil
 
 ViewerLink.propTypes = {
   marbleItem: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
     iiifUri: PropTypes.string.isRequired,
   }),
   index: PropTypes.number,
