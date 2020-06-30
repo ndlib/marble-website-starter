@@ -5,7 +5,7 @@ import ViewerLink from './'
 describe('ViewerLink', () => {
   console.error = jest.fn()
   const marbleItem = {
-    id: 'someId',
+    slug: '/item/someId',
     iiifUri: 'http://iiif.thing',
   }
   const className = 'myClass'
