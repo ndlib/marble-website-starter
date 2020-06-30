@@ -12,7 +12,7 @@ import { getData } from 'utils/api'
 import { isLoggedIn } from 'utils/auth'
 import sx from './sx'
 
-export const BookmarkGroup = ({ ndJson, loginReducer }) => {
+export const BookmarkGroup = ({ marbleItem, loginReducer }) => {
   const [portfolios, setPortfolios] = useState([])
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const BookmarkGroup = ({ ndJson, loginReducer }) => {
       options={(
         <BookmarkOptions
           portfolios={portfolios}
-          ndJson={ndJson}
+          marbleItem={marbleItem}
           setFunc={setPortfolios}
         />
       )}
@@ -58,7 +58,7 @@ export const BookmarkGroup = ({ ndJson, loginReducer }) => {
 }
 
 BookmarkGroup.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }
 

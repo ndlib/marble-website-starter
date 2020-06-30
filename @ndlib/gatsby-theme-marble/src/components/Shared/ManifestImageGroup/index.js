@@ -11,7 +11,7 @@ import { jsx } from 'theme-ui'
 import sx from './sx'
 
 export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
-  if (!marbleItem || !marbleItem.id) {
+  if (!marbleItem) {
     return null
   }
   let viewerLabel = 'Mirador'
@@ -48,12 +48,9 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
 
 ManifestImageGroup.propTypes = {
   marbleItem: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    image: PropTypes.arrayOf(
-      PropTypes.shape({
-        default: PropTypes.string,
-      }),
-    ),
+    image: PropTypes.shape({
+      default: PropTypes.string,
+    }),
   }),
   location: PropTypes.object.isRequired,
   viewer: PropTypes.string,

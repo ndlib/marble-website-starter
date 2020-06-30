@@ -6,13 +6,13 @@ import AboutIIIF from './AboutIIIF'
 import MaterialButton from 'components/Internal/MaterialButton'
 import download from 'utils/download'
 
-const DownloadMetadata = ({ ndJson }) => {
+const DownloadMetadata = ({ marbleItem }) => {
   return (
     <React.Fragment>
       <AboutIIIF />
       <MaterialButton
         onClick={
-          () => download(`${ndJson.iiifUri}/`, `${ndJson.id || 'manifest'}.json`)
+          () => download(`${marbleItem.iiifUri}/`, `${marbleItem.marbleId || 'manifest'}.json`)
         }
         wide
         primary
@@ -23,7 +23,7 @@ const DownloadMetadata = ({ ndJson }) => {
 }
 
 DownloadMetadata.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default DownloadMetadata
