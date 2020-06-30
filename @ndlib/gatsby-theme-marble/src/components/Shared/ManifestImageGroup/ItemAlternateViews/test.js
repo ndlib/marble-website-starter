@@ -6,25 +6,25 @@ import AlternateImage from './AlternateImage'
 describe('ItemAlternateViews', () => {
   const location = {}
   test('no more canvases', () => {
-    const ndJson = {
+    const marbleItem = {
       id: 'a',
     }
-    const wrapper = shallow(<ItemAlternateViews ndJson={ndJson} viewer='mirador' location={location} />)
+    const wrapper = shallow(<ItemAlternateViews marbleItem={marbleItem} viewer='mirador' location={location} />)
 
     expect(wrapper.find('div').exists()).toBeFalsy()
     expect(wrapper.find(AlternateImage).exists()).toBeFalsy()
   })
 
   test('some canvases', () => {
-    const ndJson = {
+    const marbleItem = {
       id: 'a',
-      items: [
-        { id: 'a', iiifUri: '/a' },
-        { id: 'b', iiifUri: '/b' },
-        { id: 'c', iiifUri: '/c' },
+      allImages: [
+        { service: '/a' },
+        { servicei: '/b' },
+        { service: '/c' },
       ],
     }
-    const wrapper = shallow(<ItemAlternateViews ndJson={ndJson} viewer='mirador' location={location} />)
+    const wrapper = shallow(<ItemAlternateViews marbleItem={marbleItem} viewer='mirador' location={location} />)
 
     expect(wrapper.find('div').exists()).toBeTruthy()
     expect(wrapper.find(AlternateImage).length).toEqual(2)

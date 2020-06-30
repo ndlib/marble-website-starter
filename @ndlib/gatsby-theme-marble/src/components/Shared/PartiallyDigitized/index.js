@@ -3,27 +3,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-const PartiallyDigitized = ({ ndJson }) => {
-  // if (item && item.partiallyDigitized) {
-  //   return (
-  //     <div
-  //       sx={{
-  //         backgroundColor: 'gray.1',
-  //         padding: '0.5rem',
-  //       }}
-  //     ><b>Dataset not complete.</b> &mdash; This content may be only partially digitized.
-  //     </div>
-  //   )
-  // }
-  // return null
-  return (
-    <div>NO FIELD MAPPING EXISTS FOR PARTIALLY DIGITIZED.</div>
-  )
+const PartiallyDigitized = ({ marbleItem }) => {
+  if (marbleItem && marbleItem.partiallyDigitized) {
+    return (
+      <div
+        sx={{
+          backgroundColor: 'gray.1',
+          padding: '0.5rem',
+        }}
+      ><b>Dataset not complete.</b> &mdash; This content may be only partially digitized.
+      </div>
+    )
+  }
+  return null
 }
 
 PartiallyDigitized.propTypes = {
-  ndJson: PropTypes.shape({
-    partiallyDigitized: PropTypes.string,
+  marbleItem: PropTypes.shape({
+    partiallyDigitized: PropTypes.bool,
   }),
 }
 
