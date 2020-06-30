@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { BaseStyles, Styled, jsx } from 'theme-ui'
 import { useTranslation } from 'react-i18next'
-
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Image from 'components/Shared/Image'
