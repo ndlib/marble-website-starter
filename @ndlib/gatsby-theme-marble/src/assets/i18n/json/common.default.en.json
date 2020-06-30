@@ -14,7 +14,9 @@
     "unfollow": "Unfollow"
   },
   "search": {
-    "prompt": "Search the Collections"
+    "prompt": "Search the Collections",
+    "browseBy": "Browse By",
+    "recentAdditions": "Recent Additions"
   },
   "item": {
     "returnToSearch": "Return to search"
