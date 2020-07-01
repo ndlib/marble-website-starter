@@ -24,18 +24,22 @@ export const query = graphql`
       id
       slug
       marbleId
+      display
+      title
+      description
+      iiifUri
+      partiallyDigitized
+      metadata {
+        label
+        value
+      }
     }
   }
 `
 /*
 
-display
-title
-description
 annotation
-iiifUri
 copyrightRestricted
-partiallyDigitized
 image {
   default
   service

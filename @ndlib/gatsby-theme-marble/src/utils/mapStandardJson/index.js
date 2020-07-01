@@ -39,7 +39,11 @@ const makeMetadataArray = (standardJson) => {
 
 const genericFind = (standardJson, id) => {
   if (id in standardJson) {
-    return standardJson[id]
+    let data = standardJson[id]
+    if (!Array.isArray(data)) {
+      data = [data]
+    }
+    return data
   }
 
   return false
@@ -47,7 +51,6 @@ const genericFind = (standardJson, id) => {
 
 const findCreators = (standardJson) => {
   if ('creators' in standardJson) {
-    console.log(standardJson.creators.map((creator) => creator.display))
     return standardJson.creators.map((creator) => creator.display)
   }
   return false

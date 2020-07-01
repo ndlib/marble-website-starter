@@ -97,7 +97,7 @@ describe('mapStandardJsonMetadata', () => {
         {
           label: 'Date',
           type: 'list',
-          value: 'date',
+          value: ['date'],
         },
       ]
       const result = mapStandardJsonMetadata(defaultData)
