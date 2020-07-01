@@ -5,7 +5,7 @@ import { Styled } from 'theme-ui'
 
 const MetaDataValue = ({ values, skipHtml }) => {
   return (
-    <React.Fragment>
+    <>
       {
         values.map(val => {
           return (
@@ -20,7 +20,7 @@ const MetaDataValue = ({ values, skipHtml }) => {
           )
         })
       }
-    </React.Fragment>
+    </>
   )
 }
 

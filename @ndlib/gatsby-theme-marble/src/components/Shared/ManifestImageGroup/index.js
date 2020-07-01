@@ -10,8 +10,8 @@ import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-export const ManifestImageGroup = ({ location, ndJson, viewer }) => {
-  if (!ndJson || !ndJson.id) {
+export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
+  if (!marbleItem) {
     return null
   }
   let viewerLabel = 'Mirador'
@@ -23,13 +23,13 @@ export const ManifestImageGroup = ({ location, ndJson, viewer }) => {
     <section>
       <h2 className='accessibilityOnly'>Images</h2>
       <ViewerLink
-        ndJson={ndJson}
+        marbleItem={marbleItem}
         viewer={viewer}
         location={location}
       >
         <picture sx={sx.wrapper}>
           <img
-            src={typy(ndJson, 'items[0].iiifImageUri').isString ? `${ndJson.items[0].iiifImageUri}/full/full/0/default.jpg` : noImage}
+            src={typy(marbleItem, 'image.default').isString ? `${marbleItem.image.default}` : noImage}
             alt={label}
             title={label}
             sx={sx.image}
@@ -38,7 +38,7 @@ export const ManifestImageGroup = ({ location, ndJson, viewer }) => {
         </picture>
       </ViewerLink>
       <ItemAlternateViews
-        ndJson={ndJson}
+        marbleItem={marbleItem}
         location={location}
         viewer={viewer}
       />
@@ -47,13 +47,10 @@ export const ManifestImageGroup = ({ location, ndJson, viewer }) => {
 }
 
 ManifestImageGroup.propTypes = {
-  ndJson: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        iiifImageUri: PropTypes.string,
-      }),
-    ),
+  marbleItem: PropTypes.shape({
+    image: PropTypes.shape({
+      default: PropTypes.string,
+    }),
   }),
   location: PropTypes.object.isRequired,
   viewer: PropTypes.string,

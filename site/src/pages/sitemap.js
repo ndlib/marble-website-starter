@@ -11,7 +11,7 @@ export const AllPage = ({
   data,
   location,
 }) => {
-  const items = () => data.allNdJson.edges
+  const items = () => data.allMarbleItem.edges
     .sort((a, b) => {
       const cleanA = cleanString(a.node.title)
       const cleanB = cleanString(b.node.title)
@@ -33,17 +33,22 @@ export const AllPage = ({
             {edge.node.title}
           </Styled.a>
           <span>&nbsp;</span>
-          <Link to={`item/${edge.node.id}/mirador`}>
-            <img
-              src={miradorIcon}
-              alt='Open in Mirador'
-              style={{
-                height: '16px',
-                width: '16px',
-                verticalAlign: 'text-bottom',
-              }}
-            />
-          </Link>
+          {
+            edge.node.display.toLowerCase() === 'manifest' ? (
+              <Link to={`item/${edge.node.slug}/mirador`}>
+                <img
+                  src={miradorIcon}
+                  alt='Open in Mirador'
+                  style={{
+                    height: '16px',
+                    width: '16px',
+                    verticalAlign: 'text-bottom',
+                  }}
+                />
+              </Link>
+            ) : null
+
+          }
         </li>
       )
     })

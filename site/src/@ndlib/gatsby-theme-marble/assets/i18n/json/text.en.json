@@ -39,5 +39,17 @@
   },
   "loginPage": {
     "button": "Log in with Notre Dame Campus Authentication"
+  },
+  "actionGroup": {
+    "citationHead": "Citation",
+    "citationBody": "Bibliography Citation, Chicago Style 17th ed. We are making assumptions about the genre of these works and as result the citation may not fit your needs. Please verify for accuracy before including them in your work.",
+    "copyright": "University of Notre Dame, unless otherwise noted.",
+    "aboutIIIF": "<0>IIIF</0> is an international image sharing framework. The IIIF manifest URL allows you to compare images across collections or institutions. Learn more about <2> using IIIF for comparative research</2> or <4> how ND is using the technology</4>."
+  },
+  "index": {
+    "nd": "University of Notre Dame",
+    "title": "Digital Collections",
+    "blockQuote": "Explore digitized rare materials from the University of Notre Dame, from books to manuscripts, sculptures to paintings, photographs to ephemera."
   }
+
 }

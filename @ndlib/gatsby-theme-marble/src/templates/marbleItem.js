@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import NDJson from 'components/Pages/NDJson'
+import MarbleItem from 'components/Pages/MarbleItem'
 
 export const MarbleItemPage = ({ data, location }) => {
   return (
-    <NDJson
+    <MarbleItem
       data={data}
       location={location}
     />

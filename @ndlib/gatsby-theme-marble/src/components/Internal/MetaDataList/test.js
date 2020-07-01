@@ -6,9 +6,9 @@ import MetaDataField from './MetaDataField'
 describe('MetaDataList', () => {
   test('metadata', () => {
     const metadata = [
-      { label: { none: 'a' }, value: { none: 'a' } },
-      { label: { none: 'b' }, value: { none: 'b' } },
-      { label: { none: 'c' }, value: { none: 'c' } },
+      { label: ['a'], value: ['a'] },
+      { label: ['b'], value: ['b'] },
+      { label: ['c'], value: ['c'] },
     ]
     const wrapper = shallow(<MetaDataList metadata={metadata} className='classy' />)
     expect(wrapper.find('dl.classy').exists()).toBeTruthy()

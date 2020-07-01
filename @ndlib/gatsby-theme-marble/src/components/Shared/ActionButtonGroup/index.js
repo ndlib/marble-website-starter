@@ -2,15 +2,14 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import typy from 'typy'
 import { jsx } from 'theme-ui'
 import BookmarkGroup from './BookmarkGroup'
 import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
 import DownloadButton from './DownloadButton'
 
-const ActionButtonGroup = ({ ndJson }) => {
-  if (!ndJson) {
+const ActionButtonGroup = ({ marbleItem }) => {
+  if (!marbleItem) {
     return null
   }
   return (
@@ -20,17 +19,17 @@ const ActionButtonGroup = ({ ndJson }) => {
         width: '100%',
       }}
       >
-        <BookmarkGroup ndJson={ndJson} />
-        <ShareButton path={`item/${typy(ndJson, 'id').safeString}`} />
+        <BookmarkGroup marbleItem={marbleItem} />
+        <ShareButton path={marbleItem.slug} />
         <PrintButton />
-        <DownloadButton ndJson={ndJson} />
+        <DownloadButton marbleItem={marbleItem} />
       </section>
     </React.Fragment>
   )
 }
 
 ActionButtonGroup.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default ActionButtonGroup

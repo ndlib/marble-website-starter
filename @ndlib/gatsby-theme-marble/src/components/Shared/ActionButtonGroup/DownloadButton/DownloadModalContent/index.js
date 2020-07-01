@@ -10,20 +10,22 @@ import DownloadCitation from './DownloadCitation'
 import Copyright from './Copyright'
 import sx from './sx'
 
-const DownloadModalContent = ({ ndJson }) => {
+const DownloadModalContent = ({ marbleItem }) => {
   return (
     <React.Fragment>
       <MultiColumn columns='2'>
         <Column>
           <Styled.h2 sx={sx.header}>Image</Styled.h2>
-          <DownloadImage ndJson={ndJson} />
+          <DownloadImage marbleItem={marbleItem} />
         </Column>
         <Column>
           <Styled.h2 sx={sx.header}>Metadata</Styled.h2>
           <div sx={sx.metadata}>
-            <DownloadMetadata ndJson={ndJson} />
+            <DownloadMetadata marbleItem={marbleItem} />
           </div>
-          <DownloadCitation ndJson={ndJson} />
+          {
+            //  <DownloadCitation marbleItem={marbleItem} />
+          }
         </Column>
       </MultiColumn>
       <Copyright />
@@ -32,7 +34,7 @@ const DownloadModalContent = ({ ndJson }) => {
 }
 
 DownloadModalContent.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default DownloadModalContent

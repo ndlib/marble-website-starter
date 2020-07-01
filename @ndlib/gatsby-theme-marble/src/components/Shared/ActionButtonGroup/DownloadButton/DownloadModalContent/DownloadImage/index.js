@@ -2,30 +2,29 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import typy from 'typy'
 import ImagePreview from './ImagePreview'
 import ImagePager from './ImagePager'
 import ImageSettings from './ImageSettings'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { download } from 'utils/download'
 import {
-  copyrightCanDownload,
   imageUrl,
   imageName,
-  getImagesFromManifest,
 } from './utils'
 import sx from './sx'
 
-const DownloadImage = ({ ndJson }) => {
+const DownloadImage = ({ marbleItem }) => {
   const [images, setImages] = useState([])
   const [selected, setSelected] = useState(0)
   const [size, setSize] = useState('full')
   const [format, setFormat] = useState('jpg')
 
   useEffect(() => {
-    setImages(getImagesFromManifest(ndJson))
-  }, [ndJson])
+    setImages(typy(marbleItem, 'allImages').safeArray)
+  }, [marbleItem])
 
-  if (images.length < 1 || !copyrightCanDownload(ndJson)) {
+  if (images.length < 1 || marbleItem.copyrightRestricted) {
     return (
       <div sx={sx.wrapper}>
         <p sx={sx.image}>Image Download Unavailable.</p>
@@ -57,7 +56,7 @@ const DownloadImage = ({ ndJson }) => {
           onClick={() => {
             download(
               imageUrl(images, selected, size, format),
-              imageName(ndJson, images, selected, format),
+              imageName(marbleItem, images, selected, format),
             )
           }}
           primary
@@ -70,7 +69,7 @@ const DownloadImage = ({ ndJson }) => {
 }
 
 DownloadImage.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default DownloadImage

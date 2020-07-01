@@ -9,12 +9,12 @@ import DownloadMetadata from './DownloadMetadata'
 import Copyright from './Copyright'
 
 test('DownloadModalContent', () => {
-  const ndJson = {}
-  const wrapper = mount(<DownloadModalContent ndJson={ndJson} />)
+  const marbleItem = {}
+  const wrapper = mount(<DownloadModalContent marbleItem={marbleItem} />)
   expect(wrapper.find(MultiColumn).props().columns).toEqual('2')
   expect(wrapper.find(Column).length).toEqual(2)
-  expect(wrapper.find(DownloadImage).props().ndJson).toEqual(ndJson)
-  expect(wrapper.find(DownloadMetadata).props().ndJson).toEqual(ndJson)
+  expect(wrapper.find(DownloadImage).props().marbleItem).toEqual(marbleItem)
+  expect(wrapper.find(DownloadMetadata).props().marbleItem).toEqual(marbleItem)
   // expect(wrapper.find(DownloadCitation).props().ndJson).toEqual(ndJson)
   expect(wrapper.find(Copyright).exists()).toBeTruthy()
 })

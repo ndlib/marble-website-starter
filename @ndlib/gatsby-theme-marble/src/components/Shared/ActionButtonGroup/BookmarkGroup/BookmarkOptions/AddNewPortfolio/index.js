@@ -21,7 +21,8 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
         className='add-button'
         onClick={() => setEditable(true)}
         sx={sx.createButton}
-      >Create A New Portfolio</button>
+      >Create A New Portfolio
+      </button>
     )
   }
   if (error) {
@@ -30,7 +31,8 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
         className='error-button'
         onClick={() => setError(false)}
         sx={sx.errorButton}
-      >An error occured.</button>
+      >An error occured.
+      </button>
     )
   }
   return (
@@ -49,38 +51,37 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
       />
       <button
         className='submit-button'
-        onClick={
-          () => {
-            setCreating(true)
-            createData({
-              loginReducer: loginReducer,
-              contentType: 'collection',
-              id: loginReducer.user.uuid,
-              body: {
-                title: title,
-                description: null,
-                image: null,
-                layout: 'default',
-                privacy: 'private',
-              },
-              successFunc: (data) => successFunc({
-                data: data,
-                portfolios: portfolios,
-                addFunc: addFunc,
-                setCreating: setCreating,
-                setEditable: setEditable,
-                setTitle: setTitle,
-              }),
-              errorFunc: (e) => {
-                console.error(e)
-                setError(true)
-              },
-            })
-          }
-        }
+        onClick={() => {
+          setCreating(true)
+          createData({
+            loginReducer: loginReducer,
+            contentType: 'collection',
+            id: loginReducer.user.uuid,
+            body: {
+              title: title,
+              description: null,
+              image: null,
+              layout: 'default',
+              privacy: 'private',
+            },
+            successFunc: (data) => successFunc({
+              data: data,
+              portfolios: portfolios,
+              addFunc: addFunc,
+              setCreating: setCreating,
+              setEditable: setEditable,
+              setTitle: setTitle,
+            }),
+            errorFunc: (e) => {
+              console.error(e)
+              setError(true)
+            },
+          })
+        }}
         disabled={creating || !valid}
         sx={creating || !valid ? sx.submitButtonDisabled : sx.submitButton}
-      >create</button>
+      >create
+      </button>
     </div>
   )
 }

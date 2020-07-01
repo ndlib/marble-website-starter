@@ -7,8 +7,8 @@ import AlternateImage from './AlternateImage'
 // tests if/when this number changes
 export const MAX_IMAGES = 5
 
-const ItemAlternateViews = ({ ndJson, viewer, location }) => {
-  const canvases = typy(ndJson, 'items').safeArray
+const ItemAlternateViews = ({ marbleItem, viewer, location }) => {
+  const canvases = typy(marbleItem, 'allImages').safeArray
   if (canvases.length > 1) {
     return (
       <div>
@@ -17,7 +17,7 @@ const ItemAlternateViews = ({ ndJson, viewer, location }) => {
             return (
               <AlternateImage
                 key={index}
-                ndJson={ndJson}
+                marbleItem={marbleItem}
                 index={index + 1}
                 max={MAX_IMAGES}
                 length={canvases.length}
@@ -34,7 +34,7 @@ const ItemAlternateViews = ({ ndJson, viewer, location }) => {
 }
 
 ItemAlternateViews.propTypes = {
-  ndJson: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
   viewer: PropTypes.string,
   location: PropTypes.object.isRequired,
 }

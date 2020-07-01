@@ -6,10 +6,10 @@ import Link from 'components/Internal/Link'
 import buildReferalState from 'utils/buildReferalState'
 import { jsx } from 'theme-ui'
 
-const ViewerLink = ({ ndJson, index, viewer, className, view, location, children }) => {
-  let viewerLink = `/item/${ndJson.id}/mirador?cv=${index}&view=${view}`
+const ViewerLink = ({ marbleItem, index, viewer, className, view, location, children }) => {
+  let viewerLink = `${marbleItem.slug}/mirador?cv=${index}&view=${view}`
   if (viewer === 'uv') {
-    viewerLink = `/viewer?manifest=${encodeURIComponent(ndJson.iiifUri)}&cv=${index}`
+    viewerLink = `/viewer?manifest=${encodeURIComponent(marbleItem.iiifUri)}&cv=${index}`
   }
   return (
     <Link
@@ -30,8 +30,8 @@ const ViewerLink = ({ ndJson, index, viewer, className, view, location, children
 }
 
 ViewerLink.propTypes = {
-  ndJson: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+  marbleItem: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
     iiifUri: PropTypes.string.isRequired,
   }),
   index: PropTypes.number,
