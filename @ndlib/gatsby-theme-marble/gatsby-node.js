@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const mapStandardJsonMetadata = require(path.join(__dirname, 'src/utils/mapStandardJsonMetadata'))
+const mapStandardJson = require(path.join(__dirname, 'src/utils/mapStandardJson'))
 // const crypto = require('crypto')
 // const { attachFields } = require('gatsby-plugin-node-fields')
 // const merge = require('lodash.merge')
@@ -184,8 +184,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
 
   // function to normalize node
   const normalizeNode = ({ newId, type, ndJson }) => {
-    const mappedFields = mapStandardJsonMetadata(ndJson)
-    console.log(mappedFields)
+    const mappedFields = mapStandardJson(ndJson)
     return {
       ...mappedFields,
       id: createNodeId(newId),

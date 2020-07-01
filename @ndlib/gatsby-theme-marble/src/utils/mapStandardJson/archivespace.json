@@ -1,0 +1,58 @@
+{
+  "creators": {
+    "label": "Creator",
+    "order": "2",
+  },
+  "createdDate": {
+    "label": "Date",
+    "order": "3"
+  },
+  "workType": {
+    "label": "Material Type",
+    "order": "5"
+  },
+  "uniqueIdentifier": {
+    "label": "Identifier",
+    "order": "9"
+  },
+  "repository": {
+    "label": "Campus Location",
+    "order": "10"
+  },
+  "subjects": {
+    "label": "Subject",
+    "order": "17"
+  },
+  "copyrightStatus": {
+    "label": "Copyright Status",
+    "order": "12"
+  },
+  "copyrightStatement": {
+    "label": "Conditions Governing Use",
+    "order": "13"
+  },
+  "linkToSource": {
+    "label": "Link to finding aid",
+    "order": "18"
+  },
+  "access": {
+    "label": "Conditions Governing Access",
+    "order": "11"
+  },
+  "format": {
+    "label": "Genre/Physical Characteristic",
+    "order": "6"
+  },
+  "languages": {
+    "label": "Language",
+    "order": "8"
+  },
+  "dimensions": {
+    "label": "Dimensions",
+    "order": "7"
+  },
+  "dedication": {
+    "label": "Immediate Source of Acquisition",
+    "order": "15"
+  },
+}
