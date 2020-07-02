@@ -18,13 +18,8 @@ export const query = graphql`
   query($id: String!) {
     marbleItem( id: { eq: $id }) {
       id
+      title
+      iiifUri
     }
   }
 `
-/*
-
-ndJson {
-  title
-  iiifUri
-}
-*/
