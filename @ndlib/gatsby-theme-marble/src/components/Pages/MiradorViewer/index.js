@@ -9,9 +9,9 @@ import Seo from 'components/Internal/Seo'
 import sx from './sx'
 
 const MiradorViewerPage = ({ data, location }) => {
-  const manifestId = `${typy(data, 'marbleItem.ndJson.iiifUri').safeString}/`
+  const manifestId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
   console.log(data)
-  const manifestTitle = typy(data, 'marbleItem.ndJson.title').safeString
+  const manifestTitle = typy(data, 'marbleItem.title').safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
   const sideBarOpenByDefault = qs.sidebar === 'true'

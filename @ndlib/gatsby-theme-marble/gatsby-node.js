@@ -1,4 +1,6 @@
 const fs = require('fs')
+const path = require('path')
+const mapStandardJson = require(path.join(__dirname, 'src/utils/mapStandardJson'))
 // const crypto = require('crypto')
 // const { attachFields } = require('gatsby-plugin-node-fields')
 // const merge = require('lodash.merge')
@@ -109,7 +111,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    const pages = result.data.allMarkdownRemark.nodes
+    const pages = result.data && result.data.allMarkdownRemark ? result.data.allMarkdownRemark.nodes : []
 
     pages.forEach(node => {
       const pagePath = node.frontmatter.slug === 'index' ? '/' : node.frontmatter.slug
@@ -149,7 +151,7 @@ exports.createPages = ({ graphql, actions }) => {
     //   }
     // })
 
-    const marbleItems = result.data.allMarbleItem.nodes
+    const marbleItems = result.data && result.data.allMarbleItem ? result.data.allMarbleItem.nodes : []
     marbleItems.forEach(node => {
       if (node.id) {
         // item page
@@ -182,25 +184,23 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
 
   // function to normalize node
   const normalizeNode = ({ newId, type, ndJson }) => {
-    const mappedFields = mapFieldsToMarble(ndJson)
+    const mappedFields = mapStandardJson(ndJson)
     return {
       ...mappedFields,
       id: createNodeId(newId),
       marbleId: newId,
-      ndJson: ndJson,
       slug: `item/${newId}`,
       internal: {
         type: type,
       },
     }
   }
-
   if (node.internal.type === 'NdJson') {
     if (node.level.toLowerCase() === 'collection') {
       // create parent collection
       const normalizedTypeNode = normalizeNode({
         newId: node.id,
-        type: 'MarbleCollection',
+        type: 'MarbleItem',
         ndJson: node,
       })
       normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
@@ -214,6 +214,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
           type: 'MarbleItem',
           ndJson: item,
         })
+
         normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
         createNode(normalizedTypeNode)
       })
@@ -226,38 +227,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
       normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
       createNode(normalizedTypeNode)
     }
-  }
-}
-
-const mapFieldsToMarble = (ndJson) => {
-  return {
-    title: ndJson.title,
-    description: 'ndJson description',
-    annotation: 'comes from another source system or user entered',
-    display: ndJson.level,
-    iiifUri: ndJson.iiifUri,
-    copyrightRestricted: false,
-    partiallyDigitized: true,
-    image: buildImageFields(ndJson),
-    allImages: buildAllImages(ndJson),
-    metadata: [
-      {
-        label: 'Artist',
-        value: 'Señor Senior, Sr.',
-        type: 'artist',
-      },
-      {
-        label: 'field 1',
-        value: 'value 1',
-        type: '',
-      },
-      {
-        label: 'field 2',
-        value: 'value 2',
-        type: '',
-      },
-    ],
-    seeAlso: buildSeeAlso(ndJson),
   }
 }
 

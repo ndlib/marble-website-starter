@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import NDJson from 'components/Pages/NDJson'
 
 export const NDJsonPage = ({ data, location }) => {
+  return (<div>HI</div>)
   return (
     <NDJson
       data={data}
@@ -17,7 +18,7 @@ NDJsonPage.propTypes = {
 }
 
 export default NDJsonPage
-
+/*
 export const query = graphql`
   query($id: String!) {
     ndJson( id: { eq: $id } ) {
@@ -128,3 +129,4 @@ export const query = graphql`
     }
   }
 `
+*/
