@@ -200,7 +200,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
       // create parent collection
       const normalizedTypeNode = normalizeNode({
         newId: node.id,
-        type: 'MarbleCollection',
+        type: 'MarbleItem',
         ndJson: node,
       })
       normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
