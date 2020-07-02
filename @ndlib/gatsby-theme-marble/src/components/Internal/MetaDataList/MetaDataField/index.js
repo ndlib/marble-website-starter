@@ -12,7 +12,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           labels={[label]}
         />
         <MetaDataValue
-          values={[value]}
+          values={value}
           skipHtml={skipHtml}
         />
       </div>
