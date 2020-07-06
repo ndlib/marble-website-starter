@@ -17,6 +17,32 @@ exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
 
   const typeDefs = `
+  ### Marble Item Stuff
+  type metadataData @dontInfer {
+    label: String
+    value: [String]
+    type: String
+  }
+  type imageData @dontInfer {
+    service: String
+    default: String
+    thumbnail: String
+  }
+  type MarbleItem implements Node @dontInfer {
+    id: String!
+    marbleId: String!
+    slug: String!
+    display: String
+    title: String!
+    description: String
+    iiifUri: String
+    partiallyDigitized: Boolean
+    metadata: [metadataData]
+    image: imageData
+    allImages: [imageData]
+    copyrightRestricted: Boolean
+    seeAlso: [String]
+  }
 
   # things expected to be there
   type searchBase @dontInfer {

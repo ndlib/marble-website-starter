@@ -32,29 +32,25 @@ export const query = graphql`
       metadata {
         label
         value
+        type
       }
+      copyrightRestricted
+      image {
+        default
+        service
+        thumbnail
+      }
+      allImages {
+        default
+        service
+        thumbnail
+      }
+      seeAlso
     }
   }
 `
 /*
-
 annotation
-copyrightRestricted
-image {
-  default
-  service
-  thumbnail
-}
-allImages {
-  default
-  service
-  thumbnail
-}
-metadata {
-  label
-  value
-}
-seeAlso
 ndJson {
   id
   iiifFilePath
