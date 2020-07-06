@@ -9,9 +9,9 @@ import MiradorWrapper from './MiradorWrapper'
 import Seo from 'components/Internal/Seo'
 import sx from './sx'
 
+// eslint-disable-next-line complexity
 const MiradorViewerPage = ({ data, location }) => {
   const manifestId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
-  console.log(data)
   const manifestTitle = typy(data, 'marbleItem.title').safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
@@ -82,10 +82,14 @@ const MiradorViewerPage = ({ data, location }) => {
         noIndex
       />
       <div className='sizeWrapper' sx={sx.div}>
-        <MiradorWrapper
-          config={config}
-          plugins={plugins}
-        />
+        {
+          window ? (
+            <MiradorWrapper
+              config={config}
+              plugins={plugins}
+            />
+          ) : null
+        }
       </div>
     </Layout>
   )
