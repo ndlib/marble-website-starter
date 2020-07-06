@@ -7,8 +7,6 @@ import typy from 'typy'
 import { jsx } from 'theme-ui'
 import Card from 'components/Shared/Card'
 import TypeLabel from './TypeLabel'
-// import { getImageServiceFromThumbnail } from 'utils/getImageService'
-// import getLanguage from 'utils/getLanguage'
 import sx from './sx'
 
 export const ManifestCard = (props) => {
@@ -25,7 +23,7 @@ export const ManifestCard = (props) => {
           iiifUri
           display
           image {
-            thumbnail
+            service
           }
           metadata {
             label
@@ -49,8 +47,7 @@ export const ManifestCard = (props) => {
       <Card
         label={item.title}
         target={`/${item.slug}`}
-        imageService={typy(item, 'image.thumbnail').safeString}
-        imageRegion='full'
+        imageService={typy(item, 'image.service').safeString}
         {...props}
       >
         {children}
@@ -97,7 +94,7 @@ export const figureOutChildren = (parentProps, item) => {
           />
         ) : null
       }
-      {parentProps.showSummary ? <div>{typy(item, 'description').safeString}</div> : null}
+      {parentProps.showSummary ? <div>{item.description}</div> : null}
       {parentProps.children ? parentProps.children : null}
     </React.Fragment>
   )
