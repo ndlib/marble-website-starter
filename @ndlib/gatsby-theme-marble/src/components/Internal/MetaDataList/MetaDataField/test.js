@@ -16,7 +16,7 @@ describe('MetaDataField', () => {
   test('metadata', () => {
     const metadata = {
       label: 'test label',
-      value: 'test value',
+      value: ['test value'],
     }
     const wrapper = shallow(<MetaDataField metadata={metadata} />)
     expect(wrapper.find(MetaDataLabel).props().labels).toEqual(['test label'])
