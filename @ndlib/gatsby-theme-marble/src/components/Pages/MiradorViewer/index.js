@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
-import miradorImageToolsPlugin from 'mirador-image-tools/es/'
+import { miradorImageToolsPlugin } from 'mirador-image-tools/es/'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import queryString from 'query-string'
