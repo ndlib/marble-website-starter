@@ -30,9 +30,6 @@ const searchForImages = (standardJson) => {
       }
     })
   }
-  if (standardJson.level.toLowerCase() === 'collection') {
-    console.log(allImages)
-  }
 
   return allImages
 }
