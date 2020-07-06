@@ -10,7 +10,6 @@ import TypeLabel from './TypeLabel'
 import sx from './sx'
 
 export const ManifestCard = (props) => {
-  console.log(props.iiifManifest)
   const { allMarbleItem } = useStaticQuery(
     graphql`
     query {
@@ -63,7 +62,7 @@ const findMetadata = (manifest, options) => {
   }
 
   return manifest.metadata.reduce((metaValue, row) => {
-    const label = row.label.toLowerCase()
+    const label = typy(row, 'label').safeString.toLowerCase()
 
     if (options.includes(label)) {
       return metaValue.concat(row.value.join('<br/>'))
