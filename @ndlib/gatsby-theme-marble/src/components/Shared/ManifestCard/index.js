@@ -13,24 +13,26 @@ import sx from './sx'
 
 export const ManifestCard = (props) => {
   console.log(props.iiifManifest)
-  const { allNdJson } = useStaticQuery(
+  const { allMarbleItem } = useStaticQuery(
     graphql`
     query {
-      allNdJson {
+      allMarbleItem {
         nodes {
           id
+          marbleId
+          slug
           title
           iiifUri
-          level
-          items {
-            iiifImageUri
+          display
+          image {
+            thumbnail
           }
         }
       }
     }
   `,
   )
-  const item = findItem(props.iiifManifest, allNdJson)
+  const item = findItem(props.iiifManifest, allMarbleItem)
   if (!item) {
     console.warn('Could not find manifest: ', props.iiifManifest)
     return null
@@ -42,8 +44,8 @@ export const ManifestCard = (props) => {
     <div sx={sx.wrapper}>
       <Card
         label={item.title}
-        target={`/item/${item.id}`}
-        imageService={typy(item, 'items[0].iiifImageUri').safeString}
+        target={`/${item.slug}`}
+        imageService={typy(item, 'image.thumbnail').safeString}
         imageRegion='full'
         {...props}
       >
@@ -52,7 +54,7 @@ export const ManifestCard = (props) => {
           // children
         }
       </Card>
-      <TypeLabel type={item.level} />
+      <TypeLabel type={item.display} />
     </div>
   )
 }
@@ -117,8 +119,8 @@ export const ManifestCard = (props) => {
 //   )
 // }
 
-const findItem = (manifestId, allNdJson) => {
-  return allNdJson.nodes.find(item => {
+const findItem = (manifestId, allMarbleItem) => {
+  return allMarbleItem.nodes.find(item => {
     return item.iiifUri === manifestId
   })
 }
