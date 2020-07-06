@@ -235,6 +235,8 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
           ndJson: item,
         })
 
+        console.log(normalizedTypeNode.metadata)
+
         normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
         createNode(normalizedTypeNode)
       })
@@ -260,25 +262,6 @@ const buildSeeAlso = (ndJson) => {
   ]
 }
 
-const buildImageFields = (ndJson, index = 0) => {
-  // This will need to search for the first child (or grandchild) that has a valid image
-  return {
-    default: 'https://image.default.big',
-    service: 'https://image.default',
-    thumbnail: 'https://image.default.small',
-  }
-}
-
-// Probably will not be able to reuse buildImageFields in a real scenario since buildImageFields will need to search for first good image.
-const buildAllImages = (ndJson) => {
-  const allImages = []
-  if (ndJson.items) {
-    ndJson.items.forEach((item, i) => {
-      allImages.push(buildImageFields(ndJson, i))
-    })
-  }
-  return allImages
-}
 // exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
 // const { createNode } = actions
 // if (node.internal.type === 'MarkdownRemark') {

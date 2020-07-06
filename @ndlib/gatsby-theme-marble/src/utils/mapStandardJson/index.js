@@ -1,14 +1,15 @@
+const imageMetadata = require('./imageMetadata')
 
 module.exports = (standardJson) => {
   return {
     title: standardJson.title,
     description: mapFieldOrDefault(standardJson, 'description', ''),
-    display: standardJson.level,
+    display: standardJson.level.toLowerCase(),
     iiifUri: mapFieldOrDefault(standardJson, 'iiifUri', ''),
     copyrightRestricted: false,
     partiallyDigitized: mapFieldOrDefault(standardJson, 'partiallyDigitized', false),
     //    image: buildImageFields(ndJson),
-    //    allImages: buildAllImages(ndJson),
+    allImages: imageMetadata(standardJson),
     metadata: makeMetadataArray(standardJson),
   //  seeAlso: buildSeeAlso(ndJson),
   }
@@ -59,6 +60,13 @@ const findCreators = (standardJson) => {
 const findSubjects = (standardJson) => {
   if ('subjects' in standardJson) {
     return standardJson.subjects.map((subject) => subject.term)
+  }
+  return false
+}
+
+const findPublisher = (standardJson) => {
+  if ('publisher' in standardJson) {
+    return [standardJson.publisher.publisherName]
   }
   return false
 }
@@ -155,7 +163,7 @@ const dataLookUp = {
     publisher: {
       label: 'Publisher',
       type: 'list',
-      processor: genericFind,
+      processor: findPublisher,
     },
     workType: {
       label: 'Material Type',
@@ -304,7 +312,7 @@ const dataLookUp = {
     publisher: {
       label: 'Publisher',
       type: 'list',
-      processor: genericFind,
+      processor: findPublisher,
     },
     workType: {
       label: 'Material Type',
