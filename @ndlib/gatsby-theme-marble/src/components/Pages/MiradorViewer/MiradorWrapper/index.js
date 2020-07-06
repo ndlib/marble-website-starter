@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import mirador from 'mirador'
 // let mirador = {}
 // try {
-//   mirador = require('mirador')
+//   mirador = require('mirador/dist/mirador.min')
 // } catch (e) {
 //   console.warn('mirador unavailable at build time.')
 // }
