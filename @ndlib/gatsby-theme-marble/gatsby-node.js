@@ -235,6 +235,8 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
           ndJson: item,
         })
 
+        console.log(normalizedTypeNode.metadata)
+
         normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
         createNode(normalizedTypeNode)
       })

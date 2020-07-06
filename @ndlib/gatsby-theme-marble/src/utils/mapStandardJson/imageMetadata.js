@@ -20,17 +20,19 @@ module.exports = (standardJson) => {
 }
 
 const searchForImages = (standardJson) => {
-  const allImages = []
+  let allImages = []
   if (standardJson.items) {
     standardJson.items.forEach((item, i) => {
-      console.log(item.level)
       if (item.level === 'file') {
         allImages.push(buildImageFields(item, i))
-      } else if (item.level === 'collection' || item.level === 'manifest') {
-        allImages.concat(searchForImages(item))
+      } else if (item.level.toLowerCase() === 'collection' || item.level.toLowerCase() === 'manifest') {
+        allImages = [...allImages, ...searchForImages(item)]
       }
     })
   }
-  console.log(allImages)
+  if (standardJson.level.toLowerCase() === 'collection') {
+    console.log(allImages)
+  }
+
   return allImages
 }
