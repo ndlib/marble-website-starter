@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
+import miradorImageToolsPlugin from 'mirador-image-tools/es/'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import queryString from 'query-string'
@@ -21,6 +22,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const viewerView = qs.view || 'default'
   const context = useThemeUI()
   const themeColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
+  const plugins = [...miradorImageToolsPlugin]
   const config = {
     id: 'test',
     themes: {
@@ -55,15 +57,19 @@ const MiradorViewerPage = ({ data, location }) => {
         maximized: false,
         thumbnailNavigationPosition: thumbnailNavigationPosition,
         view: viewerView,
+        imageToolsEnabled: true,
+        imageToolsOpen: true,
       },
 
     ],
     workspace: {
       showZoomControls: true,
+      type: 'single',
     },
     workspaceControlPanel: {
       enabled: false,
     },
+
   }
   return (
     <Layout data={data} location={location}>
@@ -78,7 +84,7 @@ const MiradorViewerPage = ({ data, location }) => {
       <div className='sizeWrapper' sx={sx.div}>
         <MiradorWrapper
           config={config}
-          plugins={[]}
+          plugins={plugins}
         />
       </div>
     </Layout>

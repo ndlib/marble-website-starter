@@ -61,6 +61,7 @@
     "lodash.merge": "^4.6.2",
     "md5": "^2.2.1",
     "mirador": "3.0.0-beta.6",
+    "mirador-image-tools": "^0.7.0",
     "moment": "^2.24.0",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
