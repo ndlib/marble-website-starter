@@ -1,3 +1,4 @@
+const imageMetadata = require('./imageMetadata')
 
 module.exports = (standardJson) => {
   return {
@@ -8,7 +9,7 @@ module.exports = (standardJson) => {
     copyrightRestricted: false,
     partiallyDigitized: mapFieldOrDefault(standardJson, 'partiallyDigitized', false),
     //    image: buildImageFields(ndJson),
-    //    allImages: buildAllImages(ndJson),
+    allImages: imageMetadata(standardJson),
     metadata: makeMetadataArray(standardJson),
   //  seeAlso: buildSeeAlso(ndJson),
   }
