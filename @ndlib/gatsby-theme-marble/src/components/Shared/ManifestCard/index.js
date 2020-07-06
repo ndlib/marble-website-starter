@@ -27,6 +27,10 @@ export const ManifestCard = (props) => {
           image {
             thumbnail
           }
+          metadata {
+            label
+            value
+          }
         }
       }
     }
@@ -37,7 +41,7 @@ export const ManifestCard = (props) => {
     console.warn('Could not find manifest: ', props.iiifManifest)
     return null
   }
-  // const children = figureOutChildren(props, iiifManifest, lang)
+  const children = figureOutChildren(props, item)
 
   // TODO Fix image path for collections
   return (
@@ -49,75 +53,55 @@ export const ManifestCard = (props) => {
         imageRegion='full'
         {...props}
       >
-        {
-          // TODO deal with children and show creator(s)/date(s) by default
-          // children
-        }
+        {children}
       </Card>
       <TypeLabel type={item.display} />
     </div>
   )
 }
 
-// const findCreator = (manifest, lang) => {
-//   const options = ['creator']
-//   if (!manifest.metadata) {
-//     return []
-//   }
-//
-//   return manifest.metadata.reduce((creator, row) => {
-//     const label = row.label[lang].join('').toLowerCase()
-//
-//     if (options.includes(label)) {
-//       return creator.concat(row.value[lang].join('<br/>'))
-//     }
-//
-//     return creator
-//   }, [])
-// }
+const findMetadata = (manifest, options) => {
+  if (!manifest.metadata) {
+    return []
+  }
 
-// const findDates = (manifest, lang) => {
-//   const options = ['date', 'dates']
-//   if (!manifest.metadata) {
-//     return []
-//   }
-//
-//   return manifest.metadata.reduce((dates, row) => {
-//     const label = row.label[lang].join('').toLowerCase().trim()
-//     if (options.includes(label)) {
-//       return dates.concat(row.value[lang].join('<br/>'))
-//     }
-//
-//     return dates
-//   }, [])
-// }
+  return manifest.metadata.reduce((metaValue, row) => {
+    const label = row.label.toLowerCase()
 
-// export const figureOutChildren = (parentProps, iiifManifest, lang) => {
-//   const creator = findCreator(iiifManifest, lang)
-//   const dates = findDates(iiifManifest, lang)
-//   return (
-//     <React.Fragment>
-//       {
-//         parentProps.showCreator ? (
-//           <p
-//             sx={sx.lineStyle}
-//             dangerouslySetInnerHTML={{ __html: creator }}
-//           />
-//         ) : null
-//       }
-//       {
-//         parentProps.showDate ? (
-//           <p
-//             sx={sx.lineStyle}
-//             dangerouslySetInnerHTML={{ __html: dates }}
-//           />
-//         ) : null
-//       }
-//       {parentProps.showSummary ? <div>{typy(iiifManifest, `summary[${lang}][0]`).safeString}</div> : null}
-//       {parentProps.children ? parentProps.children : null}
-//     </React.Fragment>
-//   )
-// }
+    if (options.includes(label)) {
+      return metaValue.concat(row.value.join('<br/>'))
+    }
+
+    return metaValue
+  }, [])
+}
+
+export const figureOutChildren = (parentProps, item) => {
+  const creator = findMetadata(item, ['creator'])
+  const dates = findMetadata(item, ['date', 'dates'])
+  return (
+    <React.Fragment>
+      {
+        parentProps.showCreator ? (
+          <p
+            sx={sx.lineStyle}
+            dangerouslySetInnerHTML={{ __html: creator }}
+          />
+        ) : null
+      }
+      {
+        parentProps.showDate ? (
+          <p
+            sx={sx.lineStyle}
+            dangerouslySetInnerHTML={{ __html: dates }}
+          />
+        ) : null
+      }
+      {parentProps.showSummary ? <div>{typy(item, 'description').safeString}</div> : null}
+      {parentProps.children ? parentProps.children : null}
+    </React.Fragment>
+  )
+}
 
 const findItem = (manifestId, allMarbleItem) => {
   return allMarbleItem.nodes.find(item => {
