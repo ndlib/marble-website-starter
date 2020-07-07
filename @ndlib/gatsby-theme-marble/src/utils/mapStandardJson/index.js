@@ -1,6 +1,10 @@
 const imageMetadata = require('./imageMetadata')
 
 module.exports = (standardJson) => {
+  if (!standardJson.title) {
+    console.error('no title', standardJson.id)
+  }
+
   return {
     title: standardJson.title,
     description: mapFieldOrDefault(standardJson, 'description', ''),
@@ -51,21 +55,26 @@ const genericFind = (standardJson, id) => {
 }
 
 const findCreators = (standardJson) => {
-  if ('creators' in standardJson) {
-    return standardJson.creators.map((creator) => creator.display)
+  if ('creators' in standardJson && standardJson.creators) {
+    try {
+      return standardJson.creators.map((creator) => creator.display)
+    } catch (e) {
+      console.log('map=', standardJson.creators, typeof (standardJson.creators))
+      return []
+    }
   }
   return false
 }
 
 const findSubjects = (standardJson) => {
-  if ('subjects' in standardJson) {
+  if ('subjects' in standardJson && standardJson.subjects) {
     return standardJson.subjects.map((subject) => subject.term)
   }
   return false
 }
 
 const findPublisher = (standardJson) => {
-  if ('publisher' in standardJson) {
+  if ('publisher' in standardJson && standardJson.publisher) {
     return [standardJson.publisher.publisherName]
   }
   return false

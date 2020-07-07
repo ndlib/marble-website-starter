@@ -200,53 +200,45 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, options) => {
-  const { createNode } = actions
+  const { createNode, createParentChildLink } = actions
 
-  // function to normalize node
-  const normalizeNode = ({ newId, type, ndJson }) => {
-    const mappedFields = mapStandardJson(ndJson)
-    return {
+  const crawlStandardJson = (standardJson, parent) => {
+    if (standardJson.level.toLowerCase() === 'file') {
+      return
+    }
+
+    const mappedFields = mapStandardJson(standardJson)
+
+    const normalizedTypeNode = {
       ...mappedFields,
-      id: createNodeId(newId),
-      marbleId: newId,
-      slug: `item/${newId}`,
+      id: createNodeId(standardJson.id),
+      marbleId: standardJson.id,
+      slug: `item/${standardJson.id}`,
       internal: {
-        type: type,
+        type: 'MarbleItem',
       },
     }
-  }
-  if (node.internal.type === 'NdJson') {
-    if (node.level.toLowerCase() === 'collection') {
-      // create parent collection
-      const normalizedTypeNode = normalizeNode({
-        newId: node.id,
-        type: 'MarbleItem',
-        ndJson: node,
-      })
-      normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
-      createNode(normalizedTypeNode)
 
-      // create sub items
-      node.items.forEach(item => {
-        const newId = `${item.collectionId}/${item.id}`
-        const normalizedTypeNode = normalizeNode({
-          newId: newId,
-          type: 'MarbleItem',
-          ndJson: item,
-        })
-
-        normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
-        createNode(normalizedTypeNode)
-      })
-    } else {
-      const normalizedTypeNode = normalizeNode({
-        newId: node.id,
-        type: 'MarbleItem',
-        ndJson: node,
-      })
-      normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
-      createNode(normalizedTypeNode)
+    if (parent) {
+      // call create link
+      normalizedTypeNode.parent = parent.id
+      createParentChildLink({ parent: parent, child: normalizedTypeNode })
     }
+
+    normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
+    createNode(normalizedTypeNode)
+
+    if (standardJson.items) {
+      standardJson.items.forEach(item => {
+        // if (standardJson.level.toLowerCase() === 'collection' || standardJson.level.toLowerCase() === 'manifest') {
+        crawlStandardJson(item, normalizedTypeNode)
+        // }
+      })
+    }
+  }
+
+  if (node.internal.type === 'NdJson') {
+    crawlStandardJson(node)
   }
 }
 
