@@ -6,13 +6,11 @@ import Card from 'components/Shared/Card'
 
 describe('ManifestCard', () => {
   const sq = {
-    allIiifJson: {
+    allMarbleItem: {
       nodes: [
         {
-          id: 'someID',
-          label: {
-            none: ['label'],
-          },
+          iiifUri: 'someID',
+          title: 'label',
           metadata: [
           ],
           slug: 'slug-1',
@@ -21,7 +19,7 @@ describe('ManifestCard', () => {
     },
   }
 
-  test.skip('found', () => {
+  test('found', () => {
     console.error = jest.fn()
     useStaticQuery.mockImplementationOnce(() => {
       return sq
@@ -32,7 +30,7 @@ describe('ManifestCard', () => {
     expect(wrapper.find(Card).props().target).toEqual('/slug-1')
   })
 
-  test.skip('not found', () => {
+  test('not found', () => {
     console.error = jest.fn()
     console.warn = jest.fn()
     useStaticQuery.mockImplementationOnce(() => {
@@ -45,52 +43,40 @@ describe('ManifestCard', () => {
 })
 
 describe('figureOutChildren', () => {
-  const iiifManifest = {
+  const item = {
     id: 'fancyId',
-    summary: {
-      en: [
-        'In 1814 we took a little trip,',
-        'Down the old Kentucky Valley and the mighty Mississip.',
-        'We took a little bacon and we took a little beans,',
-        'To fight the bloody British in the town of New Oreleans.',
-      ],
-    },
+    description: 'In 1814 we took a little trip,',
+
     metadata: [
       {
-        label: {
-          en: ['creator'],
-        },
-        value: {
-          en: ['Johnny Horton', 'Andrew Jackson'],
-        },
+        label: 'creator',
+        value: ['Johnny Horton', 'Andrew Jackson'],
       },
       {
-        label: {
-          en: ['date'],
-        },
-        value: {
-          en: ['1814'],
-        },
+        label: 'date',
+        value: ['1814'],
       },
     ],
   }
-  test.skip('children no additional', () => {
+  test('children no additional', () => {
     const props = {
+      showCreator: false,
+      showDate: false,
       children: <div className='child'>children are loud</div>,
     }
-    const actual = figureOutChildren(props, iiifManifest, 'en')
+    const actual = figureOutChildren(props, item)
     const wrapper = mount(actual)
     expect(wrapper.find('.child').text()).toEqual('children are loud')
   })
 
-  test.skip('children + additional', () => {
+  test('children + additional', () => {
     const props = {
       showCreator: true,
       showDate: true,
       showSummary: false,
       children: <div className='child'>A song about an alligator.</div>,
     }
-    const actual = figureOutChildren(props, iiifManifest, 'en')
+    const actual = figureOutChildren(props, item)
     const wrapper = mount(actual)
     expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
@@ -100,13 +86,13 @@ describe('figureOutChildren', () => {
     expect(wrapper.find('.child').text()).toEqual('A song about an alligator.')
   })
 
-  test.skip('no children', () => {
+  test('no children', () => {
     const props = {
       showCreator: true,
       showDate: true,
       showSummary: true,
     }
-    const actual = figureOutChildren(props, iiifManifest, 'en')
+    const actual = figureOutChildren(props, item)
     const wrapper = mount(actual)
     expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
