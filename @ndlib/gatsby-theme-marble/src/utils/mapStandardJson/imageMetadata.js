@@ -2,10 +2,12 @@ const path = require('path')
 
 const buildImageFields = (standardJson) => {
   // This will need to search for the first child (or grandchild) that has a valid image
+  const iiifUrl = new URL(standardJson.iiifImageUri)
+
   return {
-    default: path.join(standardJson.iiifImageUri, 'full/full/0/default.jpg'),
+    default: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/full/0/default.jpg'),
     service: standardJson.iiifImageUri,
-    thumbnail: path.join(standardJson.iiifImageUri, 'full/400,/0/default.jpg'),
+    thumbnail: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/400,/0/default.jpg'),
     itemId: '',
     coverImage: '',
     order: '',
