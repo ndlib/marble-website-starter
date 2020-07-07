@@ -1,11 +1,12 @@
 /** @jsx jsx */
-import { Pagination } from 'searchkit'
+import { Pagination, HitsStats } from 'searchkit'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
 export const Pager = () => {
   return (
     <div sx={sx.wrapper}>
+      <HitsStats />
       <Pagination
         showNumbers
       />
