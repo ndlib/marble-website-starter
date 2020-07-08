@@ -5,6 +5,9 @@ module.exports = ({
   useLogin = false,
   useUV = false,
 }) => ({
+  mapping: {
+    'MarbleIiifImage.collectionId': 'MarbleItem.id',
+  },
   plugins: [
     {
       resolve: 'gatsby-plugin-root-import',

@@ -1,10 +1,5 @@
-const imageMetadata = require('./imageMetadata')
 
 module.exports = (standardJson) => {
-  if (!standardJson.title) {
-    console.error('no title', standardJson.id)
-  }
-
   return {
     title: standardJson.title,
     description: mapFieldOrDefault(standardJson, 'description', ''),
@@ -12,10 +7,8 @@ module.exports = (standardJson) => {
     iiifUri: mapFieldOrDefault(standardJson, 'iiifUri', ''),
     copyrightRestricted: false,
     partiallyDigitized: mapFieldOrDefault(standardJson, 'partiallyDigitized', false),
-    //    image: buildImageFields(ndJson),
-    allImages: imageMetadata(standardJson),
+    sequence: standardJson.sequence,
     metadata: makeMetadataArray(standardJson),
-  //  seeAlso: buildSeeAlso(ndJson),
   }
 }
 

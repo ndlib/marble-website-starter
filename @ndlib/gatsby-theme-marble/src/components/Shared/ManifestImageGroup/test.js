@@ -18,7 +18,7 @@ describe('ManifestImageGroup', () => {
         default: 'http://image.default',
         thumbnail: 'http://image.thumbnail',
       },
-      allImages: [
+      childrenMarbleIiifImage: [
         { service: 'http://image.place' },
       ],
     }

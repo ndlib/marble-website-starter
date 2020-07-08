@@ -31,7 +31,7 @@ export const AlternateImage = ({ marbleItem, index, max, length, viewer, locatio
           <Image
             marbleItem={marbleItem}
             index={index}
-            service={marbleItem.allImages[index].service}
+            service={marbleItem.childrenMarbleIiifImage[index].service}
             region='square'
             size='125,'
             alt={`Alternate View ${index}`}
@@ -45,7 +45,7 @@ export const AlternateImage = ({ marbleItem, index, max, length, viewer, locatio
 
 AlternateImage.propTypes = {
   marbleItem: PropTypes.shape({
-    allImages: PropTypes.array,
+    childrenMarbleIiifImage: PropTypes.array,
   }).isRequired,
   index: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,

@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 const mapStandardJson = require(path.join(__dirname, 'src/utils/mapStandardJson'))
+const imageMetadata = require(path.join(__dirname, 'src/utils/mapStandardJson/imageMetadata'))
+
 // const crypto = require('crypto')
 // const { attachFields } = require('gatsby-plugin-node-fields')
 // const merge = require('lodash.merge')
@@ -28,6 +30,17 @@ exports.sourceNodes = ({ actions }) => {
     default: String
     thumbnail: String
   }
+  type MarbleIiifImage implements Node @dontInfer {
+    id: String!
+    marbleId: String!
+    service: String
+    default: String
+    thumbnail: String
+    title: String
+    collection: MarbleItem
+    parent: MarbleItem
+    sequence: Int
+  }
   type MarbleItem implements Node @dontInfer {
     id: String!
     marbleId: String!
@@ -35,13 +48,13 @@ exports.sourceNodes = ({ actions }) => {
     display: String
     title: String!
     description: String
+    sequence: Int
     iiifUri: String
     partiallyDigitized: Boolean
     metadata: [metadataData]
-    image: imageData
-    allImages: [imageData]
     copyrightRestricted: Boolean
-    seeAlso: [String]
+    childrenMarbleItem: [MarbleItem]
+    childrenMarbleIiifImage: [MarbleItem]
   }
 
   # things expected to be there
@@ -202,8 +215,27 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, options) => {
   const { createNode, createParentChildLink } = actions
 
-  const crawlStandardJson = (standardJson, parent) => {
+  const crawlStandardJson = (standardJson, collection, parent) => {
+    const nodeId = createNodeId(standardJson.id)
+
     if (standardJson.level.toLowerCase() === 'file') {
+      const fileMetadata = imageMetadata(standardJson)
+      const normalizedTypeNode = {
+        ...fileMetadata,
+        id: nodeId,
+        marbleId: standardJson.id,
+        collection: collection.id,
+        data: 'data',
+        internal: {
+          type: 'MarbleIiifImage',
+        },
+      }
+
+      normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
+      createNode(normalizedTypeNode)
+      createParentChildLink({ parent: collection, child: normalizedTypeNode })
+      createParentChildLink({ parent: parent, child: normalizedTypeNode })
+
       return
     }
 
@@ -211,12 +243,16 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
 
     const normalizedTypeNode = {
       ...mappedFields,
-      id: createNodeId(standardJson.id),
+      id: nodeId,
       marbleId: standardJson.id,
       slug: `item/${standardJson.id}`,
       internal: {
         type: 'MarbleItem',
       },
+    }
+
+    if (!collection) {
+      collection = normalizedTypeNode
     }
 
     if (parent) {
@@ -231,7 +267,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
     if (standardJson.items) {
       standardJson.items.forEach(item => {
         // if (standardJson.level.toLowerCase() === 'collection' || standardJson.level.toLowerCase() === 'manifest') {
-        crawlStandardJson(item, normalizedTypeNode)
+        crawlStandardJson(item, collection, normalizedTypeNode)
         // }
       })
     }
@@ -240,16 +276,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
   if (node.internal.type === 'NdJson') {
     crawlStandardJson(node)
   }
-}
-
-const buildSeeAlso = (ndJson) => {
-  // if collection return child items
-  // if item in collection return siblings
-  // if top level item maybe run a search based on a set of fields
-  return [
-    'relatedId1',
-    'relatedId2',
-  ]
 }
 
 // exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
