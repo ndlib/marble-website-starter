@@ -25,10 +25,10 @@ export const AllPage = ({
     })
     .map(edge => {
       return (
-        <li key={edge.node.id}>
+        <li key={edge.node.slug}>
           <Styled.a
             as={Link}
-            to={`item/${edge.node.id}`}
+            to={`item/${edge.node.slug}`}
           >
             {edge.node.title}
           </Styled.a>
@@ -81,11 +81,12 @@ AllPage.propTypes = {
 export default AllPage
 export const query = graphql`
   query {
-    allNdJson {
+    allMarbleItem {
       edges {
         node {
-          id
+          slug
           title
+          display
         }
       }
     }
