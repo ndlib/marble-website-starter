@@ -65,7 +65,13 @@ const fetchUntilGood = async (url, myArray, badArray, count = 0) => {
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
   const rawIds = await loadManifestsFile()
-  const fetchResult = await fetchData(rawIds.manifest_ids)
+
+  let manifestIds = rawIds.manifest_ids
+  if (process.env.TRAVIS_RUN) {
+    manifestIds = rawIds.travis_manfest_ids
+  }
+
+  const fetchResult = await fetchData(manifestIds)
   if (!fetchResult) {
     reject(fetchResult)
   }
