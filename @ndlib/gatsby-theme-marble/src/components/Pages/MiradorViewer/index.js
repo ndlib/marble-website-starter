@@ -71,6 +71,19 @@ const MiradorViewerPage = ({ data, location }) => {
     },
 
   }
+  let body = null
+  try {
+    if (window) {
+      body = (
+        <MiradorWrapper
+          config={config}
+          plugins={plugins}
+        />
+      )
+    }
+  } catch {
+    console.warn('window does not exist in node')
+  }
   return (
     <Layout data={data} location={location}>
       <Seo
@@ -82,14 +95,7 @@ const MiradorViewerPage = ({ data, location }) => {
         noIndex
       />
       <div className='sizeWrapper' sx={sx.div}>
-        {
-          window ? (
-            <MiradorWrapper
-              config={config}
-              plugins={plugins}
-            />
-          ) : null
-        }
+        {body}
       </div>
     </Layout>
   )
