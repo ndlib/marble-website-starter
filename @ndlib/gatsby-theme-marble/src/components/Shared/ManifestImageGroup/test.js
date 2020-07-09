@@ -13,13 +13,11 @@ describe('ManifestImageGroup', () => {
     const marbleItem = {
       id: 'id',
       slug: 'slug',
-      image: {
-        service: 'http://image.place',
-        default: 'http://image.default',
-        thumbnail: 'http://image.thumbnail',
-      },
       childrenMarbleIiifImage: [
-        { service: 'http://image.place' },
+        {
+          service: 'http://image.place',
+          default: 'http://image.default',
+        },
       ],
     }
     const wrapper = mount(<ManifestImageGroup marbleItem={marbleItem} location={{}} />)

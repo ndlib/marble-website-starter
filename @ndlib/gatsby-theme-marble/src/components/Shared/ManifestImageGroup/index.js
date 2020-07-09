@@ -29,7 +29,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
       >
         <picture sx={sx.wrapper}>
           <img
-            src={typy(marbleItem, 'image.default').isString ? `${marbleItem.image.default}` : noImage}
+            src={typy(marbleItem, 'childrenMarbleIiifImage[0].default').safeString || noImage}
             alt={label}
             title={label}
             sx={sx.image}
@@ -48,7 +48,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
 
 ManifestImageGroup.propTypes = {
   marbleItem: PropTypes.shape({
-    image: PropTypes.shape({
+    childrenMarbleIiifImage: PropTypes.arrayOf({
       default: PropTypes.string,
     }),
   }),

@@ -34,7 +34,7 @@ const Card = ({
               <Image
                 src={image || null}
                 service={imageService || null}
-                region={imageRegion || null}
+                region={imageRegion || 'full'}
                 alt={label}
                 inCard
               />

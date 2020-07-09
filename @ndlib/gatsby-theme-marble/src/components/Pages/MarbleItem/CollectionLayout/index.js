@@ -1,30 +1,33 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ManifestDescription from 'components/Shared/ManifestDescription'
-
+import ManifestMetaData from 'components/Shared/ManifestMetaData'
+import ChildManifests from 'components/Shared/ChildManifests'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 
-const CollectionLayout = ({ ndJson }) => {
+const CollectionLayout = ({ location, marbleItem }) => {
   return (
     <>
-      <div><p>Collection Text previously from markdown</p></div>
       <MultiColumn columns='5'>
         <Column colSpan='2'>
-          <ActionButtonGroup ndJson={ndJson} />
-          <ManifestDescription ndJson={ndJson} />
-          <div>ManifestMetaData</div>
-          <PartiallyDigitized ndJson={ndJson} />
+          <ActionButtonGroup marbleItem={marbleItem} />
+          <ManifestDescription marbleItem={marbleItem} />
+          <ManifestMetaData marbleItem={marbleItem} />
+          <PartiallyDigitized marbleItem={marbleItem} />
         </Column>
         <Column colSpan='3'>
-          <div>ChildManifests</div>
-
+          <ChildManifests marbleItem={marbleItem} />
         </Column>
       </MultiColumn>
-
     </>
   )
 }
 
+CollectionLayout.propTypes = {
+  marbleItem: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+}
 export default CollectionLayout
