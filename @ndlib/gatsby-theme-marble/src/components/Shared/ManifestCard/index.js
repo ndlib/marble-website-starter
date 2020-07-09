@@ -47,7 +47,7 @@ export const ManifestCard = (props) => {
       <Card
         label={item.title}
         target={`/${item.slug}`}
-        imageService={typy(item, 'childrenMarbleIiifImage[0]service').safeString}
+        imageService={typy(item, 'childrenMarbleIiifImage[0].service').safeString}
         {...props}
       >
         {children}

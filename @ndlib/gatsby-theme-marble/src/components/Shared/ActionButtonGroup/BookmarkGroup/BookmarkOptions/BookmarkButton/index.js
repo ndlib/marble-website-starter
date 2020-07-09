@@ -66,7 +66,7 @@ export default connect(
 )(BookmarkButton)
 
 export const addItem = (collection, marbleItem, func, loginReducer) => {
-  const image = typy(marbleItem, 'image.default').safeString
+  const image = typy(marbleItem, 'childrenMarbleIiifImage[0].default').safeString
   createData({
     loginReducer: loginReducer,
     contentType: 'item',

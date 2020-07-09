@@ -24,7 +24,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
 MetaDataField.propTypes = {
   metadata: PropTypes.shape({
     label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.array.isRequired,
   }).isRequired,
   skipHtml: PropTypes.bool,
 }

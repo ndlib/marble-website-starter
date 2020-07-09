@@ -8,7 +8,7 @@ import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import ChildManifests from 'components/Shared/ChildManifests'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 
-const CollectionLayout = ({ location, marbleItem }) => {
+const CollectionLayout = ({ marbleItem }) => {
   return (
     <>
       <MultiColumn columns='5'>
@@ -28,6 +28,5 @@ const CollectionLayout = ({ location, marbleItem }) => {
 
 CollectionLayout.propTypes = {
   marbleItem: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
 }
 export default CollectionLayout

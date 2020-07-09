@@ -1,12 +1,8 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import MetaDataList from 'components/Internal/MetaDataList'
-// import MetaDataField from 'components/Internal/MetaDataList/MetaDataField'
-// import CampusLocation from 'components/Internal/CampusLocation'
-import typy from 'typy'
 
 const ManifestMetaData = ({ marbleItem, skipHtml }) => {
-  console.log(marbleItem.metadata)
   if (!marbleItem) {
     return null
   }
@@ -17,11 +13,6 @@ const ManifestMetaData = ({ marbleItem, skipHtml }) => {
         metadata={marbleItem.metadata}
         skipHtml={skipHtml}
       />
-      {
-        // Campus Location
-        // Required Statement
-        // Copyright Status
-      }
     </>
   )
 }
