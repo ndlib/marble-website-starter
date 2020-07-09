@@ -226,7 +226,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
         id: nodeId,
         marbleId: standardJson.id,
         collection: collection.id,
-        data: 'data',
         internal: {
           type: 'MarbleIiifImage',
         },
@@ -267,9 +266,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
 
     if (standardJson.items) {
       standardJson.items.forEach(item => {
-        // if (standardJson.level.toLowerCase() === 'collection' || standardJson.level.toLowerCase() === 'manifest') {
         crawlStandardJson(item, collection, normalizedTypeNode)
-        // }
       })
     }
   }
