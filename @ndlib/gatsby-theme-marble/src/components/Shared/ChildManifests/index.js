@@ -5,37 +5,36 @@ import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import ManifestCard from '../ManifestCard'
 import getLanguage from 'utils/getLanguage'
 
-export const ChildManifests = ({ iiifManifest, displayReducer }) => {
-  if (!iiifManifest || !typy(iiifManifest, 'items').isArray) {
+export const ChildManifests = ({ marbleItem, displayReducer }) => {
+  if (!marbleItem || !typy(marbleItem, 'childrenMarbleItem').isArray) {
     return null
   }
   const lang = getLanguage()
   return (
-    <React.Fragment>
+    <>
       <h2 className='accessibilityOnly'>Related Items</h2>
       <DisplayViewToggle>
         {
-          typy(iiifManifest, 'items').safeArray.map(manifest => {
+          typy(marbleItem, 'childrenMarbleItem').safeArray.map(manifest => {
             if (!manifest) {
               return null
             }
             return (
               <ManifestCard
-                key={manifest.id}
-                iiifManifest={manifest}
-              >
-                <div>{typy(manifest, `summary[${lang}][0]`).safeString}</div>
-              </ManifestCard>
+                key={manifest.iiifUri}
+                iiifManifest={manifest.iiifUri}
+                showSummary
+              />
             )
           })
         }
       </DisplayViewToggle>
-    </React.Fragment>
+    </>
   )
 }
 
 ChildManifests.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
   displayReducer: PropTypes.object,
 }
 

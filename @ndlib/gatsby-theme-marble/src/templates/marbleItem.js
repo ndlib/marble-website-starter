@@ -43,6 +43,9 @@ export const query = graphql`
         thumbnail
         sequence
       }
+      childrenMarbleItem {
+        iiifUri
+      }
       copyrightRestricted
     }
   }

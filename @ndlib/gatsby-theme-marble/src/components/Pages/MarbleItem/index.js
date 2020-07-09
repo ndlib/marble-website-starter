@@ -18,10 +18,19 @@ const MarbleItem = ({ data, location }) => {
         location={location}
       />
       <BaseStyles>
-        <ItemLayout
-          location={location}
-          marbleItem={marbleItem}
-        />
+        {
+          marbleItem.display === 'collection' ? (
+            <CollectionLayout
+              location={location}
+              marbleItem={marbleItem}
+            />
+          ) : (
+            <ItemLayout
+              location={location}
+              marbleItem={marbleItem}
+            />
+          )
+        }
         <code><pre>{JSON.stringify(data, null, 2)}</pre></code>
         <div />
         <code><pre>{JSON.stringify(location, null, 2)}</pre></code>
