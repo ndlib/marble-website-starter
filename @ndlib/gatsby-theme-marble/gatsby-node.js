@@ -48,13 +48,14 @@ exports.sourceNodes = ({ actions }) => {
     display: String
     title: String!
     description: String
+    parent: MarbleItem
     sequence: Int
     iiifUri: String
     partiallyDigitized: Boolean
     metadata: [metadataData]
     copyrightRestricted: Boolean
     childrenMarbleItem: [MarbleItem]
-    childrenMarbleIiifImage: [MarbleItem]
+    childrenMarbleIiifImage: [MarbleIiifImage]
   }
 
   # things expected to be there
