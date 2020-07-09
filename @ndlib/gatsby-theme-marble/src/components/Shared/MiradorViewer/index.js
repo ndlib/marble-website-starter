@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import style from './style.module.css'
+import Loading from 'components/Internal/Loading'
+
 const MiradorViewer = ({ iiifManifest, height, width }) => {
   const [viewerBlocked, toggleBlocking] = useState(true)
+  const [loading, setLoading] = useState(true)
   const viewerDimensions = {
     height: height,
     width: width,
   }
   return (
     <div className={style.viewerWrapper}>
+      {loading ? (
+        <div id='Loader'>LOADING<Loading /></div>) : null}
       <iframe
         allowFullScreen
         id='miradorViewer'
@@ -18,6 +23,7 @@ const MiradorViewer = ({ iiifManifest, height, width }) => {
         scrolling='no'
         style={viewerDimensions}
         src={`/${iiifManifest.slug}/mirador?title=false&thumbnails=true&sidebar=false&fullscreen=false`}
+        onLoad={setLoading(false)}
       />
       <div
         className={viewerBlocked ? style.blocking : style.notBlocking}
@@ -37,6 +43,9 @@ const MiradorViewer = ({ iiifManifest, height, width }) => {
     </div>
   )
 }
+
+}
+
 MiradorViewer.propTypes = {
   iiifManifest: PropTypes.object.isRequired,
   height: PropTypes.string,
