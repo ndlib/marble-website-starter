@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { BaseStyles, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
