@@ -36,6 +36,26 @@ describe('mapStandardJsonMetadata', () => {
     expect(result.display).toEqual('collection')
   })
 
+  describe('copyrightRestricted', () => {
+    test('true if the standard json says it is copyright', () => {
+      defaultData.copyrightStatus = 'copyright'
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.copyrightRestricted).toEqual(true)
+    })
+
+    test('true if the standard json says it is Copyright', () => {
+      defaultData.copyrightStatus = 'Copyright'
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.copyrightRestricted).toEqual(true)
+    })
+
+    test('false if the standard json says it is not copyright', () => {
+      defaultData.copyrightStatus = 'not copyright'
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.copyrightRestricted).toEqual(false)
+    })
+  })
+
   describe('iiifUrl', () => {
     test('maps blank when it does not exist', () => {
       const result = mapStandardJsonMetadata(defaultData)
