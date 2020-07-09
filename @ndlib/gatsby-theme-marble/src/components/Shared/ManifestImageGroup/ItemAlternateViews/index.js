@@ -8,7 +8,7 @@ import AlternateImage from './AlternateImage'
 export const MAX_IMAGES = 5
 
 const ItemAlternateViews = ({ marbleItem, viewer, location }) => {
-  const canvases = typy(marbleItem, 'allImages').safeArray
+  const canvases = typy(marbleItem, 'childrenMarbleIiifImage').safeArray
   if (canvases.length > 1) {
     return (
       <div>

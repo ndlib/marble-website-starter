@@ -133,4 +133,25 @@ describe('mapStandardJsonMetadata', () => {
       expect(result.metadata).toEqual(test)
     })
   })
+
+  describe('publsiher', () => {
+    test('sets the publisher', () => {
+      defaultData.publisher = {
+        publisherName: 'Bob',
+        publisherLocation: 'Somewhere',
+      }
+      defaultData.sourceSystem = 'aleph'
+      const test = [
+        {
+          label: 'Publisher',
+          type: 'list',
+          value:  [
+            'Bob',
+          ],
+        },
+      ]
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.metadata).toEqual(test)
+    })
+  })
 })

@@ -34,18 +34,16 @@ export const query = graphql`
         value
         type
       }
+      sequence
+      childrenMarbleIiifImage {
+        id
+        default
+        title
+        service
+        thumbnail
+        sequence
+      }
       copyrightRestricted
-      image {
-        default
-        service
-        thumbnail
-      }
-      allImages {
-        default
-        service
-        thumbnail
-      }
-      seeAlso
     }
   }
 `

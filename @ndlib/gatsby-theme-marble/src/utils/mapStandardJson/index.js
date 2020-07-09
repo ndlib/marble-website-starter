@@ -1,4 +1,3 @@
-const imageMetadata = require('./imageMetadata')
 
 module.exports = (standardJson) => {
   return {
@@ -8,10 +7,8 @@ module.exports = (standardJson) => {
     iiifUri: mapFieldOrDefault(standardJson, 'iiifUri', ''),
     copyrightRestricted: false,
     partiallyDigitized: mapFieldOrDefault(standardJson, 'partiallyDigitized', false),
-    //    image: buildImageFields(ndJson),
-    allImages: imageMetadata(standardJson),
+    sequence: standardJson.sequence,
     metadata: makeMetadataArray(standardJson),
-  //  seeAlso: buildSeeAlso(ndJson),
   }
 }
 
@@ -51,21 +48,26 @@ const genericFind = (standardJson, id) => {
 }
 
 const findCreators = (standardJson) => {
-  if ('creators' in standardJson) {
-    return standardJson.creators.map((creator) => creator.display)
+  if ('creators' in standardJson && standardJson.creators) {
+    try {
+      return standardJson.creators.map((creator) => creator.display)
+    } catch (e) {
+      console.log('map=', standardJson.creators, typeof (standardJson.creators))
+      return []
+    }
   }
   return false
 }
 
 const findSubjects = (standardJson) => {
-  if ('subjects' in standardJson) {
+  if ('subjects' in standardJson && standardJson.subjects) {
     return standardJson.subjects.map((subject) => subject.term)
   }
   return false
 }
 
 const findPublisher = (standardJson) => {
-  if ('publisher' in standardJson) {
+  if ('publisher' in standardJson && standardJson.publisher) {
     return [standardJson.publisher.publisherName]
   }
   return false

@@ -18,7 +18,7 @@ describe('ItemAlternateViews', () => {
   test('some canvases', () => {
     const marbleItem = {
       id: 'a',
-      allImages: [
+      childrenMarbleIiifImage: [
         { service: '/a' },
         { servicei: '/b' },
         { service: '/c' },

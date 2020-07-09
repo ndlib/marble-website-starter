@@ -8,7 +8,7 @@ import AlternateOverlay from './AlternateOverlay'
 const marbleItem = {
   id: 'id',
   iiifUri: 'http://iiif.url',
-  allImages: [
+  childrenMarbleIiifImage: [
     { service: 'http://image.here/1' },
     { service: 'http://image.here/2' },
   ],
