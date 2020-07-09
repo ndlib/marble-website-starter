@@ -31,7 +31,6 @@ const MarbleItem = ({ data, location }) => {
           />
         )
       }
-
     </Layout>
   )
 }
