@@ -16,7 +16,5 @@ const DownloadCitation = ({ marbleItem }) => {
 export default DownloadCitation
 
 DownloadCitation.propTypes = {
-  marbleItem: {
-    citation: PropTypes.string,
-  },
+  marbleItem: PropTypes.object.isRequired,
 }
