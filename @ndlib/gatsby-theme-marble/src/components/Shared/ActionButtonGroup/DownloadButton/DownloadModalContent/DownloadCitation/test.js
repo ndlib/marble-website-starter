@@ -22,6 +22,6 @@ describe('DownloadCitation', () => {
       return manifest
     })
     const wrapper = shallow(<DownloadCitation marbleItem={manifest} />)
-    expect(wrapper.find('div').text()).toEqual('The Citation')
+    expect(wrapper.find('.citation').text()).toEqual('The Citation')
   })
 })
