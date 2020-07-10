@@ -18,6 +18,9 @@ describe('DownloadCitation', () => {
     const manifest = {
       citation: 'The Citation',
     }
+    useStaticQuery.mockImplementation(() => {
+      return manifest
+    })
     const wrapper = shallow(<DownloadCitation marbleItem={manifest} />)
     expect(wrapper.find('div').text()).toEqual('The Citation')
   })
