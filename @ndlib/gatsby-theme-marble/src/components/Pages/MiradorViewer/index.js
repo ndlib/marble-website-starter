@@ -1,18 +1,18 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
+import { miradorImageToolsPlugin } from 'mirador-image-tools/es/'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import queryString from 'query-string'
 import Layout from 'components/Layout'
 import MiradorWrapper from './MiradorWrapper'
 import Seo from 'components/Internal/Seo'
-import getLanguage from 'utils/getLanguage'
 import sx from './sx'
 
+// eslint-disable-next-line complexity
 const MiradorViewerPage = ({ data, location }) => {
-  const lang = getLanguage()
-  const manifestId = typy(data, 'remarkMarblePage.frontmatter.iiifJson.id').safeString
-  const manifestTitle = typy(data, `remarkMarblePage.frontmatter.iiifJson.label[${lang}][0]`).safeString
+  const manifestId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
+  const manifestTitle = typy(data, 'marbleItem.title').safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
   const sideBarOpenByDefault = qs.sidebar === 'true'
@@ -22,6 +22,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const viewerView = qs.view || 'default'
   const context = useThemeUI()
   const themeColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
+  const plugins = [...miradorImageToolsPlugin]
   const config = {
     id: 'test',
     themes: {
@@ -56,15 +57,32 @@ const MiradorViewerPage = ({ data, location }) => {
         maximized: false,
         thumbnailNavigationPosition: thumbnailNavigationPosition,
         view: viewerView,
+        imageToolsEnabled: true,
+        imageToolsOpen: true,
       },
 
     ],
     workspace: {
       showZoomControls: true,
+      type: 'single',
     },
     workspaceControlPanel: {
       enabled: false,
     },
+
+  }
+  let body = null
+  try {
+    if (window) {
+      body = (
+        <MiradorWrapper
+          config={config}
+          plugins={plugins}
+        />
+      )
+    }
+  } catch {
+    console.warn('window does not exist in node')
   }
   return (
     <Layout data={data} location={location}>
@@ -77,10 +95,7 @@ const MiradorViewerPage = ({ data, location }) => {
         noIndex
       />
       <div className='sizeWrapper' sx={sx.div}>
-        <MiradorWrapper
-          config={config}
-          plugins={[]}
-        />
+        {body}
       </div>
     </Layout>
   )

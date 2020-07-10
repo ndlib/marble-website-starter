@@ -4,20 +4,22 @@ import ViewerLink from './'
 
 describe('ViewerLink', () => {
   console.error = jest.fn()
-  const iiifManifest = {
-    id: 'someId',
-    slug: 'someSlug',
+  const marbleItem = {
+    slug: '/item/someId',
+    iiifUri: 'http://iiif.thing',
   }
   const className = 'myClass'
   const children = <div className='child' />
+
   test('mirador and 0 index', () => {
-    const wrapper = mount(<ViewerLink iiifManifest={iiifManifest} className={className} location={{}}>{children}</ViewerLink>)
-    expect(wrapper.find('a').props().href).toEqual('/someSlug/mirador?cv=0&view=default')
+    const wrapper = mount(<ViewerLink marbleItem={marbleItem} className={className} location={{}}>{children}</ViewerLink>)
+    expect(wrapper.find('a').props().href).toEqual('/item/someId/mirador?cv=0&view=default')
     expect(wrapper.find('a').props().rel).toEqual('alternate')
   })
+
   test('universal viewer and nonzero index', () => {
-    const wrapper = mount(<ViewerLink iiifManifest={iiifManifest} className={className} location={{}} index={1} viewer='uv'>{children}</ViewerLink>)
-    expect(wrapper.find('a').props().href).toEqual('/viewer?manifest=someId&cv=1')
+    const wrapper = mount(<ViewerLink marbleItem={marbleItem} className={className} location={{}} index={1} viewer='uv'>{children}</ViewerLink>)
+    expect(wrapper.find('a').props().href).toEqual('/viewer?manifest=http%3A%2F%2Fiiif.thing&cv=1')
     expect(wrapper.find('a').props().rel).toEqual('nofollow')
   })
 })

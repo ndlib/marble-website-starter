@@ -9,18 +9,14 @@ describe('MetaDataField', () => {
   test('empty metadata', () => {
     const metadata = {}
     const wrapper = shallow(<MetaDataField metadata={metadata} />)
-    expect(wrapper.find(MetaDataLabel).props().labels).toEqual([])
-    expect(wrapper.find(MetaDataValue).props().values).toEqual([])
+    expect(wrapper.find(MetaDataLabel).exists()).toBeFalsy()
+    expect(wrapper.find(MetaDataValue).exists()).toBeFalsy()
   })
 
   test('metadata', () => {
     const metadata = {
-      label: {
-        none: ['test label'],
-      },
-      value: {
-        none: ['test value'],
-      },
+      label: 'test label',
+      value: ['test value'],
     }
     const wrapper = shallow(<MetaDataField metadata={metadata} />)
     expect(wrapper.find(MetaDataLabel).props().labels).toEqual(['test label'])

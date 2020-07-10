@@ -10,32 +10,29 @@ console.error = jest.fn()
 
 describe('ManifestImageGroup', () => {
   test('image', () => {
-    const manifest = {
+    const marbleItem = {
       id: 'id',
       slug: 'slug',
-      items: [{
-        items: [{
-          items: [{
-            body: {
-              id: '/image.png',
-            },
-          }],
-        }],
-      }],
+      childrenMarbleIiifImage: [
+        {
+          service: 'http://image.place',
+          default: 'http://image.default',
+        },
+      ],
     }
-    const wrapper = mount(<ManifestImageGroup iiifManifest={manifest} location={{}} />)
+    const wrapper = mount(<ManifestImageGroup marbleItem={marbleItem} location={{}} />)
 
     expect(wrapper.find('section').exists()).toBeTruthy()
     expect(wrapper.find(ViewerLink).exists()).toBeTruthy()
     expect(wrapper.find(ExpandIcon).exists()).toBeTruthy()
     expect(wrapper.findWhere(img => {
-      return img.prop('src') === '/image.png'
+      return img.prop('src') === 'http://image.default'
     }).exists()).toBeTruthy()
     expect(wrapper.find(ItemAlternateViews).exists()).toBeTruthy()
   })
 
   test('manifest, no image', () => {
-    const wrapper = mount(<ManifestImageGroup iiifManifest={{ id: 'id' }} location={{}} />)
+    const wrapper = mount(<ManifestImageGroup marbleItem={{ id: 'id' }} location={{}} />)
     expect(wrapper.find('section').exists()).toBeTruthy()
     expect(wrapper.find(ViewerLink).exists()).toBeTruthy()
     expect(wrapper.find(ExpandIcon).exists()).toBeTruthy()

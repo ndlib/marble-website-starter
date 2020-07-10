@@ -12,8 +12,8 @@ console.error = jest.fn()
 
 describe('DownloadImage', () => {
   test('no images', () => {
-    const iiifManifest = {}
-    const wrapper = mount(<DownloadImage iiifManifest={iiifManifest} />)
+    const marbleItem = {}
+    const wrapper = mount(<DownloadImage marbleItem={marbleItem} />)
     expect(wrapper.find(ImagePreview).exists()).toBeFalsy()
     expect(wrapper.find(ImagePager).exists()).toBeFalsy()
     expect(wrapper.find(ImageSettings).exists()).toBeFalsy()
@@ -21,20 +21,13 @@ describe('DownloadImage', () => {
 
   test('images', () => {
     const downloadSpy = jest.spyOn(download, 'download')
-    const iiifManifest = {
-      type: 'manifest',
-      items: [{
-        items: [{
-          items: [{
-            body: {
-              id: 'image.image',
-            },
-          }],
-        }],
+    const marbleItem = {
+      childrenMarbleIiifImage: [{
+        service: 'http://image.place/1',
       }],
     }
-    const images = ['image.image']
-    const wrapper = mount(<DownloadImage iiifManifest={iiifManifest} />)
+    const images = marbleItem.childrenMarbleIiifImage
+    const wrapper = mount(<DownloadImage marbleItem={marbleItem} />)
     expect(wrapper.find(ImagePreview).props().images).toEqual(images)
     expect(wrapper.find(ImagePager).props().images).toEqual(images)
     expect(wrapper.find(ImageSettings).exists()).toBeTruthy()

@@ -10,20 +10,20 @@ import DownloadCitation from './DownloadCitation'
 import Copyright from './Copyright'
 import sx from './sx'
 
-const DownloadModalContent = ({ iiifManifest }) => {
+const DownloadModalContent = ({ marbleItem }) => {
   return (
     <React.Fragment>
       <MultiColumn columns='2'>
         <Column>
           <Styled.h2 sx={sx.header}>Image</Styled.h2>
-          <DownloadImage iiifManifest={iiifManifest} />
+          <DownloadImage marbleItem={marbleItem} />
         </Column>
         <Column>
           <Styled.h2 sx={sx.header}>Metadata</Styled.h2>
           <div sx={sx.metadata}>
-            <DownloadMetadata iiifManifest={iiifManifest} />
+            <DownloadMetadata marbleItem={marbleItem} />
           </div>
-          <DownloadCitation iiifManifest={iiifManifest} />
+          <DownloadCitation marbleItem={marbleItem} />
         </Column>
       </MultiColumn>
       <Copyright />
@@ -32,7 +32,7 @@ const DownloadModalContent = ({ iiifManifest }) => {
 }
 
 DownloadModalContent.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default DownloadModalContent

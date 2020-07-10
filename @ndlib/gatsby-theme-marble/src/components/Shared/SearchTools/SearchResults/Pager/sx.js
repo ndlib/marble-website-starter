@@ -6,6 +6,7 @@ module.exports = {
       lineHeight: '1.5rem',
       height: '2.5rem',
       verticalAlign: 'middle',
+      textAlign: 'center',
     },
     '& .sk-toggle__item': {
       backgroundColor: 'background',

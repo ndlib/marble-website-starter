@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const MetaDataLabel = ({ labels }) => {
   return (
-    <React.Fragment>
+    <>
       {
         labels.map(val => {
           return (
@@ -11,7 +11,7 @@ const MetaDataLabel = ({ labels }) => {
           )
         })
       }
-    </React.Fragment>
+    </>
   )
 }
 

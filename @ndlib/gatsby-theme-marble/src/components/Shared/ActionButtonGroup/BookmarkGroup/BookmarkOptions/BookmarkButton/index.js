@@ -13,7 +13,7 @@ import {
 } from 'utils/api'
 import sx from './sx'
 
-export const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
+export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
   const [item, setItem] = useState(null)
   useEffect(() => {
     const abortController = new AbortController()
@@ -23,7 +23,7 @@ export const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
       id: collection.uuid,
       successFunc: (data) => {
         const i = data.items.find(item => {
-          return item.manifest === iiifManifest.id
+          return item.manifest === marbleItem.iiifUri
         })
         setItem(i || '')
       },
@@ -34,12 +34,12 @@ export const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
     return () => {
       abortController.abort()
     }
-  }, [collection.uuid, iiifManifest.id, loginReducer])
+  }, [collection.uuid, marbleItem.iiifUri, loginReducer])
 
   return (
     <button
       onClick={() => {
-        item ? deleteItem(item, setItem, loginReducer) : addItem(collection, iiifManifest, setItem, loginReducer)
+        item ? deleteItem(item, setItem, loginReducer) : addItem(collection, marbleItem, setItem, loginReducer)
       }}
       sx={sx.button}
     >
@@ -52,7 +52,7 @@ export const BookmarkButton = ({ collection, iiifManifest, loginReducer }) => {
 }
 
 BookmarkButton.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
   collection: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }
@@ -65,17 +65,17 @@ export default connect(
   mapStateToProps,
 )(BookmarkButton)
 
-export const addItem = (collection, manifest, func, loginReducer) => {
-  const image = typy(manifest, 'thumbnail[0].id').safeString.replace('/250,/', '/500,/') || ''
+export const addItem = (collection, marbleItem, func, loginReducer) => {
+  const image = typy(marbleItem, 'childrenMarbleIiifImage[0].default').safeString
   createData({
     loginReducer: loginReducer,
     contentType: 'item',
     id: collection.uuid,
     body: {
-      title: typy(manifest, 'label[\'en\'][0]').safeString || '',
+      title: typy(marbleItem, 'title').safeString || '',
       image: image,
-      link: manifest.slug,
-      manifest: manifest.id,
+      link: marbleItem.slug,
+      manifest: marbleItem.iiifUri,
       annotation: null,
     },
     successFunc: (data) => {

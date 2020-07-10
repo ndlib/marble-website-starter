@@ -6,25 +6,25 @@ import AlternateImage from './AlternateImage'
 describe('ItemAlternateViews', () => {
   const location = {}
   test('no more canvases', () => {
-    const manifest = {
-      slug: '/slug',
+    const marbleItem = {
+      id: 'a',
     }
-    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} viewer='mirador' location={location} />)
+    const wrapper = shallow(<ItemAlternateViews marbleItem={marbleItem} viewer='mirador' location={location} />)
 
     expect(wrapper.find('div').exists()).toBeFalsy()
     expect(wrapper.find(AlternateImage).exists()).toBeFalsy()
   })
 
   test('some canvases', () => {
-    const manifest = {
-      slug: '/slug',
-      items: [
-        { id: 'a', slug: '/a' },
-        { id: 'b', slug: '/b' },
-        { id: 'c', slug: '/c' },
+    const marbleItem = {
+      id: 'a',
+      childrenMarbleIiifImage: [
+        { service: '/a' },
+        { servicei: '/b' },
+        { service: '/c' },
       ],
     }
-    const wrapper = shallow(<ItemAlternateViews iiifManifest={manifest} viewer='mirador' location={location} />)
+    const wrapper = shallow(<ItemAlternateViews marbleItem={marbleItem} viewer='mirador' location={location} />)
 
     expect(wrapper.find('div').exists()).toBeTruthy()
     expect(wrapper.find(AlternateImage).length).toEqual(2)

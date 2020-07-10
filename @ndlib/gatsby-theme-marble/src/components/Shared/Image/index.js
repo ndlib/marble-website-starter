@@ -24,8 +24,8 @@ const Image = ({
     <picture sx={sx.picture(inCard)}>
       <img
         src={imageSrc}
-        alt={alt || title}
-        title={title || alt}
+        alt={alt || ''}
+        title={title || null}
         sx={sx.image(inCard)}
       />
     </picture>

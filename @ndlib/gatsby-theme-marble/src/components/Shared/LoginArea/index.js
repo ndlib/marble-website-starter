@@ -22,7 +22,7 @@ export const LoginArea = ({ loginReducer }) => {
     <div>
       <form className={style.loginArea}>
         <div className={style.message}>
-          {t('text:loginPage:message')}
+          {t('text:loginPage.message')}
         </div>
         <OktaLogin />
       </form>

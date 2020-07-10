@@ -1,5 +1,5 @@
 const fs = require('fs')
-const path = require(`path`)
+const path = require('path')
 
 const directory = process.argv.slice(2)[0]
 
@@ -12,7 +12,7 @@ const getMDFile = (manifest) => {
 title: "${label}"
 slug: ${manifest.slug}
 iiifJson___NODE: ${manifest.id}
-layout: ${manifest['type'].toLowerCase() === 'collection' ? 'collection' : 'item'}
+layout: ${manifest.type.toLowerCase() === 'collection' ? 'collection' : 'item'}
 ---
 `
   return mdFile

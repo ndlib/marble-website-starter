@@ -2,15 +2,14 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import typy from 'typy'
 import { jsx } from 'theme-ui'
 import BookmarkGroup from './BookmarkGroup'
 import ShareButton from 'components/Internal/ShareButton'
 import PrintButton from 'components/Internal/PrintButton'
 import DownloadButton from './DownloadButton'
 
-const ActionButtonGroup = ({ iiifManifest }) => {
-  if (!iiifManifest) {
+const ActionButtonGroup = ({ marbleItem }) => {
+  if (!marbleItem) {
     return null
   }
   return (
@@ -18,18 +17,19 @@ const ActionButtonGroup = ({ iiifManifest }) => {
       <section sx={{
         display: 'flex',
         width: '100%',
-      }}>
-        <BookmarkGroup iiifManifest={iiifManifest} />
-        <ShareButton path={`${typy(iiifManifest, 'slug').safeString}`} />
+      }}
+      >
+        <BookmarkGroup marbleItem={marbleItem} />
+        <ShareButton path={marbleItem.slug} />
         <PrintButton />
-        <DownloadButton iiifManifest={iiifManifest} />
+        <DownloadButton marbleItem={marbleItem} />
       </section>
     </React.Fragment>
   )
 }
 
 ActionButtonGroup.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default ActionButtonGroup

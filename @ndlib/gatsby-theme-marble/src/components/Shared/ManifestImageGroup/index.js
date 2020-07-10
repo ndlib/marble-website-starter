@@ -6,13 +6,12 @@ import typy from 'typy'
 import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
-import getLanguage from 'utils/getLanguage'
 import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
-  if (!iiifManifest || !iiifManifest.id) {
+export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
+  if (!marbleItem) {
     return null
   }
   let viewerLabel = 'Mirador'
@@ -23,25 +22,23 @@ export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
   return (
     <section>
       <h2 className='accessibilityOnly'>Images</h2>
-
       <ViewerLink
-        iiifManifest={iiifManifest}
+        marbleItem={marbleItem}
         viewer={viewer}
         location={location}
       >
         <picture sx={sx.wrapper}>
           <img
-            src={typy(iiifManifest, 'items[0].items[0].items[0].body.id').safeString || noImage}
-            alt={typy(iiifManifest, `summary[${getLanguage()}][0]`).safeString}
+            src={typy(marbleItem, 'childrenMarbleIiifImage[0].default').safeString || noImage}
+            alt={label}
             title={label}
             sx={sx.image}
           />
           <ExpandIcon label={label} />
         </picture>
       </ViewerLink>
-
       <ItemAlternateViews
-        iiifManifest={iiifManifest}
+        marbleItem={marbleItem}
         location={location}
         viewer={viewer}
       />
@@ -50,10 +47,10 @@ export const ManifestImageGroup = ({ location, iiifManifest, viewer }) => {
 }
 
 ManifestImageGroup.propTypes = {
-  iiifManifest: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    summary: PropTypes.object,
-    slug: PropTypes.string.isRequired,
+  marbleItem: PropTypes.shape({
+    childrenMarbleIiifImage: PropTypes.arrayOf({
+      default: PropTypes.string,
+    }),
   }),
   location: PropTypes.object.isRequired,
   viewer: PropTypes.string,

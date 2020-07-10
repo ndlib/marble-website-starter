@@ -7,9 +7,9 @@ import AlternateImage from './AlternateImage'
 // tests if/when this number changes
 export const MAX_IMAGES = 5
 
-const ItemAlternateViews = ({ iiifManifest, viewer, location }) => {
-  const canvases = typy(iiifManifest, 'items').safeObject
-  if (Array.isArray(canvases)) {
+const ItemAlternateViews = ({ marbleItem, viewer, location }) => {
+  const canvases = typy(marbleItem, 'childrenMarbleIiifImage').safeArray
+  if (canvases.length > 1) {
     return (
       <div>
         {
@@ -17,7 +17,7 @@ const ItemAlternateViews = ({ iiifManifest, viewer, location }) => {
             return (
               <AlternateImage
                 key={index}
-                iiifManifest={iiifManifest}
+                marbleItem={marbleItem}
                 index={index + 1}
                 max={MAX_IMAGES}
                 length={canvases.length}
@@ -34,7 +34,7 @@ const ItemAlternateViews = ({ iiifManifest, viewer, location }) => {
 }
 
 ItemAlternateViews.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
   viewer: PropTypes.string,
   location: PropTypes.object.isRequired,
 }

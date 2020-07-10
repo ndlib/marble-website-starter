@@ -1,30 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import typy from 'typy'
-import getLanguage from 'utils/getLanguage'
 import style from './style.module.css'
-// import MarkdownHtmlContent from 'components/Internal/MarkdownLayoutRenderer/ComponentRenderer/MarkdownHtmlContent/'
 
-const ManifestDescription = ({ iiifManifest }) => {
-  const lang = getLanguage()
-  if (!typy(iiifManifest, `summary[${lang}]`).isArray) {
-    return null
+const ManifestDescription = ({ marbleItem }) => {
+  if (marbleItem && marbleItem.description) {
+    return (
+      <div className={style.descriptionBlock}>
+        <p>{marbleItem.description}</p>
+      </div>
+    )
   }
-  return (
-    <div className={style.descriptionBlock}>
-      {
-        iiifManifest.summary[lang].map((content, index) => {
-          return (<p key={index}>{content}</p>)
-        })
-      }
-    </div>
-  )
+  return null
 }
 
 ManifestDescription.propTypes = {
-  iiifManifest: PropTypes.shape({
+  marbleItem: PropTypes.shape({
     description: PropTypes.string,
-    summary: PropTypes.object,
   }),
 }
 

@@ -4,52 +4,25 @@ import {
   SelectedFilters,
   ResetFilters,
 } from 'searchkit'
-import style from './style.module.css'
+import { useTranslation } from 'react-i18next'
+import HeroBox from 'components/Shared/HeroBox'
+import banner from 'assets/images/banner.swirl.png'
 
 const SearchFilterBox = () => {
+  const { t } = useTranslation()
+  const fieldLabel = t('common:search.prompt')
   const fields = ['name', 'creator', 'allMetadata']
+
   return (
-    <div className={style.searchHead}>
+    <HeroBox backgroundImage={banner}>
       <SearchBox
         queryFields={fields}
-        queryBuilder={customQueryBuilder}
+        placeholder={fieldLabel}
       />
       <SelectedFilters />
       <ResetFilters />
-    </div>
+    </HeroBox>
   )
-}
-
-const customQueryBuilder = (query, options) => {
-  return {
-    bool : {
-      should : [
-        {
-          multi_match: {
-            query: query,
-            fields: [
-              'name^3',
-              'creator^2',
-              'allMetadata',
-            ],
-            slop: 5,
-            type: 'phrase',
-            boost: 4,
-          },
-        },
-        {
-          multi_match: {
-            query: query,
-            fields: [
-              'name^2',
-              'creator^1',
-              'allMetadata',
-            ],
-          },
-        },
-      ],
-    },
-  }
 }
 
 export default SearchFilterBox

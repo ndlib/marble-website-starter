@@ -2,30 +2,29 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import typy from 'typy'
 import ImagePreview from './ImagePreview'
 import ImagePager from './ImagePager'
 import ImageSettings from './ImageSettings'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { download } from 'utils/download'
 import {
-  copyrightCanDownload,
   imageUrl,
   imageName,
-  getImagesFromManifest,
 } from './utils'
 import sx from './sx'
 
-const DownloadImage = ({ iiifManifest }) => {
+const DownloadImage = ({ marbleItem }) => {
   const [images, setImages] = useState([])
   const [selected, setSelected] = useState(0)
   const [size, setSize] = useState('full')
   const [format, setFormat] = useState('jpg')
 
   useEffect(() => {
-    setImages(getImagesFromManifest(iiifManifest))
-  }, [iiifManifest])
+    setImages(typy(marbleItem, 'childrenMarbleIiifImage').safeArray)
+  }, [marbleItem])
 
-  if (images.length < 1 || !copyrightCanDownload(iiifManifest)) {
+  if (images.length < 1 || marbleItem.copyrightRestricted) {
     return (
       <div sx={sx.wrapper}>
         <p sx={sx.image}>Image Download Unavailable.</p>
@@ -57,19 +56,20 @@ const DownloadImage = ({ iiifManifest }) => {
           onClick={() => {
             download(
               imageUrl(images, selected, size, format),
-              imageName(iiifManifest, images, selected, format),
+              imageName(marbleItem, images, selected, format),
             )
           }}
           primary
           wide
-        >Download Image</MaterialButton>
+        >Download Image
+        </MaterialButton>
       </div>
     </React.Fragment>
   )
 }
 
 DownloadImage.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default DownloadImage

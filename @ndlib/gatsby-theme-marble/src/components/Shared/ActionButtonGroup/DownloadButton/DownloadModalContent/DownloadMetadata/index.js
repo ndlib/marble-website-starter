@@ -6,23 +6,24 @@ import AboutIIIF from './AboutIIIF'
 import MaterialButton from 'components/Internal/MaterialButton'
 import download from 'utils/download'
 
-const DownloadMetadata = ({ iiifManifest }) => {
+const DownloadMetadata = ({ marbleItem }) => {
   return (
     <React.Fragment>
       <AboutIIIF />
       <MaterialButton
         onClick={
-          () => download(`${iiifManifest.id}/`, `${iiifManifest.slug.replace('item/', '') || 'manifest'}.json`)
+          () => download(`${marbleItem.iiifUri}/`, `${marbleItem.marbleId || 'manifest'}.json`)
         }
         wide
         primary
-      >Download IIIF Manifest</MaterialButton>
+      >Download IIIF Manifest
+      </MaterialButton>
     </React.Fragment>
   )
 }
 
 DownloadMetadata.propTypes = {
-  iiifManifest: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object.isRequired,
 }
 
 export default DownloadMetadata
