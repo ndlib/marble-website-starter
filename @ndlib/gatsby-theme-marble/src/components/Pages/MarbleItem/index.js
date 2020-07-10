@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { BaseStyles, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
@@ -17,24 +17,20 @@ const MarbleItem = ({ data, location }) => {
         data={data}
         location={location}
       />
-      <BaseStyles>
-        {
-          marbleItem.display === 'collection' ? (
-            <CollectionLayout
-              location={location}
-              marbleItem={marbleItem}
-            />
-          ) : (
-            <ItemLayout
-              location={location}
-              marbleItem={marbleItem}
-            />
-          )
-        }
-        <code><pre>{JSON.stringify(data, null, 2)}</pre></code>
-        <div />
-        <code><pre>{JSON.stringify(location, null, 2)}</pre></code>
-      </BaseStyles>
+
+      {
+        marbleItem.display === 'collection' ? (
+          <CollectionLayout
+            location={location}
+            marbleItem={marbleItem}
+          />
+        ) : (
+          <ItemLayout
+            location={location}
+            marbleItem={marbleItem}
+          />
+        )
+      }
     </Layout>
   )
 }

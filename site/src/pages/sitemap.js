@@ -28,14 +28,14 @@ export const AllPage = ({
         <li key={edge.node.slug}>
           <Styled.a
             as={Link}
-            to={`item/${edge.node.slug}`}
+            to={`${edge.node.slug}`}
           >
             {edge.node.title}
           </Styled.a>
           <span>&nbsp;</span>
           {
             edge.node.display.toLowerCase() === 'manifest' ? (
-              <Link to={`item/${edge.node.slug}/mirador`}>
+              <Link to={`${edge.node.slug}/mirador`}>
                 <img
                   src={miradorIcon}
                   alt='Open in Mirador'

@@ -2,8 +2,8 @@ import React from 'react'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'
-import image2 from 'assets/images/BLOG-EarlyCatholicAmerica.jpg'
-import image3 from 'assets/images/cover-1.jpg'
+import image2 from 'assets/images/cover-1.jpg'
+import image3 from 'assets/images/BLOG-EarlyCatholicAmerica.jpg'
 
 const ExhibitsPage = () => {
   const exhibits = [
