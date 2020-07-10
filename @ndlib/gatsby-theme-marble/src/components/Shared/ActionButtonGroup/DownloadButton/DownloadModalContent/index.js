@@ -23,9 +23,7 @@ const DownloadModalContent = ({ marbleItem }) => {
           <div sx={sx.metadata}>
             <DownloadMetadata marbleItem={marbleItem} />
           </div>
-          {
-            //  <DownloadCitation marbleItem={marbleItem} />
-          }
+          <DownloadCitation marbleItem={marbleItem} />
         </Column>
       </MultiColumn>
       <Copyright />
