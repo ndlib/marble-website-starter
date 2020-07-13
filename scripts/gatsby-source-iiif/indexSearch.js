@@ -49,6 +49,10 @@ const determineProvider = (manifest) => {
     return 'University Archives'
   }
 
+  if (['hesb'].includes(manifest.repository.toLowerCase())) {
+    return 'General Collection, Hesburgh Libraries'
+  }
+
   return 'Rare Books and Special Collections'
 }
 
