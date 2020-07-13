@@ -123,6 +123,14 @@ describe('mapStandardJsonMetadata', () => {
       const result = mapStandardJsonMetadata(defaultData)
       expect(result.metadata).toEqual(test)
     })
+
+    test('does not return any metadata for date if date is set but empty', () => {
+      defaultData.createdDate = ''
+      const test = [
+      ]
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.metadata).toEqual(test)
+    })
   })
 
   describe('subjects', () => {
@@ -154,7 +162,7 @@ describe('mapStandardJsonMetadata', () => {
     })
   })
 
-  describe('publsiher', () => {
+  describe('publisher', () => {
     test('sets the publisher', () => {
       defaultData.publisher = {
         publisherName: 'Bob',
@@ -173,5 +181,97 @@ describe('mapStandardJsonMetadata', () => {
       const result = mapStandardJsonMetadata(defaultData)
       expect(result.metadata).toEqual(test)
     })
+  })
+
+  describe('providers', () => {
+    test('sets the provider for rare', () => {
+      defaultData.repository = 'rare'
+      const test = [
+        {
+          label: 'Campus Location',
+          type: 'list',
+          value:  [
+            'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
+          ],
+        },
+      ]
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.metadata).toEqual(test)
+    })
+
+    test('sets the provider for rare when it is capitalized', () => {
+      defaultData.repository = 'RARE'
+      const test = [
+        {
+          label: 'Campus Location',
+          type: 'list',
+          value:  [
+            'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
+          ],
+        },
+      ]
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.metadata).toEqual(test)
+    })
+
+    test('sets the provider for curate', () => {
+      defaultData.repository = 'curate'
+      const test = [
+        {
+          label: 'Campus Location',
+          type: 'list',
+          value:  [
+            'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
+          ],
+        },
+      ]
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.metadata).toEqual(test)
+    })
+
+    test('sets the provider for unda', () => {
+      defaultData.repository = 'unda'
+      const test = [
+        {
+          label: 'Campus Location',
+          type: 'list',
+          value:  [
+            'University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame',
+          ],
+        },
+      ]
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.metadata).toEqual(test)
+    })
+
+    test('sets the provider for museum', () => {
+      defaultData.repository = 'museum'
+      const test = [
+        {
+          label: 'Campus Location',
+          type: 'list',
+          value:  [
+            'Snite Museum of Art',
+          ],
+        },
+      ]
+      const result = mapStandardJsonMetadata(defaultData)
+      expect(result.metadata).toEqual(test)
+    })
+  })
+
+  test('sets the provider for hesb', () => {
+    defaultData.repository = 'hesb'
+    const test = [
+      {
+        label: 'Campus Location',
+        type: 'list',
+        value:  [
+          'General Collection, Hesburgh Libraries',
+        ],
+      },
+    ]
+    const result = mapStandardJsonMetadata(defaultData)
+    expect(result.metadata).toEqual(test)
   })
 })

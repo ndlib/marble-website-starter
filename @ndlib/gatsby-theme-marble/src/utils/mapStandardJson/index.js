@@ -36,7 +36,7 @@ const makeMetadataArray = (standardJson) => {
 }
 
 const genericFind = (standardJson, id) => {
-  if (id in standardJson) {
+  if (id in standardJson && standardJson[id]) {
     let data = standardJson[id]
     if (!Array.isArray(data)) {
       data = [data]
@@ -71,6 +71,26 @@ const findPublisher = (standardJson) => {
     return [standardJson.publisher.publisherName]
   }
   return false
+}
+
+const findProvider = (standardJson) => {
+  if (!('repository' in standardJson)) {
+    return false
+  }
+
+  switch (standardJson.repository.toLowerCase()) {
+    case 'rare':
+    case 'curate':
+      return ['Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame']
+    case 'museum':
+      return ['Snite Museum of Art']
+    case 'unda':
+      return ['University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame']
+    case 'hesb':
+      return ['General Collection, Hesburgh Libraries']
+    default:
+      return false
+  }
 }
 
 const dataLookUp = {
@@ -113,7 +133,7 @@ const dataLookUp = {
     repository: {
       label: 'Campus Location',
       type: 'list',
-      processor: genericFind,
+      processor: findProvider,
     },
     access: {
       label: 'Conditions Governing Access',
@@ -195,7 +215,7 @@ const dataLookUp = {
     repository: {
       label: 'Campus Location',
       type: 'list',
-      processor: genericFind,
+      processor: findProvider,
     },
     access: {
       label: 'Conditions Governing Access',
@@ -272,7 +292,7 @@ const dataLookUp = {
     repository: {
       label: 'Campus Location',
       type: 'list',
-      processor: genericFind,
+      processor: findProvider,
     },
     access: {
       label: 'Access',
@@ -344,7 +364,7 @@ const dataLookUp = {
     repository: {
       label: 'Campus Location',
       type: 'list',
-      processor: genericFind,
+      processor: findProvider,
     },
     access: {
       label: 'Conditions Governing Access',
