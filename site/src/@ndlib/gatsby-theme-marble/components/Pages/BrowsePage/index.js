@@ -12,36 +12,36 @@ import heroImage from 'assets/images/banner.swirl.png'
 const Browse = ({ location }) => {
   const dates = [
     {
-      label: '14th Century',
-      target: '/search?timeperiod[0]=14th%20Century',
+      label: '1300-1399',
+      target: '/search?timeperiod[0]=1300-1399',
     },
     {
-      label: '15th Century',
-      target: '/search?timeperiod[0]=15th%20Century',
+      label: '1400-1499',
+      target: '/search?timeperiod[0]=1400-1499',
     },
     {
-      label: '16th Century',
-      target: '/search?timeperiod[0]=16th%20Century',
+      label: '1500-1599',
+      target: '/search?timeperiod[0]=1500-1599',
     },
     {
-      label: '17th Century',
-      target: '/search?timeperiod[0]=17th%20Century',
+      label: '1600-1699',
+      target: '/search?timeperiod[0]=1600-1699',
     },
     {
-      label: '18th Century',
-      target: '/search?timeperiod[0]=18th%20Century',
+      label: '1700-1799',
+      target: '/search?timeperiod[0]=1700-1799',
     },
     {
-      label: '19th Century',
-      target: '/search?timeperiod[0]=19th%20Century',
+      label: '1800-1899',
+      target: '/search?timeperiod[0]=1800-1899',
     },
     {
-      label: '20th Century',
-      target: '/search?timeperiod[0]=20th%20Century',
+      label: '1900-1999',
+      target: '/search?timeperiod[0]=1900-1999',
     },
     {
-      label: '21st Century',
-      target: '/search?timeperiod[0]=21st%20Century',
+      label: '2000-present',
+      target: '/search?timeperiod[0]=2000-present',
     },
     {
       label: 'undated',

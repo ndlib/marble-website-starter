@@ -58,10 +58,10 @@ const setCenturyTags = (result) => {
   }
 
   for (let i = result.lowestSearchRange; i <= result.highestSearchRange; i += 100) {
-    result.centuryTags.push(getNumberWithOrdinal(i) + ' Century')
+    result.centuryTags.push(i + '-' + (i + 100))
   }
   // add the end because it can be passed in the loop
-  result.centuryTags.push(getNumberWithOrdinal(result.highestSearchRange) + ' Century')
+  result.centuryTags.push(result.highestSearchRange + '-' + (result.highestSearchRange + 100))
 
   // uniq
   result.centuryTags = [...new Set(result.centuryTags)]
@@ -153,14 +153,14 @@ const extractGeneralDate = (d) => {
 
 // turns a century in to an ordinal value.
 // 1950 -> 20th Century
-const getNumberWithOrdinal = (n) => {
-  // we want 1900 to appear as 19th century
-  if (n % 100 === 0) {
-    n += 1
-  }
-
-  n = Math.ceil(n / 100)
-  const s = ['th', 'st', 'nd', 'rd']
-  const v = n % 100
-  return n + (s[(v - 20) % 10] || s[v] || s[0])
-}
+// const getNumberWithOrdinal = (n) => {
+//   // we want 1900 to appear as 19th century
+//   if (n % 100 === 0) {
+//     n += 1
+//   }
+//
+//   n = Math.ceil(n / 100)
+//   const s = ['th', 'st', 'nd', 'rd']
+//   const v = n % 100
+//   return n + (s[(v - 20) % 10] || s[v] || s[0])
+// }
