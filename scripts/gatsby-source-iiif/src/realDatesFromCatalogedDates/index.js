@@ -58,10 +58,12 @@ const setCenturyTags = (result) => {
   }
 
   for (let i = result.lowestSearchRange; i <= result.highestSearchRange; i += 100) {
-    result.centuryTags.push(i + '-' + (i + 100))
+    const pre = i.toString().slice(0, -2)
+    result.centuryTags.push(pre + '00-' + (pre === '20' ? 'present' : pre + '99'))
   }
   // add the end because it can be passed in the loop
-  result.centuryTags.push(result.highestSearchRange + '-' + (result.highestSearchRange + 100))
+  const pre = result.highestSearchRange.toString().slice(0, -2)
+  result.centuryTags.push(pre + '00-' + (pre === '20' ? 'present' : pre + '99'))
 
   // uniq
   result.centuryTags = [...new Set(result.centuryTags)]

@@ -50,29 +50,29 @@ test('It sets circa for circa dates', () => {
 
 test('takes a string year and gets a tag for it', () => {
   [
-    ['1790-1890', ['18th Century', '19th Century']],
-    ['1937.', ['20th Century']],
-    ['ca. 1899-1900', ['19th Century', '20th Century']],
-    ['19--?', ['20th Century']],
-    ['[19--?].', ['20th Century']],
-    ['176-?', ['18th Century']],
-    [1342, ['14th Century']],
-    ['1900', ['20th Century']],
-    ['1899', ['19th Century']],
-    ['2003', ['21st Century']],
+    ['1790-1890', ['1700-1799', '1800-1899']],
+    ['1937.', ['1900-1999']],
+    ['ca. 1899-1900', ['1800-1899', '1900-1999']],
+    ['19--?', ['1900-1999']],
+    ['[19--?].', ['1900-1999']],
+    ['176-?', ['1700-1799']],
+    [1342, ['1300-1399']],
+    ['1900', ['1900-1999']],
+    ['1899', ['1800-1899']],
+    ['2003', ['2000-present']],
     ['', ['undated']],
     [null, ['undated']],
     [[], ['undated']],
-    [['1937.'], ['20th Century']], // takes dates in an array form
-    [['ca. 1899-1900'], ['19th Century', '20th Century']],
+    [['1937.'], ['1900-1999']], // takes dates in an array form
+    [['ca. 1899-1900'], ['1800-1899', '1900-1999']],
     ['not a recognized date', ['undated']],
-    ['1745-1750; 1780; 1790-1800', ['18th Century', '19th Century']],
+    ['1745-1750; 1780; 1790-1800', ['1700-1799', '1800-1899']],
     // awaiting the meeting to discuss.
     // [['0'], ['1st Century']],
-    [['1950', 1970, '2001'], ['20th Century', '21st Century']],
-    [['mid-20th Century'], ['20th Century']],
+    [['1950', 1970, '2001'], ['1900-1999', '2000-present']],
+    [['mid-1900-1999'], ['1900-1999']],
     [['no date'], ['undated']],
-    ['250-400', ['3rd Century', '4th Century', '5th Century']],
+    ['250-400', ['200-299', '300-399', '400-499']],
 
   ].forEach((testData) => {
     const result = realDatesFromCatalogedDates(testData[0])

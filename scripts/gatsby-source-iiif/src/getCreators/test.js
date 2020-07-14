@@ -27,3 +27,14 @@ test('it removes empty fields', () => {
 
   expect(getCreators(creators)).toEqual(['name1'])
 })
+
+test('creators array is empty', () => {
+  const creators = []
+
+  expect(getCreators(creators)).toEqual([])
+})
+
+test('creators is undefined', () => {
+  expect(getCreators(undefined)).toEqual([])
+  expect(getCreators('')).toEqual([])
+})
