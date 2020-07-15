@@ -153,6 +153,9 @@ const extractGeneralDate = (d) => {
   return d.match(/([0-9]{3,4})/g)
 }
 
+// The following code is no longer used in the functions above
+// The code is being save for its use on other points in the project
+
 // turns a century in to an ordinal value.
 // 1950 -> 20th Century
 // const getNumberWithOrdinal = (n) => {
