@@ -245,7 +245,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
       ...mappedFields,
       id: nodeId,
       marbleId: standardJson.id,
-      slug: `item/${standardJson.id}`,
       internal: {
         type: 'MarbleItem',
       },

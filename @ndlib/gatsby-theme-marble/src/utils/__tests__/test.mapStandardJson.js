@@ -6,6 +6,7 @@ describe('mapStandardJsonMetadata', () => {
   beforeEach(() => {
     defaultData = {
       sourceSystem: 'archivesspace',
+      id: 'id',
       title: 'title',
       level: 'manifest',
     }
@@ -15,6 +16,11 @@ describe('mapStandardJsonMetadata', () => {
     defaultData.title = 'new title'
     const result = mapStandardJsonMetadata(defaultData)
     expect(result.title).toEqual('new title')
+  })
+
+  test('maps a slug', () => {
+    const result = mapStandardJsonMetadata(defaultData)
+    expect(result.slug).toEqual('item/id')
   })
 
   describe('description', () => {
