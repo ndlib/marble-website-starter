@@ -1,7 +1,5 @@
 const citationGenerator = require('../mapStandardJson/citationGenerator')
 
-// jest.mock('../mapStandardJson/citationGenerator')
-
 let defaultData = {}
 
 describe('citationGenerator', () => {
