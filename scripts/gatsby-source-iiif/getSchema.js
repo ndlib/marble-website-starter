@@ -54,7 +54,7 @@ const fetchUntilGood = async (url, myArray, badArray, count = 0) => {
           console.error('Reached retry limit of "' + retryLimit + '" for ' + url)
           badArray.push(url)
         } else {
-          console.error('fetch error (' + count + '), retrying:', url)
+          // console.error('fetch error (' + count + '), retrying:', url)
           fetchUntilGood(url, myArray, badArray, ++count)
         }
         return error
