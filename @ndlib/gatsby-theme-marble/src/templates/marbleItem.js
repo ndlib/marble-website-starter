@@ -47,6 +47,7 @@ export const query = graphql`
         iiifUri
       }
       copyrightRestricted
+      citation
     }
   }
 `
