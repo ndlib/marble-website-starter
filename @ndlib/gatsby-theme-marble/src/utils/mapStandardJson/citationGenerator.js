@@ -1,13 +1,16 @@
 
-export const citationGenerator = (standardJson, slug) => {
-  if (standardJson.repository === 'museum') {
-    return museumCitation(standardJson)
+module.exports = (standardJson, slug) => {
+  if (standardJson.repository) {
+    if (standardJson.repository.toLowerCase() === 'museum') {
+      return museumCitation(standardJson)
+    } else if (standardJson.repository.toLowerCase() === 'rare' || standardJson.repository.toLowerCase() === 'unda') {
+      return archivalCollectionCitation(standardJson, slug)
+    }
   }
-
   return ''
 }
 
-export const museumCitation = (standardJson) => {
+const museumCitation = (standardJson) => {
   let citation = findArtist(standardJson.creators)
   citation += ', '
   citation += safeString(standardJson.title)
@@ -24,15 +27,15 @@ export const museumCitation = (standardJson) => {
   return citation
 }
 
-export const archivalCollectionCitation = (standardJson, slug) => {
+const archivalCollectionCitation = (standardJson, slug) => {
   // 'collection name, identifier. Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame, South Bend, IN. http://url'
   let citation = safeString(standardJson.title)
   citation += ', '
   citation += safeString(standardJson.uniqueIdentifier)
   citation += '. '
-  if (standardJson.repository === 'rare') {
+  if (standardJson.repository.toLowerCase() === 'rare') {
     citation += 'Rare Books and Special Collections'
-  } else if (standardJson.repository === 'unda') {
+  } else if (standardJson.repository.toLowerCase() === 'unda') {
     citation += 'University Archives'
   } else {
     console.error('Invalid repository for archival collections')
@@ -56,5 +59,3 @@ const safeString = (field) => {
   }
   return ''
 }
-
-export default citationGenerator

@@ -56,6 +56,7 @@ exports.sourceNodes = ({ actions }) => {
     copyrightRestricted: Boolean
     childrenMarbleItem: [MarbleItem]
     childrenMarbleIiifImage: [MarbleIiifImage]
+    citation: String
   }
 
   # things expected to be there

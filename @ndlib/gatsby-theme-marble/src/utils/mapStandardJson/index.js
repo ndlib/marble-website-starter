@@ -1,4 +1,5 @@
-
+const path = require('path')
+const citationGenerator = require(path.join(__dirname, 'citationGenerator'))
 module.exports = (standardJson) => {
   const slug = `item/${standardJson.id}`
 
@@ -11,7 +12,7 @@ module.exports = (standardJson) => {
     copyrightRestricted: ('copyrightStatus' in standardJson && standardJson.copyrightStatus.toLowerCase() === 'copyright'),
     partiallyDigitized: mapFieldOrDefault(standardJson, 'partiallyDigitized', false),
     sequence: standardJson.sequence,
-    citation: '',
+    citation: citationGenerator(standardJson, slug),
     metadata: makeMetadataArray(standardJson),
   }
 }
