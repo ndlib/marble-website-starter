@@ -26,7 +26,7 @@ const downLoadUntilGood = async (fileName, myArray, badArray, count = 0) => {
     const url = getUrl(info)
     const filePath = path.join(__dirname, `${directory}/content/images/iiif/${name.replace('%2F', '-')}.jpg`)
 
-    const result = await download.image({
+    await download.image({
       url: url,
       dest: filePath,
     })
@@ -35,6 +35,7 @@ const downLoadUntilGood = async (fileName, myArray, badArray, count = 0) => {
         console.log('Saved to', filename)
       })
       .catch(error => {
+        // console.error(error)
         if (count === retryLimit) {
           console.error('Reached retry limit of "' + retryLimit + '" for ' + url)
           badArray.push(url)
@@ -44,7 +45,6 @@ const downLoadUntilGood = async (fileName, myArray, badArray, count = 0) => {
         }
         return error
       })
-    return result
   }
 }
 
@@ -55,11 +55,11 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
     console.error(err)
     return
   }
-  await Promise.all(fileNames.map(async fileName => {
+  await Promise.all(fileNames.sort().map(async fileName => {
     if (!fileName.endsWith('.json')) {
       return
     }
-    const result = await downLoadUntilGood(fileName, finalResult, errorResult)
+    const result = downLoadUntilGood(fileName, finalResult, errorResult)
     return result
   }))
     .then(() => {
