@@ -37,7 +37,6 @@ const ExhibitsPage = () => {
                 label={exhibit.label}
                 image={exhibit.image}
                 target={exhibit.target}
-                onClick={() => window.open(exhibit.target, '_blank')}
               />
             )
           })
