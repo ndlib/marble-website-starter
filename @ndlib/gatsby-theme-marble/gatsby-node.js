@@ -3,9 +3,6 @@ const path = require('path')
 const mapStandardJson = require(path.join(__dirname, 'src/utils/mapStandardJson'))
 const imageMetadata = require(path.join(__dirname, 'src/utils/mapStandardJson/imageMetadata'))
 
-// const crypto = require('crypto')
-// const { attachFields } = require('gatsby-plugin-node-fields')
-// const merge = require('lodash.merge')
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
   const contentPath = options.contentPath || 'content'
@@ -14,6 +11,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     fs.mkdirSync(contentPath)
   }
 }
+
 // predefine stuff we expect from configuration.js
 exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
@@ -25,11 +23,6 @@ exports.sourceNodes = ({ actions }) => {
     value: [String]
     type: String
   }
-  #type imageData @dontInfer {
-  #  service: String
-  #  default: String
-  #  thumbnail: String
-  #}
   type MarbleIiifImage implements Node @dontInfer {
     id: String!
     marbleId: String!
@@ -109,11 +102,6 @@ exports.sourceNodes = ({ actions }) => {
   createTypes(typeDefs)
 }
 
-// exports.createResolvers = ({ createResolvers }, options) => {
-//   const basePath = options.basePath || '/'
-//   createResolvers({})
-// }
-
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions
 
@@ -162,31 +150,6 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-
-    // const ndJsonPages = result.data.allNdJson.nodes
-    // ndJsonPages.forEach(node => {
-    //   if (node.id) {
-    //     // item page
-    //     createPage({
-    //       path: `item/${node.id}`,
-    //       component: require.resolve('./src/templates/ndJson.js'),
-    //       context: {
-    //         // Data passed to context is available
-    //         // in page queries as GraphQL variables.
-    //         id: node.id,
-    //         iiifUri: node.iiifUri,
-    //       },
-    //     })
-    //     // mirador page
-    //     createPage({
-    //       path: `item/${node.id}/mirador`,
-    //       component: require.resolve('./src/templates/miradorTemplate.js'),
-    //       context: {
-    //         id: node.id,
-    //       },
-    //     })
-    //   }
-    // })
 
     const marbleItems = result.data && result.data.allMarbleItem ? result.data.allMarbleItem.nodes : []
     marbleItems.forEach(node => {
@@ -277,63 +240,3 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
     crawlStandardJson(node)
   }
 }
-
-// exports.onCreateNode = ({ node, actions, createNodeId }, options) => {
-// const { createNode } = actions
-// if (node.internal.type === 'MarkdownRemark') {
-//   const fieldData = {
-//     frontmatter: node.frontmatter,
-//   }
-//   createNode({
-//     ...fieldData,
-//     // Required fields.
-//     id: createNodeId(`${node.id} >>> RemarkMarblePage`),
-//     parent: node.id,
-//     children: [],
-//     internal: {
-//       type: 'RemarkMarblePage',
-//       contentDigest: crypto
-//         .createHash('md5')
-//         .update(JSON.stringify(fieldData))
-//         .digest('hex'),
-//       content: JSON.stringify(fieldData),
-//       description: 'Enhanced markdown pages with react components',
-//     },
-//   })
-// }
-
-// const descriptors = [
-//   {
-//     predicate: node => node.frontmatter,
-//     fields: [
-//       {
-//         name: 'components',
-//         getter: node => {
-//           return getComponents(node, options)
-//         },
-//         defaultValue: [{ component: 'MarkdownHtmlContent' }],
-//       },
-//     ],
-//   },
-// ]
-// attachFields(node, actions, descriptors)
-// }
-
-// const getComponents = (node, options) => {
-//   if (node && node.frontmatter) {
-//     if (node.frontmatter.components) {
-//       return node.frontmatter.components
-//     } else if (node.frontmatter.layout) {
-//       return getComponentsFromLayout(node.frontmatter.layout, options)
-//     }
-//   }
-//   return [{ component: 'MarkdownHtmlContent' }]
-// }
-
-// const getComponentsFromLayout = (layout, options) => {
-//   let availableLayouts = defaultLayouts
-//   if (options.layouts) {
-//     availableLayouts = merge({}, defaultLayouts, options.layouts)
-//   }
-//   return availableLayouts[layout] || availableLayouts.default
-// }
