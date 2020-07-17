@@ -24,7 +24,7 @@ const downLoadUntilGood = async (fileName, myArray, badArray, count = 0) => {
     const info = await loadJsonFile(path.join(__dirname, `${directory}/content/json/info/${fileName}`))
 
     const url = getUrl(info)
-    const filePath = path.join(__dirname, `${directory}/content/images/iiif/${name}.jpg`)
+    const filePath = path.join(__dirname, `${directory}/content/images/iiif/${name.replace('%2F', '-')}.jpg`)
 
     const result = await download.image({
       url: url,

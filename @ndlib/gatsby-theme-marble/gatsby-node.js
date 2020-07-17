@@ -25,11 +25,11 @@ exports.sourceNodes = ({ actions }) => {
     value: [String]
     type: String
   }
-  type imageData @dontInfer {
-    service: String
-    default: String
-    thumbnail: String
-  }
+  #type imageData @dontInfer {
+  #  service: String
+  #  default: String
+  #  thumbnail: String
+  #}
   type MarbleIiifImage implements Node @dontInfer {
     id: String!
     marbleId: String!
@@ -37,6 +37,8 @@ exports.sourceNodes = ({ actions }) => {
     default: String
     thumbnail: String
     title: String
+    name: String
+    extension: String
     collection: MarbleItem
     parent: MarbleItem
     sequence: Int
