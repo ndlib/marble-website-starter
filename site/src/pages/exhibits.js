@@ -9,7 +9,7 @@ import ExhibitsPage from 'components/Pages/ExhibitsPage'
 const Exhibits = ({ location }) => {
   return (
     <Layout
-      title='Exhibits'
+      title='Digital Exhibits'
       location={location}
     >
       <Seo
