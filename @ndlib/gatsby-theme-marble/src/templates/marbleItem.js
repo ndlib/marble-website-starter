@@ -5,10 +5,15 @@ import MarbleItem from 'components/Pages/MarbleItem'
 
 export const MarbleItemPage = ({ data, location }) => {
   return (
-    <MarbleItem
-      data={data}
-      location={location}
-    />
+    <>
+      <MarbleItem
+        data={data}
+        location={location}
+      />
+      {
+        // <pre>{JSON.stringify(data, null, 2)}</pre>
+      }
+    </>
   )
 }
 MarbleItemPage.propTypes = {
@@ -42,6 +47,8 @@ export const query = graphql`
         service
         thumbnail
         sequence
+        name
+        extension
       }
       childrenMarbleItem {
         iiifUri
