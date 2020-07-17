@@ -9,6 +9,8 @@ describe('mapImageMetadata', () => {
       iiifImageUri: 'https://image.server.com/iiif/file',
       sequence: 0,
       title: 'title',
+      id: 'bob.jpg',
+      collectionId: 'billy',
     }
   })
 
@@ -19,6 +21,8 @@ describe('mapImageMetadata', () => {
       thumbnail: 'https://image.server.com/iiif/file/full/400,/0/default.jpg',
       sequence: 0,
       title: 'title',
+      name: 'billy-bob',
+      extension: 'jpg',
     }
 
     const result = imageMetadata(defaultData)
