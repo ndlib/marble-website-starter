@@ -90,7 +90,7 @@ const dataLookUp = {
   archivesspace: {
     creators: {
       label: 'Creator',
-      type: 'list',
+      type: 'searchList',
       processor: findCreators,
     },
     createdDate: {
@@ -115,7 +115,7 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'list',
+      type: 'searchList',
       processor: mappedLanguageCodes,
     },
     uniqueIdentifier: {
@@ -150,7 +150,7 @@ const dataLookUp = {
     },
     subjects: {
       label: 'Subject',
-      type: 'list',
+      type: 'searchList',
       processor: findSubjects,
     },
     linkToSource: {
@@ -162,7 +162,7 @@ const dataLookUp = {
   aleph: {
     creators: {
       label: 'Creator',
-      type: 'list',
+      type: 'searchList',
       processor: findCreators,
     },
     contributors: {
@@ -197,7 +197,7 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'list',
+      type: 'searchList',
       processor: mappedLanguageCodes,
     },
     uniqueIdentifier: {
@@ -232,7 +232,7 @@ const dataLookUp = {
     },
     subjects: {
       label: 'Subject',
-      type: 'list',
+      type: 'searchList',
       processor: findSubjects,
     },
     linkToSource: {
@@ -244,7 +244,7 @@ const dataLookUp = {
   embark: {
     creators: {
       label: 'Creator',
-      type: 'list',
+      type: 'searchList',
       processor: findCreators,
     },
     createdDate: {
@@ -304,7 +304,7 @@ const dataLookUp = {
     },
     subjects: {
       label: 'Subject',
-      type: 'list',
+      type: 'searchList',
       processor: findSubjects,
     },
   },
@@ -346,7 +346,7 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'list',
+      type: 'searchList',
       processor: mappedLanguageCodes,
     },
     uniqueIdentifier: {
@@ -381,7 +381,7 @@ const dataLookUp = {
     },
     subjects: {
       label: 'Subject',
-      type: 'list',
+      type: 'searchList',
       processor: findSubjects,
     },
     linkToSource: {

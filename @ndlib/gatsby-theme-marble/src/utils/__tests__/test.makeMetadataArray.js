@@ -26,7 +26,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Creator',
-          type: 'list',
+          type: 'searchList',
           value:  [
             'CREATOR!!!',
             'CREATOR2',
@@ -78,7 +78,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Subject',
-          type: 'list',
+          type: 'searchList',
           value:  [
             'Songs--Irish',
             'Ballads, Irish',
@@ -209,7 +209,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'list',
+          type: 'searchList',
           value:  [
             'English',
           ],
@@ -224,7 +224,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'list',
+          type: 'searchList',
           value:  [
             'Russian',
           ],
@@ -246,7 +246,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'list',
+          type: 'searchList',
           value:  [
             'xyz',
           ],
