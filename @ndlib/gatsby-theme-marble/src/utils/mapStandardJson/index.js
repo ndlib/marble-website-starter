@@ -98,6 +98,26 @@ const findProvider = (standardJson) => {
   }
 }
 
+const findContact = (standardJson) => {
+  if (!('repository' in standardJson)) {
+    return false
+  }
+
+  switch (standardJson.repository.toLowerCase()) {
+    case 'rare':
+    case 'curate':
+      return ['rarebook@nd.edu']
+    case 'museum':
+      return ['sniteart@nd.edu']
+    case 'unda':
+      return ['archives@nd.edu']
+    case 'hesb':
+      return ['asklib@nd.edu']
+    default:
+      return false
+  }
+}
+
 const dataLookUp = {
   archivesspace: {
     creators: {
@@ -139,6 +159,11 @@ const dataLookUp = {
       label: 'Campus Location',
       type: 'list',
       processor: findProvider,
+    },
+    departmentContact: {
+      label: 'Contact Information',
+      type: 'list',
+      processor: findContact,
     },
     access: {
       label: 'Conditions Governing Access',
@@ -222,6 +247,11 @@ const dataLookUp = {
       type: 'list',
       processor: findProvider,
     },
+    departmentContact: {
+      label: 'Contact Information',
+      type: 'list',
+      processor: findContact,
+    },
     access: {
       label: 'Conditions Governing Access',
       type: 'list',
@@ -299,6 +329,11 @@ const dataLookUp = {
       type: 'list',
       processor: findProvider,
     },
+    departmentContact: {
+      label: 'Contact Information',
+      type: 'list',
+      processor: findContact,
+    },
     access: {
       label: 'Access',
       type: 'list',
@@ -375,6 +410,11 @@ const dataLookUp = {
       label: 'Conditions Governing Access',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Information',
+      type: 'list',
+      processor: findContact,
     },
     copyrightStatus: {
       label: 'Copyright Status',
