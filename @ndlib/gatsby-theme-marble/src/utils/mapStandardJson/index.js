@@ -107,14 +107,19 @@ const findContact = (standardJson) => {
     case 'rare':
     case 'curate':
       contact = 'rarebook@nd.edu'
+      break
     case 'museum':
       contact = 'sniteart@nd.edu'
+      break
     case 'unda':
       contact = 'archives@nd.edu'
+      break
     case 'hesb':
       contact = 'asklib@nd.edu'
+      break
     default:
       contact = ''
+      break
   }
   if (contact === '') {
     return false
