@@ -102,20 +102,25 @@ const findContact = (standardJson) => {
   if (!('repository' in standardJson)) {
     return false
   }
-
+  let contact = ''
   switch (standardJson.repository.toLowerCase()) {
     case 'rare':
     case 'curate':
-      return ['rarebook@nd.edu']
+      contact = 'rarebook@nd.edu'
     case 'museum':
-      return ['sniteart@nd.edu']
+      contact = 'sniteart@nd.edu'
     case 'unda':
-      return ['archives@nd.edu']
+      contact = 'archives@nd.edu'
     case 'hesb':
-      return ['asklib@nd.edu']
+      contact = 'asklib@nd.edu'
     default:
-      return false
+      contact = ''
   }
+  if (contact === '') {
+    return false
+  }
+  const provider = findProvider(standardJson)
+  return [`Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the ${provider} at ${contact}.`]
 }
 
 const dataLookUp = {
@@ -247,11 +252,6 @@ const dataLookUp = {
       type: 'list',
       processor: findProvider,
     },
-    departmentContact: {
-      label: 'Contact Information',
-      type: 'list',
-      processor: findContact,
-    },
     access: {
       label: 'Conditions Governing Access',
       type: 'list',
@@ -281,6 +281,11 @@ const dataLookUp = {
       label: 'Link to finding aid',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Information',
+      type: 'list',
+      processor: findContact,
     },
   },
   embark: {
@@ -329,11 +334,6 @@ const dataLookUp = {
       type: 'list',
       processor: findProvider,
     },
-    departmentContact: {
-      label: 'Contact Information',
-      type: 'list',
-      processor: findContact,
-    },
     access: {
       label: 'Access',
       type: 'list',
@@ -353,6 +353,11 @@ const dataLookUp = {
       label: 'Subject',
       type: 'list',
       processor: findSubjects,
+    },
+    departmentContact: {
+      label: 'Contact Information',
+      type: 'list',
+      processor: findContact,
     },
   },
   curate: {
@@ -411,11 +416,6 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
-    departmentContact: {
-      label: 'Contact Information',
-      type: 'list',
-      processor: findContact,
-    },
     copyrightStatus: {
       label: 'Copyright Status',
       type: 'list',
@@ -440,6 +440,11 @@ const dataLookUp = {
       label: 'Link to finding aid',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Information',
+      type: 'list',
+      processor: findContact,
     },
   },
 }
