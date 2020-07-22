@@ -170,11 +170,6 @@ const dataLookUp = {
       type: 'list',
       processor: findProvider,
     },
-    departmentContact: {
-      label: 'Contact Information',
-      type: 'list',
-      processor: findContact,
-    },
     access: {
       label: 'Conditions Governing Access',
       type: 'list',
@@ -204,6 +199,11 @@ const dataLookUp = {
       label: 'Link to finding aid',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
   aleph: {
@@ -288,7 +288,7 @@ const dataLookUp = {
       processor: genericFind,
     },
     departmentContact: {
-      label: 'Contact Information',
+      label: 'Contact Us',
       type: 'list',
       processor: findContact,
     },
@@ -360,7 +360,7 @@ const dataLookUp = {
       processor: findSubjects,
     },
     departmentContact: {
-      label: 'Contact Information',
+      label: 'Contact Us',
       type: 'list',
       processor: findContact,
     },
@@ -447,7 +447,7 @@ const dataLookUp = {
       processor: genericFind,
     },
     departmentContact: {
-      label: 'Contact Information',
+      label: 'Contact Us',
       type: 'list',
       processor: findContact,
     },
