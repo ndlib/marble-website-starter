@@ -4,5 +4,7 @@ module.exports = {
     margin: ['-1rem -1.5rem', '-1rem -2.5rem', '-1rem -2.5rem'],
     position: 'relative',
     zIndex: '0',
+    backgroundColor: 'white',
+    transform: 'none',
   },
 }
