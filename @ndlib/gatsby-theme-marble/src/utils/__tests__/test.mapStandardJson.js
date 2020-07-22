@@ -310,4 +310,5 @@ describe('mapStandardJsonMetadata', () => {
     const result = mapStandardJsonMetadata(defaultData)
     expect(result.metadata).toEqual(test)
   })
+
 })
