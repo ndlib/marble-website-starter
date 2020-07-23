@@ -146,7 +146,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: genericFind,
+      processor: mappedLanguageCodes,
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -233,7 +233,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: genericFind,
+      processor: mappedLanguageCodes,
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -392,7 +392,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: genericFind,
+      processor: mappedLanguageCodes,
     },
     uniqueIdentifier: {
       label: 'Identifier',
