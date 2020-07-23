@@ -138,3 +138,9 @@ button.sk-search-box__icon {
 .ReactModal__Content--before-close {
   transform: translate(-50%, -100px);
 }
+
+.mirador-osd-info {
+  transform: rotate(0) !important;
+  background-color: transparent !important;
+  border-radius: none !important;
+}
