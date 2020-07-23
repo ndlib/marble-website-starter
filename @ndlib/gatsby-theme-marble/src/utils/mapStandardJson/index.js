@@ -285,7 +285,7 @@ const dataLookUp = {
       processor: findSubjects,
     },
     linkToSource: {
-      label: 'Link to finding aid',
+      label: 'Link to library catalog',
       type: 'list',
       processor: genericFind,
     },
