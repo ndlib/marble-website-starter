@@ -122,6 +122,11 @@ describe('makeMetadataArray', () => {
             'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
         },
+        {
+          label: 'Contact Us',
+          type: 'list',
+          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+        },
       ]
       const result = makeMetadataArray(defaultData)
       expect(result).toEqual(test)
@@ -136,6 +141,11 @@ describe('makeMetadataArray', () => {
           value:  [
             'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
+        },
+        {
+          label: 'Contact Us',
+          type: 'list',
+          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -152,6 +162,11 @@ describe('makeMetadataArray', () => {
             'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
         },
+        {
+          label: 'Contact Us',
+          type: 'list',
+          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+        },
       ]
       const result = makeMetadataArray(defaultData)
       expect(result).toEqual(test)
@@ -166,6 +181,11 @@ describe('makeMetadataArray', () => {
           value:  [
             'University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame',
           ],
+        },
+        {
+          label: 'Contact Us',
+          type: 'list',
+          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame at archives@nd.edu.'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -182,6 +202,11 @@ describe('makeMetadataArray', () => {
             'Snite Museum of Art',
           ],
         },
+        {
+          label: 'Contact Us',
+          type: 'list',
+          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Snite Museum of Art at sniteart@nd.edu.'],
+        },
       ]
       const result = makeMetadataArray(defaultData)
       expect(result).toEqual(test)
@@ -197,6 +222,11 @@ describe('makeMetadataArray', () => {
         value:  [
           'General Collection, Hesburgh Libraries',
         ],
+      },
+      {
+        label: 'Contact Us',
+        type: 'list',
+        value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the General Collection, Hesburgh Libraries at asklib@nd.edu.'],
       },
     ]
     const result = makeMetadataArray(defaultData)
