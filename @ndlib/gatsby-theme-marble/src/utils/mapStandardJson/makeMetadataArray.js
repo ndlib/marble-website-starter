@@ -86,6 +86,36 @@ const findProvider = (standardJson) => {
   }
 }
 
+const findContact = (standardJson) => {
+  if (!('repository' in standardJson)) {
+    return false
+  }
+  let contact = ''
+  switch (standardJson.repository.toLowerCase()) {
+    case 'rare':
+    case 'curate':
+      contact = 'rarebook@nd.edu'
+      break
+    case 'museum':
+      contact = 'sniteart@nd.edu'
+      break
+    case 'unda':
+      contact = 'archives@nd.edu'
+      break
+    case 'hesb':
+      contact = 'asklib@nd.edu'
+      break
+    default:
+      contact = ''
+      break
+  }
+  if (contact === '') {
+    return false
+  }
+  const provider = findProvider(standardJson)
+  return [`Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the ${provider} at ${contact}.`]
+}
+
 const dataLookUp = {
   archivesspace: {
     creators: {
@@ -116,7 +146,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: mappedLanguageCodes,
+      processor: genericFind,
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -157,6 +187,11 @@ const dataLookUp = {
       label: 'Link to finding aid',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
   aleph: {
@@ -198,7 +233,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: mappedLanguageCodes,
+      processor: genericFind,
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -236,9 +271,14 @@ const dataLookUp = {
       processor: findSubjects,
     },
     linkToSource: {
-      label: 'Link to finding aid',
+      label: 'Link to library catalog',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
   embark: {
@@ -307,6 +347,11 @@ const dataLookUp = {
       type: 'list',
       processor: findSubjects,
     },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
+    },
   },
   curate: {
     creators: {
@@ -347,7 +392,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: mappedLanguageCodes,
+      processor: genericFind,
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -388,6 +433,11 @@ const dataLookUp = {
       label: 'Link to finding aid',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
 }
