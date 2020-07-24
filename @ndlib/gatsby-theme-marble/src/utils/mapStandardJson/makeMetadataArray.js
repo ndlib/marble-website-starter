@@ -113,7 +113,7 @@ const findContact = (standardJson) => {
     return false
   }
   const provider = findProvider(standardJson)
-  return [`Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the ${provider} at ${contact}.`]
+  return [`Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact ${provider} at ${contact}.`]
 }
 
 const dataLookUp = {
