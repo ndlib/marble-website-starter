@@ -23,16 +23,20 @@ const getDestination = (info) => {
 }
 
 const download = ({ url, dest, ...options }) => new Promise((resolve, reject) => {
-  const file = fs.createWriteStream(dest)
   https.get(url, options, response => {
     if (response.statusCode !== 200) {
       // Consume response data to free up memory
       response.resume()
       reject(new Error(`Request Failed. Status Code: ${response.statusCode}`))
-      return
     }
 
-    response.pipe(file)
+    response.on('error', (error) => {
+      console.error(error)
+      response.unpipe()
+      reject(error)
+    })
+
+    response.pipe(fs.createWriteStream(dest))
       .once('close', () => {
         resolve({ filename: dest })
       })
@@ -54,11 +58,10 @@ const downloadAll = (infos) => {
   }).forEach(async (info) => {
     const url = getUrl(info)
     const destinationFile = getDestination(info)
-
     await download({
       url: url,
       dest: destinationFile,
-      timeout: 10000,
+      // timeout: 30000,
     })
       .then((result) => {
         console.log('Saved to', result.filename)
