@@ -99,6 +99,8 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
       ).then(() => {
         console.log(`${downloadedFiles.length} files downloaded.`)
         console.log(`${errors.length} errors reported.`)
+      }).catch(error => {
+        console.error(error)
       })
     })
     .catch(error => console.error(error))
