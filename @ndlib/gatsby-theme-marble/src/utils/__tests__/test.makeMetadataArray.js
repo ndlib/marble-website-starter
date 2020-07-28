@@ -125,7 +125,7 @@ describe('makeMetadataArray', () => {
         {
           label: 'Contact Us',
           type: 'list',
-          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -145,7 +145,7 @@ describe('makeMetadataArray', () => {
         {
           label: 'Contact Us',
           type: 'list',
-          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -165,7 +165,7 @@ describe('makeMetadataArray', () => {
         {
           label: 'Contact Us',
           type: 'list',
-          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -185,7 +185,7 @@ describe('makeMetadataArray', () => {
         {
           label: 'Contact Us',
           type: 'list',
-          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame at archives@nd.edu.'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame at archives@nd.edu.'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -205,7 +205,7 @@ describe('makeMetadataArray', () => {
         {
           label: 'Contact Us',
           type: 'list',
-          value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the Snite Museum of Art at sniteart@nd.edu.'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Snite Museum of Art at sniteart@nd.edu.'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -226,7 +226,7 @@ describe('makeMetadataArray', () => {
       {
         label: 'Contact Us',
         type: 'list',
-        value: ['Not every record you will find here is complete. More information is available for some works than for others, and some entries have been updated more recently. If you have spotted an error or have more information about this record, please contact the General Collection, Hesburgh Libraries at asklib@nd.edu.'],
+        value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact General Collection, Hesburgh Libraries at asklib@nd.edu.'],
       },
     ]
     const result = makeMetadataArray(defaultData)

@@ -21,7 +21,6 @@ export const ManifestCard = (props) => {
           title
           iiifUri
           display
-          sequence
           childrenMarbleIiifImage {
             service
           }

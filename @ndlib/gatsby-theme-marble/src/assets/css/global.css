@@ -144,3 +144,8 @@ button.sk-search-box__icon {
   background-color: transparent !important;
   border-radius: none !important;
 }
+.mirador-osd-navigation {
+  position: relative !important;
+  top: 0 !important;
+  transform: scale(1) !important;
+}
