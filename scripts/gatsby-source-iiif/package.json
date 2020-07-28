@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.561.0",
+    "batch-promises": "^0.0.3",
     "elasticsearch": "^16.5.0",
     "http-aws-es": "^6.0.0",
     "image-downloader": "^4.0.1",

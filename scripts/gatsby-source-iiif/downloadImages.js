@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const https = require('https')
+const batchPromises = require('batch-promises')
 const directory = process.argv.slice(2)[0]
 
 const retryLimit = 4
@@ -52,26 +53,6 @@ const download = ({ url, dest, ...options }) => new Promise((resolve, reject) =>
     })
 })
 
-const downloadAll = (infos) => {
-  infos.filter(info => {
-    return info !== null
-  }).forEach(async (info) => {
-    const url = getUrl(info)
-    const destinationFile = getDestination(info)
-    await download({
-      url: url,
-      dest: destinationFile,
-      // timeout: 30000,
-    })
-      .then((result) => {
-        console.log('Saved to', result.filename)
-      })
-      .catch(error => {
-        console.error(error)
-      })
-  })
-}
-
 // Start here
 fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, fileNames) => {
   if (err) {
@@ -79,7 +60,7 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
     return
   }
 
-  await Promise.all(fileNames.sort().map(async fileName => {
+  await Promise.all(fileNames.map(async fileName => {
     if (!fileName.endsWith('.json')) {
       return null
     }
@@ -87,6 +68,38 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
     info.fileName = fileName
     return info
   }))
-    .then(downloadAll)
+    .then(infos => {
+      const downloadedFiles = []
+      const errors = []
+      batchPromises(
+        20,
+        infos.filter(info => {
+          return info !== null
+        }),
+        (info) =>
+          new Promise((resolve) => {
+            const url = getUrl(info)
+            const destinationFile = getDestination(info)
+            download({
+              url: url,
+              dest: destinationFile,
+              timeout: 30000,
+            })
+              .then((result) => {
+                console.log('Saved to', result.filename)
+                downloadedFiles.push(result.filename)
+                resolve(result)
+              })
+              .catch(error => {
+                console.error(error)
+                errors.push(error)
+                resolve(error)
+              })
+          }),
+      ).then(() => {
+        console.log(`${downloadedFiles.length} files downloaded.`)
+        console.log(`${errors.length} errors reported.`)
+      })
+    })
     .catch(error => console.error(error))
 })
