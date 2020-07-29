@@ -18,11 +18,11 @@ export const SearchResults = ({ defaultDisplay }) => {
     displayComponent = HitList
   }
   return (
-    <React.Fragment>
+    <>
       <Hits
         hitsPerPage={50}
         sourceFilter={['name']}
-        highlightFields={['allMetadata']}
+        highlightFields={['allMetadata', 'name', 'creator']}
         listComponent={displayComponent}
         scrollTo='#gatsby-focus-wrapper'
       />
@@ -31,7 +31,7 @@ export const SearchResults = ({ defaultDisplay }) => {
       />
       <InitialLoader component={Loading} />
       <Pager />
-    </React.Fragment>
+    </>
   )
 }
 
