@@ -29,18 +29,17 @@ const download = ({ url, dest, ...options }) => new Promise((resolve, reject) =>
       // Consume response data to free up memory
       response.resume()
       reject(new Error(`Request Failed. Status Code: ${response.statusCode}`))
-    }
-
-    response.on('error', (error) => {
-      console.error(error)
-      response.unpipe()
-      reject(error)
-    })
-
-    response.pipe(fs.createWriteStream(dest))
-      .once('close', () => {
-        resolve({ filename: dest })
+    } else {
+      response.on('error', (error) => {
+        console.error(error)
+        reject(error)
       })
+
+      response.pipe(fs.createWriteStream(dest))
+        .once('close', () => {
+          resolve({ filename: dest })
+        })
+    }
   })
     .on('timeout', () => {
       const error = new Error('Timed out at server.')
@@ -80,6 +79,7 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
           new Promise((resolve) => {
             const url = getUrl(info)
             const destinationFile = getDestination(info)
+            console.log(url)
             download({
               url: url,
               dest: destinationFile,
