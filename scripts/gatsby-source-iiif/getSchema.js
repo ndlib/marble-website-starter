@@ -14,7 +14,7 @@ const fetchData = async (seeAlso) => {
   const errorResult = []
   await Promise.all(seeAlso.map(async item => {
     // console.log('Processing: ' + item)
-    const url = 'https://presentation-iiif.library.nd.edu/' + item + '/nd'
+    const url = 'https://presentation-iiif.library.nd.edu/' + item + '/standard'
     const result = await fetchUntilGood(url, finalResult, errorResult, 0)
     return result
   }))
