@@ -71,7 +71,7 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
       const downloadedFiles = []
       const errors = []
       batchPromises(
-        20,
+        100,
         infos.filter(info => {
           return info !== null
         }),
