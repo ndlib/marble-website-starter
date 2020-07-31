@@ -12,9 +12,15 @@ module.exports = {
   },
   wrapper: (wide) => {
     return wide ? {
+      '& em': {
+        backgroundColor: 'highlight',
+      },
       height: '250px',
       position: 'relative',
     } : {
+      '& em': {
+        backgroundColor: 'highlight',
+      },
       height: '400px',
       overflow: 'hidden',
       position: 'relative',

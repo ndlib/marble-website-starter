@@ -39,12 +39,17 @@ export const ManifestCard = (props) => {
     return null
   }
   const children = figureOutChildren(props, item)
-
+  let title = ''
+  if (props.highlight && props.highlight.name) {
+    title = props.highlight.name[0]
+  } else {
+    title = item.title
+  }
   // TODO Fix image path for collections
   return (
     <div sx={sx.wrapper}>
       <Card
-        label={item.title}
+        label={title}
         target={`/${item.slug}`}
         imageService={typy(item, 'childrenMarbleIiifImage[0].service').safeString}
         {...props}
@@ -73,8 +78,13 @@ const findMetadata = (manifest, options) => {
 }
 
 export const figureOutChildren = (parentProps, item) => {
-  const creator = findMetadata(item, ['creator'])
   const dates = findMetadata(item, ['date', 'dates'])
+  let creator = ''
+  if (parentProps.highlight && parentProps.highlight.creator) {
+    creator = parentProps.highlight.creator[0]
+  } else {
+    creator = findMetadata(item, ['creator'])
+  }
   return (
     <React.Fragment>
       {
@@ -112,6 +122,7 @@ ManifestCard.propTypes = {
   showDate: PropTypes.bool,
   showSummary: PropTypes.bool,
   children: PropTypes.node,
+  highlight: PropTypes.string,
 }
 ManifestCard.defaultProps = {
   showCreator: true,
