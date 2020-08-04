@@ -102,18 +102,18 @@ const getSearchDataFromManifest = (manifest) => {
     search['formatTag'] = [manifest.workType]
   }
 
-  search.allMetadata = []
-  search.allMetadata.push(creators.join(' '))
+  search['allMetadata'] = ''
+  search['allMetadata'] = creators.join(' ')
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
-      search.allMetadata.push(manifest[key])
+      search['allMetadata'] += ' ' + manifest[key]
     }
   })
-  search.allMetadata.push(loadSubItemTitles(manifest))
-  search.allMetadata.push(search.repository)
-  search.allMetadata.push(search.centuryTag.join(' '))
-  search.allMetadata.push(search.themeTag.join(' '))
-  console.log(search)
+  search['allMetadata'] += ' ' + loadSubItemTitles(manifest)
+  search['allMetadata'] += ' ' + search.repository
+  search['allMetadata'] += ' ' + search.centuryTag.join(' ')
+  search['allMetadata'] += ' ' + search.themeTag.join(' ')
+
   return search
 }
 
