@@ -9,6 +9,7 @@ import { jsx } from 'theme-ui'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   const referal = { type: 'search', query: window.location.search }
+  console.log(hits)
   return (
     <DisplayViewToggle
       defaultDisplay={defaultDisplay}
@@ -26,8 +27,14 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
               {
                 hit.highlight && hit.highlight.allMetadata ? Object.values(hit.highlight.allMetadata)
                   .map(
-                    (row) => {
-                      return row ? (
+                    (blob) => {
+                      let row = ''
+                      blob.split('::').map(
+                        (meta) => {
+                          row += meta.includes('<em>') ? meta : ''
+                        },
+                      )
+                      return row !== '' ? (
                         <div
                           key={row}
                           dangerouslySetInnerHTML={{ __html: row }}
