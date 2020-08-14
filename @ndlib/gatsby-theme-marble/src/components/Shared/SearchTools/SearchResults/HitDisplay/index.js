@@ -21,9 +21,10 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
               iiifManifest={hit._id}
               key={index}
               referal={referal}
+              highlight={hit.highlight}
             >
               {
-                hit.highlight ? Object.values(hit.highlight)
+                hit.highlight && hit.highlight.allMetadata ? Object.values(hit.highlight.allMetadata)
                   .map(
                     (row) => {
                       return row ? (

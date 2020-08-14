@@ -21,7 +21,6 @@ export const ManifestCard = (props) => {
           title
           iiifUri
           display
-          sequence
           childrenMarbleIiifImage {
             service
             name
@@ -53,15 +52,20 @@ export const ManifestCard = (props) => {
     return null
   }
   const children = figureOutChildren(props, item)
-
   const gatsbyImage = findGatsbyImage(item, allFile)
   if (gatsbyImage) {
     console.log('found gatsby image')
   }
+  let title = ''
+  if (props.highlight && props.highlight.name) {
+    title = props.highlight.name[0]
+  } else {
+    title = item.title
+  }
   return (
     <div sx={sx.wrapper}>
       <Card
-        label={item.title}
+        label={title}
         target={`/${item.slug}`}
         gatsbyImage={gatsbyImage}
         imageService={typy(item, 'childrenMarbleIiifImage[0].service').safeString}
@@ -91,8 +95,13 @@ const findMetadata = (manifest, options) => {
 }
 
 export const figureOutChildren = (parentProps, item) => {
-  const creator = findMetadata(item, ['creator'])
   const dates = findMetadata(item, ['date', 'dates'])
+  let creator = ''
+  if (parentProps.highlight && parentProps.highlight.creator) {
+    creator = parentProps.highlight.creator[0]
+  } else {
+    creator = findMetadata(item, ['creator'])
+  }
   return (
     <React.Fragment>
       {
@@ -141,6 +150,7 @@ ManifestCard.propTypes = {
   showDate: PropTypes.bool,
   showSummary: PropTypes.bool,
   children: PropTypes.node,
+  highlight: PropTypes.string,
 }
 ManifestCard.defaultProps = {
   showCreator: true,

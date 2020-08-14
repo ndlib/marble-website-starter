@@ -44,7 +44,6 @@ export const query = graphql`
         value
         type
       }
-      sequence
       childrenMarbleIiifImage {
         id
         default
