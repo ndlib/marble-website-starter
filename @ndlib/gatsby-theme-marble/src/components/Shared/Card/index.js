@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { useContext } from 'react'
 import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
 import { BaseStyles, jsx, Styled } from 'theme-ui'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
@@ -15,6 +16,7 @@ const Card = ({
   children,
   location,
   referal,
+  gatsbyImage,
   imageService,
   imageRegion,
   onClick,
@@ -31,13 +33,17 @@ const Card = ({
         <article sx={sx.wrapper(wide)}>
           <figure sx={sx.figure}>
             <div sx={sx.imageWrapper(wide)}>
-              <Image
-                src={image || null}
-                service={imageService || null}
-                region={imageRegion || 'full'}
-                alt={label}
-                inCard
-              />
+              <div sx={sx.imageWrapperInner}>
+                <div sx={sx.imageBoarder}>
+                  <Image
+                    gatsbyImage={gatsbyImage}
+                    src={image || null}
+                    service={imageService || null}
+                    region={imageRegion || 'full'}
+                    alt={label}
+                  />
+                </div>
+              </div>
             </div>
             <ExteralLinkIcon target={target} />
             <figcaption sx={sx.figcaption(wide)}>
@@ -58,6 +64,7 @@ Card.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
+  gatsbyImage: PropTypes.object,
   imageService: PropTypes.string,
   imageRegion: PropTypes.string,
   children: PropTypes.node,
