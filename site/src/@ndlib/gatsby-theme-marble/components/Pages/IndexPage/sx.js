@@ -38,4 +38,10 @@ module.exports = {
     position: 'absolute',
     textShadow: '-1px 2px #00000066',
   },
+  breakline: {
+    borderBottom: '6px solid',
+    borderColor: 'primary',
+    width: '100%',
+    padding: '.5em',
+  },
 }
