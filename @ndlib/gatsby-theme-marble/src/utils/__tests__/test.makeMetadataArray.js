@@ -2,7 +2,7 @@ import makeMetadataArray from '../mapStandardJson/makeMetadataArray'
 
 let defaultData = {}
 
-describe('makeMetadataArray', () => {
+describe.skip('makeMetadataArray', () => {
   beforeEach(() => {
     defaultData = {
       sourceSystem: 'archivesspace',
