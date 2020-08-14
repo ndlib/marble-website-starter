@@ -15,11 +15,19 @@ module.exports = {
       height: '250px',
       position: 'relative',
     } : {
-      height: '400px',
+      height: '435px',
       overflow: 'hidden',
       position: 'relative',
       width: '100%',
     }
+  },
+  imageBoarder: {
+    border: '1px solid',
+    borderColor: 'gray.1',
+    display: 'inline-block',
+    margin: '0 auto',
+    padding: '4px',
+    paddingBottom: '0',
   },
   figure: {
     margin: '0',
@@ -37,6 +45,13 @@ module.exports = {
       verticalAlign: 'top',
       width: '350px',
     } : {}
+  },
+  imageWrapperInner: {
+    boxSizing: 'border-box',
+    display: 'flex',
+    height: '250px',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   figcaption: (wide) => {
     return wide ? {

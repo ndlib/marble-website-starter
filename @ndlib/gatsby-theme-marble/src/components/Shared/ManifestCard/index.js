@@ -10,7 +10,7 @@ import TypeLabel from './TypeLabel'
 import sx from './sx'
 
 export const ManifestCard = (props) => {
-  const { allMarbleItem } = useStaticQuery(
+  const { allMarbleItem, allFile } = useStaticQuery(
     graphql`
     query {
       allMarbleItem {
@@ -24,6 +24,7 @@ export const ManifestCard = (props) => {
           sequence
           childrenMarbleIiifImage {
             service
+            name
           }
           metadata {
             label
@@ -31,9 +32,21 @@ export const ManifestCard = (props) => {
           }
         }
       }
+      allFile(filter: {extension: {eq: "jpg"}}) {
+        nodes {
+          name
+          publicURL
+          childImageSharp {
+            fixed(height: 250, quality: 70) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
     }
   `,
   )
+  // console.log(allFile)
   const item = findItem(props.iiifManifest, allMarbleItem)
   if (!item) {
     console.warn('Could not find manifest: ', props.iiifManifest)
@@ -41,12 +54,16 @@ export const ManifestCard = (props) => {
   }
   const children = figureOutChildren(props, item)
 
-  // TODO Fix image path for collections
+  const gatsbyImage = findGatsbyImage(item, allFile)
+  if (gatsbyImage) {
+    console.log('found gatsby image')
+  }
   return (
     <div sx={sx.wrapper}>
       <Card
         label={item.title}
         target={`/${item.slug}`}
+        gatsbyImage={gatsbyImage}
         imageService={typy(item, 'childrenMarbleIiifImage[0].service').safeString}
         {...props}
       >
@@ -104,6 +121,17 @@ const findItem = (manifestId, allMarbleItem) => {
   return allMarbleItem.nodes.find(item => {
     return item.iiifUri === manifestId
   })
+}
+
+const findGatsbyImage = (item, allFile) => {
+  // console.log(item.childrenMarbleIiifImage[0].name)
+  if (!typy(item, 'childrenMarbleIiifImage[0].name').isString) {
+    return null
+  }
+  const result = allFile.nodes.find(file => {
+    return file.name.includes(typy(item, 'childrenMarbleIiifImage[0].name').safeString)
+  })
+  return typy(result, 'childImageSharp.fixed').safeObject
 }
 
 ManifestCard.propTypes = {
