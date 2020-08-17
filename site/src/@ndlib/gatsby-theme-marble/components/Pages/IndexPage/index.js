@@ -6,7 +6,7 @@ import { Styled, jsx } from 'theme-ui'
 import HeroBox from 'components/Shared/HeroBox'
 import SearchBox from 'components/Shared/SearchBox'
 import CardGroup from 'components/Shared/CardGroup'
-import Card from 'components/Shared/Card'
+import BrowseBar from 'components/Shared/BrowseBar'
 import ManifestCard from 'components/Shared/ManifestCard'
 import BlockQuote from 'components/Shared/BlockQuote'
 import MultiColumn from 'components/Shared/MultiColumn'
@@ -37,35 +37,31 @@ const IndexPage = ({ location }) => {
       <Styled.h2>{t('common:search.browseBy')}</Styled.h2>
       <MultiColumn columns='4'>
         <Column>
-          <Card
+          <BrowseBar
             label='Date'
             target='/browse?scrollto=date'
             image={dateImage}
-            isThumbnail='true'
           />
         </Column>
         <Column>
-          <Card
+          <BrowseBar
             label='Format'
             target='/browse?scrollto=format'
             image={formatImage}
-            isThumbnail='true'
           />
         </Column>
         <Column>
-          <Card
+          <BrowseBar
             label='Campus Location'
             target='/browse?scrollto=location'
             image={campuslocationImage}
-            isThumbnail='true'
           />
         </Column>
         <Column>
-          <Card
+          <BrowseBar
             label='All Items'
             target='/search?q='
             image={allImage}
-            isThumbnail='true'
           />
         </Column>
       </MultiColumn>

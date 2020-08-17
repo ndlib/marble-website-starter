@@ -18,10 +18,8 @@ const Card = ({
   imageService,
   imageRegion,
   onClick,
-  isThumbnail,
 }) => {
   const wide = useContext(LayoutContext) === 'list'
-  const thumb = isThumbnail ? 'thumb' : null
   return (
     <CardWrapper
       target={target}
@@ -30,19 +28,18 @@ const Card = ({
       onClick={onClick}
     >
       <BaseStyles>
-        <article sx={sx.wrapper(wide, thumb)}>
+        <article sx={sx.wrapper(wide)}>
           <figure sx={sx.figure}>
-            <div sx={sx.imageWrapper(wide, thumb)}>
+            <div sx={sx.imageWrapper(wide)}>
               <Image
                 src={image || null}
                 service={imageService || null}
                 region={imageRegion || 'full'}
                 alt={label}
-                inCard={!isThumbnail}
               />
             </div>
             <ExteralLinkIcon target={target} />
-            <figcaption sx={sx.figcaption(wide, thumb)}>
+            <figcaption sx={sx.figcaption(wide)}>
               <Styled.h3 dangerouslySetInnerHTML={{ __html: label }} />
               <div>
                 {children}
@@ -66,7 +63,6 @@ Card.propTypes = {
   location: PropTypes.object,
   referal: PropTypes.object,
   onClick: PropTypes.func,
-  isThumbnail: PropTypes.bool,
 }
 
 Card.defaultProps = {
