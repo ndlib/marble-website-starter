@@ -36,8 +36,8 @@ export const ManifestCard = (props) => {
           name
           publicURL
           childImageSharp {
-            fixed(height: 250, quality: 70) {
-              ...GatsbyImageSharpFixed
+            fluid(maxHeight: 250, maxWidth: 250, quality: 70) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -45,7 +45,6 @@ export const ManifestCard = (props) => {
     }
   `,
   )
-  // console.log(allFile)
   const item = findItem(props.iiifManifest, allMarbleItem)
   if (!item) {
     console.warn('Could not find manifest: ', props.iiifManifest)
@@ -60,7 +59,6 @@ export const ManifestCard = (props) => {
   } else {
     title = item.title
   }
-  // TODO Fix image path for collections
   return (
     <div sx={sx.wrapper}>
       <Card

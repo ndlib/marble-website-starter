@@ -28,9 +28,10 @@ const Image = ({
   if (gatsbyImage) {
     return (
       <Img
-        fixed={gatsbyImage}
+        fluid={gatsbyImage}
         alt={alt || ''}
         title={title}
+        fit='INSIDE'
       />
     )
   }

@@ -49,7 +49,7 @@ module.exports = {
     return wide ? {
       display: 'inline-block',
       verticalAlign: 'top',
-      width: '350px',
+      width: '250px',
     } : {}
   },
   imageWrapperInner: {
@@ -69,7 +69,7 @@ module.exports = {
       overflow: 'hidden',
       padding: '.5rem',
       position: 'relative',
-      width: 'calc(100% - 350px - 1.5rem)',
+      width: 'calc(100% - 250px - 1.5rem)',
     } : {
       borderBottom: '6px solid',
       borderColor: 'primary',

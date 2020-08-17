@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { useContext } from 'react'
 import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
 import { BaseStyles, jsx, Styled } from 'theme-ui'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
