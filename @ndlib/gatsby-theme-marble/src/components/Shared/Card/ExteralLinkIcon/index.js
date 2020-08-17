@@ -1,17 +1,19 @@
-import React from 'react'
+/** @jsx jsx */
 import PropTypes from 'prop-types'
+import { jsx } from 'theme-ui'
 import { isExternal } from 'components/Internal/Link'
 import openInNew from 'assets/icons/svg/baseline-open_in_new-24px-white.svg'
-import style from './style.module.css'
+import sx from './sx.js'
 
 const ExteralLinkIcon = ({ target }) => {
   if (target && isExternal(target)) {
     return (
-      <span className={style.iconWrapper}>
+      <span sx={sx.iconWrapper}>
         <img
           src={openInNew}
           alt='Link to external site.'
           title='Link to external site.'
+          sx={sx.image}
         />
       </span>
     )

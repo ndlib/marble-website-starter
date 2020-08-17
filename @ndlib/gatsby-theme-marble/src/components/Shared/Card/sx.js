@@ -39,7 +39,7 @@ module.exports = {
     margin: '0',
   },
   fadeOut: {
-    height: '20px',
+    height: '30px',
     backgroundImage: 'linear-gradient(#ffffff00, #ffffff66, white, white)',
     position: 'absolute',
     bottom: '0',
@@ -55,7 +55,7 @@ module.exports = {
   imageWrapperInner: {
     boxSizing: 'border-box',
     display: 'flex',
-    height: '250px',
+    height: '265px',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -64,7 +64,7 @@ module.exports = {
       borderBottom: '6px solid',
       borderColor: 'primary',
       display: 'inline-block',
-      height: '250px',
+      height: '265px',
       marginLeft: '1.5rem',
       overflow: 'hidden',
       padding: '.5rem',
