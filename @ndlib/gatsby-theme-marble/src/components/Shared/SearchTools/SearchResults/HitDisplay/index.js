@@ -9,7 +9,6 @@ import { jsx } from 'theme-ui'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   const referal = { type: 'search', query: window.location.search }
-  console.log(hits)
   return (
     <DisplayViewToggle
       defaultDisplay={defaultDisplay}
@@ -29,7 +28,8 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
                   .map(
                     (blob) => {
                       let row = ''
-                      blob.split('::').map(
+                      const stringSplit = '::'
+                      blob.split(stringSplit).map(
                         (meta) => {
                           row += meta.includes('<em>') ? meta : ''
                         },
