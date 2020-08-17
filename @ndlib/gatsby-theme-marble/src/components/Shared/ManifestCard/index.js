@@ -10,7 +10,7 @@ import TypeLabel from './TypeLabel'
 import sx from './sx'
 
 export const ManifestCard = (props) => {
-  const { allMarbleItem } = useStaticQuery(
+  const { allMarbleItem, allFile } = useStaticQuery(
     graphql`
     query {
       allMarbleItem {
@@ -23,10 +23,22 @@ export const ManifestCard = (props) => {
           display
           childrenMarbleIiifImage {
             service
+            name
           }
           metadata {
             label
             value
+          }
+        }
+      }
+      allFile(filter: {extension: {eq: "jpg"}}) {
+        nodes {
+          name
+          publicURL
+          childImageSharp {
+            fluid(maxHeight: 250, maxWidth: 250, quality: 70) {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
@@ -39,18 +51,20 @@ export const ManifestCard = (props) => {
     return null
   }
   const children = figureOutChildren(props, item)
+
+  const gatsbyImage = findGatsbyImage(item, allFile)
   let title = ''
   if (props.highlight && props.highlight.name) {
     title = props.highlight.name[0]
   } else {
     title = item.title
   }
-  // TODO Fix image path for collections
   return (
     <div sx={sx.wrapper}>
       <Card
         label={title}
         target={`/${item.slug}`}
+        gatsbyImage={gatsbyImage}
         imageService={typy(item, 'childrenMarbleIiifImage[0].service').safeString}
         {...props}
       >
@@ -113,6 +127,17 @@ const findItem = (manifestId, allMarbleItem) => {
   return allMarbleItem.nodes.find(item => {
     return item.iiifUri === manifestId
   })
+}
+
+const findGatsbyImage = (item, allFile) => {
+  // console.log(item.childrenMarbleIiifImage[0].name)
+  if (!typy(item, 'childrenMarbleIiifImage[0].name').isString) {
+    return null
+  }
+  const result = allFile.nodes.find(file => {
+    return file.name.includes(typy(item, 'childrenMarbleIiifImage[0].name').safeString)
+  })
+  return typy(result, 'childImageSharp.fixed').safeObject
 }
 
 ManifestCard.propTypes = {
