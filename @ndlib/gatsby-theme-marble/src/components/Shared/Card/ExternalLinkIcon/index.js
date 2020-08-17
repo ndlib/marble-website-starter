@@ -5,7 +5,7 @@ import { isExternal } from 'components/Internal/Link'
 import openInNew from 'assets/icons/svg/baseline-open_in_new-24px-white.svg'
 import sx from './sx.js'
 
-const ExteralLinkIcon = ({ target }) => {
+const ExternalLinkIcon = ({ target }) => {
   if (target && isExternal(target)) {
     return (
       <span sx={sx.iconWrapper}>
@@ -21,7 +21,7 @@ const ExteralLinkIcon = ({ target }) => {
   return null
 }
 
-ExteralLinkIcon.propTypes = {
+ExternalLinkIcon.propTypes = {
   target: PropTypes.string,
 }
-export default ExteralLinkIcon
+export default ExternalLinkIcon

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { BaseStyles, jsx, Styled } from 'theme-ui'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
-import ExteralLinkIcon from './ExteralLinkIcon'
+import ExternalLinkIcon from './ExternalLinkIcon'
 import { LayoutContext } from 'components/Internal/DisplayViewToggle'
 import sx from './sx'
 
@@ -44,7 +44,7 @@ const Card = ({
                 </div>
               </div>
             </div>
-            <ExteralLinkIcon target={target} />
+            <ExternalLinkIcon target={target} />
             <figcaption sx={sx.figcaption(wide)}>
               <Styled.h3 dangerouslySetInnerHTML={{ __html: label }} />
               <div>
