@@ -54,6 +54,11 @@ module.exports = [
         label: 'Site Map',
         link: '/sitemap',
       },
+      {
+        id: 'feedback',
+        label: 'Feedback',
+        link: '/feedback',
+      },
     ],
   },
   {

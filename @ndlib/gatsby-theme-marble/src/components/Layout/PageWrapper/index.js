@@ -4,6 +4,7 @@ import SkipToMain from './SkipToMain'
 import BrandingHeader from './BrandingHeader'
 import NavigationHeader from './NavigationHeader'
 import Footer from './Footer'
+import FeedbackModal from '../../Internal/FeedbackModal'
 
 const PageWrapper = ({ children, location }) => {
   return (
@@ -13,6 +14,7 @@ const PageWrapper = ({ children, location }) => {
       <NavigationHeader location={location} />
       {children}
       <Footer />
+      <FeedbackModal />
     </>
   )
 }
