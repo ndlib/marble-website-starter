@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "5e653b7e-4875-4ea3-a0c2-9d0674311e2e",
+		"name": "MARBLE - QA",
+		"description": "# MARBLE\n\nThis collection will run basic smoke tests to ensure that the MARBLE site is running as expected.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Site Index",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d6aa170-fa46-4c19-94b9-a56fa872d761",
+						"exec": [
+							"// Load the HTML into cheerio, which will let us easily select attributes for testing.",
+							"const $ = cheerio.load(pm.response.text());",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{hostname}}/",
+					"protocol": "https",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "17aa4ab5-f88c-446a-b870-02c2327a12a2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9c1fdddd-b31c-46b3-8349-cac48df6ca19",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [],
+	"protocolProfileBehavior": {}
+}
