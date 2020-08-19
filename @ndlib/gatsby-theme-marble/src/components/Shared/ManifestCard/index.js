@@ -147,7 +147,7 @@ ManifestCard.propTypes = {
   showDate: PropTypes.bool,
   showSummary: PropTypes.bool,
   children: PropTypes.node,
-  highlight: PropTypes.string,
+  highlight: PropTypes.object,
 }
 ManifestCard.defaultProps = {
   showCreator: true,
