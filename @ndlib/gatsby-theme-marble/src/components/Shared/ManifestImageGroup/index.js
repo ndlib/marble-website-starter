@@ -48,9 +48,11 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
 
 ManifestImageGroup.propTypes = {
   marbleItem: PropTypes.shape({
-    childrenMarbleIiifImage: PropTypes.arrayOf({
-      default: PropTypes.string,
-    }),
+    childrenMarbleIiifImage: PropTypes.arrayOf(
+      PropTypes.shape({
+        default: PropTypes.string,
+      }),
+    ),
   }),
   location: PropTypes.object.isRequired,
   viewer: PropTypes.string,

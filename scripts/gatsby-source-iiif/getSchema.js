@@ -14,7 +14,7 @@ const fetchData = async (seeAlso) => {
   const errorResult = []
   await Promise.all(seeAlso.map(async item => {
     // console.log('Processing: ' + item)
-    const url = 'https://presentation-iiif.library.nd.edu/' + item + '/nd'
+    const url = 'https://presentation-iiif.library.nd.edu/' + item + '/standard'
     const result = await fetchUntilGood(url, finalResult, errorResult, 0)
     return result
   }))
@@ -54,7 +54,7 @@ const fetchUntilGood = async (url, myArray, badArray, count = 0) => {
           console.error('Reached retry limit of "' + retryLimit + '" for ' + url)
           badArray.push(url)
         } else {
-          console.error('fetch error (' + count + '), retrying:', url)
+          // console.error('fetch error (' + count + '), retrying:', url)
           fetchUntilGood(url, myArray, badArray, ++count)
         }
         return error

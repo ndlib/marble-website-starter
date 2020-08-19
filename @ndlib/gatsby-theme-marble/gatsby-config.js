@@ -27,6 +27,8 @@ module.exports = ({
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-source-filesystem',
@@ -35,13 +37,6 @@ module.exports = ({
         path: `${contentPath}/json/nd`,
       },
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     name: 'iiif',
-    //     path: `${contentPath}/json/`,
-    //   },
-    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -57,8 +52,6 @@ module.exports = ({
       },
     },
     'gatsby-remark-copy-linked-files',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     // Markdown pages
     {
       resolve: 'gatsby-transformer-remark',
@@ -86,12 +79,6 @@ module.exports = ({
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     'gatsby-plugin-offline',
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `./src/utils/typography`,
-    //   },
-    // },
     // this plugin highlights accessibility errors on the rendered pages
     // It should probably be removed from production
     {

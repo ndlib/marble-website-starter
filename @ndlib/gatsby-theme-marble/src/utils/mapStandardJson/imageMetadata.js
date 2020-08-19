@@ -10,5 +10,7 @@ module.exports = (standardJson) => {
     thumbnail: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/400,/0/default.jpg'),
     sequence: standardJson.sequence,
     title: standardJson.title,
+    name: standardJson.collectionId && standardJson.id ? `${standardJson.collectionId}-${standardJson.id.replace('.jpg', '')}` : null,
+    extension: 'jpg',
   }
 }

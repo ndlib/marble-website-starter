@@ -69,7 +69,7 @@ const loadSubItemTitles = (manifest) => {
 
   return manifest.items.reduce((titles, item) => {
     if (item.title) {
-      return titles + ' ' + item.title
+      return titles + '::' + item.title
     }
     return titles
   }, '')
@@ -103,16 +103,16 @@ const getSearchDataFromManifest = (manifest) => {
   }
 
   search['allMetadata'] = ''
-  search['allMetadata'] = creators.join(' ')
+  search['allMetadata'] = creators.join('::')
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
-      search['allMetadata'] += ' ' + manifest[key]
+      search['allMetadata'] += '::' + manifest[key]
     }
   })
-  search['allMetadata'] += ' ' + loadSubItemTitles(manifest)
-  search['allMetadata'] += ' ' + search.repository
-  search['allMetadata'] += ' ' + search.centuryTag.join(' ')
-  search['allMetadata'] += ' ' + search.themeTag.join(' ')
+  search['allMetadata'] += '::' + loadSubItemTitles(manifest)
+  search['allMetadata'] += '::' + search.repository
+  search['allMetadata'] += '::' + search.centuryTag.join('::')
+  search['allMetadata'] += '::' + search.themeTag.join('::')
 
   return search
 }

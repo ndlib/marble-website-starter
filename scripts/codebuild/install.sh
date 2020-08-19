@@ -10,9 +10,10 @@ echo "ENV_FILE: ${ENV_FILE}"
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
 # must contain search_url and search_index key/values
 # pass in 'local' for dev settings
-if [[ $# -ne 1 ]]; then
+export PARAM_CONFIG_PATH=${PARAM_CONFIG_PATH:=$1}
+if [[ -z "$PARAM_CONFIG_PATH" ]]; then
     echo "FATAL: Elasticsearch configuration required"
-    echo "scripts/codebuild/install.sh /all/static-host/<stackname>/"
+    echo "export PARAM_CONFIG_PATH=/all/static-host/<stackname>/"
     exit 2
 fi
 
@@ -33,11 +34,11 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 pushd scripts/gatsby-source-iiif/
 yarn install
-node setupEnv.js ${1} > ${ENV_FILE}
+node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE}
 
 source ${ENV_FILE}
 export $(cut -d= -f1 ${ENV_FILE})
-./generate.sh ${1}
+./generate.sh ${PARAM_CONFIG_PATH}
 popd
 
 echo "Copy .env to site for Gatsby"
