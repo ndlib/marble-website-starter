@@ -32,6 +32,7 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
                       blob.split(stringSplit).map(
                         (meta) => {
                           row += meta.includes('<em>') ? meta : ''
+                          return row
                         },
                       )
                       return row !== '' ? (
