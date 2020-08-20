@@ -39,16 +39,18 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
     <div
       sx={sx.wrapper}
     >
-      <input
-        type='text'
-        disabled={creating}
-        defaultValue={title}
-        onChange={(event) => {
-          setValid(event.target.value !== '')
-          setTitle(event.target.value)
-        }}
-        sx={valid ? sx.input : sx.inputInvalid}
-      />
+      <label htmlFor={title}>
+        <input
+          type='text'
+          disabled={creating}
+          defaultValue={title}
+          onChange={(event) => {
+            setValid(event.target.value !== '')
+            setTitle(event.target.value)
+          }}
+          sx={valid ? sx.input : sx.inputInvalid}
+        />
+      </label>
       <button
         className='submit-button'
         onClick={() => {

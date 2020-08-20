@@ -6,21 +6,23 @@ import { jsx } from 'theme-ui'
 
 export const ToggleButton = ({ option, action, active }) => {
   return (
-    <input
-      type='image'
-      src={active ? option.activeIcon : option.inactiveIcon}
-      alt={`${option.display} view`}
-      onClick={() => {
-        action(option)
-      }}
-      sx={active ? {
-        backgroundColor: 'primary',
-        cursor: 'default',
-      } : {
-        backgroundColor:'#dedede',
-        opacity: '.3',
-      }}
-    />
+    <label htmlFor={option.display}>
+      <input
+        type='image'
+        src={active ? option.activeIcon : option.inactiveIcon}
+        alt={`${option.display} view`}
+        onClick={() => {
+          action(option)
+        }}
+        sx={active ? {
+          backgroundColor: 'primary',
+          cursor: 'default',
+        } : {
+          backgroundColor:'#dedede',
+          opacity: '.3',
+        }}
+      />
+    </label>
   )
 }
 

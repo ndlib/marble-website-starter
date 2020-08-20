@@ -26,13 +26,15 @@ const ShareModalContent = ({ path }) => {
   const iconColor = typy(context, 'theme.colors.background').safeString || '#fff'
   return (
     <React.Fragment>
-      <input
-        ref={inputRef}
-        value={fullPath}
-        onClick={() => onClick(inputRef, setIsCopied)}
-        sx={sx.input}
-        readOnly
-      />
+      <label htmlFor={inputRef}>
+        <input
+          ref={inputRef}
+          value={fullPath}
+          onClick={() => onClick(inputRef, setIsCopied)}
+          sx={sx.input}
+          readOnly
+        />
+      </label>
       <button
         onClick={() => onClick(inputRef, setIsCopied)}
         sx={sx.button}

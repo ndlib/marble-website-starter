@@ -24,7 +24,10 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
                 <label
                   key={item.uuid}
                   className={localStyle.imageOption}
+                  htmlFor={item.uuid}
                 >
+                  Image Select
+                </label>
                   <input
                     type='radio'
                     name={fieldName}
@@ -41,7 +44,6 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
                     src={item.image}
                     alt=''
                   />
-                </label>
               )
             }
             return null
