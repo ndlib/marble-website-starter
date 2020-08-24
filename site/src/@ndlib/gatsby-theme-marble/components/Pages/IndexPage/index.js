@@ -30,10 +30,6 @@ const IndexPage = ({ location }) => {
 
   return (
     <React.Fragment>
-      <HeroBox backgroundImage={banner}>
-        <h1 sx={sx.h1}>{t('text:index.nd')}<span sx={sx.h2}>{t('text:index.title')}</span></h1>
-        <SearchBox location={location} />
-      </HeroBox>
       <Styled.h2>{t('common:search.browseBy')}</Styled.h2>
       <MultiColumn columns='4'>
         <Column>
