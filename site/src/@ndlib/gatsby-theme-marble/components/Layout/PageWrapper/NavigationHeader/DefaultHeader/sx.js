@@ -96,7 +96,7 @@ module.exports = {
     top: '30px',
   },
   heroWrapper: {
-    height: '330px',
+    height: '100px',
     margin: '50px auto 0',
     padding: '1rem',
     width: '100%',
