@@ -23,7 +23,7 @@ module.exports = {
     backdropFilter: 'blur(0px)',
     position: 'absolute',
     top: '0',
-    left: '0'
+    left: '0',
   },
   exhibitsLink: {
     color: 'background',
