@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import LoginButton from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader/LoginButton'
 import SearchBox from 'components/Shared/SearchBox'
@@ -47,5 +48,9 @@ export const HomeHeader = ({ location }) => {
       </a>
     </div>
   )
+}
+
+HomeHeader.propTpyes = {
+  location: PropTypes.object.isRequired,
 }
 export default HomeHeader

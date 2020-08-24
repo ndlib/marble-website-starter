@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import LoginButton from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader/LoginButton'
 import ndLogo from 'assets/svg/ND_mark_gold_white.svg'
@@ -50,5 +51,9 @@ export const DefaultHeader = ({ location }) => {
       </a>
     </div>
   )
+}
+
+DefaultHeader.propTypes = {
+  location: PropTypes.object.isRequired,
 }
 export default DefaultHeader

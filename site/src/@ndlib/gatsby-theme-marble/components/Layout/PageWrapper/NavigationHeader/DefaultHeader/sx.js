@@ -1,4 +1,5 @@
 const banner = require('assets/images/banner.swirl.png')
+
 module.exports = {
   wrapper: {
     borderTop: '5px solid #D39F10',
@@ -29,7 +30,7 @@ module.exports = {
     backdropFilter: 'blur(0px)',
     position: 'absolute',
     top: '0',
-    right: '0'
+    right: '0',
   },
   extraTriangle: {
     width: '0',
@@ -39,7 +40,7 @@ module.exports = {
     position: 'absolute',
     right: '600px',
     backdropFilter: 'blur(0px)',
-    display: ['none', 'block', 'block']
+    display: ['none', 'block', 'block'],
   },
   browseLink: {
     color: 'background',
@@ -105,7 +106,7 @@ module.exports = {
   marbleLogo: {
     height: '60px',
     top: ['40px', '-35px', '-35px'],
-    left: ['10px','20px', '20px'],
+    left: ['10px', '20px', '20px'],
     position: 'absolute',
   },
 }
