@@ -1,11 +1,15 @@
 const banner = require('assets/images/banner.swirl.png')
-
 module.exports = {
   wrapper: {
     borderTop: '5px solid #D39F10',
     position: 'relative',
-    height: '380px',
+    height: ['170px', '100px', '100px'],
+  },
+  backgroundWrapper: {
+    position: 'absolute',
     overflow: 'hidden',
+    height: ['170px', '100px', '100px'],
+    width: '100vw',
   },
   swirly: {
     backgroundImage: `url(${banner})`,
@@ -14,16 +18,38 @@ module.exports = {
     height: '380px',
     width: 'calc(100vw + 20px)',
     left: '-10px',
+    top: '-10px',
     filter: 'blur(5px)',
   },
   topBar: {
-    width: '100vw',
+    width: ['100vw', '600px', '600px'],
+    maxWidth: '100vw',
     height: '50px',
     backgroundColor: '#0C2340dd',
     backdropFilter: 'blur(0px)',
     position: 'absolute',
     top: '0',
-    left: '0'
+    right: '0'
+  },
+  extraTriangle: {
+    width: '0',
+    height: '0',
+    borderTop: '50px solid #0C2340dd',
+    borderLeft: '50px solid transparent',
+    position: 'absolute',
+    right: '600px',
+    backdropFilter: 'blur(0px)',
+    display: ['none', 'block', 'block']
+  },
+  browseLink: {
+    color: 'background',
+    fontFamily: 'menu',
+    fontSize: '18px',
+    textDecoration: 'none',
+    position: 'absolute',
+    right: '410px',
+    lineHeight: '50px',
+    display: ['none', 'block', 'block'],
   },
   exhibitsLink: {
     color: 'background',
@@ -31,7 +57,7 @@ module.exports = {
     fontSize: '18px',
     textDecoration: 'none',
     position: 'absolute',
-    right: '400px',
+    right: '480px',
     lineHeight: '50px',
     display: ['none', 'block', 'block'],
   },
@@ -77,29 +103,9 @@ module.exports = {
     maxWidth: '1540px',
   },
   marbleLogo: {
-    width: ['480px', '440px', '520px'],
-    top: ['50px', '60px', '30px'],
+    height: '60px',
+    top: ['40px', '-35px', '-35px'],
+    left: ['10px','20px', '20px'],
     position: 'absolute',
-  },
-  text: {
-    fontSize: ['1.2rem', '1.2rem', '1.4rem'],
-    color: 'white',
-    fontWeight: 'bolder',
-    textShadow: '-2px 2px 2px #000000dd',
-    width: ['0', 'calc(100% - 600px)', '450px'],
-    minWidth: '280px',
-    position: 'absolute',
-    lineHeight: '1.8rem',
-    left: ['500px', 'auto', '540px'],
-    right: ['auto', '10px', 'auto'],
-    top: '50px',
-    textAlign: 'center',
-    display: ['none', 'block', 'block'],
-  },
-  searchWrapper: {
-    position: 'absolute',
-    bottom: '40px',
-    maxWidth: ['calc(100% - 2rem)', 'calc(100% - 2rem)', 'calc(1500px - 2rem)'],
-    width: 'calc(100% - 2rem)',
   },
 }

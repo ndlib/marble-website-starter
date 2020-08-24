@@ -1,6 +1,6 @@
 export const theme = {
   space: [0, 4, 8, 16, 32],
-  breakpoints: ['780px', '1024px', '1600px'],
+  breakpoints: ['840px', '1024px', '1600px'],
   flexDirection: ['column', 'row', 'column-reverse'],
   textAlign: ['left', 'center', 'right'],
   fonts: {
