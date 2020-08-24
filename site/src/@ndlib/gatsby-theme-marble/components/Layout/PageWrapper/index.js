@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SkipToMain from './SkipToMain'
-import BrandingHeader from './BrandingHeader'
-import NavigationHeader from './NavigationHeader'
+import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/SkipToMain'
+import BrandingHeader from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/BrandingHeader'
+import NavigationHeader from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader'
 import Footer from './Footer'
 import FeedbackModal from '../../Internal/FeedbackModal'
 
@@ -14,6 +14,7 @@ const PageWrapper = ({ children, location }) => {
       <NavigationHeader location={location} />
       {children}
       <Footer />
+      <FeedbackModal />
     </>
   )
 }

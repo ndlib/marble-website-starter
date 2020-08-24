@@ -52,36 +52,21 @@
   margin-top: 10px;
   padding-left: 15px;
 }
+.inputRadioGroup {
+  padding-left: 85px;
+}
 .alert {
   color: red;
   font-size: .8em;
-  padding-top: 5px;
   padding-left: 20px;
+}
+.categoryAlert {
+  float: left;
 }
 .submit {
   width: 90px;
   height: 35px;
   background-color: #007d89;
-  color: #FFFFFF;
-  font-size: 18px;
-  margin: 12px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.button {
-  width: 90px;
-  height: 35px;
-  background-color: #007d89;
-  color: #FFFFFF;
-  font-size: 18px;
-  margin: 12px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.button:disabled {
-  width: 90px;
-  height: 35px;
-  background-color: #c2dee0;
   color: #FFFFFF;
   font-size: 18px;
   margin: 12px;
