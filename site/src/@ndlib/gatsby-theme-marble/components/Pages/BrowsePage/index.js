@@ -8,7 +8,6 @@ import MiniCard from 'components/Shared/MiniCard'
 import MultiColumn from 'components/Shared/MultiColumn'
 import SearchBox from 'components/Shared/SearchBox'
 
-import heroImage from 'assets/images/banner.swirl.png'
 const Browse = ({ location }) => {
   const dates = [
     {
@@ -78,7 +77,7 @@ const Browse = ({ location }) => {
   ]
   return (
     <>
-      <HeroBox backgroundImage={heroImage}>
+      <HeroBox>
         <SearchBox location={location} />
       </HeroBox>
       <MultiColumn columns='5'>
