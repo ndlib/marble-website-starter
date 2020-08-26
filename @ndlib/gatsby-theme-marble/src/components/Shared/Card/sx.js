@@ -73,7 +73,7 @@ module.exports = {
     } : {
       borderBottom: '6px solid',
       borderColor: 'primary',
-      height: '150px',
+      height: '170px',
       overflow: 'hidden',
       padding: '.5rem',
       position: 'relative',
