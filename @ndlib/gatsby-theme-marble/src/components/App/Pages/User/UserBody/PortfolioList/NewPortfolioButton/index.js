@@ -61,5 +61,5 @@ export const successFunc = ({ data, portfolios, addFunc, setCreating }) => {
   ps.unshift(data)
   addFunc(ps)
   setCreating(false)
-  navigate(`/myportfolio/${data.uuid}/edit`)
+  navigate(`/myportfolio/${data.uuid}`)
 }
