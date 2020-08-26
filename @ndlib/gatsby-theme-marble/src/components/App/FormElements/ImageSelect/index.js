@@ -21,10 +21,14 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
           items.map(item => {
             if (item.image) {
               return (
-                <label
-                  key={item.uuid}
-                  className={localStyle.imageOption}
-                >
+                <>
+                  <label
+                    key={item.uuid}
+                    className={localStyle.imageOption}
+                    htmlFor={item.uuid}
+                  >
+                    Image Select
+                  </label>
                   <input
                     type='radio'
                     name={fieldName}
@@ -41,7 +45,7 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
                     src={item.image}
                     alt=''
                   />
-                </label>
+                </>
               )
             }
             return null
