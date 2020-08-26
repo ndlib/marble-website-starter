@@ -24,7 +24,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const themeColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
   const plugins = [...miradorImageToolsPlugin]
   const config = {
-    id: 'test',
+    id: typy(data, 'marbleItem.id').isString ? data.marbleItem.id : 'default-id',
     themes: {
       light: {
         palette: {
