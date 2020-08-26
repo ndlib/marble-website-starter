@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown/with-html'
 import style from './style.module.css'
 
 const ManifestDescription = ({ marbleItem }) => {
-  console.log('Desc')
   if (marbleItem && marbleItem.description) {
     marbleItem.description = marbleItem.description.replace(/\[/g, '&#91;').replace(/\]/g, '&#93;')
     return (
