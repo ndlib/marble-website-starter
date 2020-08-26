@@ -33,7 +33,8 @@ const MiradorViewer = ({ iiifManifest, height, width }) => {
         }}
       >{
           viewerBlocked ? 'Click to enable interactive viewer' : 'Click to disable interactive viewer'
-        }</button>
+        }
+      </button>
     </div>
   )
 }

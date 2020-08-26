@@ -11,6 +11,7 @@ import sx from './sx'
 
 // eslint-disable-next-line complexity
 const MiradorViewerPage = ({ data, location }) => {
+  console.log(data)
   const manifestId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
   const manifestTitle = typy(data, 'marbleItem.title').safeString
   const qs = queryString.parse(location.search)
@@ -24,7 +25,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const themeColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
   const plugins = [...miradorImageToolsPlugin]
   const config = {
-    id: 'test',
+    id: typy(data, 'marbleItem.id').isString ? data.marbleItem.id : 'default-id',
     themes: {
       light: {
         palette: {
