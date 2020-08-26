@@ -3,7 +3,11 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-const HeroBox = ({ children, backgroundImage }) => {
+const HeroBox = ({
+  children,
+  backgroundImage,
+  backgroundColor,
+}) => {
   let safeImage = null
   if (typeof backgroundImage === 'string') {
     safeImage = `url('${backgroundImage}')`
@@ -14,6 +18,7 @@ const HeroBox = ({ children, backgroundImage }) => {
     <div
       sx={{
         ...sx.wrapper,
+        backgroundColor: backgroundColor || 'primary',
         backgroundImage: safeImage,
       }}
     >
@@ -28,6 +33,7 @@ HeroBox.propTypes = {
     PropTypes.string,
     PropTypes.object,
   ]),
+  backgroundColor: PropTypes.string,
 }
 
 export default HeroBox

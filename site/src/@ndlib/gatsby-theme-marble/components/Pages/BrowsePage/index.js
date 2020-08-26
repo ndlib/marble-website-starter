@@ -77,7 +77,7 @@ const Browse = ({ location }) => {
   ]
   return (
     <>
-      <HeroBox>
+      <HeroBox backgroundColor='gray.0'>
         <SearchBox location={location} />
       </HeroBox>
       <MultiColumn columns='5'>

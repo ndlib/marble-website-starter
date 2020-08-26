@@ -15,7 +15,7 @@ const SearchFilterBox = () => {
   const fields = ['name', 'creator', 'allMetadata']
 
   return (
-    <HeroBox>
+    <HeroBox backgroundColor='gray.0'>
       <SearchBox
         queryFields={fields}
         placeholder={fieldLabel}
