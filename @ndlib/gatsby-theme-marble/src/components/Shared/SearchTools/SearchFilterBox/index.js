@@ -12,13 +12,14 @@ import sx from './sx'
 const SearchFilterBox = () => {
   const { t } = useTranslation()
   const fieldLabel = t('common:search.prompt')
-  const fields = ['name', 'creator', 'allMetadata']
+  const fields = ['name^2', 'creator^2', 'allMetadata']
 
   return (
     <HeroBox backgroundColor='gray.0'>
       <SearchBox
         queryFields={fields}
         placeholder={fieldLabel}
+        queryBuilder={customQueryBuilder}
       />
       <div sx={sx.wrapper}>
         <div sx={sx.filters}>
@@ -30,6 +31,38 @@ const SearchFilterBox = () => {
       </div>
     </HeroBox>
   )
+}
+
+const customQueryBuilder = (query, options) => {
+  return {
+    bool : {
+      should : [
+        {
+          multi_match: {
+            query: query,
+            fields: [
+              'name^3',
+              'creator^2',
+              'allMetadata',
+            ],
+            slop: 5,
+            type: 'phrase',
+            boost: 4,
+          },
+        },
+        {
+          multi_match: {
+            query: query,
+            fields: [
+              'name^2',
+              'creator^1',
+              'allMetadata',
+            ],
+          },
+        },
+      ],
+    },
+  }
 }
 
 export default SearchFilterBox
