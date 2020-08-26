@@ -46,7 +46,7 @@ const Card = ({
             </div>
             <ExternalLinkIcon target={target} />
             <figcaption sx={sx.figcaption(wide)}>
-              <Styled.h3 dangerouslySetInnerHTML={{ __html: label }} />
+              <h2 sx={sx.label} dangerouslySetInnerHTML={{ __html: label }} />
               <div>
                 {children}
               </div>
