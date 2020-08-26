@@ -17,8 +17,7 @@ export const NavigationHeader = ({ location }) => {
     <Header>
       <div sx={sx.flexWrapper}>
         <SiteLogo />
-        <div
-          sx={sx.content}>
+        <div sx={sx.content}>
           <HamburgerButton
             onClick={() => {
               toggleHamburger(!hamburgerOpen)
