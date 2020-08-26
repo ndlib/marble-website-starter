@@ -29,7 +29,7 @@ describe('NewPortfolioButton', () => {
       addFunc: addFunc,
       setCreating: jest.fn(),
     })
-    expect(navigate).toBeCalledWith('/myportfolio/asdf/edit')
+    expect(navigate).toBeCalledWith('/myportfolio/asdf')
     expect(addFunc).toBeCalledWith([{ uuid: 'asdf' }, { uuid: '1' }, { uuid: '2' }])
   })
 })
