@@ -21,12 +21,21 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
               iiifManifest={hit._id}
               key={index}
               referal={referal}
+              highlight={hit.highlight}
             >
               {
-                hit.highlight ? Object.values(hit.highlight)
+                hit.highlight && hit.highlight.allMetadata ? Object.values(hit.highlight.allMetadata)
                   .map(
-                    (row) => {
-                      return row ? (
+                    (blob) => {
+                      let row = ''
+                      const stringSplit = '::'
+                      blob.split(stringSplit).map(
+                        (meta) => {
+                          row += meta.includes('<em>') ? meta : ''
+                          return row
+                        },
+                      )
+                      return row !== '' ? (
                         <div
                           key={row}
                           dangerouslySetInnerHTML={{ __html: row }}

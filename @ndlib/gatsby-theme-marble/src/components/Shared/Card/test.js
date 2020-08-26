@@ -4,7 +4,7 @@ import { BaseStyles, Styled } from 'theme-ui'
 import Card from './'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
-import ExteralLinkIcon from './ExteralLinkIcon'
+import ExternalLinkIcon from './ExternalLinkIcon'
 
 console.error = jest.fn()
 test('Card', () => {
@@ -21,7 +21,7 @@ test('Card', () => {
   expect(wrapper.find('article').exists()).toBeTruthy()
   expect(wrapper.find('figure').exists()).toBeTruthy()
   expect(wrapper.find(Image).props().src).toEqual('img.png')
-  expect(wrapper.find(ExteralLinkIcon).props().target).toEqual('/some-item')
+  expect(wrapper.find(ExternalLinkIcon).props().target).toEqual('/some-item')
   expect(wrapper.find('figcaption').exists()).toBeTruthy()
   expect(wrapper.find(Styled.h3).text()).toEqual('Card Label')
   expect(wrapper.find('.childContent').text()).toEqual('More Stuff')

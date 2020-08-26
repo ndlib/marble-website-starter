@@ -12,20 +12,34 @@ module.exports = {
   },
   wrapper: (wide) => {
     return wide ? {
+      '& em': {
+        backgroundColor: 'highlight',
+      },
       height: '250px',
       position: 'relative',
     } : {
-      height: '400px',
+      '& em': {
+        backgroundColor: 'highlight',
+      },
+      height: '435px',
       overflow: 'hidden',
       position: 'relative',
       width: '100%',
     }
   },
+  imageBoarder: {
+    border: '1px solid',
+    borderColor: 'gray.1',
+    display: 'inline-block',
+    margin: '0 auto',
+    padding: '4px',
+    paddingBottom: '0',
+  },
   figure: {
     margin: '0',
   },
   fadeOut: {
-    height: '20px',
+    height: '30px',
     backgroundImage: 'linear-gradient(#ffffff00, #ffffff66, white, white)',
     position: 'absolute',
     bottom: '0',
@@ -35,20 +49,27 @@ module.exports = {
     return wide ? {
       display: 'inline-block',
       verticalAlign: 'top',
-      width: '350px',
+      width: '250px',
     } : {}
+  },
+  imageWrapperInner: {
+    boxSizing: 'border-box',
+    display: 'flex',
+    height: '265px',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   figcaption: (wide) => {
     return wide ? {
       borderBottom: '6px solid',
       borderColor: 'primary',
       display: 'inline-block',
-      height: '250px',
+      height: '265px',
       marginLeft: '1.5rem',
       overflow: 'hidden',
       padding: '.5rem',
       position: 'relative',
-      width: 'calc(100% - 350px - 1.5rem)',
+      width: 'calc(100% - 250px - 1.5rem)',
     } : {
       borderBottom: '6px solid',
       borderColor: 'primary',

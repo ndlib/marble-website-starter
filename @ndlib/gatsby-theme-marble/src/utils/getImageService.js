@@ -6,7 +6,7 @@ export const getImageService = (iiifManifest, index = 0) => {
   return null
 }
 export const getImageServiceFromThumbnail = (iiifManifest) => {
-  if (typy(iiifManifest, `thumbnail[0].service[0].id`).isString) {
+  if (typy(iiifManifest, 'thumbnail[0].service[0].id').isString) {
     return iiifManifest.thumbnail[0].service[0].id
   }
   return null

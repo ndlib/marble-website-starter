@@ -51,15 +51,18 @@ export const LoginButton = ({ location, loginReducer }) => {
           <Link
             to={`/user/${loginReducer.user.userName}`}
             sx={sx.submenuItem}
-          >{ t('common:loginMenu.userPage') }</Link>
+          >{t('common:loginMenu.userPage')}
+          </Link>
           <Link
             to={`/user/${loginReducer.user.userName}/edit`}
             sx={sx.submenuItem}
-          >{ t('common:loginMenu.userEdit') }</Link>
+          >{t('common:loginMenu.userEdit')}
+          </Link>
           <Link
-            to={`/user/logout`}
+            to='/user/logout'
             sx={sx.submenuItem}
-          >{ t('common:loginMenu.logout') }</Link>
+          >{t('common:loginMenu.logout')}
+          </Link>
         </div>
       </div>
     )
@@ -67,9 +70,10 @@ export const LoginButton = ({ location, loginReducer }) => {
   return (
     <div sx={sx.button}>
       <Link
-        to={`/user`}
+        to='/user'
         sx={sx.link}
-      >{ t('common:loginMenu.login') }</Link>
+      >{t('common:loginMenu.login')}
+      </Link>
     </div>
   )
 }

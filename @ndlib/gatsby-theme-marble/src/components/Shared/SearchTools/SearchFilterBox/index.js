@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import {
   SearchBox,
   SelectedFilters,
@@ -6,7 +7,7 @@ import {
 } from 'searchkit'
 import { useTranslation } from 'react-i18next'
 import HeroBox from 'components/Shared/HeroBox'
-import banner from 'assets/images/banner.swirl.png'
+import sx from './sx'
 
 const SearchFilterBox = () => {
   const { t } = useTranslation()
@@ -14,13 +15,19 @@ const SearchFilterBox = () => {
   const fields = ['name', 'creator', 'allMetadata']
 
   return (
-    <HeroBox backgroundImage={banner}>
+    <HeroBox backgroundColor='gray.0'>
       <SearchBox
         queryFields={fields}
         placeholder={fieldLabel}
       />
-      <SelectedFilters />
-      <ResetFilters />
+      <div sx={sx.wrapper}>
+        <div sx={sx.filters}>
+          <SelectedFilters />
+        </div>
+        <div sx={sx.reset}>
+          <ResetFilters />
+        </div>
+      </div>
     </HeroBox>
   )
 }

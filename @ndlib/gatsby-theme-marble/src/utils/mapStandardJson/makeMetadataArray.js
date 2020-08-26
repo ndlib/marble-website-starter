@@ -86,6 +86,36 @@ const findProvider = (standardJson) => {
   }
 }
 
+const findContact = (standardJson) => {
+  if (!('repository' in standardJson)) {
+    return false
+  }
+  let contact = ''
+  switch (standardJson.repository.toLowerCase()) {
+    case 'rare':
+    case 'curate':
+      contact = 'rarebook@nd.edu'
+      break
+    case 'museum':
+      contact = 'sniteart@nd.edu'
+      break
+    case 'unda':
+      contact = 'archives@nd.edu'
+      break
+    case 'hesb':
+      contact = 'asklib@nd.edu'
+      break
+    default:
+      contact = ''
+      break
+  }
+  if (contact === '') {
+    return false
+  }
+  const provider = findProvider(standardJson)
+  return [`Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact ${provider} at ${contact}.`]
+}
+
 const dataLookUp = {
   archivesspace: {
     creators: {
@@ -157,6 +187,11 @@ const dataLookUp = {
       label: 'Link to finding aid',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
   aleph: {
@@ -236,9 +271,14 @@ const dataLookUp = {
       processor: findSubjects,
     },
     linkToSource: {
-      label: 'Link to finding aid',
+      label: 'Link to library catalog',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
   embark: {
@@ -306,6 +346,11 @@ const dataLookUp = {
       label: 'Subject',
       type: 'searchList',
       processor: findSubjects,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
   curate: {
@@ -388,6 +433,11 @@ const dataLookUp = {
       label: 'Link to finding aid',
       type: 'list',
       processor: genericFind,
+    },
+    departmentContact: {
+      label: 'Contact Us',
+      type: 'list',
+      processor: findContact,
     },
   },
 }
