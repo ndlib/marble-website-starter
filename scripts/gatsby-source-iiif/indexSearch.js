@@ -103,7 +103,6 @@ const getSearchDataFromManifest = (manifest) => {
   }
 
   search['allMetadata'] = ''
-  search['allMetadata'] = creators.join('::')
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
       search['allMetadata'] += '::' + manifest[key]
