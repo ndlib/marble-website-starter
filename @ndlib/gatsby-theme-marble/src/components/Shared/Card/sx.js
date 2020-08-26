@@ -79,4 +79,11 @@ module.exports = {
       position: 'relative',
     }
   },
+  label: {
+    fontFamily: 'body',
+    fontSize: 2,
+    fontWeight: '100',
+    lineHeight: 'heading',
+    margin: '.5rem 0',
+  },
 }
