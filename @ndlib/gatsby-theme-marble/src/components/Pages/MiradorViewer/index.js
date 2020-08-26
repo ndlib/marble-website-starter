@@ -11,7 +11,6 @@ import sx from './sx'
 
 // eslint-disable-next-line complexity
 const MiradorViewerPage = ({ data, location }) => {
-  console.log(data)
   const manifestId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
   const manifestTitle = typy(data, 'marbleItem.title').safeString
   const qs = queryString.parse(location.search)
