@@ -70,7 +70,7 @@ module.exports = {
   },
   heroWrapper: {
     height: '330px',
-    margin: '50px auto 0',
+    margin: '0 auto 0',
     padding: '1rem',
     width: '100%',
     position: 'relative',
@@ -78,7 +78,7 @@ module.exports = {
   },
   marbleLogo: {
     width: ['480px', '440px', '520px'],
-    top: ['50px', '60px', '30px'],
+    top: ['100px', '110px', '80px'],
     position: 'absolute',
   },
   text: {
@@ -92,13 +92,13 @@ module.exports = {
     lineHeight: '1.8rem',
     left: ['500px', 'auto', '540px'],
     right: ['auto', '10px', 'auto'],
-    top: '50px',
+    top: '100px',
     textAlign: 'center',
     display: ['none', 'block', 'block'],
   },
   searchWrapper: {
     position: 'absolute',
-    bottom: '40px',
+    bottom: '-10px',
     maxWidth: ['calc(100% - 2rem)', 'calc(100% - 2rem)', 'calc(1500px - 2rem)'],
     width: 'calc(100% - 2rem)',
   },

@@ -97,7 +97,7 @@ module.exports = {
   },
   heroWrapper: {
     height: '100px',
-    margin: '50px auto 0',
+    margin: '0 auto 0',
     padding: '1rem',
     width: '100%',
     position: 'relative',
@@ -105,7 +105,7 @@ module.exports = {
   },
   marbleLogo: {
     height: '60px',
-    top: ['40px', '-35px', '-35px'],
+    top: ['90px', '15px', '15px'],
     left: ['10px', '20px', '20px'],
     position: 'absolute',
   },
