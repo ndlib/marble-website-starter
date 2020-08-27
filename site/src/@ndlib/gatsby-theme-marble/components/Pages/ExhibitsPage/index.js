@@ -2,11 +2,11 @@ import React from 'react'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'
-import image2 from 'assets/images/Baseball.jpg'
+import image2 from 'assets/images/baseball.jpg'
 import image3 from 'assets/images/BLOG-EarlyCatholicAmerica.jpg'
-import image4 from 'assets/images/LPO-1914-23-F3.jpg'
-import image5 from 'assets/images/BOO_000413952-332.jpg'
-import image6 from 'assets/images/PO_005069928_0016.jpg'
+import image4 from 'assets/images/Vote_poster-001.jpg'
+import image5 from 'assets/images/DigitalDisplayHoriz.jpg'
+import image6 from 'assets/images/cc.png'
 
 const ExhibitsPage = () => {
   const exhibits = [
