@@ -1,7 +1,7 @@
 @media screen and (min-width: 620px) {
   .feedbackButton {
     position:fixed;
-    bottom:350px;
+    bottom:30vmin;
     right:25px;
     font-weight:bold;
     border:1px solid black; 
@@ -26,7 +26,7 @@
     font-weight:bold;
     border:1px solid black; 
     color:#FFFFFF; 
-    background-color:#007d89; 
+    background-color:#002a43; 
     text-decoration: none; 
     text-align:center;
     padding-top: 7px;
@@ -37,6 +37,7 @@
 }
 .ReactModal__Body--open {
   overflow-y: hidden;
+  
 }
 
 .modal {
@@ -45,10 +46,12 @@
   left: 3em;
   bottom: auto;
   height: auto;
-  width: fit-content;
+  max-width: 500px; 
   margin: 7em auto;
   transform: none;
   box-shadow: 0 0 8px 5px #00000055;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
   border-radius: 15px;
 }
 .modal:focus {
@@ -69,28 +72,19 @@
   color: #001E45;
   font-size: 1em;
   font-family: GPMed, sans-serif;
-  border-radius: 15px;
   max-height: calc(100vh - 118px);
   overflow-y: auto;
   padding: 1em;
 }
-.container {
-  background-color: #ffffff;
-  width:500px;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-  border: 1px solid grey;
-  font-size: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .headingContainer {
-  background-color:#007d89;
+  background-color:#002a43;
   width: 100%;
   float: left;
   margin-bottom: 10px;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  border-radius: 15px 15px 0px 0px;
 }
 .headingContainer h2 {
   font-weight:bold;
@@ -99,19 +93,14 @@
   color:#FFFFFF; 
   text-align:left;
   margin: 0px;
-  padding-left: 30px;
-  padding-top: 6px;
-  width: 75%;
+  width: 90%;
   float: left;
+  border-right: 1px solid white;
 }
 .closebutton {
   cursor: pointer;
-  height: 32px;
-  width: 32px;
-  margin: 4px;
   float: right;
-  padding-top: 8px;
-  padding-left: 8px;
-  border-left: 1px;
+  padding-right: 18px;
+  padding-top: 5px;
   color: #FFFFFF;
 }

@@ -1,10 +1,10 @@
 /* eslint-disable complexity */
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import useForm from './useForm'
 import validate from './LoginFormValidationRules'
 import Recaptcha from 'react-google-invisible-recaptcha'
-
-import style from './style.module.css'
+import sx from './sx'
 
 const Form = () => {
   const {
@@ -12,39 +12,39 @@ const Form = () => {
     errors,
     handleChange,
     handleSubmit,
-  } = useForm(login, validate)
+  } = useForm(submit, validate)
 
-  function login () {
-    console.log('No errors, submit callback called!')
+  function submit () {
+    console.log('Submitted')
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit} noValidate>
-        <label htmlFor='name' className={style.inputTextLabel}>Name</label>
-        <input className={style.inputText} type='name' id='name' name='name' autoFocus onChange={handleChange} value={values.name || ''} />
-        <label htmlFor='email' className={style.inputTextLabel}>Email Address</label>
-        <input autoComplete='off' className={style.inputText} type='email' id='email' name='email' onChange={handleChange} value={values.email || ''} />
+        <label htmlFor='name' sx={sx.inputTextLabel}>Name</label>
+        <input sx={sx.inputText} type='name' id='name' name='name' autoFocus onChange={handleChange} value={values.name || ''} />
+        <label htmlFor='email' sx={sx.inputTextLabel}>Email Address</label>
+        <input sx={sx.inputText} type='email' id='email' name='email' onChange={handleChange} value={values.email || ''} />
         {errors.email && (
-          <p className={style.alert}>{errors.email}</p>
+          <div role='alert' sx={sx.alert}>{errors.email}</div>
         )}
-        <div className={style.inputRadioGroup}>
-          <label htmlFor='comment' className={style.inputRadioLabel}>Comment</label>
-          <input className={style.inputRadio} type='radio' name='category' id='comment' onChange={handleChange} value={'comment' || ''} />
-          <label htmlFor='correction' className={style.inputRadioLabel}>Correction</label>
-          <input className={style.inputRadio} type='radio' name='category' id='correction' onChange={handleChange} value={'correction' || ''} />
-          <label htmlFor='bug' className={style.inputRadioLabel}>Bug</label>
-          <input className={style.inputRadio} type='radio' name='category' id='bug' onChange={handleChange} value={'bug' || ''} />
+        <div sx={sx.inputRadioGroup}>
+          <label htmlFor='comment' sx={sx.inputRadioLabel}>Comment</label>
+          <input sx={sx.inputRadio} type='radio' name='category' id='comment' onChange={handleChange} value={'comment' || ''} />
+          <label htmlFor='correction' sx={sx.inputRadioLabel}>Correction</label>
+          <input sx={sx.inputRadio} type='radio' name='category' id='correction' onChange={handleChange} value={'correction' || ''} />
+          <label htmlFor='bug' sx={sx.inputRadioLabel}>Bug</label>
+          <input sx={sx.inputRadio} type='radio' name='category' id='bug' onChange={handleChange} value={'bug' || ''} />
         </div>
         {errors.category && (
-          <p className={`${style.alert} ${style.categoryAlert}`}>{errors.category}</p>
+          <div role='alert' sx={sx.alert}>{errors.category}</div>
         )}
-        <label htmlFor='feedback' className={style.inputBoxLabel}>Tell us about your experience, ideas, questions, or issues related to the site. Alternatively, take our survey!</label>
-        <input className={style.inputBox} type='textarea' id='feedback' name='feedback' onChange={handleChange} value={values.feedback || ''} />
+        <label htmlFor='feedback' sx={sx.inputBoxLabel}>Tell us about your experience, ideas, questions, or issues related to the site. Alternatively, take our survey!</label>
+        <input sx={sx.inputBox} type='textarea' id='feedback' name='feedback' onChange={handleChange} value={values.feedback || ''} />
         {errors.feedback && (
-          <p className={style.alert}>{errors.feedback}</p>
+          <div role='alert' sx={sx.alert}>{errors.feedback}</div>
         )}
-        <button type='submit' className={style.submit}>Submit</button>
+        <button aria-labelledby='formHeader' type='submit' sx={sx.submit}>Submit</button>
       </form>
       <Recaptcha
         // ref={ ref => recaptcha = ref }

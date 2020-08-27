@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { useState } from 'react'
 import ReactModal from 'react-modal'
 import FeedbackForm from '../FeedbackForm'
-// import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Internal/ActionModal'
+import sx from './sx'
 
-import style from './style.module.css'
+// import style from './style.module.css'
 
-function FeedbackModal () {
+const FeedbackModal = () => {
   const [showModal, setShowModal] = useState(false)
 
   const handleOpenModal = () => {
@@ -17,19 +19,19 @@ function FeedbackModal () {
 
   return (
     <div>
-      <div role='button' onClick={handleOpenModal} className={style.feedbackButton}>FEEDBACK</div>
+      <div role='button' id='feedbackButton' onClick={handleOpenModal} sx={sx.feedbackButton}>FEEDBACK</div>
       <ReactModal
         isOpen={showModal}
         contentLabel='Digital Collection Feedback'
-        className={style.modal}
-        overlayClassName={style.modaloverlay}
+        sx={sx.modal}
+        overlayClassName={sx.modaloverlay}
         ariaHideApp
         shouldFocusAfterRender
         shouldReturnFocusAfterClose
       >
-        <div className={style.container}>
-          <div className={style.headingContainer}><h2>Digital Collection Feedback</h2>
-            <div role='button' onClick={handleCloseModal} className={style.closebutton}>X</div>
+        <div sx={sx.wrapper}>
+          <div id='formHeader' sx={sx.headingContainer}><h2>Digital Collection Feedback</h2>
+            <div role='button' onClick={handleCloseModal} sx={sx.closebutton}>X</div>
           </div>
           <FeedbackForm />
         </div>
