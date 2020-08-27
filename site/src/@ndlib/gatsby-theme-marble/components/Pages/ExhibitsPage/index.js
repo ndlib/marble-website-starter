@@ -2,11 +2,11 @@ import React from 'react'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'
-import image2 from 'assets/images/Baseball.jpg'
+import image2 from 'assets/images/BaseballCover.jpg'
 import image3 from 'assets/images/BLOG-EarlyCatholicAmerica.jpg'
-import image4 from 'assets/images/LPO-1914-23-F3.jpg'
-import image5 from 'assets/images/BOO_000413952-332.jpg'
-import image6 from 'assets/images/PO_005069928_0016.jpg'
+import image4 from 'assets/images/Vote_poster-001.jpg'
+import image5 from 'assets/images/DigitalDisplayHoriz.jpg'
+import image6 from 'assets/images/cc.png'
 
 const ExhibitsPage = () => {
   const exhibits = [
@@ -33,7 +33,7 @@ const ExhibitsPage = () => {
     {
       label: 'Words on Play: Baseball Literature before 1900 from the Joyce Sports Collection',
       image: image2,
-      target: 'https://collections.library.nd.edu/04f477d5b4/preserving-the-steadfastness-of-your-faith',
+      target: 'https://collections.library.nd.edu/2c4a5ed54c/words-on-play',
     },
     {
       label: 'After Gutenberg: Print, Books, and Knowledge in Germany through the Long Sixteenth Century',
