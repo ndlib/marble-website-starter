@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // import { Styled } from 'theme-ui'
+import { BaseStyles } from 'theme-ui'
 import Link from 'components/Internal/Link'
 
 const MetaDataSearchValue = ({ values }) => {
@@ -11,7 +12,9 @@ const MetaDataSearchValue = ({ values }) => {
           const search = '/search?q=' + val
           return (
             <dd key={val}>
-              <Link to={search}>{val}</Link>
+              <BaseStyles>
+                <Link to={search}>{val}</Link>
+              </BaseStyles>
             </dd>
           )
         })

@@ -53,16 +53,65 @@ const Browse = ({ location }) => {
       target: '/search?format[0]=Paintings',
     },
     {
+      label: 'Maps',
+      target: '/search?format[0]=Cartographic%20material',
+    },
+    {
       label: 'Photographs',
       target: '/search?format[0]=Photographs',
     },
     {
-      label: 'Prints',
-      target: '/search?format[0]=Prints',
+      label: 'Prints and Posters',
+      target: '/search?format[0]=Prints&format[1]=Two-dimensional%20nonprojected%20graphic&format[2]=Projected%20medium',
+    },
+    {
+      label: 'Drawings',
+      target: '/search?format[0]=Drawings',
     },
     {
       label: 'Sculpture',
-      target: '/search?place[0]=Sculpture',
+      target: '/search?format[0]=Sculpture',
+    },
+    {
+      label: 'Ceremonial objects and regalia',
+      target: '/search?format[0]=Ceremonial%20objects%20and%20regalia',
+
+    },
+    {
+      label: 'Decorative Arts, Craft, and Design',
+      target: '/search?format[0]=Decorative%20Arts%2C%20Craft%2C%20and%20Design',
+    },
+    {
+      label: 'Musical scores and recordings',
+      target: '/search?format[0]=Musical%20sound%20recording&format[1]=Notated%20music',
+    },
+    {
+      label: 'Texts',
+      target: '/search?format[0]=Language material',
+    },
+    {
+      label: 'Textiles',
+      target: '/search?format[0]=Textiles',
+    },
+    {
+      label: 'Tools, implements, and weights',
+      target: '/search?format[0]=Tools%2C%20implements%2C%20and%20weights',
+    },
+    {
+      label: 'Costume and accessories',
+      target: '/search?format[0]=Costume%20and%20accessories',
+    },
+    {
+      label: 'Arms and armor',
+      target: '/search?format[0]=Arms%20and%20armor',
+    },
+    {
+      label: 'Building components and ornaments',
+      target: '/search?format[0]=Building%20components&format[1]=House%20ornaments',
+    },
+    {
+      label: 'Dolls, toys, and games',
+      target: '/search?format[0]=Dolls%2C%20toys%2C%20and%20games',
     },
   ]
   const locations = [
