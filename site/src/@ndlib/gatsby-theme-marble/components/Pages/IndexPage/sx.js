@@ -32,16 +32,10 @@ module.exports = {
     bottom: '0.25rem',
     display: 'block',
     fontFamily: 'heading',
-    fontSize: '3rem',
+    fontSize: ['32px', '18px', '18px'],
     fontWeight: '200',
     margin: '0.75rem 1rem',
     position: 'absolute',
     textShadow: '-1px 2px #00000066',
-  },
-  breakline: {
-    borderBottom: '6px solid',
-    borderColor: 'primary',
-    width: '100%',
-    padding: '.5em',
   },
 }
