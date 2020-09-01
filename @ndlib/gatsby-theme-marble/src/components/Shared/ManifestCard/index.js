@@ -37,7 +37,6 @@ export const ManifestCard = (props) => {
           childImageSharp {
             fluid(maxHeight: 250) {
               ...GatsbyImageSharpFluid
-              ...GatsbyImageSharpFluidLimitPresentationSize
             }
           }
         }
