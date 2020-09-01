@@ -34,6 +34,8 @@ const SearchFilterBox = () => {
 }
 
 const customQueryBuilder = (query, options) => {
+  console.log(query)
+  console.log(options)
   return {
     bool : {
       should : [

@@ -8,6 +8,7 @@ module.exports = (standardJson) => {
       return {
         label: data.label,
         type: data.type,
+        urlField: data.urlField,
         value: data.processor(standardJson, id),
       }
     }
@@ -33,7 +34,17 @@ const findCreators = (standardJson) => {
     try {
       return standardJson.creators.map((creator) => creator.display)
     } catch (e) {
-      console.log('map=', standardJson.creators, typeof (standardJson.creators))
+      return []
+    }
+  }
+  return false
+}
+
+const findContributors = (standardJson) => {
+  if ('contributors' in standardJson && standardJson.contributors) {
+    try {
+      return standardJson.contributors.map((creator) => creator.display)
+    } catch (e) {
       return []
     }
   }
@@ -122,6 +133,7 @@ const dataLookUp = {
       label: 'Creator',
       type: 'searchList',
       processor: findCreators,
+      urlField: 'creator',
     },
     createdDate: {
       label: 'Date',
@@ -145,8 +157,9 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'searchList',
+      type: 'list',
       processor: mappedLanguageCodes,
+      urlField: 'language',
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -182,6 +195,7 @@ const dataLookUp = {
       label: 'Subject',
       type: 'searchList',
       processor: findSubjects,
+      urlField: 'keywords',
     },
     linkToSource: {
       label: 'Link to finding aid',
@@ -199,11 +213,19 @@ const dataLookUp = {
       label: 'Creator',
       type: 'searchList',
       processor: findCreators,
+      urlField: 'creator',
     },
     contributors: {
       label: 'Contributor',
-      type: 'list',
-      processor: findCreators,
+      type: 'searchList',
+      processor: findContributors,
+      urlField: 'creator',
+    },
+    collection: {
+      label: 'Collection',
+      type: 'searchList',
+      processor: genericFind,
+      urlField: 'collection',
     },
     createdDate: {
       label: 'Date',
@@ -232,8 +254,9 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'searchList',
+      type: 'list',
       processor: mappedLanguageCodes,
+      urlField: 'language',
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -269,6 +292,7 @@ const dataLookUp = {
       label: 'Subject',
       type: 'searchList',
       processor: findSubjects,
+      urlField: 'keywords',
     },
     linkToSource: {
       label: 'Link to library catalog',
@@ -286,6 +310,7 @@ const dataLookUp = {
       label: 'Creator',
       type: 'searchList',
       processor: findCreators,
+      urlField: 'creator',
     },
     createdDate: {
       label: 'Date',
@@ -346,6 +371,7 @@ const dataLookUp = {
       label: 'Subject',
       type: 'searchList',
       processor: findSubjects,
+      urlField: 'keywords',
     },
     departmentContact: {
       label: 'Contact Us',
@@ -356,13 +382,15 @@ const dataLookUp = {
   curate: {
     creators: {
       label: 'Creator',
-      type: 'list',
+      type: 'searchList',
       processor: findCreators,
+      urlField: 'creator',
     },
     contributors: {
       label: 'Contributor',
-      type: 'list',
-      processor: findCreators,
+      type: 'searchList',
+      processor: findContributors,
+      urlField: 'creator',
     },
     createdDate: {
       label: 'Date',
@@ -391,8 +419,9 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'searchList',
+      type: 'list',
       processor: mappedLanguageCodes,
+      urlField: 'language',
     },
     uniqueIdentifier: {
       label: 'Identifier',
@@ -428,6 +457,7 @@ const dataLookUp = {
       label: 'Subject',
       type: 'searchList',
       processor: findSubjects,
+      urlField: 'keywords',
     },
     linkToSource: {
       label: 'Link to finding aid',

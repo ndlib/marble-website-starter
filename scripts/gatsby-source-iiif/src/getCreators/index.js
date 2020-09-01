@@ -1,7 +1,11 @@
 
-module.exports = (creators) => {
-  if (creators) {
-    return creators.map(creator => creator.display).filter((d) => d)
+module.exports = (manifest) => {
+  const ret = []
+  if (manifest.creators) {
+    ret.push(manifest.creators.map(creator => creator.display).filter((d) => d))
   }
-  return []
+  if (manifest.contributors) {
+    ret.push(manifest.contributors.map(creator => creator.display).filter((d) => d))
+  }
+  return ret
 }

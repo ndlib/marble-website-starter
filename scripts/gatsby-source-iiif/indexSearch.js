@@ -13,6 +13,13 @@ if (appConfig === 'local' || process.env.TRAVIS_RUN) {
   return
 }
 
+const getCollection = (collection) => {
+  if (collection) {
+    return [collection]
+  }
+  return []
+}
+
 const directory = process.argv.slice(2)[0]
 require('dotenv').config({
   path: path.join(directory, '.env.development'),
@@ -57,9 +64,24 @@ const determineProvider = (manifest) => {
 }
 
 const loadManifestData = () => {
-  const data = fs.readFileSync(path.join(directory, '/content/items/items.json'))
-  const manifestData = JSON.parse(data.toString())
-  return manifestData
+  // const data = fs.readFileSync(path.join(directory, '/content/items/items.json'))
+  // const manifestData = JSON.parse(data.toString())
+
+  const allManifestData = []
+
+  const fileObjs = fs.readdirSync(path.join(directory, '/content/json/nd'))
+
+  fileObjs.forEach(file => {
+    console.log(file)
+    if (!file.match(/^[.]/)) {
+      const data = fs.readFileSync(path.join(directory, '/content/json/nd', file))
+      const manifestData = JSON.parse(data.toString())
+
+      allManifestData.push(manifestData)
+    }
+  })
+
+  return allManifestData
 }
 
 const loadSubItemTitles = (manifest) => {
@@ -76,28 +98,31 @@ const loadSubItemTitles = (manifest) => {
 }
 
 const allMetadataKeys = [
-  'description', 'collectionId', 'id', 'uniqueIdentifier', 'dimensions',
+  'description', 'collection', 'collectionId', 'id', 'uniqueIdentifier', 'dimensions',
   'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
 ]
 
 const getSearchDataFromManifest = (manifest) => {
   const dateData = realDatesFromCatalogedDates(manifest.createdDate)
-  const creators = getCreators(manifest.creators)
+  const creators = getCreators(manifest)
   const search = {
     id: manifest.iiifUri,
     name: manifest.title,
     creator: creators,
+    collection: getCollection(manifest.collection),
     date: manifest.createdDate,
     lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
     identifier: manifest.uniqueIdentifier,
     thumbnail: manifest.iiifImageUri,
+    languages: manifest.languages,
     type: manifest.level,
     url: '/item/' + manifest.id,
     repository: determineProvider(manifest),
     themeTag: getKeywordsFromSubjects(manifest),
     centuryTag: dateData.centuryTags,
   }
+
   if (manifest.workType) {
     search['formatTag'] = [manifest.workType]
   }
@@ -113,6 +138,7 @@ const getSearchDataFromManifest = (manifest) => {
   search['allMetadata'] += '::' + search.centuryTag.join('::')
   search['allMetadata'] += '::' + search.themeTag.join('::')
 
+  console.log(search)
   return search
 }
 
