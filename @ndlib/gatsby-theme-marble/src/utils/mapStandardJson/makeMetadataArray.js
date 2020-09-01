@@ -142,8 +142,9 @@ const dataLookUp = {
     },
     workType: {
       label: 'Material Type',
-      type: 'list',
+      type: 'searchList',
       processor: genericFind,
+      urlField: 'format',
     },
     format: {
       label: 'Genre/Physical Characteristic',
@@ -239,8 +240,9 @@ const dataLookUp = {
     },
     workType: {
       label: 'Material Type',
-      type: 'list',
+      type: 'searchList',
       processor: genericFind,
+      urlField: 'format',
     },
     format: {
       label: 'Genre/Physical Characteristic',
@@ -319,8 +321,9 @@ const dataLookUp = {
     },
     workType: {
       label: 'Classification',
-      type: 'list',
+      type: 'searchList',
       processor: genericFind,
+      urlField: 'format',
     },
     format: {
       label: 'Format',
@@ -404,8 +407,9 @@ const dataLookUp = {
     },
     workType: {
       label: 'Material Type',
-      type: 'list',
+      type: 'searchList',
       processor: genericFind,
+      urlField: 'format',
     },
     format: {
       label: 'Genre/Physical Characteristic',
