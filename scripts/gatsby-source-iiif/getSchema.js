@@ -20,7 +20,7 @@ const fetchData = async (seeAlso) => {
   }))
     .then(() => {
       // one big blob
-      fs.writeFileSync(path.join(directory, '/content/items/items.json'), JSON.stringify(finalResult))
+      // fs.writeFileSync(path.join(directory, '/content/items/items.json'), JSON.stringify(finalResult))
       // individual files
       finalResult.forEach(result => {
         // escape is not useless but required
