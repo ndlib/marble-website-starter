@@ -5,6 +5,9 @@ import SearchResults from 'components/Shared/SearchTools/SearchResults'
 import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefinementListFilter'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
+import {
+  TagFilterConfig,
+} from 'searchkit'
 
 const Search = () => {
   return (
@@ -12,6 +15,10 @@ const Search = () => {
       <SearchFilterBox />
       <MultiColumn columns='4'>
         <Column>
+          <TagFilterConfig field='creator.keyword' title='Creator' id='creator' />
+          <TagFilterConfig field='collection.keyword' title='Collection' id='collection' />
+          <TagFilterConfig field='language.keyword' title='Language' id='language' />
+
           <SearchRefinementListFilter
             field='centuryTag.keyword'
             label='Time Period'

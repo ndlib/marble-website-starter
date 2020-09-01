@@ -41,6 +41,7 @@ export const query = graphql`
       partiallyDigitized
       metadata {
         label
+        urlField
         value
         type
       }

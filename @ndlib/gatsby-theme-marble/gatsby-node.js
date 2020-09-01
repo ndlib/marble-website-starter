@@ -21,6 +21,7 @@ exports.sourceNodes = ({ actions }) => {
   type metadataData @dontInfer {
     label: String
     value: [String]
+    urlField: String
     type: String
   }
   type MarbleIiifImage implements Node @dontInfer {

@@ -5,7 +5,7 @@ import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
 
 const MetaDataField = ({ metadata, skipHtml }) => {
-  const { label, value, type } = metadata
+  const { label, value, urlField, type } = metadata
 
   let MetadataValueComponent = MetaDataValue
   if (type === 'searchList') {
@@ -20,6 +20,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
         />
         <MetadataValueComponent
           values={value}
+          urlField={urlField}
           skipHtml={skipHtml}
         />
       </div>
@@ -33,6 +34,7 @@ MetaDataField.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.array.isRequired,
     type:  PropTypes.string.isRequired,
+    urlField: PropTypes.string,
   }).isRequired,
   skipHtml: PropTypes.bool,
 }
