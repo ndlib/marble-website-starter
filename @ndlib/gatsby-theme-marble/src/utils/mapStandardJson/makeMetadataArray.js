@@ -222,11 +222,11 @@ const dataLookUp = {
       processor: findContributors,
       urlField: 'creator',
     },
-    collection: {
+    collections: {
       label: 'Collection',
       type: 'searchList',
       processor: genericFind,
-      urlField: 'collection',
+      urlField: 'collections',
     },
     createdDate: {
       label: 'Date',
