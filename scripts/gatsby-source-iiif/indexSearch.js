@@ -138,7 +138,6 @@ const getSearchDataFromManifest = (manifest) => {
   search['allMetadata'] += '::' + search.centuryTag.join('::')
   search['allMetadata'] += '::' + search.themeTag.join('::')
 
-  console.log(search)
   return search
 }
 
