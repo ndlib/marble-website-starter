@@ -6,8 +6,10 @@ test('it collapses the display', () => {
     { display: 'name1', firstname: 'fname' },
     { display: 'name2', firstname: 'fname2' },
   ]
-
-  expect(getCreators(creators)).toEqual(['name1', 'name2'])
+  const manifest = {
+    creators: creators,
+  }
+  expect(getCreators(manifest)).toEqual(['name1', 'name2'])
 })
 
 test('it handles missing display fields', () => {
@@ -16,7 +18,11 @@ test('it handles missing display fields', () => {
     { firstname: 'fname2' },
   ]
 
-  expect(getCreators(creators)).toEqual(['name1'])
+  const manifest = {
+    creators: creators,
+  }
+
+  expect(getCreators(manifest)).toEqual(['name1'])
 })
 
 test('it removes empty fields', () => {
@@ -24,14 +30,36 @@ test('it removes empty fields', () => {
     { display: 'name1', firstname: 'fname' },
     { display: '', firstname: 'fname2' },
   ]
+  const manifest = {
+    creators: creators,
+  }
 
-  expect(getCreators(creators)).toEqual(['name1'])
+  expect(getCreators(manifest)).toEqual(['name1'])
 })
 
 test('creators array is empty', () => {
   const creators = []
+  const manifest = {
+    creators: creators,
+  }
 
-  expect(getCreators(creators)).toEqual([])
+  expect(getCreators(manifest)).toEqual([])
+})
+
+test('creators and contriubres are merged', () => {
+  const creators = [
+    { display: 'name1', firstname: 'fname' },
+  ]
+  const contributors = [
+    { display: 'name2', firstname: 'fname2' },
+  ]
+
+  const manifest = {
+    creators: creators,
+    contributors: contributors,
+  }
+
+  expect(getCreators(manifest)).toEqual(['name1', 'name2'])
 })
 
 test('creators is undefined', () => {
