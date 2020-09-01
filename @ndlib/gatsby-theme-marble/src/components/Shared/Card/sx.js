@@ -28,9 +28,6 @@ module.exports = {
     }
   },
   imageBoarder: {
-    '& .gatsby-image-wrapper': {
-      width: '100vw',
-    },
     border: '1px solid',
     borderColor: 'gray.1',
     display: 'inline-block',
