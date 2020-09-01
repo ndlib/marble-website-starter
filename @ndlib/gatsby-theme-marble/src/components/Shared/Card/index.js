@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles, jsx, Styled } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
 import ExternalLinkIcon from './ExternalLinkIcon'
@@ -15,7 +15,6 @@ const Card = ({
   children,
   location,
   referal,
-  gatsbyImage,
   imageService,
   imageRegion,
   onClick,
@@ -35,7 +34,6 @@ const Card = ({
               <div sx={sx.imageWrapperInner}>
                 <div sx={sx.imageBoarder}>
                   <Image
-                    gatsbyImage={gatsbyImage}
                     src={image || null}
                     service={imageService || null}
                     region={imageRegion || 'full'}
@@ -63,7 +61,6 @@ Card.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
-  gatsbyImage: PropTypes.object,
   imageService: PropTypes.string,
   imageRegion: PropTypes.string,
   children: PropTypes.node,

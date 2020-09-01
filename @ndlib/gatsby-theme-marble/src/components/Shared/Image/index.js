@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import queryString from 'query-string'
 import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
 import sx from './sx'
@@ -10,7 +9,6 @@ import sx from './sx'
 // See https://iiif.io/api/image/2.1/#image-request-parameters for image server request parameters.
 // eslint-disable-next-line complexity
 const Image = ({
-  gatsbyImage, // gatsbyImage
   service, // iiif Image service
   region, // 'full', 'square', or format: `x,y,w,h`, `pct:x,y,w,h`
   size, // 'max', 'w,', ',h', 'pct:n', 'w,h', or '!w,h'
@@ -22,7 +20,7 @@ const Image = ({
   return (
     <picture>
       <img
-        src={gatsbyImage ? gatsbyImage.src : imageSrc}
+        src={imageSrc}
         alt={alt || ''}
         title={title}
         sx={sx.fallBack}
@@ -32,7 +30,6 @@ const Image = ({
 }
 
 Image.propTypes = {
-  gatsbyImage: PropTypes.object,
   service: PropTypes.string,
   region: PropTypes.string,
   size: PropTypes.string,

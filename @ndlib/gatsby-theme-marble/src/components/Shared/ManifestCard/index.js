@@ -58,12 +58,13 @@ export const ManifestCard = (props) => {
   } else {
     title = item.title
   }
+  console.log(gatsbyImage)
   return (
     <div sx={sx.wrapper}>
       <Card
         label={title}
         target={`/${item.slug}`}
-        gatsbyImage={gatsbyImage}
+        image={typy(gatsbyImage, 'src').safeString}
         imageService={typy(item, 'childrenMarbleIiifImage[0].service').safeString}
         {...props}
       >
