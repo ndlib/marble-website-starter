@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ReturnToSearch from './'
 import { BaseStyles } from 'theme-ui'
-import Link from 'components/Internal/Link'
+import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 describe('ReturnToSearch', () => {
   test('no location', () => {
@@ -20,7 +20,7 @@ describe('ReturnToSearch', () => {
         },
       },
     }
-    const wrapper = shallow(<ReturnToSearch location={location} />)
+    const wrapper = shallow(<ReturnToSearch location={location} i18n={i18n} />)
     expect(wrapper.find(BaseStyles).exists()).toBeTruthy()
   })
 })

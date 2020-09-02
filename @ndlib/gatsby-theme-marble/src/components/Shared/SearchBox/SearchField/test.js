@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { SearchField } from './'
+import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 const searchReducer = {}
 const dispatch = jest.fn()
@@ -15,11 +16,12 @@ const wrapper = shallow(
     location={location}
     searchPath='my-search'
     className='searchFieldClass'
+    i18n={i18n}
   />,
 )
 describe('SearchField', () => {
   test('render input and label', () => {
-    expect(wrapper.find('label').text()).toEqual('common:search.prompt')
+    expect(wrapper.find('label').text()).toEqual('search.prompt')
     expect(wrapper.find('input').props().type).toEqual('text')
   })
 
