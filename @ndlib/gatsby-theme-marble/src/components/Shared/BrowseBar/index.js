@@ -18,7 +18,9 @@ const BrowseBar = ({
           alt={label || null}
         />
       </div>
-      {label}
+      <div sx={sx.label}>
+        {label}
+      </div>
     </Link>
   )
 }

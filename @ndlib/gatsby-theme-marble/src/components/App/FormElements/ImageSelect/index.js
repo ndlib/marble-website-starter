@@ -21,9 +21,8 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
           items.map(item => {
             if (item.image) {
               return (
-                <>
+                <div key={item.uuid} >
                   <label
-                    key={item.uuid}
                     className={localStyle.imageOption}
                     htmlFor={item.uuid}
                   >
@@ -45,7 +44,7 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
                     src={item.image}
                     alt=''
                   />
-                </>
+                </div>
               )
             }
             return null

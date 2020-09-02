@@ -1,11 +1,6 @@
 module.exports = {
-  imageFail: {
-    backgroundColor: 'attention',
-    border: '8px solid',
-    borderColor: 'attention',
-    display: 'block',
-  },
   fallBack: {
+    display: 'block',
     maxWidth: '100%',
     maxHeight: '250px',
   },

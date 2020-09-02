@@ -3,18 +3,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Styled, jsx } from 'theme-ui'
-import HeroBox from 'components/Shared/HeroBox'
-import SearchBox from 'components/Shared/SearchBox'
 import CardGroup from 'components/Shared/CardGroup'
 import BrowseBar from 'components/Shared/BrowseBar'
 import ManifestCard from 'components/Shared/ManifestCard'
-import BlockQuote from 'components/Shared/BlockQuote'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import { useTranslation } from 'react-i18next'
-import sx from './sx'
-
-import banner from 'assets/images/banner.swirl.png'
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
@@ -67,7 +61,6 @@ const IndexPage = ({ location }) => {
           />
         </Column>
       </MultiColumn>
-      <div sx={sx.breakline} />
       <CardGroup
         label={t('common:search.recentAdditions')}
       >
@@ -83,10 +76,6 @@ const IndexPage = ({ location }) => {
 
         }
       </CardGroup>
-
-      <BlockQuote>
-        {t('text:index.blockQuote')}
-      </BlockQuote>
     </React.Fragment>
   )
 }

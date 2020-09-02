@@ -7,10 +7,11 @@ import DownloadImage from './DownloadImage'
 import DownloadMetadata from './DownloadMetadata'
 // import DownloadCitation from './DownloadCitation'
 import Copyright from './Copyright'
+import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 test('DownloadModalContent', () => {
   const marbleItem = {}
-  const wrapper = mount(<DownloadModalContent marbleItem={marbleItem} />)
+  const wrapper = mount(<DownloadModalContent marbleItem={marbleItem} i18n={i18n} />)
   expect(wrapper.find(MultiColumn).props().columns).toEqual('2')
   expect(wrapper.find(Column).length).toEqual(2)
   expect(wrapper.find(DownloadImage).props().marbleItem).toEqual(marbleItem)

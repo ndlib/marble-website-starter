@@ -33,7 +33,6 @@ module.exports = {
     display: 'inline-block',
     margin: '0 auto',
     padding: '4px',
-    paddingBottom: '0',
   },
   figure: {
     margin: '0',

@@ -2,8 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
-import queryString from 'query-string'
 import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
 import sx from './sx'
@@ -11,7 +9,6 @@ import sx from './sx'
 // See https://iiif.io/api/image/2.1/#image-request-parameters for image server request parameters.
 // eslint-disable-next-line complexity
 const Image = ({
-  gatsbyImage, // gatsbyImage
   service, // iiif Image service
   region, // 'full', 'square', or format: `x,y,w,h`, `pct:x,y,w,h`
   size, // 'max', 'w,', ',h', 'pct:n', 'w,h', or '!w,h'
@@ -19,27 +16,9 @@ const Image = ({
   alt, // alt text for the image
   title, // title attribute on iamge
 }) => {
-  let debug = false
-  try {
-    debug = queryString.parse(window.location.search).debug === 'true'
-  } catch {
-    debug = false
-  }
-  if (gatsbyImage) {
-    return (
-      <Img
-        fluid={gatsbyImage}
-        alt={alt || ''}
-        title={title}
-        fit='INSIDE'
-      />
-    )
-  }
-  // derive image from image service OR src OR use the default noImage
   const imageSrc = src || serviceURL(service, region, size) || noImage
-
   return (
-    <picture sx={debug ? sx.imageFail : null}>
+    <picture>
       <img
         src={imageSrc}
         alt={alt || ''}
@@ -51,7 +30,6 @@ const Image = ({
 }
 
 Image.propTypes = {
-  gatsbyImage: PropTypes.object,
   service: PropTypes.string,
   region: PropTypes.string,
   size: PropTypes.string,
