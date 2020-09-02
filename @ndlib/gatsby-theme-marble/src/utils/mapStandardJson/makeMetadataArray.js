@@ -124,7 +124,7 @@ const findContact = (standardJson) => {
     return false
   }
   const provider = findProvider(standardJson)
-  return [`Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact ${provider} at ${contact}.`]
+  return [`Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact ${provider} at [${contact}](mailto:${contact}).`]
 }
 
 const dataLookUp = {
@@ -226,7 +226,7 @@ const dataLookUp = {
       label: 'Collection',
       type: 'searchList',
       processor: genericFind,
-      urlField: 'collections',
+      urlField: 'collection',
     },
     createdDate: {
       label: 'Date',

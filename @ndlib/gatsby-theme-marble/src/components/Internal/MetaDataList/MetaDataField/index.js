@@ -5,14 +5,19 @@ import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
 
 const MetaDataField = ({ metadata, skipHtml }) => {
-  const { label, value, urlField, type } = metadata
+  const { label, urlField, type } = metadata
+  let { value } = metadata
 
   let MetadataValueComponent = MetaDataValue
   if (type === 'searchList') {
     MetadataValueComponent = MetaDataSearchValue
   }
+  if (!Array.isArray(value)) {
+    value = [value]
+  }
 
-  if (label || value) {
+  if (value.length !== 0) {
+    console.log(label, value)
     return (
       <div>
         <MetaDataLabel
