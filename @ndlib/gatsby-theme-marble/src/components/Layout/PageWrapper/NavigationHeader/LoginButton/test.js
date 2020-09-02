@@ -4,8 +4,7 @@ import { useStaticQuery } from 'gatsby'
 import { LoginButton } from './'
 import Link from 'components/Internal/Link'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
-
-console.error = jest.fn()
+import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 describe('LoginButton', () => {
   test('no button', () => {
@@ -17,7 +16,7 @@ describe('LoginButton', () => {
       }
     })
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
-    const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
+    const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)
     expect(wrapper.find('.loginButton').exists()).toBeFalsy()
   })
 
@@ -38,7 +37,7 @@ describe('LoginButton', () => {
         userName: 'jloggedin',
       },
     }
-    const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
+    const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)
     expect(wrapper.find('img').props().src).toEqual(userIcon)
     expect(wrapper.find(Link).length).toEqual(3)
     expect(wrapper.find(Link).at(0).props().to).toEqual('/user/jloggedin')
@@ -57,8 +56,8 @@ describe('LoginButton', () => {
       }
     })
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
-    const wrapper = mount(<LoginButton loginReducer={loginReducer} />)
+    const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)
     expect(wrapper.find(Link).props().to).toEqual('/user')
-    expect(wrapper.find(Link).props().children).toEqual('common:loginMenu.login')
+    expect(wrapper.find(Link).props().children).toEqual('loginMenu.login')
   })
 })

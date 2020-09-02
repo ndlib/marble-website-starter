@@ -57,7 +57,6 @@ export const ManifestCard = (props) => {
   } else {
     title = item.title
   }
-  console.log(gatsbyImage)
   return (
     <div sx={sx.wrapper}>
       <Card
