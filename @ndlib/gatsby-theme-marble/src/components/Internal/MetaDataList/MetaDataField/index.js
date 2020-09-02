@@ -12,12 +12,10 @@ const MetaDataField = ({ metadata, skipHtml }) => {
   if (type === 'searchList') {
     MetadataValueComponent = MetaDataSearchValue
   }
-  if (!Array.isArray(value)) {
+  if (!Array.isArray(value) && value) {
     value = [value]
   }
-
-  if (value.length !== 0) {
-    console.log(label, value)
+  if (value && value.length !== 0) {
     return (
       <div>
         <MetaDataLabel
