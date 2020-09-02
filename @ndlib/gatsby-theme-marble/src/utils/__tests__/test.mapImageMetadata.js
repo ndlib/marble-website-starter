@@ -48,7 +48,7 @@ describe('mapImageMetadata', () => {
     const tiff = imageMetadata(defaultData)
     expect(tiff.name).toEqual('billy-bob')
   })
-  test('noExt', () => {
+  test('file extension not in the list', () => {
     defaultData.id = 'bob.noExt'
     const noExt = imageMetadata(defaultData)
     expect(noExt.name).toEqual('billy-bob.noExt')
