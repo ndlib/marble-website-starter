@@ -6,7 +6,6 @@ import OktaLogin from './OktaLogin'
 import * as auth from 'utils/auth'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
-
 describe('LoginArea', () => {
   test('it renders the log out button when the user is logged in', () => {
     jest.spyOn(auth, 'isLoggedIn').mockImplementation(() => true)
