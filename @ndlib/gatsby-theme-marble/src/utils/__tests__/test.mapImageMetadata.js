@@ -28,4 +28,29 @@ describe('mapImageMetadata', () => {
     const result = imageMetadata(defaultData)
     expect(result).toEqual(test)
   })
+  test('jpeg', () => {
+    defaultData.id = 'bob.jpeg'
+    const jpeg = imageMetadata(defaultData)
+    expect(jpeg.name).toEqual('billy-bob')
+  })
+  test('png', () => {
+    defaultData.id = 'bob.png'
+    const png = imageMetadata(defaultData)
+    expect(png.name).toEqual('billy-bob')
+  })
+  test('tif', () => {
+    defaultData.id = 'bob.tif'
+    const tif = imageMetadata(defaultData)
+    expect(tif.name).toEqual('billy-bob')
+  })
+  test('tiff', () => {
+    defaultData.id = 'bob.tiff'
+    const tiff = imageMetadata(defaultData)
+    expect(tiff.name).toEqual('billy-bob')
+  })
+  test('noExt', () => {
+    defaultData.id = 'bob.noExt'
+    const noExt = imageMetadata(defaultData)
+    expect(noExt.name).toEqual('billy-bob.noExt')
+  })
 })
