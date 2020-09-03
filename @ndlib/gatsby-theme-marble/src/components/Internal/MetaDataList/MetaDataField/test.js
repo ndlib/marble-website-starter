@@ -31,7 +31,7 @@ describe('MetaDataField', () => {
     }
     const wrapper = shallow(<MetaDataField metadata={metadata} />)
     expect(wrapper.find(MetaDataValue)).toBeTruthy()
-    expect(wrapper.find(MetaDataSearchValue)).toBeFalsy()
+    expect(wrapper.find(MetaDataSearchValue)).toEqual({})
   })
 
   test('uses the MetaDataValue when type is list.', () => {
@@ -42,7 +42,7 @@ describe('MetaDataField', () => {
     }
     const wrapper = shallow(<MetaDataField metadata={metadata} />)
     expect(wrapper.find(MetaDataValue)).toBeTruthy()
-    expect(wrapper.find(MetaDataSearchValue)).toBeFalsy()
+    expect(wrapper.find(MetaDataSearchValue)).toEqual({})
   })
 
   test('uses the MetaDataSearchValue when type is searchList.', () => {
@@ -52,7 +52,7 @@ describe('MetaDataField', () => {
       value: ['test value'],
     }
     const wrapper = shallow(<MetaDataField metadata={metadata} />)
-    expect(wrapper.find(MetaDataSearchValue)).toBeFalsey()
+    expect(wrapper.find(MetaDataSearchValue)).toEqual({})
     expect(wrapper.find(MetaDataSearchValue)).toBeTruthy()
   })
 })
