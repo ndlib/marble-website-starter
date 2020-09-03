@@ -17,7 +17,6 @@ const Search = () => {
         <Column>
           <TagFilterConfig field='creator.keyword' title='Creator' id='creator' />
           <TagFilterConfig field='collection.keyword' title='Collection' id='collection' />
-          <TagFilterConfig field='language.keyword' title='Language' id='language' />
 
           <SearchRefinementListFilter
             field='centuryTag.keyword'
