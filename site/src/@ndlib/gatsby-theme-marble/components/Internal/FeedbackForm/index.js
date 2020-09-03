@@ -1,7 +1,6 @@
 /* eslint-disable complexity */
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import PropTypes from 'prop-types'
 import useForm from './useForm'
 import validate from './LoginFormValidationRules'
 import Recaptcha from 'react-google-invisible-recaptcha'
@@ -54,14 +53,6 @@ const Form = () => {
       />
     </div>
   )
-}
-
-Form.propTypes = {
-  values: PropTypes.string.isRequired,
-  errors: PropTypes.bool.isRequired,
-  closeFunc: PropTypes.func.isRequired,
-  fullscreen: PropTypes.bool,
-  children: PropTypes.node,
 }
 
 export default Form
