@@ -108,7 +108,7 @@ const getSearchDataFromManifest = (manifest) => {
     id: manifest.iiifUri,
     name: manifest.title,
     creator: creators,
-    collection: getCollection(manifest.collection),
+    collection: getCollection(manifest.collections),
     date: manifest.createdDate,
     lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
