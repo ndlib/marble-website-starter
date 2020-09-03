@@ -7,7 +7,7 @@ module.exports = {
       fontWeight:'bold',
       border:'1px solid black',
       color:'#FFFFFF',
-      backgroundColor:'#007d89',
+      backgroundColor:'#002a43',
       textDecoration: 'none',
       textAlign:'center',
       width:'40px',
@@ -16,6 +16,7 @@ module.exports = {
       writingMode: 'vertical-lr',
       transform: 'rotateZ(180deg)',
       cursor: 'pointer',
+      borderRadius: '0px 5px 5px 0px',
     },
     '@media screen and (max-width: 619px)': {
       position:'fixed',
@@ -32,6 +33,7 @@ module.exports = {
       width: '150px',
       height: '40px',
       cursor: 'pointer',
+      borderRadius: '5px',
     },
   },
   'reactModal__Body--open': {
