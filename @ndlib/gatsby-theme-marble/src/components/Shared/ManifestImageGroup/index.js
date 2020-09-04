@@ -1,16 +1,31 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React from 'react'
 import PropTypes from 'prop-types'
-import typy from 'typy'
+import { useStaticQuery, graphql } from 'gatsby'
 import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
-import noImage from 'assets/images/noImage.svg'
+import findImage from 'utils/findImage'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
 export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
+  const { allFile } = useStaticQuery(
+    graphql`
+    query {
+      allFile(filter: {extension: {eq: "jpg"}}) {
+        nodes {
+          name
+          publicURL
+          childImageSharp {
+            fixed(width: 125, height: 125) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+    }
+  `,
+  )
   if (!marbleItem) {
     return null
   }
@@ -29,7 +44,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
       >
         <picture sx={sx.wrapper}>
           <img
-            src={typy(marbleItem, 'childrenMarbleIiifImage[0].default').safeString || noImage}
+            src={findImage(marbleItem, allFile)}
             alt={label}
             title={label}
             sx={sx.image}
@@ -38,6 +53,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
         </picture>
       </ViewerLink>
       <ItemAlternateViews
+        allFile={allFile}
         marbleItem={marbleItem}
         location={location}
         viewer={viewer}

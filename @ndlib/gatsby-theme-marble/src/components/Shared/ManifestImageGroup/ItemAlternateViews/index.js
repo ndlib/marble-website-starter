@@ -7,7 +7,7 @@ import AlternateImage from './AlternateImage'
 // tests if/when this number changes
 export const MAX_IMAGES = 5
 
-const ItemAlternateViews = ({ marbleItem, viewer, location }) => {
+const ItemAlternateViews = ({ allFile, marbleItem, viewer, location }) => {
   const canvases = typy(marbleItem, 'childrenMarbleIiifImage').safeArray
   if (canvases.length > 1) {
     return (
@@ -16,6 +16,7 @@ const ItemAlternateViews = ({ marbleItem, viewer, location }) => {
           canvases.slice(1, Math.min(MAX_IMAGES + 1, canvases.length)).map((canvas, index) => {
             return (
               <AlternateImage
+                allFile={allFile}
                 key={index}
                 marbleItem={marbleItem}
                 index={index + 1}
@@ -34,6 +35,7 @@ const ItemAlternateViews = ({ marbleItem, viewer, location }) => {
 }
 
 ItemAlternateViews.propTypes = {
+  allFile: PropTypes.object,
   marbleItem: PropTypes.object.isRequired,
   viewer: PropTypes.string,
   location: PropTypes.object.isRequired,
