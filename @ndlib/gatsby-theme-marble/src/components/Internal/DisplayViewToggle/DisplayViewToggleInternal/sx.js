@@ -5,7 +5,7 @@ module.exports = {
     display: 'block',
     textAlign: 'right',
     width: '100%',
-    '& > input': {
+    '& input': {
       borderRadius: '.25rem',
       margin: '2px',
       padding: '2px',
