@@ -55,8 +55,8 @@ export const findMetadata = (manifest, options) => {
 }
 
 export const findCreator = (item, parentProps) => {
-  if (parentProps.highlight && parentProps.highlight.creator) {
-    return parentProps.highlight.creator[0]
+  if (parentProps.highlight && parentProps.highlight['creator.folded']) {
+    return parentProps.highlight['creator.folded'][0]
   } else {
     return findMetadata(item, ['creator'])
   }

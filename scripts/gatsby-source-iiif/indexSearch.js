@@ -105,7 +105,7 @@ const getSearchDataFromManifest = (manifest) => {
   const dateData = realDatesFromCatalogedDates(manifest.createdDate)
   const creators = getCreators(manifest)
   const search = {
-    id: manifest.iiifUri,
+    id: manifest.id,
     name: manifest.title,
     creator: creators,
     collection: getCollection(manifest.collections),
@@ -203,8 +203,12 @@ const configIndexSettings = async () => {
     analysis: {
       analyzer: {
         stopword_analyzer: {
-          type: 'standard',
+          tokenizer: 'standard',
           stopwords: '_english_',
+          filter: [
+            'lowercase',
+            'asciifolding',
+          ],
         },
       },
     },
@@ -226,7 +230,55 @@ const configIndexMappings = async () => {
     properties : {
       allMetadata : {
         type: 'text',
-        analyzer: 'stopword_analyzer',
+        analyzer: 'standard',
+        fields: {
+          folded: {
+            type:       'text',
+            analyzer:   'stopword_analyzer',
+          },
+        },
+      },
+      name: {
+        type: 'text',
+        analyzer: 'standard',
+        fields: {
+          keyword: {
+            type: 'keyword',
+            ignore_above: 256,
+          },
+          folded: {
+            type:       'text',
+            analyzer:   'stopword_analyzer',
+          },
+        },
+      },
+      creator: {
+        type: 'text',
+        analyzer: 'standard',
+        fields: {
+          keyword: {
+            type: 'keyword',
+            ignore_above: 256,
+          },
+          folded: {
+            type:       'text',
+            analyzer:   'stopword_analyzer',
+          },
+        },
+      },
+      collection: {
+        type: 'text',
+        analyzer: 'standard',
+        fields: {
+          keyword: {
+            type: 'keyword',
+            ignore_above: 256,
+          },
+          folded: {
+            type:       'text',
+            analyzer:   'stopword_analyzer',
+          },
+        },
       },
       date: {
         type: 'text',

@@ -22,7 +22,7 @@ export const SearchResults = ({ defaultDisplay }) => {
       <Hits
         hitsPerPage={50}
         sourceFilter={['name']}
-        highlightFields={['allMetadata', 'name', 'creator']}
+        highlightFields={['allMetadata.folded', 'name.folded', 'creator.folded']}
         listComponent={displayComponent}
         scrollTo='#gatsby-focus-wrapper'
       />

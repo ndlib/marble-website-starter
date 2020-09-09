@@ -52,8 +52,8 @@ export const ManifestCard = (props) => {
 
   const gatsbyImage = findGatsbyImage(item, allFile)
   let title = ''
-  if (props.highlight && props.highlight.name) {
-    title = props.highlight.name[0]
+  if (props.highlight && props.highlight['name.folded']) {
+    title = props.highlight['name.folded'][0]
   } else {
     title = item.title
   }
@@ -78,7 +78,7 @@ export const ManifestCard = (props) => {
 
 const findItem = (manifestId, allMarbleItem) => {
   return allMarbleItem.nodes.find(item => {
-    return item.iiifUri === manifestId
+    return item.marbleId === manifestId
   })
 }
 
