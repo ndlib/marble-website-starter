@@ -41,9 +41,9 @@ const customQueryBuilder = (query, options) => {
           multi_match: {
             query: query,
             fields: [
-              'name^3',
-              'creator^2',
-              'allMetadata',
+              'name.keywords^3',
+              'creator.keywords^2',
+              'allMetadata.folded',
             ],
             slop: 5,
             type: 'phrase',
@@ -54,9 +54,9 @@ const customQueryBuilder = (query, options) => {
           multi_match: {
             query: query,
             fields: [
-              'name^2',
-              'creator^1',
-              'allMetadata',
+              'name.folded^2',
+              'creator.folded^1',
+              'allMetadata.folded',
             ],
           },
         },

@@ -9,7 +9,7 @@ describe('ManifestCard', () => {
     allMarbleItem: {
       nodes: [
         {
-          iiifUri: 'someID',
+          marbleId: 'someID',
           title: 'label',
           metadata: [
           ],

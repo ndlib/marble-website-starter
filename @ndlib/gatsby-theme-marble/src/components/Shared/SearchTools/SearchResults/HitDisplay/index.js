@@ -24,7 +24,7 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
               highlight={hit.highlight}
             >
               {
-                hit.highlight && hit.highlight.allMetadata ? Object.values(hit.highlight.allMetadata)
+                hit.highlight && hit.highlight['allMetadata.folded'] ? Object.values(hit.highlight['allMetadata.folded'])
                   .map(
                     (blob) => {
                       let row = ''
