@@ -5,9 +5,9 @@ import ManifestCard from 'components/Shared/ManifestCard'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 
 const hits = [
-  { _id: 'a', highlight: { allMetadata: ['data'] } },
-  { _id: 'b', highlight: { allMetadata: ['data'] } },
-  { _id: 'c', highlight: { allMetadata: ['data'] } },
+  { _id: 'a', highlight: { 'allMetadata.folded': ['<em>data</em>'] } },
+  { _id: 'b', highlight: { 'creator.folded': [] } },
+  { _id: 'c', highlight: { 'allMetadata.folded': ['data::<em>line2data</em>'] } },
 ]
 test('HitList', () => {
   const wrapper = shallow(<HitList hits={hits} />)
@@ -23,4 +23,11 @@ test('HitDisplay', () => {
   const wrapper = shallow(<HitDisplay hits={hits} />)
   expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
   expect(wrapper.find(ManifestCard).length).toEqual(3)
+})
+
+test('all metadata hightlights', () => {
+  const wrapper = shallow(<HitDisplay hits={hits} />)
+  expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
+  expect(wrapper.find(ManifestCard).at(0).children().html()).toEqual('<div class="css-1itje8o"><em>data</em></div>')
+  expect(wrapper.find(ManifestCard).at(2).children().html()).toEqual('<div class="css-1itje8o"><em>line2data</em></div>')
 })
