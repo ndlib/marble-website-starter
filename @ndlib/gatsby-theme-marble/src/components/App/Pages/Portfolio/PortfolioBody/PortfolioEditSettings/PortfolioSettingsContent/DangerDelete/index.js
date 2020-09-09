@@ -28,6 +28,7 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
           e.preventDefault()
           updateDeleteField(e.target.value)
         }}
+        aria-label={warning}
       />
       <div className={style.buttonGroup}>
         <MaterialButton

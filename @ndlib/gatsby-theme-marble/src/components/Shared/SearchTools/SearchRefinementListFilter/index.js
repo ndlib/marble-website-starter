@@ -1,8 +1,8 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import {
-  RefinementListFilter,
-} from 'searchkit'
+import { RefinementListFilter } from 'searchkit'
+import sx from './sx'
 
 export const listOrder = (list, sort) => {
   if (sort === 'a-z') {
@@ -24,17 +24,19 @@ export const SearchRefinementListFilter = ({ field, label, operator, defaultSear
   }
 
   return (
-    <RefinementListFilter
-      field={field}
-      id={label.replace(' ', '').toLowerCase()}
-      title={label}
-      operator={operator}
-      bucketsTransform={(list) => {
-        return listOrder(list, sort)
-      }}
-      size={parseInt(size, 10)}
-      sort={sort}
-    />
+    <div sx={sx.wrapper}>
+      <RefinementListFilter
+        field={field}
+        id={label.replace(' ', '').toLowerCase()}
+        title={label}
+        operator={operator}
+        bucketsTransform={(list) => {
+          return listOrder(list, sort)
+        }}
+        size={parseInt(size, 10)}
+        sort={sort}
+      />
+    </div>
   )
 }
 SearchRefinementListFilter.propTypes = {

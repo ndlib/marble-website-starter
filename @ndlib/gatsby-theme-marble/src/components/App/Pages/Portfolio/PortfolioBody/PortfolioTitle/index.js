@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from 'context/PortfolioContext'
 import TitleEdit from './TitleEdit'
@@ -15,13 +15,15 @@ const PortfolioTitle = ({ isOwner }) => {
   }
 
   return (
-    <Styled.h1>
-      {portfolio.title}
-      <EditButton
-        isOwner={isOwner}
-        setEditFunc={() => setEditing(true)}
-      />
-    </Styled.h1>
+    <BaseStyles>
+      <h1>
+        {portfolio.title}
+        <EditButton
+          isOwner={isOwner}
+          setEditFunc={() => setEditing(true)}
+        />
+      </h1>
+    </BaseStyles>
   )
 }
 

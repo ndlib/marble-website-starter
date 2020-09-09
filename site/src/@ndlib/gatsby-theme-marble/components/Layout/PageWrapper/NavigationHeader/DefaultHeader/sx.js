@@ -5,6 +5,7 @@ module.exports = {
     borderTop: '5px solid #D39F10',
     position: 'relative',
     height: ['170px', '100px', '100px'],
+    zIndex: '1',
   },
   backgroundWrapper: {
     position: 'absolute',

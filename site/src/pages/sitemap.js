@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
-import { Styled } from 'theme-ui'
+import { BaseStyles } from 'theme-ui'
 import Link from 'components/Internal/Link'
 import miradorIcon from 'assets/icons/svg/mirador-24px.svg'
 
@@ -26,12 +26,13 @@ export const AllPage = ({
     .map(edge => {
       return (
         <li key={edge.node.slug}>
-          <Styled.a
-            as={Link}
-            to={`${edge.node.slug}`}
-          >
-            {edge.node.title}
-          </Styled.a>
+          <BaseStyles>
+            <Link
+              to={`${edge.node.slug}`}
+            >
+              {edge.node.title}
+            </Link>
+          </BaseStyles>
           <span>&nbsp;</span>
           {
             edge.node.display.toLowerCase() === 'manifest' ? (

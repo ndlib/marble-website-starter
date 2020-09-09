@@ -9,7 +9,7 @@ export const ManifestCardChildren = ({ parentProps, item }) => {
   const dates = findMetadata(item, ['date', 'dates'])
   const creator = findCreator(item, parentProps)
   return (
-    <>
+    <React.Fragment>
       {
         parentProps.showCreator ? (
           <p
@@ -28,7 +28,7 @@ export const ManifestCardChildren = ({ parentProps, item }) => {
       }
       {parentProps.showSummary ? <div>{item.description}</div> : null}
       {parentProps.children ? parentProps.children : null}
-    </>
+    </React.Fragment>
   )
 }
 

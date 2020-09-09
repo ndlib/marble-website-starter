@@ -7,10 +7,19 @@ import Image from 'components/Shared/Image'
 import AlternateOverlay from './AlternateOverlay'
 // import getImageService from 'utils/getImageService'
 import buildReferalState from 'utils/buildReferalState'
+import { findAltImage } from 'utils/findImage'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-export const AlternateImage = ({ marbleItem, index, max, length, viewer, location }) => {
+export const AlternateImage = ({
+  allFile,
+  marbleItem,
+  index,
+  max,
+  length,
+  viewer,
+  location,
+}) => {
   if (length > 1) {
     const isLast = max === index && max + 1 !== length
     const spacing = 0.25
@@ -29,11 +38,7 @@ export const AlternateImage = ({ marbleItem, index, max, length, viewer, locatio
             overlayNumber={length - max}
           />
           <Image
-            marbleItem={marbleItem}
-            index={index}
-            service={marbleItem.childrenMarbleIiifImage[index].service}
-            region='square'
-            size='125,'
+            src={findAltImage(marbleItem, allFile, index)}
             alt={`Alternate View ${index}`}
             title={`Alternate View ${index}`}
           />
@@ -44,6 +49,7 @@ export const AlternateImage = ({ marbleItem, index, max, length, viewer, locatio
 }
 
 AlternateImage.propTypes = {
+  allFile: PropTypes.object,
   marbleItem: PropTypes.shape({
     childrenMarbleIiifImage: PropTypes.array,
   }).isRequired,

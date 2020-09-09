@@ -48,6 +48,7 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
             setValid(event.target.value !== '')
             setTitle(event.target.value)
           }}
+          aria-label={title}
           sx={valid ? sx.input : sx.inputInvalid}
         />
       </label>
