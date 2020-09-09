@@ -31,3 +31,9 @@ test('all metadata hightlights', () => {
   expect(wrapper.find(ManifestCard).at(0).children().html()).toEqual('<div class="css-1itje8o"><em>data</em></div>')
   expect(wrapper.find(ManifestCard).at(2).children().html()).toEqual('<div class="css-1itje8o"><em>line2data</em></div>')
 })
+
+test('all metadata hightlights splits on :: and shows only the line with the data', () => {
+  const wrapper = shallow(<HitDisplay hits={hits} />)
+  expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
+  expect(wrapper.find(ManifestCard).at(2).children().html()).toEqual('<div class="css-1itje8o"><em>line2data</em></div>')
+})
