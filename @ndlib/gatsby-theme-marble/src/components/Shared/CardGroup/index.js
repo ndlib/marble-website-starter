@@ -2,12 +2,14 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import sx from './sx'
 const CardGroup = ({ label, children }) => {
   return (
     <React.Fragment>
-      <Styled.h2>{label}</Styled.h2>
+      <BaseStyles>
+        <h2>{label}</h2>
+      </BaseStyles>
       <div
         className='cardGroup'
         sx={sx.wrapper}

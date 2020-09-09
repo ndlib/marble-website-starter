@@ -1,7 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
-import { Styled } from 'theme-ui'
 import { Menu, findNavInData } from './'
 
 console.error = jest.fn()
@@ -65,8 +64,8 @@ describe('Menu', () => {
     })
     const wrapper = mount(<Menu menu='label' />)
 
-    expect(wrapper.find(Styled.h3).exists()).toBeTruthy()
-    expect(wrapper.find(Styled.h3).text()).toEqual('label')
+    expect(wrapper.find('h3').exists()).toBeTruthy()
+    expect(wrapper.find('h3').text()).toEqual('label')
   })
 
   test('findNavInData finds the menu correctly', () => {

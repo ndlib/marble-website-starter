@@ -17,7 +17,7 @@ const RadioList = ({ options, fieldName, onChange }) => {
       {
         options.map(option => {
           return (
-            <label key={option.value} htmlFor={option.value}>
+            <>
               <input
                 type='radio'
                 name={fieldName}
@@ -27,6 +27,7 @@ const RadioList = ({ options, fieldName, onChange }) => {
                 onChange={(event) => {
                   onChange(event.target.value)
                 }}
+                aria-label={option.value}
               />
               <div>
                 <div className={style.radioButton}>
@@ -45,7 +46,7 @@ const RadioList = ({ options, fieldName, onChange }) => {
                   {option.formattedLabel}
                 </div>
               </div>
-            </label>
+            </>
           )
         })
       }

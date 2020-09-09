@@ -19,7 +19,8 @@ const TitleEdit = ({ closeFunc }) => {
       <label
         htmlFor='portfolioName'
         className='accessibilityOnly'
-      >Title</label>
+      >Title
+      </label>
       <input
         type='text'
         name='portfolioName'
@@ -28,6 +29,7 @@ const TitleEdit = ({ closeFunc }) => {
           setValid(event.target.value !== '')
           setNewTitle(event.target.value)
         }}
+        aria-label='Title'
         disabled={patching}
         sx={sx.input(valid)}
       />

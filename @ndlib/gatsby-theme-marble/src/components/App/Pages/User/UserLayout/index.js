@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Styled } from 'theme-ui'
+import { BaseStyles } from 'theme-ui'
 import Seo from 'components/Internal/Seo'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
@@ -14,7 +14,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
   return (
-    <React.Fragment>
+    <>
       <Seo
         data={{}}
         location={location}
@@ -26,8 +26,10 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
           <div className={style.identityGroup}>
             <Gravatar email={user.email} />
             <div className={style.identity}>
-              <Styled.h1>{user.fullName}</Styled.h1>
-              <Styled.h2>{user.userName}</Styled.h2>
+              <BaseStyles>
+                <h1>{user.fullName}</h1>
+                <h2>{user.userName}</h2>
+              </BaseStyles>
             </div>
           </div>
           <div className={style.bio}>{user.bio}</div>
@@ -43,7 +45,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
           {children}
         </Column>
       </MultiColumn>
-    </React.Fragment>
+    </>
 
   )
 }

@@ -16,6 +16,7 @@ const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false }) 
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={onChange}
+        aria-label={label}
       />
     </div>
   )

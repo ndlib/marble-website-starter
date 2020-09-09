@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import DownloadImage from './DownloadImage'
@@ -15,11 +15,15 @@ const DownloadModalContent = ({ marbleItem }) => {
     <React.Fragment>
       <MultiColumn columns='2'>
         <Column>
-          <Styled.h2 sx={sx.header}>Image</Styled.h2>
+          <BaseStyles>
+            <h2 sx={sx.header}>Image</h2>
+          </BaseStyles>
           <DownloadImage marbleItem={marbleItem} />
         </Column>
         <Column>
-          <Styled.h2 sx={sx.header}>Metadata</Styled.h2>
+          <BaseStyles>
+            <h2 sx={sx.header}>Metadata</h2>
+          </BaseStyles>
           <div sx={sx.metadata}>
             <DownloadMetadata marbleItem={marbleItem} />
           </div>

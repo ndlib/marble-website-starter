@@ -3,7 +3,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
-import { jsx, Styled } from 'theme-ui'
+import { jsx, BaseStyles } from 'theme-ui'
 
 const HelpLink = () => {
   const { site } = useStaticQuery(
@@ -23,16 +23,18 @@ const HelpLink = () => {
   }
   return (
     <sup>
-      <Styled.a
-        sx={{
-          display: 'inline-block',
-          float: 'right',
-          margin: '0',
-          padding: '10px 4px 10px 20px',
-          textDecoration: 'none',
-        }}
-        href={iiifHelpURL}
-      >What is IIIF?</Styled.a>
+      <BaseStyles>
+        <a
+          sx={{
+            display: 'inline-block',
+            float: 'right',
+            margin: '0',
+            padding: '10px 4px 10px 20px',
+            textDecoration: 'none',
+          }}
+          href={iiifHelpURL}
+        >What is IIIF?</a>
+      </BaseStyles>
     </sup>
 
   )

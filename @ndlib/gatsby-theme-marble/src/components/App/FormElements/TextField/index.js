@@ -25,6 +25,7 @@ const TextField = ({
         disabled={disabled}
         defaultValue={defaultValue}
         onChange={onChange}
+        aria-label={label}
       />
       {
         valid ? null : <em sx={sx.warning}>{warning}</em>

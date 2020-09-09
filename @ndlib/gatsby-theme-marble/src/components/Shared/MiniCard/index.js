@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import { Link } from 'gatsby'
 import sx from './sx'
 
@@ -10,7 +10,9 @@ const MiniCard = ({ label, target }) => {
   return (
     <div sx={sx.wrapper}>
       <Link to={target} sx={sx.link}>
-        <Styled.h3>{label}</Styled.h3>
+        <BaseStyles>
+          <h3>{label}</h3>
+        </BaseStyles>
       </Link>
     </div>
   )

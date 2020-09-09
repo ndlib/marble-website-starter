@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx, Styled } from 'theme-ui'
+import { jsx, BaseStyles } from 'theme-ui'
 import CardGroup from 'components/Shared/CardGroup'
 import Column from 'components/Shared/Column'
 import HeroBox from 'components/Shared/HeroBox'
@@ -125,14 +125,16 @@ const Browse = ({ location }) => {
     },
   ]
   return (
-    <>
+    <React.Fragment>
       <HeroBox backgroundColor='gray.0'>
         <SearchBox location={location} />
       </HeroBox>
       <MultiColumn columns='5'>
         <Column>
           <div id='date'>
-            <Styled.h2>Browse By Date</Styled.h2>
+            <BaseStyles>
+              <h2>Browse By Date</h2>
+            </BaseStyles>
           </div>
         </Column>
         <Column colSpan='4'>
@@ -154,7 +156,9 @@ const Browse = ({ location }) => {
       <MultiColumn columns='5'>
         <Column>
           <div id='format'>
-            <Styled.h2>Browse By Format</Styled.h2>
+            <BaseStyles>
+              <h2>Browse By Format</h2>
+            </BaseStyles>
           </div>
         </Column>
         <Column colSpan='4'>
@@ -176,7 +180,9 @@ const Browse = ({ location }) => {
       <MultiColumn columns='5'>
         <Column>
           <div id='location'>
-            <Styled.h2>Browse By Location</Styled.h2>
+            <BaseStyles>
+              <h2>Browse By Location</h2>
+            </BaseStyles>
           </div>
         </Column>
         <Column colSpan='4'>
@@ -195,7 +201,7 @@ const Browse = ({ location }) => {
           </CardGroup>
         </Column>
       </MultiColumn>
-    </>
+    </React.Fragment>
   )
 }
 
