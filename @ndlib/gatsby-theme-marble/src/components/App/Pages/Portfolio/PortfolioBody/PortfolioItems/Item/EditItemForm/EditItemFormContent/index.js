@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { patchData, getData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import { usePortfolioContext } from 'context/PortfolioContext'
 import SetPortfolioImage from './SetPortfolioImage'
 import sx from './sx'
@@ -50,11 +50,14 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
           Save
         </MaterialButton>
       </div>
-      <Styled.h2>{item.title}</Styled.h2>
+      <BaseStyles>
+        <h2>{item.title}</h2>
+      </BaseStyles>
       <label
         htmlFor='annotation'
         className='accessibilityOnly'
-      >Annotation</label>
+      >Annotation
+      </label>
       <textarea
         id='annotation'
         defaultValue={annotation}
@@ -63,6 +66,7 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
         }}
         disabled={patching}
         sx={sx.textArea}
+        aria-label='Annotation'
       />
       <SetPortfolioImage item={item} />
     </React.Fragment>

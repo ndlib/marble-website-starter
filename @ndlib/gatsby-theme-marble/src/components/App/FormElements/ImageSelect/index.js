@@ -39,6 +39,7 @@ const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {
                         onChange(event.target.value)
                       }
                     }
+                    aria-label='Image Select'
                   />
                   <img
                     src={item.image}

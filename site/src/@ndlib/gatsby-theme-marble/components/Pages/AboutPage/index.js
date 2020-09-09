@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { BaseStyles, Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import { useTranslation } from 'react-i18next'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
@@ -15,17 +15,17 @@ const AboutPage = () => {
       <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.text') }} />
       <MultiColumn>
         <Column>
-          <Styled.h2>{t('text:aboutPage.snite.title')}</Styled.h2>
+          <h2>{t('text:aboutPage.snite.title')}</h2>
           <Image src={sniteImage} alt='' />
           <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.snite.text') }} />
         </Column>
         <Column>
-          <Styled.h2>{t('text:aboutPage.rb.title')}</Styled.h2>
+          <h2>{t('text:aboutPage.rb.title')}</h2>
           <Image src={rbImage} alt='' />
           <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.rb.text') }} />
         </Column>
         <Column>
-          <Styled.h2>{t('text:aboutPage.archives.title')}</Styled.h2>
+          <h2>{t('text:aboutPage.archives.title')}</h2>
           <Image src={archivesImage} alt='' />
           <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.archives.text') }} />
         </Column>

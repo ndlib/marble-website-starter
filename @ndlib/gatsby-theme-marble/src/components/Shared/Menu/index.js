@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import typy from 'typy'
 import Link from 'components/Internal/Link'
 import sx from './sx'
@@ -40,15 +40,16 @@ export const Menu = ({ menu, navClass }) => {
     <nav
       sx={sx.base(vertical, flex)}
     >
-      { expandedMenu.label ? <Styled.h3>{expandedMenu.label}</Styled.h3> : null }
-      { expandedMenu.items.map(l => {
-        return <Styled.a
-          as={Link}
-          to={l.link}
-          key={l.id}
-          sx={sx.item(vertical, flex)}
-        >{l.label}</Styled.a>
-      })}
+      <BaseStyles>
+        {expandedMenu.label ? <h3>{expandedMenu.label}</h3> : null}
+        {expandedMenu.items.map(l => {
+          return <Link
+            to={l.link}
+            key={l.id}
+            sx={sx.item(vertical, flex)}
+          >{l.label}</Link>
+        })}
+      </BaseStyles>
     </nav>
   )
 }

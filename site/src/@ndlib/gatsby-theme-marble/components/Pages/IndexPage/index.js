@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import CardGroup from 'components/Shared/CardGroup'
 import BrowseBar from 'components/Shared/BrowseBar'
 import ManifestCard from 'components/Shared/ManifestCard'
@@ -30,7 +30,9 @@ const IndexPage = ({ location }) => {
 
   return (
     <React.Fragment>
-      <Styled.h2>{t('common:search.browseBy')}</Styled.h2>
+      <BaseStyles>
+        <h2>{t('common:search.browseBy')}</h2>
+      </BaseStyles>
       <MultiColumn columns='4'>
         <Column>
           <BrowseBar

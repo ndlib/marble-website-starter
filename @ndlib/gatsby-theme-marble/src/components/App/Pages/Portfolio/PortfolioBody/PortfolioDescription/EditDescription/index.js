@@ -17,7 +17,8 @@ const EditDescription = ({ closeFunc }) => {
       <label
         htmlFor='portfolioDescription'
         className='accessibilityOnly'
-      >Description</label>
+      >Description
+      </label>
       <textarea
         name='portfolioDescription'
         defaultValue={newDescription}
@@ -26,6 +27,7 @@ const EditDescription = ({ closeFunc }) => {
         }}
         disabled={patching}
         sx={sx.textArea}
+        aria-label='Description'
       />
       <span sx={sx.buttonWrapper}>
         <SaveOrCancelButtons

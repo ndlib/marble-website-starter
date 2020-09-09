@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Styled, jsx } from 'theme-ui'
+import { BaseStyles, jsx } from 'theme-ui'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import VisibilitySettings from './VisibilitySettings'
@@ -35,7 +35,9 @@ const PortfolioSettingsContent = ({ callBack }) => {
       <MultiColumn columns='2'>
         <Column>
           <label htmlFor='layoutDisplay'>
-            <Styled.h2>Layout</Styled.h2>
+            <BaseStyles>
+              <h2>Layout</h2>
+            </BaseStyles>
             <LayoutSettings
               portfolio={portfolio}
               onChange={changeLayout}
