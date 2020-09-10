@@ -78,7 +78,7 @@ export const ManifestCard = (props) => {
 
 const findItem = (manifestId, allMarbleItem) => {
   return allMarbleItem.nodes.find(item => {
-    return item.marbleId === manifestId
+    return item.marbleId === manifestId || item.iiifUri === manifestId
   })
 }
 
