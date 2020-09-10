@@ -13,15 +13,15 @@ import { useTranslation } from 'react-i18next'
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
   const recentAdditions = [
-    'https://presentation-iiif.library.nd.edu/005096943/manifest',
-    'https://presentation-iiif.library.nd.edu/1951.004.015/manifest',
-    'https://presentation-iiif.library.nd.edu/002097132/manifest',
-    'https://presentation-iiif.library.nd.edu/2008.039.002/manifest',
-    'https://presentation-iiif.library.nd.edu/MSNEa8006_EAD/manifest',
-    'https://presentation-iiif.library.nd.edu/002203292/manifest',
-    'https://presentation-iiif.library.nd.edu/2014.047.003/manifest',
-    'https://presentation-iiif.library.nd.edu/MSNCW5066_EAD/aspace_af1b13d5efb947f3d936118a8a9e2b12/manifest',
-    'https://presentation-iiif.library.nd.edu/1999.031.002/manifest',
+    '005096943',
+    '1951.004.015',
+    '002097132',
+    '2008.039.002',
+    'MSNEa8006_EAD',
+    '002203292',
+    '2014.047.003',
+    'MSNCW5066_EAD',
+    '1999.031.002',
   ]
   const dateImage = 'https://image-iiif.library.nd.edu/iiif/2/2015.045.003%2F2015_045_003-v0002/full/1000,/0/default.jpg'
   const formatImage = 'https://image-iiif.library.nd.edu/iiif/2/2017.025.667%2F2017_025_667-v0015/full/1000,/0/default.jpg'
