@@ -80,7 +80,7 @@ const findItem = (manifestId, allMarbleItem) => {
 
 const findGatsbyImage = (item) => {
   return typy(item, 'childrenMarbleIiifImage[0].local.childImageSharp.fluid.src').safeString ||
-  `${typy(item, 'childrenMarbleIiifImage[0].service').safeString}/square/125,/0/default.jpg` ||
+  `${typy(item, 'childrenMarbleIiifImage[0].service').safeString}/full/!250,250/0/default.jpg` ||
   noImage
 }
 
