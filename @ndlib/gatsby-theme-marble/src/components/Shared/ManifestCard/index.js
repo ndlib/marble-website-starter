@@ -7,9 +7,10 @@ import Card from 'components/Shared/Card'
 import TypeLabel from './TypeLabel'
 import ManifestCardChildren from './ManifestCardChildren'
 import sx from './sx'
+import noImage from 'assets/images/noImage.svg'
 
 export const ManifestCard = (props) => {
-  const { allMarbleItem, allFile } = useStaticQuery(
+  const { allMarbleItem } = useStaticQuery(
     graphql`
     query {
       allMarbleItem {
@@ -22,22 +23,18 @@ export const ManifestCard = (props) => {
           display
           childrenMarbleIiifImage {
             service
-            name
+            local {
+              publicURL
+              childImageSharp {
+                fluid(maxHeight: 250) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           metadata {
             label
             value
-          }
-        }
-      }
-      allFile(filter: {extension: {eq: "jpg"}}) {
-        nodes {
-          name
-          publicURL
-          childImageSharp {
-            fluid(maxHeight: 250) {
-              ...GatsbyImageSharpFluid
-            }
           }
         }
       }
@@ -50,7 +47,7 @@ export const ManifestCard = (props) => {
     return null
   }
 
-  const gatsbyImage = findGatsbyImage(item, allFile)
+  const gatsbyImage = findGatsbyImage(item)
   let title = ''
   if (props.highlight && props.highlight['name.folded']) {
     title = props.highlight['name.folded'][0]
@@ -62,8 +59,7 @@ export const ManifestCard = (props) => {
       <Card
         label={title}
         target={`/${item.slug}`}
-        image={typy(gatsbyImage, 'src').safeString}
-        imageService={typy(item, 'childrenMarbleIiifImage[0].service').safeString}
+        image={gatsbyImage}
         {...props}
       >
         <ManifestCardChildren
@@ -82,14 +78,10 @@ const findItem = (manifestId, allMarbleItem) => {
   })
 }
 
-const findGatsbyImage = (item, allFile) => {
-  if (!typy(item, 'childrenMarbleIiifImage[0].name').isString) {
-    return null
-  }
-  const result = allFile.nodes.find(file => {
-    return file.name.includes(typy(item, 'childrenMarbleIiifImage[0].name').safeString)
-  })
-  return typy(result, 'childImageSharp.fluid').safeObject
+const findGatsbyImage = (item) => {
+  return typy(item, 'childrenMarbleIiifImage[0].local.childImageSharp.fluid.src').safeString ||
+  `${typy(item, 'childrenMarbleIiifImage[0].service').safeString}/square/125,/0/default.jpg` ||
+  noImage
 }
 
 ManifestCard.propTypes = {
