@@ -27,6 +27,9 @@ require('dotenv').config({
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 
+console.log('EStest', 'domain', domain)
+console.log('EStest', 'siteIndex', siteIndex)
+
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
 }
