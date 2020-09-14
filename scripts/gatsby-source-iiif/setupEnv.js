@@ -49,7 +49,11 @@ const retrieveStageParameters = async () => {
   data['Parameters'].forEach(node => {
     const paramName = node['Name']
     const envName = paramName.substring(paramName.lastIndexOf('/') + 1, paramName.length)
-    console.log(`${envName.toUpperCase()}=${node['Value']}`)
+    let value = node['Value']
+    if (process.env[envName.toUpperCase()]) {
+      value = process.env[envName.toUpperCase()]
+    }
+    console.log(`${envName.toUpperCase()}=${value}`)
   })
 }
 
