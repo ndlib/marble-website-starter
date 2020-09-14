@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk')
 
 const appConfig = process.argv.slice(2)[0]
+const envOnlyParams = ['SEARCH_URL', 'SEARCH_INDEX']
 
 const retrieveStageParameters = async () => {
   let data = {}
@@ -55,6 +56,12 @@ const retrieveStageParameters = async () => {
     }
     console.log(`${envName.toUpperCase()}=${value}`)
   })
+
+  if (appConfig !== 'local') {
+    envOnlyParams.forEach((envName) => {
+      console.log(`${envName.toUpperCase()}=${process.env[envName.toUpperCase()]}`)
+    })
+  }
 }
 
 new Promise(async (resolve, reject) => {
