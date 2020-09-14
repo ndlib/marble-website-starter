@@ -79,7 +79,9 @@ const findItem = (manifestId, allMarbleItem) => {
 }
 
 const findGatsbyImage = (item) => {
-  return typy(item, 'childrenMarbleIiifImage[0].local.childImageSharp.fluid.src').safeString || typy(item, 'childrenMarbleIiifImage[0].thumbnail').safeString || noImage
+  return typy(item, 'childrenMarbleIiifImage[0].local.childImageSharp.fluid.src').safeString ||
+  typy(item, 'childrenMarbleIiifImage[0].thumbnail').safeString ||
+  noImage
 }
 
 ManifestCard.propTypes = {
