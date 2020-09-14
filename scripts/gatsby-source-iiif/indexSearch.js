@@ -20,6 +20,10 @@ const getCollection = (collection) => {
   return []
 }
 
+console.log('EStest', process.env)
+console.log('EStest', process.env.SEARCH_INDEX)
+console.log('EStest', process.env.SEARCH_URL)
+
 const directory = process.argv.slice(2)[0]
 require('dotenv').config({
   path: path.join(directory, '.env.development'),
