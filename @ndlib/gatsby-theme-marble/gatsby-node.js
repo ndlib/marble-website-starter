@@ -38,7 +38,7 @@ exports.sourceNodes = ({ actions }) => {
     sequence: Int
     local: File @link(by: "name", from: "name")
   }
-  type MarbleItem implements Node @dontInfer {
+  type MarbleItem implements Node {
     id: String!
     marbleId: String!
     slug: String!
