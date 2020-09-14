@@ -18,7 +18,7 @@ describe('mapImageMetadata', () => {
     const test = {
       default: 'https://image.server.com/iiif/file/full/full/0/default.jpg',
       service: 'https://image.server.com/iiif/file',
-      thumbnail: 'https://image.server.com/iiif/file/full/400,/0/default.jpg',
+      thumbnail: 'https://image.server.com/iiif/file/full/!250,250/0/default.jpg',
       sequence: 0,
       title: 'title',
       name: 'billy-bob',

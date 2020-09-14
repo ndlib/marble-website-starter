@@ -5,31 +5,30 @@ describe('findImage', () => {
   test('local', () => {
     const item = {
       childrenMarbleIiifImage: [
-        { name: 'image' },
+        {
+          local: {
+            publicURL: 'local.image',
+          },
+        },
       ],
     }
-    const allFile = {
-      nodes: [{
-        name: 'image',
-        publicURL: 'local.image',
-      }],
-    }
-    const result = findImage(item, allFile)
+
+    const result = findImage(item)
     expect(result).toEqual('local.image')
   })
+
   test('remote', () => {
     const item = {
       childrenMarbleIiifImage: [
         {
-          name: 'image',
           default: 'https://remote',
         },
       ],
     }
-    const allFile = { nodes: [] }
-    const result = findImage(item, allFile)
+    const result = findImage(item)
     expect(result).toEqual('https://remote')
   })
+
   test('noImage', () => {
     const item = {}
     const allFile = {}
@@ -42,39 +41,36 @@ describe('findAltImage', () => {
   test('local', () => {
     const item = {
       childrenMarbleIiifImage: [
-        { name: 'image' },
-      ],
-    }
-    const allFile = {
-      nodes: [{
-        name: 'image',
-        childImageSharp: {
-          fixed: {
-            src: 'local.image',
+        {
+          local: {
+            childImageSharp: {
+              fixed: {
+                src: 'local.image',
+              },
+            },
           },
         },
-      }],
+      ],
     }
-    const result = findAltImage(item, allFile, 0)
+    const result = findAltImage(item, 0)
     expect(result).toEqual('local.image')
   })
+
   test('remote', () => {
     const item = {
       childrenMarbleIiifImage: [
         {
-          name: 'image',
           service: 'https://remote',
         },
       ],
     }
-    const allFile = { nodes: [] }
-    const result = findAltImage(item, allFile, 0)
+    const result = findAltImage(item, 0)
     expect(result).toEqual('https://remote/square/125,/0/default.jpg')
   })
+
   test('noImage', () => {
     const item = {}
-    const allFile = {}
-    const result = findAltImage(item, allFile, 0)
+    const result = findAltImage(item, 0)
     expect(result).toEqual(noImage)
   })
 })

@@ -46,14 +46,18 @@ export const query = graphql`
         type
       }
       childrenMarbleIiifImage {
-        id
-        default
-        title
-        service
-        thumbnail
         sequence
-        name
-        extension
+        service
+        default
+        thumbnail
+        local {
+          publicURL
+          childImageSharp {
+            fixed(width: 125, height: 125) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
       childrenMarbleItem {
         iiifUri
