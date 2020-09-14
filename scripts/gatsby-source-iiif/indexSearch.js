@@ -201,13 +201,28 @@ const configIndexSettings = async () => {
       number_of_shards: 1,
     },
     analysis: {
+      filter: {
+        english_stop: {
+          type:       'stop',
+          stopwords:  '_english_',
+        },
+      },
       analyzer: {
-        stopword_analyzer: {
+        folded_analyzer: {
           tokenizer: 'standard',
           stopwords: '_english_',
           filter: [
             'lowercase',
             'asciifolding',
+            'stemmer',
+            'english_stop',
+          ],
+        },
+        stopword_analyzer: {
+          tokenizer: 'standard',
+          filter: [
+            'english_stop',
+            'stemmer',
           ],
         },
       },
@@ -230,11 +245,11 @@ const configIndexMappings = async () => {
     properties : {
       allMetadata : {
         type: 'text',
-        analyzer: 'standard',
+        analyzer: 'stopword_analyzer',
         fields: {
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
           },
         },
       },
@@ -248,7 +263,7 @@ const configIndexMappings = async () => {
           },
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
           },
         },
       },
@@ -262,7 +277,7 @@ const configIndexMappings = async () => {
           },
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
           },
         },
       },
@@ -276,7 +291,7 @@ const configIndexMappings = async () => {
           },
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
           },
         },
       },
