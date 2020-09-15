@@ -52,7 +52,7 @@ const customQueryBuilder = (query, options) => {
           },
         },
         {
-          multi_match: {
+          simple_query_string: {
             query: query,
             fields: [
               'name.folded^1.4',
