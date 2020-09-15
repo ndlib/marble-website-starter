@@ -4,7 +4,7 @@ const https = require('https')
 const batchPromises = require('batch-promises')
 const directory = process.argv.slice(2)[0]
 
-const retryLimit = 4
+// const retryLimit = 4
 
 const loadJsonFile = async (pathName) => {
   const contents = fs.readFileSync(pathName)
@@ -71,7 +71,7 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
       const downloadedFiles = []
       const errors = []
       batchPromises(
-        100,
+        200,
         infos.filter(info => {
           return info !== null
         }),
@@ -79,19 +79,19 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/info`), async (err, f
           new Promise((resolve) => {
             const url = getUrl(info)
             const destinationFile = getDestination(info)
-            console.log(url)
+            // console.log(url)
             download({
               url: url,
               dest: destinationFile,
               timeout: 30000,
             })
               .then((result) => {
-                console.log('Saved to', result.filename)
+                // console.log('Saved to', result.filename)
                 downloadedFiles.push(result.filename)
                 resolve(result)
               })
               .catch(error => {
-                console.error(error)
+                // console.error(error)
                 errors.push(error)
                 resolve(error)
               })

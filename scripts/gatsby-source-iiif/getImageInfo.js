@@ -1,8 +1,8 @@
 const fs = require('fs')
 const path = require('path')
-const fetch = require('node-fetch')
+const https = require('https')
+const batchPromises = require('batch-promises')
 const directory = process.argv.slice(2)[0]
-const retryLimit = 4
 
 const loadJsonFile = async (pathName) => {
   const contents = fs.readFileSync(pathName)
@@ -23,86 +23,109 @@ const findImageIds = async (jsonFile) => {
   } else if (jsonFile && jsonFile.level && jsonFile.level.toLowerCase() === 'collection') {
     if (jsonFile.items && Array.isArray(jsonFile.items)) {
       jsonFile.items.forEach(item => {
-        if (item.items && Array.isArray(item.items) && item.items[0].iiifImageUri) {
-          images.push(item.items[0].iiifImageUri)
+        if (item.items && Array.isArray(item.items)) {
+          item.items.forEach(childItem => {
+            if (childItem.iiifImageUri) {
+              images.push(childItem.iiifImageUri)
+            }
+          })
         }
       })
     }
   } else {
     console.log(`No images found for ${jsonFile.id}`)
   }
-  // console.log(images.join('\n'))
   return images
 }
-
-const downloadInfos = async (imageIds) => {
-  const localResult = []
-  const localErrors = []
-
-  // The site only needs at most 5 images, the rest are handled in Mirador for now.
-  imageIds.length = Math.min(imageIds.length, 5)
-  await Promise.all(imageIds.map(async id => {
-    const url = `${id}/info.json`
-    const result = await fetchUntilGood(url, localResult, localErrors, 0)
-    return result
-  }))
-    .then(() => {
-      // individual files
-      localResult.forEach(result => {
-        if (result['@id']) {
-          const fileName = result['@id'].replace('https://image-iiif.library.nd.edu/iiif/2/', '')
-          fs.writeFileSync(path.join(directory, `/content/json/info/${fileName}.json`), JSON.stringify(result, null, 2))
-        }
+const getDestination = (info) => {
+  return path.join(__dirname, `${directory}/content/json/info/${info.replace('https://image-iiif.library.nd.edu/iiif/2/', '').replace('%2F', '-')}.json`)
+}
+const download = ({ url, dest, ...options }) => new Promise((resolve, reject) => {
+  https.get(url, options, response => {
+    if (response.statusCode !== 200) {
+      // Consume response data to free up memory
+      response.resume()
+      reject(new Error(`Request Failed. Status Code: ${response.statusCode}`))
+    } else {
+      response.on('error', (error) => {
+        console.error(error)
+        reject(error)
       })
+
+      response.pipe(fs.createWriteStream(dest))
+        .once('close', () => {
+          resolve({ filename: dest })
+        })
+    }
+  })
+    .on('timeout', () => {
+      const error = new Error('Timed out at server.')
+      console.error(error)
+      reject(error)
     })
-    .catch(error => {
-      console.error('Promise error: ', error)
-      return error
+    .on('error', (error) => {
+      console.log(error)
+      reject(error)
     })
-  return localResult
-}
+})
 
-const fetchUntilGood = async (url, myArray, badArray, count = 0) => {
-  if (count <= retryLimit) {
-    await fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        myArray.push(data)
-      })
-      .catch(error => {
-        if (count === retryLimit) {
-          console.error('Reached retry limit of "' + retryLimit + '" for ' + url)
-          badArray.push(url)
-        } else {
-          // console.error('fetch error (' + count + '), retrying:', url)
-          fetchUntilGood(url, myArray, badArray, ++count)
-        }
-        return error
-      })
-  }
-}
-
-const getInfo = async (pathName) => {
-  const jsonFile = await loadJsonFile(pathName)
-  const imageIds = await findImageIds(jsonFile)
-  const infoResults = await downloadInfos(imageIds)
-  return infoResults
-}
-
+// Start here
 fs.readdir(path.join(__dirname, `${directory}/content/json/nd`), async (err, fileNames) => {
   if (err) {
     console.error(err)
-    return
   }
+
   await Promise.all(fileNames.map(async fileName => {
     if (!fileName.endsWith('.json')) {
-      return
+      return null
     }
-    const result = await getInfo(path.join(__dirname, `${directory}/content/json/nd/${fileName}`))
-    return result
+    const standardJson = await loadJsonFile(path.join(__dirname, `${directory}/content/json/nd/${fileName}`))
+    standardJson.fileName = fileName
+    return standardJson
   }))
-    .then(() => {
-      console.log('done')
+    .then(async standardJsons => {
+      let imageArray = []
+      await standardJsons
+        .filter(sj => sj !== null)
+        .forEach(async standardJson => {
+          const result = await findImageIds(standardJson)
+          imageArray = imageArray.concat(result)
+        })
+      return imageArray
+    }).then(imageArray => {
+      const downloadedFiles = []
+      const errors = []
+      batchPromises(
+        200,
+        imageArray.filter(info => {
+          return info !== null
+        }),
+        (info) =>
+          new Promise((resolve) => {
+            const url = `${info}/info.json`
+            const destinationFile = getDestination(info)
+            // console.log(url)
+            download({
+              url: url,
+              dest: destinationFile,
+              timeout: 30000,
+            })
+              .then((result) => {
+                // console.log('Saved to', result.filename)
+                downloadedFiles.push(result.filename)
+                resolve(result)
+              })
+              .catch(error => {
+                // console.error(error)
+                errors.push(error)
+                resolve(error)
+              })
+          }),
+      ).then(() => {
+        console.log(`${downloadedFiles.length} files downloaded.`)
+        console.log(`${errors.length} errors reported.`)
+      }).catch(error => {
+        console.error(error)
+      })
     })
-    .catch(error => console.error(error))
 })
