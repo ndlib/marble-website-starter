@@ -45,7 +45,22 @@ export const query = graphql`
         value
         type
       }
+      childrenMarbleItem {
+        iiifUri
+        marbleId
+      }
       childrenMarbleIiifImage {
+        id
+      }
+      copyrightRestricted
+      citation
+    }
+    allMarbleIiifImage(
+      filter: {marbleParent: {slug: {eq: $slug}}},
+      sort: {fields: sequence, order: ASC},
+      limit: 6
+    ) {
+      nodes {
         sequence
         service
         default
@@ -54,16 +69,11 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fixed(width: 125, height: 125) {
-              ...GatsbyImageSharpFixed
+              src
             }
           }
         }
       }
-      childrenMarbleItem {
-        iiifUri
-      }
-      copyrightRestricted
-      citation
     }
   }
 `

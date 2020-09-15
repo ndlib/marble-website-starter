@@ -7,7 +7,7 @@ import CollectionLayout from './CollectionLayout'
 import ItemLayout from './ItemLayout'
 
 const MarbleItem = ({ data, location }) => {
-  const { marbleItem } = data
+  const { marbleItem, allMarbleIiifImage } = data
   return (
     <Layout
       title={marbleItem.title}
@@ -28,6 +28,7 @@ const MarbleItem = ({ data, location }) => {
           <ItemLayout
             location={location}
             marbleItem={marbleItem}
+            allMarbleIiifImage={allMarbleIiifImage}
           />
         )
       }

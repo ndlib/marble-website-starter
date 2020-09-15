@@ -37,6 +37,7 @@ exports.sourceNodes = ({ actions }) => {
     parent: MarbleItem
     sequence: Int
     local: File @link(by: "name", from: "name")
+    marbleParent: MarbleItem @link(by: "id", from: "parentId")
   }
   type MarbleItem implements Node {
     id: String!
@@ -45,7 +46,6 @@ exports.sourceNodes = ({ actions }) => {
     display: String
     title: String!
     description: String
-    parent: MarbleItem
     sequence: Int
     iiifUri: String
     partiallyDigitized: Boolean
@@ -194,6 +194,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
         id: nodeId,
         marbleId: standardJson.id,
         collection: collection.id,
+        parentId: parent.id,
         internal: {
           type: 'MarbleIiifImage',
         },
