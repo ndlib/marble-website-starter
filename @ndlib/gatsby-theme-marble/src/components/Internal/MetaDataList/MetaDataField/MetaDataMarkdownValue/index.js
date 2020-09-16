@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown/with-html'
 import { BaseStyles } from 'theme-ui'
 
-const MetaDataValue = ({ values, skipHtml }) => {
+const MetaDataMarkdownValue = ({ values, skipHtml }) => {
   return (
     <>
       {
@@ -25,12 +25,12 @@ const MetaDataValue = ({ values, skipHtml }) => {
   )
 }
 
-MetaDataValue.propTypes = {
+MetaDataMarkdownValue.propTypes = {
   values: PropTypes.array,
   skipHtml: PropTypes.bool,
 }
 
-MetaDataValue.defaultProps = {
+MetaDataMarkdownValue.defaultProps = {
   skipHtml: false,
 }
-export default MetaDataValue
+export default MetaDataMarkdownValue
