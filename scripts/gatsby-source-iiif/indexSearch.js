@@ -210,6 +210,13 @@ const configIndexSettings = async () => {
           stopwords:  '_english_',
         },
       },
+      char_filter: {
+        specialCharactersFilter: {
+          pattern: '[^A-Za-z0-9]',
+          type: 'pattern_replace',
+          replacement: '',
+        },
+      },
       analyzer: {
         folded_analyzer: {
           tokenizer: 'standard',
@@ -226,6 +233,17 @@ const configIndexSettings = async () => {
           filter: [
             'english_stop',
             'stemmer',
+          ],
+        },
+        no_punctuation_keyword: {
+          tokenizer: 'keyword',
+          char_filter: [
+            'specialCharactersFilter',
+          ],
+          filter: [
+            'lowercase',
+            'trim',
+            'asciifolding',
           ],
         },
       },
@@ -295,6 +313,16 @@ const configIndexMappings = async () => {
           folded: {
             type:       'text',
             analyzer:   'folded_analyzer',
+          },
+        },
+      },
+      identifier: {
+        type: 'text',
+        analyzer: 'standard',
+        fields: {
+          idMatch: {
+            type: 'text',
+            analyzer: 'no_punctuation_keyword',
           },
         },
       },
