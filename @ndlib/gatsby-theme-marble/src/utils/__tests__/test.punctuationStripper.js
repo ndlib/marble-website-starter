@@ -7,7 +7,7 @@ describe('mapStandardJsonMetadata', () => {
       ['brachets in [text] somewhere', 'brachets in text somewhere'],
       ['slash / at end /', 'slash / at end'],
       ['colon: at the end :', 'colon: at the end'],
-      ['semi-colon; at the end :', 'semi-colon: at the end'],
+      ['semi-colon; at the end ;', 'semi-colon; at the end'],
       ['period. at the end.', 'period. at the end'],
       ['comma, at the end,', 'comma, at the end'],
     ].forEach(row => {
