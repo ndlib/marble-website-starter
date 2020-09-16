@@ -38,6 +38,13 @@ const customQueryBuilder = (query, options) => {
     bool : {
       should : [
         {
+          match: {
+            'identifier.idMatch': {
+              query: query,
+            },
+          },
+        },
+        {
           multi_match: {
             query: query,
             fields: [
