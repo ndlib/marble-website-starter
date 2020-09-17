@@ -24,6 +24,13 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
               highlight={hit.highlight}
             >
               {
+                hit.highlight && hit.highlight['identifier.idMatch'] ? Object.values(hit.highlight['identifier.idMatch'])
+                  .map(
+                    (idMatch) => {
+                      return higlightDisplay(idMatch)
+                    }) : null
+              }
+              {
                 hit.highlight && hit.highlight['allMetadata.folded'] ? Object.values(hit.highlight['allMetadata.folded'])
                   .map(
                     (blob) => {
@@ -36,15 +43,7 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
                         },
                       )
                       return row !== '' ? (
-                        <div
-                          key={row}
-                          dangerouslySetInnerHTML={{ __html: row }}
-                          sx={{
-                            '& > em': {
-                              backgroundColor: 'highlight',
-                            },
-                          }}
-                        />
+                        higlightDisplay(row)
                       ) : null
                     },
                   ) : null
@@ -55,6 +54,18 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
       }
     </DisplayViewToggle>
   )
+}
+
+const higlightDisplay = (row) => {
+  return (<div
+    key={row}
+    dangerouslySetInnerHTML={{ __html: row }}
+    sx={{
+      '& > em': {
+        backgroundColor: 'highlight',
+      },
+    }}
+  />)
 }
 
 HitDisplay.propTypes = {
