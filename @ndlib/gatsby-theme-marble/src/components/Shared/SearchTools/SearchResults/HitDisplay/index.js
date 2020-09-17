@@ -24,6 +24,21 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
               highlight={hit.highlight}
             >
               {
+                hit.highlight && hit.highlight['identifier.idMatch'] ? Object.values(hit.highlight['identifier.idMatch'])
+                  .map(
+                    (idMatch) => {
+                      return <div
+                        key={idMatch}
+                        dangerouslySetInnerHTML={{ __html: idMatch }}
+                        sx={{
+                          '& > em': {
+                            backgroundColor: 'highlight',
+                          },
+                        }}
+                      />
+                    }) : null
+              }
+              {
                 hit.highlight && hit.highlight['allMetadata.folded'] ? Object.values(hit.highlight['allMetadata.folded'])
                   .map(
                     (blob) => {
