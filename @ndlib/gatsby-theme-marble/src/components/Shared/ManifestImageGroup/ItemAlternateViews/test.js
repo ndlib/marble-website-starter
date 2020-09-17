@@ -18,6 +18,11 @@ describe('ItemAlternateViews', () => {
   test('some canvases', () => {
     const marbleItem = {
       id: 'a',
+      childrenMarbleIiifImage: [
+        { local: { service: '/a' } },
+        { local: { service: '/b' } },
+        { local: { service: '/c' } },
+      ],
     }
     const allMarbleIiifImage = {
       nodes: [
