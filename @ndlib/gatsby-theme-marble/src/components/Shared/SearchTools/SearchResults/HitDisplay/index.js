@@ -27,15 +27,7 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
                 hit.highlight && hit.highlight['identifier.idMatch'] ? Object.values(hit.highlight['identifier.idMatch'])
                   .map(
                     (idMatch) => {
-                      return <div
-                        key={idMatch}
-                        dangerouslySetInnerHTML={{ __html: idMatch }}
-                        sx={{
-                          '& > em': {
-                            backgroundColor: 'highlight',
-                          },
-                        }}
-                      />
+                      return higlightDisplay(idMatch)
                     }) : null
               }
               {
@@ -51,15 +43,7 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
                         },
                       )
                       return row !== '' ? (
-                        <div
-                          key={row}
-                          dangerouslySetInnerHTML={{ __html: row }}
-                          sx={{
-                            '& > em': {
-                              backgroundColor: 'highlight',
-                            },
-                          }}
-                        />
+                        higlightDisplay(row)
                       ) : null
                     },
                   ) : null
@@ -70,6 +54,18 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
       }
     </DisplayViewToggle>
   )
+}
+
+const higlightDisplay = (row) => {
+  return (<div
+    key={row}
+    dangerouslySetInnerHTML={{ __html: row }}
+    sx={{
+      '& > em': {
+        backgroundColor: 'highlight',
+      },
+    }}
+  />)
 }
 
 HitDisplay.propTypes = {
