@@ -200,7 +200,7 @@ const dataLookUp = {
       urlField: 'keywords',
     },
     linkToSource: {
-      label: 'Link to finding aid',
+      label: 'Link to Finding Aid',
       type: 'markdown',
       processor: genericFind,
     },
@@ -298,7 +298,7 @@ const dataLookUp = {
       urlField: 'keywords',
     },
     linkToSource: {
-      label: 'Link to library catalog',
+      label: 'Link to Library Catalog',
       type: 'markdown',
       processor: genericFind,
     },
@@ -347,7 +347,7 @@ const dataLookUp = {
       processor: genericFind,
     },
     uniqueIdentifier: {
-      label: 'Accession number',
+      label: 'Accession Number',
       type: 'list',
       processor: genericFind,
     },
@@ -465,7 +465,7 @@ const dataLookUp = {
       urlField: 'keywords',
     },
     linkToSource: {
-      label: 'Link to finding aid',
+      label: 'Link to Finding Aid',
       type: 'markdown',
       processor: genericFind,
     },

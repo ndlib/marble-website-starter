@@ -97,8 +97,7 @@ const loadSubItemTitles = (manifest) => {
 }
 
 const allMetadataKeys = [
-  'description', 'collection', 'uniqueIdentifier', 'dimensions',
-  'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
+  'description', 'dimensions', 'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
 ]
 
 const getIdentifiers = (manifest) => {
@@ -148,7 +147,6 @@ const getSearchDataFromManifest = (manifest) => {
     }
   })
   search['allMetadata'] += '::' + loadSubItemTitles(manifest)
-  search['allMetadata'] += '::' + search.repository
   search['allMetadata'] += '::' + search.centuryTag.join('::')
   search['allMetadata'] += '::' + search.themeTag.join('::')
 
