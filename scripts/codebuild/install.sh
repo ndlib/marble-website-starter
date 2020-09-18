@@ -36,15 +36,7 @@ pushd scripts/gatsby-source-iiif/
 yarn install
 node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE}
 
-echo "look here---->"
-echo $SEARCH_URL
-echo $SEARCH_INDEX
-
 source ${ENV_FILE}
-
-echo "look here---->"
-echo $SEARCH_URL
-echo $SEARCH_INDEX
 
 export $(cut -d= -f1 ${ENV_FILE})
 ./generate.sh ${PARAM_CONFIG_PATH}

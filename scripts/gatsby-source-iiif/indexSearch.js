@@ -20,19 +20,12 @@ const getCollection = (collection) => {
   return []
 }
 
-console.log('EStest', process.env)
-console.log('EStest', process.env.SEARCH_INDEX)
-console.log('EStest', process.env.SEARCH_URL)
-
 const directory = process.argv.slice(2)[0]
 require('dotenv').config({
   path: path.join(directory, '.env.development'),
 })
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
-
-console.log('EStest', 'domain', domain)
-console.log('EStest', 'siteIndex', siteIndex)
 
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')

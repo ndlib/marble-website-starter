@@ -5,6 +5,10 @@
     "MSNCW8011_EAD"
   ],
   "saved": [
+  ],
+  "manifest_ids": [
+    "MSNEa8006_EAD",
+    "MSNMN5004_EAD",
     "002824648",
     "002207624",
     "003504839",
@@ -966,9 +970,5 @@
     "MSNEA5022_EAD",
     "MSNEA5031_EAD",
     "MSNEA8011_EAD"
-  ],
-  "manifest_ids": [    
-    "MSNEa8006_EAD",
-    "MSNMN5004_EAD"
   ]
 }
