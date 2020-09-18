@@ -10,7 +10,7 @@ const possibleKeys = [
   'USER_CONTENT_PATH',
   'AUTH_CLIENT_ID',
   'AUTH_CLIENT_URL',
-  'AUTH_CLIENT_ISSUER'
+  'AUTH_CLIENT_ISSUER',
 ]
 
 const retrieveStageParameters = async () => {
@@ -44,10 +44,12 @@ const retrieveStageParameters = async () => {
   possibleKeys.forEach(key => {
     const envValue = process.env[key]
     // Override all keys with process env, if defined
-    if(envValue !== undefined)
+    if (envValue !== undefined) {
       env[key] = envValue
-    if(env[key] !== undefined)
+    }
+    if (env[key] !== undefined) {
       console.log(`${key}=${env[key]}`)
+    }
   })
 }
 
