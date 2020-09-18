@@ -4,7 +4,7 @@ describe('mapStandardJsonMetadata', () => {
   test('it strips each of the known examples', () => {
     [
       ['[brackets around date]', 'brackets around date'],
-      ['brachets in [text] somewhere', 'brachets in text somewhere'],
+      ['brackets in [text] somewhere', 'brackets in text somewhere'],
       ['slash / at end /', 'slash / at end'],
       ['colon: at the end :', 'colon: at the end'],
       ['semi-colon; at the end ;', 'semi-colon; at the end'],
