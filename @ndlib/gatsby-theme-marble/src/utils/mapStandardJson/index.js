@@ -17,6 +17,22 @@ module.exports = (standardJson) => {
     sequence: standardJson.sequence,
     citation: citationGenerator(standardJson, slug),
     metadata: makeMetadataArray(standardJson),
+    search: {
+      id: standardJson.id,
+      name: standardJson.title,
+      thumbnail: standardJson.iiifImageUri,
+      url: '/item/' + standardJson.id,
+      creator: [],
+      collection: [],
+      identifier: [],
+      repository: [],
+      themeTag: [],
+      centuryTag: [],
+      lowestSearchRange: dateData.undated ? -500000 : dateData.lowestSearchRange,
+      highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
+      formatTag: [standardJson.workType],
+      languages: [standardJson.languages],
+    },
   }
 }
 

@@ -123,7 +123,6 @@ const getSearchDataFromManifest = (manifest) => {
     themeTag: getKeywordsFromSubjects(manifest),
     centuryTag: dateData.centuryTags,
 
-    date: manifest.createdDate,
     lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
     workType: [manifest.workType],
