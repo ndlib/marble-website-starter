@@ -1,5 +1,6 @@
 const path = require('path')
 const languageCodes = require(path.join(__dirname, 'languageCodes'))
+const punctuationStripper = require(path.join(__dirname, 'punctuationStripper'))
 
 module.exports = (standardJson) => {
   const currentSource = dataLookUp[standardJson.sourceSystem.toLowerCase()]
@@ -21,7 +22,7 @@ const genericFind = (standardJson, id) => {
   if (id in standardJson && standardJson[id]) {
     let data = standardJson[id]
     if (!Array.isArray(data)) {
-      data = [data]
+      data = [punctuationStripper(data)]
     }
     return data
   }
@@ -200,12 +201,12 @@ const dataLookUp = {
     },
     linkToSource: {
       label: 'Link to finding aid',
-      type: 'list',
+      type: 'markdown',
       processor: genericFind,
     },
     departmentContact: {
       label: 'Contact Us',
-      type: 'list',
+      type: 'markdown',
       processor: findContact,
     },
   },
@@ -298,12 +299,12 @@ const dataLookUp = {
     },
     linkToSource: {
       label: 'Link to library catalog',
-      type: 'list',
+      type: 'markdown',
       processor: genericFind,
     },
     departmentContact: {
       label: 'Contact Us',
-      type: 'list',
+      type: 'markdown',
       processor: findContact,
     },
   },
@@ -378,7 +379,7 @@ const dataLookUp = {
     },
     departmentContact: {
       label: 'Contact Us',
-      type: 'list',
+      type: 'markdown',
       processor: findContact,
     },
   },
@@ -465,12 +466,12 @@ const dataLookUp = {
     },
     linkToSource: {
       label: 'Link to finding aid',
-      type: 'list',
+      type: 'markdown',
       processor: genericFind,
     },
     departmentContact: {
       label: 'Contact Us',
-      type: 'list',
+      type: 'markdown',
       processor: findContact,
     },
   },

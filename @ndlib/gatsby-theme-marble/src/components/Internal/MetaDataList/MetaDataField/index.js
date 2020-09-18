@@ -3,18 +3,17 @@ import PropTypes from 'prop-types'
 import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
+import MetaDataMarkdownValue from './MetaDataMarkdownValue'
 
 const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, urlField, type } = metadata
   let { value } = metadata
-
-  let MetadataValueComponent = MetaDataValue
-  if (type === 'searchList') {
-    MetadataValueComponent = MetaDataSearchValue
-  }
   if (!Array.isArray(value) && value) {
     value = [value]
   }
+
+  const MetadataValueComponent = getComponent(type)
+
   if (value && value.length !== 0) {
     return (
       <div>
@@ -30,6 +29,16 @@ const MetaDataField = ({ metadata, skipHtml }) => {
     )
   }
   return null
+}
+
+const getComponent = (type) => {
+  if (type === 'searchList') {
+    return MetaDataSearchValue
+  } else if (type === 'markdown') {
+    return MetaDataMarkdownValue
+  }
+
+  return MetaDataValue
 }
 
 MetaDataField.propTypes = {

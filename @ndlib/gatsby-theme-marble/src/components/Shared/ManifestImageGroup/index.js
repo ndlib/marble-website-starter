@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
 import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
@@ -9,23 +8,6 @@ import { jsx } from 'theme-ui'
 import sx from './sx'
 
 export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
-  const { allFile } = useStaticQuery(
-    graphql`
-    query {
-      allFile(filter: {extension: {eq: "jpg"}}) {
-        nodes {
-          name
-          publicURL
-          childImageSharp {
-            fixed(width: 125, height: 125) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-      }
-    }
-  `,
-  )
   if (!marbleItem) {
     return null
   }
@@ -44,7 +26,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
       >
         <picture sx={sx.wrapper}>
           <img
-            src={findImage(marbleItem, allFile)}
+            src={findImage(marbleItem)}
             alt={label}
             title={label}
             sx={sx.image}
@@ -53,7 +35,6 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer }) => {
         </picture>
       </ViewerLink>
       <ItemAlternateViews
-        allFile={allFile}
         marbleItem={marbleItem}
         location={location}
         viewer={viewer}

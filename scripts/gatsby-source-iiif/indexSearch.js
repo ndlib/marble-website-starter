@@ -97,9 +97,21 @@ const loadSubItemTitles = (manifest) => {
 }
 
 const allMetadataKeys = [
-  'description', 'collection', 'collectionId', 'id', 'uniqueIdentifier', 'dimensions',
+  'description', 'collection', 'uniqueIdentifier', 'dimensions',
   'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
 ]
+
+const getIdentifiers = (manifest) => {
+  const ret = []
+  if (manifest.uniqueIdentifier) {
+    ret.push(manifest.uniqueIdentifier)
+  }
+  if (manifest.sourceSystem.toLowerCase() === 'aleph') {
+    ret.push(manifest.id)
+  }
+
+  return ret
+}
 
 const getSearchDataFromManifest = (manifest) => {
   const dateData = realDatesFromCatalogedDates(manifest.createdDate)
@@ -109,18 +121,20 @@ const getSearchDataFromManifest = (manifest) => {
     name: manifest.title,
     creator: creators,
     collection: getCollection(manifest.collections),
+    identifier: getIdentifiers(manifest),
+
+    repository: determineProvider(manifest),
+    themeTag: getKeywordsFromSubjects(manifest),
+    centuryTag: dateData.centuryTags,
+
     date: manifest.createdDate,
     lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
-    identifier: manifest.uniqueIdentifier,
     workType: [manifest.workType],
     thumbnail: manifest.iiifImageUri,
     languages: manifest.languages,
     type: manifest.level,
     url: '/item/' + manifest.id,
-    repository: determineProvider(manifest),
-    themeTag: getKeywordsFromSubjects(manifest),
-    centuryTag: dateData.centuryTags,
   }
 
   if (manifest.workType) {
@@ -201,13 +215,48 @@ const configIndexSettings = async () => {
       number_of_shards: 1,
     },
     analysis: {
+      filter: {
+        english_stop: {
+          type:       'stop',
+          stopwords:  '_english_',
+        },
+      },
+      char_filter: {
+        // this is used for the id filters people do not always know the punctuation
+        // in the id and sometimes do not know the leading zeros
+        // we are removing all the characters people do not always know for the test.
+        specialCharactersFilter: {
+          pattern: '[^A-Za-z1-9]',
+          type: 'pattern_replace',
+          replacement: '',
+        },
+      },
       analyzer: {
-        stopword_analyzer: {
+        folded_analyzer: {
           tokenizer: 'standard',
           stopwords: '_english_',
           filter: [
             'lowercase',
             'asciifolding',
+            'stemmer',
+            'english_stop',
+          ],
+        },
+        stopword_analyzer: {
+          tokenizer: 'standard',
+          filter: [
+            'english_stop',
+            'stemmer',
+          ],
+        },
+        no_punctuation_keyword: {
+          tokenizer: 'keyword',
+          char_filter: [
+            'specialCharactersFilter',
+          ],
+          filter: [
+            'lowercase',
+            'trim',
           ],
         },
       },
@@ -230,11 +279,11 @@ const configIndexMappings = async () => {
     properties : {
       allMetadata : {
         type: 'text',
-        analyzer: 'standard',
+        analyzer: 'stopword_analyzer',
         fields: {
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
           },
         },
       },
@@ -248,7 +297,7 @@ const configIndexMappings = async () => {
           },
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
           },
         },
       },
@@ -262,7 +311,7 @@ const configIndexMappings = async () => {
           },
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
           },
         },
       },
@@ -276,7 +325,17 @@ const configIndexMappings = async () => {
           },
           folded: {
             type:       'text',
-            analyzer:   'stopword_analyzer',
+            analyzer:   'folded_analyzer',
+          },
+        },
+      },
+      identifier: {
+        type: 'text',
+        analyzer: 'standard',
+        fields: {
+          idMatch: {
+            type: 'text',
+            analyzer: 'no_punctuation_keyword',
           },
         },
       },

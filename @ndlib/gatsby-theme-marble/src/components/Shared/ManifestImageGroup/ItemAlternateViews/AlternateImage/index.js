@@ -5,14 +5,12 @@ import PropTypes from 'prop-types'
 import ViewerLink from 'components/Shared/ManifestImageGroup/ViewerLink'
 import Image from 'components/Shared/Image'
 import AlternateOverlay from './AlternateOverlay'
-// import getImageService from 'utils/getImageService'
 import buildReferalState from 'utils/buildReferalState'
 import { findAltImage } from 'utils/findImage'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
 export const AlternateImage = ({
-  allFile,
   marbleItem,
   index,
   max,
@@ -38,7 +36,7 @@ export const AlternateImage = ({
             overlayNumber={length - max}
           />
           <Image
-            src={findAltImage(marbleItem, allFile, index)}
+            src={findAltImage(marbleItem, index)}
             alt={`Alternate View ${index}`}
             title={`Alternate View ${index}`}
           />
@@ -49,7 +47,6 @@ export const AlternateImage = ({
 }
 
 AlternateImage.propTypes = {
-  allFile: PropTypes.object,
   marbleItem: PropTypes.shape({
     childrenMarbleIiifImage: PropTypes.array,
   }).isRequired,

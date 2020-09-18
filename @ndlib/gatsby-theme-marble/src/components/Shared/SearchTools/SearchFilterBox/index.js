@@ -38,11 +38,19 @@ const customQueryBuilder = (query, options) => {
     bool : {
       should : [
         {
+          match: {
+            'identifier.idMatch': {
+              query: query,
+            },
+          },
+        },
+        {
           multi_match: {
             query: query,
             fields: [
-              'name.keywords^3',
-              'creator.keywords^2',
+              'name^2',
+              'creator^1.5',
+              'collection^1.5',
               'allMetadata.folded',
             ],
             slop: 5,
@@ -51,11 +59,12 @@ const customQueryBuilder = (query, options) => {
           },
         },
         {
-          multi_match: {
+          simple_query_string: {
             query: query,
             fields: [
-              'name.folded^2',
+              'name.folded^1.4',
               'creator.folded^1',
+              'collection.folded^1',
               'allMetadata.folded',
             ],
           },
