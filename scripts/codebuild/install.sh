@@ -37,6 +37,7 @@ yarn install
 node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE}
 
 source ${ENV_FILE}
+
 export $(cut -d= -f1 ${ENV_FILE})
 ./generate.sh ${PARAM_CONFIG_PATH}
 popd
