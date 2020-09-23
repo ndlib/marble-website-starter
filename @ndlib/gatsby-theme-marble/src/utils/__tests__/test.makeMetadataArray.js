@@ -2,7 +2,7 @@ import makeMetadataArray from '../mapStandardJson/makeMetadataArray'
 
 let defaultData = {}
 
-describe.skip('makeMetadataArray', () => {
+describe('makeMetadataArray', () => {
   beforeEach(() => {
     defaultData = {
       sourceSystem: 'archivesspace',
@@ -27,6 +27,7 @@ describe.skip('makeMetadataArray', () => {
         {
           label: 'Creator',
           type: 'searchList',
+          urlField: 'creator',
           value:  [
             'CREATOR!!!',
             'CREATOR2',
@@ -79,6 +80,7 @@ describe.skip('makeMetadataArray', () => {
         {
           label: 'Subject',
           type: 'searchList',
+          urlField: 'keywords',
           value:  [
             'Songs--Irish',
             'Ballads, Irish',
@@ -118,14 +120,16 @@ describe.skip('makeMetadataArray', () => {
         {
           label: 'Campus Location',
           type: 'list',
+          urlField: undefined,
           value:  [
             'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
         },
         {
           label: 'Contact Us',
-          type: 'list',
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -144,8 +148,9 @@ describe.skip('makeMetadataArray', () => {
         },
         {
           label: 'Contact Us',
-          type: 'list',
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -164,8 +169,9 @@ describe.skip('makeMetadataArray', () => {
         },
         {
           label: 'Contact Us',
-          type: 'list',
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at rarebook@nd.edu.'],
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -178,14 +184,16 @@ describe.skip('makeMetadataArray', () => {
         {
           label: 'Campus Location',
           type: 'list',
+          urlField: undefined,
           value:  [
             'University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame',
           ],
         },
         {
           label: 'Contact Us',
-          type: 'list',
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame at archives@nd.edu.'],
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame at [archives@nd.edu](mailto:archives@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -198,14 +206,16 @@ describe.skip('makeMetadataArray', () => {
         {
           label: 'Campus Location',
           type: 'list',
+          urlField: undefined,
           value:  [
             'Snite Museum of Art',
           ],
         },
         {
           label: 'Contact Us',
-          type: 'list',
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Snite Museum of Art at sniteart@nd.edu.'],
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Snite Museum of Art at [sniteart@nd.edu](mailto:sniteart@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -219,14 +229,16 @@ describe.skip('makeMetadataArray', () => {
       {
         label: 'Campus Location',
         type: 'list',
+        urlField: undefined,
         value:  [
           'General Collection, Hesburgh Libraries',
         ],
       },
       {
         label: 'Contact Us',
-        type: 'list',
-        value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact General Collection, Hesburgh Libraries at asklib@nd.edu.'],
+        type: 'markdown',
+        urlField: undefined,
+        value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact General Collection, Hesburgh Libraries at [asklib@nd.edu](mailto:asklib@nd.edu).'],
       },
     ]
     const result = makeMetadataArray(defaultData)
@@ -239,7 +251,8 @@ describe.skip('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'searchList',
+          type: 'list',
+          urlField: 'language',
           value:  [
             'English',
           ],
@@ -254,7 +267,8 @@ describe.skip('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'searchList',
+          type: 'list',
+          urlField: 'language',
           value:  [
             'Russian',
           ],
@@ -276,7 +290,8 @@ describe.skip('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'searchList',
+          type: 'list',
+          urlField: 'language',
           value:  [
             'xyz',
           ],

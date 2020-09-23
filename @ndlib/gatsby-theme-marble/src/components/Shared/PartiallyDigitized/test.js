@@ -3,12 +3,12 @@ import { mount } from 'enzyme'
 import PartiallyDigitized from './'
 
 describe('PartiallyDigitized', () => {
-  test.skip('is partially digitized', () => {
-    const wrapper = mount(<PartiallyDigitized iiifManifest={{ partiallyDigitized: true }} />)
+  test('is partially digitized', () => {
+    const wrapper = mount(<PartiallyDigitized marbleItem={{ partiallyDigitized: true }} />)
     expect(wrapper.find('div').exists()).toBeTruthy()
   })
-  test.skip('is completely digitized', () => {
-    const wrapper = mount(<PartiallyDigitized iiifManifest={{}} />)
+  test('is completely digitized', () => {
+    const wrapper = mount(<PartiallyDigitized marbleItem={{}} />)
     expect(wrapper.find('div').exists()).toBeFalsy()
   })
 })
