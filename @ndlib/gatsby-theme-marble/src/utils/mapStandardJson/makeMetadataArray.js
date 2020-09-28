@@ -48,38 +48,6 @@ const findCreators = (standardJson) => {
   return false
 }
 
-const findContributors = (standardJson) => {
-  if ('contributors' in standardJson && standardJson.contributors) {
-    try {
-      return standardJson.contributors.map((creator) => creator.display)
-    } catch (e) {
-      return []
-    }
-  }
-  return false
-}
-
-const findSubjects = (standardJson) => {
-  if ('subjects' in standardJson && standardJson.subjects) {
-    return standardJson.subjects.map((subject) => subject.display)
-  }
-  return false
-}
-
-const findPublisher = (standardJson) => {
-  if ('publishers' in standardJson && standardJson.publishers) {
-    return standardJson.publishers.map((publisher) => publisher.display)
-  }
-  return false
-}
-
-const mappedLanguageCodes = (standardJson) => {
-  if ('languages' in standardJson && standardJson.languages) {
-    return standardJson.languages.map((language) => language.display)
-  }
-  return false
-}
-
 const findProvider = (standardJson) => {
   if (!('repository' in standardJson)) {
     return false
