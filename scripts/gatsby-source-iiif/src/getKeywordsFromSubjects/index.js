@@ -8,7 +8,36 @@ module.exports = (manifest) => {
     manifest.subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
   }
 
-  return manifest.subjects.map(m => {
-    return m.term
+  // uniqe an array of
+  // subjects.term that split all the -- into individual terms
+  // adding in the variant terms for that subject
+  // adding in the broader terms.term for that subject
+  // [].concat.apply([], []) flattens an array
+  return [...new Set([].concat.apply([], manifest.subjects.map(m => {
+    return splitTerms(m.term).concat(addVariants(m)).concat(addBroaderTerms(m))
+  })))].map((t) => {
+    return t.trim()
+  })
+}
+
+const splitTerms = (term) => {
+  return term.split('--')
+}
+
+const addVariants = (subject) => {
+  if (!subject.variants) {
+    return []
+  }
+
+  return subject.variants
+}
+
+const addBroaderTerms = (subject) => {
+  if (!subject.broaderTerms) {
+    return []
+  }
+
+  return subject.broaderTerms.map((bt) => {
+    return bt.term
   })
 }
