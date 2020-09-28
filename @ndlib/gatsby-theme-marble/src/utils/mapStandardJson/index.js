@@ -38,7 +38,7 @@ module.exports = (standardJson) => {
 
 const mapFieldOrDefault = (standardJson, field, defaultValue) => {
   if (field in standardJson) {
-    return standardJson[field]
+    return punctuationStripper(standardJson[field])
   }
 
   return defaultValue
