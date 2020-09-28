@@ -15,7 +15,7 @@ if (appConfig === 'local' || process.env.TRAVIS_RUN) {
 
 const getCollection = (collection) => {
   if (collection) {
-    return [collection]
+    return collection.map((c) => c.display)
   }
   return []
 }

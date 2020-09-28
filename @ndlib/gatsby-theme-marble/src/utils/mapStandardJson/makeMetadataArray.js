@@ -1,5 +1,4 @@
 const path = require('path')
-const languageCodes = require(path.join(__dirname, 'languageCodes'))
 const punctuationStripper = require(path.join(__dirname, 'punctuationStripper'))
 
 module.exports = (standardJson) => {
@@ -54,26 +53,21 @@ const findContributors = (standardJson) => {
 
 const findSubjects = (standardJson) => {
   if ('subjects' in standardJson && standardJson.subjects) {
-    return standardJson.subjects.map((subject) => subject.term)
+    return standardJson.subjects.map((subject) => subject.display)
   }
   return false
 }
 
 const findPublisher = (standardJson) => {
   if ('publisher' in standardJson && standardJson.publisher) {
-    return [standardJson.publisher.publisherName]
+    return standardJson.publisher.map((publisher) => publisher.display)
   }
   return false
 }
 
 const mappedLanguageCodes = (standardJson) => {
   if (standardJson.languages) {
-    return standardJson.languages.map((code) => {
-      if (languageCodes[code]) {
-        return languageCodes[code]
-      }
-      return code
-    })
+    return standardJson.languages.map((language) => language.display)
   }
   return false
 }

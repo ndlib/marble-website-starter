@@ -3,7 +3,7 @@ const getKeywordsFromSubjects = require('./')
 test('returns the term from a subject', () => {
   const manifest = {
     subjects: [{
-      term: 'term',
+      display: 'term',
     }],
   }
   expect(getKeywordsFromSubjects(manifest)).toEqual(['term'])
@@ -12,8 +12,8 @@ test('returns the term from a subject', () => {
 test('returns the multiple terms from multiple subjects', () => {
   const manifest = {
     subjects: [
-      { term: 'term1' },
-      { term: 'term2' },
+      { display: 'term1' },
+      { display: 'term2' },
     ],
   }
   expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2'])
@@ -22,8 +22,8 @@ test('returns the multiple terms from multiple subjects', () => {
 test('works with json encoded in a string', () => {
   const manifest = {
     subjects: JSON.stringify([
-      { term: 'term1' },
-      { term: 'term2' },
+      { display: 'term1' },
+      { display: 'term2' },
     ]),
   }
 
@@ -38,8 +38,8 @@ test('it returns empty if there are no subjects', () => {
 test('it splits on the dashes', () => {
   const manifest = {
     subjects: JSON.stringify([
-      { term: 'term1 -- term2' },
-      { term: 'term3' },
+      { display: 'term1 -- term2' },
+      { display: 'term3' },
     ]),
   }
 
@@ -50,12 +50,12 @@ test('it adds in the broaderTerms', () => {
   const manifest = {
     subjects: JSON.stringify([
       {
-        term: 'term1',
+        display: 'term1',
         broaderTerms: [
-          { term: ' term2 ' },
+          { display: ' term2 ' },
         ],
       },
-      { term: 'term3' },
+      { display: 'term3' },
     ]),
   }
 
@@ -66,10 +66,10 @@ test('it adds in the variantTerms', () => {
   const manifest = {
     subjects: JSON.stringify([
       {
-        term: ' term1 ',
+        display: ' term1 ',
         variants: [' term2 '],
       },
-      { term: 'term3' },
+      { display: 'term3' },
     ]),
   }
 
