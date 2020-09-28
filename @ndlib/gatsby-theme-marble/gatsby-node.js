@@ -24,7 +24,7 @@ exports.sourceNodes = ({ actions }) => {
     urlField: String
     type: String
   }
-  type MarbleIiifImage implements Node @dontInfer {
+  type MarbleIiifImage implements Node {
     id: String!
     marbleId: String!
     service: String
@@ -36,8 +36,9 @@ exports.sourceNodes = ({ actions }) => {
     collection: MarbleItem
     parent: MarbleItem
     sequence: Int
+    local: File @link(by: "name", from: "name")
   }
-  type MarbleItem implements Node @dontInfer {
+  type MarbleItem implements Node {
     id: String!
     marbleId: String!
     slug: String!
@@ -196,6 +197,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
         internal: {
           type: 'MarbleIiifImage',
         },
+
       }
 
       normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
