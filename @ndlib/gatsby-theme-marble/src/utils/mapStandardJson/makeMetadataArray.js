@@ -37,17 +37,6 @@ const genericArrayFind = (standardJson, id) => {
   return false
 }
 
-const findCreators = (standardJson) => {
-  if ('creators' in standardJson && standardJson.creators) {
-    try {
-      return standardJson.creators.map((creator) => creator.display)
-    } catch (e) {
-      return []
-    }
-  }
-  return false
-}
-
 const findProvider = (standardJson) => {
   if (!('repository' in standardJson)) {
     return false
