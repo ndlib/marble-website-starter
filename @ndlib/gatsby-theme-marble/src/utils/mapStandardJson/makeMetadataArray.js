@@ -67,8 +67,8 @@ const findSubjects = (standardJson) => {
 }
 
 const findPublisher = (standardJson) => {
-  if ('publisher' in standardJson && standardJson.publisher) {
-    return standardJson.publisher.map((publisher) => publisher.display)
+  if ('publishers' in standardJson && standardJson.publishers) {
+    return standardJson.publishers.map((publisher) => publisher.display)
   }
   return false
 }
@@ -236,7 +236,7 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
-    publisher: {
+    publishers: {
       label: 'Publisher',
       type: 'list',
       processor: genericArrayFind,
@@ -403,10 +403,10 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
-    publisher: {
+    publishers: {
       label: 'Publisher',
       type: 'list',
-      processor: findPublisher,
+      processor: genericArrayFind,
     },
     workType: {
       label: 'Material Type',
