@@ -185,7 +185,7 @@ const dataLookUp = {
     collections: {
       label: 'Collection',
       type: 'searchList',
-      processor: genericFind,
+      processor: genericArrayFind,
       urlField: 'collection',
     },
     createdDate: {
