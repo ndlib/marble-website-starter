@@ -252,7 +252,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'list',
+          type: 'searchList',
           urlField: 'language',
           value:  [
             'English',
@@ -268,7 +268,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'list',
+          type: 'searchList',
           urlField: 'language',
           value:  [
             'Russian',
