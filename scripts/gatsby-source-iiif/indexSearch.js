@@ -132,7 +132,7 @@ const getSearchDataFromManifest = (manifest) => {
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
     workType: [manifest.workType],
     thumbnail: manifest.iiifImageUri,
-    languages: getLanguages(manifest),
+    language: getLanguages(manifest),
     type: manifest.level,
     url: '/item/' + manifest.id,
   }

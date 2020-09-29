@@ -118,7 +118,7 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'list',
+      type: 'searchList',
       processor: genericArrayFind,
       urlField: 'language',
     },
@@ -216,7 +216,7 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'list',
+      type: 'searchList',
       processor: genericArrayFind,
       urlField: 'language',
     },
@@ -383,7 +383,7 @@ const dataLookUp = {
     },
     languages: {
       label: 'Language',
-      type: 'list',
+      type: 'searchList',
       processor: genericArrayFind,
       urlField: 'language',
     },
