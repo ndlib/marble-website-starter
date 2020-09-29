@@ -1,5 +1,4 @@
 const path = require('path')
-const languageCodes = require(path.join(__dirname, 'languageCodes'))
 const punctuationStripper = require(path.join(__dirname, 'punctuationStripper'))
 
 module.exports = (standardJson) => {
@@ -30,51 +29,11 @@ const genericFind = (standardJson, id) => {
   return false
 }
 
-const findCreators = (standardJson) => {
-  if ('creators' in standardJson && standardJson.creators) {
-    try {
-      return standardJson.creators.map((creator) => creator.display)
-    } catch (e) {
-      return []
-    }
+const genericArrayFind = (standardJson, id) => {
+  if (id in standardJson && standardJson[id]) {
+    return standardJson[id].map((row) => row.display)
   }
-  return false
-}
 
-const findContributors = (standardJson) => {
-  if ('contributors' in standardJson && standardJson.contributors) {
-    try {
-      return standardJson.contributors.map((creator) => creator.display)
-    } catch (e) {
-      return []
-    }
-  }
-  return false
-}
-
-const findSubjects = (standardJson) => {
-  if ('subjects' in standardJson && standardJson.subjects) {
-    return standardJson.subjects.map((subject) => subject.term)
-  }
-  return false
-}
-
-const findPublisher = (standardJson) => {
-  if ('publisher' in standardJson && standardJson.publisher) {
-    return [standardJson.publisher.publisherName]
-  }
-  return false
-}
-
-const mappedLanguageCodes = (standardJson) => {
-  if (standardJson.languages) {
-    return standardJson.languages.map((code) => {
-      if (languageCodes[code]) {
-        return languageCodes[code]
-      }
-      return code
-    })
-  }
   return false
 }
 
@@ -133,7 +92,7 @@ const dataLookUp = {
     creators: {
       label: 'Creator',
       type: 'searchList',
-      processor: findCreators,
+      processor: genericArrayFind,
       urlField: 'creator',
     },
     createdDate: {
@@ -160,7 +119,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: mappedLanguageCodes,
+      processor: genericArrayFind,
       urlField: 'language',
     },
     uniqueIdentifier: {
@@ -196,7 +155,7 @@ const dataLookUp = {
     subjects: {
       label: 'Subject',
       type: 'searchList',
-      processor: findSubjects,
+      processor: genericArrayFind,
       urlField: 'keywords',
     },
     linkToSource: {
@@ -214,19 +173,19 @@ const dataLookUp = {
     creators: {
       label: 'Creator',
       type: 'searchList',
-      processor: findCreators,
+      processor: genericArrayFind,
       urlField: 'creator',
     },
     contributors: {
       label: 'Contributor',
       type: 'searchList',
-      processor: findContributors,
+      processor: genericArrayFind,
       urlField: 'creator',
     },
     collections: {
       label: 'Collection',
       type: 'searchList',
-      processor: genericFind,
+      processor: genericArrayFind,
       urlField: 'collection',
     },
     createdDate: {
@@ -234,10 +193,10 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
-    publisher: {
+    publishers: {
       label: 'Publisher',
       type: 'list',
-      processor: findPublisher,
+      processor: genericArrayFind,
     },
     workType: {
       label: 'Material Type',
@@ -258,7 +217,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: mappedLanguageCodes,
+      processor: genericArrayFind,
       urlField: 'language',
     },
     uniqueIdentifier: {
@@ -294,7 +253,7 @@ const dataLookUp = {
     subjects: {
       label: 'Subject',
       type: 'searchList',
-      processor: findSubjects,
+      processor: genericArrayFind,
       urlField: 'keywords',
     },
     linkToSource: {
@@ -312,7 +271,7 @@ const dataLookUp = {
     creators: {
       label: 'Creator',
       type: 'searchList',
-      processor: findCreators,
+      processor: genericArrayFind,
       urlField: 'creator',
     },
     createdDate: {
@@ -374,7 +333,7 @@ const dataLookUp = {
     subjects: {
       label: 'Subject',
       type: 'searchList',
-      processor: findSubjects,
+      processor: genericArrayFind,
       urlField: 'keywords',
     },
     departmentContact: {
@@ -387,13 +346,13 @@ const dataLookUp = {
     creators: {
       label: 'Creator',
       type: 'searchList',
-      processor: findCreators,
+      processor: genericArrayFind,
       urlField: 'creator',
     },
     contributors: {
       label: 'Contributor',
       type: 'searchList',
-      processor: findContributors,
+      processor: genericArrayFind,
       urlField: 'creator',
     },
     createdDate: {
@@ -401,10 +360,10 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
-    publisher: {
+    publishers: {
       label: 'Publisher',
       type: 'list',
-      processor: findPublisher,
+      processor: genericArrayFind,
     },
     workType: {
       label: 'Material Type',
@@ -425,7 +384,7 @@ const dataLookUp = {
     languages: {
       label: 'Language',
       type: 'list',
-      processor: mappedLanguageCodes,
+      processor: genericArrayFind,
       urlField: 'language',
     },
     uniqueIdentifier: {
@@ -461,7 +420,7 @@ const dataLookUp = {
     subjects: {
       label: 'Subject',
       type: 'searchList',
-      processor: findSubjects,
+      processor: genericArrayFind,
       urlField: 'keywords',
     },
     linkToSource: {
