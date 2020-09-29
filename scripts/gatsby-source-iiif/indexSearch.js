@@ -7,6 +7,7 @@ const AWS = require('aws-sdk')
 const realDatesFromCatalogedDates = require('./src/realDatesFromCatalogedDates')
 const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 const getCreators = require('./src/getCreators')
+const getLanguages = require('./src/getLanguages')
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
@@ -131,7 +132,7 @@ const getSearchDataFromManifest = (manifest) => {
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
     workType: [manifest.workType],
     thumbnail: manifest.iiifImageUri,
-    languages: manifest.languages,
+    languages: getLanguages(manifest),
     type: manifest.level,
     url: '/item/' + manifest.id,
   }
