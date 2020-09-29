@@ -3,6 +3,7 @@ magenta=`tput setaf 5`
 reset=`tput sgr0`
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
+CHOKIDAR_USEPOLLING=1
 BASE_DIR="${PWD}/"
 ENV_FILE="${BASE_DIR}.env"
 echo "ENV_FILE: ${ENV_FILE}"
