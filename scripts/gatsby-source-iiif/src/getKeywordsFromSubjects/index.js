@@ -14,14 +14,17 @@ module.exports = (manifest) => {
   // adding in the broader terms.term for that subject
   // [].concat.apply([], []) flattens an array
   return [...new Set([].concat.apply([], manifest.subjects.map(m => {
-    return splitTerms(m.term).concat(addVariants(m)).concat(addBroaderTerms(m))
+    return splitTerms(m).concat(addVariants(m)).concat(addBroaderTerms(m))
   })))].map((t) => {
     return t.trim()
   })
 }
 
 const splitTerms = (term) => {
-  return term.split('--')
+  if ('display' in term) {
+    return term.display.split('--')
+  }
+  return []
 }
 
 const addVariants = (subject) => {
@@ -38,6 +41,6 @@ const addBroaderTerms = (subject) => {
   }
 
   return subject.broaderTerms.map((bt) => {
-    return bt.term
+    return bt.display
   })
 }

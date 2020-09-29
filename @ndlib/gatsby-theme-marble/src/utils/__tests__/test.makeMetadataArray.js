@@ -67,12 +67,12 @@ describe('makeMetadataArray', () => {
       defaultData.subjects = [
         {
           authority: 'lcsh',
-          term: 'Songs--Irish',
+          display: 'Songs--Irish',
           uri: '',
         },
         {
           authority: 'lcsh',
-          term: 'Ballads, Irish',
+          display: 'Ballads, Irish',
           uri: '',
         },
       ]
@@ -94,17 +94,18 @@ describe('makeMetadataArray', () => {
 
   describe('publisher', () => {
     test('sets the publisher', () => {
-      defaultData.publisher = {
+      defaultData.publishers = [{
         publisherName: 'Bob',
         publisherLocation: 'Somewhere',
-      }
+        display: 'Bob Somewhere',
+      }]
       defaultData.sourceSystem = 'aleph'
       const test = [
         {
           label: 'Publisher',
           type: 'list',
           value:  [
-            'Bob',
+            'Bob Somewhere',
           ],
         },
       ]
@@ -247,7 +248,7 @@ describe('makeMetadataArray', () => {
 
   describe('language code mappings', () => {
     test('maps eng', () => {
-      defaultData.languages = ['eng']
+      defaultData.languages = [{ display: 'English' }]
       const test = [
         {
           label: 'Language',
@@ -263,7 +264,7 @@ describe('makeMetadataArray', () => {
     })
 
     test('maps rus', () => {
-      defaultData.languages = ['rus']
+      defaultData.languages = [{ display: 'Russian' }]
       const test = [
         {
           label: 'Language',
@@ -280,23 +281,6 @@ describe('makeMetadataArray', () => {
 
     test('maps nothing whene there is no field', () => {
       const test = []
-
-      const result = makeMetadataArray(defaultData)
-      expect(result).toEqual(test)
-    })
-
-    test('maps nothing whene there is no field', () => {
-      defaultData.languages = ['xyz']
-      const test = [
-        {
-          label: 'Language',
-          type: 'list',
-          urlField: 'language',
-          value:  [
-            'xyz',
-          ],
-        },
-      ]
 
       const result = makeMetadataArray(defaultData)
       expect(result).toEqual(test)
