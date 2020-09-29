@@ -252,13 +252,14 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'list',
+          type: 'searchList',
           urlField: 'language',
           value:  [
             'English',
           ],
         },
       ]
+
       const result = makeMetadataArray(defaultData)
       expect(result).toEqual(test)
     })
@@ -268,7 +269,7 @@ describe('makeMetadataArray', () => {
       const test = [
         {
           label: 'Language',
-          type: 'list',
+          type: 'searchList',
           urlField: 'language',
           value:  [
             'Russian',

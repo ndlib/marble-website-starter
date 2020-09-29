@@ -39,6 +39,13 @@ const Search = () => {
             sort='default'
             size='10'
           />
+          <SearchRefinementListFilter
+            field='language.keyword'
+            label='Language'
+            operator='OR'
+            sort='default'
+            size='4'
+          />
         </Column>
         <Column colSpan='3'>
           <SearchResults defaultDisplay='list' />
