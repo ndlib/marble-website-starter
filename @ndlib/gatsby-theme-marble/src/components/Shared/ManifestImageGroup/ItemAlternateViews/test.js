@@ -19,12 +19,19 @@ describe('ItemAlternateViews', () => {
     const marbleItem = {
       id: 'a',
       childrenMarbleIiifImage: [
-        { service: '/a' },
-        { servicei: '/b' },
-        { service: '/c' },
+        { local: { service: '/a' } },
+        { local: { service: '/b' } },
+        { local: { service: '/c' } },
       ],
     }
-    const wrapper = shallow(<ItemAlternateViews marbleItem={marbleItem} viewer='mirador' location={location} />)
+    const allMarbleIiifImage = {
+      nodes: [
+        { local: { service: '/a' } },
+        { local: { service: '/b' } },
+        { local: { service: '/c' } },
+      ],
+    }
+    const wrapper = shallow(<ItemAlternateViews marbleItem={marbleItem} viewer='mirador' location={location} allMarbleIiifImage={allMarbleIiifImage} />)
 
     expect(wrapper.find('div').exists()).toBeTruthy()
     expect(wrapper.find(AlternateImage).length).toEqual(2)

@@ -8,7 +8,7 @@ import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 
-const ItemLayout = ({ location, marbleItem }) => {
+const ItemLayout = ({ location, marbleItem, allMarbleIiifImage }) => {
   return (
     <>
       <MultiColumn>
@@ -17,6 +17,7 @@ const ItemLayout = ({ location, marbleItem }) => {
           <ManifestImageGroup
             location={location}
             marbleItem={marbleItem}
+            allMarbleIiifImage={allMarbleIiifImage}
           />
         </Column>
         <Column>
@@ -30,6 +31,7 @@ const ItemLayout = ({ location, marbleItem }) => {
 }
 
 ItemLayout.propTypes = {
+  allMarbleIiifImage: PropTypes.object,
   marbleItem: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 }

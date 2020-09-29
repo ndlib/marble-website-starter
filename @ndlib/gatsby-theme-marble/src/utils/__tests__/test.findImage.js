@@ -4,7 +4,7 @@ import noImage from 'assets/images/noImage.svg'
 describe('findImage', () => {
   test('local', () => {
     const item = {
-      childrenMarbleIiifImage: [
+      nodes: [
         {
           local: {
             publicURL: 'local.image',
@@ -19,7 +19,7 @@ describe('findImage', () => {
 
   test('remote', () => {
     const item = {
-      childrenMarbleIiifImage: [
+      nodes: [
         {
           default: 'https://remote',
         },
@@ -40,7 +40,7 @@ describe('findImage', () => {
 describe('findAltImage', () => {
   test('local', () => {
     const item = {
-      childrenMarbleIiifImage: [
+      nodes: [
         {
           local: {
             childImageSharp: {
@@ -58,7 +58,7 @@ describe('findAltImage', () => {
 
   test('remote', () => {
     const item = {
-      childrenMarbleIiifImage: [
+      nodes: [
         {
           service: 'https://remote',
         },

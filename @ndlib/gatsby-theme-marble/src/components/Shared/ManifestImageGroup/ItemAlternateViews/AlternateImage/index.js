@@ -11,6 +11,7 @@ import { jsx } from 'theme-ui'
 import sx from './sx'
 
 export const AlternateImage = ({
+  allMarbleIiifImage,
   marbleItem,
   index,
   max,
@@ -36,7 +37,7 @@ export const AlternateImage = ({
             overlayNumber={length - max}
           />
           <Image
-            src={findAltImage(marbleItem, index)}
+            src={findAltImage(allMarbleIiifImage, index)}
             alt={`Alternate View ${index}`}
             title={`Alternate View ${index}`}
           />
@@ -47,9 +48,8 @@ export const AlternateImage = ({
 }
 
 AlternateImage.propTypes = {
-  marbleItem: PropTypes.shape({
-    childrenMarbleIiifImage: PropTypes.array,
-  }).isRequired,
+  allMarbleIiifImage: PropTypes.object,
+  marbleItem: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,
