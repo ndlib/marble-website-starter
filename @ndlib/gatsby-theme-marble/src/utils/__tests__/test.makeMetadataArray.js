@@ -94,7 +94,7 @@ describe('makeMetadataArray', () => {
 
   describe('publisher', () => {
     test('sets the publisher', () => {
-      defaultData.publisher = [{
+      defaultData.publishers = [{
         publisherName: 'Bob',
         publisherLocation: 'Somewhere',
         display: 'Bob Somewhere',
