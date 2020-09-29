@@ -19,6 +19,15 @@ test('returns the multiple terms from multiple subjects', () => {
   expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2'])
 })
 
+test('returns the empty if there is no display', () => {
+  const manifest = {
+    subjects: [
+      { term: 'term1' },
+    ],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual([])
+})
+
 test('works with json encoded in a string', () => {
   const manifest = {
     subjects: JSON.stringify([
