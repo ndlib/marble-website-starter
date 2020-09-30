@@ -4,6 +4,8 @@ reset=`tput sgr0`
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 export CHOKIDAR_USEPOLLING=1
+echo "DEBUG INFO:"
+cat /proc/sys/fs/inotify/max_user_watches
 BASE_DIR="${PWD}/"
 ENV_FILE="${BASE_DIR}.env"
 echo "ENV_FILE: ${ENV_FILE}"
