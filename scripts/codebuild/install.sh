@@ -3,6 +3,7 @@ magenta=`tput setaf 5`
 reset=`tput sgr0`
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
+export NODE_OPTIONS=--max_old_space_size=4096
 export CHOKIDAR_USEPOLLING=1
 echo "DEBUG INFO:"
 cat /proc/sys/fs/inotify/max_user_watches
