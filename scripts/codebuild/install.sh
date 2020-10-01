@@ -2,13 +2,14 @@
 magenta=`tput setaf 5`
 reset=`tput sgr0`
 
-echo "${magenta}----- CONFIGURATIONS -------${reset}"
-export NODE_OPTIONS=--max_old_space_size=4096
+echo "${magenta}----- SYSTEM -------${reset}"
 export CHOKIDAR_USEPOLLING=1
 echo "DEBUG INFO:"
 cat /proc/sys/fs/inotify/max_user_watches
 sysctl -w fs.inotify.max_user_watches=524288
 cat /proc/sys/fs/inotify/max_user_watches
+
+echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}/"
 ENV_FILE="${BASE_DIR}.env"
 echo "ENV_FILE: ${ENV_FILE}"

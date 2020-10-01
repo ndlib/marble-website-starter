@@ -15,4 +15,5 @@ echo "BUILD SEARCH URL: ${SEARCH_URL}"
 echo "BUILD SEARCH INDEX: ${SEARCH_INDEX}"
 
 # build
+export NODE_OPTIONS="--max_old_space_size=3000"
 yarn workspace site build
