@@ -4,7 +4,7 @@ reset=`tput sgr0`
 
 echo "${magenta}----- SYSTEM -------${reset}"
 export CHOKIDAR_USEPOLLING=1
-echo "DEBUG INFO:"
+echo "FILE WATCHER DEBUG INFO:"
 cat /proc/sys/fs/inotify/max_user_watches
 sysctl -w fs.inotify.max_user_watches=524288
 cat /proc/sys/fs/inotify/max_user_watches
