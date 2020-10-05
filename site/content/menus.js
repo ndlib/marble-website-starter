@@ -72,7 +72,7 @@ module.exports = [
       },
       {
         id: 'help-creating-portfolios',
-        label: 'Creating Personal Portfolioss',
+        label: 'Creating Personal Portfolios',
         link: '/help/creating-personal-portfolios',
       },
       {
