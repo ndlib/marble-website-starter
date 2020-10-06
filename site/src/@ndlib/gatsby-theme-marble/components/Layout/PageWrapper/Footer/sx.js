@@ -28,4 +28,18 @@ module.exports = {
     paddingTop: '2rem',
     textAlign: [1, 0, 0],
   },
+  footerContacts: {
+    display: 'inline',
+  },
+  footerColumn: {
+    textAlign: 1,
+    width: ['60%', '30%', '30%'],
+    img : {
+      minWidth: '200px',
+    },
+  },
+  copyright: {
+    padding: '10px',
+    left: '10px',
+  },
 }
