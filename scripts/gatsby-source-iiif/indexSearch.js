@@ -8,6 +8,7 @@ const realDatesFromCatalogedDates = require('./src/realDatesFromCatalogedDates')
 const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 const getCreators = require('./src/getCreators')
 const getLanguages = require('./src/getLanguages')
+const findThumbnail = require('./src/findThumbnail')
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
@@ -131,7 +132,7 @@ const getSearchDataFromManifest = (manifest) => {
     lowestSearchRange: dateData.undated ? 500000 : dateData.lowestSearchRange,
     highestSearchRange: dateData.undated ? 500000 : dateData.highestSearchRange,
     workType: [manifest.workType],
-    thumbnail: manifest.iiifImageUri + '/full/!250,250/0/default.jpg',
+    thumbnail: findThumbnail(manifest),
     language: getLanguages(manifest),
     type: manifest.level,
     url: '/item/' + manifest.id,
