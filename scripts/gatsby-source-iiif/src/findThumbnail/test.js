@@ -8,20 +8,18 @@ test('it returns it from the iiifImageUri', () => {
   expect(findThumbnail(manifest)).toEqual('image!/full/!250,250/0/default.jpg')
 })
 
-
 test('it searchs down an item tree', () => {
   const manifest = {
     items: [
       {
         items: [
-          { iiifImageUri: 'downimage!' }
+          { iiifImageUri: 'downimage!' },
         ],
       },
     ],
   }
   expect(findThumbnail(manifest)).toEqual('downimage!/full/!250,250/0/default.jpg')
 })
-
 
 test('it returns the first one in a list down an item tree', () => {
   const manifest = {
@@ -36,7 +34,6 @@ test('it returns the first one in a list down an item tree', () => {
   }
   expect(findThumbnail(manifest)).toEqual('downimage!/full/!250,250/0/default.jpg')
 })
-
 
 test('it emtpy if there is no image', () => {
   const manifest = {
