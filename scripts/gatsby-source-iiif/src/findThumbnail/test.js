@@ -15,9 +15,9 @@ test('it searchs down an item tree', () => {
       {
         items: [
           { iiifImageUri: 'downimage!' }
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   }
   expect(findThumbnail(manifest)).toEqual('downimage!/full/!250,250/0/default.jpg')
 })
@@ -29,10 +29,10 @@ test('it returns the first one in a list down an item tree', () => {
       {
         items: [
           { iiifImageUri: 'downimage!' },
-          { iiifImageUri: 'not this one!' }
-        ]
-      }
-    ]
+          { iiifImageUri: 'not this one!' },
+        ],
+      },
+    ],
   }
   expect(findThumbnail(manifest)).toEqual('downimage!/full/!250,250/0/default.jpg')
 })
@@ -44,10 +44,10 @@ test('it emtpy if there is no image', () => {
       {
         items: [
           { name: 'downimage!' },
-          { name: 'not this one!' }
-        ]
-      }
-    ]
+          { name: 'not this one!' },
+        ],
+      },
+    ],
   }
-  expect(findThumbnail(manifest)).toEqual('')
+  expect(findThumbnail(manifest)).toEqual(' ')
 })
