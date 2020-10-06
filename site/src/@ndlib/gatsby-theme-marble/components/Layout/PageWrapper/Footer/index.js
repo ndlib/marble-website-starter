@@ -1,8 +1,10 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
+import { Link } from 'gatsby'
 import { Footer as ThemeFooter, jsx } from 'theme-ui'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
+import marbleLogo from 'assets/svg/Marble.Logo.svg'
 import sniteLogo from 'assets/svg/Snite.One.Line.W.svg'
 import libraryLogo from 'assets/images/library.logo.png'
 import ndLogo from 'assets/images/ND_mark_white_M.png'
@@ -14,6 +16,13 @@ export const Footer = () => {
       <div sx={sx.flexWrapper}>
         <div sx={sx.footerContacts}>
           <div sx={sx.footerColumn}>
+            <Link to='/'>
+              <img
+                src={marbleLogo}
+                sx={sx.image}
+                alt='MARBLE: Museums, Archives, Rare Books & Libraries Exploration'
+              />
+            </Link>
             <a
               href='https://sniteartmuseum.nd.edu/'
               sx={sx.imageWrapper}
@@ -26,15 +35,12 @@ export const Footer = () => {
             </a>
             <p className='contact-info'>
               <div className='address' property='address' typeof='PostalAddress'>
-                <span property='streetAddress'>100 Moose Krouse Circle</span><br />
+                <span property='streetAddress'>100 Moose Krause Circle</span><br />
                 <span property='addressLocality'>Notre Dame</span>, <span property='addressRegion'>IN</span> <span property='postalCode'>46556</span> <span property='addressCountry'>USA</span>
               </div>
               <div className='footer-phone' property='telephone' content='+1 574-631-5466'>Phone <a href='tel:574-631-5466'>(574) 631–5466</a></div>
-              <div className='footer-fax' property='faxNumber' content='+1 574-631–8501'>Fax 574-631–8501</div>
               <div className='footer-email' property='email'><a rel='noopener' href='mailto:sniteart@nd.edu'>sniteart@nd.edu</a></div>
             </p>
-          </div>
-          <div sx={sx.footerColumn}>
             <a
               href='https://library.nd.edu'
               sx={sx.imageWrapper}
@@ -65,10 +71,9 @@ export const Footer = () => {
           </a>
         </div>
         <div sx={sx.textWrapper}>
-          <div><a href='/help/contact-us'>Contact Us</a></div>
-          <div><a href='https://www.nd.edu/about/accessibility/' aria-label='Notre Dame Accessibility Information'>Accessibility</a></div>
           <div sx={sx.menuWrapper}>
             <Menu menu='footer' />
+            <a href='https://www.nd.edu/about/accessibility/' aria-label='Notre Dame Accessibility Information'>Accessibility</a>
           </div>
         </div>
       </div>
