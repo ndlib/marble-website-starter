@@ -40,7 +40,7 @@ const addBroaderTerms = (subject) => {
     return []
   }
 
-  return subject.broaderTerms.map((bt) => {
-    return bt.display
-  })
+  return [].concat.apply([], subject.broaderTerms.map((bt) => {
+    return splitTerms(bt)
+  }))
 }

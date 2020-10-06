@@ -71,6 +71,21 @@ test('it adds in the broaderTerms', () => {
   expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2', 'term3'])
 })
 
+test('it splits the broaderTerms', () => {
+  const manifest = {
+    subjects: JSON.stringify([
+      {
+        display: 'term1',
+        broaderTerms: [
+          { display: ' term2 -- term3 ' },
+        ],
+      },
+    ]),
+  }
+
+  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2', 'term3'])
+})
+
 test('it adds in the variantTerms', () => {
   const manifest = {
     subjects: JSON.stringify([
@@ -83,4 +98,18 @@ test('it adds in the variantTerms', () => {
   }
 
   expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2', 'term3'])
+})
+
+test('it makes unique values out of the list', () => {
+  const manifest = {
+    subjects: JSON.stringify([
+      {
+        display: ' term1 ',
+        variants: [' term1 '],
+      },
+      { display: 'term3' },
+    ]),
+  }
+
+  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term3'])
 })
