@@ -2,7 +2,7 @@ const findThumbnail = require('./')
 
 test('it returns it from the iiifImageUri', () => {
   const manifest = {
-    iiifImageUri: 'image!'
+    iiifImageUri: 'image!',
   }
 
   expect(findThumbnail(manifest)).toEqual('image!/full/!250,250/0/default.jpg')
