@@ -1,11 +1,8 @@
-/** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import ManifestCard from 'components/Shared/ManifestCard'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import SearchAdditionalTools from 'components/Shared/SearchTools/SearchAdditionalTools'
-import { jsx } from 'theme-ui'
+import HitResult from './HitResult'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   const referal = { type: 'search', query: window.location.search }
@@ -17,55 +14,16 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
       {
         hits ? hits.map(
           (hit, index) => (
-            <ManifestCard
-              iiifManifest={hit._id}
+            <HitResult
+              hit={hit}
               key={index}
               referal={referal}
-              highlight={hit.highlight}
-            >
-              {
-                hit.highlight && hit.highlight['identifier.idMatch'] ? Object.values(hit.highlight['identifier.idMatch'])
-                  .map(
-                    (idMatch) => {
-                      return higlightDisplay(idMatch)
-                    }) : null
-              }
-              {
-                hit.highlight && hit.highlight['allMetadata.folded'] ? Object.values(hit.highlight['allMetadata.folded'])
-                  .map(
-                    (blob) => {
-                      let row = ''
-                      const stringSplit = '::'
-                      blob.split(stringSplit).map(
-                        (meta) => {
-                          row += meta.includes('<em>') ? meta : ''
-                          return row
-                        },
-                      )
-                      return row !== '' ? (
-                        higlightDisplay(row)
-                      ) : null
-                    },
-                  ) : null
-              }
-            </ManifestCard>
+            />
           ),
         ) : null
       }
     </DisplayViewToggle>
   )
-}
-
-const higlightDisplay = (row) => {
-  return (<div
-    key={row}
-    dangerouslySetInnerHTML={{ __html: row }}
-    sx={{
-      '& > em': {
-        backgroundColor: 'highlight',
-      },
-    }}
-  />)
 }
 
 HitDisplay.propTypes = {
@@ -79,14 +37,14 @@ HitDisplay.defaultProps = {
 export default HitDisplay
 
 export const HitList = ({ hits }) => {
-  return <HitDisplay hits={hits} defaultDisplay={'SEARCH_PAGE'} />
+  return <HitDisplay hits={hits} defaultDisplay='SEARCH_PAGE' />
 }
 HitList.propTypes = {
   hits: PropTypes.array,
 }
 
 export const HitGrid = ({ hits }) => {
-  return <HitDisplay hits={hits} defaultDisplay={'COLLECTION_PAGE'} />
+  return <HitDisplay hits={hits} defaultDisplay='COLLECTION_PAGE' />
 }
 HitGrid.propTypes = {
   hits: PropTypes.array,

@@ -12,11 +12,20 @@ export const ReturnToSearch = ({ location }) => {
   const { t } = useTranslation()
   const context = useThemeUI()
   const iconColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
-  if (typy(location, 'state.referal.type').safeString === 'search') {
+  if (typy(location, 'state.referal.type').isString) {
+    let linkText = ''
+    let target = ''
+    if (typy(location, 'state.referal.type').safeString === 'search') {
+      linkText = t('common:item.returnToSearch')
+      target = `/search${location.state.referal.query}`
+    } else if (typy(location, 'state.referal.type').safeString === 'item') {
+      linkText = location.state.referal.parentName
+      target = `${location.state.referal.backLink}`
+    }
     return (
       <BaseStyles>
         <Link
-          to={`/search${location.state.referal.query}`}
+          to={target}
           sx={sx.link}
         >
           <svg
@@ -29,7 +38,7 @@ export const ReturnToSearch = ({ location }) => {
             <path d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z' fill={iconColor} />
             <path d='M0 0h24v24H0z' fill='none' />
           </svg>
-          <span sx={sx.text}>{t('common:item.returnToSearch')}</span>
+          <span sx={sx.text}>{linkText}</span>
         </Link>
       </BaseStyles>
     )

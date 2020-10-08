@@ -1,63 +1,36 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import typy from 'typy'
 import { jsx } from 'theme-ui'
 import sx from '../sx'
 
-export const ManifestCardChildren = ({ parentProps, item }) => {
-  const dates = findMetadata(item, ['date', 'dates'])
-  const creator = findCreator(item, parentProps)
+export const ManifestCardChildren = ({ parentProps, date, creator }) => {
   return (
-    <React.Fragment>
+    <>
       {
-        parentProps.showCreator ? (
+        creator ? (
           <p
             sx={sx.lineStyle}
             dangerouslySetInnerHTML={{ __html: creator }}
           />
         ) : null
-      }
-      {
-        parentProps.showDate ? (
+      }{
+        date ? (
           <p
             sx={sx.lineStyle}
-            dangerouslySetInnerHTML={{ __html: dates }}
+            dangerouslySetInnerHTML={{ __html: date }}
           />
         ) : null
       }
-      {parentProps.showSummary ? <div>{item.description}</div> : null}
       {parentProps.children ? parentProps.children : null}
-    </React.Fragment>
+    </>
   )
 }
 
 ManifestCardChildren.propTypes = {
+  date: PropTypes.string,
+  creator: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   parentProps: PropTypes.object,
-  item: PropTypes.object,
 }
 export default ManifestCardChildren
-
-export const findMetadata = (manifest, options) => {
-  if (!manifest.metadata) {
-    return []
-  }
-
-  return manifest.metadata.reduce((metaValue, row) => {
-    const label = typy(row, 'label').safeString.toLowerCase()
-
-    if (options.includes(label)) {
-      return metaValue.concat(row.value.join('<br/>'))
-    }
-
-    return metaValue
-  }, [])
-}
-
-export const findCreator = (item, parentProps) => {
-  if (parentProps.highlight && parentProps.highlight['creator.folded']) {
-    return parentProps.highlight['creator.folded'][0]
-  } else {
-    return findMetadata(item, ['creator'])
-  }
-}

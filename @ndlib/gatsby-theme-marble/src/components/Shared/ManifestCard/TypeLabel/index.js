@@ -5,7 +5,7 @@ import { jsx } from 'theme-ui'
 import sx from './sx'
 
 const TypeLabel = ({ type }) => {
-  if (type.toLowerCase() === 'collection') {
+  if (type && type.toLowerCase() === 'collection') {
     return (
       <div sx={sx.wrapper}>
         <img

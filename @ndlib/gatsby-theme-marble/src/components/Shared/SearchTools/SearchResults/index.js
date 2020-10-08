@@ -11,6 +11,7 @@ import {
   HitGrid,
 } from './HitDisplay'
 import Pager from './Pager'
+import { sourceFilter, highlightFields } from './searchSettings'
 
 export const SearchResults = ({ defaultDisplay }) => {
   let displayComponent = HitGrid
@@ -21,8 +22,8 @@ export const SearchResults = ({ defaultDisplay }) => {
     <>
       <Hits
         hitsPerPage={50}
-        sourceFilter={['name']}
-        highlightFields={['allMetadata.folded', 'name.folded', 'creator.folded', 'identifier.idMatch']}
+        sourceFilter={sourceFilter}
+        highlightFields={highlightFields}
         listComponent={displayComponent}
         scrollTo='#gatsby-focus-wrapper'
       />
