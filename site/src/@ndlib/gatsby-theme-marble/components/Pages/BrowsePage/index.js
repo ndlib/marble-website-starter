@@ -116,7 +116,7 @@ const Browse = ({ location }) => {
   ]
   const locations = [
     {
-      label: 'Rare Books and Special Collections',
+      label: 'Rare Books & Special Collections',
       target: '/search?campuslocation[0]=Rare%20Books%20and%20Special%20Collections',
     },
     {

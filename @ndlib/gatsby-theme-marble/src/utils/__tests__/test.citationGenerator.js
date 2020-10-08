@@ -28,7 +28,7 @@ describe('citationGenerator', () => {
       expect(callGenerator).toEqual(test)
     })
     test('rare response received', () => {
-      const test = 'collection name, identifier. Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame, South Bend, IN. https://marble.nd.edu/slug.'
+      const test = 'collection name, identifier. Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame, South Bend, IN. https://marble.nd.edu/slug.'
       defaultData.title = 'collection name'
       defaultData.uniqueIdentifier = 'identifier'
       defaultData.repository = 'rare'
