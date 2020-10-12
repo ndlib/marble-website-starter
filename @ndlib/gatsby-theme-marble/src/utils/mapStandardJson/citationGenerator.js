@@ -28,13 +28,13 @@ const museumCitation = (standardJson) => {
 }
 
 const archivalCollectionCitation = (standardJson, slug) => {
-  // 'collection name, identifier. Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame, South Bend, IN. http://url'
+  // 'collection name, identifier. Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame, South Bend, IN. http://url'
   let citation = safeString(standardJson.title)
   citation += ', '
   citation += safeString(standardJson.uniqueIdentifier)
   citation += '. '
   if (standardJson.repository.toLowerCase() === 'rare') {
-    citation += 'Rare Books and Special Collections'
+    citation += 'Rare Books & Special Collections'
   } else if (standardJson.repository.toLowerCase() === 'unda') {
     citation += 'University Archives'
   } else {

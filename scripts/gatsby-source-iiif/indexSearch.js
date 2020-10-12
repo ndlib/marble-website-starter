@@ -62,7 +62,7 @@ const determineProvider = (manifest) => {
     return 'General Collection, Hesburgh Libraries'
   }
 
-  return 'Rare Books and Special Collections'
+  return 'Rare Books & Special Collections'
 }
 
 const loadManifestData = () => {
