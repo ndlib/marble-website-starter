@@ -61,7 +61,7 @@ const ExhibitsPage = () => {
           })
         }
       </CardGroup>
-      <p><Link to="https://collections.library.nd.edu/">See more digital exhibits.</Link></p>
+      <p><Link to='https://collections.library.nd.edu/'>See more digital exhibits.</Link></p>
     </>
   )
 }
