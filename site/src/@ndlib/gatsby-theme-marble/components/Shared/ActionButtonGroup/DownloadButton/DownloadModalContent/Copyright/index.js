@@ -8,7 +8,7 @@ export const Copyright = () => {
   const { t } = useTranslation()
   return (
     <BaseStyles>
-      <div sx={sx.wrapper}><Link to='help/copyright-and-permissions'>{t("text:actionGroup.copyright-link")}</Link>.</div>
+      <div sx={sx.wrapper}><Link to='help/copyright-and-permissions'>{t('text:actionGroup.copyright-link')}</Link>.</div>
     </BaseStyles>
   )
 }
