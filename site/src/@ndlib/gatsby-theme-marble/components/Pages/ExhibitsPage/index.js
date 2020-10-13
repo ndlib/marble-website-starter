@@ -1,6 +1,7 @@
 import React from 'react'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
+import Link from 'components/Internal/Link'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'
 import image2 from 'assets/images/BaseballCover.jpg'
 import image3 from 'assets/images/BLOG-EarlyCatholicAmerica.jpg'
@@ -60,6 +61,7 @@ const ExhibitsPage = () => {
           })
         }
       </CardGroup>
+      <p><Link to="https://collections.library.nd.edu/">See more digital exhibits.</Link></p>
     </>
   )
 }
