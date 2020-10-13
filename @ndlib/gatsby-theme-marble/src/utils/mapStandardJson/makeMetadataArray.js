@@ -317,7 +317,7 @@ const dataLookUp = {
     },
     access: {
       label: 'Access',
-      type: 'list',
+      type: 'markdown',
       processor: genericFind,
     },
     copyrightStatus: {
