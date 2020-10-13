@@ -1,23 +1,24 @@
 
 module.exports = (manifest) => {
+  const ret = {
+    themeTag: [],
+    expandedThemeTag: [],
+  }
+
   if (!manifest.subjects) {
-    return []
+    return ret
   }
 
   if (typeof manifest.subjects === 'string' || manifest.subjects instanceof String) {
     manifest.subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
   }
 
-  // uniqe an array of
-  // subjects.term that split all the -- into individual terms
-  // adding in the variant terms for that subject
-  // adding in the broader terms.term for that subject
-  // [].concat.apply([], []) flattens an array
-  return [...new Set([].concat.apply([], manifest.subjects.map(m => {
-    return splitTerms(m).concat(addVariants(m)).concat(addBroaderTerms(m))
-  })))].map((t) => {
-    return t.trim()
-  })
+  // unique array of subject.term.spit on -- and trimed for space
+  ret.themeTag = [...new Set([].concat.apply([], manifest.subjects.map(m => splitTerms(m))).map(t => t.trim()))]
+  // unique arrof the subject variants conated with the broader terms and trimed
+  ret.expandedThemeTag = [...new Set([].concat.apply([], manifest.subjects.map(m => addVariants(m).concat(addBroaderTerms(m)))).map(t => t.trim()))]
+
+  return ret
 }
 
 const splitTerms = (term) => {
