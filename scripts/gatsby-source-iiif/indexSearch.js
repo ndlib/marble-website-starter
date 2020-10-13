@@ -128,7 +128,7 @@ const getSearchDataFromManifest = (manifest) => {
 
     repository: determineProvider(manifest),
     themeTag: themes.themeTag,
-    expandedThemeTag: themes.expandedThemeTags,
+    expandedThemeTag: themes.expandedThemeTag,
     centuryTag: dateData.centuryTags,
 
     date: manifest.createdDate,
