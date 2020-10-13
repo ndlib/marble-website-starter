@@ -117,6 +117,8 @@ const getIdentifiers = (manifest) => {
 const getSearchDataFromManifest = (manifest) => {
   const dateData = realDatesFromCatalogedDates(manifest.createdDate)
   const creators = getCreators(manifest)
+  const themes = getKeywordsFromSubjects(manifest)
+
   const search = {
     id: manifest.id,
     name: manifest.title,
@@ -125,7 +127,8 @@ const getSearchDataFromManifest = (manifest) => {
     identifier: getIdentifiers(manifest),
 
     repository: determineProvider(manifest),
-    themeTag: getKeywordsFromSubjects(manifest),
+    themeTag: themes.themeTag,
+    expandedThemeTag: themes.expandedThemeTags,
     centuryTag: dateData.centuryTags,
 
     date: manifest.createdDate,
@@ -151,6 +154,7 @@ const getSearchDataFromManifest = (manifest) => {
   search['allMetadata'] += '::' + loadSubItemTitles(manifest)
   search['allMetadata'] += '::' + search.centuryTag.join('::')
   search['allMetadata'] += '::' + search.themeTag.join('::')
+  search['allMetadata'] += '::' + search.expandedThemeTag.join('::')
 
   return search
 }

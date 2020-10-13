@@ -5,6 +5,8 @@ import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import CollectionLayout from './CollectionLayout'
 import ItemLayout from './ItemLayout'
+import SearchBase from 'components/Shared/SearchBase'
+import { MenuFilter } from 'searchkit'
 
 const MarbleItem = ({ data, location }) => {
   const { marbleItem, allMarbleIiifImage } = data
@@ -32,6 +34,9 @@ const MarbleItem = ({ data, location }) => {
           />
         )
       }
+      <SearchBase>
+      </SearchBase> 
+
     </Layout>
   )
 }

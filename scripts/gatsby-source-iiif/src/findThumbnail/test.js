@@ -46,5 +46,5 @@ test('it emtpy if there is no image', () => {
       },
     ],
   }
-  expect(findThumbnail(manifest)).toEqual(' ')
+  expect(findThumbnail(manifest)).toEqual('')
 })
