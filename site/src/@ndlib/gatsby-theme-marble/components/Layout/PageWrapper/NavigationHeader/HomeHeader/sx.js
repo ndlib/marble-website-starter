@@ -68,6 +68,13 @@ module.exports = {
     right: '70px',
     top: '30px',
   },
+  ndWordmark: {
+    width: '301px',
+    height: '50px',
+    position: 'absolute',
+    right: '25px',
+    top: '30px',
+  },
   heroWrapper: {
     height: '330px',
     margin: '0 auto 0',
