@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import LoginButton from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader/LoginButton'
 import SearchBox from 'components/Shared/SearchBox'
-import ndLogo from 'assets/svg/ND_mark_gold_white.svg'
+import ndLogo from 'assets/svg/ND_mark_white.svg'
 import marbleLogo from 'assets/svg/Marble.Logo.svg'
 import sx from './sx'
 
