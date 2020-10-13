@@ -145,7 +145,7 @@ test('it makes unique values out of the list', () => {
       },
       {
         display: 'term1',
-        variants: ['term2']
+        variants: ['term2'],
       },
     ]),
   }

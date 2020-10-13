@@ -1,8 +1,8 @@
 
 module.exports = (manifest) => {
-  let ret = {
+  const ret = {
     themeTag: [],
-    expandedThemeTag: []
+    expandedThemeTag: [],
   }
 
   if (!manifest.subjects) {
