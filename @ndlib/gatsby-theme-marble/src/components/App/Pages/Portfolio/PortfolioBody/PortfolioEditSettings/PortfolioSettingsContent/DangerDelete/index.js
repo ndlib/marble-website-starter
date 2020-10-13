@@ -18,35 +18,23 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
     >
       <label htmlFor={fieldId}>
         <p><strong>{warning}</strong></p>
-        <p>Type the the portfolio name <code>{portfolio.title}</code> in the field below and press the button to delete.</p>
+        <p>Are you sure you want to delete <code>{portfolio.title}</code>?</p>
       </label>
-      <input
-        type='text'
-        id={fieldId}
-        name={fieldId}
-        onChange={(e) => {
-          e.preventDefault()
-          updateDeleteField(e.target.value)
-        }}
-        aria-label={warning}
-      />
       <div className={style.buttonGroup}>
         <MaterialButton
           onClick={(e) => {
             e.preventDefault()
-            if (window.confirm(warning)) {
-              deleteData({
-                loginReducer: loginReducer,
-                contentType: 'collection',
-                id: portfolio.uuid,
-                successFunc: () => {
-                  navigate(`/user/${loginReducer.user.userName}`)
-                },
-                errorFunc: (e) => {
-                  console.error(e)
-                },
-              })
-            }
+            deleteData({
+              loginReducer: loginReducer,
+              contentType: 'collection',
+              id: portfolio.uuid,
+              successFunc: () => {
+                navigate(`/user/${loginReducer.user.userName}`)
+              },
+              errorFunc: (e) => {
+                console.error(e)
+              },
+            })
           }}
           disabled={deleteFieldValue !== portfolio.title}
         >Delete</MaterialButton>
