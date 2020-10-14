@@ -36,7 +36,6 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
               },
             })
           }}
-          disabled={deleteFieldValue !== portfolio.title}
         >Delete</MaterialButton>
       </div>
     </div>
