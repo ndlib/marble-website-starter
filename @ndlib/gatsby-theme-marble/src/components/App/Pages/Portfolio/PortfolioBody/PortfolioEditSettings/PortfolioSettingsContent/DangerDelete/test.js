@@ -21,10 +21,6 @@ describe('DangerDelete', () => {
     jest.spyOn(window, 'confirm').mockImplementationOnce(() => true)
     const wrapper = mount(<DangerDelete {...props} />)
 
-    expect(wrapper.find('input').props().id).toEqual('delete')
-    wrapper.find(MaterialButton).simulate('click')
-    expect(navigate).not.toHaveBeenCalled()
-    wrapper.find('input').simulate('change', { target: { value: 'Portfolio Title' } })
     wrapper.find(MaterialButton).simulate('click')
     expect(navigate).toHaveBeenCalled()
   })
@@ -32,10 +28,6 @@ describe('DangerDelete', () => {
     jest.spyOn(window, 'confirm').mockImplementationOnce(() => false)
     const wrapper = mount(<DangerDelete {...props} />)
 
-    expect(wrapper.find('input').props().id).toEqual('delete')
-    wrapper.find(MaterialButton).simulate('click')
-    expect(navigate).not.toHaveBeenCalled()
-    wrapper.find('input').simulate('change', { target: { value: 'Portfolio Title' } })
     wrapper.find(MaterialButton).simulate('click')
     expect(navigate).not.toHaveBeenCalled()
   })
