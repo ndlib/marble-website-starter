@@ -30,7 +30,7 @@ export const SearchResults = ({ defaultDisplay, hitsPerPage, showPagination, scr
         suggestionsField='name'
       />
       <InitialLoader component={Loading} />
-      {showPagination ? (<Pager />) : null }
+      {showPagination ? <Pager /> : null}
     </>
   )
 }
