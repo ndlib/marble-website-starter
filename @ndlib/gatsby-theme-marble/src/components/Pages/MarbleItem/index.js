@@ -54,7 +54,7 @@ const customQueryBuilder = (id) => {
           '_index': 'marble',
           '_id': `${id}`,
         }
-       ],
+      ],
       min_term_freq: 1,
       max_query_terms: 12,
     }
