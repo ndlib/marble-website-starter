@@ -6,7 +6,11 @@ test('returns the term from a subject', () => {
       display: 'term',
     }],
   }
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term'])
+  const test = {
+    themeTag: ['term'],
+    expandedThemeTag: [],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('returns the multiple terms from multiple subjects', () => {
@@ -16,7 +20,11 @@ test('returns the multiple terms from multiple subjects', () => {
       { display: 'term2' },
     ],
   }
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2'])
+  const test = {
+    themeTag: ['term1', 'term2'],
+    expandedThemeTag: [],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('returns the empty if there is no display', () => {
@@ -25,7 +33,11 @@ test('returns the empty if there is no display', () => {
       { term: 'term1' },
     ],
   }
-  expect(getKeywordsFromSubjects(manifest)).toEqual([])
+  const test = {
+    themeTag: [],
+    expandedThemeTag: [],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('works with json encoded in a string', () => {
@@ -36,12 +48,20 @@ test('works with json encoded in a string', () => {
     ]),
   }
 
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2'])
+  const test = {
+    themeTag: ['term1', 'term2'],
+    expandedThemeTag: [],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('it returns empty if there are no subjects', () => {
   const manifest = {}
-  expect(getKeywordsFromSubjects(manifest)).toEqual([])
+  const test = {
+    themeTag: [],
+    expandedThemeTag: [],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('it splits on the dashes', () => {
@@ -51,8 +71,12 @@ test('it splits on the dashes', () => {
       { display: 'term3' },
     ]),
   }
+  const test = {
+    themeTag: ['term1', 'term2', 'term3'],
+    expandedThemeTag: [],
+  }
 
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2', 'term3'])
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('it adds in the broaderTerms', () => {
@@ -68,7 +92,11 @@ test('it adds in the broaderTerms', () => {
     ]),
   }
 
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2', 'term3'])
+  const test = {
+    themeTag: ['term1', 'term3'],
+    expandedThemeTag: ['term2'],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('it splits the broaderTerms', () => {
@@ -83,7 +111,11 @@ test('it splits the broaderTerms', () => {
     ]),
   }
 
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2', 'term3'])
+  const test = {
+    themeTag: ['term1'],
+    expandedThemeTag: ['term2', 'term3'],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('it adds in the variantTerms', () => {
@@ -97,7 +129,11 @@ test('it adds in the variantTerms', () => {
     ]),
   }
 
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term2', 'term3'])
+  const test = {
+    themeTag: ['term1', 'term3'],
+    expandedThemeTag: ['term2'],
+  }
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
 
 test('it makes unique values out of the list', () => {
@@ -105,11 +141,18 @@ test('it makes unique values out of the list', () => {
     subjects: JSON.stringify([
       {
         display: ' term1 ',
-        variants: [' term1 '],
+        variants: [' term2 '],
       },
-      { display: 'term3' },
+      {
+        display: 'term1',
+        variants: ['term2'],
+      },
     ]),
   }
+  const test = {
+    themeTag: ['term1'],
+    expandedThemeTag: ['term2'],
+  }
 
-  expect(getKeywordsFromSubjects(manifest)).toEqual(['term1', 'term3'])
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })

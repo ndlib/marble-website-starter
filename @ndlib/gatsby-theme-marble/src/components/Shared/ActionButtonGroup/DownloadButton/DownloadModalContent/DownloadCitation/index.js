@@ -3,6 +3,7 @@ import { jsx, BaseStyles } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import sx from './sx'
+
 const DownloadCitation = ({ marbleItem }) => {
   const { t } = useTranslation()
   return marbleItem.citation ? (
@@ -15,6 +16,7 @@ const DownloadCitation = ({ marbleItem }) => {
     </div>
   ) : null
 }
+
 export default DownloadCitation
 
 DownloadCitation.propTypes = {

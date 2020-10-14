@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import { BaseStyles, jsx } from 'theme-ui'
 import sx from './sx'
+
 export const Copyright = ({ text }) => {
   return (
     <BaseStyles>

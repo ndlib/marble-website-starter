@@ -123,14 +123,14 @@ describe('makeMetadataArray', () => {
           type: 'list',
           urlField: undefined,
           value:  [
-            'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
+            'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
         },
         {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -144,14 +144,14 @@ describe('makeMetadataArray', () => {
           label: 'Campus Location',
           type: 'list',
           value:  [
-            'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
+            'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
         },
         {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
@@ -165,14 +165,14 @@ describe('makeMetadataArray', () => {
           label: 'Campus Location',
           type: 'list',
           value:  [
-            'Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame',
+            'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
         },
         {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books and Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
