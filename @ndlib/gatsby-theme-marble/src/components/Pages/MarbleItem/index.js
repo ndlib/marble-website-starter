@@ -36,6 +36,7 @@ const MarbleItem = ({ data, location }) => {
       }
 
       <div id='related-search-section'>
+        <hr />
         <h2>Experimental Related Items</h2>
         <SearchBase defaultSearch={customQueryBuilder(marbleItem.marbleId)}>
           <SearchResults defaultDisplay='grid' hitsPerPage={8} showPagination={false} scrollTo='#related-search-section' />
@@ -48,7 +49,7 @@ const MarbleItem = ({ data, location }) => {
 const customQueryBuilder = (id) => {
   return {
     more_like_this: {
-      fields: ['name', 'creator^2', 'themeTag^3'],
+      fields: ['name', 'creator', 'workType', 'allMetadata'],
       like: [
         {
           '_index': 'marble',
@@ -56,7 +57,7 @@ const customQueryBuilder = (id) => {
         }
       ],
       min_term_freq: 1,
-      max_query_terms: 12,
+      max_query_terms: 25,
     }
   }
 }
