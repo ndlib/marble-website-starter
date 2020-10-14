@@ -93,16 +93,3 @@
     width: 100vw;
   }
 }
-
-.logo .mobile {
-  display: none;
-}
-@media (max-width: 768px) {
-  .logo .mobile {
-    padding: 0;
-    display: block;
-  }
-  .logo .desktop {
-    display: none;
-  }
-}
