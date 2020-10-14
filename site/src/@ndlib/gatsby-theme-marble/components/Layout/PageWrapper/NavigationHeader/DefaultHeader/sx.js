@@ -95,6 +95,15 @@ module.exports = {
     position: 'absolute',
     right: '70px',
     top: '30px',
+    display: ['none', 'block', 'block'],
+  },
+  ndWordmark: {
+    width: '301px',
+    height: '50px',
+    position: 'absolute',
+    right: '25px',
+    top: '30px',
+    display: ['block', 'none', 'none'],
   },
   heroWrapper: {
     height: '100px',

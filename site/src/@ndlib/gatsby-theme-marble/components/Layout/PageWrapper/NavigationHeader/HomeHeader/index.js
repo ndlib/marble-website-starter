@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import LoginButton from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader/LoginButton'
 import SearchBox from 'components/Shared/SearchBox'
 import ndLogo from 'assets/svg/ND_mark_white.svg'
+import ndWordmark from 'assets/images/ND_wordmark_white.png'
 import marbleLogo from 'assets/svg/Marble.Logo.svg'
 import sx from './sx'
 
@@ -39,13 +40,22 @@ export const HomeHeader = ({ location }) => {
           <LoginButton location={location} />
         </div>
       </div>
-      <a href='https://nd.edu'>
-        <img
-          src={ndLogo}
-          sx={sx.ndLogo}
-          alt='University of Notre Dame'
-        />
-      </a>
+      <div className='logo'>
+        <a href='https://nd.edu' className='desktop'>
+          <img
+            src={ndLogo}
+            sx={sx.ndLogo}
+            alt='University of Notre Dame'
+          />
+        </a>
+        <a href='https://nd.edu' className='mobile'>
+          <img
+            src={ndWordmark}
+            sx={sx.ndWordmark}
+            alt='University of Notre Dame'
+          />
+        </a>
+      </div>
     </div>
   )
 }
