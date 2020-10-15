@@ -29,8 +29,14 @@ export const ManifestCardChildren = ({ parentProps, date, creator }) => {
 }
 
 ManifestCardChildren.propTypes = {
-  date: PropTypes.string,
-  creator: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  date: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+  creator: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
   parentProps: PropTypes.object,
 }
 export default ManifestCardChildren

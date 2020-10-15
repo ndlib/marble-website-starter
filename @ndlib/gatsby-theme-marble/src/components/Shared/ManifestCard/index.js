@@ -44,7 +44,10 @@ ManifestCard.propTypes = {
     PropTypes.string,
     PropTypes.array,
   ]),
-  date: PropTypes.string,
+  date: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
   type: PropTypes.string,
 
 }
