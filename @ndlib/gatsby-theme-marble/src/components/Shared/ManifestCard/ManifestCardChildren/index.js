@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import ChildField from './ChildField'
 
-// eslint-disable-next-line complexity
 export const ManifestCardChildren = ({ parentProps, date, creator }) => {
   return (
     <>
