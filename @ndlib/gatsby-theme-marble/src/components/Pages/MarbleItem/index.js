@@ -49,7 +49,7 @@ const MarbleItem = ({ data, location }) => {
 const customQueryBuilder = (id) => {
   return {
     more_like_this: {
-      fields: ['name', 'creator', 'workType', 'allMetadata'],
+      fields: ['name', 'creator', 'collection', 'workType', 'allMetadata'],
       like: [
         {
           '_index': 'marble',
