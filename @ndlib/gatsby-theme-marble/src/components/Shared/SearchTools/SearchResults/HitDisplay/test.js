@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import HitDisplay, { HitList, HitGrid } from './'
-import ManifestCard from 'components/Shared/ManifestCard'
+import HitResult from './HitResult'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 
 const hits = [
@@ -22,23 +22,10 @@ test('HitGrid', () => {
 test('HitDisplay', () => {
   const wrapper = shallow(<HitDisplay hits={hits} />)
   expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
-  expect(wrapper.find(ManifestCard).length).toEqual(3)
-})
-
-test('all metadata hightlights', () => {
-  const wrapper = shallow(<HitDisplay hits={hits} />)
-  expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
-  expect(wrapper.find(ManifestCard).at(0).children().html()).toEqual('<div class="css-1itje8o"><em>data</em></div>')
-  expect(wrapper.find(ManifestCard).at(2).children().html()).toEqual('<div class="css-1itje8o"><em>line2data</em></div>')
-})
-
-test('all metadata hightlights splits on :: and shows only the line with the data', () => {
-  const wrapper = shallow(<HitDisplay hits={hits} />)
-  expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
-  expect(wrapper.find(ManifestCard).at(2).children().html()).toEqual('<div class="css-1itje8o"><em>line2data</em></div>')
+  expect(wrapper.find(HitResult).length).toEqual(3)
 })
 
 test('has no cards if the hits are empty', () => {
   const wrapper = shallow(<HitDisplay hits={[]} />)
-  expect(wrapper.find(ManifestCard).length).toEqual(0)
+  expect(wrapper.find(HitResult).length).toEqual(0)
 })

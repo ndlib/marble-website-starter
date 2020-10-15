@@ -3,8 +3,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import typy from 'typy'
 import sx from '../sx'
 
+// eslint-disable-next-line complexity
 export const ManifestCardChildren = ({ parentProps, date, creator }) => {
   return (
     <>
@@ -12,14 +14,14 @@ export const ManifestCardChildren = ({ parentProps, date, creator }) => {
         creator ? (
           <p
             sx={sx.lineStyle}
-            dangerouslySetInnerHTML={{ __html: creator }}
+            dangerouslySetInnerHTML={{ __html: typy(creator).isArray ? creator.join('<br/>') : creator }}
           />
         ) : null
       }{
         date ? (
           <p
             sx={sx.lineStyle}
-            dangerouslySetInnerHTML={{ __html: date }}
+            dangerouslySetInnerHTML={{ __html: typy(date).isArray ? date.join('<br/>') : date }}
           />
         ) : null
       }

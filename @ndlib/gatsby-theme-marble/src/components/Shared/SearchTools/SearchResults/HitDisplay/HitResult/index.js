@@ -3,6 +3,7 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import ManifestCard from 'components/Shared/ManifestCard'
 import typy from 'typy'
+
 const HitResult = ({ hit, referal }) => {
   const {
     name,
