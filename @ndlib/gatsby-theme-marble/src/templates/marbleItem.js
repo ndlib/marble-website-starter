@@ -46,6 +46,12 @@ export const query = graphql`
         type
       }
       childrenMarbleItem {
+        title
+        slug
+        childrenMarbleIiifImage {
+          thumbnail
+        }
+        description
         iiifUri
         marbleId
       }

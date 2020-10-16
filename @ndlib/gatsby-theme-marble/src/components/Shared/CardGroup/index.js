@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 import { BaseStyles, jsx } from 'theme-ui'
 import sx from './sx'
 const CardGroup = ({ label, children }) => {
+  if (!children) {
+    return null
+  }
   return (
     <React.Fragment>
       <BaseStyles>
@@ -33,7 +36,7 @@ const CardGroup = ({ label, children }) => {
 
 CardGroup.propTypes = {
   label: PropTypes.string,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.array,
 }
 
 export default CardGroup

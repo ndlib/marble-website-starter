@@ -20,22 +20,17 @@ describe('ManifestCardChildren', () => {
   }
   test('children no additional', () => {
     const props = {
-      showCreator: false,
-      showDate: false,
       children: <div className='child'>children are loud</div>,
     }
-    const wrapper = mount(<ManifestCardChildren parentProps={props} item={item} />)
+    const wrapper = mount(<ManifestCardChildren parentProps={props} />)
     expect(wrapper.find('.child').text()).toEqual('children are loud')
   })
 
   test('children + additional', () => {
     const props = {
-      showCreator: true,
-      showDate: true,
-      showSummary: false,
       children: <div className='child'>A song about an alligator.</div>,
     }
-    const wrapper = mount(<ManifestCardChildren parentProps={props} item={item} />)
+    const wrapper = mount(<ManifestCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} />)
     expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
     expect(wrapper.findWhere(c => {
@@ -45,12 +40,8 @@ describe('ManifestCardChildren', () => {
   })
 
   test('no children', () => {
-    const props = {
-      showCreator: true,
-      showDate: true,
-      showSummary: true,
-    }
-    const wrapper = mount(<ManifestCardChildren parentProps={props} item={item} />)
+    const props = { children: item.description }
+    const wrapper = mount(<ManifestCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} />)
     expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
     expect(wrapper.findWhere(c => {

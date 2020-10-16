@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
@@ -13,15 +14,22 @@ export const ChildManifests = ({ marbleItem }) => {
       <h2 className='accessibilityOnly'>Related Items</h2>
       <DisplayViewToggle>
         {
-          typy(marbleItem, 'childrenMarbleItem').safeArray.map(manifest => {
-            if (!manifest) {
+          typy(marbleItem, 'childrenMarbleItem').safeArray.map(childItem => {
+            if (!childItem) {
               return null
             }
             return (
               <ManifestCard
-                key={manifest.iiifUri}
-                iiifManifest={manifest.iiifUri}
+                key={childItem}
+                target={childItem.slug}
+                image={typy(childItem, 'childrenMarbleIiifImage[0].thumbnail').safeString}
+                label={childItem.title}
                 showSummary
+                referal={{
+                  type: 'item',
+                  backLink: `/${marbleItem.slug}`,
+                  parentName: marbleItem.title,
+                }}
               />
             )
           })
@@ -32,7 +40,7 @@ export const ChildManifests = ({ marbleItem }) => {
 }
 
 ChildManifests.propTypes = {
-  marbleItem: PropTypes.object.isRequired,
+  marbleItem: PropTypes.object,
 }
 
 export default ChildManifests
