@@ -53,21 +53,21 @@ const HitResult = ({ hit, referal }) => {
   )
 }
 
-const highlightTitle = (name, highlight) => {
+export const highlightTitle = (name, highlight) => {
   if (highlight && highlight['name.folded']) {
-    return highlight['name.folded'][0]
+    return highlight['name.folded']
   }
   return name
 }
 
-const highlightCreator = (creator, highlight) => {
+export const highlightCreator = (creator, highlight) => {
   if (highlight && highlight['creator.folded']) {
-    return highlight['creator.folded'][0]
+    return highlight['creator.folded']
   }
   return creator
 }
 
-const higlightDisplay = (row) => {
+export const higlightDisplay = (row) => {
   return (
     <div
       key={row}
