@@ -45,5 +45,5 @@ module.exports = {
     textAlign: 1,
     right: ['auto', '0', '0'],
     align: 'right',
-  }
+  },
 }

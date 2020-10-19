@@ -10,7 +10,6 @@ import libraryLogo from 'assets/images/library.logo.png'
 import ndLogo from 'assets/images/ND_mark_white_M.png'
 import sx from './sx'
 export const Footer = () => {
-  const date = new Date()
   return (
     <ThemeFooter>
       <div sx={sx.flexWrapper}>
@@ -50,14 +49,14 @@ export const Footer = () => {
               alt='Hesburgh Library'
             />
           </a>
-          <p className='contact-info'>
+          <div className='contact-info'>
             <div className='address' property='address' typeof='PostalAddress'>
               <span property='streetAddress'>284 Hesburgh Library</span><br />
               <span property='addressLocality'>Notre Dame</span>, <span property='addressRegion'>IN</span> <span property='postalCode'>46556</span> <span property='addressCountry'>USA</span>
             </div>
             <div className='footer-phone' property='telephone' content='+1 574-631-6679'>Phone <a href='tel:574-631-6679'>(574) 631–6679</a></div>
             <div className='footer-email' property='email'><a rel='noopener' href='mailto:asklib@nd.edu'>asklib@nd.edu</a></div>
-          </p>
+          </div>
           <div sx={sx.copyright} className='copyright'><a href='https://www.nd.edu/copyright/'>&copy; 2020</a> <a href='https://www.nd.edu'>University of Notre Dame</a></div>
         </div>
         <div sx={sx.footerRightColumn}>
