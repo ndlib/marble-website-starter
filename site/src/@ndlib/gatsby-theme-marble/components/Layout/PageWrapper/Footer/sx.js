@@ -1,7 +1,7 @@
 module.exports = {
   flexWrapper: {
     display: 'flex',
-    flexDirection: [2, 1, 1],
+    flexDirection: [0, 1, 1],
     justifyContent: 'space-evenly',
     margin: '0 auto 2rem',
     maxWidth: '1540px',
@@ -12,6 +12,7 @@ module.exports = {
     marginBottom: '40px',
     paddingTop: '2rem',
     textAlign: [1, 0, 0],
+    display: 'inline-block',
   },
   imageWrapper: {
     flexBasis: ['100%', '35%', '35%'],
@@ -23,23 +24,26 @@ module.exports = {
   },
   menuWrapper: {
     flexBasis: ['100%', '10%', '10%'],
-    fontSize: [5, 1, 1],
+    fontSize: [4, 1, 1],
     lineHeight: 'auto',
     paddingTop: '2rem',
-    textAlign: [1, 0, 0],
+    textAlign: 1,
   },
   footerContacts: {
-    display: 'inline',
+    display: ['block', 'inline', 'inline'],
   },
-  footerColumn: {
+  footerLeftColumn: {
     textAlign: 1,
-    width: ['60%', '30%', '30%'],
+    display: 'block',
+    flexBasis: ['100%', '35%', '35%'],
     img : {
       minWidth: '200px',
     },
+    left: ['auto', '0', '0'],
   },
-  copyright: {
-    padding: '10px',
-    left: '10px',
-  },
+  footerRightColumn: {
+    textAlign: 1,
+    right: ['auto', '0', '0'],
+    align: 'right',
+  }
 }
