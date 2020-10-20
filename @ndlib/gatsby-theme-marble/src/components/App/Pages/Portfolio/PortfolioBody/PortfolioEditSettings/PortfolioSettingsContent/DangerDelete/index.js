@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
@@ -7,7 +7,6 @@ import { deleteData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 
 export const DangerDelete = ({ portfolio, loginReducer }) => {
-  const [deleteFieldValue, updateDeleteField] = useState(null)
   const warning = `Once you delete this portfolio it can not be recovered.`
   const groupId = `danger`
   const fieldId = `delete`
