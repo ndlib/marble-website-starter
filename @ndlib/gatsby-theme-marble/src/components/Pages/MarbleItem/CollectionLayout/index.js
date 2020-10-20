@@ -8,7 +8,7 @@ import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import ChildManifests from 'components/Shared/ChildManifests'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 
-const CollectionLayout = ({ marbleItem }) => {
+const CollectionLayout = ({ marbleItem, location }) => {
   return (
     <>
       <MultiColumn columns='5'>
@@ -19,7 +19,10 @@ const CollectionLayout = ({ marbleItem }) => {
           <PartiallyDigitized marbleItem={marbleItem} />
         </Column>
         <Column colSpan='3'>
-          <ChildManifests marbleItem={marbleItem} />
+          <ChildManifests
+            marbleItem={marbleItem}
+            location={location}
+          />
         </Column>
       </MultiColumn>
     </>
@@ -27,6 +30,7 @@ const CollectionLayout = ({ marbleItem }) => {
 }
 
 CollectionLayout.propTypes = {
+  location: PropTypes.object.isRequired,
   marbleItem: PropTypes.object.isRequired,
 }
 export default CollectionLayout

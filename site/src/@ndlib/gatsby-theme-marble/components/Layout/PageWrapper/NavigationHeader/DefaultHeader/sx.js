@@ -79,6 +79,7 @@ module.exports = {
     borderTop: '50px solid #0C2340dd',
     borderLeft: '50px solid transparent',
     position: 'absolute',
+    display: ['none', 'block', 'block'],
     right: '270px',
     backdropFilter: 'blur(0px)',
   },
@@ -87,6 +88,8 @@ module.exports = {
     height: '50px',
     backgroundColor: '#0C2340dd',
     position: 'absolute',
+
+    display: ['none', 'block', 'block'],
     right: '0',
     backdropFilter: 'blur(0px)',
   },
@@ -95,6 +98,15 @@ module.exports = {
     position: 'absolute',
     right: '70px',
     top: '30px',
+    display: ['none', 'block', 'block'],
+  },
+  ndWordmark: {
+    width: '301px',
+    height: '50px',
+    position: 'absolute',
+    right: 'calc(50vw - 150px)',
+    top: '0',
+    display: ['block', 'none', 'none'],
   },
   heroWrapper: {
     height: '100px',
@@ -107,7 +119,7 @@ module.exports = {
   marbleLogo: {
     height: '60px',
     top: ['90px', '15px', '15px'],
-    left: ['10px', '20px', '20px'],
+    left: ['calc(50vw - 120px)', '0', '0'],
     position: 'absolute',
   },
 }
