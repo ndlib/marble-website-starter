@@ -31,14 +31,14 @@ export const Footer = () => {
               alt='Snite Art Museum'
             />
           </a>
-          <p className='contact-info'>
+          <div className='contact-info'>
             <div className='address' property='address' typeof='PostalAddress'>
               <span property='streetAddress'>100 Moose Krause Circle</span><br />
               <span property='addressLocality'>Notre Dame</span>, <span property='addressRegion'>IN</span> <span property='postalCode'>46556</span> <span property='addressCountry'>USA</span>
             </div>
             <div className='footer-phone' property='telephone' content='+1 574-631-5466'>Phone <a href='tel:574-631-5466'>(574) 631–5466</a></div>
             <div className='footer-email' property='email'><a rel='noopener' href='mailto:sniteart@nd.edu'>sniteart@nd.edu</a></div>
-          </p>
+          </div>
           <a
             href='https://library.nd.edu'
             sx={sx.imageWrapper}
