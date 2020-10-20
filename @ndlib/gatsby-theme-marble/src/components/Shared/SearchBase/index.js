@@ -5,7 +5,6 @@ import typy from 'typy'
 import {
   SearchkitProvider,
   SearchkitManager,
-  MatchQuery,
 } from 'searchkit'
 
 const SearchBase = ({ children, defaultSearch }) => {
@@ -30,20 +29,11 @@ const SearchBase = ({ children, defaultSearch }) => {
     )
   }
   const sk = new SearchkitManager(`${searchBase.url}/${searchBase.app}`)
-  if (defaultSearch && defaultSearch[0]) {
-    const tag = defaultSearch[0].tag.split(':')
+  if (defaultSearch) {
     sk.addDefaultQuery((query) => {
-      return query.addQuery(MatchQuery(tag[0], tag[1]))
+      return query.addQuery(defaultSearch)
     })
   }
-  /*
-  if (range) {
-    const s = range.split('-')
-    sk.addDefaultQuery((query) => {
-      return query.addQuery(RangeQuery('year', { gte: s[0], lte: s[1] }))
-    })
-  }
-  */
   return (
     <SearchkitProvider searchkit={sk}>
       <React.Fragment>
@@ -54,7 +44,7 @@ const SearchBase = ({ children, defaultSearch }) => {
 }
 SearchBase.propTypes = {
   children: PropTypes.node.isRequired,
-  defaultSearch: PropTypes.array,
+  defaultSearch: PropTypes.object,
 }
 
 export default SearchBase

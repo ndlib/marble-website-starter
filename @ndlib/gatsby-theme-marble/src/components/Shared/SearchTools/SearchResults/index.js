@@ -13,7 +13,7 @@ import {
 import Pager from './Pager'
 import { sourceFilter, highlightFields } from './searchSettings'
 
-export const SearchResults = ({ defaultDisplay }) => {
+export const SearchResults = ({ defaultDisplay, hitsPerPage, showPagination, scrollTo }) => {
   let displayComponent = HitGrid
   if (defaultDisplay === 'list') {
     displayComponent = HitList
@@ -21,26 +21,32 @@ export const SearchResults = ({ defaultDisplay }) => {
   return (
     <>
       <Hits
-        hitsPerPage={50}
+        hitsPerPage={hitsPerPage}
         sourceFilter={sourceFilter}
         highlightFields={highlightFields}
         listComponent={displayComponent}
-        scrollTo='#gatsby-focus-wrapper'
+        scrollTo={scrollTo}
       />
       <NoHits
         suggestionsField='name'
       />
       <InitialLoader component={Loading} />
-      <Pager />
+      {showPagination ? <Pager /> : null}
     </>
   )
 }
 
 SearchResults.propTypes = {
   defaultDisplay: PropTypes.string,
+  hitsPerPage: PropTypes.number,
+  showPagination: PropTypes.bool,
+  scrollTo: PropTypes.string,
 }
 
 SearchResults.defaultProps = {
   defaultDisplay: 'list',
+  hitsPerPage: 50,
+  showPagination: true,
+  scrollTo: '#gatsby-focus-wrapper',
 }
 export default SearchResults
