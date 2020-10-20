@@ -79,8 +79,8 @@ const PortfolioList = ({
                     >{c.description}</Card>
                     { isOwner
                       ? <div>
-                          <VisibilityLabel visibility={c.privacy} />
-                        </div>
+                        <VisibilityLabel visibility={c.privacy} />
+                      </div>
                       : null
                     }
                   </div>
