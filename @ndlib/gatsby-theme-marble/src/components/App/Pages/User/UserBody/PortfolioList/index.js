@@ -67,7 +67,7 @@ const PortfolioList = ({
                           closeFunc={() => setSettingsOpen(false)}
                           fullscreen
                         >
-                          <DangerDelete portfolio={c} />
+                          <DangerDelete portfolio={} />
                         </ActionModal>
                       </div>
                       : null
@@ -77,12 +77,11 @@ const PortfolioList = ({
                       target={`/myportfolio/${c.uuid}`}
                       image={c.image || ''}
                     >{c.description}</Card>
-                    {
-                      isOwner
-                        ? <div>
-                            <VisibilityLabel visibility={c.privacy} />
-                          </div>
-                        : null
+                    { isOwner
+                      ? <div>
+                          <VisibilityLabel visibility={c.privacy} />
+                        </div>
+                      : null
                     }
                   </div>
                 )
