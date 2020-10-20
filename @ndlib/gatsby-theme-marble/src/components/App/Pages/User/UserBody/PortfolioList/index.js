@@ -67,7 +67,7 @@ const PortfolioList = ({
                           closeFunc={() => setSettingsOpen(false)}
                           fullscreen
                         >
-                          <DangerDelete portfolio={} />
+                          <DangerDelete portfolio={index} />
                         </ActionModal>
                       </div>
                       : null
