@@ -10,6 +10,9 @@ import VisibilityLabel from 'components/Internal/VisibilityLabel'
 import { COMPILATIONS_LISTING_PAGE } from 'store/actions/displayActions'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
+import MaterialButton from 'components/Internal/MaterialButton'
+import ActionModal from 'components/Internal/ActionModal'
+import DangerDelete from 'components/App/Pages/Portfolio/PortfolioBody/PortfolioEditSettings/PortfolioSettingsContent/DangerDelete'
 
 const PortfolioList = ({
   user,
@@ -18,6 +21,7 @@ const PortfolioList = ({
   const [portfolios, setPortfolios] = useState(user.collections || [])
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
+  const [settingsOpen, setSettingsOpen] = useState(false)
   if (portfolios.length > 0) {
     return (
       <React.Fragment>
@@ -50,6 +54,24 @@ const PortfolioList = ({
               .map((c, index) => {
                 return (
                   <div key={index} className={style.cardWrapper}>
+                    { isOwner
+                      ? <div className={style.deleteButton}>
+                        <MaterialButton
+                          primary
+                          wide
+                          onClick={() => setSettingsOpen(true)}
+                        >Delete</MaterialButton>
+                        <ActionModal
+                          isOpen={settingsOpen}
+                          contentLabel={`${c.title}`}
+                          closeFunc={() => setSettingsOpen(false)}
+                          fullscreen
+                        >
+                          <DangerDelete portfolio={c} />
+                        </ActionModal>
+                      </div>
+                      : null
+                    }
                     <Card
                       label={c.title}
                       target={`/myportfolio/${c.uuid}`}
@@ -57,7 +79,9 @@ const PortfolioList = ({
                     >{c.description}</Card>
                     {
                       isOwner
-                        ? <VisibilityLabel visibility={c.privacy} />
+                        ? <div>
+                            <VisibilityLabel visibility={c.privacy} />
+                          </div>
                         : null
                     }
                   </div>
