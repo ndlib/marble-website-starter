@@ -30,10 +30,10 @@ const MetaDataField = ({ metadata, skipHtml }) => {
         />
         { label === 'Link to Finding Aid'
         ? <div className='aidContext' sx={sx.aidContext}>
-          This digital collection may not include all items or all of the information available about the source collection. See the finding aid for more information.
+            This digital collection may not include all items or all of the information available about the source collection. See the finding aid for more information.
           </div>
-        : null
-      }
+          : null
+        }
       </div>
     )
   }
