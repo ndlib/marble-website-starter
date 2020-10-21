@@ -1,9 +1,12 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
 import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
 import MetaDataMarkdownValue from './MetaDataMarkdownValue'
+import { jsx } from 'theme-ui'
+import sx from './sx'
 
 const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, urlField, type } = metadata
@@ -25,6 +28,12 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           urlField={urlField}
           skipHtml={skipHtml}
         />
+        {label==='Link to Finding Aid'
+        ?  <div className='aidContext' sx = {sx.aidContext}>
+            This digital collection may not include all items or all of the information available about the source collection. See the finding aid for more information.
+        </div>
+        : null
+      }
       </div>
     )
   }
