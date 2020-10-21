@@ -28,11 +28,11 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           urlField={urlField}
           skipHtml={skipHtml}
         />
-        {label==='Link to Finding Aid'
-        ?  <div className='aidContext' sx = {sx.aidContext}>
-            This digital collection may not include all items or all of the information available about the source collection. See the finding aid for more information.
-        </div>
-        : null
+      { label==='Link to Finding Aid'
+      ? <div className='aidContext' sx={sx.aidContext}>
+        This digital collection may not include all items or all of the information available about the source collection. See the finding aid for more information.
+      </div>
+      : null
       }
       </div>
     )
