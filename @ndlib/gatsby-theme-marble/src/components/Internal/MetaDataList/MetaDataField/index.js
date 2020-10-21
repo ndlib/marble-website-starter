@@ -5,11 +5,13 @@ import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
 import MetaDataMarkdownValue from './MetaDataMarkdownValue'
+import { useTranslation } from 'react-i18next'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
 const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, urlField, type } = metadata
+  const { t } = useTranslation()
   let { value } = metadata
   if (!Array.isArray(value) && value) {
     value = [value]
@@ -30,7 +32,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
         />
         { label === 'Link to Finding Aid'
           ? <div className='aidContext' sx={sx.aidContext}>
-          This digital collection may not include all items or all of the information available about the source collection. See the finding aid for more information.
+            {t('text:aidContext')}
           </div>
           : null
         }
