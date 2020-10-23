@@ -6,7 +6,7 @@ module.exports = ({
   useUV = false,
 }) => ({
   mapping: {
-    'MarbleIiifImage.collectionId': 'MarbleItem.id',
+    'MarbleFile.collectionId': 'MarbleItem.id',
   },
   plugins: [
     {

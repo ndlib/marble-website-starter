@@ -22,11 +22,12 @@ describe('DownloadImage', () => {
   test('images', () => {
     const downloadSpy = jest.spyOn(download, 'download')
     const marbleItem = {
-      childrenMarbleIiifImage: [{
-        service: 'http://image.place/1',
+      childrenMarbleFile: [{
+        fileType: 'image',
+        iiif: { service: 'http://image.place/1' },
       }],
     }
-    const images = marbleItem.childrenMarbleIiifImage
+    const images = marbleItem.childrenMarbleFile
     const wrapper = mount(<DownloadImage marbleItem={marbleItem} />)
     expect(wrapper.find(ImagePreview).props().images).toEqual(images)
     expect(wrapper.find(ImagePager).props().images).toEqual(images)

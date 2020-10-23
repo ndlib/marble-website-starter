@@ -23,16 +23,18 @@ describe('ManifestImageGroup', () => {
       id: 'id',
       slug: 'slug',
     }
-    const allMarbleIiifImage = {
+    const allMarbleFile = {
       nodes: [
         {
           name: 'someImage',
-          service: 'http://image.place',
-          default: 'http://image.default',
+          iiif: {
+            service: 'http://image.place',
+            default: 'http://image.default',
+          },
         },
       ],
     }
-    const wrapper = mount(<ManifestImageGroup marbleItem={marbleItem} location={{}} allMarbleIiifImage={allMarbleIiifImage} />)
+    const wrapper = mount(<ManifestImageGroup marbleItem={marbleItem} location={{}} allMarbleFile={allMarbleFile} />)
     expect(wrapper.find('section').exists()).toBeTruthy()
     expect(wrapper.find(ViewerLink).exists()).toBeTruthy()
     expect(wrapper.find(ExpandIcon).exists()).toBeTruthy()

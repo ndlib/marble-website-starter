@@ -6,6 +6,7 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import DownloadImage from './DownloadImage'
 import DownloadMetadata from './DownloadMetadata'
+import DownloadPdf from './DownloadPdf'
 import DownloadCitation from './DownloadCitation'
 import Copyright from './Copyright'
 import sx from './sx'
@@ -26,6 +27,7 @@ const DownloadModalContent = ({ marbleItem }) => {
           </BaseStyles>
           <div sx={sx.metadata}>
             <DownloadMetadata marbleItem={marbleItem} />
+            <DownloadPdf marbleItem={marbleItem} />
           </div>
           <DownloadCitation marbleItem={marbleItem} />
         </Column>

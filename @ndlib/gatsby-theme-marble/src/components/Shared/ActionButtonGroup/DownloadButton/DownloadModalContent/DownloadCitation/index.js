@@ -20,7 +20,7 @@ const DownloadCitation = ({ marbleItem }) => {
 export default DownloadCitation
 
 DownloadCitation.propTypes = {
-  marbleItem: {
+  marbleItem: PropTypes.shape({
     citation: PropTypes.string,
-  },
+  }),
 }

@@ -21,7 +21,9 @@ describe('findImage', () => {
     const item = {
       nodes: [
         {
-          default: 'https://remote',
+          iiif: {
+            default: 'https://remote',
+          },
         },
       ],
     }
@@ -60,7 +62,9 @@ describe('findAltImage', () => {
     const item = {
       nodes: [
         {
-          service: 'https://remote',
+          iiif: {
+            service: 'https://remote',
+          },
         },
       ],
     }

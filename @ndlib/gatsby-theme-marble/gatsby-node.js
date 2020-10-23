@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const mapStandardJson = require(path.join(__dirname, 'src/utils/mapStandardJson'))
-const imageMetadata = require(path.join(__dirname, 'src/utils/mapStandardJson/imageMetadata'))
+const fileMetadata = require(path.join(__dirname, 'src/utils/mapStandardJson/fileMetadata'))
 
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
@@ -24,18 +24,23 @@ exports.sourceNodes = ({ actions }) => {
     urlField: String
     type: String
   }
-  type MarbleIiifImage implements Node {
+  type marbleIiifFile @dontInfer {
+    default: String
+    service: String
+    thumbnail: String
+  }
+  type MarbleFile implements Node {
     id: String!
     marbleId: String!
-    service: String
-    default: String
-    thumbnail: String
-    title: String
-    name: String
-    extension: String
     collection: MarbleItem
-    parent: MarbleItem
+    parentId: String
+    name: String
+    title: String
     sequence: Int
+    file: String
+    extension: String
+    fileType: String
+    iiif: marbleIiifFile
     local: File @link(by: "name", from: "name")
     marbleParent: MarbleItem @link(by: "id", from: "parentId")
   }
@@ -52,7 +57,7 @@ exports.sourceNodes = ({ actions }) => {
     metadata: [metadataData]
     copyrightRestricted: Boolean
     childrenMarbleItem: [MarbleItem]
-    childrenMarbleIiifImage: [MarbleIiifImage]
+    childrenMarbleFile: [MarbleFile]
     citation: String
   }
 
@@ -188,19 +193,14 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
     const nodeId = createNodeId(standardJson.id)
 
     if (standardJson.level.toLowerCase() === 'file') {
-      const fileMetadata = imageMetadata(standardJson)
+      const filedata = fileMetadata(standardJson)
       const normalizedTypeNode = {
-        ...fileMetadata,
+        ...filedata,
         id: nodeId,
         marbleId: standardJson.id,
         collection: collection.id,
         parentId: parent.id,
-        internal: {
-          type: 'MarbleIiifImage',
-        },
-
       }
-
       normalizedTypeNode.internal.contentDigest = createContentDigest(normalizedTypeNode)
       createNode(normalizedTypeNode)
       createParentChildLink({ parent: collection, child: normalizedTypeNode })

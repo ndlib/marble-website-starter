@@ -48,29 +48,47 @@ export const query = graphql`
       childrenMarbleItem {
         title
         slug
-        childrenMarbleIiifImage {
-          thumbnail
+        childrenMarbleFile {
+
+          file
+          fileType
+          iiif {
+            thumbnail
+            service
+            default
+          }
         }
         description
         iiifUri
         marbleId
       }
-      childrenMarbleIiifImage {
+      childrenMarbleFile {
         id
+        name
+        title
+        file
+        fileType
+        iiif {
+          thumbnail
+          service
+          default
+        }
       }
       copyrightRestricted
       citation
     }
-    allMarbleIiifImage(
-      filter: {marbleParent: {slug: {eq: $slug}}},
+    allMarbleFile(
+      filter: {marbleParent: {slug: {eq: $slug}}, fileType: {eq: "image"}},
       sort: {fields: sequence, order: ASC},
       limit: 6
     ) {
       nodes {
         sequence
-        service
-        default
-        thumbnail
+        iiif {
+          service
+          default
+          thumbnail
+        }
         local {
           publicURL
           childImageSharp {

@@ -7,7 +7,7 @@ import findImage from 'utils/findImage'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-export const ManifestImageGroup = ({ location, marbleItem, viewer, allMarbleIiifImage }) => {
+export const ManifestImageGroup = ({ location, marbleItem, viewer, allMarbleFile }) => {
   if (!marbleItem) {
     return null
   }
@@ -26,7 +26,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer, allMarbleIiif
       >
         <picture sx={sx.wrapper}>
           <img
-            src={findImage(allMarbleIiifImage)}
+            src={findImage(allMarbleFile)}
             alt={label}
             title={label}
             sx={sx.image}
@@ -35,7 +35,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer, allMarbleIiif
         </picture>
       </ViewerLink>
       <ItemAlternateViews
-        allMarbleIiifImage={allMarbleIiifImage}
+        allMarbleFile={allMarbleFile}
         marbleItem={marbleItem}
         location={location}
         viewer={viewer}
@@ -45,7 +45,7 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer, allMarbleIiif
 }
 
 ManifestImageGroup.propTypes = {
-  allMarbleIiifImage: PropTypes.object,
+  allMarbleFile: PropTypes.object,
   marbleItem: PropTypes.shape({
     childrenMarbleItem: PropTypes.array,
   }),
