@@ -31,18 +31,19 @@ const getName = (standardJson) => {
 
 // eslint-disable-next-line complexity
 const getFileType = (id) => {
+  let type = 'unknown'
   if (imageExtension.test(id)) {
-    return 'image'
+    type = 'image'
   } else if (audioExtension.test(id)) {
-    return 'audio'
+    type = 'audio'
   } else if (videoExtension.test(id)) {
-    return 'video'
+    type = 'video'
   } else if (pdfExtension.test(id)) {
-    return 'pdf'
+    type = 'pdf'
   } else if (dataExtension.test(id)) {
-    return 'data'
+    type = 'data'
   }
-  return 'unknown'
+  return type
 }
 const getExtension = (id) => {
   const matches = id.match(fileExtension)
