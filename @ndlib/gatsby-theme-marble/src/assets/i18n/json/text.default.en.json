@@ -30,5 +30,6 @@
       "value": "public",
       "description": "Anyone may view this portfolio. It will be listed on your user page. Search engines may discover this page and present it in search results."
     }
-  }
+  },
+  "aidContext": "This digital collection may not include all items or all of the information available about the source collection. See the finding aid for more information."
 }
