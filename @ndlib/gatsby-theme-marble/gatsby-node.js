@@ -193,9 +193,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
     const nodeId = createNodeId(standardJson.id)
 
     if (standardJson.level.toLowerCase() === 'file') {
-      const pdfTest = RegExp('.pdf$')
-      const r = pdfTest.test(standardJson.id)
-
       const filedata = fileMetadata(standardJson)
       const normalizedTypeNode = {
         ...filedata,
