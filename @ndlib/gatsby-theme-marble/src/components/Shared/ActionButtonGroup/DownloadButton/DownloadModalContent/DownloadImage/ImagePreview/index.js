@@ -6,7 +6,7 @@ const ImagePreview = ({ sxStyle, images, selected }) => {
   return (
     <picture sx={sxStyle.wrapper}>
       <img
-        src={`${images[selected].service}/full/,600/0/default.jpg`}
+        src={`${images[selected].iiif.service}/full/,600/0/default.jpg`}
         alt='Preview'
         sx={sxStyle.image}
       />

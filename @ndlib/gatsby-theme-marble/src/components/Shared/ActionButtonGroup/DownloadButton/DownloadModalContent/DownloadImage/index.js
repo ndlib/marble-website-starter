@@ -21,7 +21,10 @@ const DownloadImage = ({ marbleItem }) => {
   const [format, setFormat] = useState('jpg')
 
   useEffect(() => {
-    setImages(typy(marbleItem, 'childrenMarbleIiifImage').safeArray)
+    setImages(typy(marbleItem, 'childrenMarbleFile').safeArray
+      .filter(i => {
+        return i.fileType === 'image'
+      }))
   }, [marbleItem])
 
   if (images.length < 1 || marbleItem.copyrightRestricted) {

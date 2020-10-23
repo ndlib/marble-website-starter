@@ -34,8 +34,11 @@ const IndexPage = ({ location }) => {
             marbleId
             slug
             display
-            childrenMarbleIiifImage {
-              thumbnail
+            childrenMarbleFile {
+              iiif {
+                thumbnail
+              }
+              fileType
             }
             metadata {
               label
@@ -98,7 +101,7 @@ const IndexPage = ({ location }) => {
                 key={item}
                 label={item.title}
                 target={item.slug}
-                image={typy(item, 'childrenMarbleIiifImage[0].thumbnail').safeString}
+                image={typy(item, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
                 type={item.display}
                 creator={findMetadata(item, ['creator'])}
                 date={findMetadata(item, ['date', 'dates'])}

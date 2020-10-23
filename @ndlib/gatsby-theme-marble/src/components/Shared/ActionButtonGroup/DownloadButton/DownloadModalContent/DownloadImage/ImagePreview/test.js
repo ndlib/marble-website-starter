@@ -5,7 +5,7 @@ import ImagePreview from './'
 test('ImagePreview', () => {
   const props = {
     sxStyle: {},
-    images: [{ service: 'http://image.service' }],
+    images: [{ iiif: { service: 'http://image.service' } }],
     selected: 0,
   }
   const wrapper = mount(<ImagePreview {...props} />)

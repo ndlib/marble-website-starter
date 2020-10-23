@@ -1,7 +1,7 @@
 import typy from 'typy'
 
 export const imageUrl = (images, index, size, format) => {
-  return `${images[index].service}/full/${size}/0/default.${format}`
+  return `${images[index].iiif.service}/full/${size}/0/default.${format}`
 }
 
 export const imageName = (ndJson, images, index, format) => {

@@ -14,7 +14,8 @@ const ImagePager = ({ sxStyle, images, selected, setSelected }) => {
           setSelected(selected - 1)
         }}
         disabled={selected === 0}
-      >&lt;</MaterialButton>
+      >&lt;
+      </MaterialButton>
       <select
         onChange={(event) => {
           setSelected(parseInt(event.target.value, 10))
@@ -29,7 +30,8 @@ const ImagePager = ({ sxStyle, images, selected, setSelected }) => {
               <option
                 value={index}
                 key={index}
-              >{index + 1}</option>
+              >{index + 1}
+              </option>
             )
           })
         }
@@ -39,7 +41,8 @@ const ImagePager = ({ sxStyle, images, selected, setSelected }) => {
           setSelected(selected + 1)
         }}
         disabled={selected === images.length - 1}
-      >&gt;</MaterialButton>
+      >&gt;
+      </MaterialButton>
     </div>
   )
 }

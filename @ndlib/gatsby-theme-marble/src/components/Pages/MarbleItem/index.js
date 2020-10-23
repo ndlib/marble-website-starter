@@ -9,7 +9,7 @@ import SearchBase from 'components/Shared/SearchBase'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
 
 const MarbleItem = ({ data, location }) => {
-  const { marbleItem, allMarbleIiifImage } = data
+  const { marbleItem, allMarbleFile } = data
   return (
     <Layout
       title={marbleItem.title}
@@ -30,7 +30,7 @@ const MarbleItem = ({ data, location }) => {
           <ItemLayout
             location={location}
             marbleItem={marbleItem}
-            allMarbleIiifImage={allMarbleIiifImage}
+            allMarbleFile={allMarbleFile}
           />
         )
       }

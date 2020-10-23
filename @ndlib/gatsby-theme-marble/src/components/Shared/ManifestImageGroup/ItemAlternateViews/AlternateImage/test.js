@@ -9,7 +9,7 @@ const marbleItem = {
   id: 'id',
   slug: 'slug',
   iiifUri: 'http://iiif.url',
-  childrenMarbleIiifImage: [
+  childrenMarbleFile: [
     { service: 'http://image.here/1' },
     { service: 'http://image.here/2' },
   ],
