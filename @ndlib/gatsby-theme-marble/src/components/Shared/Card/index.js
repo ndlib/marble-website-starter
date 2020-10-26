@@ -39,10 +39,10 @@ const Card = ({
                     region={imageRegion || 'full'}
                     alt={label}
                   />
+                  <ExternalLinkIcon target={target} />
                 </div>
               </div>
             </div>
-            <ExternalLinkIcon target={target} />
             <figcaption sx={sx.figcaption(wide)}>
               <h2 sx={sx.label} dangerouslySetInnerHTML={{ __html: label }} />
               <div>
