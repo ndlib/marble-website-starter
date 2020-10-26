@@ -31,6 +31,7 @@ module.exports = {
     border: '1px solid',
     borderColor: 'gray.1',
     display: 'inline-block',
+    position: 'absolute',
     margin: '0 auto',
     padding: '4px',
     position: 'absolute',

@@ -1,9 +1,10 @@
 module.exports = {
   wrapper: {
+    opacity: '0.5',
     background: 'white',
     border: '1px solid',
     borderColor: 'gray.2',
-    left: '-10px',
+    left: '10px',
     lineHeight: '40px',
     position: 'absolute',
     top: '10px',
