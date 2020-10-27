@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import PropTypes from 'prop-types'
 import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
@@ -9,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
+// eslint-disable-next-line complexity
 const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, urlField, type } = metadata
   const { t } = useTranslation()
@@ -30,11 +30,12 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           urlField={urlField}
           skipHtml={skipHtml}
         />
-        { label === 'Link to Finding Aid'
-          ? <div className='aidContext' sx={sx.aidContext}>
-            {t('text:aidContext')}
-          </div>
-          : null
+        {
+          label === 'Link to Finding Aid' ? (
+            <div className='aidContext' sx={sx.aidContext}>
+              {t('text:aidContext')}
+            </div>
+          ) : null
         }
       </div>
     )

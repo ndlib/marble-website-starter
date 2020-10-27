@@ -62,7 +62,7 @@ export const UserEdit = ({ user, loginReducer }) => {
               },
             })
           }}
-          disabled={patching || !email.match(emailRegex) || fullName === ''}
+          disabled={patching || !emailRegex.test(email) || fullName === ''}
           primary
         >Save</MaterialButton>
       </div>
