@@ -43,7 +43,8 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
         }}
         disabled={patching}
         wide
-      >Set as Portfolio Cover Image</MaterialButton>
+      >Set as Portfolio Cover Image
+      </MaterialButton>
     </div>
   )
 }
