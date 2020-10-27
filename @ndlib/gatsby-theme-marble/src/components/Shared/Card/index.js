@@ -64,6 +64,7 @@ Card.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
+  type: PropTypes.string,
   imageService: PropTypes.string,
   imageRegion: PropTypes.string,
   children: PropTypes.node,
