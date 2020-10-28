@@ -13,10 +13,15 @@ module.exports = (manifest) => {
     manifest.subjects = JSON.parse(manifest.subjects.replace(/'/g, '"'))
   }
 
+  const removeDateRegexp = /^[-]?[0-9]{4}$/g
   // unique array of subject.term.spit on -- and trimed for space
+  // filter 4 diget dates
   ret.themeTag = [...new Set([].concat.apply([], manifest.subjects.map(m => splitTerms(m))).map(t => t.trim()))]
+  ret.themeTag = ret.themeTag.filter(t => !t.match(removeDateRegexp))
   // unique arrof the subject variants conated with the broader terms and trimed
+  // filter 4 diget dates
   ret.expandedThemeTag = [...new Set([].concat.apply([], manifest.subjects.map(m => addVariants(m).concat(addBroaderTerms(m)))).map(t => t.trim()))]
+  ret.expandedThemeTag = ret.expandedThemeTag.filter(t => !t.match(removeDateRegexp))
 
   return ret
 }
