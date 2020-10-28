@@ -5,6 +5,7 @@ import { BaseStyles, jsx } from 'theme-ui'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
 import ExternalLinkIcon from './ExternalLinkIcon'
+import TypeLabel from './TypeLabel'
 import { LayoutContext } from 'components/Internal/DisplayViewToggle'
 import sx from './sx'
 
@@ -12,6 +13,7 @@ const Card = ({
   target,
   label,
   image,
+  type,
   children,
   location,
   referal,
@@ -33,6 +35,7 @@ const Card = ({
             <div sx={sx.imageWrapper(wide)}>
               <div sx={sx.imageWrapperInner}>
                 <div sx={sx.imageBoarder}>
+                  <TypeLabel type={type} />
                   <Image
                     src={image || null}
                     service={imageService || null}
@@ -61,6 +64,7 @@ Card.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
+  type: PropTypes.string,
   imageService: PropTypes.string,
   imageRegion: PropTypes.string,
   children: PropTypes.node,

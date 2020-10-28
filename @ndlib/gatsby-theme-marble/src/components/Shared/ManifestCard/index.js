@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import Card from 'components/Shared/Card'
-import TypeLabel from './TypeLabel'
 import ManifestCardChildren from './ManifestCardChildren'
 import sx from './sx'
 
@@ -21,6 +20,7 @@ export const ManifestCard = (props) => {
         label={label}
         target={target}
         image={image}
+        type={type}
         {...props}
       >
         <ManifestCardChildren
@@ -29,7 +29,6 @@ export const ManifestCard = (props) => {
           parentProps={props}
         />
       </Card>
-      <TypeLabel type={type} />
     </div>
   )
 }

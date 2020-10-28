@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ManifestCard from './'
 import ManifestCardChildren from './ManifestCardChildren'
-import TypeLabel from './TypeLabel'
 import Card from 'components/Shared/Card'
 
 describe('ManifestCard', () => {
@@ -21,6 +20,5 @@ describe('ManifestCard', () => {
     expect(wrapper.find(Card).props().image).toEqual('my-image.jpg')
     expect(wrapper.find(ManifestCardChildren).props().date).toEqual(['date'])
     expect(wrapper.find(ManifestCardChildren).props().creator).toEqual(['creator'])
-    expect(wrapper.find(TypeLabel).props().type).toEqual('thing')
   })
 })

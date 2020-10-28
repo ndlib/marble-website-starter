@@ -1,15 +1,16 @@
 module.exports = {
   wrapper: {
+    opacity: '0.65',
     background: 'white',
     border: '1px solid',
     borderColor: 'gray.2',
-    left: '-10px',
+    left: '10px',
     lineHeight: '40px',
     position: 'absolute',
     top: '10px',
     borderRadius: '100px',
-    height: '48px',
-    width: '48px',
+    height: '36px',
+    width: '36px',
     verticalAlign: 'middle',
   },
 
@@ -17,10 +18,10 @@ module.exports = {
     verticalAlign: 'middle',
     textAlign: 'center',
     margin: '0 auto',
-    width: '24px',
+    width: '20px',
     position: 'absolute',
-    left: '11px',
-    top: '11px',
+    left: '7px',
+    top: '7px',
   },
 
 }
