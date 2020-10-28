@@ -22,7 +22,7 @@ export const ChildManifests = ({ marbleItem }) => {
               <ManifestCard
                 key={childItem}
                 target={childItem.slug}
-                image={typy(childItem, 'childrenMarbleFile[0].thumbnail').safeString}
+                image={typy(childItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
                 label={childItem.title}
                 showSummary
                 referal={{
