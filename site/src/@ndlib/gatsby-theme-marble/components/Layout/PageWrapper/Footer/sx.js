@@ -46,4 +46,7 @@ module.exports = {
     right: ['auto', '0', '0'],
     align: 'right',
   },
+  copyright: {
+    margin: '36px',
+  },
 }
