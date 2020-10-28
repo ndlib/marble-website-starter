@@ -156,3 +156,67 @@ test('it makes unique values out of the list', () => {
 
   expect(getKeywordsFromSubjects(manifest)).toEqual(test)
 })
+
+test('it removes 4 diget dates that are the only subject', () => {
+  const manifest = {
+    subjects: JSON.stringify([
+      {
+        display: ' 1643 ',
+        variants: [' 1642 '],
+      },
+      {
+        display: 'term3',
+        variants: [' term3 '],
+      },
+    ]),
+  }
+
+  const test = {
+    themeTag: ['term3'],
+    expandedThemeTag: ['term3'],
+  }
+
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
+})
+
+test('it removes 4 diget dashed dates from nested subjects', () => {
+  const manifest = {
+    subjects: JSON.stringify([
+      {
+        display: '-1643 ',
+        variants: [' -1642 '],
+      },
+      {
+        display: 'term3',
+        variants: [' term3 '],
+      },
+    ]),
+  }
+
+  const test = {
+    themeTag: ['term3'],
+    expandedThemeTag: ['term3'],
+  }
+
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
+})
+
+test('it removes duplicates in split subjects', () => {
+  const manifest = {
+    subjects: JSON.stringify([
+      {
+        display: 'Songs -- Peru -- Texts',
+      },
+      {
+        display: 'Popular music -- Peru',
+      },
+    ]),
+  }
+
+  const test = {
+    themeTag: ['Songs', 'Peru', 'Texts', 'Popular music'],
+    expandedThemeTag: [],
+  }
+
+  expect(getKeywordsFromSubjects(manifest)).toEqual(test)
+})
