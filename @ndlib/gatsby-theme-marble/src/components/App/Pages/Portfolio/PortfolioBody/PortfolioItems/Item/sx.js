@@ -4,7 +4,7 @@ module.exports = {
   },
   item: {
     padding: '.5rem 1rem',
-    '&:nth-child(2n)': {
+    '&:nth-of-type(even)': {
       backgroundColor: 'gray.0',
     },
   },

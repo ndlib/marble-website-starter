@@ -17,7 +17,7 @@ const RadioList = ({ options, fieldName, onChange }) => {
       {
         options.map(option => {
           return (
-            <React.Fragment key={option}>
+            <label key={option.value}>
               <input
                 type='radio'
                 name={fieldName}
@@ -46,7 +46,7 @@ const RadioList = ({ options, fieldName, onChange }) => {
                   {option.formattedLabel}
                 </div>
               </div>
-            </React.Fragment>
+            </label>
           )
         })
       }

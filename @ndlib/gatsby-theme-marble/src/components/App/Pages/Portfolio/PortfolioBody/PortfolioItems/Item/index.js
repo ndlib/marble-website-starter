@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import typy from 'typy'
@@ -22,10 +22,9 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
         image={item.image}
       >
         {
-          item.annotation && !annotated
-            ? <React.Fragment>
-              <p>{item.annotation}</p>
-            </React.Fragment> : null
+          item.annotation && !annotated ? (
+            <p>{item.annotation}</p>
+          ) : null
         }
       </Card>
       <ItemControls

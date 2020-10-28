@@ -45,7 +45,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
           changeEmail(event.target.value)
         }}
         disabled={patching}
-        valid={email.match(emailRegex)}
+        valid={emailRegex.test(email)}
         warning='Email must be a valid address.'
       />
       <TextArea

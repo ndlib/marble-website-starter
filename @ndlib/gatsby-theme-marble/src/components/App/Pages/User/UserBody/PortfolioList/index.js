@@ -24,7 +24,7 @@ const PortfolioList = ({
   const [settingsOpen, setSettingsOpen] = useState(false)
   if (portfolios.length > 0) {
     return (
-      <React.Fragment>
+      <>
         <DisplayViewToggle
           defaultDisplay={COMPILATIONS_LISTING_PAGE}
           extraControls={isOwner ? () => {
@@ -32,7 +32,8 @@ const PortfolioList = ({
               <span style={{
                 float: 'left',
                 verticalAlign: 'top',
-              }}>
+              }}
+              >
                 <NewPortfolioButton
                   addFunc={setPortfolios}
                   portfolios={portfolios}
@@ -54,41 +55,46 @@ const PortfolioList = ({
               .map((c, index) => {
                 return (
                   <div key={index} className={style.cardWrapper}>
-                    { isOwner
-                      ? <div className={style.deleteButton}>
-                        <MaterialButton
-                          primary
-                          wide
-                          onClick={() => setSettingsOpen(true)}
-                        >Delete</MaterialButton>
-                        <ActionModal
-                          isOpen={settingsOpen}
-                          contentLabel={`${c.title}`}
-                          closeFunc={() => setSettingsOpen(false)}
-                          fullscreen
-                        >
-                          <DangerDelete portfolio={index} />
-                        </ActionModal>
-                      </div>
-                      : null
+                    {
+                      isOwner
+                        ? (
+                          <div className={style.deleteButton}>
+                            <MaterialButton
+                              primary
+                              wide
+                              onClick={() => setSettingsOpen(true)}
+                            >Delete
+                            </MaterialButton>
+                            <ActionModal
+                              isOpen={settingsOpen}
+                              contentLabel={`${c.title}`}
+                              closeFunc={() => setSettingsOpen(false)}
+                              fullscreen
+                            >
+                              <DangerDelete portfolio={index} />
+                            </ActionModal>
+                          </div>
+                        ) : null
                     }
                     <Card
                       label={c.title}
                       target={`/myportfolio/${c.uuid}`}
                       image={c.image || ''}
-                    >{c.description}</Card>
-                    { isOwner
-                      ? <div>
-                        <VisibilityLabel visibility={c.privacy} />
-                      </div>
-                      : null
+                    >{c.description}
+                    </Card>
+                    {
+                      isOwner ? (
+                        <div>
+                          <VisibilityLabel visibility={c.privacy} />
+                        </div>
+                      ) : null
                     }
                   </div>
                 )
               })
           }
         </DisplayViewToggle>
-      </React.Fragment>
+      </>
     )
   }
   return <NoPortfolios isOwner={isOwner} />

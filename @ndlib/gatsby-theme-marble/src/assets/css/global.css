@@ -35,7 +35,7 @@ dd {
 dl div {
   padding: 0.5rem;
 }
-dl div:nth-child(2n) {
+dl div:nth-of-type(even) {
   background-color: #f0f0f0;
 }
 
