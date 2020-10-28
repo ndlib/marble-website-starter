@@ -26,23 +26,13 @@ module.exports = [
       },
       {
         id: 'footer-exhibits',
-        label: 'Exhibits',
+        label: 'Digital Exhibits',
         link: '/exhibits',
-      },
-      {
-        id: 'footer-search',
-        label: 'Search',
-        link: '/search',
       },
       {
         id: 'footer-about',
         label: 'About',
         link: '/about',
-      },
-      {
-        id: 'footer-learn',
-        label: 'Learn',
-        link: '/learn',
       },
       {
         id: 'footer-help',
