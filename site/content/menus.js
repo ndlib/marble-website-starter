@@ -44,6 +44,11 @@ module.exports = [
         label: 'Site Map',
         link: '/sitemap',
       },
+      {
+        id: 'accessibility',
+        label: 'Accessibility',
+        link: 'https://www.nd.edu/about/accessibility/',
+      },
     ],
   },
   {

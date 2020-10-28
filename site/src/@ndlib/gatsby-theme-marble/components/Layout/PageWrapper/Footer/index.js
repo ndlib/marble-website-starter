@@ -67,7 +67,6 @@ export const Footer = () => {
             </a>
             <div sx={sx.menuWrapper}>
               <Menu menu='footer' />
-              <a href='https://www.nd.edu/about/accessibility/' aria-label='Notre Dame Accessibility Information'>Accessibility</a>
             </div>
           </div>
         </div>
