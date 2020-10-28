@@ -13,4 +13,11 @@ describe('MetaDataValue', () => {
     const wrapper = shallow(<MetaDataSearchValue values={values} />)
     expect(wrapper.find('dd').exists()).toBeFalsy()
   })
+  test('expands --', () => {
+    const values = ['value 1 -- value 2']
+    const wrapper = shallow(<MetaDataSearchValue values={values} urlField='search' />)
+    expect(wrapper.find('Link').length).toEqual(2)
+    const test = '<dd><div class="css-z8jyup-BaseStyles"><span><a href="/search?search[0]=value 1">value 1</a> -- </span><span><a href="/search?search[0]=value 2">value 2</a></span></div></dd>'
+    expect(wrapper.html()).toEqual(test)
+  })
 })

@@ -8,11 +8,16 @@ const MetaDataSearchValue = ({ values, urlField }) => {
     <>
       {
         values.map(val => {
-          const search = '/search?' + urlField + '[0]=' + val
+          let links = splitTermsForSearch(val)
+          links = links.map((t, index) => {
+            const search = '/search?' + urlField + '[0]=' + t
+            return <span key={index}><Link to={search}>{t}</Link>{ index + 1 !== links.length ? ' -- ' : '' }</span>
+          })
+
           return (
             <dd key={val}>
               <BaseStyles>
-                <Link to={search}>{val}</Link>
+                {links}
               </BaseStyles>
             </dd>
           )
@@ -22,8 +27,13 @@ const MetaDataSearchValue = ({ values, urlField }) => {
   )
 }
 
+const splitTermsForSearch = (term) => {
+  return term.split('--').map(t => t.trim())
+}
+
 MetaDataSearchValue.propTypes = {
   values: PropTypes.array,
+  urlField: PropTypes.string,
 }
 
 MetaDataSearchValue.defaultProps = {
