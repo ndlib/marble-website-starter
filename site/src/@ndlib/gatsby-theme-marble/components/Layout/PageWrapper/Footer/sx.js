@@ -2,7 +2,6 @@ module.exports = {
   flexWrapper: {
     display: 'flex',
     flexDirection: [0, 1, 1],
-    justifyContent: 'space-evenly',
     margin: '0 auto 2rem',
     maxWidth: '1540px',
     width: 'calc(100vw - 60px)',
@@ -43,6 +42,7 @@ module.exports = {
   },
   footerRightColumn: {
     textAlign: 1,
+    position: ['relative', 'absolute', 'absolute'],
     right: ['auto', '0', '0'],
     align: 'right',
   },
