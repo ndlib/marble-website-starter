@@ -1,59 +1,72 @@
 /** @jsx jsx */
+import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import Item from './Item'
+import MaterialButton from 'components/Internal/MaterialButton'
 import NoItems from './NoItems'
-import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
-import { COMPILATION_PAGE } from 'store/actions/displayActions'
+import AnnotatedView from './AnnotatedView'
+import GridListView from './GridListView'
+import EditList from './EditList'
 import { usePortfolioContext } from 'context/PortfolioContext'
+import sx from './sx'
 
+// eslint-disable-next-line complexity
 const PortfolioItems = ({ isOwner }) => {
   const { portfolio } = usePortfolioContext()
+  const [editing, setEditing] = useState(false)
   const { items, layout, userId } = portfolio
   if (typy(portfolio, 'items').safeArray.length === 0) {
     return (
       <NoItems />
     )
   }
-
   const sortedItems = items.sort((i1, i2) => {
-    return i1.created - i2.created
+    return i1.displayOrder - i2.displayOrder
   })
-  if (layout === 'annotated') {
-    return (
-      <div className='grid'>
-        {
-          sortedItems.map(item => {
-            return (
-              <Item
-                item={item}
-                annotated
-                key={item.uuid}
-                userId={userId}
-                isOwner={isOwner}
-              />
-            )
-          })
-        }
-      </div>
+  let list
+  if (isOwner && editing) {
+    list = (
+      <EditList
+        items={sortedItems}
+        closeFunc={setEditing}
+      />
+    )
+  } else if (layout === 'annotated') {
+    list = (
+      <AnnotatedView
+        items={sortedItems}
+        isOwner={isOwner}
+        userId={userId}
+      />
+    )
+  } else {
+    list = (
+      <GridListView
+        items={sortedItems}
+        isOwner={isOwner}
+        userId={userId}
+      />
     )
   }
+
   return (
-    <DisplayViewToggle defaultDisplay={COMPILATION_PAGE}>
-      {
-        sortedItems.map(item => {
-          return (
-            <Item
-              item={item}
-              key={item.uuid}
-              userId={userId}
-              isOwner={isOwner}
-            />
+    <div>
+      <div sx={sx.reorderButton}>
+        {
+          editing ? null : (
+            <MaterialButton
+              wide
+              onClick={() => {
+                setEditing(!editing)
+              }}
+            >Sort Items
+            </MaterialButton>
           )
-        })
-      }
-    </DisplayViewToggle>
+        }
+      </div>
+      {list}
+    </div>
   )
 }
 
