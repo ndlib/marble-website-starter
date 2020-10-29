@@ -6,5 +6,8 @@ module.exports = {
   controls: {
     textAlign: 'right',
     width: '100%',
+    '& button': {
+      marginLeft: '.5rem',
+    },
   },
 }

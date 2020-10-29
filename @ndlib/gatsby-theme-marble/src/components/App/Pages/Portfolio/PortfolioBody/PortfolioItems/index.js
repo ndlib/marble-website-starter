@@ -54,7 +54,7 @@ const PortfolioItems = ({ isOwner }) => {
     <div>
       <div sx={sx.reorderButton}>
         {
-          editing ? null : (
+          isOwner && !editing ? (
             <MaterialButton
               wide
               onClick={() => {
@@ -62,7 +62,7 @@ const PortfolioItems = ({ isOwner }) => {
               }}
             >Sort Items
             </MaterialButton>
-          )
+          ) : null
         }
       </div>
       {list}
