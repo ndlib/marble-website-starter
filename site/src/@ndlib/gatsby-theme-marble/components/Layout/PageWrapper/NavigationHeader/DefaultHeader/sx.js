@@ -1,5 +1,3 @@
-const banner = require('assets/images/banner.swirl.png')
-
 module.exports = {
   wrapper: {
     borderTop: '5px solid #D39F10',
@@ -12,16 +10,6 @@ module.exports = {
     overflow: 'hidden',
     height: ['170px', '100px', '100px'],
     width: '100vw',
-  },
-  swirly: {
-    backgroundImage: `url(${banner})`,
-    backgroundPosition: 'center',
-    position: 'absolute',
-    height: '380px',
-    width: 'calc(100vw + 20px)',
-    left: '-10px',
-    top: '-10px',
-    filter: 'blur(5px)',
   },
   topBar: {
     width: ['100vw', '600px', '600px'],

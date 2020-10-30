@@ -7,12 +7,13 @@ import ndLogo from 'assets/svg/ND_mark_white.svg'
 import ndWordmark from 'assets/images/ND_wordmark_white.png'
 import marbleLogo from 'assets/svg/Marble.Logo.svg'
 import sx from './sx'
+import HeroBackground from '../HeroBackground'
 
 export const DefaultHeader = ({ location }) => {
   return (
     <div sx={sx.wrapper}>
       <div sx={sx.backgroundWrapper}>
-        <div sx={sx.swirly} />
+        <HeroBackground />
       </div>
       <div sx={sx.heroWrapper}>
         <Link to='/'>
