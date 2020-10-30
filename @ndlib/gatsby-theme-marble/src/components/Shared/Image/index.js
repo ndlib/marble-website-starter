@@ -24,6 +24,7 @@ const Image = ({
         alt={alt || ''}
         title={title}
         sx={sx.fallBack}
+        loading='lazy'
       />
     </picture>
   )
