@@ -1,5 +1,3 @@
-// const banner = require('assets/images/banner.swirl.png')
-
 module.exports = {
   wrapper: {
     borderTop: '5px solid #D39F10',
