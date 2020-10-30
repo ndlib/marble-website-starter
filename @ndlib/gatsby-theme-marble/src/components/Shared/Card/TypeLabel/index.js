@@ -20,7 +20,7 @@ const TypeLabel = ({ type }) => {
 }
 
 TypeLabel.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 }
 
 export default TypeLabel
