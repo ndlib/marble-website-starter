@@ -6,8 +6,8 @@ import { Footer as ThemeFooter, jsx } from 'theme-ui'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import marbleLogo from 'assets/svg/Marble.Logo.svg'
 import sniteLogo from 'assets/svg/Snite.One.Line.W.svg'
-import libraryLogo from 'assets/images/library.logo.png'
-import ndLogo from 'assets/images/ND_mark_white_M.png'
+import libraryLogo from 'assets/images/hesburgh_mark_H2_white.svg'
+import ndLogo from 'assets/images/ND_mark_white.svg'
 import sx from './sx'
 export const Footer = () => {
   return (
