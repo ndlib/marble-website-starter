@@ -17,7 +17,6 @@ export const HomeHeader = ({ location }) => {
     <>
       <WordMark />
       <div sx={sx.wrapper}>
-
         <HeroBackground />
         <div sx={sx.heroWrapper}>
           <img

@@ -15,7 +15,7 @@ const BrowseBar = ({
       <div sx={sx.browseImage}>
         <Image
           src={image || null}
-          alt={label || null}
+          alt=''
         />
       </div>
       <div sx={sx.label}>

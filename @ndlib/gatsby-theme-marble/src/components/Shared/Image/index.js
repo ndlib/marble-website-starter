@@ -7,7 +7,7 @@ import { jsx } from 'theme-ui'
 import sx from './sx'
 
 // See https://iiif.io/api/image/2.1/#image-request-parameters for image server request parameters.
-// eslint-disable-next-line complexity
+
 const Image = ({
   service, // iiif Image service
   region, // 'full', 'square', or format: `x,y,w,h`, `pct:x,y,w,h`
@@ -19,6 +19,7 @@ const Image = ({
   const imageSrc = src || serviceURL(service, region, size) || noImage
   return (
     <picture>
+      <source srcSet={imageSrc.replace('.jpg', '.webp')} type='image/webp' />
       <img
         src={imageSrc}
         alt={alt || ''}
