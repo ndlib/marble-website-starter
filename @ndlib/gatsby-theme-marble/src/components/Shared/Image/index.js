@@ -19,7 +19,14 @@ const Image = ({
   const imageSrc = src || serviceURL(service, region, size) || noImage
   return (
     <picture>
-      <source srcSet={imageSrc.replace('.jpg', '.webp')} type='image/webp' />
+      {
+        imageSrc.includes('static') ? null : (
+          <source
+            srcSet={imageSrc.replace('.jpg', '.webp')}
+            type='image/webp'
+          />
+        )
+      }
       <img
         src={imageSrc}
         alt={alt || ''}
