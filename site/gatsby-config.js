@@ -33,5 +33,11 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: configuration.manifest,
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'jhartzle-test-website-upload',
+      },
+    },
   ],
 }
