@@ -15,7 +15,7 @@ const WordMark = () => {
     backgroundRepeat: 'no-repeat',
     display: 'block',
     lineHeight: '48px',
-    margin: '0 auto',
+    margin: '0 5vw',
     textIndent: '-9999px',
     overflow: 'hidden',
     width: '301px',

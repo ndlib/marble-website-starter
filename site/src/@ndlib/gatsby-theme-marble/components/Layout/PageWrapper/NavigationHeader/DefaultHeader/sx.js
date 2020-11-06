@@ -84,7 +84,7 @@ module.exports = {
   ndLogo: {
     width: '180px',
     position: 'absolute',
-    right: '70px',
+    right: '100px',
     top: '30px',
     display: ['none', 'block', 'block'],
   },
@@ -92,7 +92,6 @@ module.exports = {
     width: '301px',
     height: '50px',
     position: 'absolute',
-    right: 'calc(50vw - 150px)',
     top: '0',
     display: ['block', 'none', 'none'],
   },
