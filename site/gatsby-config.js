@@ -1,4 +1,6 @@
 const configuration = require('./content/configuration')
+const s3BucketName = process.env.S3_BUCKET_NAME || ''
+
 module.exports = {
   siteMetadata: configuration.siteMetadata,
   plugins: [
@@ -36,7 +38,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: 'jhartzle-test-website-upload',
+        bucketName: s3BucketName,
       },
     },
   ],

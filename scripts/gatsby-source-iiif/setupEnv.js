@@ -11,6 +11,7 @@ const possibleKeys = [
   'AUTH_CLIENT_ID',
   'AUTH_CLIENT_URL',
   'AUTH_CLIENT_ISSUER',
+  'S3_BUCKET_NAME',
 ]
 
 const retrieveStageParameters = async () => {
@@ -24,6 +25,7 @@ const retrieveStageParameters = async () => {
       AUTH_CLIENT_URL: 'https://okta.nd.edu',
       AUTH_CLIENT_ID: '0oa1f3ut0aKpdwap5357',
       AUTH_CLIENT_ISSUER: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
+      S3_BUCKET_NAME: '',
     }
   } else {
     const ssm = new AWS.SSM({ region: 'us-east-1' })
