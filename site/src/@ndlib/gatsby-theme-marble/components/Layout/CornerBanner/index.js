@@ -1,6 +1,5 @@
 import React from 'react'
 import style from './style.module.css'
-import Link from 'components/Internal/Link'
 
 const CornerBanner = () => {
   return (
