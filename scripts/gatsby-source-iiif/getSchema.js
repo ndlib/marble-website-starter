@@ -13,7 +13,6 @@ const fetchData = async (seeAlso) => {
   const finalResult = []
   const errorResult = []
   await Promise.all(seeAlso.map(async item => {
-    console.log('Processing: ' + item)
     const url = 'https://presentation-iiif.library.nd.edu/' + item + '/standard'
     const result = await fetchUntilGood(url, finalResult, errorResult, 0)
     return result
@@ -27,7 +26,6 @@ const fetchData = async (seeAlso) => {
         // eslint-disable-next-line no-useless-escape
         const regex = new RegExp('[.\s]', 'g')
         fs.writeFileSync(path.join(directory, `/content/json/nd/${result.id.trim().replace(regex, '_')}.json`), JSON.stringify(result, null, 2))
-        console.log('write:', result.id)
       })
     })
     .catch(error => {
