@@ -1,5 +1,6 @@
 import React from 'react'
 import style from './style.module.css'
+import Link from 'components/Internal/Link'
 
 const CornerBanner = () => {
   return (
@@ -8,7 +9,7 @@ const CornerBanner = () => {
       className={style.constructionBanner}
     >
       <div className={style.constructionStripes} />
-      <div className={style.versionText}>Beta Preview</div>
+      <div className={style.versionText}>This is a beta preview of the MARBLE website.</div>
       <div className={style.constructionStripes} />
     </a>
   )
