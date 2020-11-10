@@ -9,6 +9,15 @@ const PageContent = ({
   children,
   location,
 }) => {
+  location.state = children[0].props.data.marbleItem.marbleParent ? (
+    {
+      referal: {
+        parentName: children[0].props.data.marbleItem.marbleParent.title,
+        type: 'item',
+        backLink: children[0].props.data.marbleItem.marbleParent.slug,
+      },
+    }
+  ) : null
   return (
     <Main id='mainContent'>
       <ReturnToSearch location={location} />

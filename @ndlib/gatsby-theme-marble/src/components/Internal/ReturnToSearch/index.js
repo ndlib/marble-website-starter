@@ -19,7 +19,7 @@ export const ReturnToSearch = ({ location }) => {
       linkText = t('common:item.returnToSearch')
       target = `/search${location.state.referal.query}`
     } else if (typy(location, 'state.referal.type').safeString === 'item') {
-      linkText = location.state.referal.parentName
+      linkText = `Return to ${location.state.referal.parentName} Collection`
       target = `${location.state.referal.backLink}`
     }
     return (
