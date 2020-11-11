@@ -18,7 +18,7 @@ const BrowseBar = ({
           type='image/webp'
         />
         <img
-          alt='label'
+          alt={label}
           src={image}
         />
       </picture>
