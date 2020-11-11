@@ -52,17 +52,6 @@ module.exports = ({
       },
     },
     'gatsby-remark-copy-linked-files',
-    // Markdown pages
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        tableOfContents: {
-          pathToSlugField: 'frontmatter.slug',
-          heading: null,
-          maxDepth: 6,
-        },
-      },
-    },
     // Themes do not use the pages directory by default so we add it in manually.
     {
       resolve : 'gatsby-plugin-page-creator',
