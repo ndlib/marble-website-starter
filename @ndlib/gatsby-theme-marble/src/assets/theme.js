@@ -126,7 +126,7 @@ export const theme = {
       },
     },
     a: {
-      color: '#FFFFFF',
+      color: 'primary',
       wordBreak: 'break-word',
     },
     h1: {
