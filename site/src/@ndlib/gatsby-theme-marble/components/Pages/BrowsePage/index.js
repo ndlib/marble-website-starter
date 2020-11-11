@@ -117,7 +117,7 @@ const Browse = ({ location }) => {
   const locations = [
     {
       label: 'Rare Books & Special Collections',
-      target: '/search?campuslocation[0]=Rare%20Books%20and%20Special%20Collections',
+      target: '/search?campuslocation[0]=Rare%20Books%20%26%20Special%20Collections',
     },
     {
       label: 'Snite Museum of Art',
