@@ -9,7 +9,7 @@ module.exports = {
   text: {
     verticalAlign: 'top',
     fontSize: '0.8rem',
-    lineHeight: '1.7rem',
+    lineHeight: '2.2rem',
     paddingLeft: '0.2rem',
   },
 }

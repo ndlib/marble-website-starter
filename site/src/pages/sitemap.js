@@ -91,17 +91,6 @@ export const query = graphql`
         }
       }
     }
-    allMarkdownRemark {
-      edges {
-        node {
-          id
-          frontmatter {
-            slug
-            title
-          }
-        }
-      }
-    }
   }
 `
 
