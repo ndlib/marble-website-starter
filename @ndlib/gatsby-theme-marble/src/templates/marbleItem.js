@@ -45,6 +45,10 @@ export const query = graphql`
         value
         type
       }
+      marbleParent {
+        title
+        slug
+      }
       childrenMarbleItem {
         title
         slug
