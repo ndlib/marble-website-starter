@@ -22,9 +22,9 @@ module.exports = {
 
   },
   label: {
-    marginTop: '1.75rem',
-    marginRight: '1rem',
     fontSize: ['32px', '18px', '18px'],
-    textAlign: 'center',
+    transform: 'translate(0%, -50%)',
+    position: 'relative',
+    top: '50%',
   },
 }
