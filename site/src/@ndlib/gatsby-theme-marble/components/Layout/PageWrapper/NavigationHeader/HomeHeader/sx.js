@@ -1,20 +1,9 @@
-const banner = require('assets/images/banner.swirl.png')
-
 module.exports = {
   wrapper: {
     borderTop: '5px solid #D39F10',
     position: 'relative',
-    height: '380px',
+    height: ['290px', '380px', '380px'],
     overflow: 'hidden',
-  },
-  swirly: {
-    backgroundImage: `url(${banner})`,
-    backgroundPosition: 'center',
-    position: 'absolute',
-    height: '380px',
-    width: 'calc(100vw + 20px)',
-    left: '-10px',
-    filter: 'blur(5px)',
   },
   topBar: {
     width: '100vw',
@@ -80,7 +69,7 @@ module.exports = {
     display: ['block', 'none', 'none'],
   },
   heroWrapper: {
-    height: '330px',
+    height: ['260px', '330px', '330px'],
     margin: '0 auto 0',
     padding: '1rem',
     width: '100%',
@@ -88,10 +77,11 @@ module.exports = {
     maxWidth: '1540px',
   },
   marbleLogo: {
-    width: ['480px', '440px', '520px'],
+    width: ['420px', '440px', '520px'],
+    margin: ['0 50%', '0 20px', '0 20px'],
     maxWidth: '95%',
-    top: ['100px', '110px', '80px'],
-    left: ['calc(20vw - 60px)', '0', '0'],
+    top: ['70px', '110px', '80px'],
+    left: ['calc(-50% + 40px)', '0', '0'],
     position: 'absolute',
   },
   text: {

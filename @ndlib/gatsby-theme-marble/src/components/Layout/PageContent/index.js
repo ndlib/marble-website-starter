@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Main, BaseStyles } from 'theme-ui'
 import UserAnnotation from 'components/Internal/UserAnnotation'
 import ReturnToSearch from 'components/Internal/ReturnToSearch'
+import ParentLink from 'components/Internal/ParentLink'
 
 const PageContent = ({
   title,
@@ -12,6 +13,7 @@ const PageContent = ({
   return (
     <Main id='mainContent'>
       <ReturnToSearch location={location} />
+      <ParentLink>{children}</ParentLink>
       {title ? <BaseStyles><h1>{title}</h1></BaseStyles> : null}
       <UserAnnotation location={location} />
       <article>{children}</article>

@@ -2,22 +2,26 @@
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import Link from 'components/Internal/Link'
-import Image from 'components/Shared/Image'
 import sx from './sx'
 
 const BrowseBar = ({
   label,
   target,
   image,
+  imageNext,
 }) => {
   return (
     <Link to={target} sx={sx.browseSection}>
-      <div sx={sx.browseImage}>
-        <Image
-          src={image || null}
-          alt={label || null}
+      <picture sx={sx.browseImage}>
+        <source
+          srcSet={imageNext}
+          type='image/webp'
         />
-      </div>
+        <img
+          alt={label}
+          src={image}
+        />
+      </picture>
       <div sx={sx.label}>
         {label}
       </div>
@@ -29,6 +33,7 @@ BrowseBar.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
+  imageNext: PropTypes.string,
 }
 
 export default BrowseBar

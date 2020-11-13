@@ -44,25 +44,6 @@ module.exports = ({
         path: `${contentPath}/images`,
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'pages',
-        path: `${contentPath}/markdown`,
-      },
-    },
-    'gatsby-remark-copy-linked-files',
-    // Markdown pages
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        tableOfContents: {
-          pathToSlugField: 'frontmatter.slug',
-          heading: null,
-          maxDepth: 6,
-        },
-      },
-    },
     // Themes do not use the pages directory by default so we add it in manually.
     {
       resolve : 'gatsby-plugin-page-creator',

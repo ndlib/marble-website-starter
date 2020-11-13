@@ -7,6 +7,7 @@
   "main": "index.js",
   "dependencies": {
     "@babel/core": "^7.10.2",
+    "@babel/helper-skip-transparent-expression-wrappers": "^7.12.1",
     "@blueprintjs/core": "^3.31.0",
     "@blueprintjs/icons": "^3.20.1",
     "@emotion/core": "^10.0.15",
@@ -81,6 +82,7 @@
     "react-reconciler": "^0.21.0",
     "react-redux": "^7.0.2",
     "react-select": "^3.0.4",
+    "react-sortable-dnd-list": "^1.0.1",
     "react-typography": "^0.16.19",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",

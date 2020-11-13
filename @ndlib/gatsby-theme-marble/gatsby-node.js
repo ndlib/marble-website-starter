@@ -60,6 +60,8 @@ exports.sourceNodes = ({ actions }) => {
     childrenMarbleItem: [MarbleItem]
     childrenMarbleFile: [MarbleFile]
     citation: String
+    parentId: String
+    marbleParent: MarbleItem @link(by: "id", from: "parentId")
   }
 
   # things expected to be there
@@ -90,6 +92,9 @@ exports.sourceNodes = ({ actions }) => {
     issuer: String
   }
   type SiteMetadata @dontInfer {
+    title: String!
+    description: String!
+    author: String!
     universalViewerBaseURL: String
     googleMapApiURL: String
     iiifHelpURL: String
@@ -102,9 +107,6 @@ exports.sourceNodes = ({ actions }) => {
     authClient: authClient
     searchPath: String
     languages: languages
-  }
-  type Site implements Node {
-    siteMetadata: SiteMetadata
   }
   `
   createTypes(typeDefs)
@@ -133,13 +135,6 @@ exports.createPages = ({ graphql, actions }) => {
         nodes {
           id
           slug
-        }
-      }
-      allMarkdownRemark {
-        nodes {
-          frontmatter{
-            slug
-          }
         }
       }
     }
@@ -216,6 +211,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
       ...mappedFields,
       id: nodeId,
       marbleId: standardJson.id,
+      parentId: parent ? parent.id : null,
       internal: {
         type: 'MarbleItem',
       },

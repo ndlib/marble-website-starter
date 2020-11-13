@@ -1,15 +1,24 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import Link from 'components/Internal/Link'
+import typy from 'typy'
+import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'
 import image2 from 'assets/images/BaseballCover.jpg'
 import image3 from 'assets/images/BLOG-EarlyCatholicAmerica.jpg'
 import image4 from 'assets/images/Vote_poster-001.jpg'
 import image5 from 'assets/images/DigitalDisplayHoriz.jpg'
 import image6 from 'assets/images/cc.png'
+import sx from './sx'
 
 const ExhibitsPage = () => {
+  const context = useThemeUI()
+
+  const iconColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
+
   const exhibits = [
     {
       label: 'Men and women should stand as equals',
@@ -43,7 +52,7 @@ const ExhibitsPage = () => {
     },
   ]
   return (
-    <>
+    <BaseStyles>
       <div>
         <p>Looking for other ways to explore digital collections at the University of Notre Dame? Take a deeper dive with some of the digital exhibits created by students, faculty, and staff.</p>
       </div>
@@ -61,8 +70,22 @@ const ExhibitsPage = () => {
           })
         }
       </CardGroup>
-      <p><Link to='https://collections.library.nd.edu/'>See more digital exhibits.</Link></p>
-    </>
+      <p sx={sx.moreLink}>
+        <Link
+          to='https://collections.library.nd.edu/'
+          sx={sx.link}
+        >
+          <span sx={sx.text}>
+            See more digital exhibits
+          </span>
+          <svg sx={sx.svg} xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24'>
+            <path d='M0 0h24v24H0z' fill='none' />
+            <path d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z' fill={iconColor} />
+          </svg>
+        </Link>
+      </p>
+    </BaseStyles>
+
   )
 }
 
