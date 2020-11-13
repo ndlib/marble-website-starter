@@ -8,13 +8,13 @@ import sx from './sx'
 const ItemControls = ({ item, isOwner, setEditFunc }) => {
   if (isOwner) {
     return (
-      <span sx={sx.wrapper}>
+      <div sx={sx.wrapper}>
         <EditButton
           isOwner={isOwner}
           setEditFunc={setEditFunc}
         />
         <DeleteItemButton item={item} />
-      </span>
+      </div>
     )
   }
   return null

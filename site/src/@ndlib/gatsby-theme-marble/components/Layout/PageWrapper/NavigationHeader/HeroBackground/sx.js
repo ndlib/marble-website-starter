@@ -6,6 +6,6 @@ module.exports = {
     position: 'absolute',
   },
   picture: {
-    filter: 'blur(4px)',
+    filter: 'blur(1px)',
   },
 }

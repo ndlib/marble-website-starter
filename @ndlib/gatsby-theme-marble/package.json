@@ -7,6 +7,7 @@
   "main": "index.js",
   "dependencies": {
     "@babel/core": "^7.10.2",
+    "@babel/helper-skip-transparent-expression-wrappers": "^7.12.1",
     "@blueprintjs/core": "^3.31.0",
     "@blueprintjs/icons": "^3.20.1",
     "@emotion/core": "^10.0.15",
