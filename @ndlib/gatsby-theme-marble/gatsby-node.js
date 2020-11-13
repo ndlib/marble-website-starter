@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const mapStandardJson = require(path.join(__dirname, 'src/utils/mapStandardJson'))
+const pruneEmptyLeaves = require(path.join(__dirname, 'src/utils/pruneEmptyLeaves'))
 const fileMetadata = require(path.join(__dirname, 'src/utils/mapStandardJson/fileMetadata'))
 
 // Make sure the data directory exists
@@ -241,6 +242,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
   }
 
   if (node.internal.type === 'NdJson') {
+    pruneEmptyLeaves(node)
     crawlStandardJson(node)
   }
 }
