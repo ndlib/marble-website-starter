@@ -4,6 +4,8 @@ module.exports = (standardJson) => {
   fixLevel(standardJson)
 }
 
+// fix level fixes the case where a collection could recieve files without a minfest in the middle.
+// truth be told this may not be possible.
 const fixLevel = (standardJson) => {
   if (standardJson.level === 'collection' && testHasFiles(standardJson)) {
     standardJson.level = 'manifest'
