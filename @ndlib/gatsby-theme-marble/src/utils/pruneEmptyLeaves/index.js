@@ -1,6 +1,15 @@
 module.exports = (standardJson) => {
   removeManifestsWithoutFiles(standardJson)
   removeLevelsWithOneItem(standardJson)
+  fixLevel(standardJson)
+}
+
+const fixLevel = (standardJson) => {
+  if (standardJson.level === 'collection' && testHasFiles(standardJson)) {
+    standardJson.level = 'manifest'
+  } else if (testHasItems(standardJson)) {
+    standardJson.items.forEach(item => fixLevel(item))
+  }
 }
 
 // looks at all the children of this level if they have files it keeps this item

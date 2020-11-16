@@ -187,7 +187,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
 
   const crawlStandardJson = (standardJson, collection, parent) => {
     const nodeId = createNodeId(standardJson.id)
-
     if (standardJson.level.toLowerCase() === 'file') {
       const filedata = fileMetadata(standardJson)
       const normalizedTypeNode = {
