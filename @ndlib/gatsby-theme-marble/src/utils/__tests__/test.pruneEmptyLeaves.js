@@ -1,7 +1,6 @@
 
 import pruneEmptyLeaves from '../pruneEmptyLeaves'
 const savedFixtureData = require('./fixtures/simple_prune.json')
-const bigFixtureData = require('./fixtures/CFJ_EAD.json')
 let fixtureData = {}
 
 describe('mapStandardJsonMetadata', () => {
@@ -25,11 +24,5 @@ describe('mapStandardJsonMetadata', () => {
     pruneEmptyLeaves(fixtureData)
     const item = fixtureData.items.find((item) => item.title === 'collapse-middle')
     expect(item.items[0].title).toEqual('collapse-middle-level-withmanifest3')
-  })
-
-  test('big data', () => {
-    console.log('here---->')
-    pruneEmptyLeaves(bigFixtureData)
-    console.log(bigFixtureData.items[0])
   })
 })
