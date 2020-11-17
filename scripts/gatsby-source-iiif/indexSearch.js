@@ -9,6 +9,7 @@ const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 const getCreators = require('./src/getCreators')
 const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
+const recursiveSearchIds = ['BPP1001_EAD']
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
@@ -352,6 +353,18 @@ const configIndexMappings = async () => {
   return mappings
 }
 
+const recursiveSearchDataFromManifest = (manifest) => {
+  const ret = []
+  manifest.items.forEach(item => {
+    if (item.level !== 'file') {
+      console.log('recur', manifest.id)
+      ret.push(getSearchDataFromManifest(item))
+      ret.concat(recursiveSearchDataFromManifest(item))
+    }
+  })
+  return ret
+}
+
 const writeDirectory = path.join(directory, '/content/search/')
 
 // eslint-disable-next-line
@@ -361,11 +374,15 @@ new Promise(async (resolve, reject) => {
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
+      if (manifest.hierarchySearchable || recursiveSearchIds.includes(manifest.id)) {
+        console.log('Manifest', manifest.title)
+        recursiveSearchDataFromManifest(manifest)
+      }
     }
   })
 
-  await setupIndex()
-  await indexToElasticSearch(writeData)
+  //  await setupIndex()
+  //  await indexToElasticSearch(writeData)
   console.log('Writing Search Data to gatsby')
   fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
