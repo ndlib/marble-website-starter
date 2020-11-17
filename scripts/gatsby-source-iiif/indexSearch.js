@@ -29,7 +29,6 @@ require('dotenv').config({
 })
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
-
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
 }
@@ -39,6 +38,7 @@ const options = {
   port:443,
   protocol:'https',
   connectionClass: auth,
+  requestTimeout: 60000,
   awsConfig: new AWS.Config({ region: 'us-east-1' }),
 }
 const client = Client(options)
@@ -189,7 +189,7 @@ const indexToElasticSearch = async (searchData) => {
         })
       }
     })
-    console.log('error documents', erroredDocuments)
+    console.error('error documents', erroredDocuments)
   }
 
   console.log('Finished Index')
@@ -354,12 +354,11 @@ const configIndexMappings = async () => {
 }
 
 const recursiveSearchDataFromManifest = (manifest) => {
-  const ret = []
+  let ret = []
   manifest.items.forEach(item => {
     if (item.level !== 'file') {
-      console.log('recur', manifest.id)
       ret.push(getSearchDataFromManifest(item))
-      ret.concat(recursiveSearchDataFromManifest(item))
+      ret = ret.concat(recursiveSearchDataFromManifest(item))
     }
   })
   return ret
@@ -370,19 +369,19 @@ const writeDirectory = path.join(directory, '/content/search/')
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
   const manifests = loadManifestData()
-  const writeData = []
+  let writeData = []
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
       if (manifest.hierarchySearchable || recursiveSearchIds.includes(manifest.id)) {
-        console.log('Manifest', manifest.title)
-        recursiveSearchDataFromManifest(manifest)
+        const children = recursiveSearchDataFromManifest(manifest)
+        writeData = writeData.concat(children)
       }
     }
   })
 
-  //  await setupIndex()
-  //  await indexToElasticSearch(writeData)
+  await setupIndex()
+  await indexToElasticSearch(writeData)
   console.log('Writing Search Data to gatsby')
   fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
