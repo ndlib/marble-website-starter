@@ -9,6 +9,7 @@ const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 const getCreators = require('./src/getCreators')
 const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
+const additionalRecursiveSearchIds = ['BPP1001_EAD']
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
@@ -28,7 +29,6 @@ require('dotenv').config({
 })
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
-
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
 }
@@ -38,6 +38,7 @@ const options = {
   port:443,
   protocol:'https',
   connectionClass: auth,
+  requestTimeout: 60000,
   awsConfig: new AWS.Config({ region: 'us-east-1' }),
 }
 const client = Client(options)
@@ -188,7 +189,7 @@ const indexToElasticSearch = async (searchData) => {
         })
       }
     })
-    console.log('error documents', erroredDocuments)
+    console.error('error documents', erroredDocuments)
   }
 
   console.log('Finished Index')
@@ -352,15 +353,30 @@ const configIndexMappings = async () => {
   return mappings
 }
 
+const recursiveSearchDataFromManifest = (manifest) => {
+  let ret = []
+  manifest.items.forEach(item => {
+    if (item.level !== 'file') {
+      ret.push(getSearchDataFromManifest(item))
+      ret = ret.concat(recursiveSearchDataFromManifest(item))
+    }
+  })
+  return ret
+}
+
 const writeDirectory = path.join(directory, '/content/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
   const manifests = loadManifestData()
-  const writeData = []
+  let writeData = []
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
+      if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
+        const children = recursiveSearchDataFromManifest(manifest)
+        writeData = writeData.concat(children)
+      }
     }
   })
 
