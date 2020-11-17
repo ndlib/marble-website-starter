@@ -6,7 +6,6 @@ import Seo, {
   getImage,
   getDescription,
   getAuthor,
-  getDescriptionFromMetadata,
 } from './'
 import SeoContent from 'components/Internal/Seo/SeoContent'
 describe('Seo', () => {
@@ -94,33 +93,6 @@ describe('Seo', () => {
     actual = getAuthor('', siteMetadata)
     expect(actual).toEqual('Bill Nye the Science Guy')
     actual = getAuthor(null, null)
-    expect(actual).toEqual(null)
-  })
-
-  test('getDescriptionFromMetadata', () => {
-    const siteMetadata = {
-      languages: {
-        default: 'tlh',
-      },
-    }
-    const frontmatter = {
-      iiifJson: {
-        metadata: [
-          {
-            label: {
-              tlh: ['Summary'],
-            },
-            value: {
-              tlh: ['You are a disappointment to the empire.'],
-            },
-          },
-        ],
-      },
-    }
-
-    let actual = getDescriptionFromMetadata(frontmatter, siteMetadata)
-    expect(actual).toEqual('You are a disappointment to the empire.')
-    actual = getDescriptionFromMetadata({}, siteMetadata)
     expect(actual).toEqual(null)
   })
 

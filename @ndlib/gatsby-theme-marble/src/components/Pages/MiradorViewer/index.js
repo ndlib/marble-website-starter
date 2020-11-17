@@ -89,7 +89,7 @@ const MiradorViewerPage = ({ data, location }) => {
       <Seo
         data={data}
         location={location}
-        title={`Mirador Viewer | ${manifestTitle}`}
+        title={`${manifestTitle}` | `Mirador Viewer` }
         description={`Mirador viewer viewing ${manifestTitle}.`}
         image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
         noIndex
