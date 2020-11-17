@@ -18,9 +18,10 @@ const fixLevel = (standardJson) => {
 // otherwise ir removes
 // if child of this item has manifests it recures this function
 const removeManifestsWithoutFiles = (standardJson) => {
-  if (!standardJson.items) {
-    return false
+  if (!standardJson.items || testHasFiles(standardJson)) {
+    return
   }
+
   const newItems = []
   standardJson.items.forEach((child) => {
     if (childrenHaveFiles(child)) {
@@ -40,8 +41,8 @@ const removeManifestsWithoutFiles = (standardJson) => {
 // - remove
 // -- child with files
 const removeLevelsWithOneItem = (standardJson) => {
-  if (!standardJson.items) {
-    return false
+  if (!standardJson.items || testHasFiles(standardJson)) {
+    return
   }
 
   // if this item has only one child and that child has files
@@ -50,7 +51,7 @@ const removeLevelsWithOneItem = (standardJson) => {
   if (standardJson.items.length === 1 && !testHasFiles(standardJson.items[0])) {
     standardJson.items = standardJson.items[0].items
     removeLevelsWithOneItem(standardJson)
-    return false
+    return
   }
   // search down the tree to look for more of the remove cases
   standardJson.items.forEach((item) => {
@@ -58,8 +59,6 @@ const removeLevelsWithOneItem = (standardJson) => {
       removeLevelsWithOneItem(item)
     }
   })
-
-  return false
 }
 
 // does any of this items children have files

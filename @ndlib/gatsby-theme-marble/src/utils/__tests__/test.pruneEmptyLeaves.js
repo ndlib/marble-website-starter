@@ -8,6 +8,13 @@ describe('mapStandardJsonMetadata', () => {
     fixtureData = { ...savedFixtureData }
   })
 
+  test('it does not prune files of single level objects', () => {
+    const manifestFile = require('./fixtures/single-level.json')
+    expect(manifestFile.items.length).toEqual(1)
+    pruneEmptyLeaves(manifestFile)
+    expect(manifestFile.items.length).toEqual(1)
+  })
+
   test('it should remove empty first level records', () => {
     expect(fixtureData.items.map((item) => item.title)).toContain('should be removed')
     pruneEmptyLeaves(fixtureData)
