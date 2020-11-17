@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next'
 export const ReturnToSearch = ({ location }) => {
   const { t } = useTranslation()
   const context = useThemeUI()
-  const iconColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
+  const iconColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
   if (typy(location, 'state.referal.type').isString) {
     let linkText = ''
     let target = ''
