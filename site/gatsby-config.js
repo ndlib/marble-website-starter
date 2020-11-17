@@ -33,5 +33,14 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: configuration.manifest,
     },
+    {
+    resolve: 'gatsby-plugin-preconnect',
+    options: {
+      domains: [
+        'https://static.nd.edu',
+        'https://image-iiif.library.nd.edu',
+      ],
+    },
+  },
   ],
 }
