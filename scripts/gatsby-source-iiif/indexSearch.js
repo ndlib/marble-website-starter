@@ -9,7 +9,7 @@ const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 const getCreators = require('./src/getCreators')
 const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
-const recursiveSearchIds = ['BPP1001_EAD']
+const additionalRecursiveSearchIds = ['BPP1001_EAD']
 
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
@@ -373,7 +373,7 @@ new Promise(async (resolve, reject) => {
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
-      if (manifest.hierarchySearchable || recursiveSearchIds.includes(manifest.id)) {
+      if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
         const children = recursiveSearchDataFromManifest(manifest)
         writeData = writeData.concat(children)
       }
