@@ -41,17 +41,23 @@ export const SeoContent = ({
     )
   }
   return (
-    <>
+    <React.Fragment>
       <Helmet
         htmlAttributes={{ lang }}
         title={title}
         titleTemplate={title === siteTitle ? `${siteTitle}` : `${titleFix}`}
+        meta={[
+          {
+            name: `description`,
+            content: description,
+          },
+        ]}
       />
       <CanonicalLink base={siteUrl} pathname={pathname} />
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
       {indexable}
-    </>
+    </React.Fragment>
   )
 }
 
