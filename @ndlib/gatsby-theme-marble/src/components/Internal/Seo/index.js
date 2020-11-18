@@ -33,16 +33,16 @@ export const Seo = ({
     `
   )
   const { siteMetadata } = site
-  const manifestTitle = typy(data, 'marbleItem.title').safeString || title
-  const manifestDescription = typy(data, 'marbleItem.description').safeString || description
-  const manifestAuthor = typy(data, 'marbleItem.metadata[0].value[0]').safeString || author
-  const manifestImage = typy(data, 'marbleItem.childrenMarbleFile[0].iiif.thumbnail').safeString
+  const itemTitle = title || typy(data, 'marbleItem.title').safeString
+  const itemDescription = description || typy(data, 'marbleItem.description').safeString
+  const itemAuthor = author || typy(data, 'marbleItem.metadata[0].value[0]').safeString
+  const itemImage = typy(data, 'marbleItem.childrenMarbleFile[0].iiif.thumbnail').safeString
   return (
     <SeoContent
-      title={getTitle(manifestTitle, siteMetadata)}
-      author={getAuthor(manifestAuthor, siteMetadata)}
-      image={getImage(manifestImage)}
-      description={getDescription(manifestDescription, siteMetadata)}
+      title={getTitle(itemTitle, siteMetadata)}
+      author={getAuthor(itemAuthor, siteMetadata)}
+      image={getImage(itemImage)}
+      description={getDescription(itemDescription, siteMetadata)}
       pathname={location.pathname}
       siteTitle={typy(siteMetadata, 'title').safeString}
       siteUrl={typy(siteMetadata, 'siteUrl').safeString}

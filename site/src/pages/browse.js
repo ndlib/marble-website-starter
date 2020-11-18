@@ -12,6 +12,7 @@ const Browse = ({ location }) => {
       <Seo
         data={{}}
         location={location}
+        title='Browse'
       />
       <I18nextProvider i18n={i18next}>
         <BrowsePage location={location} />

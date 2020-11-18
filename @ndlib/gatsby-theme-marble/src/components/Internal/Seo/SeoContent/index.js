@@ -19,6 +19,8 @@ export const SeoContent = ({
 }) => {
   const openGraph = getOpenGraph(title, description, image)
   const twitter = getTwitter(author, title, description, image)
+  const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
+  console.log(title)
   // console.log('=======================================================')
   // console.log('title:', title)
   // console.log('author:', author)
@@ -44,7 +46,7 @@ export const SeoContent = ({
       <Helmet
         htmlAttributes={{ lang }}
         title={title}
-        titleTemplate={title === siteTitle ? siteTitle : `${title} | ${siteTitle}`}
+        titleTemplate={title === siteTitle ? `${siteTitle}` : `${titleFix}`}
         meta={[
           {
             name: `description`,
