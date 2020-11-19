@@ -10,9 +10,9 @@ export const BackToItem = ({ slug, title }) => {
   return (
     <BaseStyles>
       <Link
-        to={typy(slug).safeString}
+        to={slug}
         sx={sx}
-      >Back to {typy(title).safeString}
+      >Back to {title}
       </Link>
     </BaseStyles>
   )

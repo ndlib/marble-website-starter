@@ -96,7 +96,8 @@ const MiradorViewerPage = ({ data, location }) => {
         image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
         noIndex
       />
-      <BackToItem slug={data.marbleItem.slug} title={data.marbleItem.title} />
+      <BackToItem slug={typy(data, 'marbleItem.slug').safeString}
+        title={typy(data,'marbleItem.title').safeString} />
       <div className='sizeWrapper' sx={sx.div}>
         {body}
       </div>
