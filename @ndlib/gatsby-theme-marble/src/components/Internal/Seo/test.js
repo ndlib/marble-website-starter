@@ -19,68 +19,44 @@ describe('Seo', () => {
     siteUrl: 'http://site.url',
   }
   test('getTitle', () => {
-    const title = 'Direct Title'
-    const frontmatter = {
-      title: 'Front Title',
-      iiifJson: {
-        label: {
-          en: ['Manifest Title'],
-          none: ['Nope Title'],
-        },
-      },
-    }
-    let actual = getTitle(title, frontmatter, siteMetadata)
-    expect(actual).toEqual('Direct Title')
-    actual = getTitle(null, frontmatter, siteMetadata)
-    expect(actual).toEqual('Front Title')
-    delete frontmatter.title
-    actual = getTitle(null, frontmatter, siteMetadata)
-    expect(actual).toEqual('Manifest Title')
-    actual = getTitle('', {}, siteMetadata)
+    const itemTitle = 'Title - Mirador Viewer'
+    const itemAuthor = 'author'
+
+    let actual = getTitle(itemTitle, siteMetadata)
+    expect(actual).toEqual('Title - Mirador Viewer')
+    actual = getTitle('Title - Digital Collections', siteMetadata)
+    expect(actual).toEqual('Title - Digital Collections')
+    actual = getTitle('', siteMetadata)
     expect(actual).toEqual('Default Title')
-    delete siteMetadata.languages.default
-    actual = getTitle(null, frontmatter, siteMetadata)
-    expect(actual).toEqual('Nope Title')
+    actual = getTitle(null, siteMetadata)
+    expect(actual).toEqual('Default Title')
   })
 
   test('getImage', () => {
-    const frontmatter = {
-      iiifJson: {
-        thumbnail: [
-          { id: 'thumbnail.jpg' },
-        ],
-      },
-    }
+    const itemImage = 'http://image.jpg'
     const defaultImage = {
       publicURL: 'defaultImage.jpg',
     }
-    let actual = getImage(frontmatter, defaultImage)
-    expect(actual).toEqual('thumbnail.jpg')
-    actual = getImage({}, defaultImage)
+    let actual = getImage(itemImage, defaultImage)
+    expect(actual).toEqual('http://image.jpg')
+    actual = getImage(defaultImage)
     expect(actual).toEqual('defaultImage.jpg')
   })
 
   test('getDescription', () => {
+    const itemDescription = 'description'
     const description = 'Direct Description'
-    const frontmatter = {
-      iiifJson: {
-        summary: {
-          none: ['Manifest Description'],
-        },
-      },
-    }
     const siteMetadata = {
       description: 'Site Description',
     }
-    const longDescription = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.'
 
-    let actual = getDescription(description, frontmatter, siteMetadata)
+    let actual = getDescription(description, itemDescription, siteMetadata)
     expect(actual).toEqual('Direct Description')
-    actual = getDescription(null, frontmatter, siteMetadata)
-    expect(actual).toEqual('Manifest Description')
+    actual = getDescription(itemDescription, siteMetadata)
+    expect(actual).toEqual('description')
     actual = getDescription(null, null, siteMetadata)
     expect(actual).toEqual('Site Description')
-    actual = getDescription(longDescription, frontmatter, siteMetadata)
+    actual = getDescription(itemDescription, siteMetadata)
     expect(actual).toEqual('Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis…')
   })
 
