@@ -85,7 +85,6 @@ const MiradorViewerPage = ({ data, location }) => {
   } catch {
     console.warn('window does not exist in node')
   }
-    console.log(data)
   return (
     <Layout data={data} location={location}>
       <Seo
@@ -96,8 +95,10 @@ const MiradorViewerPage = ({ data, location }) => {
         image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
         noIndex
       />
-      <BackToItem slug={typy(data, 'marbleItem.slug').safeString}
-        title={typy(data,'marbleItem.title').safeString} />
+      <BackToItem
+        slug={typy(data, 'marbleItem.slug').safeString}
+        title={typy(data,'marbleItem.title').safeString}
+      />
       <div className='sizeWrapper' sx={sx.div}>
         {body}
       </div>
