@@ -373,10 +373,10 @@ new Promise(async (resolve, reject) => {
   manifests.forEach((manifest) => {
     if (manifest) {
       writeData.push(getSearchDataFromManifest(manifest))
-      if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
-        const children = recursiveSearchDataFromManifest(manifest)
-        writeData = writeData.concat(children)
-      }
+      // if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
+      const children = recursiveSearchDataFromManifest(manifest)
+      writeData = writeData.concat(children)
+      // }
     }
   })
 
