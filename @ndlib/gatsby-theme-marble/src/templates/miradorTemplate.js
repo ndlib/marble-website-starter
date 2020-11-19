@@ -20,6 +20,7 @@ export const query = graphql`
       id
       title
       iiifUri
+      slug
     }
   }
 `

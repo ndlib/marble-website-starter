@@ -7,6 +7,7 @@ import queryString from 'query-string'
 import Layout from 'components/Layout'
 import MiradorWrapper from './MiradorWrapper'
 import Seo from 'components/Internal/Seo'
+import BackToItem from 'components/Internal/BackToItem'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
@@ -84,6 +85,7 @@ const MiradorViewerPage = ({ data, location }) => {
   } catch {
     console.warn('window does not exist in node')
   }
+    console.log(data)
   return (
     <Layout data={data} location={location}>
       <Seo
@@ -94,6 +96,7 @@ const MiradorViewerPage = ({ data, location }) => {
         image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
         noIndex
       />
+      <BackToItem slug={data.marbleItem.slug} title={data.marbleItem.title} />
       <div className='sizeWrapper' sx={sx.div}>
         {body}
       </div>
