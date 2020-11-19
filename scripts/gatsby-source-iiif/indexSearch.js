@@ -38,7 +38,7 @@ const options = {
   port:443,
   protocol:'https',
   connectionClass: auth,
-  requestTimeout: 60000,
+  requestTimeout: 1200000,
   awsConfig: new AWS.Config({ region: 'us-east-1' }),
 }
 const client = Client(options)
@@ -355,6 +355,9 @@ const configIndexMappings = async () => {
 
 const recursiveSearchDataFromManifest = (manifest) => {
   let ret = []
+  if (!manifest.items) {
+    return ret
+  }
   manifest.items.forEach(item => {
     if (item.level !== 'file') {
       ret.push(getSearchDataFromManifest(item))
