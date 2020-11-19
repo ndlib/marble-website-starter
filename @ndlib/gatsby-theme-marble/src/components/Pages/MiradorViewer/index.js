@@ -21,7 +21,6 @@ const MiradorViewerPage = ({ data, location }) => {
   const canvasIndex = parseInt(qs.cv, 10) || 0
   const viewerView = qs.view || 'default'
   const context = useThemeUI()
-  console.log(context)
   const themeColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
   const plugins = [...miradorImageToolsPlugin]
   const config = {

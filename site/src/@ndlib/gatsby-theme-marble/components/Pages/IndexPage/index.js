@@ -16,10 +16,6 @@ import dateImage from 'assets/images/date.jpg'
 import formatImage from 'assets/images/format.jpg'
 import campuslocationImage from 'assets/images/campus_location.jpg'
 import allImage from 'assets/images/all_items.jpg'
-import dateImageNext from 'assets/images/date.webp'
-import formatImageNext from 'assets/images/format.webp'
-import campuslocationImageNext from 'assets/images/campus_location.webp'
-import allImageNext from 'assets/images/all_items.webp'
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
@@ -71,7 +67,6 @@ const IndexPage = ({ location }) => {
             label='Date'
             target='/browse?scrollto=date'
             image={dateImage}
-            imageNext={dateImageNext}
           />
         </Column>
         <Column>
@@ -79,7 +74,6 @@ const IndexPage = ({ location }) => {
             label='Format'
             target='/browse?scrollto=format'
             image={formatImage}
-            imageNext={formatImageNext}
           />
         </Column>
         <Column>
@@ -87,7 +81,6 @@ const IndexPage = ({ location }) => {
             label='Campus Location'
             target='/browse?scrollto=location'
             image={campuslocationImage}
-            imageNext={campuslocationImageNext}
           />
         </Column>
         <Column>
@@ -95,7 +88,6 @@ const IndexPage = ({ location }) => {
             label='All Items'
             target='/search?q='
             image={allImage}
-            imageNext={allImageNext}
           />
         </Column>
       </MultiColumn>

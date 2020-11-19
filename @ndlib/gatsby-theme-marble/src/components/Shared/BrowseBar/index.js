@@ -8,15 +8,10 @@ const BrowseBar = ({
   label,
   target,
   image,
-  imageNext,
 }) => {
   return (
     <Link to={target} sx={sx.browseSection}>
       <picture sx={sx.browseImage}>
-        <source
-          srcSet={imageNext}
-          type='image/webp'
-        />
         <img
           alt={label}
           src={image}
@@ -33,7 +28,6 @@ BrowseBar.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
-  imageNext: PropTypes.string,
 }
 
 export default BrowseBar

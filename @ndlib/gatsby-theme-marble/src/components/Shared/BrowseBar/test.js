@@ -11,6 +11,5 @@ describe('BrowseBar', () => {
     expect(wrapper.find(Link).props().to).toEqual('/some/path')
     expect(wrapper.find('picture').exists()).toBeTruthy()
     expect(wrapper.find('img').exists()).toBeTruthy()
-    expect(wrapper.find('source').exists()).toBeTruthy()
   })
 })
