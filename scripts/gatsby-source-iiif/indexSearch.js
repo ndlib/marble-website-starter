@@ -16,10 +16,13 @@ if (appConfig === 'local' || process.env.TRAVIS_RUN) {
   return
 }
 
-const getCollection = (collection) => {
-  if (collection) {
-    return collection.map((c) => c.display)
+const getCollection = (collectionName, collection) => {
+  if (collectionName) {
+    return collectionName.map((c) => c.display)
+  } else if (collection) {
+    return [collection.title]
   }
+
   return []
 }
 
@@ -115,7 +118,7 @@ const getIdentifiers = (manifest) => {
   return ret
 }
 
-const getSearchDataFromManifest = (manifest) => {
+const getSearchDataFromManifest = (manifest, collection) => {
   const dateData = realDatesFromCatalogedDates(manifest.createdDate)
   const creators = getCreators(manifest)
   const themes = getKeywordsFromSubjects(manifest)
@@ -124,7 +127,7 @@ const getSearchDataFromManifest = (manifest) => {
     id: manifest.id,
     name: manifest.title,
     creator: creators,
-    collection: getCollection(manifest.collections),
+    collection: getCollection(manifest.collections, collection),
     identifier: getIdentifiers(manifest),
 
     repository: determineProvider(manifest),
@@ -353,15 +356,19 @@ const configIndexMappings = async () => {
   return mappings
 }
 
-const recursiveSearchDataFromManifest = (manifest) => {
+const recursiveSearchDataFromManifest = (manifest, collection) => {
   let ret = []
   if (!manifest.items) {
     return ret
   }
+  if (!collection) {
+    collection = manifest
+  }
+
   manifest.items.forEach(item => {
     if (item.level !== 'file') {
-      ret.push(getSearchDataFromManifest(item))
-      ret = ret.concat(recursiveSearchDataFromManifest(item))
+      ret.push(getSearchDataFromManifest(item, collection))
+      ret = ret.concat(recursiveSearchDataFromManifest(item, collection))
     }
   })
   return ret
