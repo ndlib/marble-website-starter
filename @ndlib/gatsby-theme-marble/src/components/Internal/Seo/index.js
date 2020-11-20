@@ -74,9 +74,8 @@ export const getImage = (image, defaultImage) => {
 }
 
 export const getDescription = (description, siteMetadata) => {
-  const metaDescription = description ||
+  return description ||
     typy(siteMetadata, 'description').safeString
-  return metaDescription
 }
 
 export const getAuthor = (author, siteMetadata) => {
