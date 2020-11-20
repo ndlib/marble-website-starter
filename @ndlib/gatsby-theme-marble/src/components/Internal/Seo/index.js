@@ -32,7 +32,6 @@ export const Seo = ({
       }
     `
   )
-  console.log(data)
   const { siteMetadata } = site
   const itemTitle = title || typy(data, 'marbleItem.title').safeString
   const itemDescription = description || typy(data, 'marbleItem.description').safeString
