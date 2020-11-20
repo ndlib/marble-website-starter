@@ -30,7 +30,7 @@ export const SeoContent = ({
   // console.log('siteTitle:', siteTitle)
   // console.log('siteUrl:', siteUrl)
   // console.log('noIndex:', noIndex)
-  // console.log('seeAlso:', seeAlso)
+  // // console.log('seeAlso:', seeAlso)
   // console.log('=======================================================')
   let indexable = null
   if (noIndex === true) {

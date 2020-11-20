@@ -32,6 +32,7 @@ export const Seo = ({
       }
     `
   )
+  console.log(data)
   const { siteMetadata } = site
   const itemTitle = title || typy(data, 'marbleItem.title').safeString
   const itemDescription = description || typy(data, 'marbleItem.description').safeString
@@ -41,7 +42,7 @@ export const Seo = ({
     <SeoContent
       title={getTitle(itemTitle, siteMetadata)}
       author={getAuthor(itemAuthor, siteMetadata)}
-      image={getImage(itemImage)}
+      image={getImage(itemImage, file)}
       description={getDescription(itemDescription, siteMetadata)}
       pathname={location.pathname}
       siteTitle={typy(siteMetadata, 'title').safeString}

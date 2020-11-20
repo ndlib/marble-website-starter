@@ -20,8 +20,6 @@ describe('Seo', () => {
   }
   test('getTitle', () => {
     const itemTitle = 'Title - Mirador Viewer'
-    const itemAuthor = 'author'
-
     let actual = getTitle(itemTitle, siteMetadata)
     expect(actual).toEqual('Title - Mirador Viewer')
     actual = getTitle('Title - Digital Collections', siteMetadata)
@@ -39,25 +37,22 @@ describe('Seo', () => {
     }
     let actual = getImage(itemImage, defaultImage)
     expect(actual).toEqual('http://image.jpg')
-    actual = getImage(defaultImage)
+    actual = getImage('', defaultImage)
     expect(actual).toEqual('defaultImage.jpg')
   })
 
   test('getDescription', () => {
     const itemDescription = 'description'
-    const description = 'Direct Description'
     const siteMetadata = {
       description: 'Site Description',
     }
 
-    let actual = getDescription(description, itemDescription, siteMetadata)
-    expect(actual).toEqual('Direct Description')
-    actual = getDescription(itemDescription, siteMetadata)
-    expect(actual).toEqual('description')
-    actual = getDescription(null, null, siteMetadata)
+    let actual = getDescription(null, siteMetadata)
     expect(actual).toEqual('Site Description')
     actual = getDescription(itemDescription, siteMetadata)
-    expect(actual).toEqual('Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis…')
+    expect(actual).toEqual('description')
+    actual = getDescription('', siteMetadata)
+    expect(actual).toEqual('Site Description')
   })
 
   test('getAuthor', () => {
