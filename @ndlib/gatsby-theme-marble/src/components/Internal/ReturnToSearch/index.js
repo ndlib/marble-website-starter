@@ -7,21 +7,13 @@ import Link from 'components/Internal/Link'
 import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
 import sx from './sx'
 import { useTranslation } from 'react-i18next'
-
 export const ReturnToSearch = ({ location }) => {
   const { t } = useTranslation()
   const context = useThemeUI()
   const iconColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
-  if (typy(location, 'state.referal.type').isString) {
-    let linkText = ''
-    let target = ''
-    if (typy(location, 'state.referal.type').safeString === 'search') {
-      linkText = t('common:item.returnToSearch')
-      target = `/search${location.state.referal.query}`
-    } else if (typy(location, 'state.referal.type').safeString === 'item') {
-      linkText = `Return to ${location.state.referal.parentName} Collection`
-      target = `${location.state.referal.backLink}`
-    }
+  if (typy(location, 'state.referal.type').safeString === 'search') {
+    const linkText = t('common:item.returnToSearch')
+    const target = `/search${location.state.referal.query}`
     return (
       <BaseStyles>
         <Link
@@ -45,9 +37,7 @@ export const ReturnToSearch = ({ location }) => {
   }
   return null
 }
-
 ReturnToSearch.propTypes = {
   location: PropTypes.object,
 }
-
 export default ReturnToSearch
