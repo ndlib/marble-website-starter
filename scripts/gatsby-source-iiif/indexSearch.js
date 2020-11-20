@@ -11,6 +11,8 @@ const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
 const additionalRecursiveSearchIds = ['BPP1001_EAD']
 
+const pruneEmptyLeaves = require('../../@ndlib/gatsby-theme-marble/src/utils/pruneEmptyLeaves')
+
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
   return
@@ -95,7 +97,7 @@ const loadSubItemTitles = (manifest) => {
   }
 
   return manifest.items.reduce((titles, item) => {
-    if (item.title) {
+    if (item.title && item.level !== 'file') {
       return titles + '::' + item.title
     }
     return titles
@@ -382,6 +384,7 @@ new Promise(async (resolve, reject) => {
   let writeData = []
   manifests.forEach((manifest) => {
     if (manifest) {
+      pruneEmptyLeaves(manifest)
       writeData.push(getSearchDataFromManifest(manifest))
       // if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
       const children = recursiveSearchDataFromManifest(manifest)
