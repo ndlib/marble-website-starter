@@ -6,6 +6,10 @@ module.exports = {
       borderColor: 'gray.1',
       position: 'relative',
     },
+    '& > dl > div:first-of-type': {
+      borderTop: '1px solid',
+      borderColor: 'gray.1',
+    },
     '& dt': {
       position: 'absolute',
       verticalAlign: 'top',
@@ -26,8 +30,6 @@ module.exports = {
     padding: '1rem',
     '& > dl > div': {
       backgroundColor: 'transparent !important',
-      borderBottom: '1px solid',
-      borderColor: 'gray.1',
       position: 'relative',
     },
     '& dt': {
