@@ -9,9 +9,9 @@ import Column from 'components/Shared/Column'
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
-import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 import HorizontalRule from 'components/Shared/HorizontalRule'
 import TombstoneMetadata from './TombstoneMetadata'
+import sx from './sx'
 
 const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
   const context = useThemeUI()
@@ -50,14 +50,19 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
       <HorizontalRule color={primary} />
       <MultiColumn columns='5'>
         <Column colSpan='3'>
-          <ManifestMetaData marbleItem={mainMetaData} />
-          <PartiallyDigitized marbleItem={marbleItem} />
+          <div sx={sx.mainMetadata}>
+            <ManifestMetaData marbleItem={mainMetaData} />
+          </div>
         </Column>
         <Column colSpan='2'>
-          <ManifestMetaData marbleItem={accessMetadata} />
+          <div sx={sx.sideMetadata}>
+            <ManifestMetaData marbleItem={accessMetadata} />
+          </div>
         </Column>
       </MultiColumn>
-      <ManifestMetaData marbleItem={contactUsMetadata} />
+      <div sx={sx.contactMetadata}>
+        <ManifestMetaData marbleItem={contactUsMetadata} />
+      </div>
     </>
   )
 }

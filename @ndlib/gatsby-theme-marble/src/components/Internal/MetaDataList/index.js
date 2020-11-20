@@ -1,7 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import MetaDataField from './MetaDataField'
-import './style.module.css'
 const MetaDataList = ({ metadata, className, skipHtml }) => {
   if (metadata) {
     return (
