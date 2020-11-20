@@ -1,5 +1,5 @@
 const configuration = require('./content/configuration')
-const s3BucketName = process.env.S3_BUCKET_NAME || ''
+const s3BucketName = process.env.S3_DEST_BUCKET || ''
 
 module.exports = {
   siteMetadata: configuration.siteMetadata,
