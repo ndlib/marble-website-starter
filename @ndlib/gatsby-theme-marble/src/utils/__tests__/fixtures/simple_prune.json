@@ -1,0 +1,63 @@
+{
+  "level": "collection",
+  "title": "collection",
+  "items": [
+    {
+      "title": "should be removed",
+      "level": "manifest",
+      "items": []
+    },
+    {
+      "title": "should still be here",
+      "level": "manifest",
+      "items": [
+        {
+          "level": "file"
+        }
+      ]
+    },
+    {
+      "title": "multilevel-removed",
+      "level": "manifest",
+      "items": [
+          {
+            "title": "multilevel-removed-level2",
+            "level": "manifest",
+            "items": []
+          },
+          {
+            "title": "multilevel-removed-level-withmanifest2",
+            "level": "manifest",
+            "items": [
+              {
+                "title": "multilevel-removed-level-withmanifest3",
+                "level": "manifest"
+              }
+            ]
+          }
+      ]
+    },
+    {
+      "title": "collapse-middle",
+      "level": "manifest",
+      "items": [
+          {
+            "title": "collapse-middle-withmanifest2",
+            "level": "manifest",
+            "items": [
+              {
+                "title": "collapse-middle-level-withmanifest3",
+                "level": "manifest",
+                "items": [
+                  {
+                    "title": "file",
+                    "level": "file"
+                  }
+                ]
+              }
+            ]
+          }
+      ]
+    }
+  ]
+}

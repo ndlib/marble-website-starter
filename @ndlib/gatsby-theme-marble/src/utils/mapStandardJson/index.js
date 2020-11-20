@@ -1,13 +1,12 @@
 const path = require('path')
 const citationGenerator = require(path.join(__dirname, 'citationGenerator'))
 const makeMetadataArray = require(path.join(__dirname, 'makeMetadataArray'))
-const punctuationStripper = require(path.join(__dirname, 'punctuationStripper'))
 
 module.exports = (standardJson) => {
   const slug = `item/${standardJson.id}`
 
   return {
-    title: punctuationStripper(standardJson.title),
+    title: standardJson.title,
     slug: slug,
     description: mapFieldOrDefault(standardJson, 'description', ''),
     display: standardJson.level.toLowerCase(),

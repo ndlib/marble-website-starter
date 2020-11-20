@@ -28,7 +28,6 @@ const HeroBackground = () => {
         <img
           src={jpegImage}
           alt=''
-          loading='lazy'
         />
       </picture>
     </div>

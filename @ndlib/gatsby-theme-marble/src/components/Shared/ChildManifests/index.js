@@ -25,11 +25,6 @@ export const ChildManifests = ({ marbleItem }) => {
                 image={typy(childItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
                 label={childItem.title}
                 showSummary
-                referal={{
-                  type: 'item',
-                  backLink: `/${marbleItem.slug}`,
-                  parentName: marbleItem.title,
-                }}
               />
             )
           })

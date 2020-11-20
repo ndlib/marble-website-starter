@@ -17,7 +17,7 @@ import sx from './sx'
 const ExhibitsPage = () => {
   const context = useThemeUI()
 
-  const iconColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
+  const iconColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
 
   const exhibits = [
     {

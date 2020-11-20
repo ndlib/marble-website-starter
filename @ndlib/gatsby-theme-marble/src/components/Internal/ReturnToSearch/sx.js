@@ -8,8 +8,9 @@ module.exports = {
   },
   text: {
     verticalAlign: 'top',
+    marginBottom: '1.2rem',
+    padding: '0.2rem',
+    display: 'inline-block',
     fontSize: '0.8rem',
-    lineHeight: '1.7rem',
-    paddingLeft: '0.2rem',
   },
 }

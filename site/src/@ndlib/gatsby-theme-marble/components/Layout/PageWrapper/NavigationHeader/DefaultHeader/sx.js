@@ -2,7 +2,7 @@ module.exports = {
   wrapper: {
     borderTop: '5px solid #D39F10',
     position: 'relative',
-    height: ['170px', '100px', '100px'],
+    height: ['170px', '105px', '105px'],
     zIndex: '1',
   },
   backgroundWrapper: {

@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const mapStandardJson = require(path.join(__dirname, 'src/utils/mapStandardJson'))
+const pruneEmptyLeaves = require(path.join(__dirname, 'src/utils/pruneEmptyLeaves'))
 const fileMetadata = require(path.join(__dirname, 'src/utils/mapStandardJson/fileMetadata'))
 
 // Make sure the data directory exists
@@ -59,6 +60,8 @@ exports.sourceNodes = ({ actions }) => {
     childrenMarbleItem: [MarbleItem]
     childrenMarbleFile: [MarbleFile]
     citation: String
+    parentId: String
+    marbleParent: MarbleItem @link(by: "id", from: "parentId")
   }
 
   # things expected to be there
@@ -89,6 +92,9 @@ exports.sourceNodes = ({ actions }) => {
     issuer: String
   }
   type SiteMetadata @dontInfer {
+    title: String!
+    description: String!
+    author: String!
     universalViewerBaseURL: String
     googleMapApiURL: String
     iiifHelpURL: String
@@ -101,9 +107,6 @@ exports.sourceNodes = ({ actions }) => {
     authClient: authClient
     searchPath: String
     languages: languages
-  }
-  type Site implements Node {
-    siteMetadata: SiteMetadata
   }
   `
   createTypes(typeDefs)
@@ -132,13 +135,6 @@ exports.createPages = ({ graphql, actions }) => {
         nodes {
           id
           slug
-        }
-      }
-      allMarkdownRemark {
-        nodes {
-          frontmatter{
-            slug
-          }
         }
       }
     }
@@ -191,7 +187,6 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
 
   const crawlStandardJson = (standardJson, collection, parent) => {
     const nodeId = createNodeId(standardJson.id)
-
     if (standardJson.level.toLowerCase() === 'file') {
       const filedata = fileMetadata(standardJson)
       const normalizedTypeNode = {
@@ -215,6 +210,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
       ...mappedFields,
       id: nodeId,
       marbleId: standardJson.id,
+      parentId: parent ? parent.id : null,
       internal: {
         type: 'MarbleItem',
       },
@@ -241,6 +237,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
   }
 
   if (node.internal.type === 'NdJson') {
+    pruneEmptyLeaves(node)
     crawlStandardJson(node)
   }
 }

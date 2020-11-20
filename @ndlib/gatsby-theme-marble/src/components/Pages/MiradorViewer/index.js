@@ -7,6 +7,7 @@ import queryString from 'query-string'
 import Layout from 'components/Layout'
 import MiradorWrapper from './MiradorWrapper'
 import Seo from 'components/Internal/Seo'
+import BackToItem from 'components/Internal/BackToItem'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
@@ -21,7 +22,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const canvasIndex = parseInt(qs.cv, 10) || 0
   const viewerView = qs.view || 'default'
   const context = useThemeUI()
-  const themeColor = typy(context, 'theme.colors.primary').safeStringv || '#437D8A'
+  const themeColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
   const plugins = [...miradorImageToolsPlugin]
   const config = {
     id: typy(data, 'marbleItem.id').isString ? `id-${data.marbleItem.id}` : 'default-id',
@@ -93,6 +94,10 @@ const MiradorViewerPage = ({ data, location }) => {
         description={`Mirador viewer viewing ${manifestTitle}.`}
         image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
         noIndex
+      />
+      <BackToItem
+        slug={typy(data, 'marbleItem.slug').safeString}
+        title={typy(data,'marbleItem.title').safeString}
       />
       <div className='sizeWrapper' sx={sx.div}>
         {body}

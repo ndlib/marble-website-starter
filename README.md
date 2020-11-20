@@ -20,9 +20,9 @@ For more information about Marble visit https://innovation.library.nd.edu/marble
 To build and test locally, you will need the following development tools installed:
 * [Node ≥10.16](https://github.com/nvm-sh/nvm#readme) - Installing via `nvm` is recommended for development.
   ```
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-  nvm install 10
-  nvm alias default 10
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+  nvm install 14
+  nvm alias default 14
   ```
 * yarn
   ```
@@ -35,7 +35,7 @@ To build and test locally, you will need the following development tools install
 
 ### Installing:
 ```
-yarn install
+yarn
 ```
 
 ### Run unit tests:

@@ -12,6 +12,10 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import { useTranslation } from 'react-i18next'
 import findMetadata from 'utils/findMetadata'
+import dateImage from 'assets/images/date.jpg'
+import formatImage from 'assets/images/format.jpg'
+import campuslocationImage from 'assets/images/campus_location.jpg'
+import allImage from 'assets/images/all_items.jpg'
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
@@ -51,10 +55,6 @@ const IndexPage = ({ location }) => {
     `,
   )
   const { nodes } = allMarbleItem
-  const dateImage = 'https://image-iiif.library.nd.edu/iiif/2/2015.045.003%2F2015_045_003-v0002/full/125,/0/default.jpg'
-  const formatImage = 'https://image-iiif.library.nd.edu/iiif/2/2017.025.667%2F2017_025_667-v0015/full/125,/0/default.jpg'
-  const campuslocationImage = 'https://image-iiif.library.nd.edu/iiif/2/MSNMN5004_EAD%2FMSN-MN_5004-04.a.150/full/125,/0/default.jpg'
-  const allImage = 'https://image-iiif.library.nd.edu/iiif/2/1976.057%2F1976_057-v0001/full/125,/0/default.jpg'
 
   return (
     <React.Fragment>

@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import Link from 'components/Internal/Link'
-import Image from 'components/Shared/Image'
 import sx from './sx'
 
 const BrowseBar = ({
@@ -12,12 +11,12 @@ const BrowseBar = ({
 }) => {
   return (
     <Link to={target} sx={sx.browseSection}>
-      <div sx={sx.browseImage}>
-        <Image
-          src={image || null}
-          alt=''
+      <picture sx={sx.browseImage}>
+        <img
+          alt={label}
+          src={image}
         />
-      </div>
+      </picture>
       <div sx={sx.label}>
         {label}
       </div>

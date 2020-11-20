@@ -32,24 +32,25 @@ export const AllPage = ({
             >
               {edge.node.title}
             </Link>
+            {
+              edge.node.display.toLowerCase() === 'manifest' ? (
+                <Link to={`${edge.node.slug}/mirador`}>
+                  <img
+                    src={miradorIcon}
+                    alt='Open in Mirador'
+                    style={{
+                      height: '16px',
+                      width: '16px',
+                      verticalAlign: 'text-bottom',
+                      display: 'inline',
+                    }}
+                  />
+                </Link>
+              ) : null
+
+            }
           </BaseStyles>
           <span>&nbsp;</span>
-          {
-            edge.node.display.toLowerCase() === 'manifest' ? (
-              <Link to={`${edge.node.slug}/mirador`}>
-                <img
-                  src={miradorIcon}
-                  alt='Open in Mirador'
-                  style={{
-                    height: '16px',
-                    width: '16px',
-                    verticalAlign: 'text-bottom',
-                  }}
-                />
-              </Link>
-            ) : null
-
-          }
         </li>
       )
     })
@@ -88,17 +89,6 @@ export const query = graphql`
           slug
           title
           display
-        }
-      }
-    }
-    allMarkdownRemark {
-      edges {
-        node {
-          id
-          frontmatter {
-            slug
-            title
-          }
         }
       }
     }
