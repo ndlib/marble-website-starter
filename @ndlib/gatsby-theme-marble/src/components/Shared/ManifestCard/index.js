@@ -11,6 +11,7 @@ export const ManifestCard = (props) => {
     target,
     image,
     creator,
+    collectionName,
     date,
     type,
   } = props
@@ -26,6 +27,7 @@ export const ManifestCard = (props) => {
         <ManifestCardChildren
           date={date}
           creator={creator}
+          collectionName={collectionName}
           parentProps={props}
         />
       </Card>

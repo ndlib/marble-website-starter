@@ -4,6 +4,7 @@ module.exports = {
     'creator',
     'date',
     'identifier',
+    'collection',
     'name',
     'thumbnail',
     'type',
@@ -13,6 +14,7 @@ module.exports = {
     'allMetadata.folded',
     'name.folded',
     'creator.folded',
+    'collection.folded',
     'identifier.idMatch',
   ],
 }

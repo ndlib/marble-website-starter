@@ -5,11 +5,12 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import ChildField from './ChildField'
 
-export const ManifestCardChildren = ({ parentProps, date, creator }) => {
+export const ManifestCardChildren = ({ parentProps, date, creator, collectionName }) => {
   return (
     <>
       <ChildField field={creator} />
       <ChildField field={date} />
+      <ChildField field={collectionName} />
       {parentProps.children ? parentProps.children : null}
     </>
   )
