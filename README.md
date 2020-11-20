@@ -18,7 +18,7 @@ For more information about Marble visit https://innovation.library.nd.edu/marble
 ### Prerequisites:
 
 To build and test locally, you will need the following development tools installed:
-* [Node ≥10.16](https://github.com/nvm-sh/nvm#readme) - Installing via `nvm` is recommended for development.
+* [Node ≥14](https://github.com/nvm-sh/nvm#readme) - Installing via `nvm` is recommended for development.
   ```
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
   nvm install 14
@@ -53,9 +53,12 @@ The marble site uses elasticsearch for searching. You'll need to have an elastic
 
 Note that multiple indices can utilize the same elasticsearch instance. Each stack would reference their own index under the same elasticsearch instance.
 
-Now we're ready to download the iiif manifests and create pages for them:
+Now we're ready to download the files that will be the source of content to do this run:
 ```
-./scripts/local.sh /all/static-host/<stackname>/
+pushd scripts/gatsby-source-iiif
+yarn
+node getStandard.js ../../site
+popd
 ```
 
 Start the development server:
@@ -89,7 +92,7 @@ marble-website-starter
   ↳ gatsby-config.js      // This file is required by Gatsby to configure the site and use the theme
 ↳ scripts
   ↳ codebuild             // AWS Codebuild orchestration scripts
-  ↳ gatsby-source-iiif    // Get IIIF manifest files and generate .md and .json files for `site`
+  ↳ gatsby-source-iiif    // Scripts to retrieve content for the site you are building
 
 ```
 
