@@ -79,7 +79,7 @@ module.exports = {
   marbleLogo: {
     width: ['420px', '440px', '520px'],
     margin: ['0 50%', '0 20px', '0 20px'],
-    maxWidth: '95%',
+    maxWidth: '85%',
     top: ['70px', '110px', '80px'],
     left: ['calc(-50% + 40px)', '0', '0'],
     position: 'absolute',
