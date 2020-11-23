@@ -10,7 +10,7 @@ export const ManifestCardChildren = ({ parentProps, date, creator, collectionNam
     <>
       <ChildField field={creator} />
       <ChildField field={date} />
-      <ChildField field={collectionName} />
+      <ChildField field={collectionName ? <a>Part of: {collectionName}</a> : ''} />
       {parentProps.children ? parentProps.children : null}
     </>
   )

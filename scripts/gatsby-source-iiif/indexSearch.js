@@ -93,15 +93,15 @@ const loadManifestData = () => {
 
 const loadSubItemTitles = (manifest) => {
   if (!manifest.items) {
-    return ''
+    return []
   }
 
   return manifest.items.reduce((titles, item) => {
     if (item.title && item.level !== 'file') {
-      return titles + '::' + item.title
+      titles.push(item.title)
     }
     return titles
-  }, '')
+  }, [])
 }
 
 const allMetadataKeys = [
@@ -151,16 +151,16 @@ const getSearchDataFromManifest = (manifest, collection) => {
     search['formatTag'] = [manifest.workType]
   }
 
-  search['allMetadata'] = ''
+  search['allMetadata'] = []
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
-      search['allMetadata'] += '::' + manifest[key]
+      search['allMetadata'].push(manifest[key])
     }
   })
-  search['allMetadata'] += '::' + loadSubItemTitles(manifest)
-  search['allMetadata'] += '::' + search.centuryTag.join('::')
-  search['allMetadata'] += '::' + search.themeTag.join('::')
-  search['allMetadata'] += '::' + search.expandedThemeTag.join('::')
+  search['allMetadata'] = search['allMetadata'].concat(loadSubItemTitles(manifest))
+  search['allMetadata'] = search['allMetadata'].concat(search.centuryTag)
+  search['allMetadata'] = search['allMetadata'].concat(search.themeTag)
+  search['allMetadata'] = search['allMetadata'].concat(search.expandedThemeTag)
 
   return search
 }
