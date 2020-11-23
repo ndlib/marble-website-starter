@@ -11,7 +11,7 @@ const possibleKeys = [
   'AUTH_CLIENT_ID',
   'AUTH_CLIENT_URL',
   'AUTH_CLIENT_ISSUER',
-  'S3_BUCKET_NAME',
+  'S3_DEST_BUCKET',
 ]
 
 const retrieveStageParameters = async () => {
