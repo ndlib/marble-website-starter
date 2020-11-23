@@ -11,6 +11,7 @@ import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import HorizontalRule from 'components/Shared/HorizontalRule'
 import TombstoneMetadata from './TombstoneMetadata'
+import SiblingItems from 'components/Shared/SiblingItems'
 import sx from './sx'
 
 const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
@@ -63,6 +64,8 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
       <div sx={sx.contactMetadata}>
         <ManifestMetaData marbleItem={contactUsMetadata} />
       </div>
+      <HorizontalRule color={primary} />
+      <SiblingItems marbleItem={marbleItem} />
     </>
   )
 }

@@ -48,12 +48,20 @@ export const query = graphql`
       marbleParent {
         title
         slug
+        childrenMarbleItem {
+          title
+          slug
+          childrenMarbleFile {
+            iiif {
+              thumbnail
+            }
+          }
+        }
       }
       childrenMarbleItem {
         title
         slug
         childrenMarbleFile {
-
           file
           fileType
           iiif {
