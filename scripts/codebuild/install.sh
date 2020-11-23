@@ -50,4 +50,6 @@ export $(cut -d= -f1 ${ENV_FILE})
 popd
 
 echo "Copy .env to site for Gatsby"
+pwd
+ls -la
 cp ./.env ./site/.env.production
