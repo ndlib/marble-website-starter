@@ -104,6 +104,10 @@ yarn workspace site clean
 ```
 
 ### Local build:
+Before you build a "production" version, ensure that the file `site/.env.production`. If you do not have this file (since it is excluded from git), make a copy of the development env file:
+```
+cp site/.env.development site/.env.production
+```
 To build a local production version of the site run:
 ```
 yarn workspace site build
