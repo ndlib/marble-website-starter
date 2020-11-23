@@ -40,7 +40,7 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 
 echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 pushd scripts/gatsby-source-iiif/
-yarn 
+yarn
 node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
 
 source ${ENV_FILE}
@@ -50,6 +50,4 @@ export $(cut -d= -f1 ${ENV_FILE})
 popd
 
 echo "Copy .env to site for Gatsby"
-pwd
-ls -la
 cp ./.env ./site/.env.production

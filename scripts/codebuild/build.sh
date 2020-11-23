@@ -7,8 +7,6 @@ echo "${magenta}----- BUILD -----${reset}"
 # generated in install.sh
 ENV_FILE="${PWD}/.env"
 echo "BUILD ENV: ${ENV_FILE}"
-pwd
-ls -la
 source ${ENV_FILE}
 export $(cut -d= -f1 ${ENV_FILE})
 
