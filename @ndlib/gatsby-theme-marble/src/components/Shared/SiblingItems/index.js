@@ -5,13 +5,15 @@ import { jsx, BaseStyles } from 'theme-ui'
 import typy from 'typy'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import ManifestCard from 'components/Shared/ManifestCard'
+import getArrayNeighbors from 'utils/getArrayNeighbors'
 
-const SiblingItems = ({ marbleItem }) => {
+const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
   const siblings = typy(marbleItem, 'marbleParent.childrenMarbleItem').safeArray
+
   if (siblings.length > 1) {
     const thisItemIndex = siblings.findIndex(item => item.slug === marbleItem.slug)
+    const nearSiblings = getArrayNeighbors(siblings, thisItemIndex, numberBeforeAndAfter)
 
-    const nearSiblings = getNeighbors(siblings, thisItemIndex, 3)
     return (
       <BaseStyles>
         <h2>Also from&nbsp;
@@ -42,24 +44,10 @@ const SiblingItems = ({ marbleItem }) => {
 
 SiblingItems.propTypes = {
   marbleItem: PropTypes.object,
+  numberBeforeAndAfter: PropTypes.number,
 }
 
+SiblingItems.defaultProps = {
+  numberBeforeAndAfter: 3,
+}
 export default SiblingItems
-
-// eslint-disable-next-line complexity
-const getNeighbors = (arr, index, numberDirection) => {
-  const length = arr.length
-  if (length <= (2 * numberDirection) + 1) {
-    return arr.splice(index, 1)
-  }
-  const tempArr = []
-  for (let i = numberDirection; i > 0; i--) {
-    const tIndex = index - i >= 0 ? index - i : index - i + length
-    tempArr.push(arr[tIndex])
-  }
-  for (let i = 1; i < 1 + numberDirection; i++) {
-    const tIndex = i + index >= length ? i + index - length : i + index
-    tempArr.push(arr[tIndex])
-  }
-  return tempArr
-}

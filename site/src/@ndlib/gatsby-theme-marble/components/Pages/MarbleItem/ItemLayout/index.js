@@ -65,7 +65,10 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
         <ManifestMetaData marbleItem={contactUsMetadata} />
       </div>
       <HorizontalRule color={primary} />
-      <SiblingItems marbleItem={marbleItem} />
+      <SiblingItems
+        marbleItem={marbleItem}
+        numberBeforeAndAfter={3}
+      />
     </>
   )
 }
