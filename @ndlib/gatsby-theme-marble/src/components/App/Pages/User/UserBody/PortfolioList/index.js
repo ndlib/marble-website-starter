@@ -19,19 +19,19 @@ const PortfolioList = ({
   loginReducer,
 }) => {
   const beGone = (portfolio) => {
-    const areYouSure = window.confirm("Are you sure you want to delete this protfolio?") ? (
-        deleteData({
-          loginReducer: loginReducer,
-          contentType: 'collection',
-          id: portfolio.uuid,
-          successFunc: () => {
-            navigate(`/user/${loginReducer.user.userName}`)
-          },
-          errorFunc: (e) => {
-            console.error(e)
-          },
-        })
-      ): null
+    const areYouSure = window.confirm('Are you sure you want to delete this protfolio?') ? (
+      deleteData({
+        loginReducer: loginReducer,
+        contentType: 'collection',
+        id: portfolio.uuid,
+        successFunc: () => {
+          navigate(`/user/${loginReducer.user.userName}`)
+        },
+        errorFunc: (e) => {
+          console.error(e)
+        },
+      })
+    ): null
     return areYouSure
   }
   const [portfolios, setPortfolios] = useState(user.collections || [])
