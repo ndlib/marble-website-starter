@@ -1,4 +1,6 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/Internal/Link'
 import { jsx, BaseStyles } from 'theme-ui'
@@ -15,12 +17,17 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
     const nearSiblings = getArrayNeighbors(siblings, thisItemIndex, numberBeforeAndAfter)
 
     return (
-      <BaseStyles>
-        <h2>Also from&nbsp;
-          <Link to={typy(marbleItem, 'marbleParent.slug').safeString} sx={{ textDecoration: 'none' }}>
-            <i>{typy(marbleItem, 'marbleParent.title').safeString}</i>
-          </Link>
-        </h2>
+      <>
+        <BaseStyles>
+          <h2>Also from&nbsp;
+            <Link
+              to={typy(marbleItem, 'marbleParent.slug').safeString}
+              sx={{ textDecoration: 'none' }}
+            >
+              <i>{typy(marbleItem, 'marbleParent.title').safeString}</i>
+            </Link>
+          </h2>
+        </BaseStyles>
         <DisplayViewToggle>
           {
             nearSiblings.map(sibling => {
@@ -36,7 +43,7 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
             })
           }
         </DisplayViewToggle>
-      </BaseStyles>
+      </>
     )
   }
   return null
