@@ -11,17 +11,32 @@ import { COMPILATIONS_LISTING_PAGE } from 'store/actions/displayActions'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 import MaterialButton from 'components/Internal/MaterialButton'
-import ActionModal from 'components/Internal/ActionModal'
-import DangerDelete from 'components/App/Pages/Portfolio/PortfolioBody/PortfolioEditSettings/PortfolioSettingsContent/DangerDelete'
+import { deleteData } from 'utils/api'
+import { navigate } from 'gatsby'
 
 const PortfolioList = ({
   user,
   loginReducer,
 }) => {
+  const beGone = (portfolio) => {
+    const areYouSure = window.confirm("Are you sure you want to delete this protfolio?") ? (
+        deleteData({
+          loginReducer: loginReducer,
+          contentType: 'collection',
+          id: portfolio.uuid,
+          successFunc: () => {
+            navigate(`/user/${loginReducer.user.userName}`)
+          },
+          errorFunc: (e) => {
+            console.error(e)
+          },
+        })
+      ): null
+    return areYouSure
+  }
   const [portfolios, setPortfolios] = useState(user.collections || [])
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
-  const [settingsOpen, setSettingsOpen] = useState(false)
   if (portfolios.length > 0) {
     return (
       <>
@@ -62,17 +77,9 @@ const PortfolioList = ({
                             <MaterialButton
                               primary
                               wide
-                              onClick={() => setSettingsOpen(true)}
+                              onClick={() => beGone(c)}
                             >Delete
                             </MaterialButton>
-                            <ActionModal
-                              isOpen={settingsOpen}
-                              contentLabel={`${c.title}`}
-                              closeFunc={() => setSettingsOpen(false)}
-                              fullscreen
-                            >
-                              <DangerDelete portfolio={index} />
-                            </ActionModal>
                           </div>
                         ) : null
                     }
