@@ -31,7 +31,7 @@ const PortfolioList = ({
           console.error(e)
         },
       })
-    ): null
+    ) : null
     return areYouSure
   }
   const [portfolios, setPortfolios] = useState(user.collections || [])
