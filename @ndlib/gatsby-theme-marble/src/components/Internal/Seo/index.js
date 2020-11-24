@@ -35,8 +35,12 @@ export const Seo = ({
   const { siteMetadata } = site
   const itemTitle = title || typy(data, 'marbleItem.title').safeString
   const itemDescription = description || typy(data, 'marbleItem.description').safeString
-  const itemAuthor = author || typy(data, 'marbleItem.metadata[0].value[0]').safeString
   const itemImage = typy(data, 'marbleItem.childrenMarbleFile[0].iiif.thumbnail').safeString
+  const creator = data.find(md => {
+    return md.label === 'Creator'
+  })
+  console.log(creator)
+  const itemAuthor = author || typy(creator, 'value[0]').safeString
   return (
     <SeoContent
       title={getTitle(itemTitle, siteMetadata)}
