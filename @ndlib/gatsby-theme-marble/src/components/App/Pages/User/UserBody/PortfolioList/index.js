@@ -12,7 +12,6 @@ import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 import MaterialButton from 'components/Internal/MaterialButton'
 import { deleteData } from 'utils/api'
-import { navigate } from 'gatsby'
 
 const PortfolioList = ({
   user,
