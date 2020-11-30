@@ -18,6 +18,7 @@ const PortfolioList = ({
   user,
   loginReducer,
 }) => {
+  const [portfolios, setPortfolios] = useState(user.collections || [])
   const beGone = (portfolio) => {
     const areYouSure = window.confirm('Are you sure you want to delete this protfolio?') ? (
       deleteData({
@@ -25,7 +26,9 @@ const PortfolioList = ({
         contentType: 'collection',
         id: portfolio.uuid,
         successFunc: () => {
-          navigate(`/user/${loginReducer.user.userName}`)
+          setPortfolios(portfolios.filter(p => {
+            return p.uuid !== portfolio.uuid
+          }))
         },
         errorFunc: (e) => {
           console.error(e)
@@ -34,7 +37,6 @@ const PortfolioList = ({
     ) : null
     return areYouSure
   }
-  const [portfolios, setPortfolios] = useState(user.collections || [])
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
   if (portfolios.length > 0) {
