@@ -22,7 +22,7 @@ module.exports = {
 
   },
   label: {
-    fontSize: ['32px', '18px', '18px'],
+    fontSize: ['1.8em', '.7em', '1em'],
     transform: 'translate(0%, -50%)',
     position: 'relative',
     top: '50%',
