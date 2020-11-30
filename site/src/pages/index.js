@@ -15,7 +15,6 @@ const Home = ({ data, location }) => {
       <Seo
         data={data}
         location={location}
-        title='Home'
       />
       <I18nextProvider i18n={i18next}>
         <IndexPage location={location} />
