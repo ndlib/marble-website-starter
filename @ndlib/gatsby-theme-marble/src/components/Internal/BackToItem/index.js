@@ -18,7 +18,7 @@ export const BackToItem = ({ slug, title }) => {
         <svg
           xmlns='http://www.w3.org/2000/svg'
           height='16'
-          viewBox='0 0 24 24'
+          viewBox='0 -4 24 24'
           width='16'
           sx={sx.svg}
         >
