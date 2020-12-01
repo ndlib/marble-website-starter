@@ -1,0 +1,106 @@
+@media screen and (min-width: 620px) {
+  .feedbackButton {
+    position:fixed;
+    bottom:30vmin;
+    right:25px;
+    font-weight:bold;
+    border:1px solid black; 
+    color:#FFFFFF; 
+    background-color:#002a43; 
+    text-decoration: none; 
+    text-align:center; 
+    width:40px; 
+    height:150px; 
+    padding-left: 8px; 
+    writing-mode: vertical-lr;
+    transform:rotateZ(180deg);
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 619px) {
+  .feedbackButton {
+    position:fixed;
+    display:block;
+    bottom:10px;
+    right:25px;
+    font-weight:bold;
+    border:1px solid black; 
+    color:#FFFFFF; 
+    background-color:#002a43; 
+    text-decoration: none; 
+    text-align:center;
+    padding-top: 7px;
+    width:150px; 
+    height:40px;
+    cursor: pointer;
+  }
+}
+.ReactModal__Body--open {
+  overflow-y: hidden;
+  
+}
+
+.modal {
+  background-color: #fff;
+  top: 3em;
+  left: 3em;
+  bottom: auto;
+  height: auto;
+  max-width: 500px; 
+  margin: 7em auto;
+  transform: none;
+  box-shadow: 0 0 8px 5px #00000055;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 15px;
+}
+.modal:focus {
+  outline: 0;
+}
+
+.modaloverlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.modal-body {
+  display: flex;
+  flex-flow: column nowrap;
+  color: #001E45;
+  font-size: 1em;
+  font-family: GPMed, sans-serif;
+  max-height: calc(100vh - 118px);
+  overflow-y: auto;
+  padding: 1em;
+}
+.headingContainer {
+  background-color:#002a43;
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  border-radius: 15px 15px 0px 0px;
+}
+.headingContainer h2 {
+  font-weight:bold;
+  font-size:1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#FFFFFF; 
+  text-align:left;
+  margin: 0px;
+  width: 90%;
+  float: left;
+  border-right: 1px solid white;
+}
+.closebutton {
+  cursor: pointer;
+  float: right;
+  padding-right: 18px;
+  padding-top: 5px;
+  color: #FFFFFF;
+}
