@@ -8,6 +8,7 @@ module.exports = {
     maxWidth: '60rem',
     overflow: 'hidden',
     position: 'relative',
+    borderRadius: '15px 0px 0px 15px',
   },
   image: {
     height: ['60px', '80px', '100px'],
@@ -15,11 +16,15 @@ module.exports = {
     verticalAlign: 'top',
     width: ['60px', '80px', '100px'],
   },
+  dragHandle: {
+    margin: '6px',
+    marginTop: ['20px', '30px', '40px'],
+  },
   text: {
     fontFamily: 'title',
     fontSize: '1.5rem',
     margin: '0 1rem',
     position: 'absolute',
-    left: ['70px', '90px', '110px'],
+    left: ['90px', '110px', '130px'],
   },
 }

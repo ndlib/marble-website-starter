@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import sx from './sx'
+import dragHandle from 'assets/icons/svg/baseline-drag_handle-24px.svg'
 
 const SortableItem = ({
   // eslint-disable-next-line no-unused-vars
@@ -19,6 +20,11 @@ const SortableItem = ({
         cursor: dragged ? 'grabbing' : 'grab',
       }}
     >
+      <img
+        src={dragHandle}
+        alt=''
+        sx={sx.dragHandle}
+      />
       <img
         src={image}
         alt={title}
