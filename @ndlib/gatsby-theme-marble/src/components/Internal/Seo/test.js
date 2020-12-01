@@ -14,56 +14,77 @@ describe('Seo', () => {
       default: 'en',
     },
     title: 'Default Title',
+    author: 'Default Author',
     description: 'Default Description',
     siteTitle: 'Site Title',
     siteUrl: 'http://site.url',
   }
+  const data = {
+    marbleItem: {
+      childrenMarbleFile: {
+        0: {
+          iiif: {
+            thumbnail: 'http://thumbnail.jpg',
+          },
+        },
+      },
+      title: 'Title - Marble item',
+      description: 'Item description',
+      metadata: [
+        {
+          label: 'Summary',
+          value: ['meta description'],
+
+        },
+        {
+          label: 'Creator',
+          value: ['Fake Author'],
+        },
+      ],
+    },
+  }
   test('getTitle', () => {
-    const itemTitle = 'Title - Mirador Viewer'
-    let actual = getTitle(itemTitle, siteMetadata)
+    const title = 'Title - Mirador Viewer'
+    let actual = getTitle(title, data, siteMetadata)
     expect(actual).toEqual('Title - Mirador Viewer')
-    actual = getTitle('Title - Digital Collections', siteMetadata)
-    expect(actual).toEqual('Title - Digital Collections')
-    actual = getTitle('', siteMetadata)
+    actual = getTitle('', data, siteMetadata)
+    expect(actual).toEqual('Title - Marble item')
+    actual = getTitle('', '', siteMetadata)
     expect(actual).toEqual('Default Title')
-    actual = getTitle(null, siteMetadata)
-    expect(actual).toEqual('Default Title')
+    actual = getTitle(title, data, siteMetadata)
+    expect(actual).toEqual('Title - Mirador Viewer')
   })
 
   test('getImage', () => {
-    const itemImage = 'http://image.jpg'
     const defaultImage = {
       publicURL: 'defaultImage.jpg',
     }
-    let actual = getImage(itemImage, defaultImage)
-    expect(actual).toEqual('http://image.jpg')
+    let actual = getImage(data, defaultImage)
+    expect(actual).toEqual('http://thumbnail.jpg')
     actual = getImage('', defaultImage)
     expect(actual).toEqual('defaultImage.jpg')
   })
 
   test('getDescription', () => {
-    const itemDescription = 'description'
-    const siteMetadata = {
-      description: 'Site Description',
-    }
-
-    let actual = getDescription(null, siteMetadata)
-    expect(actual).toEqual('Site Description')
-    actual = getDescription(itemDescription, siteMetadata)
+    let actual = getDescription(null, null, siteMetadata)
+    expect(actual).toEqual('Default Description')
+    actual = getDescription('description', null, siteMetadata)
     expect(actual).toEqual('description')
-    actual = getDescription('', siteMetadata)
-    expect(actual).toEqual('Site Description')
+    actual = getDescription('', data, siteMetadata)
+    expect(actual).toEqual('Item description')
+    delete data.marbleItem.description
+    actual = getDescription(null, data, siteMetadata)
+    expect(actual).toEqual('meta description')
   })
 
   test('getAuthor', () => {
-    const siteMetadata = {
-      author: 'Bill Nye the Science Guy',
-    }
-    let actual = getAuthor('Bill Guy the Science Nye', siteMetadata)
-    expect(actual).toEqual('Bill Guy the Science Nye')
-    actual = getAuthor('', siteMetadata)
-    expect(actual).toEqual('Bill Nye the Science Guy')
-    actual = getAuthor(null, null)
+    let actual = getAuthor(null, null, siteMetadata)
+    expect(actual).toEqual('Default Author')
+    actual = getAuthor('Fake Author', data, siteMetadata)
+    expect(actual).toEqual('Fake Author')
+    actual = getAuthor(null, data, siteMetadata)
+    expect(actual).toEqual('Fake Author')
+    actual = getAuthor(null, null, null)
     expect(actual).toEqual(null)
   })
 
