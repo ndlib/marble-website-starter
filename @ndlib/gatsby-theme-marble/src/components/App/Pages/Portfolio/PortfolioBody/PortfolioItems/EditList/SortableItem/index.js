@@ -22,7 +22,7 @@ const SortableItem = ({
     >
       <img
         src={dragHandle}
-        alt='drag'
+        alt=''
         sx={sx.dragHandle}
       />
       <img
