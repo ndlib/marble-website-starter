@@ -9,11 +9,11 @@ import AboutPage from 'components/Pages/AboutPage'
 const About = ({ location }) => {
   return (
     <Layout
-      title='Introduction'
       location={location}
     >
       <Seo
         data={{}}
+        title='Introduction'
         location={location}
       />
       <I18nextProvider i18n={i18next}>

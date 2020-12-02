@@ -12,8 +12,8 @@ import sx from './sx'
 
 // eslint-disable-next-line complexity
 const MiradorViewerPage = ({ data, location }) => {
-  const manifestId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
-  const manifestTitle = typy(data, 'marbleItem.title').safeString
+  const itemId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
+  const itemTitle = typy(data, 'marbleItem.title').safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
   const sideBarOpenByDefault = qs.sidebar === 'true'
@@ -53,7 +53,7 @@ const MiradorViewerPage = ({ data, location }) => {
     },
     windows: [
       {
-        manifestId: manifestId,
+        manifestId: itemId,
         canvasIndex: canvasIndex,
         maximized: false,
         thumbnailNavigationPosition: thumbnailNavigationPosition,
@@ -90,8 +90,8 @@ const MiradorViewerPage = ({ data, location }) => {
       <Seo
         data={data}
         location={location}
-        title={`Mirador Viewer | ${manifestTitle}`}
-        description={`Mirador viewer viewing ${manifestTitle}.`}
+        title={`${itemTitle} | Mirador Viewer`}
+        description={`Mirador viewer viewing ${itemTitle}.`}
         image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
         noIndex
       />
@@ -105,7 +105,6 @@ const MiradorViewerPage = ({ data, location }) => {
     </Layout>
   )
 }
-
 MiradorViewerPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,

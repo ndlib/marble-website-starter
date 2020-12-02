@@ -9,12 +9,12 @@ import ExhibitsPage from 'components/Pages/ExhibitsPage'
 const Exhibits = ({ location }) => {
   return (
     <Layout
-      title='Digital Exhibits'
       location={location}
     >
       <Seo
         data={{}}
         location={location}
+        title='Digital Exhibits'
       />
       <I18nextProvider i18n={i18next}>
         <ExhibitsPage />
