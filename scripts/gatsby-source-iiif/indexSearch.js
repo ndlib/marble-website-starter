@@ -11,15 +11,20 @@ const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
 const additionalRecursiveSearchIds = ['BPP1001_EAD']
 
+const pruneEmptyLeaves = require('../../@ndlib/gatsby-theme-marble/src/utils/pruneEmptyLeaves')
+
 const appConfig = process.env.APP_CONFIG
 if (appConfig === 'local' || process.env.TRAVIS_RUN) {
   return
 }
 
-const getCollection = (collection) => {
-  if (collection) {
-    return collection.map((c) => c.display)
+const getCollection = (collectionName, collection) => {
+  if (collectionName) {
+    return collectionName.map((c) => c.display)
+  } else if (collection) {
+    return [collection.title]
   }
+
   return []
 }
 
@@ -88,15 +93,15 @@ const loadManifestData = () => {
 
 const loadSubItemTitles = (manifest) => {
   if (!manifest.items) {
-    return ''
+    return []
   }
 
   return manifest.items.reduce((titles, item) => {
-    if (item.title) {
-      return titles + '::' + item.title
+    if (item.title && item.level !== 'file') {
+      titles.push(item.title)
     }
     return titles
-  }, '')
+  }, [])
 }
 
 const allMetadataKeys = [
@@ -115,7 +120,7 @@ const getIdentifiers = (manifest) => {
   return ret
 }
 
-const getSearchDataFromManifest = (manifest) => {
+const getSearchDataFromManifest = (manifest, collection) => {
   const dateData = realDatesFromCatalogedDates(manifest.createdDate)
   const creators = getCreators(manifest)
   const themes = getKeywordsFromSubjects(manifest)
@@ -124,7 +129,7 @@ const getSearchDataFromManifest = (manifest) => {
     id: manifest.id,
     name: manifest.title,
     creator: creators,
-    collection: getCollection(manifest.collections),
+    collection: getCollection(manifest.collections, collection),
     identifier: getIdentifiers(manifest),
 
     repository: determineProvider(manifest),
@@ -146,16 +151,16 @@ const getSearchDataFromManifest = (manifest) => {
     search['formatTag'] = [manifest.workType]
   }
 
-  search['allMetadata'] = ''
+  search['allMetadata'] = []
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
-      search['allMetadata'] += '::' + manifest[key]
+      search['allMetadata'].push(manifest[key])
     }
   })
-  search['allMetadata'] += '::' + loadSubItemTitles(manifest)
-  search['allMetadata'] += '::' + search.centuryTag.join('::')
-  search['allMetadata'] += '::' + search.themeTag.join('::')
-  search['allMetadata'] += '::' + search.expandedThemeTag.join('::')
+  search['allMetadata'] = search['allMetadata'].concat(loadSubItemTitles(manifest))
+  search['allMetadata'] = search['allMetadata'].concat(search.centuryTag)
+  search['allMetadata'] = search['allMetadata'].concat(search.themeTag)
+  search['allMetadata'] = search['allMetadata'].concat(search.expandedThemeTag)
 
   return search
 }
@@ -353,15 +358,19 @@ const configIndexMappings = async () => {
   return mappings
 }
 
-const recursiveSearchDataFromManifest = (manifest) => {
+const recursiveSearchDataFromManifest = (manifest, collection) => {
   let ret = []
   if (!manifest.items) {
     return ret
   }
+  if (!collection) {
+    collection = manifest
+  }
+
   manifest.items.forEach(item => {
     if (item.level !== 'file') {
-      ret.push(getSearchDataFromManifest(item))
-      ret = ret.concat(recursiveSearchDataFromManifest(item))
+      ret.push(getSearchDataFromManifest(item, collection))
+      ret = ret.concat(recursiveSearchDataFromManifest(item, collection))
     }
   })
   return ret
@@ -375,6 +384,7 @@ new Promise(async (resolve, reject) => {
   let writeData = []
   manifests.forEach((manifest) => {
     if (manifest) {
+      pruneEmptyLeaves(manifest)
       writeData.push(getSearchDataFromManifest(manifest))
       // if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
       const children = recursiveSearchDataFromManifest(manifest)

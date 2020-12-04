@@ -16,10 +16,10 @@ export const SeoContent = ({
   siteTitle,
   siteUrl,
   noIndex,
-  // seeAlso,
 }) => {
   const openGraph = getOpenGraph(title, description, image)
   const twitter = getTwitter(author, title, description, image)
+  const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
   // console.log('=======================================================')
   // console.log('title:', title)
   // console.log('author:', author)
@@ -45,7 +45,7 @@ export const SeoContent = ({
       <Helmet
         htmlAttributes={{ lang }}
         title={title}
-        titleTemplate={title === siteTitle ? siteTitle : `${title} | ${siteTitle}`}
+        titleTemplate={title === siteTitle ? `${siteTitle}` : `${titleFix}`}
         meta={[
           {
             name: `description`,
@@ -54,7 +54,6 @@ export const SeoContent = ({
         ]}
       />
       <CanonicalLink base={siteUrl} pathname={pathname} />
-      {/* <SchemaLink pathname={seeAlso} /> */}
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
       {indexable}

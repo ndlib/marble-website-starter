@@ -9,6 +9,7 @@ const HitResult = ({ hit, referal }) => {
     name,
     creator,
     date,
+    collection,
     url,
     thumbnail,
     type,
@@ -21,6 +22,7 @@ const HitResult = ({ hit, referal }) => {
       image={thumbnail}
       referal={referal}
       creator={highlightCreator(creator, hit.highlight)}
+      collectionName={highlightCollection(collection, hit.highlight)}
       date={date}
       type={type}
     >
@@ -65,6 +67,13 @@ export const highlightCreator = (creator, highlight) => {
     return highlight['creator.folded']
   }
   return creator
+}
+
+export const highlightCollection = (collection, highlight) => {
+  if (highlight && highlight['collection.folded']) {
+    return highlight['collection.folded']
+  }
+  return collection
 }
 
 export const higlightDisplay = (row) => {

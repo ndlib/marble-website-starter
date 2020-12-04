@@ -57,12 +57,12 @@ export const AllPage = ({
 
   return (
     <Layout
-      title='Sitemap'
       location={location}
     >
       <Seo
         data={{}}
         location={location}
+        title='Sitemap'
       />
       {
       // <h2>Items</h2>
