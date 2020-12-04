@@ -4,4 +4,4 @@ reset=`tput sgr0`
 
 echo "${magenta}----- POST-BUILD -----${reset}"
 # rsync -av ./site/public/ ./public
-yarn workspace site deploy
+[[ ! -z "$TRAVIS_RUN" ]] yarn workspace site deploy

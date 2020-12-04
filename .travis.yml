@@ -4,6 +4,7 @@ env:
     - SEARCH_URL="travis-test-no-index"
     - SEARCH_INDEX="travis-test-no-index"
     - TRAVIS_RUN=1
+    - S3_DEST_BUCKET="bucket"
 language: node_js
 node_js:
   - "14"
