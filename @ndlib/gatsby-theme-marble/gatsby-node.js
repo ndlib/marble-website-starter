@@ -236,7 +236,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
     }
   }
 
-  if (node.internal.type === 'NdJson') {
+  if (node.internal.type === 'StandardJson') {
     pruneEmptyLeaves(node)
     crawlStandardJson(node)
   }

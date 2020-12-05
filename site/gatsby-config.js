@@ -5,7 +5,6 @@ module.exports = {
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
-        // layouts: configuration.layouts,
         useLogin: configuration.siteMetadata.useLogin,
       },
     },

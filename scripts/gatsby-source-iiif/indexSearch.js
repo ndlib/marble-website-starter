@@ -77,11 +77,11 @@ const loadManifestData = () => {
 
   const allManifestData = []
 
-  const fileObjs = fs.readdirSync(path.join(directory, '/content/json/nd'))
+  const fileObjs = fs.readdirSync(path.join(directory, '/content/json/standard'))
 
   fileObjs.forEach(file => {
     if (!file.match(/^[.]/)) {
-      const data = fs.readFileSync(path.join(directory, '/content/json/nd', file))
+      const data = fs.readFileSync(path.join(directory, '/content/json/standard', file))
       const manifestData = JSON.parse(data.toString())
 
       allManifestData.push(manifestData)
