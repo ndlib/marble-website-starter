@@ -1,43 +1,38 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
-import ReactModal from 'react-modal'
+import ActionModal from 'components/Internal/ActionModal'
 import FeedbackForm from '../FeedbackForm'
 import sx from './sx'
 
-// import style from './style.module.css'
-
 const FeedbackModal = () => {
-  const [showModal, setShowModal] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   const handleOpenModal = () => {
-    setShowModal(true)
+    setSettingsOpen(true)
   }
   const handleCloseModal = () => {
-    setShowModal(false)
+    setSettingsOpen(false)
   }
 
   return (
     <div>
-      <div role='button' id='feedbackButton' onClick={handleOpenModal} sx={sx.feedbackButton}>FEEDBACK</div>
-      <ReactModal
-        isOpen={showModal}
-        contentLabel='Feedback form'
-        sx={sx.modal}
+      <button id='feedbackButton' onClick={handleOpenModal} sx={sx.feedbackButton}>FEEDBACK</button>
+      <ActionModal
+        isOpen={settingsOpen}
+        contentLabel='Digital Collections Feedback'
         shouldFocusAfterRender
         shouldReturnFocusAfterClose
+        closeFunc={handleCloseModal}
       >
-        <div sx={sx.wrapper}>
-          <div id='formHeader' sx={sx.headingContainer}><h2>Digital Collection Feedback</h2>
-            <div role='button' aria-label='Close form' onClick={handleCloseModal} sx={sx.closebutton}>X</div>
-          </div>
-          <FeedbackForm />
+        <div>
+          {/* Optional Google Form as for backup */}
+          {/* <iframe title='Digital Collections Feedback' src='https://docs.google.com/forms/d/e/1FAIpQLSd_hrPoNy1SvGYnYAa8d9MQ5fNIQYpkxcHFFVu6rv8VmlFCgw/viewform?embedded=true' frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe> */}
+          <FeedbackForm closeFunc={handleCloseModal} />
         </div>
-      </ReactModal>
+      </ActionModal>
     </div>
   )
 }
-
-ReactModal.setAppElement('body')
 
 export default FeedbackModal

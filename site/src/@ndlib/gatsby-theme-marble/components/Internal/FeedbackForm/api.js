@@ -1,12 +1,13 @@
 
+const proxyurl = 'https://cors-anywhere.herokuapp.com/'
 const url = 'https://nddev.service-now.com/api/uond/anonymous_incident'
 
 export const createData = ({ body, successFunc, errorFunc }) => {
   fetch(
-    (url),
+    (proxyurl + url),
     {
       method: 'POST',
-      mode: 'no-cors',
+      mode: 'cors',
       body: JSON.stringify(body),
     })
     .then(result => {
