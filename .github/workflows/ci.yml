@@ -42,8 +42,8 @@ jobs:
         failures=0
         trap 'failures=$((failures+1))' ERR
 
-        yarn workspace @ndlib/gatsby-theme-marble test
-        yarn workspace site test
+        yarn workspace @ndlib/gatsby-theme-marble coverage
+        yarn workspace site coverage
 
         if ((failures != 0)); then
           echo "TESTS FAILED"
@@ -58,13 +58,6 @@ jobs:
         cat ./site/.env.production
         yarn workspace site build
 
-    - name: "Update Coverage"
-      run: |
-        pushd @ndlib/gatsby-theme-marble
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter
-        ./cc-test-reporter before-build
-        npm test -- --coverage
-        ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    - uses: paambaati/codeclimate-action@v2.2.4
       env:
         CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
