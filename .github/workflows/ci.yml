@@ -21,9 +21,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - uses: c-hive/gha-yarn-cache@v1
+
+    - name: "Env for testing"
+      run: printenv
+
     - name: Install JS dependencies
       run: yarn install
-      
+
     - run: ./scripts/local.sh "local"
     - run: pushd @ndlib/gatsby-theme-marble
     - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -31,7 +35,6 @@ jobs:
     - run: ./cc-test-reporter before-build
     - run: npm test -- --coverage
     - run: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
       env:
         CI: true
         CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
