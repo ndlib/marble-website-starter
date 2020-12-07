@@ -1,0 +1,41 @@
+name: Node Unit Test CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: c-hive/gha-yarn-cache@v1
+    - name: Install JS dependencies
+      run: yarn install
+      
+    - run: ./scripts/local.sh "local"
+    - run: pushd @ndlib/gatsby-theme-marble
+    - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - run: chmod +x ./cc-test-reporter
+    - run: ./cc-test-reporter before-build
+    - run: npm test -- --coverage
+    - run: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+      env:
+        CI: true
+        CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
+        SEARCH_URL: "ci-test-no-index"
+        SEARCH_INDEX: "ci-test-no-index"
+        S3_DEST_BUCKET: "ci-bucket"
+        TRAVIS_RUN: 1
