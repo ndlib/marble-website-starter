@@ -58,6 +58,6 @@ jobs:
         cat ./site/.env.production
         yarn workspace site build
 
-    - uses: paambaati/codeclimate-action@v2.2.4
+    - uses: paambaati/codeclimate-action
       env:
         CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
