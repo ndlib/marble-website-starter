@@ -21,24 +21,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - uses: c-hive/gha-yarn-cache@v1
 
-    - name: "Env for testing"
-      run: printenv
+    - run: ./scripts/github-actions-ci.sh
 
-    - name: Install JS dependencies
-      run: yarn install
-
-    - run: ./scripts/local.sh "local"
-      env:
-        SEARCH_URL: "ci-test-no-index"
-        SEARCH_INDEX: "ci-test-no-index"
-        S3_DEST_BUCKET: "ci-bucket"
     - run: pushd @ndlib/gatsby-theme-marble
     - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
     - run: chmod +x ./cc-test-reporter
     - run: ./cc-test-reporter before-build
       env:
         CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
-    
+
     - run: npm test -- --coverage
       env:
         CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb

@@ -3,11 +3,14 @@ magenta=`tput setaf 5`
 reset=`tput sgr0`
 
 echo "${magenta}----- SYSTEM -------${reset}"
-export CHOKIDAR_USEPOLLING=1
-echo "FILE WATCHER DEBUG INFO:"
-cat /proc/sys/fs/inotify/max_user_watches
-sysctl -w fs.inotify.max_user_watches=524288
-cat /proc/sys/fs/inotify/max_user_watches
+if [[ ! -z "$CI" ]]
+  then
+    export CHOKIDAR_USEPOLLING=1
+    echo "FILE WATCHER DEBUG INFO:"
+    cat /proc/sys/fs/inotify/max_user_watches
+    sysctl -w fs.inotify.max_user_watches=524288
+    cat /proc/sys/fs/inotify/max_user_watches
+fi
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}/"
