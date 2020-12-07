@@ -34,6 +34,7 @@ jobs:
         yarn install
         node getStandard.js
         cp "../../site/.env.test" "../../site/.env.production"
+        cp "../../site/.env.test" "../../.env"
         ls -la ../../site
 
     - name: "Unit Tests"
@@ -53,6 +54,7 @@ jobs:
       run: |
         pwd
         ls -la ./site
+        ls -la ./
         yarn workspace site build
 
     - name: "Update Coverage"
