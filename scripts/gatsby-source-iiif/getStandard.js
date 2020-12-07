@@ -5,7 +5,7 @@ const batchPromises = require('batch-promises')
 const directory = process.argv.slice(2)[0] || '../../site'
 
 const loadManifestsFile = () => {
-  const contents = fs.readFileSync(path.join(__dirname, `${directory}/content/manifests.json`))
+  const contents = fs.readFileSync(path.join(directory, `content/manifests.json`))
   return JSON.parse(contents)
 }
 
@@ -41,8 +41,8 @@ const download = ({ url, dest, ...options }) => new Promise((resolve, reject) =>
 const downloadStandardJson = async () => {
   const rawIds = loadManifestsFile()
   let standardIds = rawIds.manifest_ids
-  if (process.env.TRAVIS_RUN) {
-    standardIds = rawIds.travis_manfest_ids
+  if (process.env.CI) {
+    standardIds = rawIds.ci_manfest_ids
   }
   const downloadedFiles = []
   const errors = []
@@ -51,7 +51,7 @@ const downloadStandardJson = async () => {
     standardIds,
     id => new Promise((resolve) => {
       const url = `https://presentation-iiif.library.nd.edu/${id}/standard`
-      const dest = path.join(__dirname, `${directory}/content/json/nd/${id}.json`)
+      const dest = path.join(directory, `content/json/nd/${id}.json`)
       download({
         url: url,
         dest: dest,
