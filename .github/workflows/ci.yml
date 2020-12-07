@@ -59,6 +59,8 @@ jobs:
         else
           ./cc-test-reporter after-build --exit-code 0
         fi
+      env:
+        CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
 
     - name: "Build"
       run: |
