@@ -46,7 +46,7 @@ jobs:
         yarn workspace site test
 
         if ((failures != 0)); then
-          echo "${magenta}TESTS FAILED${reset}"
+          echo "TESTS FAILED"
           exit 1
         fi
 
