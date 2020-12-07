@@ -29,6 +29,10 @@ jobs:
       run: yarn install
 
     - run: ./scripts/local.sh "local"
+      env:
+        SEARCH_URL: "ci-test-no-index"
+        SEARCH_INDEX: "ci-test-no-index"
+        S3_DEST_BUCKET: "ci-bucket"
     - run: pushd @ndlib/gatsby-theme-marble
     - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
     - run: chmod +x ./cc-test-reporter
