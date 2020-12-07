@@ -21,18 +21,20 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - uses: c-hive/gha-yarn-cache@v1
 
-    - name: "Install"
+    - name: "Install Main App"
       run: |
         yarn global add gatsby-cli
         mkdir ~/.config/gatsby
         cp ./scripts/codebuild/config.json ~/.config/gatsby/
         yarn install
-        pushd scripts/gatsby-source-iiif/
+
+    - name: "Install Metadata"
+      run: |
+        cd scripts/gatsby-source-iiif/
         yarn install
         node getStandard.js
-        cp ../../site/.env.test" "../../site/.env.production"
-        popd
-        ls -la ./site
+        cp "../../site/.env.test" "../../site/.env.production"
+        ls -la ../../site
 
     - name: "Unit Tests"
       run: |
