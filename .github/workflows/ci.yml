@@ -50,7 +50,10 @@ jobs:
         fi
 
     - name: "Build"
-      run: yarn workspace site build
+      run: |
+        pwd
+        ls -la ./site
+        yarn workspace site build
 
     - name: "Update Coverage"
       run: |
