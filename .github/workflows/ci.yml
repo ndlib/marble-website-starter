@@ -35,27 +35,33 @@ jobs:
         node getStandard.js
         cp "../../site/.env.test" "../../site/.env.production"
         cp "../../site/.env.test" "../../.env"
-        ls -la ../../site
 
     - name: "Unit Tests"
       run: |
+        pushd @ndlib/gatsby-theme-marble
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+        ./cc-test-reporter before-build
+        popd
+
         failures=0
         trap 'failures=$((failures+1))' ERR
 
         yarn workspace site test
         yarn workspace @ndlib/gatsby-theme-marble coverage
 
-        if ((failures != 0)); then
+        pushd @ndlib/gatsby-theme-marble
+        if ((failures != 0));
+        then
           echo "TESTS FAILED"
+          ./cc-test-reporter after-build --exit-code 1
           exit 1
+        else
+          ./cc-test-reporter after-build --exit-code 0
         fi
 
     - name: "Build"
       run: |
-        pwd
-        ls -la ./site
-        ls -la ./
-        cat ./site/.env.production
         yarn workspace site build
 
     - uses: paambaati/codeclimate-action@v2.7.4
