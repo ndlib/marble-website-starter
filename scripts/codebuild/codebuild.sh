@@ -12,7 +12,9 @@ cat /proc/sys/fs/inotify/max_user_watches
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}/"
-ENV_FILE="${BASE_DIR}/site/.env.production"
+SITE_DIR="${BASE_DIR}/site/"
+ENV_FILE="${SITE_DIR}/.env.production"
+
 echo "ENV_FILE: ${ENV_FILE}"
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
@@ -46,7 +48,7 @@ pushd scripts/gatsby-source-iiif/
 
 
   echo "${magenta}----- Get Metadata -------${reset}"
-  node getStandard.js ${ENV_FILE}
+  node getStandard.js ${SITE_DIR}
 
   echo "${magenta}----- Index -------${reset}"
   node indexSearch.js ${ENV_FILE}
