@@ -14,7 +14,7 @@ const additionalRecursiveSearchIds = ['BPP1001_EAD']
 const pruneEmptyLeaves = require('../../@ndlib/gatsby-theme-marble/src/utils/pruneEmptyLeaves')
 
 const appConfig = process.env.APP_CONFIG
-if (appConfig === 'local' || process.env.TRAVIS_RUN) {
+if (appConfig === 'local' || process.env.CI) {
   return
 }
 

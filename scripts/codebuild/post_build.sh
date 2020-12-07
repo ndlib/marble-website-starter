@@ -5,7 +5,7 @@ reset=`tput sgr0`
 echo "${magenta}----- POST-BUILD -----${reset}"
 
 printenv
-if [[ ! -z "$TRAVIS_RUN" ]]
+if [[ ! -z "$CI" ]]
   then
     yarn workspace site deploy
 fi
