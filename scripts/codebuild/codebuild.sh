@@ -11,8 +11,8 @@ cat /proc/sys/fs/inotify/max_user_watches
 
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
-BASE_DIR="${PWD}/"
-SITE_DIR="${BASE_DIR}/site/"
+BASE_DIR="${PWD}"
+SITE_DIR="${BASE_DIR}/site"
 ENV_FILE="${SITE_DIR}/.env.production"
 
 echo "ENV_FILE: ${ENV_FILE}"
