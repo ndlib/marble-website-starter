@@ -12,7 +12,7 @@ cat /proc/sys/fs/inotify/max_user_watches
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}/"
-ENV_FILE="${BASE_DIR}.env"
+ENV_FILE="${BASE_DIR}/site/.env.production"
 echo "ENV_FILE: ${ENV_FILE}"
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
@@ -39,15 +39,36 @@ cp ./scripts/codebuild/config.json ~/.config/gatsby/
 # install app dependencies
 yarn install || { echo "yarn install failed" ;exit 1; }
 
-echo "${magenta}----- CUSTOMIZATIONS -------${reset}"
 pushd scripts/gatsby-source-iiif/
-yarn install
+  yarn install
+  echo "${magenta}----- Build ENV Config -------${reset}"
+  node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
 
-node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
 
-site="../../site"
-node getStandard.js
-node indexSearch.js 
+  echo "${magenta}----- Get Metadata -------${reset}"
+  node getStandard.js ${ENV_FILE}
 
-echo "Copy .env to site for Gatsby"
-cp ./.env ./site/.env.production
+  echo "${magenta}----- Index -------${reset}"
+  node indexSearch.js ${ENV_FILE}
+popd
+
+
+
+echo "${magenta}----- Unit Tests -------${reset}"
+failures=0
+trap 'failures=$((failures+1))' ERR
+
+yarn workspace @ndlib/gatsby-theme-marble test
+yarn workspace site test
+
+if ((failures != 0)); then
+  echo "${magenta}TESTS FAILED${reset}"
+  exit 1
+fi
+
+echo "${magenta}----- Build -------${reset}"
+yarn workspace site build
+
+
+echo "${magenta}----- Deploy -------${reset}"
+yarn workspace site deploy
