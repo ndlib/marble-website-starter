@@ -34,7 +34,6 @@ jobs:
         yarn install
         node getStandard.js
         cp "../../site/.env.test" "../../site/.env.production"
-        cp "../../site/.env.test" "../../.env"
 
     - name: "Unit Tests"
       run: |
