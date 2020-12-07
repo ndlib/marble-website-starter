@@ -55,6 +55,7 @@ jobs:
         pwd
         ls -la ./site
         ls -la ./
+        cat ./site/.env.production
         yarn workspace site build
 
     - name: "Update Coverage"
