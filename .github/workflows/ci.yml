@@ -42,8 +42,8 @@ jobs:
         failures=0
         trap 'failures=$((failures+1))' ERR
 
+        yarn workspace site test
         yarn workspace @ndlib/gatsby-theme-marble coverage
-        yarn workspace site coverage
 
         if ((failures != 0)); then
           echo "TESTS FAILED"
