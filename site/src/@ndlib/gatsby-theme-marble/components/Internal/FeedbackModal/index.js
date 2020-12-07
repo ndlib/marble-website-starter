@@ -26,7 +26,7 @@ const FeedbackModal = () => {
         closeFunc={handleCloseModal}
       >
         <div>
-          {/* Optional Google Form as for backup */}
+          {/* Optional Google Form for backup */}
           {/* <iframe title='Digital Collections Feedback' src='https://docs.google.com/forms/d/e/1FAIpQLSd_hrPoNy1SvGYnYAa8d9MQ5fNIQYpkxcHFFVu6rv8VmlFCgw/viewform?embedded=true' frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe> */}
           <FeedbackForm closeFunc={handleCloseModal} />
         </div>
