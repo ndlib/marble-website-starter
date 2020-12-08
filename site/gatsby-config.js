@@ -1,4 +1,6 @@
 const configuration = require('./content/configuration')
+const s3BucketName = process.env.S3_DEST_BUCKET || ''
+
 module.exports = {
   siteMetadata: configuration.siteMetadata,
   plugins: [
@@ -34,13 +36,19 @@ module.exports = {
       options: configuration.manifest,
     },
     {
-    resolve: 'gatsby-plugin-preconnect',
-    options: {
-      domains: [
-        'https://static.nd.edu',
-        'https://image-iiif.library.nd.edu',
-      ],
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: s3BucketName,
+      },
     },
-  },
+    {
+      resolve: 'gatsby-plugin-preconnect',
+      options: {
+        domains: [
+          'https://static.nd.edu',
+          'https://image-iiif.library.nd.edu',
+        ],
+      },
+    },
   ],
 }

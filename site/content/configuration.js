@@ -15,6 +15,8 @@ const authClientIssuer = process.env.AUTH_CLIENT_ISSUER || ''
 const searchUrl = process.env.SEARCH_URL || ''
 // set this to be a website-local-index so we stop busting the main website.
 const searchIndex = process.env.SEARCH_INDEX || ''
+const s3BucketName = process.env.S3_DEST_BUCKET || ''
+
 console.table([
   { variable: 'SEARCH_INDEX:', value: searchIndex },
   { variable: 'SEARCH_URL:', value: searchUrl },
@@ -23,6 +25,7 @@ console.table([
   { variable: 'AUTH_CLIENT_URL:', value: authClientURL },
   { variable: 'AUTH_CLIENT_ID:', value: authClientClientId },
   { variable: 'AUTH_CLIENT_ISSUER:', value: authClientIssuer },
+  { variable: 'S3_DEST_BUCKET:', value: s3BucketName },
 ])
 
 const menus = require('./menus')
