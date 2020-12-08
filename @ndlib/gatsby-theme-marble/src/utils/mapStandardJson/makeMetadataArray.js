@@ -87,6 +87,35 @@ const findContact = (standardJson) => {
   return [`Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact ${provider} at [${contact}](mailto:${contact}).`]
 }
 
+const getUriValue = (standardJson) => {
+  if (!('repository' in standardJson)) {
+    return false
+  }
+  let uriValue = ''
+  switch (standardJson.repository.toLowerCase()) {
+    case 'rare':
+    case 'curate':
+      uriValue = 'Rare%20Books%20%26%20Special%20Collections'
+      break
+    case 'museum':
+      uriValue = 'Snite%20Museum%20of%20Art'
+      break
+    case 'unda':
+      uriValue = 'University%20Archives'
+      break
+    case 'hesb':
+      uriValue = 'General%20Collection%2C%20Hesburgh%20Libraries'
+      break
+    default:
+      uriValue = ''
+      break
+  }
+  if (uriValue === '') {
+    return false
+  }
+  return [uriValue]
+}
+
 const dataLookUp = {
   archivesspace: {
     creators: {
@@ -131,6 +160,11 @@ const dataLookUp = {
       label: 'Campus Location',
       type: 'list',
       processor: findProvider,
+    },
+    uriValue: {
+      label: 'URI Value',
+      type: 'markdown',
+      processor: getUriValue,
     },
     access: {
       label: 'Conditions Governing Access',
@@ -230,6 +264,11 @@ const dataLookUp = {
       type: 'list',
       processor: findProvider,
     },
+    uriValue: {
+      label: 'URI Value',
+      type: 'markdown',
+      processor: getUriValue,
+    },
     access: {
       label: 'Conditions Governing Access',
       type: 'list',
@@ -315,6 +354,11 @@ const dataLookUp = {
       type: 'list',
       processor: findProvider,
     },
+    uriValue: {
+      label: 'URI Value',
+      type: 'markdown',
+      processor: getUriValue,
+    },
     access: {
       label: 'Access',
       type: 'markdown',
@@ -396,6 +440,11 @@ const dataLookUp = {
       label: 'Campus Location',
       type: 'list',
       processor: findProvider,
+    },
+    uriValue: {
+      label: 'URI Value',
+      type: 'markdown',
+      processor: getUriValue,
     },
     access: {
       label: 'Conditions Governing Access',

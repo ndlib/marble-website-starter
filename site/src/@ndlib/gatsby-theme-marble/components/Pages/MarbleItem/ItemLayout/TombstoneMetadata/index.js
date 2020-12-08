@@ -15,6 +15,9 @@ const TombstoneMetadata = ({ marbleItem }) => {
   const campusLocations = marbleItem.metadata.filter(m => {
     return m.label === 'Campus Location'
   })
+  const uriValue = marbleItem.metadata.filter(m => {
+    return m.label === 'URI Value'
+  })
   const sx = {
     wrapper: {
       '& > div': {
@@ -42,6 +45,7 @@ const TombstoneMetadata = ({ marbleItem }) => {
       },
     },
   }
+  const hasUri = typy(uriValue, '[0].value').safeArray.length > 0
   const hasCreator = typy(creators, '[0].value').safeArray.length > 0
   return (
     <BaseStyles>
@@ -59,6 +63,7 @@ const TombstoneMetadata = ({ marbleItem }) => {
           field={campusLocations}
           searchField='campuslocation[0]'
           sxStyle={sx.campusLocations}
+          uriValue={hasUri ? typy(uriValue, '[0].value').safeArray : null}
         />
         <ManifestDescription marbleItem={marbleItem} />
       </div>

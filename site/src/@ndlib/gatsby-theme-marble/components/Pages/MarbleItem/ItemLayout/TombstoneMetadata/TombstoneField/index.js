@@ -5,24 +5,18 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import Link from 'components/Internal/Link'
 
-const TombstoneField = ({ field, sxStyle, searchField }) => {
+const TombstoneField = ({ field, sxStyle, searchField, uriValue }) => {
   return (
     <div sx={sxStyle}>
       {
         field.map((values, i) => {
           return values.value.map((value, j) => {
-            let uriValue = value
-            uriValue = encodeURI(uriValue)
-            uriValue = uriValue.replace(/&/, '%26')
-            uriValue = uriValue.includes(',%20Hesburgh%20Libraries') ? (
-              uriValue.split(',%20Hesburgh%20Libraries')[0]
-            ) : (
-              uriValue
-            )
+            console.log(uriValue)
+            const uri = uriValue != null ? uriValue : encodeURI(value)
             return searchField ? (
               <Link
                 key={`${i}-${j}`}
-                to={`/search?${searchField}=${uriValue}`}
+                to={`/search?${searchField}=${uri}`}
               >{value}
               </Link>
             ) : (
@@ -43,6 +37,7 @@ TombstoneField.propTypes = {
   ).isRequired,
   sxStyle: PropTypes.object,
   searchField: PropTypes.string,
+  uriValue: PropTypes.array,
 }
 
 export default TombstoneField
