@@ -65,10 +65,6 @@ exports.sourceNodes = ({ actions }) => {
   }
 
   # things expected to be there
-  type searchBase @dontInfer {
-    app: String
-    url: String
-  }
   type menuItems @dontInfer {
     id: String
     label: String
@@ -79,28 +75,9 @@ exports.sourceNodes = ({ actions }) => {
     label: String
     items: [menuItems]
   }
-  type defaultSearch @dontInfer {
-    tag: String
-  }
   type languages @dontInfer {
     default: String
     allowed: [String]
-  }
-  type authClient @dontInfer {
-    url: String
-    clientId: String
-    issuer: String
-  }
-  type MarbleConfiguration implements Node @dontInfer {
-    title: String!
-    description: String!
-    author: String!
-    searchBase: searchBase
-    menus: [menus]
-    useLogin: Boolean
-    userContentPath: String
-    authClient: authClient
-    languages: languages
   }
   `
   createTypes(typeDefs)

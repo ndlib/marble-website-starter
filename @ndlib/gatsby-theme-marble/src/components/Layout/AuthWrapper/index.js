@@ -15,29 +15,22 @@ export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
         site {
           siteMetadata {
             useLogin
-            authClient {
-              url
-              clientId
-              issuer
-            }
-            userContentPath
           }
         }
       }
     `,
   )
-  if (typy(site, 'siteMetadata.useLogin').safeBoolean &&
-  typy(site, 'siteMetadata.authClient').safeObject) {
+  if (typy(site, 'siteMetadata.useLogin').safeBoolean) {
     if (!loginReducer.authClientSettings) {
-      dispatch(putAuthSettingsInStore(site, location))
+      dispatch(putAuthSettingsInStore(location))
     } else {
       dispatch(getTokenAndPutInStore(loginReducer, location))
     }
   }
   return (
-    <React.Fragment>
+    <>
       {children}
-    </React.Fragment>
+    </>
   )
 }
 

@@ -20,29 +20,27 @@ export const STATUS_AUTHENTICATED_TRYING_LOGIN = 'STATUS_AUTHENTICATED_TRYING_LO
 export const STATUS_AUTHENTICATED_NOT_LOGGED_IN = 'STATUS_AUTHENTICATED_NOT_LOGGED_IN'
 export const STATUS_LOGGED_IN = 'STATUS_LOGGED_IN'
 
-export const putAuthSettingsInStore = (site, location) => {
+export const putAuthSettingsInStore = (location) => {
   return dispatch => {
-    const { url, clientId, issuer } = site.siteMetadata.authClient
     const authClientSettings = {
-      url: url,
-      clientId: clientId,
+      url: process.env.AUTH_CLIENT_URL,
+      clientId: process.env.AUTH_CLIENT_ID,
       redirectUri: `${location.origin}/user`,
-      issuer: issuer,
+      issuer: process.env.AUTH_CLIENT_ISSUER,
       ignoreSignature: true,
       responseType: 'id_token',
       responseMode: 'fragment',
       pkce: true,
     }
-    const { userContentPath } = site.siteMetadata
-    dispatch(setAuthClient(authClientSettings, userContentPath))
+    dispatch(setAuthClient(authClientSettings))
   }
 }
 
-export const setAuthClient = (authClientSettings, userContentPath) => {
+export const setAuthClient = (authClientSettings) => {
   return {
     type: SET_AUTH_CLIENT,
     authClientSettings: authClientSettings,
-    userContentPath: userContentPath,
+    userContentPath: process.env.USER_CONTENT_PATH,
   }
 }
 

@@ -25,10 +25,10 @@ describe('loginActions', () => {
   test.skip('putAuthSettingsInStore', () => {})
 
   test('setAuthClient', () => {
-    expect(setAuthClient({ some: 'settings' }, { more: 'things' })).toEqual({
+    expect(setAuthClient({ some: 'settings' })).toEqual({
       type: SET_AUTH_CLIENT,
       authClientSettings: { some: 'settings' },
-      userContentPath: { more: 'things' },
+      userContentPath: process.env.USER_CONTENT_PATH,
     })
   })
   test.skip('getTokenAndPutInStore', () => {})
