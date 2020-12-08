@@ -127,6 +127,12 @@ describe('makeMetadataArray', () => {
           ],
         },
         {
+          label: 'URI Value',
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Rare%20Books%20%26%20Special%20Collections'],
+        },
+        {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
@@ -148,6 +154,12 @@ describe('makeMetadataArray', () => {
           ],
         },
         {
+          label: 'URI Value',
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Rare%20Books%20%26%20Special%20Collections'],
+        },
+        {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
@@ -167,6 +179,12 @@ describe('makeMetadataArray', () => {
           value:  [
             'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
+        },
+        {
+          label: 'URI Value',
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Rare%20Books%20%26%20Special%20Collections'],
         },
         {
           label: 'Contact Us',
@@ -191,6 +209,12 @@ describe('makeMetadataArray', () => {
           ],
         },
         {
+          label: 'URI Value',
+          type: 'markdown',
+          urlField: undefined,
+          value: ['University%20Archives'],
+        },
+        {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
@@ -211,6 +235,12 @@ describe('makeMetadataArray', () => {
           value:  [
             'Snite Museum of Art',
           ],
+        },
+        {
+          label: 'URI Value',
+          type: 'markdown',
+          urlField: undefined,
+          value: ['Snite%20Museum%20of%20Art'],
         },
         {
           label: 'Contact Us',
@@ -234,6 +264,12 @@ describe('makeMetadataArray', () => {
         value:  [
           'General Collection, Hesburgh Libraries',
         ],
+      },
+      {
+        label: 'URI Value',
+        type: 'markdown',
+        urlField: undefined,
+        value: ['General%20Collection%2C%20Hesburgh%20Libraries'],
       },
       {
         label: 'Contact Us',
