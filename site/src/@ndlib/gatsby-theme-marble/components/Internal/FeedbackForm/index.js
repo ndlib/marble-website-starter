@@ -4,8 +4,6 @@ import { jsx } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from './useForm'
-// import Recaptcha from 'react-google-invisible-recaptcha'
-// import Loading from 'components/Internal/Loading'
 import MaterialButton from 'components/Internal/MaterialButton'
 import TextField from 'components/App/FormElements/TextField'
 import TextArea from 'components/App/FormElements/TextArea'
@@ -15,7 +13,6 @@ import typy from 'typy'
 import sx from './sx'
 
 export const Form = ({ closeFunc }) => {
-  // const [content, setContent] = useState(<Loading />)
   const [response, setResponse] = useState(false)
   const [name, changeName] = useState('')
   const [email, changeEmail] = useState('')
