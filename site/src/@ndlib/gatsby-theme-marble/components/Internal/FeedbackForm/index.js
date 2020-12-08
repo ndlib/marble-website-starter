@@ -12,9 +12,11 @@ import TextArea from 'components/App/FormElements/TextArea'
 import { createData } from './api'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import sx from './sx'
 
 export const Form = ({ closeFunc }) => {
   // const [content, setContent] = useState(<Loading />)
+  const [response, setResponse] = useState(false)
   const [name, changeName] = useState('')
   const [email, changeEmail] = useState('')
   const [feedback, changeFeedback] = useState('')
@@ -29,12 +31,29 @@ export const Form = ({ closeFunc }) => {
     console.log('Submitted')
   }
 
-  if (!typy(createData.successFunc, 'number').safeString === '') {
+  if (response) {
     return (
       <div>
         <form>
           <p>Thank you for your feedback</p>
-          <p>Your ServiceNow ticket number is: `{createData.successFunc.data.result.number})</p>
+          <p>Your ServiceNow ticket number is: #{typy(response.result, 'number').safeString}</p>
+          <div sx={sx.buttonGroup}>
+            <MaterialButton
+              onClick={() => {
+                changeFeedback('')
+                setResponse(false)
+              }}
+              primary
+            >Another?
+            </MaterialButton>
+            <MaterialButton
+              onClick={() => {
+                closeFunc()
+              }}
+              primary
+            >Close
+            </MaterialButton>
+          </div>
         </form>
       </div>
     )
@@ -84,13 +103,13 @@ export const Form = ({ closeFunc }) => {
                   name: name,
                   email: email,
                   feedback: feedback,
+                  assignment_group: 'e7f56ce737044200f8b78ff1b3990e85',
                 }
                 createData({
                   body: body,
                   successFunc: (data) => {
-                    // closeFunc()
-                    // alert('Thank You! Ticket Number: ######')
-                    console.log(data.result.number)
+                    setResponse(data)
+                    setPatching(false)
                   },
                   errorFunc: (e) => {
                     console.error(e)

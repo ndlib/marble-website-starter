@@ -25,7 +25,8 @@ const MaterialButton = ({
         width: wide ? '250px' : '100px',
       }}
       disabled={disabled}
-    >{children}</button>
+    >{children}
+    </button>
   )
 }
 
