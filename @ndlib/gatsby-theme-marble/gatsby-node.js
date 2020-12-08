@@ -91,21 +91,15 @@ exports.sourceNodes = ({ actions }) => {
     clientId: String
     issuer: String
   }
-  type SiteMetadata @dontInfer {
+  type MarbleConfiguration implements Node @dontInfer {
     title: String!
     description: String!
     author: String!
-    universalViewerBaseURL: String
-    googleMapApiURL: String
-    iiifHelpURL: String
     searchBase: searchBase
-    footerText: String
     menus: [menus]
-    hideLogo: Boolean
     useLogin: Boolean
     userContentPath: String
     authClient: authClient
-    searchPath: String
     languages: languages
   }
   `
