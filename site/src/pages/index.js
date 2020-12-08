@@ -37,10 +37,6 @@ export const query = graphql`
         title
         description
         author
-        searchBase {
-          app
-          url
-        }
       }
     }
   }

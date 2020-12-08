@@ -11,10 +11,9 @@ const userContentPath = process.env.USER_CONTENT_PATH || ''
 const authClientURL = process.env.AUTH_CLIENT_URL || ''
 const authClientClientId = process.env.AUTH_CLIENT_ID || ''
 const authClientIssuer = process.env.AUTH_CLIENT_ISSUER || ''
-
 const searchUrl = process.env.SEARCH_URL || ''
-// set this to be a website-local-index so we stop busting the main website.
 const searchIndex = process.env.SEARCH_INDEX || ''
+
 console.table([
   { variable: 'SEARCH_INDEX:', value: searchIndex },
   { variable: 'SEARCH_URL:', value: searchUrl },
@@ -41,10 +40,6 @@ module.exports = {
     siteUrl: `https://marble.library.nd.edu`,
     // apis and embedded urls
     universalViewerBaseURL: `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
-    searchBase: {
-      app: searchIndex,
-      url: searchUrl,
-    },
 
     // paths
     useLogin: true,
