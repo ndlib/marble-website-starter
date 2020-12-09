@@ -83,7 +83,7 @@ const MiradorViewerPage = ({ data, location }) => {
       )
     }
   } catch {
-    console.warn('window does not exist in node')
+    // console.warn('window does not exist in node')
   }
   return (
     <Layout data={data} location={location}>
