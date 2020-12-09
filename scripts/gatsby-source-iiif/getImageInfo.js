@@ -70,7 +70,7 @@ const download = ({ url, dest, ...options }) => new Promise((resolve, reject) =>
 })
 
 // Start here
-fs.readdir(path.join(__dirname, `${directory}/content/json/nd`), async (err, fileNames) => {
+fs.readdir(path.join(__dirname, `${directory}/content/json/standard`), async (err, fileNames) => {
   if (err) {
     console.error(err)
   }
@@ -79,7 +79,7 @@ fs.readdir(path.join(__dirname, `${directory}/content/json/nd`), async (err, fil
     if (!fileName.endsWith('.json')) {
       return null
     }
-    const standardJson = await loadJsonFile(path.join(__dirname, `${directory}/content/json/nd/${fileName}`))
+    const standardJson = await loadJsonFile(path.join(__dirname, `${directory}/content/json/standard/${fileName}`))
     standardJson.fileName = fileName
     return standardJson
   }))

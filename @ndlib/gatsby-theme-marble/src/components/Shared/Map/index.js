@@ -16,7 +16,6 @@ const Map = ({
       query {
         site {
           siteMetadata {
-            googleMapApiURL
             siteUrl
           }
         }
@@ -28,10 +27,10 @@ const Map = ({
     console.warn('No KML file.')
     return null
   }
-  const { siteUrl, googleMapApiURL } = site.siteMetadata
+  const { siteUrl } = site.siteMetadata
   return (
     <MapWrapper
-      googleMapURL={googleMapApiURL}
+      googleMapURL={''}
       loadingElement={<div style={{ height: `100%` }} />}
       containerElement={<div style={{ height: `600px` }} />}
       mapElement={<div style={{ height: `100%` }} />}

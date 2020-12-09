@@ -51,7 +51,7 @@ const downloadStandardJson = async () => {
     standardIds,
     id => new Promise((resolve) => {
       const url = `https://presentation-iiif.library.nd.edu/${id}/standard`
-      const dest = path.join(directory, `content/json/nd/${id}.json`)
+      const dest = path.join(directory, `content/json/standard/${id}.json`)
       download({
         url: url,
         dest: dest,

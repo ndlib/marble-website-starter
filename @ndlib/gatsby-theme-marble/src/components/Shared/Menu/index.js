@@ -10,16 +10,14 @@ import sx from './sx'
 
 export const menuQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        menus {
+    allMenusJson {
+      nodes {
+        id
+        label
+        items {
           id
+          link
           label
-          items {
-            id
-            link
-            label
-          }
         }
       }
     }
@@ -27,9 +25,8 @@ export const menuQuery = graphql`
 `
 
 export const Menu = ({ menu, navClass }) => {
-  const { site } = useStaticQuery(menuQuery)
-  const menus = typy(site, 'siteMetadata.menus').safeArray
-  const expandedMenu = findNavInData(menu, menus)
+  const { allMenusJson } = useStaticQuery(menuQuery)
+  const expandedMenu = findNavInData(menu, typy(allMenusJson, 'nodes').safeArray)
   if (!expandedMenu) {
     return null
   }
@@ -43,11 +40,13 @@ export const Menu = ({ menu, navClass }) => {
       <BaseStyles>
         {expandedMenu.label ? <h3>{expandedMenu.label}</h3> : null}
         {expandedMenu.items.map(l => {
-          return <Link
-            to={l.link}
-            key={l.id}
-            sx={sx.item(vertical, flex)}
-          >{l.label}</Link>
+          return (
+            <Link
+              to={l.link}
+              key={l.id}
+              sx={sx.item(vertical, flex)}
+            >{l.label}
+            </Link>)
         })}
       </BaseStyles>
     </nav>

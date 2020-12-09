@@ -2,9 +2,9 @@
 
 This is where the content of your marble-website-starter lives. The following files and directories are expected:
 
-* `manifests.json` ***(required)*** - This file contains a top level standard JSON files that details the content and structure of the majority of the site including all collections and items that will have their own pages.
+* `standard/` ***(required)*** - This directory contains the content of your site in a standardized JSON format.
 
-* `configuration.js` ***(required)*** - This includes many parameters that are used by `gatsby-config.js` to custom your site including the site name, menu structure, api keys, branding and more.
+* `configuration.js` ***(required)*** - This includes many parameters that are used by `gatsby-config.js` to custom your site including.
 
 * `images/` ***(required)*** -  The following images are expected to build the site without modification:
   * manifestLogo.png - Used in manifest.webmanifest

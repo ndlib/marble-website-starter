@@ -20,5 +20,6 @@
   },
   "item": {
     "returnToSearch": "Return to search"
-  }
+  },
+  "iiifHelpURL": "https://iiif.io/about/"
 }
