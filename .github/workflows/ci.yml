@@ -1,0 +1,66 @@
+name: Node Unit Test CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: c-hive/gha-yarn-cache@v1
+
+    - name: "Install Main App"
+      run: |
+        yarn global add gatsby-cli
+        mkdir ~/.config/gatsby
+        cp ./scripts/codebuild/config.json ~/.config/gatsby/
+        yarn install
+
+    - name: "Install Metadata"
+      run: |
+        cd scripts/gatsby-source-iiif/
+        yarn install
+        node getStandard.js
+        cp "../../site/.env.test" "../../site/.env.production"
+
+    - name: "Unit Tests"
+      run: |
+        pushd @ndlib/gatsby-theme-marble
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+        ./cc-test-reporter before-build
+        popd
+
+        failures=0
+        trap 'failures=$((failures+1))' ERR
+
+        yarn workspace site test
+        yarn workspace @ndlib/gatsby-theme-marble coverage
+
+        pushd @ndlib/gatsby-theme-marble
+        if ((failures != 0));
+        then
+          echo "TESTS FAILED"
+          ./cc-test-reporter after-build --exit-code 1
+          exit 1
+        else
+          ./cc-test-reporter after-build --exit-code 0
+        fi
+      env:
+        CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
+
+    - name: "Build"
+      run: |
+        yarn workspace site build

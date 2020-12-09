@@ -45,21 +45,20 @@ yarn workspace @ndlib/gatsby-theme-marble watch
 
 ### Running locally for development:
 #### Main Marble Website:
-The marble site uses elasticsearch for searching. You'll need to have an elasticsearch instance up and running; instructions can be found [here](https://github.com/ndlib/marble-elasticsearch/blob/master/README.md#deployment). Once you have an instance running we'll need to create parameter store key/value pairs the website install process references.
-| Parameter Store Key  | Parameter Store Value |
-| ------------- | ------------- |
-| /all/static-host/&lt;stackname&gt;/search_url  | https://someelasticsearch-url.us-east-1.es.amazonaws.com/  |
-| /all/static-host/&lt;stackname&gt;/search_index  | &lt;stackname&gt;-index  |
-
-Note that multiple indices can utilize the same elasticsearch instance. Each stack would reference their own index under the same elasticsearch instance.
-
 Now we're ready to download the files that will be the source of content to do this run:
 ```
-pushd scripts/gatsby-source-iiif
-yarn
-node getStandard.js ../../site
-popd
+./scripts/reset-local-files.sh
 ```
+
+
+Setup the index for local development.
+Update ./site/.env.development so the keys SEARCH_URL and SEARCH_INDEX point to an elasticsearch index.
+run
+`
+cd scripts/gatsby-source-iiif
+node indexSearch ../../site/.env.development
+`
+
 
 Start the development server:
 ```
@@ -68,6 +67,16 @@ yarn workspace site develop
 Your site is now running at `http://localhost:8000`.
 
 _Note: You'll also see a second link:_ `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
+
+#### Note on production Elasticserch ####
+The marble site uses elasticsearch for searching. You'll need to have an elasticsearch instance up and running; instructions can be found [here](https://github.com/ndlib/marble-elasticsearch/blob/master/README.md#deployment). Once you have an instance running we'll need to create parameter store key/value pairs the website install process references.
+| Parameter Store Key  | Parameter Store Value |
+| ------------- | ------------- |
+| /all/static-host/&lt;stackname&gt;/search_url  | https://someelasticsearch-url.us-east-1.es.amazonaws.com/  |
+| /all/static-host/&lt;stackname&gt;/search_index  | &lt;stackname&gt;-index  |
+
+Note that multiple indices can utilize the same elasticsearch instance. Each stack would reference their own index under the same elasticsearch instance.
+
 
 #### Marble Starter:
 ```
