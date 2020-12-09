@@ -74,7 +74,7 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
             }
           })
       } catch {
-        console.error('Could not access tokenManager.')
+        // console.error('Could not access tokenManager.')
       }
     }
   }
