@@ -17,6 +17,7 @@
     "lodash.merge": "^4.6.2",
     "react": "16.11",
     "react-dom": "16.11",
+    "replace-in-file": "^6.1.0",
     "typography": "^0.16.19"
   },
   "devDependencies": {
@@ -52,6 +53,7 @@
     "test": "jest",
     "watch": "jest --watchAll --coverage",
     "build": "gatsby build",
+    "postbuild": "node ../scripts/postbuild.mjs",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
