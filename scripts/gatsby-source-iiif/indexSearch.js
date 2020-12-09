@@ -9,12 +9,11 @@ const getKeywordsFromSubjects = require('./src/getKeywordsFromSubjects')
 const getCreators = require('./src/getCreators')
 const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
-const additionalRecursiveSearchIds = ['BPP1001_EAD']
 
 const pruneEmptyLeaves = require('../../@ndlib/gatsby-theme-marble/src/utils/pruneEmptyLeaves')
+const envfile = process.argv.slice(2)[0] || '../../site/.env.development'
 
-const appConfig = process.env.APP_CONFIG
-if (appConfig === 'local' || process.env.TRAVIS_RUN) {
+if (process.env.CI) {
   return
 }
 
@@ -28,9 +27,8 @@ const getCollection = (collectionName, collection) => {
   return []
 }
 
-const directory = process.argv.slice(2)[0]
 require('dotenv').config({
-  path: path.join(directory, '.env.development'),
+  path: envfile,
 })
 const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL

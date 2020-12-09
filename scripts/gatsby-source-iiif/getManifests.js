@@ -23,8 +23,8 @@ new Promise(async (resolve, reject) => {
   const manifestList = loadManifestsFile()
 
   let manifestIds = manifestList.manifest_ids
-  if (process.env.TRAVIS_RUN) {
-    manifestIds = manifestList.travis_manfest_ids
+  if (process.env.CI) {
+    manifestIds = manifestList.ci_manfest_ids
   }
 
   const manifests = manifestIds.map((id) => {

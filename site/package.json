@@ -10,6 +10,7 @@
     "gatsby-plugin-manifest": "^2.2.5",
     "gatsby-plugin-preconnect": "^1.1.54",
     "gatsby-plugin-robots-txt": "^1.5.0",
+    "gatsby-plugin-s3": "^0.3.8",
     "gatsby-plugin-sharp": "^2.6.19",
     "gatsby-plugin-typography": "^2.3.2",
     "gatsby-transformer-sharp": "^2.5.11",
@@ -53,7 +54,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "deploy": "gatsby-plugin-s3 deploy --yes"
   },
   "jest": {
     "transform": {
