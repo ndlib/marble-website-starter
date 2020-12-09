@@ -1,9 +1,10 @@
 // configure environment variables
 const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
-console.log(`Using environment config: '${activeEnv}'`)
+console.log('Using environment config:' + activeEnv)
+const eV = '.env.' + activeEnv
 require('dotenv').config({
-  path: `.env.${activeEnv}`,
+  path: eV,
 })
 
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ''
@@ -26,7 +27,7 @@ console.table([
   { variable: 'S3_DEST_BUCKET:', value: s3BucketName },
 ])
 
-const themeColor = `#0A233F`
+const themeColor = '#0A233F'
 const languages = {
   default: 'en',
   allowed: ['en'],
@@ -35,12 +36,12 @@ const languages = {
 module.exports = {
   // siteMetadata
   siteMetadata: {
-    title: `Digital Collections`,
-    author: `ndlib`,
-    description: `Notre Dame Digital Collections`,
-    siteUrl: `https://marble.library.nd.edu`,
+    title: 'Digital Collections',
+    author: 'ndlib',
+    description: 'Notre Dame Digital Collections',
+    siteUrl: 'https://marble.library.nd.edu',
     // apis and embedded urls
-    // universalViewerBaseURL: `https://viewer-iiif.library.nd.edu/universalviewer/index.html`,
+    // universalViewerBaseURL: 'https://viewer-iiif.library.nd.edu/universalviewer/index.html',
 
     // paths
     useLogin: true,
@@ -56,13 +57,13 @@ module.exports = {
 
   // manifest
   manifest: {
-    name: `Digital Collections`,
-    short_name: `Digital Collections`,
-    start_url: `/`,
+    name: 'Digital Collections',
+    short_name: 'Digital Collections',
+    start_url: '/',
     background_color: themeColor,
     theme_color: themeColor,
-    display: `minimal-ui`,
-    icon: `content/images/manifestLogo.png`,
+    display: 'minimal-ui',
+    icon: 'content/images/manifestLogo.png',
   },
 
   // layouts
