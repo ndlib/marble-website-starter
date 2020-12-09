@@ -70,7 +70,7 @@ exports.sourceNodes = ({ actions }) => {
     label: String
     link: String
   }
-  type menus @dontInfer {
+  type MenusJson implements Node @dontInfer {
     id: String
     label: String
     items: [menuItems]

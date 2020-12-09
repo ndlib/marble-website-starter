@@ -24,7 +24,6 @@ console.table([
   { variable: 'AUTH_CLIENT_ISSUER:', value: authClientIssuer },
 ])
 
-const menus = require('./menus')
 const themeColor = `#0A233F`
 const languages = {
   default: 'en',
@@ -49,8 +48,6 @@ module.exports = {
       issuer: authClientIssuer,
     },
     userContentPath: userContentPath,
-    // menus
-    menus: menus,
     //
     languages: languages,
   },

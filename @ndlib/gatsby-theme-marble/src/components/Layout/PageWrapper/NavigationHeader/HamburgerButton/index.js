@@ -9,16 +9,14 @@ import { jsx } from 'theme-ui'
 import hamburgerIcon from 'assets/icons/svg/baseline-menu-24px-white.svg'
 export const menuQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        menus {
+    allMenusJson {
+      nodes {
+        id
+        label
+        items {
           id
+          link
           label
-          items {
-            id
-            link
-            label
-          }
         }
       }
     }
