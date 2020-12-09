@@ -1,8 +1,13 @@
+const languages = {
+  default: 'en',
+  allowed: ['en'],
+}
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Marble`,
-    author: `ndlib`,
-    description: `A Gatsby Starter to build a site based on a collection of IIIF manifests.`,
-    siteUrl: `http://example.com`,
+    title: 'Gatsby Starter Marble',
+    author: 'ndlib',
+    description: 'A Gatsby Starter to build a site based on a collection of IIIF manifests.',
+    siteUrl: 'http://example.com',
+    languages: languages,
   },
 }
