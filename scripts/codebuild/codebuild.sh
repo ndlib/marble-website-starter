@@ -39,7 +39,7 @@ yarn global add gatsby-cli || { echo "FATAL: Could not install Gatsby Command Li
 mkdir ~/.config/gatsby
 cp ./scripts/codebuild/config.json ~/.config/gatsby/
 
-
+printenv
 ls -la
 
 # add the code from the submodules
