@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import SearchBase from 'components/Shared/SearchBase'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
 
-const RelatedItemsFromSearch = ({marbleItem}) => {
-  if(!process.env.SEARCH_URL || !process.env.SEARCH_INDEX) {
+const RelatedItemsFromSearch = ({ marbleItem }) => {
+  if (!process.env.SEARCH_URL || !process.env.SEARCH_INDEX) {
     return null
   }
   return (
@@ -19,11 +19,10 @@ const RelatedItemsFromSearch = ({marbleItem}) => {
 
 RelatedItemsFromSearch.propTypes = {
   marbleItem: PropTypes.shape({
-    marbleId: PropTypes.string
-  })
+    marbleId: PropTypes.string,
+  }),
 }
 export default RelatedItemsFromSearch
-
 
 const customQueryBuilder = (id) => {
   return {
@@ -31,12 +30,12 @@ const customQueryBuilder = (id) => {
       fields: ['name', 'creator', 'collection', 'workType', 'allMetadata'],
       like: [
         {
-          '_index': 'marble',
-          '_id': `${id}`,
-        }
+          _index: 'marble',
+          _id: id,
+        },
       ],
       min_term_freq: 1,
       max_query_terms: 25,
-    }
+    },
   }
 }
