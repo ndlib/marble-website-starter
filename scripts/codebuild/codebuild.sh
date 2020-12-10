@@ -44,7 +44,7 @@ ls -la
 
 # add the code from the submodules
 git init
-git add https://github.com/ndlib/marble-website-starter
+git add git@github.com:ndlib/marble-website-starter.git
 git submodule init
 git submodule update
 
