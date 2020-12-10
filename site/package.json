@@ -53,7 +53,6 @@
     "test": "jest",
     "watch": "jest --watchAll --coverage",
     "build": "gatsby build",
-    "postbuild": "node ../scripts/postbuild.mjs",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "serve": "gatsby serve",

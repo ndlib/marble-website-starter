@@ -8,6 +8,7 @@ import { getOpenGraph, getTwitter } from './data'
 
 export const SeoContent = ({
   title,
+  url,
   description,
   image,
   lang,
@@ -17,10 +18,11 @@ export const SeoContent = ({
   siteUrl,
   noIndex,
 }) => {
-  const openGraph = getOpenGraph(title, description, image)
+  const openGraph = getOpenGraph(url, title, description, image)
   const twitter = getTwitter(author, title, description, image)
   const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
   // console.log('=======================================================')
+  // console.log('url:', url)
   // console.log('title:', title)
   // console.log('author:', author)
   // console.log('description:', description)
@@ -30,7 +32,6 @@ export const SeoContent = ({
   // console.log('siteTitle:', siteTitle)
   // console.log('siteUrl:', siteUrl)
   // console.log('noIndex:', noIndex)
-  // console.log('seeAlso:', seeAlso)
   // console.log('=======================================================')
   let indexable = null
   if (noIndex === true) {

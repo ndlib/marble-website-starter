@@ -35,6 +35,7 @@ export const Seo = ({
   const { siteMetadata } = site
   return (
     <SeoContent
+      url={getUrl}
       title={getTitle(title, data, siteMetadata)}
       author={getAuthor(author, data, siteMetadata)}
       image={getImage(data, file)}
@@ -58,6 +59,8 @@ Seo.propTypes = {
 }
 
 export default Seo
+
+export const getUrl = window.location.href
 
 export const getTitle = (title, data, siteMetadata) => {
   return title || typy(data, 'marbleItem.title').safeString || typy(siteMetadata, 'title').safeString
