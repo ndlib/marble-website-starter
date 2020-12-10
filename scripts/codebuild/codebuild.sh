@@ -44,7 +44,9 @@ ls -la
 
 # add the code from the submodules
 git init
-git add git@github.com:ndlib/marble-website-starter.git
+git remote add origin git@github.com:ndlib/marble-website-starter.git                # Add the remote origin so we can fetch
+git fetch                                             # Get all the things
+git checkout -f "$CODEBUILD_RESOLVED_SOURCE_VERSION"
 git submodule init
 git submodule update
 
