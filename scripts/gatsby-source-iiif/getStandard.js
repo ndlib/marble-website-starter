@@ -6,7 +6,12 @@ const envfile = process.argv.slice(2)[0] || '../../site/.env.development'
 const directory = path.dirname(envfile)
 const manifestsFile = path.join(directory, 'content/manifests.json')
 
-if (!fs.existsSync(path)) {
+try {
+  if (!fs.existsSync(path)) {
+    console.log('No Manifest file for site' + directory)
+    return
+  }
+} catch {
   console.log('No Manifest file for site' + directory)
   return
 }
