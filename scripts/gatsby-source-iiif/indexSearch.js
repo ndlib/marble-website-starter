@@ -35,6 +35,7 @@ const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
+  return
 }
 
 const options = {
