@@ -2,10 +2,17 @@ const fs = require('fs')
 const path = require('path')
 const https = require('https')
 const batchPromises = require('batch-promises')
-const directory = process.argv.slice(2)[0] || '../../site'
+const envfile = process.argv.slice(2)[0] || '../../site/.env.development'
+const directory = path.dirname(envfile)
+const manifestsFile = path.join(directory, 'content/manifests.json')
+
+if (!fs.existsSync(path)) {
+  console.log('No Manifest file for site' + directory)
+  return
+}
 
 const loadManifestsFile = () => {
-  const contents = fs.readFileSync(path.join(directory, `content/manifests.json`))
+  const contents = fs.readFileSync(path.join(directory, manifestsFile))
   return JSON.parse(contents)
 }
 

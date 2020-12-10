@@ -12,6 +12,7 @@ const findThumbnail = require('./src/findThumbnail')
 
 const pruneEmptyLeaves = require('../../@ndlib/gatsby-theme-marble/src/utils/pruneEmptyLeaves')
 const envfile = process.argv.slice(2)[0] || '../../site/.env.development'
+const directory = path.dirname(envfile)
 
 if (process.env.CI) {
   return
@@ -70,9 +71,6 @@ const determineProvider = (manifest) => {
 }
 
 const loadManifestData = () => {
-  // const data = fs.readFileSync(path.join(directory, '/content/items/items.json'))
-  // const manifestData = JSON.parse(data.toString())
-
   const allManifestData = []
 
   const fileObjs = fs.readdirSync(path.join(directory, '/content/json/standard'))
