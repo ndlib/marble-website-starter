@@ -65,48 +65,19 @@ exports.sourceNodes = ({ actions }) => {
   }
 
   # things expected to be there
-  type searchBase @dontInfer {
-    app: String
-    url: String
-  }
   type menuItems @dontInfer {
     id: String
     label: String
     link: String
   }
-  type menus @dontInfer {
+  type MenusJson implements Node @dontInfer {
     id: String
     label: String
     items: [menuItems]
   }
-  type defaultSearch @dontInfer {
-    tag: String
-  }
   type languages @dontInfer {
     default: String
     allowed: [String]
-  }
-  type authClient @dontInfer {
-    url: String
-    clientId: String
-    issuer: String
-  }
-  type SiteMetadata @dontInfer {
-    title: String!
-    description: String!
-    author: String!
-    universalViewerBaseURL: String
-    googleMapApiURL: String
-    iiifHelpURL: String
-    searchBase: searchBase
-    footerText: String
-    menus: [menus]
-    hideLogo: Boolean
-    useLogin: Boolean
-    userContentPath: String
-    authClient: authClient
-    searchPath: String
-    languages: languages
   }
   `
   createTypes(typeDefs)
@@ -236,7 +207,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
     }
   }
 
-  if (node.internal.type === 'NdJson') {
+  if (node.internal.type === 'StandardJson') {
     pruneEmptyLeaves(node)
     crawlStandardJson(node)
   }

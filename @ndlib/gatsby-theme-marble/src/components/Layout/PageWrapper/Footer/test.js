@@ -6,15 +6,6 @@ import Footer from './'
 import Menu from 'components/Shared/Menu'
 
 test('Footer renders some divs with markdown text', () => {
-  useStaticQuery.mockImplementationOnce(() => {
-    return {
-      site: {
-        siteMetadata: {
-          footerText: '<p>footer!!</p>',
-        },
-      },
-    }
-  })
   const wrapper = shallow(<Footer />)
 
   expect(wrapper.find(ThemeFooter).exists()).toBeTruthy()
