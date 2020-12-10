@@ -35,6 +35,10 @@ To build and test locally, you will need the following development tools install
 
 ### Installing:
 ```
+# to initialize the submodules 
+git submodule init
+git submodule update
+
 yarn
 ```
 
