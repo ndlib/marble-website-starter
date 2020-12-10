@@ -64,6 +64,7 @@ export const SeoContent = ({
 
 SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   description: PropTypes.string,
   image: PropTypes.string,
   lang: PropTypes.string,
