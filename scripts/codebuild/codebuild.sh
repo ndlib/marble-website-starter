@@ -12,7 +12,7 @@ cat /proc/sys/fs/inotify/max_user_watches
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}"
-SITE_DIR="${BASE_DIR}/site"
+SITE_DIR="${BASE_DIR}/${SITE_DIRECTORY}"
 ENV_FILE="${SITE_DIR}/.env.production"
 
 echo "ENV_FILE: ${ENV_FILE}"
@@ -61,7 +61,7 @@ failures=0
 trap 'failures=$((failures+1))' ERR
 
 yarn workspace @ndlib/gatsby-theme-marble test
-yarn workspace site test
+yarn workspace ${SITE_DIRECTORY} test
 
 if ((failures != 0)); then
   echo "${magenta}TESTS FAILED${reset}"
