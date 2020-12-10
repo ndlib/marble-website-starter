@@ -13,6 +13,7 @@ cat /proc/sys/fs/inotify/max_user_watches
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}"
 SITE_DIR="${BASE_DIR}/${SITE_DIRECTORY}"
+WORKSPACE=$WORKSPACE_NAME
 ENV_FILE="${SITE_DIR}/.env.production"
 
 echo "ENV_FILE: ${ENV_FILE}"
@@ -54,14 +55,12 @@ pushd scripts/gatsby-source-iiif/
   node indexSearch.js ${ENV_FILE}
 popd
 
-
-
 echo "${magenta}----- Unit Tests -------${reset}"
 failures=0
 trap 'failures=$((failures+1))' ERR
 
 yarn workspace @ndlib/gatsby-theme-marble test
-yarn workspace ${SITE_DIRECTORY} test
+yarn workspace ${WORKSPACE} test
 
 if ((failures != 0)); then
   echo "${magenta}TESTS FAILED${reset}"
@@ -69,8 +68,8 @@ if ((failures != 0)); then
 fi
 
 echo "${magenta}----- Build -------${reset}"
-yarn workspace site build
+yarn workspace ${WORKSPACE} build
 
 
 echo "${magenta}----- Deploy -------${reset}"
-yarn workspace site deploy
+yarn workspace ${WORKSPACE} deploy
