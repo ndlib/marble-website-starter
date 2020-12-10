@@ -49,7 +49,7 @@ pushd scripts/gatsby-source-iiif/
 
 
   echo "${magenta}----- Get Metadata -------${reset}"
-  node getStandard.js ${SITE_DIR}
+  node getStandard.js ${ENV_FILE}
 
   echo "${magenta}----- Index -------${reset}"
   node indexSearch.js ${ENV_FILE}
