@@ -43,6 +43,8 @@ printenv
 ls -la
 
 # add the code from the submodules
+git init
+git add https://github.com/ndlib/marble-website-starter
 git submodule init
 git submodule update
 
