@@ -45,7 +45,7 @@ yarn install
 
 node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
 
-site="../../site"
+site="../../sites/marble"
 node getStandard.js
 node indexSearch.js 
 

@@ -11,7 +11,7 @@ const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
 
 const pruneEmptyLeaves = require('../../@ndlib/gatsby-theme-marble/src/utils/pruneEmptyLeaves')
-const envfile = process.argv.slice(2)[0] || '../../site/.env.development'
+const envfile = process.argv.slice(2)[0] || '../../sites/marble/.env.development'
 
 if (process.env.CI) {
   return

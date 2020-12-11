@@ -1,6 +1,6 @@
 yarn install
 
-site="../../site"
+site="../../sites/marble"
 node getStandard.js ${site}
 
 printenv
