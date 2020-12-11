@@ -14,4 +14,4 @@ export $(cut -d= -f1 ${ENV_FILE})
 
 # build
 # export NODE_OPTIONS="--max_old_space_size=6144"
-yarn workspace site build
+yarn workspace marble build

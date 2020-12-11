@@ -7,5 +7,5 @@ echo "${magenta}----- POST-BUILD -----${reset}"
 printenv
 if [[ ! -z "$CI" ]]
   then
-    yarn workspace site deploy
+    yarn workspace marble deploy
 fi
