@@ -46,7 +46,7 @@ jobs:
         failures=0
         trap 'failures=$((failures+1))' ERR
 
-        yarn workspace site test
+        yarn workspace marble test
         yarn workspace @ndlib/gatsby-theme-marble coverage
 
         pushd @ndlib/gatsby-theme-marble
@@ -63,4 +63,4 @@ jobs:
 
     - name: "Build"
       run: |
-        yarn workspace site build
+        yarn workspace marble build

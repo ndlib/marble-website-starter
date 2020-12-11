@@ -109,7 +109,7 @@ marble-website-starter
 Occasionally, the `.cache` files my get confused if you are making large or frequent changes. To clean it up, stop the development task and run:
 
 ```
-yarn workspace site clean
+yarn workspace marble clean
 ```
 
 ### Local build:
@@ -119,7 +119,7 @@ cp site/.env.development site/.env.production
 ```
 To build a local production version of the site run:
 ```
-yarn workspace site build
+yarn workspace marble build
 ```
 ### Creating a new site:
 #### Add it to the yarn workspace
