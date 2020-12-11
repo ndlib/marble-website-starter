@@ -5,6 +5,7 @@ import typy from 'typy'
 import SeoContent from 'components/Internal/Seo/SeoContent'
 export const Seo = ({
   data,
+  image,
   location,
   title,
   author,
@@ -33,12 +34,13 @@ export const Seo = ({
     `
   )
   const { siteMetadata } = site
+  console.log(data)
   return (
     <SeoContent
       url={getUrl}
       title={getTitle(title, data, siteMetadata)}
       author={getAuthor(author, data, siteMetadata)}
-      image={getImage(data, file)}
+      image={getImage(image, data, file)}
       description={getDescription(description, data, siteMetadata)}
       pathname={location.pathname}
       siteTitle={typy(siteMetadata, 'title').safeString}
@@ -52,6 +54,7 @@ export const Seo = ({
 Seo.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  image: PropTypes.string.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,
   author: PropTypes.string,
@@ -66,8 +69,8 @@ export const getTitle = (title, data, siteMetadata) => {
   return title || typy(data, 'marbleItem.title').safeString || typy(siteMetadata, 'title').safeString
 }
 
-export const getImage = (data, defaultImage) => {
-  return typy(data, 'marbleItem.childrenMarbleFile[0].iiif.thumbnail').safeString || typy(defaultImage, 'publicURL').safeString
+export const getImage = (image, data, defaultImage) => {
+  return image || typy(data, 'marbleItem.childrenMarbleFile[0].iiif.thumbnail').safeString || typy(defaultImage, 'publicURL').safeString
 }
 
 export const getDescription = (description, data, siteMetadata) => {

@@ -14,6 +14,7 @@ import sx from './sx'
 const MiradorViewerPage = ({ data, location }) => {
   const itemId = `${typy(data, 'marbleItem.iiifUri').safeString}/`
   const itemTitle = typy(data, 'marbleItem.title').safeString
+  const itemImage = typy(data, 'marbleItem.childrenMarbleFile[0].iiif.thumbnail').safeString
   const qs = queryString.parse(location.search)
   const hideWindowTitle = qs.title === 'false'
   const sideBarOpenByDefault = qs.sidebar === 'true'
@@ -92,7 +93,7 @@ const MiradorViewerPage = ({ data, location }) => {
         location={location}
         title={`${itemTitle} | Mirador Viewer`}
         description={`Mirador viewer viewing ${itemTitle}.`}
-        image={typy(data, 'remarkMarblePage.frontmatter.iiifJson.thumbnail[0].id').safeString}
+        image={itemImage}
         noIndex
       />
       <BackToItem
