@@ -39,17 +39,6 @@ yarn global add gatsby-cli || { echo "FATAL: Could not install Gatsby Command Li
 mkdir ~/.config/gatsby
 cp ./scripts/codebuild/config.json ~/.config/gatsby/
 
-printenv
-ls -la
-
-# add the code from the submodules
-git init
-git remote add origin git@github.com:ndlib/marble-website-starter.git                # Add the remote origin so we can fetch
-git fetch                                             # Get all the things
-git checkout -f "$CODEBUILD_RESOLVED_SOURCE_VERSION"
-git submodule init
-git submodule update
-
 # install app dependencies
 yarn install || { echo "yarn install failed" ;exit 1; }
 
