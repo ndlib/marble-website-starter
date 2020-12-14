@@ -26,6 +26,8 @@ jobs:
         yarn global add gatsby-cli
         mkdir ~/.config/gatsby
         cp ./scripts/codebuild/config.json ~/.config/gatsby/
+        git submodule init
+        git submodule update
         yarn install
 
     - name: "Install Metadata"
