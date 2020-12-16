@@ -12,7 +12,7 @@ export const ManifestCardChildren = ({ parentProps, date, creator, collectionNam
     <>
       <ChildField field={creator} />
       <ChildField field={date} />
-      <ChildField field={typy(collectionName, '[0]').safeArray.length > 0 ? collectionDisplay : ''} />
+      <ChildField field={typy(collectionName, '[0]').safeString ? collectionDisplay : ''} />
       {parentProps.children ? parentProps.children : null}
     </>
   )
