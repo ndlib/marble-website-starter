@@ -7,7 +7,7 @@ import ChildField from './ChildField'
 import typy from 'typy'
 
 export const ManifestCardChildren = ({ parentProps, date, creator, collectionName }) => {
-  const collectionDisplay = 'Part of ' + collectionName
+  const collectionDisplay = 'Part of: ' + collectionName
   return (
     <>
       <ChildField field={creator} />
