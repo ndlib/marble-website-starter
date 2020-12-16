@@ -4,6 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import ChildField from './ChildField'
+import typy from 'typy'
 
 export const ManifestCardChildren = ({ parentProps, date, creator, collectionName }) => {
   const collectionDisplay = 'Part of ' + collectionName
@@ -11,7 +12,7 @@ export const ManifestCardChildren = ({ parentProps, date, creator, collectionNam
     <>
       <ChildField field={creator} />
       <ChildField field={date} />
-      <ChildField field={collectionName.length > 0 ? collectionDisplay : ''} />
+      <ChildField field={typy(collectionName).safeArray.length > 0 ? collectionDisplay : ''} />
       {parentProps.children ? parentProps.children : null}
     </>
   )
