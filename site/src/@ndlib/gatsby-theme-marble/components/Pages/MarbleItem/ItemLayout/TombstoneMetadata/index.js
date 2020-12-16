@@ -46,7 +46,6 @@ const TombstoneMetadata = ({ marbleItem }) => {
     },
   }
   const hasUri = typy(uriValue, '[0].value').safeArray.length > 0
-  console.log(typy(creators, '[0].value').safeArray)
   const hasCreator = (typy(creators, '[0].value').safeArray.length > 0 && (typy(creators, '[0].value').safeArray[0] !== 'unknown'))
   return (
     <BaseStyles>
