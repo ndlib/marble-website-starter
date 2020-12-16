@@ -1,10 +1,11 @@
-import * as React from 'react'
-// import { render, screen } from '@testing-library/react'
+import React from 'react'
 import { shallow } from 'enzyme'
-import Form from './'
+import { FeedbackForm } from './'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Internal/MaterialButton'
 
-test('allows you to submit a feedback response', () => {
-  const name = 'Jimmy'
-  const wrapper = shallow(<Form />)
-  expect(wrapper.find('name').text()).toEqual('Jimmy')
+describe('FeedbackForm', () => {
+  test('submit button disabled', () => {
+    const wrapper = shallow(<FeedbackForm />)
+    expect(wrapper.find(MaterialButton).prop('disabled')).toBe(true)
+  })
 })

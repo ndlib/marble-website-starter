@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import typy from 'typy'
 import sx from './sx'
 
-export const Form = ({ closeFunc }) => {
+export const FeedbackForm = ({ closeFunc }) => {
   const [response, setResponse] = useState(false)
   const [name, changeName] = useState('')
   const [email, changeEmail] = useState('')
@@ -124,7 +124,7 @@ export const Form = ({ closeFunc }) => {
   }
 }
 
-Form.propTypes = {
+FeedbackForm.propTypes = {
   closeFunc: PropTypes.func,
 }
 
@@ -137,4 +137,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Form)
+)(FeedbackForm)
