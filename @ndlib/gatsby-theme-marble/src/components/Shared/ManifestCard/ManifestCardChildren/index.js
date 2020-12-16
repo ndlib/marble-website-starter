@@ -26,6 +26,7 @@ ManifestCardChildren.propTypes = {
     PropTypes.string,
     PropTypes.array,
   ]),
+  collectionName: PropTypes.array,
   parentProps: PropTypes.object,
 }
 export default ManifestCardChildren
