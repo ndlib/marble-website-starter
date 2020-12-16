@@ -7,12 +7,12 @@ import ChildField from './ChildField'
 import typy from 'typy'
 
 export const ManifestCardChildren = ({ parentProps, date, creator, collectionName }) => {
-  const collectionDisplay = 'Part of: ' + collectionName[0]
+  const collectionDisplay = typy(collectionName, '[0]').safeString ? 'Part of: ' + collectionName[0] : ''
   return (
     <>
       <ChildField field={creator} />
       <ChildField field={date} />
-      <ChildField field={typy(collectionName, '[0]').safeString ? collectionDisplay : ''} />
+      <ChildField field={collectionDisplay} />
       {parentProps.children ? parentProps.children : null}
     </>
   )
