@@ -6,12 +6,12 @@ import { jsx } from 'theme-ui'
 import ChildField from './ChildField'
 
 export const ManifestCardChildren = ({ parentProps, date, creator, collectionName }) => {
-  const collectionDisplay = 'Part of: ' + collectionName
+  const collectionDisplay = 'Part of ' + collectionName
   return (
     <>
       <ChildField field={creator} />
       <ChildField field={date} />
-      <ChildField field={collectionName ? collectionDisplay : ''} />
+      <ChildField field={collectionName.length > 0 ? collectionDisplay : ''} />
       {parentProps.children ? parentProps.children : null}
     </>
   )
