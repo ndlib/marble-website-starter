@@ -9,17 +9,13 @@ describe('TombstoneMetadata', () => {
       description: 'How the Grinch Stole Christmas',
       metadata: [
         {
-          label: 'Creator',
-          value: [''],
-        },
-        {
           label: 'Date',
           value: ['1957'],
         },
       ],
     }
     const wrapper = mount(<TombstoneMetadata marbleItem={item} />)
-    expect(wrapper.find('div').at(2).html()).toContain('?creator[0]=\"')
+    expect(wrapper.find('div').at(2).html()).toContain('1957')
   })
   test('Creator value equals unknown', () => {
     const item = {
