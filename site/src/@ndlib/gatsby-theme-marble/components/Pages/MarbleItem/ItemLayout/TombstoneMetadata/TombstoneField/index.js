@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-import Link from 'components/Internal/Link'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Internal/Link'
 
 const TombstoneField = ({ field, sxStyle, searchField, uriValue }) => {
   return (
