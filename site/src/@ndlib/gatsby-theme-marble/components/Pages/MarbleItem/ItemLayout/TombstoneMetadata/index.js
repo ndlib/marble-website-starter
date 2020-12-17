@@ -46,13 +46,15 @@ const TombstoneMetadata = ({ marbleItem }) => {
     },
   }
   const hasUri = typy(uriValue, '[0].value').safeArray.length > 0
-  const hasCreator = (typy(creators, '[0].value').safeArray.length > 0 && (typy(creators, '[0].value').safeArray[0] !== 'unknown'))
+  console.log()
+  const hasCreator = typy(creators, '[0].value').safeArray.length > 0
+  const isUnknown = typy(creators, '[0].value').safeArray[0].toLowerCase() === 'unknown'
   return (
     <BaseStyles>
       <div sx={sx.wrapper}>
         <TombstoneField
-          field={hasCreator ? creators : [{ value: ['Unknown creator'] }]}
-          searchField={hasCreator ? 'creator[0]' : null}
+          field={hasCreator ? (isUnknown ? [{ value: ['Unknown creator'] }] : creators) : ''}
+          searchField={hasCreator ? (isUnknown ? null : 'creator[0]') : null}
           sxStyle={sx.creators}
         />
         <TombstoneField
