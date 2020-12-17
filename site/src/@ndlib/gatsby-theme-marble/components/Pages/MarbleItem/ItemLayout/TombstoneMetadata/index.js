@@ -51,13 +51,13 @@ const TombstoneMetadata = ({ marbleItem }) => {
   return (
     <BaseStyles>
       <div sx={sx.wrapper}>
-      { hasCreator ? [
-        <TombstoneField
-          field={hasCreator ? (isUnknown ? [{ value: ['Unknown creator'] }] : creators) : ''}
-          searchField={hasCreator ? (isUnknown ? null : 'creator[0]') : null}
-          sxStyle={sx.creators}
-        />
-      ]: null }
+        { hasCreator ? [
+          <TombstoneField
+            field={hasCreator ? (isUnknown ? [{ value: ['Unknown creator'] }] : creators) : ''}
+            searchField={hasCreator ? (isUnknown ? null : 'creator[0]') : null}
+            sxStyle={sx.creators}
+          />
+        ]: null }
         <TombstoneField
           field={dates}
           sxStyle={sx.dates}
