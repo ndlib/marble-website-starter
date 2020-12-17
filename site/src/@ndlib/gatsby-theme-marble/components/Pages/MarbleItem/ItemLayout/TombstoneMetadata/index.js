@@ -3,7 +3,7 @@ import { jsx, BaseStyles } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import TombstoneField from './TombstoneField'
-import ManifestDescription from 'components/Shared/ManifestDescription'
+import ManifestDescription from '@ndlib/gatsby-theme-marble/src/components/Shared/ManifestDescription'
 
 const TombstoneMetadata = ({ marbleItem }) => {
   const creators = marbleItem.metadata.filter(m => {
@@ -46,9 +46,8 @@ const TombstoneMetadata = ({ marbleItem }) => {
     },
   }
   const hasUri = typy(uriValue, '[0].value').safeArray.length > 0
-  console.log()
   const hasCreator = typy(creators, '[0].value').safeArray.length > 0
-  const isUnknown = typy(creators, '[0].value').safeArray[0].toLowerCase() === 'unknown'
+  const isUnknown = typy(creators, '[0].value').safeArray.length > 0 && typy(creators, '[0].value').safeArray[0].toLowerCase() === 'unknown'
   return (
     <BaseStyles>
       <div sx={sx.wrapper}>
