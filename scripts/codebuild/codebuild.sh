@@ -17,6 +17,9 @@ WORKSPACE=$WORKSPACE_NAME
 ENV_FILE="${SITE_DIR}/.env.production"
 
 echo "ENV_FILE: ${ENV_FILE}"
+echo "CODEBUILD DIR: $CODEBUILD_SRC_DIR"
+echo "CODEBUILD DIR2: $CODEBUILD_SRC_DIR_$SUBMOD"
+exit 1
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
 # must contain search_url and search_index key/values
