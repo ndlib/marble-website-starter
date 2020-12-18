@@ -16,6 +16,10 @@ describe('ManifestCardChildren', () => {
         label: 'date',
         value: ['1814'],
       },
+      {
+        label: 'collectionName',
+        value: ['The Spectacular Johnny Horton'],
+      },
     ],
   }
   test('children no additional', () => {
@@ -30,9 +34,10 @@ describe('ManifestCardChildren', () => {
     const props = {
       children: <div className='child'>A song about an alligator.</div>,
     }
-    const wrapper = mount(<ManifestCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} />)
+    const wrapper = mount(<ManifestCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} collectionName={item.metadata[2].value} />)
     expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
+    expect(wrapper.find('p').at(2).text()).toEqual('Part of: The Spectacular Johnny Horton')
     expect(wrapper.findWhere(c => {
       return c.text() === 'In 1814 we took a little trip,'
     }).exists()).toBeFalsy()

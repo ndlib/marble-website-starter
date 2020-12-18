@@ -1,35 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 import queryString from 'query-string'
 import SearchButton from './SearchButton'
 import SearchField from './SearchField'
 
 const SearchBox = ({ location }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            searchPath
-          }
-        }
-      }
-    `,
-  )
-  const searchPath = site.siteMetadata.searchPath || 'search'
   return (
     <div className='sk-search-box'>
       <SearchButton
         className='sk-search-box__icon'
         location={location}
-        searchPath={searchPath}
+        searchPath='search'
         submitSearch={submitSearch}
       />
       <SearchField
         className='sk-search-box__text'
         location={location}
-        searchPath={searchPath}
+        searchPath='search'
         submitSearch={submitSearch}
       />
     </div>

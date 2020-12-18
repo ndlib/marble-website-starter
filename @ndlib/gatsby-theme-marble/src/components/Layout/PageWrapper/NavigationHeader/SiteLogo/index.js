@@ -15,7 +15,6 @@ export const SiteLogo = () => {
         site {
           siteMetadata {
             title
-            hideLogo
           }
         }
       }
@@ -25,21 +24,14 @@ export const SiteLogo = () => {
   return (
     <Link
       to='/'
-      sx={sx.link}>
-      {
-        site.siteMetadata.hideLogo ? (
-          <div
-            sx={sx.text}
-          >{title}</div>
-        ) : (
-          <img
-            sx={sx.image}
-            alt={title}
-            title={title}
-            src={siteLogo}
-          />
-        )
-      }
+      sx={sx.link}
+    >
+      <img
+        sx={sx.image}
+        alt={title}
+        title={title}
+        src={siteLogo}
+      />
     </Link>
   )
 }

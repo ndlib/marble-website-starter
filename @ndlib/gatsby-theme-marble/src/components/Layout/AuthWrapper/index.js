@@ -1,43 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
-import typy from 'typy'
 import {
   putAuthSettingsInStore,
   getTokenAndPutInStore,
 } from 'store/actions/loginActions'
 
 export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            useLogin
-            authClient {
-              url
-              clientId
-              issuer
-            }
-            userContentPath
-          }
-        }
-      }
-    `,
-  )
-  if (typy(site, 'siteMetadata.useLogin').safeBoolean &&
-  typy(site, 'siteMetadata.authClient').safeObject) {
+  if (process.env.AUTH_CLIENT_ID && process.env.AUTH_CLIENT_ISSUER && process.env.AUTH_CLIENT_URL) {
     if (!loginReducer.authClientSettings) {
-      dispatch(putAuthSettingsInStore(site, location))
+      dispatch(putAuthSettingsInStore(location))
     } else {
       dispatch(getTokenAndPutInStore(loginReducer, location))
     }
   }
   return (
-    <React.Fragment>
+    <>
       {children}
-    </React.Fragment>
+    </>
   )
 }
 
