@@ -21,6 +21,18 @@ export const query = graphql`
       title
       iiifUri
       slug
+      childrenMarbleFile {
+        id
+        name
+        title
+        file
+        fileType
+        iiif {
+          thumbnail
+          service
+          default
+        }
+      }
     }
   }
 `
