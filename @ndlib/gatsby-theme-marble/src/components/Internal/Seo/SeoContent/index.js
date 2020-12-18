@@ -21,18 +21,6 @@ export const SeoContent = ({
   const openGraph = getOpenGraph(url, title, description, image)
   const twitter = getTwitter(author, title, description, image)
   const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
-  // console.log('=======================================================')
-  // console.log('url:', url)
-  // console.log('title:', title)
-  // console.log('author:', author)
-  // console.log('description:', description)
-  // console.log('image:', image)
-  // console.log('lang:', lang)
-  // console.log('pathname:', pathname)
-  // console.log('siteTitle:', siteTitle)
-  // console.log('siteUrl:', siteUrl)
-  // console.log('noIndex:', noIndex)
-  // console.log('=======================================================')
   let indexable = null
   if (noIndex === true) {
     indexable = (
