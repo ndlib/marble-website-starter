@@ -1,0 +1,31 @@
+{
+  "id": "help",
+  "label": "Help",
+  "items": [
+    {
+      "id": "help-site-info",
+      "label": "Site Information",
+      "link": "/help"
+    },
+    {
+      "id": "help-search-tips",
+      "label": "Search Tips",
+      "link": "/help/search-tips"
+    },
+    {
+      "id": "help-creating-portfolios",
+      "label": "Creating Personal Portfolios",
+      "link": "/help/creating-personal-portfolios"
+    },
+    {
+      "id": "help-copyright-and-permissions",
+      "label": "Copyright and Permissions",
+      "link": "/help/copyright-and-permissions"
+    },
+    {
+      "id": "help-contact-us",
+      "label": "Contact Us",
+      "link": "/help/contact-us"
+    }
+  ]
+}

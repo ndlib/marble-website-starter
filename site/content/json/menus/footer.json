@@ -1,0 +1,36 @@
+{
+  "id": "footer",
+  "label": "",
+  "items": [
+    {
+      "id": "footer-browse",
+      "label": "Browse",
+      "link": "/browse"
+    },
+    {
+      "id": "footer-exhibits",
+      "label": "Digital Exhibits",
+      "link": "/exhibits"
+    },
+    {
+      "id": "footer-about",
+      "label": "About",
+      "link": "/about"
+    },
+    {
+      "id": "footer-help",
+      "label": "Help",
+      "link": "/help"
+    },
+    {
+      "id": "footer-sitemap",
+      "label": "Site Map",
+      "link": "/sitemap"
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "link": "https://www.nd.edu/about/accessibility/"
+    }
+  ]
+}

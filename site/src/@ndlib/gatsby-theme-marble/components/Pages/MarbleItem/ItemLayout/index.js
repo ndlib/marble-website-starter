@@ -17,10 +17,11 @@ import sx from './sx'
 const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
   const context = useThemeUI()
   const primary = typy(context, 'theme.colors.primary').safeString || '#437D8A'
-  const accessFields = ['Accession Number', 'Campus Location', 'Access']
+  const accessFields = ['Accession Number', 'Campus Location', 'Access', 'Identifier']
+  const ignoreFields = ['URI Value']
   const mainMetaData = {
     metadata: marbleItem.metadata.filter(item => {
-      return !(accessFields.includes(item.label) || item.label === 'Contact Us')
+      return !(ignoreFields.includes(item.label) || accessFields.includes(item.label) || item.label === 'Contact Us')
     }),
   }
   const accessMetadata = {

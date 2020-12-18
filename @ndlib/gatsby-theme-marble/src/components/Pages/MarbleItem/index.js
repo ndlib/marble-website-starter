@@ -5,8 +5,7 @@ import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import CollectionLayout from './CollectionLayout'
 import ItemLayout from './ItemLayout'
-import SearchBase from 'components/Shared/SearchBase'
-import SearchResults from 'components/Shared/SearchTools/SearchResults'
+import RelatedItemsFromSearch from './RelatedItemsFromSearch'
 
 const MarbleItem = ({ data, location }) => {
   const { marbleItem, allMarbleFile } = data
@@ -34,32 +33,9 @@ const MarbleItem = ({ data, location }) => {
           />
         )
       }
-
-      <div id='related-search-section'>
-        <hr />
-        <h2>Experimental Related Items</h2>
-        <SearchBase defaultSearch={customQueryBuilder(marbleItem.marbleId)}>
-          <SearchResults defaultDisplay='grid' hitsPerPage={8} showPagination={false} scrollTo='#related-search-section' />
-        </SearchBase>
-      </div>
+      <RelatedItemsFromSearch marbleItem={marbleItem} />
     </Layout>
   )
-}
-
-const customQueryBuilder = (id) => {
-  return {
-    more_like_this: {
-      fields: ['name', 'creator', 'collection', 'workType', 'allMetadata'],
-      like: [
-        {
-          '_index': 'marble',
-          '_id': `${id}`,
-        }
-      ],
-      min_term_freq: 1,
-      max_query_terms: 25,
-    }
-  }
 }
 
 MarbleItem.propTypes = {

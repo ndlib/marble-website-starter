@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import typy from 'typy'
@@ -11,21 +10,11 @@ import { jsx } from 'theme-ui'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 import sx from './sx.js'
 
+// eslint-disable-next-line complexity
 export const LoginButton = ({ location, loginReducer }) => {
   const { t } = useTranslation()
   const [isOpen, setOpen] = useState(false)
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            useLogin
-          }
-        }
-      }
-    `,
-  )
-  if (!site.siteMetadata.useLogin) {
+  if (!process.env.AUTH_CLIENT_ID || !process.env.AUTH_CLIENT_ISSUER || !process.env.AUTH_CLIENT_URL) {
     return null
   }
   if (loginReducer.status === 'STATUS_LOGGED_IN') {

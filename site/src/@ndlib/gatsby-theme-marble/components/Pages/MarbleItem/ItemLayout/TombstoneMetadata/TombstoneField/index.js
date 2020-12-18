@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-import Link from 'components/Internal/Link'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Internal/Link'
 
 const TombstoneField = ({ field, sxStyle, searchField, uriValue }) => {
   return (
@@ -11,7 +11,6 @@ const TombstoneField = ({ field, sxStyle, searchField, uriValue }) => {
       {
         field.map((values, i) => {
           return values.value.map((value, j) => {
-            console.log(uriValue)
             const uri = uriValue != null ? uriValue : encodeURI(value)
             return searchField ? (
               <Link

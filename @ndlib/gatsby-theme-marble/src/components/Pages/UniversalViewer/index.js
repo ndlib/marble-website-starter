@@ -8,7 +8,7 @@ import Seo from 'components/Internal/Seo'
 import BackToItem from './BackToItem'
 import style from './style.module.css'
 
-export const UniversalViewer = ({ data, manifest, location, requireLogin }) => {
+export const UniversalViewer = ({ manifest, location, requireLogin }) => {
   const qs = queryString.parse(location.search)
   if (!manifest && qs) {
     manifest = qs.manifest
@@ -24,9 +24,9 @@ export const UniversalViewer = ({ data, manifest, location, requireLogin }) => {
     >
       <SkipToMain />
       <Seo
-        data={data}
+        data={{}}
         location={location}
-        title={`Universal Viewer`}
+        title='Universal Viewer'
         description={`Universal Viewer viewing ${manifest}.`}
       />
       <h1 className='accessibilityOnly'>{manifest} - {cv} - Universal Viewer</h1>
@@ -38,7 +38,7 @@ export const UniversalViewer = ({ data, manifest, location, requireLogin }) => {
           className={style.universalViewer}
           title='universal-viewer'
           sandbox='allow-same-origin allow-scripts allow-pointer-lock allow-popups'
-          src={`${data.site.siteMetadata.universalViewerBaseURL}#?manifest=${manifest}&cv=${cv}`}
+          src={`${process.env.UNIVERSAL_VIEWER_URL}#?manifest=${manifest}&cv=${cv}`}
         />
       </main>
     </PrivateRoute>

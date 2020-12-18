@@ -6,43 +6,41 @@ import { Menu, findNavInData } from './'
 console.error = jest.fn()
 
 const sq = {
-  site: {
-    siteMetadata: {
-      menus: [
-        {
-          id: 'nolabel',
-          label: '',
-          items: [
-            {
-              id: 'one',
-              label: 'link1',
-              link: '/link1',
-            },
-            {
-              id: 'two',
-              label: 'link2',
-              link: '/link2',
-            },
-          ],
-        },
-        {
-          id: 'label',
-          label: 'label',
-          items: [
-            {
-              id: 'one',
-              label: 'link1',
-              link: '/link1',
-            },
-            {
-              id: 'two',
-              label: 'link2',
-              link: '/link2',
-            },
-          ],
-        },
-      ],
-    },
+  allMenusJson: {
+    nodes: [
+      {
+        id: 'nolabel',
+        label: '',
+        items: [
+          {
+            id: 'one',
+            label: 'link1',
+            link: '/link1',
+          },
+          {
+            id: 'two',
+            label: 'link2',
+            link: '/link2',
+          },
+        ],
+      },
+      {
+        id: 'label',
+        label: 'label',
+        items: [
+          {
+            id: 'one',
+            label: 'link1',
+            link: '/link1',
+          },
+          {
+            id: 'two',
+            label: 'link2',
+            link: '/link2',
+          },
+        ],
+      },
+    ],
   },
 }
 describe('Menu', () => {
@@ -70,9 +68,9 @@ describe('Menu', () => {
 
   test('findNavInData finds the menu correctly', () => {
     // does it find the menu labeled nolabel
-    expect(findNavInData('nolabel', sq.site.siteMetadata.menus)).toEqual(sq.site.siteMetadata.menus[0])
-    expect(findNavInData('label', sq.site.siteMetadata.menus)).toEqual(sq.site.siteMetadata.menus[1])
-    expect(findNavInData('not-there', sq.site.siteMetadata.menus)).toEqual(undefined)
+    expect(findNavInData('nolabel', sq.allMenusJson.nodes)).toEqual(sq.allMenusJson.nodes[0])
+    expect(findNavInData('label', sq.allMenusJson.nodes)).toEqual(sq.allMenusJson.nodes[1])
+    expect(findNavInData('not-there', sq.allMenusJson.nodes)).toEqual(undefined)
   })
 
   test('menu not found', () => {

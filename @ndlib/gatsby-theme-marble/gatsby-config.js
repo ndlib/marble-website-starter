@@ -33,8 +33,15 @@ module.exports = ({
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'nd',
-        path: `${contentPath}/json/nd`,
+        name: 'menu',
+        path: `${contentPath}/json/menus`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'standard',
+        path: `${contentPath}/json/standard`,
       },
     },
     {

@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { useStaticQuery } from 'gatsby'
 import { LoginButton } from './'
 import Link from 'components/Internal/Link'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
@@ -8,28 +7,18 @@ import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 describe('LoginButton', () => {
   test('no button', () => {
-    useStaticQuery.mockImplementationOnce(() => {
-      return {
-        site: {
-          siteMetadata: {},
-        },
-      }
-    })
+    process.env.AUTH_CLIENT_ID = null
+    process.env.AUTH_CLIENT_ISSUER = null
+    process.env.AUTH_CLIENT_URL = null
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
     const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)
     expect(wrapper.find('.loginButton').exists()).toBeFalsy()
   })
 
   test('logged in', () => {
-    useStaticQuery.mockImplementationOnce(() => {
-      return {
-        site: {
-          siteMetadata: {
-            useLogin: true,
-          },
-        },
-      }
-    })
+    process.env.AUTH_CLIENT_ID = 'abc'
+    process.env.AUTH_CLIENT_ISSUER = 'def'
+    process.env.AUTH_CLIENT_URL = 'ghi'
     const loginReducer = {
       status: 'STATUS_LOGGED_IN',
       user: {
@@ -46,15 +35,9 @@ describe('LoginButton', () => {
   })
 
   test('not logged in', () => {
-    useStaticQuery.mockImplementationOnce(() => {
-      return {
-        site: {
-          siteMetadata: {
-            useLogin: true,
-          },
-        },
-      }
-    })
+    process.env.AUTH_CLIENT_ID = 'abc'
+    process.env.AUTH_CLIENT_ISSUER = 'def'
+    process.env.AUTH_CLIENT_URL = 'ghi'
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
     const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)
     expect(wrapper.find(Link).props().to).toEqual('/user')

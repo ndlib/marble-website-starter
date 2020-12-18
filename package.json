@@ -3,7 +3,9 @@
   "workspaces": [
     "@ndlib/gatsby-starter-marble",
     "@ndlib/gatsby-theme-marble",
-    "site"
+    "scripts",
+    "site",
+    "sites/inquisition"
   ],
   "devDependencies": {
     "@babel/core": "^7.10.2",
