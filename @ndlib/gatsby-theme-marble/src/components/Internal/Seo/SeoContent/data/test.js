@@ -27,6 +27,10 @@ test('getOpenGraph', () => {
       content: 'My Title',
     },
     {
+      property: `og:url`,
+      content: 'My URL',
+    },
+    {
       property: `og:description`,
       content: 'My Description',
     },
