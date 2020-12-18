@@ -5,15 +5,15 @@ export const dropEmpty = (arr) => {
   })
 }
 
-export const getOpenGraph = (title, url, description, image) => {
+export const getOpenGraph = (url, title, description, image) => {
   return dropEmpty([
-    {
-      property: `og:title`,
-      content: title,
-    },
     {
       property: `og:url`,
       content: url,
+    },
+    {
+      property: `og:title`,
+      content: title,
     },
     {
       property: `og:description`,
