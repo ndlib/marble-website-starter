@@ -5,7 +5,7 @@ export const dropEmpty = (arr) => {
   })
 }
 
-export const getOpenGraph = (url, title, description, image) => {
+export const getOpenGraph = (title, url, description, image) => {
   return dropEmpty([
     {
       property: `og:title`,

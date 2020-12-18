@@ -28,7 +28,7 @@ test('getOpenGraph', () => {
     },
     {
       property: `og:url`,
-      content: 'My URL',
+      content: 'http://fake.url',
     },
     {
       property: `og:description`,
@@ -43,7 +43,7 @@ test('getOpenGraph', () => {
       content: `website`,
     },
   ]
-  const actual = getOpenGraph('My Title', 'My Description', '/my-image.png')
+  const actual = getOpenGraph('My Title', 'http://fake.url', 'My Description', '/my-image.png', 'website')
   expect(actual).toEqual(expected)
 })
 
