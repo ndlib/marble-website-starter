@@ -60,7 +60,9 @@ Seo.propTypes = {
 
 export default Seo
 
-export const getUrl = window.location.href
+export const getUrl = (base, pathname) => {
+  return <link href={`${base}${pathname}`} />
+}
 
 export const getTitle = (title, data, siteMetadata) => {
   return title || typy(data, 'marbleItem.title').safeString || typy(siteMetadata, 'title').safeString
