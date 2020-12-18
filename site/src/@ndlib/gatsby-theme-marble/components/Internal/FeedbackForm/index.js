@@ -32,7 +32,7 @@ export const FeedbackForm = ({ closeFunc }) => {
     return (
       <div>
         <form>
-          <p>Thank you for your feedback</p>
+          <p id='thankYou'>Thank you for your feedback</p>
           <p>Your ServiceNow ticket number is: #{typy(response.result, 'number').safeString}</p>
           <div sx={sx.buttonGroup}>
             <MaterialButton
@@ -40,6 +40,7 @@ export const FeedbackForm = ({ closeFunc }) => {
                 changeFeedback('')
                 setResponse(false)
               }}
+              id='submitAnother'
               primary
             >Another?
             </MaterialButton>
@@ -48,6 +49,7 @@ export const FeedbackForm = ({ closeFunc }) => {
                 closeFunc()
               }}
               primary
+              id='cancel'
             >Close
             </MaterialButton>
           </div>
@@ -93,6 +95,7 @@ export const FeedbackForm = ({ closeFunc }) => {
           />
           <div>
             <MaterialButton
+              id='submit'
               onClick={(e) => {
                 e.preventDefault()
                 setPatching(true)

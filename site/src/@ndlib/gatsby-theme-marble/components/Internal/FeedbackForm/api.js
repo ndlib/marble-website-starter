@@ -1,4 +1,4 @@
-
+import fetch from 'isomorphic-fetch'
 const proxyurl = 'https://cors-anywhere.herokuapp.com/'
 const url = 'https://nddev.service-now.com/api/uond/anonymous_incident'
 
