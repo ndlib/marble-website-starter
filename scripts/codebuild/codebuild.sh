@@ -18,7 +18,7 @@ ENV_FILE="${SITE_DIR}/.env.production"
 
 echo "ENV_FILE: ${ENV_FILE}"
 echo "CODEBUILD DIR: $CODEBUILD_SRC_DIR"
-echo "CODEBUILD DIR2: $CODEBUILD_SRC_DIR_$SUBMOD"
+echo "CODEBUILD DIR2: $SUBMOD_DIR"
 exit 1
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
