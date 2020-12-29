@@ -15,7 +15,16 @@ BASE_DIR="${PWD}"
 SITE_DIR="${BASE_DIR}/${SITE_DIRECTORY}"
 WORKSPACE=$WORKSPACE_NAME
 ENV_FILE="${SITE_DIR}/.env.production"
-SUBMOD_DIR=$SUBMOD_ENV
+
+if [[ ! -z "${SUBMOD_DIR}" ]]; then
+  echo "SUBMOD SET"
+  echo $SUBMOD_DIR
+  mv ${SUBMOD_DIR}/* ${SITE_DIR}
+  ls -ld ${SITE_DIR}
+  ls -ld ${SITE_DIR}/*
+else
+  echo "NO SUBMOD DIR SET"
+fi
 
 echo "ENV_FILE: ${ENV_FILE}"
 echo "CODEBUILD DIR: $CODEBUILD_SRC_DIR"
