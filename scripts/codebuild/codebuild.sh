@@ -21,11 +21,6 @@ if [[ ! -z "${SUBMOD_DIR}" ]]; then
   mv ${SUBMOD_DIR}/* ${SITE_DIR}
 fi
 
-echo "ENV_FILE: ${ENV_FILE}"
-echo "CODEBUILD DIR: $CODEBUILD_SRC_DIR"
-echo "CODEBUILD DIR2: $SUBMOD_DIR"
-exit 1
-
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
 # must contain search_url and search_index key/values
 # pass in 'local' for dev settings
