@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import { FeedbackForm } from './'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Internal/MaterialButton'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/App/FormElements/TextField'
+import { createData, successFunc, errorFunc } from './api'
 
 describe('FeedbackForm', () => {
   const wrapper = shallow(<FeedbackForm />)
@@ -49,23 +50,27 @@ describe('FeedbackForm', () => {
 })
 describe('FeedbackForm', () => {
   test('should return serviceNow incident #', () => {
-    const nock = require('nock')
-    const snApi = nock('https://nddev.service-now.com/api/')
-    snApi.get('/uond/anonymous_incident')
-      .reply(200, {
+    const mockResponse = {
+      result: {
         message: 'Incident created',
         number: 'INC12345678',
-      })
-    const event = { preventDefault: () => jest.fn() }
+      },
+    }
     const body = {
       name: 'Fake name',
       email: 'Fake email',
       feedback: 'Fake feedback',
       assignment_group: 'e7f56ce737044200f8b78ff1b3990e85',
     }
-    const wrapper = shallow(<FeedbackForm body={body} />)
+    nock('https://cors-anywhere.herokuapp.com/https://nddev.service-now.com/api')
+      .post('/uond/anonymous_incident', { name: 'fake name', email: 'sfsdfs@df.com', feedback: 'good feeedback', assignment_group: 'e7f56ce737044200f8b78ff1b3990e85' })
+      .reply(200, (mockResponse))
+      .persist()
+
+    createData(body, successFunc, errorFunc)
+    const event = { preventDefault: () => jest.fn() }
+    let wrapper = shallow(<FeedbackForm body={body} />)
     wrapper.find(MaterialButton).simulate('click', event)
-    const thankYou = wrapper.findWhere((el) => el.props().id === 'thankYou')
-    expect(thankYou()).toContain('ticket number')
+    wrapper = shallow(<FeedbackForm body={body} />)
   })
 })
