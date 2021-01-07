@@ -41,12 +41,12 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
           <TombstoneMetadata marbleItem={marbleItem} />
         </Column>
         <Column>
-          <ActionButtonGroup marbleItem={marbleItem} />
           <ManifestImageGroup
             location={location}
             marbleItem={marbleItem}
             allMarbleFile={allMarbleFile}
           />
+          <ActionButtonGroup marbleItem={marbleItem} />
         </Column>
       </MultiColumn>
       <HorizontalRule color={primary} />
