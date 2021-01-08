@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import sx from './sx'
+import SearchBox from 'components/Shared/SearchBox'
 import PortfolioTitle from './PortfolioTitle'
 import PortfolioDescription from './PortfolioDescription'
 import PortfolioItems from './PortfolioItems'
@@ -27,6 +29,9 @@ const PortfolioBody = ({ portfolio, location, isOwner }) => {
         data={{}}
         noIndex // = {portfolio.privacy !== 'public'}
       />
+      <div sx={sx.searchBoxBG}>
+        <SearchBox />
+      </div>
       <PortfolioTitle
         isOwner={isOwner}
       />
