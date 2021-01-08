@@ -4,6 +4,7 @@ import { jsx } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from './useForm'
+import Loading from '@ndlib/gatsby-theme-marble/src/components/Internal/Loading'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Internal/MaterialButton'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/App/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/App/FormElements/TextArea'
@@ -18,6 +19,7 @@ export const FeedbackForm = ({ closeFunc }) => {
   const [email, changeEmail] = useState('')
   const [feedback, changeFeedback] = useState('')
   const [patching, setPatching] = useState(false)
+  const [error, setError] = useState(null)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
   const {
@@ -28,21 +30,27 @@ export const FeedbackForm = ({ closeFunc }) => {
     console.log('Submitted')
   }
 
-  if (response) {
+  if (patching) {
+    return (
+      <Loading />
+    )
+  }
+  if (error) {
     return (
       <div>
         <form>
-          <p id='thankYou'>Thank you for your feedback</p>
-          <p>Your ServiceNow ticket number is: #{typy(response.result, 'number').safeString}</p>
+          <p id='thankYou'>Houston. We have a problem.</p>
+          <p>We were unable to create a ticket for you due to network issues.</p>
           <div sx={sx.buttonGroup}>
             <MaterialButton
               onClick={() => {
                 changeFeedback('')
                 setResponse(false)
+                setError(false)
               }}
               id='submitAnother'
               primary
-            >Another?
+            >Try Again?
             </MaterialButton>
             <MaterialButton
               onClick={() => {
@@ -57,6 +65,35 @@ export const FeedbackForm = ({ closeFunc }) => {
       </div>
     )
   } else {
+    if (response) {
+      return (
+        <div>
+          <form>
+            <p id='thankYou'>Thank you for your feedback</p>
+            <p>Your ServiceNow ticket number is: #{typy(response.result, 'number').safeString}</p>
+            <div sx={sx.buttonGroup}>
+              <MaterialButton
+                onClick={() => {
+                  changeFeedback('')
+                  setResponse(false)
+                }}
+                id='submitAnother'
+                primary
+              >Another?
+              </MaterialButton>
+              <MaterialButton
+                onClick={() => {
+                  closeFunc()
+                }}
+                primary
+                id='cancel'
+              >Close
+              </MaterialButton>
+            </div>
+          </form>
+        </div>
+      )
+    }
     return (
       <div>
         <form onSubmit={handleSubmit} noValidate>
@@ -112,6 +149,8 @@ export const FeedbackForm = ({ closeFunc }) => {
                     setPatching(false)
                   },
                   errorFunc: (e) => {
+                    setError(true)
+                    setPatching(false)
                     console.error(e)
                   },
                 })
