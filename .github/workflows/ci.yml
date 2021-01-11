@@ -35,7 +35,7 @@ jobs:
         cd scripts/gatsby-source-iiif/
         yarn install
         node getStandard.js
-        cp "../../site/.env.test" "../../site/.env.production"
+        cp "../../sites/marble/.env.test" "../../sites/marble/.env.production"
 
     - name: "Unit Tests"
       run: |
