@@ -60,13 +60,13 @@ Update ./site/.env.development so the keys SEARCH_URL and SEARCH_INDEX point to 
 run
 `
 cd scripts/gatsby-source-iiif
-node indexSearch ../../site/.env.development
+node indexSearch ../../sites/marble/.env.development
 `
 
 
 Start the development server:
 ```
-yarn workspace site develop
+yarn workspace marble develop
 ```
 Your site is now running at `http://localhost:8000`.
 
@@ -100,7 +100,7 @@ marble-website-starter
 ↳ @ndlib           // Directory scope for publishing to npm
   ↳ gatsby-theme-marble   // The npm module for the Gatsby Theme for a Marble website
   ↳ gatsby-starter-marble // A stand alone Gatsby Starter that consumes `gatsby-theme-marble`
-↳ site                    // The Gatsby site for Marble that consumes `gatsby-theme-marble`
+↳ sites -> marble/inquistion/etc... // The Gatsby site for Marble that consumes `gatsby-theme-marble`
   ↳ content               // This is where the site content for the Marble site lives
   ↳ gatsby-config.js      // This file is required by Gatsby to configure the site and use the theme
 ↳ scripts
@@ -113,7 +113,7 @@ marble-website-starter
 Occasionally, the `.cache` files my get confused if you are making large or frequent changes. To clean it up, stop the development task and run:
 
 ```
-yarn workspace site clean
+yarn workspace marble clean
 ```
 
 ### Local build:
@@ -123,7 +123,7 @@ cp site/.env.development site/.env.production
 ```
 To build a local production version of the site run:
 ```
-yarn workspace site build
+yarn workspace marble build
 ```
 ### Creating a new site:
 #### Add it to the yarn workspace
