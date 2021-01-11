@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next'
 import { updateInput } from 'store/actions/searchActions'
 
 // You should only have one search field on a page.
-export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch, className, location }) => {
+export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch, className, location, boxLabel }) => {
   const { t } = useTranslation()
   const { rawInput } = searchReducer
-  const fieldLabel = t('common:search.prompt')
+  const fieldLabel = (!boxLabel ? t('common:search.prompt') : boxLabel)
   return (
     <>
       <label
@@ -44,6 +44,7 @@ SearchField.propTypes = {
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   searchPath: PropTypes.string.isRequired,
+  boxLabel: PropTypes.string,
 }
 
 const mapStateToProps = (state) => {
