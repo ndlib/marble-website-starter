@@ -50,4 +50,6 @@ node getStandard.js
 node indexSearch.js 
 
 echo "Copy .env to site for Gatsby"
+pwd
+ls -la
 cp ./.env ./site/.env.production

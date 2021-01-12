@@ -1,5 +1,5 @@
 
-site="../../site"
+site="../../sites/marble"
 
 node getManifests.js $site
 node getSchema.js $site

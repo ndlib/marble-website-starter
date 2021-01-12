@@ -5,7 +5,7 @@ import queryString from 'query-string'
 import SearchButton from './SearchButton'
 import SearchField from './SearchField'
 
-const SearchBox = ({ location }) => {
+const SearchBox = ({ location, boxLabel }) => {
   return (
     <div className='sk-search-box'>
       <SearchButton
@@ -19,6 +19,7 @@ const SearchBox = ({ location }) => {
         location={location}
         searchPath='search'
         submitSearch={submitSearch}
+        boxLabel={boxLabel}
       />
     </div>
   )
@@ -26,6 +27,7 @@ const SearchBox = ({ location }) => {
 
 SearchBox.propTypes = {
   location: PropTypes.object.isRequired,
+  boxLabel: PropTypes.string,
 }
 
 export default SearchBox

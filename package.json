@@ -4,8 +4,8 @@
     "@ndlib/gatsby-starter-marble",
     "@ndlib/gatsby-theme-marble",
     "scripts",
-    "site",
-    "sites/inquisition"
+    "sites/inquisition",
+    "sites/marble"
   ],
   "devDependencies": {
     "@babel/core": "^7.10.2",

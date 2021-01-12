@@ -35,6 +35,7 @@ export const Seo = ({
   const { siteMetadata } = site
   return (
     <SeoContent
+      url={getUrl(siteMetadata, location.pathname)}
       title={getTitle(title, data, siteMetadata)}
       author={getAuthor(author, data, siteMetadata)}
       image={getImage(data, file)}
@@ -61,6 +62,10 @@ export default Seo
 
 export const getTitle = (title, data, siteMetadata) => {
   return title || typy(data, 'marbleItem.title').safeString || typy(siteMetadata, 'title').safeString
+}
+
+export const getUrl = (siteMetadata, location) => {
+  return typy(siteMetadata, 'siteUrl').safeString + location
 }
 
 export const getImage = (data, defaultImage) => {

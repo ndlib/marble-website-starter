@@ -23,6 +23,10 @@ test('dropEmpty', () => {
 test('getOpenGraph', () => {
   const expected = [
     {
+      property: `og:url`,
+      content: 'http://fake.url',
+    },
+    {
       property: `og:title`,
       content: 'My Title',
     },
@@ -39,7 +43,7 @@ test('getOpenGraph', () => {
       content: `website`,
     },
   ]
-  const actual = getOpenGraph('My Title', 'My Description', '/my-image.png')
+  const actual = getOpenGraph('http://fake.url', 'My Title', 'My Description', '/my-image.png', 'website')
   expect(actual).toEqual(expected)
 })
 

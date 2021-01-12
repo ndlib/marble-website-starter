@@ -12,10 +12,14 @@ cat /proc/sys/fs/inotify/max_user_watches
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}"
-SITE_DIR="${BASE_DIR}/site"
+SITE_DIR="${BASE_DIR}/${SITE_DIRECTORY}"
+WORKSPACE=$WORKSPACE_NAME
 ENV_FILE="${SITE_DIR}/.env.production"
 
-echo "ENV_FILE: ${ENV_FILE}"
+# move submodule into place
+if [[ ! -z "${SUBMOD_DIR}" ]]; then
+  mv ${SUBMOD_DIR}/* ${SITE_DIR}
+fi
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
 # must contain search_url and search_index key/values
@@ -46,22 +50,20 @@ pushd scripts/gatsby-source-iiif/
   echo "${magenta}----- Build ENV Config -------${reset}"
   node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
 
-
   echo "${magenta}----- Get Metadata -------${reset}"
-  node getStandard.js ${SITE_DIR}
+  node getStandard.js ${ENV_FILE} || { echo "Unable to load item metadata" ;exit 1; }
 
   echo "${magenta}----- Index -------${reset}"
-  node indexSearch.js ${ENV_FILE}
+  node indexSearch.js ${ENV_FILE} || { echo "Unable to send data to site index" ;exit 1; }
 popd
-
-
 
 echo "${magenta}----- Unit Tests -------${reset}"
 failures=0
 trap 'failures=$((failures+1))' ERR
 
 yarn workspace @ndlib/gatsby-theme-marble test
-yarn workspace site test
+# yarn workspace ${WORKSPACE} test
+yarn workspace marble test
 
 if ((failures != 0)); then
   echo "${magenta}TESTS FAILED${reset}"
@@ -69,8 +71,10 @@ if ((failures != 0)); then
 fi
 
 echo "${magenta}----- Build -------${reset}"
-yarn workspace site build
+# yarn workspace ${WORKSPACE} build
+yarn workspace marble test
 
 
 echo "${magenta}----- Deploy -------${reset}"
-yarn workspace site deploy
+# yarn workspace ${WORKSPACE} deploy
+yarn workspace marble deploy
