@@ -6,18 +6,6 @@ const envfile = process.argv.slice(2)[0] || '../../sites/marble/.env.development
 const directory = path.dirname(envfile)
 const manifestsFile = path.join(directory, 'content/manifests.json')
 
-try {
-  if (!fs.existsSync(path)) {
-    console.log('I am error 1')
-    console.log('No Manifest file for site' + directory)
-    return
-  }
-} catch {
-  console.log('I am error 2')
-  console.log('No Manifest file for site' + directory)
-  return
-}
-
 const loadManifestsFile = () => {
   const contents = fs.readFileSync(path.join(directory, manifestsFile))
   return JSON.parse(contents)
