@@ -30,7 +30,7 @@ const PortfolioBody = ({ portfolio, location, isOwner }) => {
         noIndex // = {portfolio.privacy !== 'public'}
       />
       <div sx={sx.searchBoxBG}>
-        <SearchBox boxLabel='Search the Collections' />
+        <SearchBox boxLabel='Search the Collections' location={location} />
       </div>
       <PortfolioTitle
         isOwner={isOwner}
