@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const https = require('https')
 const batchPromises = require('batch-promises')
-const envfile = process.argv.slice(2)[0] || '../../site/marble/.env.development'
+const envfile = process.argv.slice(2)[0] || '../../sites/marble/.env.development'
 const directory = path.dirname(envfile)
 const manifestsFile = path.join(directory, 'content/manifests.json')
 
