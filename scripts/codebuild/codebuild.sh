@@ -12,6 +12,9 @@ cat /proc/sys/fs/inotify/max_user_watches
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}"
+if [[ -z "$SITE_DIRECTORY" ]]; then
+    SITE_DIRECTORY="sites/marble"
+fi
 SITE_DIR="${BASE_DIR}/${SITE_DIRECTORY}"
 if [[ -z "$WORKSPACE_NAME" ]]; then
     WORKSPACE_NAME="marble"
