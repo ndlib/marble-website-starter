@@ -63,7 +63,7 @@ trap 'failures=$((failures+1))' ERR
 
 yarn workspace @ndlib/gatsby-theme-marble test
 # yarn workspace ${WORKSPACE} test
-yarn workspace smarble test
+yarn workspace marble test
 
 if ((failures != 0)); then
   echo "${magenta}TESTS FAILED${reset}"
