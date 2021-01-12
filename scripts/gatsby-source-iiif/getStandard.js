@@ -7,7 +7,7 @@ const directory = path.dirname(envfile)
 const manifestsFile = path.join(directory, 'content/manifests.json')
 
 const loadManifestsFile = () => {
-  const contents = fs.readFileSync(path.join(directory, manifestsFile))
+  const contents = fs.readFileSync(manifestsFile)
   return JSON.parse(contents)
 }
 
