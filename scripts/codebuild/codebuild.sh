@@ -13,7 +13,13 @@ cat /proc/sys/fs/inotify/max_user_watches
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}"
 SITE_DIR="${BASE_DIR}/${SITE_DIRECTORY}"
-WORKSPACE=$WORKSPACE_NAME
+if [[ -z “$WORKSPACE_NAME ]]; then
+    WORKSPACE_NAME="marble"
+fi
+if [[ -z “$S3_DEST_BUCKET ]]; then
+    S3_DEST_BUCKET="marbleb-prod-website-sitebucket397a1860-1ny38m2va9ueb"
+fi
+
 ENV_FILE="${SITE_DIR}/.env.production"
 
 # move submodule into place
