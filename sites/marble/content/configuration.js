@@ -51,6 +51,7 @@ module.exports = {
       issuer: authClientIssuer,
     },
     userContentPath: userContentPath,
+    pruneMetadataWithNoImages: true,
     //
     languages: languages,
   },

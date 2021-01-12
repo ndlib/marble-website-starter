@@ -1,5 +1,5 @@
 const fs = require('fs')
-const path = require(`path`)
+const path = require('path')
 
 const { Client } = require('elasticsearch')
 const auth = require('http-aws-es')
@@ -11,7 +11,8 @@ const getLanguages = require('./src/getLanguages')
 const findThumbnail = require('./src/findThumbnail')
 
 const pruneEmptyLeaves = require('../../@ndlib/gatsby-theme-marble/src/utils/pruneEmptyLeaves')
-const envfile = process.argv.slice(2)[0] || '../../site/.env.development'
+const envfile = process.argv.slice(2)[0] || '../../sites/marble/.env.development'
+const directory = path.dirname(envfile)
 
 if (process.env.CI) {
   return
@@ -34,6 +35,7 @@ const siteIndex = process.env.SEARCH_INDEX
 const domain = process.env.SEARCH_URL
 if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
+  return
 }
 
 const options = {
@@ -70,9 +72,6 @@ const determineProvider = (manifest) => {
 }
 
 const loadManifestData = () => {
-  // const data = fs.readFileSync(path.join(directory, '/content/items/items.json'))
-  // const manifestData = JSON.parse(data.toString())
-
   const allManifestData = []
 
   const fileObjs = fs.readdirSync(path.join(directory, '/content/json/standard'))
@@ -146,19 +145,19 @@ const getSearchDataFromManifest = (manifest, collection) => {
   }
 
   if (manifest.workType) {
-    search['formatTag'] = [manifest.workType]
+    search.formatTag = [manifest.workType]
   }
 
-  search['allMetadata'] = []
+  search.allMetadata = []
   allMetadataKeys.forEach((key) => {
     if (manifest[key]) {
-      search['allMetadata'].push(manifest[key])
+      search.allMetadata.push(manifest[key])
     }
   })
-  search['allMetadata'] = search['allMetadata'].concat(loadSubItemTitles(manifest))
-  search['allMetadata'] = search['allMetadata'].concat(search.centuryTag)
-  search['allMetadata'] = search['allMetadata'].concat(search.themeTag)
-  search['allMetadata'] = search['allMetadata'].concat(search.expandedThemeTag)
+  search.allMetadata = search.allMetadata.concat(loadSubItemTitles(manifest))
+  search.allMetadata = search.allMetadata.concat(search.centuryTag)
+  search.allMetadata = search.allMetadata.concat(search.themeTag)
+  search.allMetadata = search.allMetadata.concat(search.expandedThemeTag)
 
   return search
 }
@@ -274,10 +273,10 @@ const configIndexSettings = async () => {
     console.log(e)
     nodeInfo = { number_of_nodes: 1 }
   })
-  if (nodeInfo['number_of_nodes'] > 1) {
-    settings.index['number_of_replicas'] = 1
+  if (nodeInfo.number_of_nodes > 1) {
+    settings.index.number_of_replicas = 1
   } else {
-    settings.index['number_of_replicas'] = 0
+    settings.index.number_of_replicas = 0
   }
   return settings
 }

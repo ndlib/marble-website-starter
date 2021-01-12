@@ -26,6 +26,8 @@ jobs:
         yarn global add gatsby-cli
         mkdir ~/.config/gatsby
         cp ./scripts/codebuild/config.json ~/.config/gatsby/
+        git submodule init
+        git submodule update
         yarn install
 
     - name: "Install Metadata"
@@ -33,7 +35,7 @@ jobs:
         cd scripts/gatsby-source-iiif/
         yarn install
         node getStandard.js
-        cp "../../site/.env.test" "../../site/.env.production"
+        cp "../../sites/marble/.env.test" "../../sites/marble/.env.production"
 
     - name: "Unit Tests"
       run: |
@@ -46,7 +48,7 @@ jobs:
         failures=0
         trap 'failures=$((failures+1))' ERR
 
-        yarn workspace site test
+        yarn workspace marble test
         yarn workspace @ndlib/gatsby-theme-marble coverage
 
         pushd @ndlib/gatsby-theme-marble
@@ -63,4 +65,4 @@ jobs:
 
     - name: "Build"
       run: |
-        yarn workspace site build
+        yarn workspace marble build
