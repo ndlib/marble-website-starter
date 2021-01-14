@@ -21,8 +21,8 @@ module.exports = {
     marginTop: ['20px', '30px', '40px'],
   },
   text: {
-    fontFamily: 'title',
-    fontSize: '1.5rem',
+    fontFamily: 'heading',
+    fontSize: '24px',
     margin: '0 1rem',
     position: 'absolute',
     left: ['90px', '110px', '130px'],
