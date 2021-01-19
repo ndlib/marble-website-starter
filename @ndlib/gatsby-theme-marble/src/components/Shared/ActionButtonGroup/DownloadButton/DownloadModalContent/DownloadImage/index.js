@@ -27,10 +27,17 @@ const DownloadImage = ({ marbleItem }) => {
       }))
   }, [marbleItem])
 
-  if (images.length < 1 || marbleItem.copyrightRestricted) {
+  if (images.length < 1) {
     return (
       <div sx={sx.wrapper}>
         <p sx={sx.image}>Image Download Unavailable.</p>
+      </div>
+    )
+  }
+  if (marbleItem.copyrightRestricted) {
+    return (
+      <div sx={sx.wrapper}>
+        <p sx={sx.image}>Image download unavailable due to copyright restrictions.</p>
       </div>
     )
   }
