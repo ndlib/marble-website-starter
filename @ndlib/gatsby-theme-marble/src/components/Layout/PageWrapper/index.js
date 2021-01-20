@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import SkipToMain from './SkipToMain'
 import BrandingHeader from './BrandingHeader'
 import NavigationHeader from './NavigationHeader'
+import FeedbackModal from 'components/Internal/FeedbackModal'
 import Footer from './Footer'
 
 const PageWrapper = ({ children, location }) => {
@@ -12,6 +13,7 @@ const PageWrapper = ({ children, location }) => {
       <BrandingHeader />
       <NavigationHeader location={location} />
       {children}
+      <FeedbackModal />
       <Footer />
     </>
   )
