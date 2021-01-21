@@ -10,4 +10,8 @@ yarn workspace ${SITE} clean
 echo "Deleting: ${SITE_DIR}/content/json/standard/*.json"
 rm -rf ${SITE_DIR}/content/json/standard/*.json
 
+cd ./scripts/gatsby-source-iiif
+yarn
+cd ../..
+
 node ./scripts/gatsby-source-iiif/getStandard.js ${SITE_DIR}
