@@ -9,7 +9,7 @@ export const Seo = ({
   title,
   author,
   description,
-  noIndex,
+  noIndex = false,
 }) => {
   const { site, file } = useStaticQuery(
     graphql`
