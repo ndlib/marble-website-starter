@@ -37,6 +37,19 @@ const genericArrayFind = (standardJson, id) => {
   return false
 }
 
+const listAll = (standardJson, id) => {
+  if (id in standardJson && standardJson[id]) {
+    let renderedList = ''
+    Object.values(standardJson[id]).forEach(val => {
+      if (val !== '') {
+        renderedList += (renderedList !== '' ? ', ' + val : val)
+      }
+    })
+    return [renderedList]
+  }
+  return false
+}
+
 const findProvider = (standardJson) => {
   if (!('repository' in standardJson)) {
     return false
@@ -343,6 +356,11 @@ const dataLookUp = {
       label: 'Credit Line',
       type: 'list',
       processor: genericFind,
+    },
+    creationPlace: {
+      label: 'Related Location',
+      type: 'list',
+      processor: listAll,
     },
     uniqueIdentifier: {
       label: 'Accession Number',
