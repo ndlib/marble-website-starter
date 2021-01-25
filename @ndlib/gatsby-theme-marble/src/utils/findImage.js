@@ -4,17 +4,22 @@ import pdfImage from 'assets/images/pdf.svg'
 
 // eslint-disable-next-line complexity
 export const findImage = (images, marbleItem, thumbnail = false) => {
+  // Find the first usable image
   const image = typy(images, 'nodes').safeArray.find(node => node.fileType === 'image') || typy(marbleItem, 'childrenMarbleFile').safeArray.find(file => file.fileType === 'image')
-  const containsPDF = typy(marbleItem, 'childrenMarbleFile').safeArray.find(file => file.fileType === 'pdf')
-
   if (image && thumbnail) {
     return typy(image, 'local.publicURL').safeString || typy(image, 'iiif.thumbnail').safeString
   } else if (image) {
     return typy(image, 'local.publicURL').safeString ||
     typy(image, 'iiif.default').safeString
-  } else if (containsPDF) {
+  }
+
+  // No images were found, check to see if it is a PDF
+  const containsPDF = typy(marbleItem, 'childrenMarbleFile').safeArray.find(file => file.fileType === 'pdf')
+  if (containsPDF) {
     return pdfImage
   }
+
+  // No image and not a pdf, return noImage icon
   return noImage
 }
 export default findImage
