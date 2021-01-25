@@ -1,5 +1,6 @@
 import findImage, { findAltImage } from '../findImage'
 import noImage from 'assets/images/noImage.svg'
+import pdfImage from 'assets/images/pdf.svg'
 
 describe('findImage', () => {
   test('local', () => {
@@ -9,6 +10,7 @@ describe('findImage', () => {
           local: {
             publicURL: 'local.image',
           },
+          fileType: 'image',
         },
       ],
     }
@@ -24,6 +26,7 @@ describe('findImage', () => {
           iiif: {
             default: 'https://remote',
           },
+          fileType: 'image',
         },
       ],
     }
@@ -36,6 +39,17 @@ describe('findImage', () => {
     const allFile = {}
     const result = findImage(item, allFile)
     expect(result).toEqual(noImage)
+  })
+
+  test('pdfImage', () => {
+    const item = {}
+    const allFile = {
+      nodes: [
+        { fileType: 'pdf' },
+      ],
+    }
+    const result = findImage(item, allFile)
+    expect(result).toEqual(pdfImage)
   })
 })
 
@@ -51,6 +65,7 @@ describe('findAltImage', () => {
               },
             },
           },
+          fileType: 'image',
         },
       ],
     }

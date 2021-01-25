@@ -31,6 +31,7 @@ describe('ManifestImageGroup', () => {
             service: 'http://image.place',
             default: 'http://image.default',
           },
+          fileType: 'image',
         },
       ],
     }
