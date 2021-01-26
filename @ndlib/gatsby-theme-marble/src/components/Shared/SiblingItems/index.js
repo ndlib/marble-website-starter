@@ -8,6 +8,7 @@ import typy from 'typy'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import ManifestCard from 'components/Shared/ManifestCard'
 import getArrayNeighbors from 'utils/getArrayNeighbors'
+import findImage from 'utils/findImage'
 
 const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
   const siblings = typy(marbleItem, 'marbleParent.childrenMarbleItem').safeArray
@@ -35,7 +36,7 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
                 <ManifestCard
                   key={sibling.slug}
                   target={sibling.slug}
-                  image={typy(sibling, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
+                  image={findImage(sibling.childrenMarbleFile, sibling, true)}
                   label={sibling.title}
                   showSummary
                 />
