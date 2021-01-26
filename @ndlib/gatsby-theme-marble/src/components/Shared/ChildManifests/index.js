@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
 import ManifestCard from '../ManifestCard'
+import findImage from 'utils/findImage'
 
 export const ChildManifests = ({ marbleItem }) => {
   if (!marbleItem || !typy(marbleItem, 'childrenMarbleItem').isArray) {
@@ -22,7 +23,7 @@ export const ChildManifests = ({ marbleItem }) => {
               <ManifestCard
                 key={childItem}
                 target={childItem.slug}
-                image={typy(childItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
+                image={findImage(childItem.childrenMarbleFile, childItem, true)}
                 label={childItem.title}
                 showSummary
               />
