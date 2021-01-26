@@ -338,7 +338,7 @@ const dataLookUp = {
       urlField: 'format',
     },
     format: {
-      label: 'Format',
+      label: 'Object Type',
       type: 'list',
       processor: genericFind,
     },
