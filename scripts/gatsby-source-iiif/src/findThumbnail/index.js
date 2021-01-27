@@ -7,7 +7,7 @@ module.exports = (manifest) => {
 // eslint-disable-next-line complexity
 const depthFirstSearchForThumbnails = (manifest) => {
   // make sure there is an iiifImageUri and it is a valid image format (NO PDF)
-  if (manifest.iiifImageUri && (imageExtension.test(manifest.filePath) || imageExtension.test(manifest.defaultFilePath))) {
+  if (manifest.iiifImageUri && (imageExtension.test(manifest.filePath) || imageExtension.test(manifest.defaultFilePath) || imageExtension.test(manifest.id))) {
     return manifest.iiifImageUri + '/full/!250,250/0/default.jpg'
   }
 
