@@ -1,10 +1,12 @@
+const imageExtension = new RegExp('.(tiff|tif|jpg|jpeg|png|webp)$')
 
 module.exports = (manifest) => {
   return depthFirstSearchForThumbnails(manifest)
 }
 
 const depthFirstSearchForThumbnails = (manifest) => {
-  if (manifest.iiifImageUri) {
+  // make sure there is an iiifImageUri and it is a valid image format (NO PDF)
+  if (manifest.iiifImageUri && (imageExtension.test(manifest.filePath) || imageExtension.test(manifest.defaultFilePath))) {
     return manifest.iiifImageUri + '/full/!250,250/0/default.jpg'
   }
 
