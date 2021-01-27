@@ -52,6 +52,7 @@ export const query = graphql`
           title
           slug
           childrenMarbleFile {
+            fileType
             iiif {
               thumbnail
             }
