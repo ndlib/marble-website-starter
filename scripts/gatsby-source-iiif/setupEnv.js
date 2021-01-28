@@ -12,6 +12,8 @@ const possibleKeys = [
   'AUTH_CLIENT_URL',
   'AUTH_CLIENT_ISSUER',
   'S3_DEST_BUCKET',
+  'ALLOW_ROBOTS',
+  'IIIF_VIEWER_URL',
 ]
 
 const retrieveStageParameters = async () => {
@@ -26,6 +28,8 @@ const retrieveStageParameters = async () => {
       AUTH_CLIENT_ID: '0oa1f3ut0aKpdwap5357',
       AUTH_CLIENT_ISSUER: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
       S3_DEST_BUCKET: '',
+      ALLOW_ROBOTS: 'false',
+      IIIF_VIEWER_URL: 'https://viewer-iiif-test.library.nd.edu/mirador/?manifest=',
     }
   } else {
     const ssm = new AWS.SSM({ region: 'us-east-1' })
@@ -37,10 +41,10 @@ const retrieveStageParameters = async () => {
       console.error('Failed getting parameter: ' + appConfig)
       console.error(err)
     })
-    params['Parameters'].forEach(node => {
-      const paramName = node['Name']
+    params.Parameters.forEach(node => {
+      const paramName = node.Name
       const envName = paramName.substring(paramName.lastIndexOf('/') + 1, paramName.length).toUpperCase()
-      env[envName] = node['Value']
+      env[envName] = node.Value
     })
   }
   possibleKeys.forEach(key => {
