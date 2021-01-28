@@ -140,14 +140,6 @@ exports.createPages = ({ graphql, actions }) => {
             iiifUri: node.iiifUri,
           },
         })
-        // mirador page
-        createPage({
-          path: `${node.slug}/mirador`,
-          component: require.resolve('./src/templates/miradorTemplate.js'),
-          context: {
-            id: node.id,
-          },
-        })
       }
     })
   })
