@@ -39,6 +39,7 @@ if [[ -z "$PARAM_CONFIG_PATH" ]]; then
     echo "export PARAM_CONFIG_PATH=/all/static-host/<stackname>/"
     exit 2
 fi
+echo ${PARAM_CONFIG_PATH}
 
 echo "${magenta}----- INSTALLATIONS -------${reset}"
 # install yarn
@@ -57,7 +58,6 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 pushd scripts/gatsby-source-iiif/
   yarn install
   echo "${magenta}----- Build ENV Config -------${reset}"
-  echo ${PARAM_CONFIG_PATH}
   node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
 
   echo "${magenta}----- Get Metadata -------${reset}"
