@@ -57,6 +57,7 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 pushd scripts/gatsby-source-iiif/
   yarn install
   echo "${magenta}----- Build ENV Config -------${reset}"
+  echo ${PARAM_CONFIG_PATH}
   node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
 
   echo "${magenta}----- Get Metadata -------${reset}"
