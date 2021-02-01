@@ -42,6 +42,7 @@ ManifestImageGroup.propTypes = {
   allMarbleFile: PropTypes.object,
   marbleItem: PropTypes.shape({
     childrenMarbleItem: PropTypes.array,
+    title: PropTypes.string,
   }),
   location: PropTypes.object.isRequired,
 }
