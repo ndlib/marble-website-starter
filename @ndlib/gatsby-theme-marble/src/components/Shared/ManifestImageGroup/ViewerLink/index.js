@@ -8,6 +8,7 @@ import { jsx } from 'theme-ui'
 const ViewerLink = ({
   marbleItem,
   index,
+  view,
   children,
 }) => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -16,7 +17,7 @@ const ViewerLink = ({
       <>{children}</>
     )
   }
-  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}`
+  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}&cv=${index}&view=${view}`
   return (
     <>
       <div
@@ -56,6 +57,7 @@ ViewerLink.propTypes = {
     title: PropTypes.string.isRequired,
     iiifUri: PropTypes.string.isRequired,
   }),
+  view: PropTypes.string,
   index: PropTypes.number,
   children: PropTypes.node,
 }
