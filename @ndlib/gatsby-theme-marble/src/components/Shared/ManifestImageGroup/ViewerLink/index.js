@@ -1,44 +1,62 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Internal/Link'
-import buildReferalState from 'utils/buildReferalState'
+import ViewerModal from './ViewerModal'
 import { jsx } from 'theme-ui'
 
-const ViewerLink = ({ marbleItem, index, viewer, className, view, location, children }) => {
-  let viewerLink = `${marbleItem.slug}/mirador?cv=${index}&view=${view}`
-  if (viewer === 'uv') {
-    viewerLink = `/viewer?manifest=${encodeURIComponent(marbleItem.iiifUri)}&cv=${index}`
+const ViewerLink = ({
+  marbleItem,
+  index,
+  children,
+}) => {
+  const [modalOpen, setModalOpen] = useState(false)
+  if (!process.env.IIIF_VIEWER_URL) {
+    return (
+      <>{children}</>
+    )
   }
+  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}`
   return (
-    <Link
-      to={viewerLink}
-      className={className}
-      state={buildReferalState(location, { type: 'item', backLink: location.href })}
-      rel={index > 0 ? 'nofollow' : 'alternate'}
-      sx={{
-        color: 'background',
-        display: 'block',
-        position: 'relative',
-        verticalAlign: 'top',
-      }}
-    >
-      {children}
-    </Link>
+    <>
+      <div
+        role='button'
+        onClick={() => {
+          setModalOpen(!modalOpen)
+        }}
+        sx={{
+          cursor: 'pointer',
+          position: 'relative',
+        }}
+      >
+        {children}
+      </div>
+      <ViewerModal
+        contentLabel={marbleItem.title}
+        isOpen={modalOpen}
+        closeFunc={() => setModalOpen(false)}
+        externalLink={viewerLink}
+      >
+        <iframe
+          title='IIIF Viewer'
+          src={`${viewerLink}&title=false`}
+          style={{
+            border: 'none',
+            height: 'calc(100vh - 3rem)',
+            width: '100vw',
+          }}
+        />
+      </ViewerModal>
+    </>
   )
 }
 
 ViewerLink.propTypes = {
   marbleItem: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     iiifUri: PropTypes.string.isRequired,
   }),
   index: PropTypes.number,
-  className: PropTypes.string,
-  location: PropTypes.object.isRequired,
-  view: PropTypes.string,
-  viewer: PropTypes.string,
   children: PropTypes.node,
 }
 ViewerLink.defaultProps = {
