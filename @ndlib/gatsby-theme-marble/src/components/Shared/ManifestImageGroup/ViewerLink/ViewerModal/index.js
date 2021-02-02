@@ -32,7 +32,7 @@ const ViewerModal = ({
           externalLink ? (
             <a
               href={externalLink}
-              rel='nofollow noreferrer'
+              rel='noopener noreferrer'
               target='_blank'
               style={{
                 color: iconColor,
