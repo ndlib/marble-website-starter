@@ -34,7 +34,7 @@ const ViewerModal = ({
               href={externalLink}
               rel='noopener noreferrer'
               target='_blank'
-              style={{
+              sx={{
                 color: iconColor,
                 textDecoration: 'none',
               }}
