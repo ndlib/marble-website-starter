@@ -43,7 +43,7 @@ const ViewerLink = ({
           src={`${viewerLink}&title=false`}
           style={{
             border: 'none',
-            height: 'calc(100vh - 3rem)',
+            height: 'calc(100vh - 56px)',
             width: '100vw',
           }}
         />

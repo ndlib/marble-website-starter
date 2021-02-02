@@ -36,8 +36,8 @@ module.exports = {
     verticalAlign: 'middle',
   },
   content: {
-    maxHeight: 'calc(100vh - 3rem)',
-    marginTop: '3rem',
+    maxHeight: 'calc(100vh - 56px)',
+    marginTop: '56px',
     padding: '0px',
     overflowX: 'hidden',
     overflowY: 'hidden',
