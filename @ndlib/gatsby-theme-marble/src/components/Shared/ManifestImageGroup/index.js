@@ -7,21 +7,16 @@ import findImage from 'utils/findImage'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
-export const ManifestImageGroup = ({ location, marbleItem, viewer, allMarbleFile }) => {
+export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
   if (!marbleItem) {
     return null
   }
-  let viewerLabel = 'Mirador'
-  if (viewer === 'uv') {
-    viewerLabel = 'Universal Viewer'
-  }
-  const label = `Open in ${viewerLabel}`
+  const label = process.env.IIIF_VIEWER_URL ? 'Open in external viewer application' : marbleItem.title
   return (
     <section>
       <h2 className='accessibilityOnly'>Images</h2>
       <ViewerLink
         marbleItem={marbleItem}
-        viewer={viewer}
         location={location}
       >
         <picture sx={sx.wrapper}>
@@ -38,7 +33,6 @@ export const ManifestImageGroup = ({ location, marbleItem, viewer, allMarbleFile
         allMarbleFile={allMarbleFile}
         marbleItem={marbleItem}
         location={location}
-        viewer={viewer}
       />
     </section>
   )
@@ -48,12 +42,8 @@ ManifestImageGroup.propTypes = {
   allMarbleFile: PropTypes.object,
   marbleItem: PropTypes.shape({
     childrenMarbleItem: PropTypes.array,
+    title: PropTypes.string,
   }),
   location: PropTypes.object.isRequired,
-  viewer: PropTypes.string,
-}
-
-ManifestImageGroup.defaultProps = {
-  viewer: 'mirador',
 }
 export default ManifestImageGroup
