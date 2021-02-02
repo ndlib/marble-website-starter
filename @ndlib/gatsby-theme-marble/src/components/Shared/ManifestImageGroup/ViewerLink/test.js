@@ -1,25 +1,41 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import ViewerLink from './'
+import ViewerModal from './ViewerModal'
 
 describe('ViewerLink', () => {
   console.error = jest.fn()
   const marbleItem = {
-    slug: '/item/someId',
-    iiifUri: 'http://iiif.thing',
+    title: 'Title',
+    iiifUri: 'https://iiif.thing',
   }
-  const className = 'myClass'
   const children = <div className='child' />
 
-  test('mirador and 0 index', () => {
-    const wrapper = mount(<ViewerLink marbleItem={marbleItem} className={className} location={{}}>{children}</ViewerLink>)
-    expect(wrapper.find('a').props().href).toEqual('/item/someId/mirador?cv=0&view=default')
-    expect(wrapper.find('a').props().rel).toEqual('alternate')
+  test('undefined viewer url', () => {
+    const wrapper = mount(<ViewerLink marbleItem={marbleItem}>{children}</ViewerLink>)
+    expect(wrapper.find('.child').exists()).toBeTruthy()
+    expect(wrapper.find(ViewerModal).exists()).toBeFalsy()
   })
 
-  test('universal viewer and nonzero index', () => {
-    const wrapper = mount(<ViewerLink marbleItem={marbleItem} className={className} location={{}} index={1} viewer='uv'>{children}</ViewerLink>)
-    expect(wrapper.find('a').props().href).toEqual('/viewer?manifest=http%3A%2F%2Fiiif.thing&cv=1')
-    expect(wrapper.find('a').props().rel).toEqual('nofollow')
+  test('default', () => {
+    process.env.IIIF_VIEWER_URL = 'https://viewer.url/?='
+    const wrapper = mount(<ViewerLink marbleItem={marbleItem}>{children}</ViewerLink>)
+    expect(wrapper.find('.child').exists()).toBeTruthy()
+    expect(wrapper.find(ViewerModal).exists()).toBeTruthy()
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain('https://viewer.url/?=')
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain(marbleItem.iiifUri)
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain('&cv=0')
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain('&view=default')
+  })
+
+  test('cv, global', () => {
+    process.env.IIIF_VIEWER_URL = 'https://viewer.url/?='
+    const wrapper = mount(<ViewerLink marbleItem={marbleItem} index={4} view='gallery'>{children}</ViewerLink>)
+    expect(wrapper.find('.child').exists()).toBeTruthy()
+    expect(wrapper.find(ViewerModal).exists()).toBeTruthy()
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain('https://viewer.url/?=')
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain(marbleItem.iiifUri)
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain('&cv=4')
+    expect(wrapper.find(ViewerModal).props().externalLink).toContain('&view=gallery')
   })
 })

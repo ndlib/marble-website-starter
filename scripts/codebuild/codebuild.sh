@@ -39,6 +39,7 @@ if [[ -z "$PARAM_CONFIG_PATH" ]]; then
     echo "export PARAM_CONFIG_PATH=/all/static-host/<stackname>/"
     exit 2
 fi
+echo ${PARAM_CONFIG_PATH}
 
 echo "${magenta}----- INSTALLATIONS -------${reset}"
 # install yarn

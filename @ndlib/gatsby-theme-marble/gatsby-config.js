@@ -58,12 +58,7 @@ module.exports = ({
         path: useLogin ? path.join(__dirname, 'src/pages/app') : path.join(__dirname, 'src/pages/empty'),
       },
     },
-    {
-      resolve : 'gatsby-plugin-page-creator',
-      options: {
-        path: useUV ? path.join(__dirname, 'src/pages/viewer') : path.join(__dirname, 'src/pages/empty'),
-      },
-    },
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     'gatsby-plugin-offline',
