@@ -10,8 +10,8 @@ import ChildManifests from 'components/Shared/ChildManifests'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
 
 const CollectionLayout = ({ marbleItem, location }) => {
-  const headerItem = marbleItem.childrenMarbleFile ?
-    marbleItem.childrenMarbleFile[0] : null
+  const headerItem = marbleItem.childrenMarbleFile ? (
+    marbleItem.childrenMarbleFile[0]) : null
   return (
     <>
       <MultiColumn columns='5'>
