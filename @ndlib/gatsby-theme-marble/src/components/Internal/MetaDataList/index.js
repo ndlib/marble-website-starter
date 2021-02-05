@@ -2,18 +2,22 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import MetaDataField from './MetaDataField'
 const MetaDataList = ({ metadata, className, skipHtml }) => {
+  const mdSkipList = ['URI Value']
+  let mdReturn
   if (metadata) {
     return (
       <dl className={className}>
         {
           metadata.map((md, index) => {
-            return (
+            mdReturn = mdSkipList.includes(md.label) ? (
+              null) : (
               <MetaDataField
                 metadata={md}
                 skipHtml={skipHtml}
                 key={index}
               />
             )
+            return mdReturn
           })
         }
       </dl>

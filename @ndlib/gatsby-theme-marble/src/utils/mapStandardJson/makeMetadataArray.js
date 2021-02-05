@@ -45,7 +45,7 @@ const listAll = (standardJson, id) => {
         renderedList += (renderedList !== '' ? ', ' + val : val)
       }
     })
-    return [renderedList]
+    return (renderedList === '' ? false : [renderedList])
   }
   return false
 }
