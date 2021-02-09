@@ -3,6 +3,7 @@
   "workspaces": [
     "@ndlib/gatsby-starter-marble",
     "@ndlib/gatsby-theme-marble",
+    "@ndlib/gatsby-transformer-marbleitem",
     "scripts",
     "sites/inquisition",
     "sites/marble"
