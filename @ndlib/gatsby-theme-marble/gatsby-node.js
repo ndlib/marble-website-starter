@@ -200,7 +200,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }, op
   }
 
   if (node.internal.type === 'StandardJson') {
-    if (process.env.SKIP_METADATA_PRUNE === 'true') {
+    if (process.env.SKIP_METADATA_PRUNE !== 'true') {
       pruneEmptyLeaves(node)
     }
     crawlStandardJson(node)
