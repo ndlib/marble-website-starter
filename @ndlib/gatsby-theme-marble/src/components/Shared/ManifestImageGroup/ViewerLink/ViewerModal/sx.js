@@ -28,7 +28,7 @@ module.exports = {
     float: 'right',
     border: 'none',
     borderLeft: '1px solid',
-    borderColor: 'primaryText.1',
+    borderColor: 'primaryText',
     lineHeight: '1.5rem',
     padding: '1rem',
   },

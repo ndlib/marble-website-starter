@@ -23,7 +23,7 @@ const MiradorViewerPage = ({ data, location }) => {
   const canvasIndex = parseInt(qs.cv, 10) || 0
   const viewerView = qs.view || 'default'
   const context = useThemeUI()
-  const themeColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
+  const themeColor = typy(context, 'theme.colors.primary').safeString
   const plugins = [...miradorImageToolsPlugin]
   const config = {
     id: typy(data, 'marbleItem.id').isString ? `id-${data.marbleItem.id}` : 'default-id',
@@ -98,7 +98,7 @@ const MiradorViewerPage = ({ data, location }) => {
       />
       <BackToItem
         slug={typy(data, 'marbleItem.slug').safeString}
-        title={typy(data,'marbleItem.title').safeString}
+        title={typy(data, 'marbleItem.title').safeString}
       />
       <div className='sizeWrapper' sx={sx.div}>
         {body}

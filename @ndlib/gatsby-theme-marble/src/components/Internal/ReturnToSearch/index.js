@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 export const ReturnToSearch = ({ location }) => {
   const { t } = useTranslation()
   const context = useThemeUI()
-  const iconColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
+  const iconColor = typy(context, 'theme.colors.primary').safeString
   if (typy(location, 'state.referal.type').safeString === 'search') {
     const linkText = t('common:item.returnToSearch')
     const target = `/search${location.state.referal.query}`
