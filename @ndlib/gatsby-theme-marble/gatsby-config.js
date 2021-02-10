@@ -29,6 +29,22 @@ module.exports = ({
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-json',
+    'gatsby-plugin-next-seo',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'menu',
+        path: `${contentPath}/json/menus`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'standard',
+        path: `${contentPath}/json/standard`,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
