@@ -11,6 +11,9 @@ export const SeoContent = ({
   author,
   siteTitle,
   siteUrl,
+  lang,
+  noIndex,
+  noFollow,
 }) => {
   return (
     <GatsbySeoNext
@@ -19,23 +22,33 @@ export const SeoContent = ({
       author={author}
       url={url}
       image={image}
-      base='http://marble.nd.edu'  
       pathname={pathname}
       siteTitle={siteTitle}
-      siteUrl={siteUrl}
+      base={siteUrl}
+      lang={lang}
+      noIndex={noIndex}
+      noFollow={noFollow}
     />
   )
 }
 
 SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string,
+  author: PropTypes.string.isRequired,
   url: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
   pathname: PropTypes.string,
+  lang: PropTypes.string,
+  noIndex: PropTypes.bool,
+  noFollow: PropTypes.bool,
   siteUrl: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
+}
+
+SeoContent.defaultProps = {
+  lang: 'none',
+  noIndex: false,
 }
 
 export default SeoContent
