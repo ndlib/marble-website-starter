@@ -1,36 +1,35 @@
 import React from 'react'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import PropTypes from 'prop-types'
+import GatsbySeo from 'gatsby-plugin-next-seo'
 
-const GatsbySeoNext = ({ title, author, description, image, url, siteTitle, base, pathname }) => {
+export const GatsbySeoNext = ({ title, description, url, image, base, pathname, siteTitle }) => {
   return (
     <>
-      <GatsbySeo
-        title={title}
-        titleTemplate = '%s | Digital Collections'
-        description={description}
-        canonical={`${base}${pathname}`}
-        openGraph={{
-          url: url,
-          title: title,
-          description: description,
-          images: [
-            {
-              url: image,
-              width: 800,
-              height: 600,
-              alt: description,
-            },
-          ],
-          site_name: siteTitle,
-        }}
-        twitter={{
-          handle: '@NDLibraries',
-          site: siteTitle,
-          cardType: 'summary_large_image',
-        }}
-      />
-    </>
+    <GatsbySeo
+      title={title}
+      description={description}
+      canonical={`${base}${pathname}`}
+      openGraph={{
+        url: url,
+        title: title,
+        description: description,
+        images: [
+          {
+            url: image,
+            width: 800,
+            height: 600,
+            alt: description,
+          },
+        ],
+        site_name: siteTitle,
+      }}
+      twitter={{
+        handle: '@NDLibraries',
+        site: '@NDLibraries',
+        cardType: 'summary_large_image',
+      }}
+    />
+  </>
   )
 }
 
