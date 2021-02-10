@@ -15,6 +15,7 @@ const props = {
   noIndex: false,
   noFollow: false,
 }
+
 describe('SeoContent', () => {
   test('All the props', () => {
     const wrapper = shallow(<SeoContent {...props} />)
