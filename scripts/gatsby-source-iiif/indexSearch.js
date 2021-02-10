@@ -373,7 +373,7 @@ const recursiveSearchDataFromManifest = (manifest, collection) => {
   return ret
 }
 
-const writeDirectory = path.join(directory, '/content/search/')
+const writeDirectory = path.join(directory, '/content/json/search/')
 
 // eslint-disable-next-line
 new Promise(async (resolve, reject) => {
@@ -381,7 +381,9 @@ new Promise(async (resolve, reject) => {
   let writeData = []
   manifests.forEach((manifest) => {
     if (manifest) {
-      pruneEmptyLeaves(manifest)
+      if (process.env.SKIP_METADATA_PRUNE !== 'true') {
+        pruneEmptyLeaves(manifest)
+      }
       writeData.push(getSearchDataFromManifest(manifest))
       // if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
       const children = recursiveSearchDataFromManifest(manifest)

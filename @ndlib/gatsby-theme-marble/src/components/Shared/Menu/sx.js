@@ -19,7 +19,7 @@ const itemRaw = (vertical) => {
 }
 const itemFlex = {
   borderTop: ['1px solid', '0', '0'],
-  borderColor: 'primaryText.1',
+  borderColor: 'primaryText',
   display: 'inline-flex',
   fontSize: ['20px', '18px', '18px'],
   lineHeight: '70px',

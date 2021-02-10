@@ -2,7 +2,7 @@ module.exports = {
   wrapper: {
     backgroundColor: 'primary',
     backgroundPosition: 'center',
-    color: 'primaryText.0',
+    color: 'primaryWhiteText',
     padding: '1rem',
     paddingLeft: '1000rem',
     paddingRight: '1000rem',

@@ -78,12 +78,15 @@ export const theme = {
   colors: {
     gray: ['#efefef', '#dedede', '#666', '#333', '#111'],
     background: '#fff',
-    primary: ['#ae914266', '#ae9142'],
-    primaryText: ['#fff', 'rgba(255, 255, 255, 0.5)'],
+    primary: '#ae9142',
+    primaryText: 'rgba(255, 255, 255, 0.5)',
+    primaryLightText: '#fff',
+    primaryWithOpacity: '#ae914266',
     secondary: '#302205',
     attention: '#aa272f',
     highlight: '#d39f10',
     highlightWithOpacity: '#d39f1052',
+    callout: '#f3efe3',
   },
   styles: {
     Layout: {
