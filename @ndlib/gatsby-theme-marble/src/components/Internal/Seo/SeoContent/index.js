@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import GatsbySeoNext from '@ndlib/gatsby-theme-marble/src/components/Internal/Seo/SeoContent/GatsbySeoNext'
+import GatsbySeoNext from './GatsbySeoNext'
 
 export const SeoContent = ({
   title,
