@@ -34,9 +34,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
       return item.label === 'Contact Us'
     }),
   }
-  console.log(sx)
-  console.log(context)
-  console.log(primary)
+
   return (
     <>
       <MultiColumn>
