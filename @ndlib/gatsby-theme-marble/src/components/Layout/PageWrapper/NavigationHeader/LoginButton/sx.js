@@ -5,7 +5,7 @@ module.exports = {
     borderLeft: ['0', '1px solid', '1px solid'],
     borderRight: ['0', '1px solid', '1px solid'],
     borderTop: ['1px solid', '0', '0'],
-    borderColor: ['primaryText.1', 'primaryText.1', 'primaryText.1'],
+    borderColor: ['primaryText', 'primaryText', 'primaryText'],
     boxShadow: ['0 2px 1px 1px', 'none', 'none'],
     cursor: 'pointer',
     display: ['none', 'inline-block', 'inline-block'],
@@ -18,7 +18,7 @@ module.exports = {
     width: ['100vw', 'auto', 'auto'],
   },
   link: {
-    color: 'primaryText.0',
+    color: 'primaryWhiteText',
     display: 'inline-block',
     fontFamily: 'menu',
     fontSize: ['20px', '18px', '18px'],
@@ -28,7 +28,7 @@ module.exports = {
     textDecoration: 'none',
   },
   imageLink: {
-    color: 'primaryText.0',
+    color: 'primaryWhiteText',
     display: 'inline-block',
     fontFamily: 'menu',
     fontSize: '20px',
@@ -46,7 +46,7 @@ module.exports = {
   },
   submenuItem: {
     borderTop: '1px solid',
-    borderColor: 'primaryText.1',
+    borderColor: 'primaryText',
     cursor: 'pointer',
     display: 'block',
     fontFamily: 'menu',

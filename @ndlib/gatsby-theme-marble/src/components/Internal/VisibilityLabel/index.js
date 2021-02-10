@@ -9,7 +9,7 @@ const VisibilityLabel = ({ visibility }) => {
     <strong
       sx={{
         color: 'gray.4',
-        backgroundColor: 'primary.0',
+        backgroundColor: 'primaryWithOpacity',
         borderRadius: '10px',
         fontFamily: 'bold',
         fontSize: '.75rem',

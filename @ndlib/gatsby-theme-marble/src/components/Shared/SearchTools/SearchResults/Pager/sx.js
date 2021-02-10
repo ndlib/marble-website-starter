@@ -14,7 +14,7 @@ module.exports = {
       color: 'gray.4',
     },
     '& .sk-toggle__item:hover': {
-      backgroundColor: 'primary.0',
+      backgroundColor: 'primaryWithOpacity',
       color: 'background',
     },
     '& .sk-toggle__item.is-disabled:hover': {

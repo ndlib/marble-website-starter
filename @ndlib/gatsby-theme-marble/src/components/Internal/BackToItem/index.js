@@ -8,7 +8,7 @@ import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
 import sx from './sx'
 export const BackToItem = ({ slug, title }) => {
   const context = useThemeUI()
-  const iconColor = typy(context, 'theme.colors.primary').safeString || typy(context, 'theme.colors.primary[1]').safeString
+  const iconColor = typy(context, 'theme.colors.primary').safeString
   return (
     <BaseStyles>
       <Link
