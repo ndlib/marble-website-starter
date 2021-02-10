@@ -29,7 +29,7 @@ module.exports = {
     backgroundColor: 'primary',
     border: 'none',
     borderRadius: '.5rem',
-    color: 'primaryWhiteText',
+    color: 'primaryLightText',
     fontSize: '1rem',
     outline: 'none',
     padding: '.5rem',

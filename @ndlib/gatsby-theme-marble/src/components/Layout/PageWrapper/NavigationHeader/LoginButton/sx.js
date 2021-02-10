@@ -18,7 +18,7 @@ module.exports = {
     width: ['100vw', 'auto', 'auto'],
   },
   link: {
-    color: 'primaryWhiteText',
+    color: 'primaryLightText',
     display: 'inline-block',
     fontFamily: 'menu',
     fontSize: ['20px', '18px', '18px'],
@@ -28,7 +28,7 @@ module.exports = {
     textDecoration: 'none',
   },
   imageLink: {
-    color: 'primaryWhiteText',
+    color: 'primaryLightText',
     display: 'inline-block',
     fontFamily: 'menu',
     fontSize: '20px',
