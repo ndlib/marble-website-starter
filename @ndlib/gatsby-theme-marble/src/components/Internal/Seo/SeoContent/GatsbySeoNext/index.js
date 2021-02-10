@@ -24,9 +24,9 @@ export const GatsbySeoNext = ({ title, author, description, url, image, pathname
               width: 800,
               height: 600,
               alt: description,
-            }
+            },
           ],
-          site_name: siteTitle
+          site_name: siteTitle,
         }}
         twitter={{
           handle: author,
