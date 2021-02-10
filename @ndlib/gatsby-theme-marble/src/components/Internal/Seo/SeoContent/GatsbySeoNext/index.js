@@ -8,26 +8,6 @@ export const GatsbySeoNext = ({ title, description, url, image, base, pathname, 
       <GatsbySeo
         title={title}
         description={description}
-        canonical={`${base}${pathname}`}
-        openGraph={{
-          url: url,
-          title: title,
-          description: description,
-          images: [
-            {
-              url: image,
-              width: 800,
-              height: 600,
-              alt: description,
-            },
-          ],
-          site_name: siteTitle
-        }}
-        twitter={{
-          handle: '@NDLibraries',
-          site: '@NDLibraries',
-          cardType: 'summary_large_image',
-        }}
       />
     </>
   )
