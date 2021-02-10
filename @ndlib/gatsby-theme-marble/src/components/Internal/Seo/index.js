@@ -10,6 +10,7 @@ export const Seo = ({
   author,
   description,
   noIndex = false,
+  noFollow = false,
 }) => {
   const { site, file } = useStaticQuery(
     graphql`
@@ -45,6 +46,7 @@ export const Seo = ({
       siteUrl={typy(siteMetadata, 'siteUrl').safeString}
       lang={typy(siteMetadata, 'languages.default').safeString}
       noIndex={noIndex}
+      noFollow={noFollow}
     />
   )
 }
@@ -56,6 +58,7 @@ Seo.propTypes = {
   description: PropTypes.string,
   author: PropTypes.string,
   noIndex: PropTypes.bool,
+  noFollow: PropTypes.bool,
 }
 
 export default Seo
