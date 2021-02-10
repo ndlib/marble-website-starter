@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import CanonicalLink from './CanonicalLink'
+import GatsbySeoNext from '@ndlib/gatsby-theme-marble/src/components/Internal/Seo/SeoContent/GatsbySeoNext'
+// import Helmet from 'react-helmet'
+// import CanonicalLink from './CanonicalLink'
 // import SchemaLink from './SchemaLink'
-import MetaTagGroup from './MetaTagGroup'
-import { getOpenGraph, getTwitter } from './data'
 
 export const SeoContent = ({
   title,
@@ -16,37 +15,47 @@ export const SeoContent = ({
   author,
   siteTitle,
   siteUrl,
-  noIndex,
 }) => {
-  const openGraph = getOpenGraph(url, title, description, image)
-  const twitter = getTwitter(author, title, description, image)
-  const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
-  let indexable = null
-  if (noIndex === true) {
-    indexable = (
-      <Helmet>
-        <meta name='robots' content='noindex' />
-      </Helmet>
-    )
-  }
+  // const openGraph = getOpenGraph(url, title, description, image)
+  // const twitter = getTwitter(author, title, description, image)
+  // const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
+  // let indexable = null
+  // if (noIndex === true) {
+  //   indexable = (
+  //     <Helmet>
+  //       <meta name='robots' content='noindex' />
+  //     </Helmet>
+  //   )
+  // }
   return (
-    <React.Fragment>
-      <Helmet
-        htmlAttributes={{ lang }}
-        title={title}
-        titleTemplate={title === siteTitle ? `${siteTitle}` : `${titleFix}`}
-        meta={[
-          {
-            name: `description`,
-            content: description,
-          },
-        ]}
-      />
-      <CanonicalLink base={siteUrl} pathname={pathname} />
-      <MetaTagGroup tags={openGraph} />
-      <MetaTagGroup tags={twitter} />
-      {indexable}
-    </React.Fragment>
+    <GatsbySeoNext
+      title={title}
+      description={description}
+      author={author}
+      url={url}
+      image={image}
+      base='http://marble.nd.edu'  
+      pathname={pathname}
+      siteTitle={siteTitle}
+      siteUrl={siteUrl}
+    />
+    // <React.Fragment>
+    //   <Helmet
+    //     htmlAttributes={{ lang }}
+    //     title={title}
+    //     titleTemplate={title === siteTitle ? `${siteTitle}` : `${titleFix}`}
+    //     meta={[
+    //       {
+    //         name: `description`,
+    //         content: description,
+    //       },
+    //     ]}
+    //   />
+    //   <CanonicalLink base={siteUrl} pathname={pathname} />
+    //   <MetaTagGroup tags={openGraph} />
+    //   <MetaTagGroup tags={twitter} />
+    //   {indexable}
+    // </React.Fragment>
   )
 }
 
