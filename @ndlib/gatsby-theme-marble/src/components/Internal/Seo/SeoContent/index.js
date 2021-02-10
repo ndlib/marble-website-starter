@@ -7,7 +7,6 @@ export const SeoContent = ({
   url,
   description,
   image,
-  lang,
   pathname,
   author,
   siteTitle,
@@ -30,16 +29,13 @@ export const SeoContent = ({
 
 SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
+  author: PropTypes.string,
   url: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-  lang: PropTypes.string,
   pathname: PropTypes.string,
-  author: PropTypes.string.isRequired,
   siteUrl: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
-  noIndex: PropTypes.bool,
-  seeAlso: PropTypes.string,
 }
 
 export default SeoContent
