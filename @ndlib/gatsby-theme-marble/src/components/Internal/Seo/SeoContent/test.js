@@ -13,7 +13,7 @@ describe('SeoContent', () => {
     pathname: '/some/page',
     siteUrl: 'https://example.test',
     siteTitle: 'Site Title',
-    author: 'author',
+    author: 'author name',
     noIndex: false,
     noFollow: false,
   }
@@ -37,6 +37,6 @@ describe('SeoContent', () => {
     expect(wrapper.find(GatsbySeo).at(0).props().openGraph.url).toEqual('https://example.test/some/page')
   })
   test('twitter props', () => {
-    expect(wrapper.find(GatsbySeo).at(0).props().twitter.handle).toEqual('author')
+    expect(wrapper.find(GatsbySeo).at(0).props().twitter.handle).toEqual('author name')
   })
 })
