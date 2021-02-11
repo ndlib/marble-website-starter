@@ -1,54 +1,54 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import GatsbySeoNext from './GatsbySeoNext'
+import { GatsbySeo } from 'gatsby-plugin-next-seo'
 
-export const SeoContent = ({
-  title,
-  url,
-  description,
-  image,
-  pathname,
-  author,
-  siteTitle,
-  siteUrl,
-  lang,
-  noIndex,
-  noFollow,
-}) => {
+export const SeoContent = ({ title, author, description, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow }) => {
   return (
-    <GatsbySeoNext
-      title={title}
-      description={description}
-      author={author}
-      url={url}
-      image={image}
-      pathname={pathname}
-      siteTitle={siteTitle}
-      base={siteUrl}
-      lang={lang}
-      noIndex={noIndex}
-      noFollow={noFollow}
-    />
+    <>
+      <GatsbySeo
+        title={title}
+        titleTemplate='%s | Digital Collections'
+        description={description}
+        canonical={`${siteUrl}${pathname}`}
+        noindex={noIndex}
+        nofollow={noFollow}
+        language={lang}
+        openGraph={{
+          type: 'website',
+          url: url,
+          title: title,
+          description: description,
+          images: [
+            {
+              url: image,
+              width: 800,
+              height: 600,
+              alt: description,
+            },
+          ],
+          site_name: siteTitle,
+        }}
+        twitter={{
+          handle: author,
+          site: '@NDLibraries',
+          cardType: 'summary_large_image',
+        }}
+      />
+    </>
   )
 }
 
 SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
   url: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-  pathname: PropTypes.string,
   lang: PropTypes.string,
   noIndex: PropTypes.bool,
   noFollow: PropTypes.bool,
+  pathname: PropTypes.string,
   siteUrl: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
-}
-
-SeoContent.defaultProps = {
-  lang: 'none',
-  noIndex: false,
 }
 
 export default SeoContent
