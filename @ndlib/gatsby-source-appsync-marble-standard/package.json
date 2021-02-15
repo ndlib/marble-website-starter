@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-transformer-marbleitem",
+  "name": "gatsby-source-appsync-marble-standard",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -10,5 +10,8 @@
     "url": "git+https://github.com/ndlib/marble-website-starter.git"
   },
   "author": "Web and Software Engineering at Hesburgh Libraries",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "isomorphic-fetch": "^3.0.0"
+  }
 }

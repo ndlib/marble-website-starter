@@ -96,6 +96,7 @@ export const query = graphql`
       limit: 6
     ) {
       nodes {
+        fileType
         sequence
         iiif {
           service
