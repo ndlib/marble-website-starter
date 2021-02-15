@@ -95,7 +95,7 @@ exports.onCreatePage = async ({ page, actions }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-
+  console.log('create pages')
   return graphql(`
     {
       allMarbleItem {
@@ -125,6 +125,8 @@ exports.createPages = ({ graphql, actions }) => {
     marbleItems.forEach(node => {
       if (node.id) {
         // item page
+        console.log(require.resolve('./src/templates/marbleItem.js'))
+        console.log('hi')
         createPage({
           path: node.slug,
           component: require.resolve('./src/templates/marbleItem.js'),
