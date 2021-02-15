@@ -5,9 +5,9 @@ module.exports = ({
   useLogin = false,
   useUV = false,
 }) => ({
-  mapping: {
-    'MarbleFile.collectionId': 'MarbleItem.id',
-  },
+  // mapping: {
+  //   'MarbleFile.collectionId': 'MarbleItem.id',
+  // },
   plugins: [
     {
       resolve: 'gatsby-plugin-root-import',
@@ -35,13 +35,6 @@ module.exports = ({
       options: {
         name: 'menu',
         path: `${contentPath}/json/menus`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'standard',
-        path: `${contentPath}/json/standard`,
       },
     },
     {

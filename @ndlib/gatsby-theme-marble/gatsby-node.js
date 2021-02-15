@@ -10,7 +10,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 }
 
 // predefine stuff we expect from configuration.js
-exports.sourceNodes = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
   const typeDefs = `
@@ -54,7 +54,7 @@ exports.sourceNodes = ({ actions }) => {
     metadata: [metadataData]
     copyrightRestricted: Boolean
     childrenMarbleItem: [MarbleItem]
-    childrenMarbleFile: [MarbleFile]
+    childrenMarbleFile: [MarbleFile] @link(by: "parentId", from: "id")
     citation: String
     parentId: String
     marbleParent: MarbleItem @link(by: "id", from: "parentId")
