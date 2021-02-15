@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 
 export const SeoContent = ({ title, author, description, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow }) => {
+  const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
     <>
       <GatsbySeo
         title={title}
-        titleTemplate='%s | Digital Collections'
+        titleTemplate={titleFix}
         description={description}
         canonical={`${siteUrl}${pathname}`}
         noindex={noIndex}
