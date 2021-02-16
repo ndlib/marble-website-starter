@@ -17,7 +17,7 @@ export default class DataLayer extends React.Component {
         title: title,
         author: author,
         description: description,
-        location: pathname,
+        pathname: pathname,
         data: data,
       })
     }
@@ -26,7 +26,7 @@ export default class DataLayer extends React.Component {
 
 DataLayer.propTypes = {
   data: PropTypes.object.isRequired,
-  pathname: PropTypes.object.isRequired,
+  pathname: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   author: PropTypes.string,
