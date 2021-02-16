@@ -48,7 +48,7 @@ export const Seo = ({
         lang={typy(siteMetadata, 'languages.default').safeString}
         noIndex={noIndex}
       />
-      <DataLayer 
+      <DataLayer
         url={getUrl(siteMetadata, location.pathname)}
         title={getTitle(title, data, siteMetadata)}
         author={getAuthor(author, data, siteMetadata)}
