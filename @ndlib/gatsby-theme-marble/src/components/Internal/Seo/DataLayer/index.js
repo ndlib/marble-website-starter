@@ -9,6 +9,10 @@ export default class DataLayer extends React.Component {
     const { title, author, description, location, data } = this.props
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push({
+      event: 'pageView',
+      category: 'Page View',
+      action: 'Page Refresh',
+      label: 'PageView',
       title: title,
       author: author,
       description: description,
