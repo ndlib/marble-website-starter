@@ -3,7 +3,6 @@ const path = require('path')
 module.exports = ({
   contentPath = 'content',
   useLogin = false,
-  useUV = false,
 }) => ({
   // mapping: {
   //   'MarbleFile.collectionId': 'MarbleItem.id',
@@ -17,6 +16,7 @@ module.exports = ({
         context: path.join(__dirname, 'src/context'),
         components: path.join(__dirname, 'src/components'),
         i18n: path.join(__dirname, 'src/i18n'),
+        layouts: path.join(__dirname, 'src/layouts'),
         pages: path.join(__dirname, 'src/pages'),
         store: path.join(__dirname, 'src/store'),
         styles: path.join(__dirname, 'src/styles'),
@@ -29,14 +29,6 @@ module.exports = ({
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-json',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'menu',
-        path: `${contentPath}/json/menus`,
-      },
-    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

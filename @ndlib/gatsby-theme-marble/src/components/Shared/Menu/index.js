@@ -27,6 +27,7 @@ export const menuQuery = graphql`
 export const Menu = ({ menu, navClass }) => {
   const { allMenusJson } = useStaticQuery(menuQuery)
   const expandedMenu = findNavInData(menu, typy(allMenusJson, 'nodes').safeArray)
+
   if (!expandedMenu) {
     return null
   }

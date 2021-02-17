@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import wordMark from 'assets/images/dept-nd-white.svg'
+import wordMark from 'assets/logos/dept-nd-white.svg'
 
 const WordMark = () => {
   const background = {
