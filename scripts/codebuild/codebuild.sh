@@ -80,6 +80,7 @@ if ((failures != 0)); then
 fi
 
 echo "${magenta}----- Build -------${reset}"
+echo pwd
 yarn workspace ${WORKSPACE_NAME} build
 
 
