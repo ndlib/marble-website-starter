@@ -6,13 +6,13 @@ export default class DataLayer extends React.Component {
     return <></>
   }
   componentDidMount () {
-    const { title, author, description, pathname, data } = this.props
+    const { title, author, description, location, data } = this.props
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push({
       title: title,
       author: author,
       description: description,
-      pathname: pathname,
+      pathname: location.pathname,
       data: data,
     })
   }
@@ -20,7 +20,7 @@ export default class DataLayer extends React.Component {
 
 DataLayer.propTypes = {
   data: PropTypes.object.isRequired,
-  pathname: PropTypes.string,
+  location: PropTypes.object,
   title: PropTypes.string,
   description: PropTypes.string,
   author: PropTypes.string,

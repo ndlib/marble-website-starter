@@ -53,7 +53,7 @@ export const Seo = ({
         title={getTitle(title, data, siteMetadata)}
         author={getAuthor(author, data, siteMetadata)}
         description={getDescription(description, data, siteMetadata)}
-        pathname={location.pathname}
+        location={location}
         data={data}
       />
     </>
