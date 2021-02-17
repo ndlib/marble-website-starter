@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import SeoContent from 'components/Internal/Seo/SeoContent'
+import DataLayer from './DataLayer'
 export const Seo = ({
   data,
   location,
@@ -34,18 +35,28 @@ export const Seo = ({
   )
   const { siteMetadata } = site
   return (
-    <SeoContent
-      url={getUrl(siteMetadata, location.pathname)}
-      title={getTitle(title, data, siteMetadata)}
-      author={getAuthor(author, data, siteMetadata)}
-      image={getImage(data, file)}
-      description={getDescription(description, data, siteMetadata)}
-      pathname={location.pathname}
-      siteTitle={typy(siteMetadata, 'title').safeString}
-      siteUrl={typy(siteMetadata, 'siteUrl').safeString}
-      lang={typy(siteMetadata, 'languages.default').safeString}
-      noIndex={noIndex}
-    />
+    <>
+      <SeoContent
+        url={getUrl(siteMetadata, location.pathname)}
+        title={getTitle(title, data, siteMetadata)}
+        author={getAuthor(author, data, siteMetadata)}
+        image={getImage(data, file)}
+        description={getDescription(description, data, siteMetadata)}
+        pathname={location.pathname}
+        siteTitle={typy(siteMetadata, 'title').safeString}
+        siteUrl={typy(siteMetadata, 'siteUrl').safeString}
+        lang={typy(siteMetadata, 'languages.default').safeString}
+        noIndex={noIndex}
+      />
+      <DataLayer
+        url={getUrl(siteMetadata, location.pathname)}
+        title={getTitle(title, data, siteMetadata)}
+        author={getAuthor(author, data, siteMetadata)}
+        description={getDescription(description, data, siteMetadata)}
+        location={location}
+        data={data}
+      />
+    </>
   )
 }
 
