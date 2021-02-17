@@ -80,6 +80,12 @@ if ((failures != 0)); then
 fi
 
 echo "${magenta}----- Build -------${reset}"
+pwd
+ls
+ls sites
+echo ${SUBMOD_DIR}
+ls ${SUBMOD_DIR}
+
 yarn workspace ${WORKSPACE_NAME} build
 
 
