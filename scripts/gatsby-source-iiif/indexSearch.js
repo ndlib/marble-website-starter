@@ -395,7 +395,7 @@ new Promise(async (resolve, reject) => {
   await setupIndex()
   await indexToElasticSearch(writeData)
   console.log('Writing Search Data to gatsby')
-  fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
+  // fs.writeFileSync(path.join(writeDirectory, 'search.json'), JSON.stringify(writeData))
 
   resolve()
 }).then(() => {
