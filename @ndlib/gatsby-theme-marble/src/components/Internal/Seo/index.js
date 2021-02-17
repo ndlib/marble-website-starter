@@ -63,7 +63,6 @@ export const Seo = ({
 Seo.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  pathname: PropTypes.object.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,
   author: PropTypes.string,
