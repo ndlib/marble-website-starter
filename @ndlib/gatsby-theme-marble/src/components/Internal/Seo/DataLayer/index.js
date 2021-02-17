@@ -7,16 +7,14 @@ export default class DataLayer extends React.Component {
   }
   componentDidMount () {
     const { title, author, description, pathname, data } = this.props
-    {
-      window.dataLayer = window.dataLayer || []
-      window.dataLayer.push({
-        title: title,
-        author: author,
-        description: description,
-        pathname: pathname,
-        data: data,
-      })
-    }
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      title: title,
+      author: author,
+      description: description,
+      pathname: pathname,
+      data: data,
+    })
   }
 }
 
