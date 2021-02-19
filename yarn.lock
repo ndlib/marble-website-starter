@@ -5691,11 +5691,6 @@ batch-processor@1.0.0:
   resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
   integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
 
-batch-promises@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/batch-promises/-/batch-promises-0.0.3.tgz#04b850fe6847c7aff05f3cca41045932430b1c32"
-  integrity sha1-BLhQ/mhHx6/wXzzKQQRZMkMLHDI=
-
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -10586,6 +10581,17 @@ gatsby-plugin-manifest@2.6.1:
     semver "^7.3.2"
     sharp "^0.25.4"
 
+gatsby-plugin-manifest@^2.2.5:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.12.0.tgz#107bcffaf236fa3b8d2c0ee830bd617bc903273b"
+  integrity sha512-I+zkLQgR66n7kFfwEwOB2BEIIvCcO+jBUg5WNzKB9N8Hn20ebowU9G/wj01EcZ9A3N2qoe1yVeU+Lo0+kXR5pQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    gatsby-core-utils "^1.10.0"
+    gatsby-plugin-utils "^0.9.0"
+    semver "^7.3.2"
+    sharp "^0.27.0"
+
 gatsby-plugin-node-fields@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-node-fields/-/gatsby-plugin-node-fields-2.0.2.tgz#8363564ed5eb389db1ac0b3be0eb806afa04a1b3"
@@ -10687,7 +10693,7 @@ gatsby-plugin-s3@^0.3.8:
     stream-to-promise "^2.2.0"
     yargs "^15.4.0"
 
-gatsby-plugin-sharp@^2.14.1:
+gatsby-plugin-sharp@2.14.1, gatsby-plugin-sharp@^2.14.1:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.14.1.tgz#163b4b2456b7f5125bccb8e6a6bef73d9cab9941"
   integrity sha512-JhYaVtXJeocJ6VWaZqDMLbKVbvfUh5zZcvRTDtCGjZsBqFaVxffnkBI46b/nxpDzfJQwmixDU7Chyxu0Dbzh+A==
@@ -10759,6 +10765,13 @@ gatsby-plugin-utils@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-0.3.0.tgz#1d10d3c6423603c391d31bcd12bd683bf40d7037"
   integrity sha512-z0FgEM/uU/7IgDYLaNHmUK0m09TJwYaaiefSrj7NWyavF8uEyOd+52qI9TsK2Exv4DYiQI/L7zsC28iKtPbW1g==
+  dependencies:
+    joi "^17.2.1"
+
+gatsby-plugin-utils@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-0.9.0.tgz#64b35a0faaabad5b5c99ee8951a9c08cd64be289"
+  integrity sha512-InM8PNHtx1kF87qQOlf4pVeNA8lSIsvSjImvN6dvpUjeQqOMRN1avY0W9Trh6LKTF/keWWj975Gk8Vcr+PYyDA==
   dependencies:
     joi "^17.2.1"
 
@@ -11050,19 +11063,6 @@ gatsby-transformer-remark@^2.16.0:
     unist-util-select "^1.5.0"
     unist-util-visit "^1.4.1"
 
-gatsby-transformer-sharp@^2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.12.0.tgz#c33a92788e8b432f01960f4de2745c105cea4784"
-  integrity sha512-3rtukdy9+QZL5ioMs+q2IjevJFOz0ORJzoGbnM/ups5C5ZtRQKRZNQ0920BP/eqpLQLI4lkQuyp+GCxfSQLkCQ==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    bluebird "^3.7.2"
-    fs-extra "^9.1.0"
-    potrace "^2.1.8"
-    probe-image-size "^6.0.0"
-    semver "^7.3.4"
-    sharp "^0.27.0"
-
 gatsby-transformer-sharp@^2.2.6:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.5.3.tgz#0403c916ce3b96ce244a2b7bbcd11e0d4d8611e4"
@@ -11075,6 +11075,19 @@ gatsby-transformer-sharp@^2.2.6:
     probe-image-size "^4.1.1"
     semver "^5.7.1"
     sharp "^0.25.1"
+
+gatsby-transformer-sharp@^2.5.11:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.12.0.tgz#c33a92788e8b432f01960f4de2745c105cea4784"
+  integrity sha512-3rtukdy9+QZL5ioMs+q2IjevJFOz0ORJzoGbnM/ups5C5ZtRQKRZNQ0920BP/eqpLQLI4lkQuyp+GCxfSQLkCQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    bluebird "^3.7.2"
+    fs-extra "^9.1.0"
+    potrace "^2.1.8"
+    probe-image-size "^6.0.0"
+    semver "^7.3.4"
+    sharp "^0.27.0"
 
 gatsby@2.25.4:
   version "2.25.4"
