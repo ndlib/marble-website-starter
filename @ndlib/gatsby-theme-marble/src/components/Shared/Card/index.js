@@ -20,8 +20,13 @@ const Card = ({
   imageService,
   imageRegion,
   onClick,
+  showAsList,
 }) => {
-  const wide = useContext(LayoutContext) === 'list'
+  let wide = useContext(LayoutContext) === 'list'
+  if (showAsList) {
+    wide = true
+  }
+
   return (
     <CardWrapper
       target={target}
@@ -71,10 +76,12 @@ Card.propTypes = {
   location: PropTypes.object,
   referal: PropTypes.object,
   onClick: PropTypes.func,
+  showAsList: PropTypes.bool,
 }
 
 Card.defaultProps = {
   children: null,
   cardClass: 'basicCard',
+  showAsList: false,
 }
 export default Card

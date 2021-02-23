@@ -28,6 +28,21 @@ const getCollection = (collectionName, collection) => {
   return []
 }
 
+const getGeographicLocations = (manifest) => {
+  if (manifest && manifest.geographicLocations && Array.isArray(manifest.geographicLocations)) {
+    manifest.geographicLocations.map((c) => c.display)
+  }
+
+  return []
+}
+
+const getParent = (parent) => {
+  if (parent) {
+    return [parent.title]
+  }
+  return []
+}
+
 require('dotenv').config({
   path: envfile,
 })
@@ -117,7 +132,7 @@ const getIdentifiers = (manifest) => {
   return ret
 }
 
-const getSearchDataFromManifest = (manifest, collection) => {
+const getSearchDataFromManifest = (manifest, collection, parent) => {
   const dateData = realDatesFromCatalogedDates(manifest.createdDate)
   const creators = getCreators(manifest)
   const themes = getKeywordsFromSubjects(manifest)
@@ -127,8 +142,10 @@ const getSearchDataFromManifest = (manifest, collection) => {
     name: manifest.title,
     creator: creators,
     collection: getCollection(manifest.collections, collection),
+    parent: getParent(parent),
     identifier: getIdentifiers(manifest),
 
+    geographicLocation: getGeographicLocations(manifest),
     repository: determineProvider(manifest),
     themeTag: themes.themeTag,
     expandedThemeTag: themes.expandedThemeTag,
@@ -355,7 +372,7 @@ const configIndexMappings = async () => {
   return mappings
 }
 
-const recursiveSearchDataFromManifest = (manifest, collection) => {
+const recursiveSearchDataFromManifest = (manifest, collection, parent) => {
   let ret = []
   if (!manifest.items) {
     return ret
@@ -366,8 +383,8 @@ const recursiveSearchDataFromManifest = (manifest, collection) => {
 
   manifest.items.forEach(item => {
     if (item.level !== 'file') {
-      ret.push(getSearchDataFromManifest(item, collection))
-      ret = ret.concat(recursiveSearchDataFromManifest(item, collection))
+      ret.push(getSearchDataFromManifest(item, collection, parent))
+      ret = ret.concat(recursiveSearchDataFromManifest(item, collection, item))
     }
   })
   return ret
