@@ -44,8 +44,8 @@ const ViewerLink = ({
           src={`${viewerLink}&title=false`}
           style={{
             border: 'none',
-            height: 'calc(100vh - 56px)',
-            width: '100vw',
+            height: 'calc(100vh - 92px - 3rem)',
+            width: 'calc(100vw - 92px)',
           }}
         />
       </ActionModal>
