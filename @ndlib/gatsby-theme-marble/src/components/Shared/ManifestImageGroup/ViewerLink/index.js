@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import ViewerModal from './ViewerModal'
+import ActionModal from 'components/Internal/ActionModal'
 import { jsx } from 'theme-ui'
 
 const ViewerLink = ({
@@ -32,11 +32,12 @@ const ViewerLink = ({
       >
         {children}
       </div>
-      <ViewerModal
-        contentLabel={marbleItem.title}
+      <ActionModal
+        contentLabel='Image Viewer'
         isOpen={modalOpen}
         closeFunc={() => setModalOpen(false)}
         externalLink={viewerLink}
+        fullscreen
       >
         <iframe
           title='IIIF Viewer'
@@ -47,7 +48,7 @@ const ViewerLink = ({
             width: '100vw',
           }}
         />
-      </ViewerModal>
+      </ActionModal>
     </>
   )
 }
