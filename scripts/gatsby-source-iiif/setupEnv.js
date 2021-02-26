@@ -24,7 +24,7 @@ const retrieveStageParameters = async () => {
     env = {
       SEARCH_URL: 'https://search-marble-elasticsearch-test-e3urdt7kb667o7verxgn6bjoee.us-east-1.es.amazonaws.com',
       SEARCH_INDEX: 'test_index',
-      GOOGLE_MAP_KEY: 'AIzaSyDU35NMls6bvw0KBu6ImPoJN8dGmNA6f3s',
+      GOOGLE_MAP_KEY: '',
       USER_CONTENT_PATH: 'https://b9mic83lu2.execute-api.us-east-1.amazonaws.com/prod/',
       AUTH_CLIENT_URL: 'https://okta.nd.edu',
       AUTH_CLIENT_ID: '0oa1f3ut0aKpdwap5357',
