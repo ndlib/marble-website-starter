@@ -14,6 +14,7 @@ const possibleKeys = [
   'S3_DEST_BUCKET',
   'ALLOW_ROBOTS',
   'IIIF_VIEWER_URL',
+  'SKIP_METADATA_PRUNE',
 ]
 
 const retrieveStageParameters = async () => {
@@ -30,6 +31,7 @@ const retrieveStageParameters = async () => {
       S3_DEST_BUCKET: '',
       ALLOW_ROBOTS: 'false',
       IIIF_VIEWER_URL: 'https://viewer-iiif-test.library.nd.edu/mirador/?manifest=',
+      SKIP_METADATA_PRUNE: 'false',
     }
   } else {
     const ssm = new AWS.SSM({ region: 'us-east-1' })

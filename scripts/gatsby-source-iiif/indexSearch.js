@@ -374,17 +374,22 @@ const configIndexMappings = async () => {
 
 const recursiveSearchDataFromManifest = (manifest, collection, parent) => {
   let ret = []
-  if (!manifest.items) {
-    return ret
-  }
+
   if (!collection) {
     collection = manifest
   }
 
+  if (process.env.ONLY_SEARCH_CHILDNODES !== 'true' || !manifest.items) {
+    ret.push(getSearchDataFromManifest(manifest, collection, parent))
+  }
+  // if there are no children end
+  if (!manifest.items) {
+    return ret
+  }
+
   manifest.items.forEach(item => {
     if (item.level !== 'file') {
-      ret.push(getSearchDataFromManifest(item, collection, parent))
-      ret = ret.concat(recursiveSearchDataFromManifest(item, collection, item))
+      ret = ret.concat(recursiveSearchDataFromManifest(item, collection, manifest))
     }
   })
   return ret
@@ -401,7 +406,7 @@ new Promise(async (resolve, reject) => {
       if (process.env.SKIP_METADATA_PRUNE !== 'true') {
         pruneEmptyLeaves(manifest)
       }
-      writeData.push(getSearchDataFromManifest(manifest))
+      // writeData.push(getSearchDataFromManifest(manifest))
       // if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
       const children = recursiveSearchDataFromManifest(manifest)
       writeData = writeData.concat(children)
