@@ -15,6 +15,7 @@ const possibleKeys = [
   'ALLOW_ROBOTS',
   'IIIF_VIEWER_URL',
   'SKIP_METADATA_PRUNE',
+  'ONLY_SEARCH_CHILDNODES',
 ]
 
 const retrieveStageParameters = async () => {
