@@ -33,6 +33,7 @@ const retrieveStageParameters = async () => {
       ALLOW_ROBOTS: 'false',
       IIIF_VIEWER_URL: 'https://viewer-iiif-test.library.nd.edu/mirador/?manifest=',
       SKIP_METADATA_PRUNE: 'false',
+      ONLY_SEARCH_CHILDNODES: 'false',
     }
   } else {
     const ssm = new AWS.SSM({ region: 'us-east-1' })
