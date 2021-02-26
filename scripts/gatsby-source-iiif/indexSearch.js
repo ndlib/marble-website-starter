@@ -43,6 +43,8 @@ const getParent = (parent) => {
   return []
 }
 
+console.log('env:', envfile)
+
 require('dotenv').config({
   path: envfile,
 })
@@ -53,8 +55,10 @@ if (!domain || !siteIndex) {
   return
 }
 
-console.log('env:')
+console.log('env:', envfile)
 console.log(process.env)
+console.log(siteIndex)
+console.log(domain)
 
 const options = {
   host: domain,

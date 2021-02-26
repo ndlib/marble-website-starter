@@ -59,7 +59,8 @@ pushd scripts/gatsby-source-iiif/
   yarn install
   echo "${magenta}----- Build ENV Config -------${reset}"
   node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
-
+  node setupEnv.js ${PARAM_CONFIG_PATH}
+  
   echo "${magenta}----- Get Metadata -------${reset}"
   node getStandard.js ${SITE_DIR} || { echo "Unable to load item metadata" ;exit 1; }
 
