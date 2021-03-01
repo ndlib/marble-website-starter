@@ -413,7 +413,7 @@ new Promise(async (resolve, reject) => {
       if (process.env.SKIP_METADATA_PRUNE !== 'true') {
         pruneEmptyLeaves(manifest)
       }
-      writeData.push(getSearchDataFromManifest(manifest))
+      // writeData.push(getSearchDataFromManifest(manifest))
       // if (manifest.hierarchySearchable || additionalRecursiveSearchIds.includes(manifest.id)) {
       const children = recursiveSearchDataFromManifest(manifest)
       writeData = writeData.concat(children)
