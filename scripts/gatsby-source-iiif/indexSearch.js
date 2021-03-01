@@ -43,6 +43,8 @@ const getParent = (parent) => {
   return []
 }
 
+console.log('env:', envfile)
+
 require('dotenv').config({
   path: envfile,
 })
@@ -52,6 +54,11 @@ if (!domain || !siteIndex) {
   console.log('Required parameters were not passed in')
   return
 }
+
+console.log('env:', envfile)
+console.log(process.env)
+console.log(siteIndex)
+console.log(domain)
 
 const options = {
   host: domain,
@@ -374,17 +381,22 @@ const configIndexMappings = async () => {
 
 const recursiveSearchDataFromManifest = (manifest, collection, parent) => {
   let ret = []
-  if (!manifest.items) {
-    return ret
-  }
+
   if (!collection) {
     collection = manifest
   }
 
+  if (process.env.ONLY_SEARCH_CHILDNODES !== 'true' || !manifest.items) {
+    ret.push(getSearchDataFromManifest(manifest, collection, parent))
+  }
+  // if there are no children end
+  if (!manifest.items) {
+    return ret
+  }
+
   manifest.items.forEach(item => {
     if (item.level !== 'file') {
-      ret.push(getSearchDataFromManifest(item, collection, parent))
-      ret = ret.concat(recursiveSearchDataFromManifest(item, collection, item))
+      ret = ret.concat(recursiveSearchDataFromManifest(item, collection, manifest))
     }
   })
   return ret
