@@ -5,7 +5,7 @@ const crawlStandardJson = (standardJson, collection, parent, gatsbyInternal) => 
   const { actions, createNodeId, createContentDigest } = gatsbyInternal
   const { createNode, createParentChildLink } = actions
   const nodeId = createNodeId(standardJson.id)
-  if (standardJson.level.toLowerCase() === 'file') {
+  if (standardJson.level && standardJson.level.toLowerCase() === 'file') {
     const filedata = fileMetadata(standardJson)
     const normalizedTypeNode = {
       ...filedata,
@@ -49,6 +49,10 @@ const crawlStandardJson = (standardJson, collection, parent, gatsbyInternal) => 
 
   if (standardJson.items) {
     standardJson.items.forEach(item => {
+      crawlStandardJson(item, collection, normalizedTypeNode, gatsbyInternal)
+    })
+  } else if (standardJson.subItems) {
+    standardJson.subItems.forEach(item => {
       crawlStandardJson(item, collection, normalizedTypeNode, gatsbyInternal)
     })
   }

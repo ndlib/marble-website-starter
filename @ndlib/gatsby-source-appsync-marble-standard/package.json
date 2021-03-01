@@ -12,6 +12,7 @@
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "license": "MIT",
   "dependencies": {
+    "batch-promises": "^0.0.3",
     "isomorphic-fetch": "^3.0.0"
   }
 }

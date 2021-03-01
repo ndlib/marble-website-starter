@@ -9,9 +9,9 @@ module.exports = (standardJson) => {
     title: standardJson.title,
     slug: slug,
     description: mapFieldOrDefault(standardJson, 'description', ''),
-    display: standardJson.level.toLowerCase(),
+    display: standardJson.level ? standardJson.level.toLowerCase() : 'manifest',
     iiifUri: mapFieldOrDefault(standardJson, 'iiifUri', ''),
-    copyrightRestricted: ('copyrightStatus' in standardJson && standardJson.copyrightStatus.toLowerCase() === 'copyright'),
+    copyrightRestricted: isCopyrightRestricted(standardJson),
     partiallyDigitized: mapFieldOrDefault(standardJson, 'partiallyDigitized', false),
     sequence: standardJson.sequence,
     citation: citationGenerator(standardJson, slug),
@@ -25,4 +25,11 @@ const mapFieldOrDefault = (standardJson, field, defaultValue) => {
   }
 
   return defaultValue
+}
+
+const isCopyrightRestricted = (standardJson) => {
+  if (standardJson.copyrightStatus) {
+    return standardJson.copyrightStatus.toLowerCase() === 'copyright'
+  }
+  return false
 }
