@@ -11,6 +11,7 @@ export const Seo = ({
   author,
   description,
   noIndex = false,
+  noFollow = false,
 }) => {
   const { site, file } = useStaticQuery(
     graphql`
@@ -35,28 +36,19 @@ export const Seo = ({
   )
   const { siteMetadata } = site
   return (
-    <>
-      <SeoContent
-        url={getUrl(siteMetadata, location.pathname)}
-        title={getTitle(title, data, siteMetadata)}
-        author={getAuthor(author, data, siteMetadata)}
-        image={getImage(data, file)}
-        description={getDescription(description, data, siteMetadata)}
-        pathname={location.pathname}
-        siteTitle={typy(siteMetadata, 'title').safeString}
-        siteUrl={typy(siteMetadata, 'siteUrl').safeString}
-        lang={typy(siteMetadata, 'languages.default').safeString}
-        noIndex={noIndex}
-      />
-      <DataLayer
-        url={getUrl(siteMetadata, location.pathname)}
-        title={getTitle(title, data, siteMetadata)}
-        author={getAuthor(author, data, siteMetadata)}
-        description={getDescription(description, data, siteMetadata)}
-        location={location}
-        data={data}
-      />
-    </>
+    <SeoContent
+      url={getUrl(siteMetadata, location.pathname)}
+      title={getTitle(title, data, siteMetadata)}
+      author={getAuthor(author, data, siteMetadata)}
+      image={getImage(data, file)}
+      description={getDescription(description, data, siteMetadata)}
+      pathname={location.pathname}
+      siteTitle={typy(siteMetadata, 'title').safeString}
+      siteUrl={typy(siteMetadata, 'siteUrl').safeString}
+      lang={typy(siteMetadata, 'languages.default').safeString}
+      noIndex={noIndex}
+      noFollow={noFollow}
+    />
   )
 }
 
@@ -67,6 +59,7 @@ Seo.propTypes = {
   description: PropTypes.string,
   author: PropTypes.string,
   noIndex: PropTypes.bool,
+  noFollow: PropTypes.bool,
 }
 
 export default Seo
