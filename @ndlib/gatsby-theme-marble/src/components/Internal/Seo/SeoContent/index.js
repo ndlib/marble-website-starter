@@ -1,52 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import CanonicalLink from './CanonicalLink'
-// import SchemaLink from './SchemaLink'
-import MetaTagGroup from './MetaTagGroup'
-import { getOpenGraph, getTwitter } from './data'
+import { GatsbySeo } from 'gatsby-plugin-next-seo'
 
-export const SeoContent = ({
-  title,
-  url,
-  description,
-  image,
-  lang,
-  pathname,
-  author,
-  siteTitle,
-  siteUrl,
-  noIndex,
-}) => {
-  const openGraph = getOpenGraph(url, title, description, image)
-  const twitter = getTwitter(author, title, description, image)
-  const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
-  let indexable = null
-  if (noIndex === true) {
-    indexable = (
-      <Helmet>
-        <meta name='robots' content='noindex' />
-      </Helmet>
-    )
-  }
+export const SeoContent = ({ title, author, description, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow }) => {
+  const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
-    <React.Fragment>
-      <Helmet
-        htmlAttributes={{ lang }}
+    <>
+      <GatsbySeo
         title={title}
-        titleTemplate={title === siteTitle ? `${siteTitle}` : `${titleFix}`}
-        meta={[
-          {
-            name: `description`,
-            content: description,
-          },
-        ]}
+        titleTemplate={titleFix}
+        description={description}
+        canonical={`${siteUrl}${pathname}`}
+        noindex={noIndex}
+        nofollow={noFollow}
+        language={lang}
+        openGraph={{
+          type: 'website',
+          url: url,
+          title: title,
+          description: description,
+          images: [
+            {
+              url: image,
+              width: 800,
+              height: 600,
+              alt: description,
+            },
+          ],
+          site_name: siteTitle,
+        }}
+        twitter={{
+          handle: author,
+          site: '@NDLibraries',
+          cardType: 'summary_large_image',
+        }}
       />
-      <CanonicalLink base={siteUrl} pathname={pathname} />
-      <MetaTagGroup tags={openGraph} />
-      <MetaTagGroup tags={twitter} />
-      {indexable}
-    </React.Fragment>
+    </>
   )
 }
 
@@ -56,17 +45,11 @@ SeoContent.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   lang: PropTypes.string,
+  noIndex: PropTypes.bool,
+  noFollow: PropTypes.bool,
   pathname: PropTypes.string,
-  author: PropTypes.string.isRequired,
   siteUrl: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
-  noIndex: PropTypes.bool,
-  seeAlso: PropTypes.string,
-}
-
-SeoContent.defaultProps = {
-  lang: 'none',
-  noIndex: false,
 }
 
 export default SeoContent
