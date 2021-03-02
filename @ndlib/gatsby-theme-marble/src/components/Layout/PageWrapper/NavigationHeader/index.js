@@ -9,12 +9,13 @@ import LoginButton from './LoginButton'
 import Menu from 'components/Shared/Menu'
 import HamburgerButton from './HamburgerButton'
 import sx from './sx'
+import theme from 'gatsby-plugin-theme-ui'
 
 export const NavigationHeader = ({ location }) => {
   const [hamburgerOpen, toggleHamburger] = useState(false)
 
   return (
-    <Header>
+    <header sx={theme.styles.Header}>
       <div sx={sx.flexWrapper}>
         <SiteLogo />
         <div sx={sx.content}>
@@ -35,7 +36,7 @@ export const NavigationHeader = ({ location }) => {
           </span>
         </div>
       </div>
-    </Header>
+    </header>
   )
 }
 
