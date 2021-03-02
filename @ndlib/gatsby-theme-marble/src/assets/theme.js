@@ -111,6 +111,9 @@ export const theme = {
     Main: {
       margin: '0 auto',
       width: '100%',
+      '& a': {
+        color: 'primary',
+      },
     },
     Footer: {
       backgroundColor: 'secondary',
@@ -129,7 +132,6 @@ export const theme = {
       },
     },
     a: {
-      color: 'primary',
       wordBreak: 'break-word',
     },
     h1: {
