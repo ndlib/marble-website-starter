@@ -1,9 +1,12 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Main, BaseStyles } from 'theme-ui'
+import { jsx, BaseStyles } from 'theme-ui'
 import UserAnnotation from 'components/Internal/UserAnnotation'
 import ReturnToSearch from 'components/Internal/ReturnToSearch'
 import ParentLink from 'components/Internal/ParentLink'
+import theme from 'gatsby-plugin-theme-ui'
 
 const PageContent = ({
   title,
@@ -11,13 +14,13 @@ const PageContent = ({
   location,
 }) => {
   return (
-    <Main id='mainContent'>
+    <main id='mainContent' sx={theme.styles.Main}>
       <ReturnToSearch location={location} />
       <ParentLink>{children}</ParentLink>
       {title ? <BaseStyles><h1>{title}</h1></BaseStyles> : null}
       <UserAnnotation location={location} />
       <article>{children}</article>
-    </Main>
+    </main>
   )
 }
 

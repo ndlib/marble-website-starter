@@ -35,7 +35,7 @@ To build and test locally, you will need the following development tools install
 
 ### Installing:
 ```
-# to initialize the submodules 
+# to initialize the submodules
 git submodule init
 git submodule update
 
@@ -58,10 +58,10 @@ Now we're ready to download the files that will be the source of content to do t
 Setup the index for local development.
 Update ./site/.env.development so the keys SEARCH_URL and SEARCH_INDEX point to an elasticsearch index.
 run
-`
+```
 cd scripts/gatsby-source-iiif
 node indexSearch ../../sites/marble/.env.development
-`
+```
 
 
 Start the development server:

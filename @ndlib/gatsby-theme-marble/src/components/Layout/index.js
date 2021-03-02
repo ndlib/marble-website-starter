@@ -1,6 +1,8 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { Layout as ThemeLayout } from 'theme-ui'
 import queryString from 'query-string'
 import { withI18nTranslation } from 'i18n/withI18nTranslation'
 import AuthWrapper from './AuthWrapper'
@@ -11,6 +13,7 @@ import PageContent from './PageContent'
 
 /// CONSTRUCTION BANNER
 import CornerBanner from './CornerBanner'
+import theme from 'gatsby-plugin-theme-ui'
 
 export const Layout = ({
   title, // page title to be placed inside main
@@ -30,7 +33,7 @@ export const Layout = ({
   })
 
   return (
-    <ThemeLayout>
+    <div sx={theme.styles.Layout}>
       <AuthWrapper
         location={location}
       >
@@ -53,7 +56,7 @@ export const Layout = ({
           </PageWrapper>
         </PrivateRoute>
       </AuthWrapper>
-    </ThemeLayout>
+    </div>
   )
 }
 
