@@ -3,7 +3,7 @@ const getItems = require('./src/getItems')
 const macDNS = require('./src/macDNS')
 // const writeDebug = require('./src/writeDebug')
 
-exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, pluginOptions) => {
+exports.sourceNodes = async ({ actions, createContentDigest }, pluginOptions) => {
   console.time('total time')
   console.time('fetch items')
   const { url, key, website } = pluginOptions

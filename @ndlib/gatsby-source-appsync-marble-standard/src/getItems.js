@@ -26,15 +26,13 @@ const getItems = async ({
           return result.json()
         })
         .then(result => {
-          // prune extra graphQL layers
           if (result.error) {
-            // console.log(JSON.stringify(result.error, null, 2))
-            // reject(result.error)
+            reject(result.error)
           }
+          // prune extra graphQL layers
           return result.data.getItem
         })
         .then(async result => {
-          // console.log(JSON.stringify(result, null, 2))
           let subItems = []
           if (resultHasChildren(result)) {
             subItems = await getItems({
@@ -52,12 +50,9 @@ const getItems = async ({
           return newResult
         })
     }).then(result => {
-      // console.log(JSON.stringify(result, null, 2))
       return result
     }),
   ).then(results => {
-    // do something when done with all
-    // console.log(results.length)
     return results
   })
 }
