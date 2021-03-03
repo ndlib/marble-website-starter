@@ -6,6 +6,7 @@ async function onCreateNode ({
   actions,
   createNodeId,
   createContentDigest,
+  getNode,
 }, pluginOptions = { skipMetadataPrune: false }) {
   if (node.internal.type === 'StandardJson' || node.internal.type === 'AppSyncStandard') {
     if (!pluginOptions.skipMetadataPrune) {
@@ -16,6 +17,7 @@ async function onCreateNode ({
       actions: actions,
       createNodeId: createNodeId,
       createContentDigest: createContentDigest,
+      getNode: getNode,
     })
   }
 }

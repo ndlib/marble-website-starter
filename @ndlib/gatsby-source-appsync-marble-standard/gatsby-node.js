@@ -11,7 +11,11 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, plu
 
   const { createNode } = actions
   const itemList = await getListOfItems(pluginOptions)
-  // const itemList = [{ itemId: 'MSNCW5066_EAD' }]
+  // const itemList = [
+  //   { itemId: 'BPP1001_EAD' },
+  //   { itemId: 'MSNCW5066_EAD' },
+  //   { itemId: '2008.026.008' },
+  // ]
   console.log('Total top level items: ', itemList.length)
 
   const everything = await getItems({

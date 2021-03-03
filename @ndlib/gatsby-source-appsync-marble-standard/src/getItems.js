@@ -6,11 +6,11 @@ const getItems = async ({
   url, itemList, website, key,
 }) => {
   return await batchPromises(
-    20,
+    10,
     itemList,
     itemStub => new Promise((resolve, reject) => {
-      // console.log(itemId.itemId)
       const itemId = itemStub.itemId || itemStub.id
+      // console.log(itemId)
       fetch(
         url,
         {
