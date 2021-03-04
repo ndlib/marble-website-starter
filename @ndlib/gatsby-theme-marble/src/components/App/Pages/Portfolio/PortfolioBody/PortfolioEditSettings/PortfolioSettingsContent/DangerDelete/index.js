@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 import { deleteData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 

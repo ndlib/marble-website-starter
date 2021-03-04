@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import HorizontalSubmenu from 'components/Internal/HorizontalSubmenu'
+import HorizontalSubmenu from 'components/Shared/HorizontalSubmenu'
 
 const UserTopMenu = ({ userName, location }) => {
   const options = makeOptions([

@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { LoginButton } from './'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 

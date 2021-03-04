@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import DisplayViewToggleInternal from './DisplayViewToggleInternal'
+import DisplayViewToggleShared from './DisplayViewToggleInternal'
 import {
   COLLECTION_PAGE,
   DISPLAY_GRID,
@@ -20,7 +20,7 @@ export const DisplayView = ({ extraControls, children, defaultDisplay, displayRe
   const layoutClass = displayReducer[defaultDisplay] || DISPLAY_GRID
   return (
     <LayoutContext.Provider value={layoutClass}>
-      <DisplayViewToggleInternal
+      <DisplayViewToggleShared
         page={defaultDisplay}
         extraControls={extraControls}
       >
@@ -29,7 +29,7 @@ export const DisplayView = ({ extraControls, children, defaultDisplay, displayRe
             return (<div key={index}>{child}</div>)
           })
         }
-      </DisplayViewToggleInternal>
+      </DisplayViewToggleShared>
     </LayoutContext.Provider>
   )
 }

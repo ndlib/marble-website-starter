@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import { jsx, BaseStyles } from 'theme-ui'
 import typy from 'typy'
 

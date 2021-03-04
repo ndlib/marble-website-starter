@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import typy from 'typy'
 import { jsx } from 'theme-ui'
 import sx from './sx'

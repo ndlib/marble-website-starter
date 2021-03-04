@@ -1,5 +1,5 @@
 import React from 'react'
-import VisibilityLabel from 'components/Internal/VisibilityLabel'
+import VisibilityLabel from 'components/Shared/VisibilityLabel'
 import style from './style.module.css'
 
 export const title = `Portfolio Unavailable`

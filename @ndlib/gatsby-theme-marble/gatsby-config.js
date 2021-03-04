@@ -23,6 +23,9 @@ module.exports = ({
         templates: path.join(__dirname, 'src/templates'),
         utils: path.join(__dirname, 'src/utils'),
       },
+      flags: {
+        DEV_SSR: true
+      },
     },
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-sitemap',

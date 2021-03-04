@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { patchData } from 'utils/api'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 import { usePortfolioContext } from 'context/PortfolioContext'
 
 // eslint-disable-next-line complexity

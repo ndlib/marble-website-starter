@@ -4,7 +4,7 @@ import queryString from 'query-string'
 import Layout from 'components/Layout'
 import PrivateRoute from 'components/Layout/PrivateRoute/'
 import SkipToMain from 'components/Layout/PageWrapper/SkipToMain'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 import BackToItem from './BackToItem'
 import style from './style.module.css'
 

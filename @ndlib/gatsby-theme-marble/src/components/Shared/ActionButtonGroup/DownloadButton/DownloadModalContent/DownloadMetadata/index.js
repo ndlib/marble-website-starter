@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import AboutIIIF from './AboutIIIF'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 import download from 'utils/download'
 
 const DownloadMetadata = ({ marbleItem }) => {

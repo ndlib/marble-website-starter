@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { BaseStyles } from 'theme-ui'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 
 const MetaDataSearchValue = ({ values, urlField }) => {
   return (

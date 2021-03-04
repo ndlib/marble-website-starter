@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 import { patchData, getData } from 'utils/api'
 import style from 'components/App/FormElements/style.module.css'
 import { BaseStyles, jsx } from 'theme-ui'

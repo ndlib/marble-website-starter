@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
+import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 import ManifestCard from '../ManifestCard'
 import findImage from 'utils/findImage'
 

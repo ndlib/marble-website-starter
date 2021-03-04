@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import UserLayout from './UserLayout'
 import UserBody from './UserBody'
 import NoUser from './NoUser'
-import Loading from 'components/Internal/Loading'
+import Loading from 'components/Shared/Loading'
 import { getData } from 'utils/api'
 
 const User = ({ loginReducer, userName, location, edit }) => {

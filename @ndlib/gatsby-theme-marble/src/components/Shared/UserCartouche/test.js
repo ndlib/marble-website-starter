@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { navigate } from 'gatsby'
 import { UserCartouche } from './'
-import Gravatar from 'components/Internal/Gravatar'
+import Gravatar from 'components/Shared/Gravatar'
 
 test('UserCartouche', () => {
   const user = {

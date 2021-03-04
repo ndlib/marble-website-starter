@@ -2,8 +2,8 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Internal/Link'
-import MaterialButton from 'components/Internal/MaterialButton'
+import Link from 'components/Shared/Link'
+import MaterialButton from 'components/Shared/MaterialButton'
 import { jsx } from 'theme-ui'
 import { Trans, useTranslation } from 'react-i18next'
 

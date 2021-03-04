@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import ViewerLink from './'
-import ActionModal from 'components/Internal/ActionModal'
+import ActionModal from 'components/Shared/ActionModal'
 
 describe('ViewerLink', () => {
   console.error = jest.fn()

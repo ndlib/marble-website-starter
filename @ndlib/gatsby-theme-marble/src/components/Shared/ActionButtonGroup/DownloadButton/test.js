@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import DownloadButton from './'
 import ActionButton from 'components/Shared/ActionButtonGroup/ActionButton'
-import ActionModal from 'components/Internal/ActionModal'
+import ActionModal from 'components/Shared/ActionModal'
 import DownloadModalContent from './DownloadModalContent'
 import downloadImg from 'assets/icons/svg/baseline-share-24px.svg'
 

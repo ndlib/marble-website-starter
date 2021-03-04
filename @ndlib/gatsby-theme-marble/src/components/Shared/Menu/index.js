@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import { BaseStyles, jsx } from 'theme-ui'
 import typy from 'typy'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import sx from './sx'
 
 export const menuQuery = graphql`

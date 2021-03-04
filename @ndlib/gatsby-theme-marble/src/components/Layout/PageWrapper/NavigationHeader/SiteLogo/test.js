@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
 import SiteLogo from './'
 import siteLogo from './siteLogo.png'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 
 console.error = jest.fn()
 test('SiteLogo', () => {
