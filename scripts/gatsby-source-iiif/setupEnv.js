@@ -16,6 +16,8 @@ const possibleKeys = [
   'IIIF_VIEWER_URL',
   'SKIP_METADATA_PRUNE',
   'ONLY_SEARCH_CHILDNODES',
+  'GRAPHQL_API_KEY',
+  'GRAPHQL_API_URL',
 ]
 
 const retrieveStageParameters = async () => {
