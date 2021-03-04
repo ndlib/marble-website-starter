@@ -36,6 +36,7 @@ export const Seo = ({
   )
   const { siteMetadata } = site
   return (
+    <>
     <SeoContent
       url={getUrl(siteMetadata, location.pathname)}
       title={getTitle(title, data, siteMetadata)}
@@ -49,6 +50,8 @@ export const Seo = ({
       noIndex={noIndex}
       noFollow={noFollow}
     />
+    <DataLayer />
+    </>
   )
 }
 
