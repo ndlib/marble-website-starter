@@ -1,11 +1,13 @@
 const mapStandardJson = require('../mapStandardJson')
 const fileMetadata = require('../mapStandardJson/fileMetadata')
+const crawlAppSyncFiles = require('./crawlAppSyncFiles')
+
 // eslint-disable-next-line complexity
 const crawlStandardJson = (standardJson, collection, parent, gatsbyInternal) => {
   const { actions, createNodeId, createContentDigest } = gatsbyInternal
   const { createNode, createParentChildLink } = actions
   const nodeId = createNodeId(standardJson.id)
-  if (standardJson.level.toLowerCase() === 'file') {
+  if (standardJson.level && standardJson.level.toLowerCase() === 'file') {
     const filedata = fileMetadata(standardJson)
     const normalizedTypeNode = {
       ...filedata,
@@ -51,6 +53,13 @@ const crawlStandardJson = (standardJson, collection, parent, gatsbyInternal) => 
     standardJson.items.forEach(item => {
       crawlStandardJson(item, collection, normalizedTypeNode, gatsbyInternal)
     })
+  } else if (standardJson.subItems) {
+    standardJson.subItems.forEach(item => {
+      crawlStandardJson(item, collection, normalizedTypeNode, gatsbyInternal)
+    })
+  }
+  if (standardJson.files && standardJson.files.items && standardJson.files.items.length > 0) {
+    crawlAppSyncFiles(standardJson, gatsbyInternal)
   }
 }
 exports.crawlStandardJson = crawlStandardJson

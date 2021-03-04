@@ -11,9 +11,9 @@ const dataExtension = new RegExp('.(json|xml)$')
 module.exports = (standardJson) => {
   return {
     name: getName(standardJson),
-    title: standardJson.title,
+    title: standardJson.title || standardJson.id,
     sequence: standardJson.sequence,
-    file: standardJson.filePath,
+    file: standardJson.filePath || standardJson.id,
     extension: getExtension(standardJson.id),
     fileType: getFileType(standardJson.id),
     iiif: getIiif(standardJson),
@@ -52,10 +52,12 @@ const getExtension = (id) => {
 
 const getIiif = (standardJson) => {
   if (getFileType(standardJson.id) === 'image') {
-    const iiifUrl = new URL(standardJson.iiifImageUri)
+    // TODO THIS NEEDS FIXED
+    const cleanURL = standardJson.iiifImageUri.replace('libraries', 'library')
+    const iiifUrl = new URL(cleanURL)
     return {
       default: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/full/0/default.jpg'),
-      service: standardJson.iiifImageUri,
+      service: cleanURL,
       thumbnail: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/!250,250/0/default.jpg'),
     }
   }
