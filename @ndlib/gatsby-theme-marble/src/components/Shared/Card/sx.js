@@ -1,4 +1,7 @@
 module.exports = {
+  cardStyles: {
+    variant: 'card.label',
+  },
   clickableWrapper: {
     color: 'gray.4',
     cursor: 'pointer',
