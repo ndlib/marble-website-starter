@@ -10,7 +10,7 @@ const getItems = async ({
     itemList,
     itemStub => new Promise((resolve, reject) => {
       const itemId = itemStub.itemId || itemStub.id
-      // console.log(itemId)
+      console.log(itemId)
       fetch(
         url,
         {
