@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Header, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import typy from 'typy'
 import SiteLogo from './SiteLogo'
 import LoginButton from './LoginButton'
@@ -31,7 +31,7 @@ export const NavigationHeader = ({ location }) => {
           <span
             sx={sx.menu(hamburgerOpen)}
           >
-            <Menu menu='top' />
+            <Menu variant='header' />
             <LoginButton location={location} />
           </span>
         </div>

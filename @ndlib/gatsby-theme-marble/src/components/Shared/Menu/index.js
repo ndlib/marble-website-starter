@@ -2,61 +2,51 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
-import { BaseStyles, jsx } from 'theme-ui'
-import typy from 'typy'
+import { jsx, Box } from 'theme-ui'
 import Link from 'components/Shared/Link'
-import sx from './sx'
 
-export const menuQuery = graphql`
-  query {
-    allMenusJson {
-      nodes {
-        id
-        label
-        items {
-          id
-          link
-          label
-        }
-      }
-    }
-  }
-`
+/*
+  Class to add a themed menu to the site.
+  props:
+  variant - the style variant for changing propeties in the theme-ui theme see below.
+  items   - array of items in the format of [ {id, label link} ... ]
+  label   - label to display at the top.
 
-export const Menu = ({ menu, navClass }) => {
-  const { allMenusJson } = useStaticQuery(menuQuery)
-  const expandedMenu = findNavInData(menu, typy(allMenusJson, 'nodes').safeArray)
-
-  if (!expandedMenu) {
-    return null
-  }
-
-  const vertical = navClass === 'verticalMenu'
-  const flex = menu === 'top'
+  Theme UI Variant.
+  writes a variant called links.${variant}
+  Can be edited in the theme.
+  Examples of existing variants
+    header:
+    foooter:
+    vertical
+*/
+export const Menu = ({ variant, items, label }) => {
   return (
-    <nav
-      sx={sx.base(vertical, flex)}
-    >
-      <BaseStyles>
-        {expandedMenu.label ? <h3>{expandedMenu.label}</h3> : null}
-        {expandedMenu.items.map(l => {
+    <Box as='nav' sx={{ variant: `links.${variant}` }}>
+      {label ? <h3>{label}</h3> : null}
+      <div>
+        {items.map(l => {
           return (
             <Link
               to={l.link}
               key={l.id}
-              sx={sx.item(vertical, flex)}
             >{l.label}
             </Link>)
         })}
-      </BaseStyles>
-    </nav>
+      </div>
+    </Box>
   )
 }
 
 Menu.propTypes = {
-  menu: PropTypes.string.isRequired,
-  navClass: PropTypes.string,
+  variant: PropTypes.string.isRequired,
+  items: PropTypes.array,
+  label: PropTypes.string,
+}
+
+Menu.defaultProps = {
+  items: [],
+  label: '',
 }
 
 export const findNavInData = (id, navData) => {

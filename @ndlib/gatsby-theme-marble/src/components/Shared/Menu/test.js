@@ -1,7 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { useStaticQuery } from 'gatsby'
-import { Menu, findNavInData } from './'
+import { Menu } from './'
 
 console.error = jest.fn()
 
@@ -45,10 +44,8 @@ const sq = {
 }
 describe('Menu', () => {
   test('It renders the nav menu', () => {
-    useStaticQuery.mockImplementationOnce(() => {
-      return sq
-    })
-    const wrapper = mount(<Menu menu='nolabel' />)
+    const items = sq.allMenusJson.nodes[0].items
+    const wrapper = mount(<Menu variant='nolabel' items={items} />)
 
     expect(wrapper.find('nav').exists()).toBeTruthy()
     expect(wrapper.find('Link')).toHaveLength(2)
@@ -57,27 +54,14 @@ describe('Menu', () => {
   })
 
   test('It renders a menu with a label', () => {
-    useStaticQuery.mockImplementationOnce(() => {
-      return sq
-    })
-    const wrapper = mount(<Menu menu='label' />)
+    const wrapper = mount(<Menu variant='label' items={[]} label='label' />)
 
     expect(wrapper.find('h3').exists()).toBeTruthy()
     expect(wrapper.find('h3').text()).toEqual('label')
   })
 
-  test('findNavInData finds the menu correctly', () => {
-    // does it find the menu labeled nolabel
-    expect(findNavInData('nolabel', sq.allMenusJson.nodes)).toEqual(sq.allMenusJson.nodes[0])
-    expect(findNavInData('label', sq.allMenusJson.nodes)).toEqual(sq.allMenusJson.nodes[1])
-    expect(findNavInData('not-there', sq.allMenusJson.nodes)).toEqual(undefined)
-  })
-
-  test('menu not found', () => {
-    useStaticQuery.mockImplementationOnce(() => {
-      return sq
-    })
-    const wrapper = mount(<Menu menu='badlabel' />)
-    expect(wrapper.find('nav').exists()).toBeFalsy()
+  test('it adds the variant to the nav', () => {
+    // not sure how to do this yet since sx gets translated to a random css in the output
+    const wrapper = mount(<Menu variant='variant' items={[]} label='' />)
   })
 })
