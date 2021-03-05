@@ -1,3 +1,4 @@
+const cliProgress = require('cli-progress')
 const getListOfItems = require('./src/getListOfItems')
 const getItems = require('./src/getItems')
 const macDNS = require('./src/macDNS')
@@ -18,12 +19,23 @@ exports.sourceNodes = async ({ actions, createContentDigest }, pluginOptions) =>
   // ]
   console.log('Total top level items: ', itemList.length)
 
+  const progressBar = new cliProgress.SingleBar({
+    format: 'Items Downloaded |' + '{bar}' + '| {percentage}% || {value}/{total} Items',
+    barCompleteChar: '\u2588',
+    barIncompleteChar: '\u2591',
+    hideCursor: true,
+  })
+  progressBar.start(itemList.length, 0, {
+    speed: 'N/A',
+  })
   const everything = await getItems({
     url: url,
     itemList: itemList,
     website: website,
     key: key,
+    progressBar: progressBar,
   })
+  progressBar.stop()
   console.timeEnd('fetch items')
   // await writeDebug(everything)
   console.time('generate standard nodes')
