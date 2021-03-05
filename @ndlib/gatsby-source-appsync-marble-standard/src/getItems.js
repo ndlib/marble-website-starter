@@ -1,16 +1,16 @@
 const fetch = require('isomorphic-fetch')
 const batchPromises = require('batch-promises')
+const cliProgress = require('cli-progress')
 const queryItem = require('./queryItem')
 
 const getItems = async ({
-  url, itemList, website, key,
+  url, itemList, website, key, progressBar,
 }) => {
   return await batchPromises(
     10,
     itemList,
     itemStub => new Promise((resolve, reject) => {
       const itemId = itemStub.itemId || itemStub.id
-      console.log(itemId)
       fetch(
         url,
         {
@@ -50,6 +50,9 @@ const getItems = async ({
           return newResult
         })
     }).then(result => {
+      if (progressBar) {
+        progressBar.increment()
+      }
       return result
     }),
   ).then(results => {
