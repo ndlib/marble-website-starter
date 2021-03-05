@@ -14,7 +14,7 @@ export const Footer = () => {
           <span />
         </div>
         <div sx={sx.menuWrapper}>
-          <Menu menu='footer' />
+          <Menu variant='footer' />
         </div>
       </div>
     </footer>
