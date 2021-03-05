@@ -7,7 +7,7 @@ import SearchBox from 'components/Shared/SearchBox'
 import PortfolioTitle from './PortfolioTitle'
 import PortfolioDescription from './PortfolioDescription'
 import PortfolioItems from './PortfolioItems'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 import Ownership from './Ownership'
 import PortfolioContext, { initialContext } from 'context/PortfolioContext'
 

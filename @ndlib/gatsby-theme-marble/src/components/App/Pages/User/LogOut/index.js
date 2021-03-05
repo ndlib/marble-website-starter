@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import OktaAuth from '@okta/okta-auth-js'
-import Loading from 'components/Internal/Loading'
+import Loading from 'components/Shared/Loading'
 import { logUserOut } from 'store/actions/loginActions'
 import { jsx } from 'theme-ui'
 

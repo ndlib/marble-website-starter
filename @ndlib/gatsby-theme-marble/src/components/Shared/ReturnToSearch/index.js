@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
 import sx from './sx'
 import { useTranslation } from 'react-i18next'

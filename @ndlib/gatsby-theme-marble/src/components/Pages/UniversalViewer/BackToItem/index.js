@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import style from './style.module.css'
 const BackToItem = ({ location }) => {
   if (typy(location, 'state.referal.type').safeString === 'item') {

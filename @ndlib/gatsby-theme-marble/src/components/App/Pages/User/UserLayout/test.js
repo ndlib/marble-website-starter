@@ -2,10 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { UserLayout } from './'
 import * as Auth from 'utils/auth'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
-import Gravatar from 'components/Internal/Gravatar'
+import Gravatar from 'components/Shared/Gravatar'
 import EditUserButton from './EditUserButton'
 
 describe('UserLayout', () => {

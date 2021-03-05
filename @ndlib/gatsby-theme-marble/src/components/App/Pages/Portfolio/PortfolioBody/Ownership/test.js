@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Ownership from './'
 import * as PortfolioContext from 'context/PortfolioContext'
-import VisibilityLabel from 'components/Internal/VisibilityLabel'
-import UserCartouche from 'components/Internal/UserCartouche'
+import VisibilityLabel from 'components/Shared/VisibilityLabel'
+import UserCartouche from 'components/Shared/UserCartouche'
 
 describe('Ownership', () => {
   test('isOwner', () => {

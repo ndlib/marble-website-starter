@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { BookmarkGroup, sortCollections } from './'
-import DropDown from 'components/Internal/DropDown'
+import DropDown from 'components/Shared/DropDown'
 import * as auth from 'utils/auth'
 
 describe('BookmarkGroup', () => {

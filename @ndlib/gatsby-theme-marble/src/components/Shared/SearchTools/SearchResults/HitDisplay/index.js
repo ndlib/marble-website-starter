@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
+import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 import SearchAdditionalTools from 'components/Shared/SearchTools/SearchAdditionalTools'
 import HitResult from './HitResult'
 

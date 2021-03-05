@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { DangerDelete } from './'
 import { navigate } from 'gatsby'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 
 describe('DangerDelete', () => {
   console.log = jest.fn()

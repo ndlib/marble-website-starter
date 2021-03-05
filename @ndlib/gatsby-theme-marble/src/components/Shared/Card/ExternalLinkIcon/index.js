@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-import { isExternal } from 'components/Internal/Link'
+import { isExternal } from 'components/Shared/Link'
 import openInNew from 'assets/icons/svg/baseline-open_in_new-24px-white.svg'
 import sx from './sx.js'
 

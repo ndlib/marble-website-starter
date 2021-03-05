@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Item from '../Item'
-import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
+import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 import { COMPILATION_PAGE } from 'store/actions/displayActions'
 
 const GridListView = ({ items, userId, isOwner }) => {

@@ -16,7 +16,7 @@ import gridIconActive from 'assets/icons/svg/baseline-view_module-24px-white.svg
 import listIconInactive from 'assets/icons/svg/baseline-view_list-24px.svg'
 import gridIconInactive from 'assets/icons/svg/baseline-view_module-24px.svg'
 
-export const DisplayViewToggleInternal = ({ page, extraControls, children, displayReducer, dispatch }) => {
+export const DisplayViewToggleShared = ({ page, extraControls, children, displayReducer, dispatch }) => {
   const options = [
     {
       display: DISPLAY_LIST,
@@ -70,7 +70,7 @@ export const DisplayViewToggleInternal = ({ page, extraControls, children, displ
   )
 }
 
-DisplayViewToggleInternal.propTypes = {
+DisplayViewToggleShared.propTypes = {
   page: PropTypes.string.isRequired,
   extraControls: PropTypes.func,
   children: PropTypes.node.isRequired,
@@ -81,4 +81,4 @@ DisplayViewToggleInternal.propTypes = {
 const mapStateToProps = (state) => {
   return { ...state }
 }
-export default connect(mapStateToProps)(DisplayViewToggleInternal)
+export default connect(mapStateToProps)(DisplayViewToggleShared)

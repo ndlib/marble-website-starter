@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import ActionModal from 'components/Internal/ActionModal'
+import ActionModal from 'components/Shared/ActionModal'
 import { jsx } from 'theme-ui'
 
 const ViewerLink = ({

@@ -3,7 +3,7 @@ import { BaseStyles, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 
 const Markdown = ({ data, location }) => {
   const title = typy(data, 'markdownRemark.frontmatter.title').safeString || null

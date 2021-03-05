@@ -4,7 +4,7 @@ import UniversalViewer from './'
 import Layout from 'components/Layout'
 import PrivateRoute from 'components/Layout/PrivateRoute/'
 import SkipToMain from 'components/Layout/PageWrapper/SkipToMain'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 describe('UniversalViewer', () => {
   process.env.UNIVERSAL_VIEWER_URL = 'http://test.com'
   test('no query param or manifest', () => {

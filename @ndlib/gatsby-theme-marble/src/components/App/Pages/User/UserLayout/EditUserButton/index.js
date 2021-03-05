@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 const EditUserButton = ({ userName }) => {
   const { t } = useTranslation()
   return (

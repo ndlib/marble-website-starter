@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Box } from 'theme-ui'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 
 /*
   Class to add a themed menu to the site.

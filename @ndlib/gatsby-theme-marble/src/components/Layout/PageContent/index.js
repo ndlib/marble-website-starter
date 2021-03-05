@@ -3,9 +3,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, BaseStyles } from 'theme-ui'
-import UserAnnotation from 'components/Internal/UserAnnotation'
-import ReturnToSearch from 'components/Internal/ReturnToSearch'
-import ParentLink from 'components/Internal/ParentLink'
+import UserAnnotation from 'components/Shared/UserAnnotation'
+import ReturnToSearch from 'components/Shared/ReturnToSearch'
+import ParentLink from 'components/Shared/ParentLink'
 import theme from 'gatsby-plugin-theme-ui'
 
 const PageContent = ({

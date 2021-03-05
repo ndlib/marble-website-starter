@@ -5,7 +5,7 @@ import {
   NoHits,
   InitialLoader,
 } from 'searchkit'
-import Loading from 'components/Internal/Loading'
+import Loading from 'components/Shared/Loading'
 import {
   HitList,
   HitGrid,

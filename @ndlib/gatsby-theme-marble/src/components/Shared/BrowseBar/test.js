@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import BrowseBar from './'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 
 describe('BrowseBar', () => {
   console.error = jest.fn()

@@ -6,7 +6,7 @@ import typy from 'typy'
 import ImagePreview from './ImagePreview'
 import ImagePager from './ImagePager'
 import ImageSettings from './ImageSettings'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 import { download } from 'utils/download'
 import {
   imageUrl,

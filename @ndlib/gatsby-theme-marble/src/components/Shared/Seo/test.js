@@ -7,7 +7,7 @@ import Seo, {
   getDescription,
   getAuthor,
 } from './'
-import SeoContent from 'components/Internal/Seo/SeoContent'
+import SeoContent from 'components/Shared/Seo/SeoContent'
 describe('Seo', () => {
   const siteMetadata = {
     languages: {

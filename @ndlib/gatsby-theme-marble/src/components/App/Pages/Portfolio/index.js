@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import typy from 'typy'
 import PortfolioBody from './PortfolioBody'
 import PortfolioUnavailable from './PortfolioUnavailable'
-import Loading from 'components/Internal/Loading'
+import Loading from 'components/Shared/Loading'
 import { getData } from 'utils/api'
 import { ownsPage } from 'utils/auth'
 

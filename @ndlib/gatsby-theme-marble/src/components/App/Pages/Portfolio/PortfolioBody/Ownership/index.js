@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import VisibilityLabel from 'components/Internal/VisibilityLabel'
-import Attribution from 'components/Internal/Attribution'
-import UserCartouche from 'components/Internal/UserCartouche'
+import VisibilityLabel from 'components/Shared/VisibilityLabel'
+import Attribution from 'components/Shared/Attribution'
+import UserCartouche from 'components/Shared/UserCartouche'
 import PortfolioEditSettings from '../PortfolioEditSettings'
-import ShareButton from 'components/Internal/ShareButton'
-import PrintButton from 'components/Internal/PrintButton'
+import ShareButton from 'components/Shared/ShareButton'
+import PrintButton from 'components/Shared/PrintButton'
 
 import { usePortfolioContext } from 'context/PortfolioContext'
 import sx from './sx'
