@@ -1,7 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { useStaticQuery } from 'gatsby'
-import { Menu, findNavInData } from './'
+import { Menu } from './'
 
 console.error = jest.fn()
 
