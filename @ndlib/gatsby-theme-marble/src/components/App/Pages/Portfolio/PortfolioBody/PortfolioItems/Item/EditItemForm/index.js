@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import EditItemFormContent from './EditItemFormContent'
-import Loading from 'components/Internal/Loading'
+import Loading from 'components/Shared/Loading'
 import { getData } from 'utils/api'
 
 export const EditItemForm = ({ uuid, closeFunc, loginReducer }) => {

@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 import { usePortfolioContext } from 'context/PortfolioContext'
 import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
 import EditDescription from './EditDescription'

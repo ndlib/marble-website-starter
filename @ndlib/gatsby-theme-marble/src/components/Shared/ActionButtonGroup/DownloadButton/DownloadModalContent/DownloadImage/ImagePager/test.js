@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import ImagePager from './'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 
 describe('ImagePager', () => {
   const sxStyle = {}

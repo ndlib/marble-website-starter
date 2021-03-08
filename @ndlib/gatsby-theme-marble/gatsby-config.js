@@ -27,16 +27,7 @@ module.exports = ({
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-next-seo',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${contentPath}/images`,
-      },
-    },
     // Themes do not use the pages directory by default so we add it in manually.
     {
       resolve : 'gatsby-plugin-page-creator',

@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import MetaDataList from 'components/Internal/MetaDataList'
+import MetaDataList from 'components/Shared/MetaDataList'
 
 const ManifestMetaData = ({ marbleItem, skipHtml }) => {
   if (!marbleItem) {

@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import BookmarkGroup from './BookmarkGroup'
-import ShareButton from 'components/Internal/ShareButton'
-import PrintButton from 'components/Internal/PrintButton'
+import ShareButton from 'components/Shared/ShareButton'
+import PrintButton from 'components/Shared/PrintButton'
 import DownloadButton from './DownloadButton'
 
 const ActionButtonGroup = ({ marbleItem }) => {

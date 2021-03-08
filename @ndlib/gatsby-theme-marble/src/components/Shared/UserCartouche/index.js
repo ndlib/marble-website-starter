@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
-import Gravatar from 'components/Internal/Gravatar'
+import Gravatar from 'components/Shared/Gravatar'
 import { getData } from 'utils/api'
 import style from './style.module.css'
 

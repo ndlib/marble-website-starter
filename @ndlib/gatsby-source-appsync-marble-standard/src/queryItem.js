@@ -15,8 +15,6 @@ module.exports = (itemId, website) => {
       creators {
         display
       }
-      dateAddedToDynamo
-      dateModifiedInDynamo
       dedication
       defaultFilePath
       description
@@ -25,25 +23,11 @@ module.exports = (itemId, website) => {
       expireTime
       files {
         items {
-          TYPE
-          dateAddedToDynamo
-          dateModifiedInDynamo
-          eTag
-          expireTime
           id
           iiifImageUri
           iiifUri
-          key
-          label
-          lastModified
           objectFileGroupId
-          path
           sequence
-          size
-          source
-          sourceType
-          sourceUri
-          storageClass
         }
       }
       format

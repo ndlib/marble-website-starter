@@ -6,7 +6,7 @@ import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
 import ExternalLinkIcon from './ExternalLinkIcon'
 import TypeLabel from './TypeLabel'
-import { LayoutContext } from 'components/Internal/DisplayViewToggle'
+import { LayoutContext } from 'components/Shared/DisplayViewToggle'
 import sx from './sx'
 
 const Card = ({
@@ -21,6 +21,7 @@ const Card = ({
   imageRegion,
   onClick,
   showAsList,
+  variant,
 }) => {
   let wide = useContext(LayoutContext) === 'list'
   if (showAsList) {
@@ -35,31 +36,33 @@ const Card = ({
       onClick={onClick}
     >
       <BaseStyles>
-        <article sx={sx.wrapper(wide)}>
-          <figure sx={sx.figure}>
-            <div sx={sx.imageWrapper(wide)}>
-              <div sx={sx.imageWrapperInner}>
-                <div sx={sx.imageBoarder}>
-                  <TypeLabel type={type} />
-                  <Image
-                    src={image || null}
-                    service={imageService || null}
-                    region={imageRegion || 'full'}
-                    alt={label}
-                  />
-                  <ExternalLinkIcon target={target} />
+        <div sx={{ variant: variant }}>
+          <article sx={sx.wrapper(wide)}>
+            <figure sx={sx.figure}>
+              <div sx={sx.imageWrapper(wide)}>
+                <div sx={sx.imageWrapperInner}>
+                  <div sx={sx.imageBoarder}>
+                    <TypeLabel type={type} />
+                    <Image
+                      src={image || null}
+                      service={imageService || null}
+                      region={imageRegion || 'full'}
+                      alt={label}
+                    />
+                    <ExternalLinkIcon target={target} />
+                  </div>
                 </div>
               </div>
-            </div>
-            <figcaption sx={sx.figcaption(wide)}>
-              <h2 sx={sx.label} dangerouslySetInnerHTML={{ __html: label }} />
-              <div>
-                {children}
-              </div>
-              <div className='fade' sx={sx.fadeOut} />
-            </figcaption>
-          </figure>
-        </article>
+              <figcaption sx={sx.figcaption(wide)}>
+                <h2 sx={sx.label} dangerouslySetInnerHTML={{ __html: label }} />
+                <div>
+                  {children}
+                </div>
+                <div className='fade' sx={sx.fadeOut} />
+              </figcaption>
+            </figure>
+          </article>
+        </div>
       </BaseStyles>
     </CardWrapper>
   )
@@ -77,11 +80,13 @@ Card.propTypes = {
   referal: PropTypes.object,
   onClick: PropTypes.func,
   showAsList: PropTypes.bool,
+  variant: PropTypes.string,
 }
 
 Card.defaultProps = {
   children: null,
   cardClass: 'basicCard',
   showAsList: false,
+  variant: 'card.primary',
 }
 export default Card

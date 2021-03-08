@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import CardWrapper from './'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 
 describe('CardWrapper', () => {
   console.error = jest.fn()

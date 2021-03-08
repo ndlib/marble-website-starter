@@ -13,7 +13,7 @@ module.exports = (standardJson) => {
     name: getName(standardJson),
     title: standardJson.title || standardJson.id,
     sequence: standardJson.sequence,
-    file: standardJson.filePath || standardJson.path,
+    file: standardJson.filePath || standardJson.id,
     extension: getExtension(standardJson.id),
     fileType: getFileType(standardJson.id),
     iiif: getIiif(standardJson),

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import VisibilityLabel from 'components/Internal/VisibilityLabel'
+import VisibilityLabel from 'components/Shared/VisibilityLabel'
 import style from './style.module.css'
 export const FormattedLabel = ({ value, description }) => {
   return (

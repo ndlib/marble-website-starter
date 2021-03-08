@@ -2,10 +2,10 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import { jsx, BaseStyles } from 'theme-ui'
 import typy from 'typy'
-import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
+import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 import ManifestCard from 'components/Shared/ManifestCard'
 import getArrayNeighbors from 'utils/getArrayNeighbors'
 import findImage from 'utils/findImage'

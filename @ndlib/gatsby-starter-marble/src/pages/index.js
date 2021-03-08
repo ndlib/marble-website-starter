@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { I18nextProvider } from 'react-i18next'
 import i18next from '@ndlib/gatsby-theme-marble/src/i18n'
 import Layout from '@ndlib/gatsby-theme-marble/src/components/Layout'
-import Seo from '@ndlib/gatsby-theme-marble/src/components/Internal/Seo'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 
 const Home = ({ data, location }) => {
   return (

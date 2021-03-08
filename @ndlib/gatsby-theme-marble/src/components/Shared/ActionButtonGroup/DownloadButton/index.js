@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import ActionButton from 'components/Shared/ActionButtonGroup/ActionButton'
-import ActionModal from 'components/Internal/ActionModal'
+import ActionModal from 'components/Shared/ActionModal'
 import DownloadModalContent from './DownloadModalContent'
 import downloadImg from 'assets/icons/svg/baseline-save_alt-24px.svg'
 

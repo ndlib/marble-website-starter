@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 import CollectionLayout from './CollectionLayout'
 import ItemLayout from './ItemLayout'
 import RelatedItemsFromSearch from './RelatedItemsFromSearch'

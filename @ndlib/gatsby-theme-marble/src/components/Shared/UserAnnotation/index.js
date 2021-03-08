@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import typy from 'typy'
 import queryString from 'query-string'
 import CalloutBox from 'components/Shared/CalloutBox'
-import Attribution from 'components/Internal/Attribution'
-import Link from 'components/Internal/Link'
-import UserCartouche from 'components/Internal/UserCartouche'
+import Attribution from 'components/Shared/Attribution'
+import Link from 'components/Shared/Link'
+import UserCartouche from 'components/Shared/UserCartouche'
 import { getData } from 'utils/api'
 
 export const UserAnnotation = ({ location, loginReducer }) => {

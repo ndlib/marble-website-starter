@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { navigate } from 'gatsby'
 import { NewPortfolioButton, successFunc } from './'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 describe('NewPortfolioButton', () => {

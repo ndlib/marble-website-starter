@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import MaterialButton from 'components/Internal/MaterialButton'
+import MaterialButton from 'components/Shared/MaterialButton'
 
 const ImagePager = ({ sxStyle, images, selected, setSelected }) => {
   if (images.length < 2) {

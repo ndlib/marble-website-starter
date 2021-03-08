@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import HitDisplay, { HitList, HitGrid } from './'
 import HitResult from './HitResult'
-import DisplayViewToggle from 'components/Internal/DisplayViewToggle'
+import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
 
 const hits = [
   { _id: 'a', highlight: { 'allMetadata.folded': ['<em>data</em>'] } },

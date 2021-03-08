@@ -14,7 +14,7 @@ import {
 import LoginArea from 'components/Shared/LoginArea'
 import CreateAccount from './CreateAccount'
 
-import Loading from 'components/Internal/Loading'
+import Loading from 'components/Shared/Loading'
 import style from '../style.module.css'
 
 // eslint-disable-next-line complexity

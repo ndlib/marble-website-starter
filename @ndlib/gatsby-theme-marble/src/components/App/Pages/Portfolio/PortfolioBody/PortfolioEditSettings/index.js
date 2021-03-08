@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PortfolioSettingsContent from './PortfolioSettingsContent'
 import { usePortfolioContext } from 'context/PortfolioContext'
-import MaterialButton from 'components/Internal/MaterialButton'
-import ActionModal from 'components/Internal/ActionModal'
+import MaterialButton from 'components/Shared/MaterialButton'
+import ActionModal from 'components/Shared/ActionModal'
 
 export const PortfolioEditSettings = () => {
   const { portfolio } = usePortfolioContext()

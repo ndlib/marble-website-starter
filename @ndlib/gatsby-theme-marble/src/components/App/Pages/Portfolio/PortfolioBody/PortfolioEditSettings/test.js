@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import PortfolioEditSettings from './'
 import * as PortfolioContext from 'context/PortfolioContext'
-import MaterialButton from 'components/Internal/MaterialButton'
-import ActionModal from 'components/Internal/ActionModal'
+import MaterialButton from 'components/Shared/MaterialButton'
+import ActionModal from 'components/Shared/ActionModal'
 
 test('PortfolioEditSettings', () => {
   jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {

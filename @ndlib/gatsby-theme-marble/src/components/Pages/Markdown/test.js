@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Markdown from './'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 
 test('Markdown', () => {
   const data = {

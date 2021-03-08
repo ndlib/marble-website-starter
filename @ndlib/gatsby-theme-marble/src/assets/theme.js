@@ -97,7 +97,6 @@ export const theme = {
       overflowX: 'hidden',
     },
     Header: {
-      backgroundColor: 'primary',
       color: 'background',
       fontFamliy: 'menu',
       fontWeight: '100',

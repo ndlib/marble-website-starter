@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { DisplayViewToggleInternal } from './'
+import { DisplayViewToggleShared } from './'
 import ToggleButton from './ToggleButton'
 import {
   DISPLAY_GRID,
@@ -38,12 +38,12 @@ test('DisplayViewToggle', () => {
   }
   const dispatch = jest.fn()
   const wrapper = shallow(
-    <DisplayViewToggleInternal
+    <DisplayViewToggleShared
       page={page}
       activeSettings={activeSettings}
       displayReducer={displayReducer}
       dispatch={dispatch}
-    >{[children]}</DisplayViewToggleInternal>,
+    >{[children]}</DisplayViewToggleShared>,
   )
 
   expect(wrapper.find(ToggleButton).length).toEqual(2)
