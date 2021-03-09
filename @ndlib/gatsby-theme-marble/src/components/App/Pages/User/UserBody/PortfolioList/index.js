@@ -7,7 +7,7 @@ import Card from 'components/Shared/Card'
 import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from 'components/Shared/VisibilityLabel'
-import { COMPILATIONS_LISTING_PAGE } from 'store/actions/displayActions'
+import { DISPLAY_GRID } from 'store/actions/displayActions'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 import MaterialButton from 'components/Shared/MaterialButton'
@@ -42,7 +42,8 @@ const PortfolioList = ({
     return (
       <>
         <CardGroup
-          defaultDisplay={COMPILATIONS_LISTING_PAGE}
+          defaultDisplay={DISPLAY_GRID}
+          toggleGroup='compilations-page'
           extraControls={isOwner ? () => {
             return (
               <span style={{
