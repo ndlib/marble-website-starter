@@ -1,35 +1,50 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { jsx, Box, Flex } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import typy from 'typy'
-import DisplayViewToggleShared from './DisplayViewToggleInternal'
+import CardGroupShared from './CardGroupInternal'
 import {
-  COLLECTION_PAGE,
   DISPLAY_GRID,
 } from 'store/actions/displayActions'
-
 export const LayoutContext = React.createContext(DISPLAY_GRID)
-export const DisplayView = ({ extraControls, children, defaultDisplay, displayReducer }) => {
+
+export const DisplayView = ({ toggleGroup, extraControls, children, allowToggle, defaultDisplay }) => {
+  const layout = useSelector(state => state.displayReducer[toggleGroup])
+
   if (!typy(children).isArray) {
     return null
   }
-  if (!defaultDisplay) {
-    defaultDisplay = COLLECTION_PAGE
+  const sx = {
+    list: {
+      padding: '1rem',
+      width: ['100%'],
+    },
+    grid: {
+      width: ['100%', '50%', '33.33%'],
+      padding: '1rem',
+    },
   }
+  const displayLayout = layout || defaultDisplay
 
-  const layoutClass = displayReducer[defaultDisplay] || DISPLAY_GRID
   return (
-    <LayoutContext.Provider value={layoutClass}>
-      <DisplayViewToggleShared
-        page={defaultDisplay}
-        extraControls={extraControls}
-      >
+    <LayoutContext.Provider value={displayLayout}>
+      {
+        allowToggle ? (<CardGroupShared
+          toggleGroup={toggleGroup}
+          layout={displayLayout}
+          extraControls={extraControls}
+        />) : null
+      }
+      <Flex sx={{ flexWrap: 'wrap' }}>
         {
           typy(children).safeArray.map((child, index) => {
-            return (<div key={index}>{child}</div>)
+            return (<Box key={index} sx={sx[displayLayout]}>{child}</Box>)
           })
         }
-      </DisplayViewToggleShared>
+      </Flex>
     </LayoutContext.Provider>
   )
 }
@@ -37,11 +52,15 @@ export const DisplayView = ({ extraControls, children, defaultDisplay, displayRe
 DisplayView.propTypes = {
   children: PropTypes.node,
   defaultDisplay: PropTypes.string,
-  displayReducer: PropTypes.object,
+  toggleGroup: PropTypes.string,
   extraControls: PropTypes.func,
+  allowToggle: PropTypes.bool,
 }
 
-const mapStateToProps = (state) => {
-  return { ...state }
+DisplayView.defaultProps = {
+  toggleGroup: 'default',
+  defaultDisplay: DISPLAY_GRID,
+  allowToggle: true,
 }
-export default connect(mapStateToProps)(DisplayView)
+
+export default DisplayView

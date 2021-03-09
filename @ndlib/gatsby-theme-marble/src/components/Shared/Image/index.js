@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import noImage from 'assets/images/noImage.svg'
 import { jsx } from 'theme-ui'
 import sx from './sx'
+import { StaticImage } from 'gatsby-plugin-image'
 
 // See https://iiif.io/api/image/2.1/#image-request-parameters for image server request parameters.
 

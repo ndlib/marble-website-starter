@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { DisplayViewToggleShared } from './'
+import { CardGroupShared } from './'
 import ToggleButton from './ToggleButton'
 import {
   DISPLAY_GRID,
@@ -24,7 +24,7 @@ const options = [
   },
 ]
 
-test('DisplayViewToggle', () => {
+test('CardGroup', () => {
   const page = 'somePage'
   const activeSettings = {
     breakpoints: { lg: 123 },
@@ -38,12 +38,12 @@ test('DisplayViewToggle', () => {
   }
   const dispatch = jest.fn()
   const wrapper = shallow(
-    <DisplayViewToggleShared
+    <CardGroupShared
       page={page}
       activeSettings={activeSettings}
       displayReducer={displayReducer}
       dispatch={dispatch}
-    >{[children]}</DisplayViewToggleShared>,
+    >{[children]}</CardGroupShared>,
   )
 
   expect(wrapper.find(ToggleButton).length).toEqual(2)

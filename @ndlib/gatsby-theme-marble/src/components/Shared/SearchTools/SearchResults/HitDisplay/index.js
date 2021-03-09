@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
+import CardGroup from 'components/Shared/CardGroup'
 import SearchAdditionalTools from 'components/Shared/SearchTools/SearchAdditionalTools'
 import HitResult from './HitResult'
 
 const HitDisplay = ({ hits, defaultDisplay }) => {
   const referal = { type: 'search', query: window.location.search }
   return (
-    <DisplayViewToggle
+    <CardGroup
       defaultDisplay={defaultDisplay}
+      toggleGroup='search'
       extraControls={SearchAdditionalTools}
     >
       {
@@ -22,7 +23,7 @@ const HitDisplay = ({ hits, defaultDisplay }) => {
           ),
         ) : null
       }
-    </DisplayViewToggle>
+    </CardGroup>
   )
 }
 

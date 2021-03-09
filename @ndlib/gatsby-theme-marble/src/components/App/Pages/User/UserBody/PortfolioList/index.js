@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
+import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
@@ -41,7 +41,7 @@ const PortfolioList = ({
   if (portfolios.length > 0) {
     return (
       <>
-        <DisplayViewToggle
+        <CardGroup
           defaultDisplay={COMPILATIONS_LISTING_PAGE}
           extraControls={isOwner ? () => {
             return (
@@ -101,7 +101,7 @@ const PortfolioList = ({
                 )
               })
           }
-        </DisplayViewToggle>
+        </CardGroup>
       </>
     )
   }
