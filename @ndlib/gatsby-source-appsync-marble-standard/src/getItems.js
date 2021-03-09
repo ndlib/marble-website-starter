@@ -1,6 +1,5 @@
 const fetch = require('isomorphic-fetch')
 const batchPromises = require('batch-promises')
-const cliProgress = require('cli-progress')
 const queryItem = require('./queryItem')
 
 const getItems = async ({
