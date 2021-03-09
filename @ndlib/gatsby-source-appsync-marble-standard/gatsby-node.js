@@ -15,10 +15,10 @@ exports.sourceNodes = async ({ actions, createContentDigest, cache }, pluginOpti
   const cachedList = await cache.get('standardItemListCacheKey')
   let itemList
   if (cachedList) {
-    console.log('Have a cached list of items.')
+    // console.log('Have a cached list of items.')
     itemList = cachedList
   } else {
-    console.log('Do not have a cached list of items.')
+    // console.log('Do not have a cached list of items.')
     itemList = await getListOfItems(pluginOptions)
   }
   await cache.set('standardItemListCacheKey', itemList)
@@ -28,10 +28,10 @@ exports.sourceNodes = async ({ actions, createContentDigest, cache }, pluginOpti
   const cachedStandardEverything = await cache.get('standardItemsCachedKey')
   let everything
   if (cachedStandardEverything) {
-    console.log('Have a giant cache blob of everything.')
+    // console.log('Have a giant cache blob of everything.')
     everything = cachedStandardEverything
   } else {
-    console.log('Need to fetch everything.')
+    // console.log('Need to fetch everything.')
     const progressBar = new cliProgress.SingleBar({
       format: '{bar} {percentage}% || {value}/{total} Top Level Items',
       barCompleteChar: '\u2588',
