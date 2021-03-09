@@ -16,7 +16,7 @@ import gridIconActive from 'assets/icons/svg/baseline-view_module-24px-white.svg
 import listIconInactive from 'assets/icons/svg/baseline-view_list-24px.svg'
 import gridIconInactive from 'assets/icons/svg/baseline-view_module-24px.svg'
 
-export const CardGroupShared = ({ toggleGroup, layout, extraControls }) => {
+export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
   const dispatch = useDispatch()
 
   const options = [
@@ -60,10 +60,10 @@ export const CardGroupShared = ({ toggleGroup, layout, extraControls }) => {
   )
 }
 
-CardGroupShared.propTypes = {
+CardGroupToggle.propTypes = {
   extraControls: PropTypes.func,
   toggleGroup: PropTypes.string.isRequired,
   layout: PropTypes.string.isRequired,
 }
 
-export default CardGroupShared
+export default CardGroupToggle

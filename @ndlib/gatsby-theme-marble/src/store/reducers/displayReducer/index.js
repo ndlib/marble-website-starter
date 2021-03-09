@@ -6,7 +6,6 @@ export const defaultState = {
 }
 
 export default (state = defaultState, action) => {
-  console.log(action)
   switch (action.type) {
     case SET_PAGE_DISPLAY:
       return {
