@@ -3,7 +3,6 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import SearchSortingSelector from 'components/Shared/SearchTools/SearchSortingSelector'
-import { HitsStats } from 'searchkit'
 
 export const SearchAdditionalTools = () => {
   return (
@@ -15,7 +14,6 @@ export const SearchAdditionalTools = () => {
         verticalAlign: 'top',
       }}
       >
-        <HitsStats />
       </div>
       <SearchSortingSelector />
     </>
