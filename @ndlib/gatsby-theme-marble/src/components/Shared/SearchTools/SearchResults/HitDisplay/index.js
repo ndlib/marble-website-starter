@@ -4,11 +4,11 @@ import CardGroup from 'components/Shared/CardGroup'
 import SearchAdditionalTools from 'components/Shared/SearchTools/SearchAdditionalTools'
 import HitResult from './HitResult'
 
-const HitDisplay = ({ hits, defaultDisplay }) => {
+const HitDisplay = ({ hits }) => {
   const referal = { type: 'search', query: window.location.search }
   return (
     <CardGroup
-      defaultDisplay={defaultDisplay}
+      defaultDisplay='list'
       toggleGroup='search'
       extraControls={SearchAdditionalTools}
     >
