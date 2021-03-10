@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
+import CardGroup from 'components/Shared/CardGroup'
 import ManifestCard from '../ManifestCard'
 import findImage from 'utils/findImage'
 
@@ -13,7 +13,7 @@ export const ChildManifests = ({ marbleItem }) => {
   return (
     <>
       <h2 className='accessibilityOnly'>Related Items</h2>
-      <DisplayViewToggle>
+      <CardGroup defaultDisplay='grid' toggleGroup='related-items'>
         {
           typy(marbleItem, 'childrenMarbleItem').safeArray.map(childItem => {
             if (!childItem) {
@@ -30,7 +30,7 @@ export const ChildManifests = ({ marbleItem }) => {
             )
           })
         }
-      </DisplayViewToggle>
+      </CardGroup>
     </>
   )
 }

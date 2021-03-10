@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Item from '../Item'
-import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
-import { COMPILATION_PAGE } from 'store/actions/displayActions'
+import CardGroup from 'components/Shared/CardGroup'
+import { DISPLAY_GRID } from 'store/actions/displayActions'
 
 const GridListView = ({ items, userId, isOwner }) => {
   return (
-    <DisplayViewToggle defaultDisplay={COMPILATION_PAGE}>
+    <CardGroup defaultDisplay={DISPLAY_GRID} toggleGroup='portfolio-grid-list'>
       {
         items.map(item => {
           return (
@@ -19,7 +19,7 @@ const GridListView = ({ items, userId, isOwner }) => {
           )
         })
       }
-    </DisplayViewToggle>
+    </CardGroup>
   )
 }
 

@@ -5,10 +5,11 @@ import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
 import { jsx, BaseStyles } from 'theme-ui'
 import typy from 'typy'
-import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
+import CardGroup from 'components/Shared/CardGroup'
 import ManifestCard from 'components/Shared/ManifestCard'
 import getArrayNeighbors from 'utils/getArrayNeighbors'
 import findImage from 'utils/findImage'
+import { DISPLAY_GRID } from 'store/actions/displayActions'
 
 const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
   const siblings = typy(marbleItem, 'marbleParent.childrenMarbleItem').safeArray
@@ -29,7 +30,7 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
             </Link>
           </h2>
         </BaseStyles>
-        <DisplayViewToggle>
+        <CardGroup defaultDisplay={DISPLAY_GRID} toggleGroup='sibling-items'>
           {
             nearSiblings.map(sibling => {
               return (
@@ -43,7 +44,7 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
               )
             })
           }
-        </DisplayViewToggle>
+        </CardGroup>
       </>
     )
   }

@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
+import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
 import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from 'components/Shared/VisibilityLabel'
-import { COMPILATIONS_LISTING_PAGE } from 'store/actions/displayActions'
+import { DISPLAY_GRID } from 'store/actions/displayActions'
 import { isLoggedIn, ownsPage } from 'utils/auth'
 import style from './style.module.css'
 import MaterialButton from 'components/Shared/MaterialButton'
@@ -41,8 +41,9 @@ const PortfolioList = ({
   if (portfolios.length > 0) {
     return (
       <>
-        <DisplayViewToggle
-          defaultDisplay={COMPILATIONS_LISTING_PAGE}
+        <CardGroup
+          defaultDisplay={DISPLAY_GRID}
+          toggleGroup='compilations-page'
           extraControls={isOwner ? () => {
             return (
               <span style={{
@@ -101,7 +102,7 @@ const PortfolioList = ({
                 )
               })
           }
-        </DisplayViewToggle>
+        </CardGroup>
       </>
     )
   }

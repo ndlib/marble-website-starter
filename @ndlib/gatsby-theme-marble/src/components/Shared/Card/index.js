@@ -6,7 +6,7 @@ import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
 import ExternalLinkIcon from './ExternalLinkIcon'
 import TypeLabel from './TypeLabel'
-import { LayoutContext } from 'components/Shared/DisplayViewToggle'
+import { LayoutContext } from 'components/Shared/CardGroup'
 import sx from './sx'
 
 const Card = ({

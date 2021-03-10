@@ -1,7 +1,6 @@
 const path = require('path')
 
 module.exports = ({
-  contentPath = 'content',
   useLogin = false,
 }) => ({
   // mapping: {

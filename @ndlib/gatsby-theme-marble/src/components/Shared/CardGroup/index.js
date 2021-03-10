@@ -1,42 +1,79 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { jsx, Box, Flex } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { BaseStyles, jsx } from 'theme-ui'
-import sx from './sx'
-const CardGroup = ({ label, children }) => {
-  if (!children) {
+import typy from 'typy'
+import CardGroupToggle from './CardGroupToggle'
+import {
+  DISPLAY_GRID,
+} from 'store/actions/displayActions'
+export const LayoutContext = React.createContext(DISPLAY_GRID)
+
+/*
+Class to help manage using cards in either wide or narrow mode.
+By default it will add UI to create a toggle selector between the two modes.
+You can also set a group of card lists to be toggled together by using the same toggleGroup parameter.
+This allows you to set one mode and have other lists save and reuse that mode.
+
+Params
+toggleGroup  -  a parameter that joins groups of lists to the same toggledd setting. ie. search
+extraControls - React compontents you want to display along side of the toggle.
+allowToggle - true to see the toggle false to not display
+defaultState - the default state the toggle should be in grid or list
+  (or you can use DISPLAY_GRID or DISPLAY list from store/actions/displayActions)
+*/
+export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, defaultDisplay }) => {
+  const layout = useSelector(state => state.displayReducer[toggleGroup])
+
+  if (!typy(children).isArray) {
     return null
   }
+  const sx = {
+    list: {
+      padding: '1rem',
+      width: ['100%'],
+    },
+    grid: {
+      width: ['100%', '50%', '33.33%'],
+      padding: '1rem',
+    },
+  }
+  const displayLayout = layout || defaultDisplay
+
   return (
-    <React.Fragment>
-      <BaseStyles>
-        <h2>{label}</h2>
-      </BaseStyles>
-      <div
-        className='cardGroup'
-        sx={sx.wrapper}
-      >
+    <LayoutContext.Provider value={displayLayout}>
+      {
+        allowToggle ? (<CardGroupToggle
+          toggleGroup={toggleGroup}
+          layout={displayLayout}
+          extraControls={extraControls}
+        />) : null
+      }
+      <Flex sx={{ flexWrap: 'wrap' }}>
         {
-          children.map((card, index) => {
-            return (
-              <div
-                key={index}
-                sx={sx.card}
-              >
-                {card}
-              </div>
-            )
+          typy(children).safeArray.map((child, index) => {
+            return (<Box key={index} sx={sx[displayLayout]}>{child}</Box>)
           })
         }
-      </div>
-    </React.Fragment>
+      </Flex>
+    </LayoutContext.Provider>
   )
 }
 
 CardGroup.propTypes = {
-  label: PropTypes.string,
-  children: PropTypes.array,
+  children: PropTypes.node,
+  defaultDisplay: PropTypes.string,
+  toggleGroup: PropTypes.string,
+  extraControls: PropTypes.func,
+  allowToggle: PropTypes.bool,
+}
+
+CardGroup.defaultProps = {
+  toggleGroup: 'default',
+  defaultDisplay: DISPLAY_GRID,
+  allowToggle: true,
 }
 
 export default CardGroup

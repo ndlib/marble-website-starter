@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import HitDisplay, { HitList, HitGrid } from './'
 import HitResult from './HitResult'
-import DisplayViewToggle from 'components/Shared/DisplayViewToggle'
+import CardGroup from 'components/Shared/CardGroup'
 
 const hits = [
   { _id: 'a', highlight: { 'allMetadata.folded': ['<em>data</em>'] } },
@@ -21,7 +21,7 @@ test('HitGrid', () => {
 
 test('HitDisplay', () => {
   const wrapper = shallow(<HitDisplay hits={hits} />)
-  expect(wrapper.find(DisplayViewToggle).exists()).toBeTruthy()
+  expect(wrapper.find(CardGroup).exists()).toBeTruthy()
   expect(wrapper.find(HitResult).length).toEqual(3)
 })
 
