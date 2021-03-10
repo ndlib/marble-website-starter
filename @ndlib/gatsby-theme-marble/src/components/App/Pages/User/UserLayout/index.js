@@ -7,7 +7,8 @@ import Gravatar from 'components/Shared/Gravatar'
 import PromptLogin from './PromptLogin'
 import EditUserButton from './EditUserButton'
 import { isLoggedIn, ownsPage } from 'utils/auth'
-import style from './style.module.css'
+import sx from './sx'
+
 export const UserLayout = ({ user, children, location, loginReducer }) => {
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
@@ -19,30 +20,33 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         title={user.userName}
         noIndex
       />
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '25%', '25%'] }}>
-          <div className={style.identityGroup}>
-            <Gravatar email={user.email} />
-            <div className={style.identity}>
-              <BaseStyles>
+      <BaseStyles>
+
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: ['100%', '25%', '25%'], px: '1rem', py: '1rem' }}>
+            <Flex sx={{ flexWrap: 'wrap' }}>
+              <Box sx={{ width: ['25%', '100%', '100%'] }}>
+                <Gravatar email={user.email} />
+              </Box>
+              <Box sx={{ width: ['75%', '100%', '100%'], px: '1rem' }}>
                 <h1>{user.fullName}</h1>
                 <h2>{user.userName}</h2>
-              </BaseStyles>
+              </Box>
+            </Flex>
+            <div sx={sx.bio}>{user.bio}</div>
+            <div>
+              {
+                /* Follow or Edit button */
+                isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
+              }
             </div>
-          </div>
-          <div className={style.bio}>{user.bio}</div>
-          <div>
-            {
-            /* Follow or Edit button */
-              isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
-            }
-          </div>
 
-        </Box>
-        <Box sx={{ width: ['100%', '75%', '75%'] }}>
-          {children}
-        </Box>
-      </Flex>
+          </Box>
+          <Box sx={{ width: ['100%', '75%', '75%'], py: '1rem' }}>
+            {children}
+          </Box>
+        </Flex>
+      </BaseStyles>
     </>
 
   )

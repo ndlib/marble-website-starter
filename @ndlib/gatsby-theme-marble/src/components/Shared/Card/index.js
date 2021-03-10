@@ -80,6 +80,7 @@ MarbleCard.propTypes = {
   referal: PropTypes.object,
   onClick: PropTypes.func,
   variant: PropTypes.string,
+  imageTag: PropTypes.object,
 }
 
 MarbleCard.defaultProps = {
