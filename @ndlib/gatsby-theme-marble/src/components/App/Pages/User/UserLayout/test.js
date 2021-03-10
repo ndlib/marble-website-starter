@@ -27,8 +27,6 @@ describe('UserLayout', () => {
     jest.spyOn(Auth, 'ownsPage').mockImplementationOnce(() => true)
     const wrapper = shallow(<UserLayout {...props}><div className='childContent' /></UserLayout>)
     expect(wrapper.find(Seo).props().title).toEqual('person_user')
-    expect(wrapper.find(MultiColumn).props().columns).toEqual('5')
-    expect(wrapper.find(Column).length).toEqual(2)
     expect(wrapper.find(Gravatar).props().email).toEqual('me@email.web')
     expect(wrapper.find('.identityGroup').html()).toContain('Person User')
     expect(wrapper.find('.identityGroup').html()).toContain('person_user')
