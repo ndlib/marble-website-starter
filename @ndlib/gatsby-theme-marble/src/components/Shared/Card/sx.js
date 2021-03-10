@@ -27,7 +27,7 @@ module.exports = {
       height: '435px',
       overflow: 'hidden',
       position: 'relative',
-      width: '100%',
+
     }
   },
   imageBoarder: {

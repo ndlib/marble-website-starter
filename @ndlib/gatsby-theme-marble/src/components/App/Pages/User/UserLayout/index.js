@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { BaseStyles } from 'theme-ui'
+import { BaseStyles, Flex, Box } from 'theme-ui'
 import Seo from 'components/Shared/Seo'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
@@ -21,8 +21,8 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         title={user.userName}
         noIndex
       />
-      <MultiColumn columns='5'>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '25%', '25%'] }}>
           <div className={style.identityGroup}>
             <Gravatar email={user.email} />
             <div className={style.identity}>
@@ -40,11 +40,11 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
             }
           </div>
 
-        </Column>
-        <Column colSpan='4'>
+        </Box>
+        <Box sx={{ width: ['100%', '75%', '75%'] }}>
           {children}
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
     </>
 
   )

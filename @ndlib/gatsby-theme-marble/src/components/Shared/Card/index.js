@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles, jsx } from 'theme-ui'
+import { BaseStyles, jsx, Card } from 'theme-ui'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
 import ExternalLinkIcon from './ExternalLinkIcon'
@@ -9,7 +9,7 @@ import TypeLabel from './TypeLabel'
 import { LayoutContext } from 'components/Shared/CardGroup'
 import sx from './sx'
 
-const Card = ({
+const MarbleCard = ({
   target,
   label,
   image,
@@ -20,14 +20,19 @@ const Card = ({
   imageService,
   imageRegion,
   onClick,
-  showAsList,
   variant,
+  imageTag,
 }) => {
-  let wide = useContext(LayoutContext) === 'list'
-  if (showAsList) {
-    wide = true
+  const wide = useContext(LayoutContext) === 'list'
+  let DisplayImage = (<Image
+    src={image || null}
+    service={imageService || null}
+    region={imageRegion || 'full'}
+    alt={label}
+  />)
+  if (imageTag) {
+    DisplayImage = imageTag
   }
-
   return (
     <CardWrapper
       target={target}
@@ -35,7 +40,7 @@ const Card = ({
       referal={referal}
       onClick={onClick}
     >
-      <BaseStyles>
+      <Card>
         <div sx={{ variant: variant }}>
           <article sx={sx.wrapper(wide)}>
             <figure sx={sx.figure}>
@@ -43,12 +48,7 @@ const Card = ({
                 <div sx={sx.imageWrapperInner}>
                   <div sx={sx.imageBoarder}>
                     <TypeLabel type={type} />
-                    <Image
-                      src={image || null}
-                      service={imageService || null}
-                      region={imageRegion || 'full'}
-                      alt={label}
-                    />
+                    {DisplayImage}
                     <ExternalLinkIcon target={target} />
                   </div>
                 </div>
@@ -63,12 +63,12 @@ const Card = ({
             </figure>
           </article>
         </div>
-      </BaseStyles>
+      </Card>
     </CardWrapper>
   )
 }
 
-Card.propTypes = {
+MarbleCard.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
   image: PropTypes.string,
@@ -79,14 +79,13 @@ Card.propTypes = {
   location: PropTypes.object,
   referal: PropTypes.object,
   onClick: PropTypes.func,
-  showAsList: PropTypes.bool,
   variant: PropTypes.string,
 }
 
-Card.defaultProps = {
+MarbleCard.defaultProps = {
   children: null,
   cardClass: 'basicCard',
   showAsList: false,
   variant: 'card.primary',
 }
-export default Card
+export default MarbleCard
