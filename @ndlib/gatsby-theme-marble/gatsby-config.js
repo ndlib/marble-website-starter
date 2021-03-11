@@ -3,9 +3,9 @@ const path = require('path')
 module.exports = ({
   useLogin = false,
 }) => ({
-  // mapping: {
-  //   'MarbleFile.collectionId': 'MarbleItem.id',
-  // },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     {
       resolve: 'gatsby-plugin-root-import',

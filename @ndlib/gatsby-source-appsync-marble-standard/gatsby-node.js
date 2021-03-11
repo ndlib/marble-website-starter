@@ -4,8 +4,11 @@ const getItems = require('./src/getItems')
 const macDNS = require('./src/macDNS')
 // const writeDebug = require('./src/writeDebug')
 
-exports.sourceNodes = async ({ actions, createContentDigest, cache }, pluginOptions) => {
-  const { createNode, touchNode } = actions
+exports.sourceNodes = async (
+  { actions, createContentDigest, cache },
+  pluginOptions,
+) => {
+  const { createNode } = actions
   const { url, key, website } = pluginOptions
   await macDNS(url)
 
@@ -66,7 +69,6 @@ exports.sourceNodes = async ({ actions, createContentDigest, cache }, pluginOpti
       }
       const node = Object.assign({}, item, nodeMeta)
       createNode(node)
-      touchNode(node)
     }
   })
   console.timeEnd('generate standard nodes')
