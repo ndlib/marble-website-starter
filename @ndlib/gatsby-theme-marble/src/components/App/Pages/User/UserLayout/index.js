@@ -21,7 +21,6 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         noIndex
       />
       <BaseStyles>
-
         <Flex sx={{ flexWrap: 'wrap' }}>
           <Box sx={{ width: ['100%', '25%', '25%'], px: '1rem', py: '1rem' }}>
             <Flex sx={{ flexWrap: 'wrap' }}>
@@ -33,7 +32,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
                 <h2>{user.userName}</h2>
               </Box>
             </Flex>
-            <div sx={sx.bio}>{user.bio}</div>
+            <div id='bio' sx={sx.bio}>{user.bio}</div>
             <div>
               {
                 /* Follow or Edit button */

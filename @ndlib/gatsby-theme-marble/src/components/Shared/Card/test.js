@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { BaseStyles } from 'theme-ui'
 import Card from './'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
