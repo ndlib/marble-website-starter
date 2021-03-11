@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { BaseStyles } from 'theme-ui'
 import Card from './'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
@@ -17,7 +16,6 @@ test('Card', () => {
   }
   const wrapper = mount(<Card {...props} />)
   expect(wrapper.find(CardWrapper).exists()).toBeTruthy()
-  expect(wrapper.find(BaseStyles).exists()).toBeTruthy()
   expect(wrapper.find('article').exists()).toBeTruthy()
   expect(wrapper.find('figure').exists()).toBeTruthy()
   expect(wrapper.find(Image).props().src).toEqual('img.png')
