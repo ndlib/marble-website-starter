@@ -1,9 +1,9 @@
 const pruneEmptyLeaves = require('./src/pruneEmptyLeaves')
 const { crawlStandardJson } = require('./src/crawlStandardJson')
 
-// exports.sourceNodes = async (gatsbyInternal, pluginOptions) => {
-//   makeMarbleNodes(gatsbyInternal, pluginOptions)
-// }
+exports.sourceNodes = async (gatsbyInternal, pluginOptions) => {
+  makeMarbleNodes(gatsbyInternal, pluginOptions)
+}
 
 exports.onCreateNode = async (gatsbyInternal, pluginOptions) => {
   makeMarbleNodes(gatsbyInternal, pluginOptions)
