@@ -50,7 +50,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
           <ActionButtonGroup marbleItem={marbleItem} />
         </Column>
       </MultiColumn>
-      <Divider />
+      <Divider sx={sx.hr} />
       <MultiColumn columns='5'>
         <Column colSpan='3'>
           <div sx={sx.mainMetadata}>
@@ -66,7 +66,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
       <div sx={sx.contactMetadata}>
         <ManifestMetaData marbleItem={contactUsMetadata} />
       </div>
-      <Divider />
+      <Divider sx={sx.hr} />
       <SiblingItems
         marbleItem={marbleItem}
         numberBeforeAndAfter={3}
