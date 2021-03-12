@@ -9,7 +9,7 @@ import Column from 'components/Shared/Column'
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
-import HorizontalRule from 'components/Shared/HorizontalRule'
+import { Divider } from 'theme-ui'
 import TombstoneMetadata from './TombstoneMetadata'
 import SiblingItems from 'components/Shared/SiblingItems'
 import sx from './sx'
@@ -50,7 +50,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
           <ActionButtonGroup marbleItem={marbleItem} />
         </Column>
       </MultiColumn>
-      <HorizontalRule color={primary} />
+      <Divider />
       <MultiColumn columns='5'>
         <Column colSpan='3'>
           <div sx={sx.mainMetadata}>
@@ -66,7 +66,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
       <div sx={sx.contactMetadata}>
         <ManifestMetaData marbleItem={contactUsMetadata} />
       </div>
-      <HorizontalRule color={primary} />
+      <Divider />
       <SiblingItems
         marbleItem={marbleItem}
         numberBeforeAndAfter={3}
