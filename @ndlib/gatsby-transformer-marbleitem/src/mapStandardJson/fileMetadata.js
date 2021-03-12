@@ -58,7 +58,8 @@ const getIiif = (file) => {
       baseUri = file.iiifImageServiceUri.replace('libraries', 'library')
       imagePath = encodeURIComponent(file.filePath.replace(imageExtension, ''))
     } else {
-      console.log(file.id)
+      // TODO: THIS IS HERE FOR BACKWARDS SUPPORT WITH JSON FILES. EVENTUALLY REMOVE.
+      // console.log(file.id)
       baseUri = new URL(file.iiifImageUri).origin
       imagePath = new URL(file.iiifImageUri).pathname
     }
