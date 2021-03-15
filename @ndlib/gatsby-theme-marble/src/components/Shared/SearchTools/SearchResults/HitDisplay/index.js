@@ -10,7 +10,7 @@ const HitDisplay = ({ hits }) => {
     <CardGroup
       defaultDisplay='list'
       toggleGroup='search'
-      extraControls={SearchAdditionalTools}
+      extraControls={!referal.query ? null : SearchAdditionalTools}
     >
       {
         hits ? hits.map(
