@@ -45,4 +45,13 @@ module.exports = {
     },
   },
   contactMetadata: {},
+  hr: {
+    borderTop: '2px solid',
+    borderColor: '#337684',
+    marginBottom: ['2rem', '3rem', '3rem'],
+    marginTop: ['2rem', '3rem', '3rem'],
+    maxWidth: '80%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
 }
