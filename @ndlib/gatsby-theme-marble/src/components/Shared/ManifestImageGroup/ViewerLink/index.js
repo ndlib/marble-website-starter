@@ -40,12 +40,15 @@ const ViewerLink = ({
         fullscreen
       >
         <iframe
+          allowFullScreen
           title='IIIF Viewer'
           src={`${viewerLink}&title=false`}
           style={{
             border: 'none',
             height: 'calc(100vh - 92px - 3rem)',
             width: 'calc(100vw - 92px)',
+            position: 'absolute',
+            left: '0',
           }}
         />
       </ActionModal>
