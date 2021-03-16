@@ -88,6 +88,17 @@ export const theme = {
     highlightWithOpacity: '#d39f1052',
     callout: '#f3efe3',
   },
+  card: {
+    primary: {
+      '& h2': {
+        color: 'gray.4',
+        fontFamily: 'title',
+      },
+      '& figcaption div': {
+        color: 'gray.4',
+      },
+    },
+  },
   styles: {
     Layout: {
       color: 'gray.4',
