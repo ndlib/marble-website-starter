@@ -2,14 +2,21 @@ const cliProgress = require('cli-progress')
 const getListOfItems = require('./src/getListOfItems')
 const getItems = require('./src/getItems')
 const macDNS = require('./src/macDNS')
-// const writeDebug = require('./src/writeDebug')
+const fixtureData = require('./data/debug')
+const testItemList = require('./data/testItemList')
+const writeDebug = require('./src/writeDebug')
 
+// eslint-disable-next-line complexity
 exports.sourceNodes = async (
   { actions, createContentDigest, cache },
   pluginOptions,
 ) => {
   const { createNode } = actions
-  const { url, key, website } = pluginOptions
+  const { url, key, website, generateFixtures = false, useFixtures = false } = pluginOptions
+  if ((!url || !key || !website) && !useFixtures) {
+    console.error('Attempted to use the plugin without a required parameter!!!')
+    return 1
+  }
   await macDNS(url)
 
   console.time('total time')
@@ -17,7 +24,14 @@ exports.sourceNodes = async (
 
   const cachedList = await cache.get('standardItemListCacheKey')
   let itemList
-  if (cachedList) {
+  if (useFixtures || generateFixtures) {
+    console.log('||||||||||||||||||||||||||||||||||||||||||||||')
+    console.log('')
+    console.log('Using predefined fixture data for testing!!!!!')
+    console.log('')
+    console.log('||||||||||||||||||||||||||||||||||||||||||||||')
+    itemList = testItemList
+  } else if (cachedList) {
     // console.log('Have a cached list of items.')
     itemList = cachedList
   } else {
@@ -30,7 +44,9 @@ exports.sourceNodes = async (
 
   const cachedStandardEverything = await cache.get('standardItemsCachedKey')
   let everything
-  if (cachedStandardEverything) {
+  if (useFixtures) {
+    everything = fixtureData
+  } else if (cachedStandardEverything) {
     // console.log('Have a giant cache blob of everything.')
     everything = cachedStandardEverything
   } else {
@@ -55,7 +71,10 @@ exports.sourceNodes = async (
   }
   await cache.set('standardItemsCachedKey', everything)
   console.timeEnd('fetch items')
-  // await writeDebug(everything)
+
+  if (generateFixtures) {
+    await writeDebug(everything)
+  }
   console.time('generate standard nodes')
   everything.forEach(item => {
     if (item && item.id) {
