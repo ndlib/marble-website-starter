@@ -65,10 +65,13 @@ const getIiif = (file) => {
     }
     // TODO THIS NEEDS FIXED
     baseUri = baseUri.replace('libraries', 'library')
+    if (baseUri.slice(-1) !== '/') {
+      baseUri = baseUri + '/'
+    }
     return {
-      default: path.join(baseUri, imagePath, 'full/full/0/default.jpg'),
+      default: baseUri + path.join(imagePath, 'full/full/0/default.jpg'),
       service: baseUri,
-      thumbnail: path.join(baseUri, imagePath, 'full/!250,250/0/default.jpg'),
+      thumbnail: baseUri + path.join(imagePath, 'full/!250,250/0/default.jpg'),
     }
   }
   return null
