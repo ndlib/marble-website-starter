@@ -11,12 +11,12 @@ const hits = [
 ]
 test('HitList', () => {
   const wrapper = shallow(<HitList hits={hits} />)
-  expect(wrapper.find(HitDisplay).props().defaultDisplay).toEqual('SEARCH_PAGE')
+  expect(wrapper.find(HitDisplay).props().defaultDisplay).toEqual('list')
 })
 
 test('HitGrid', () => {
   const wrapper = shallow(<HitGrid hits={hits} />)
-  expect(wrapper.find(HitDisplay).props().defaultDisplay).toEqual('COLLECTION_PAGE')
+  expect(wrapper.find(HitDisplay).props().defaultDisplay).toEqual('grid')
 })
 
 test('HitDisplay', () => {
