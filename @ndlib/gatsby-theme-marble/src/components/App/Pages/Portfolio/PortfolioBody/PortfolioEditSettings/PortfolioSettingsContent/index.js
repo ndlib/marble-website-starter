@@ -2,8 +2,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
 import DangerDelete from './DangerDelete'

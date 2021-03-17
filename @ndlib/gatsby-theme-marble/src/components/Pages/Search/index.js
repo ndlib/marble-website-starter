@@ -1,4 +1,6 @@
+/** @jsx jsx */
 import React from 'react'
+import { jsx, Flex, Box } from 'theme-ui'
 import SearchBase from 'components/Shared/SearchBase'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
@@ -11,8 +13,8 @@ const Search = () => {
   return (
     <SearchBase>
       <SearchFilterBox />
-      <MultiColumn columns='4'>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '25%'], px: '1rem', py: '1rem' }}>
           <TagFilterConfig field='creator.keyword' title='Creator' id='creator' />
           <TagFilterConfig field='collection.keyword' title='Collection' id='collection' />
 
@@ -46,11 +48,11 @@ const Search = () => {
             sort='default'
             size='4'
           />
-        </Column>
-        <Column colSpan='3'>
+        </Box>
+        <Box sx={{ width: ['100%', '75%'], px: '1rem', py: '1rem' }}>
           <SearchResults defaultDisplay='list' />
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
     </SearchBase>
   )
 }
