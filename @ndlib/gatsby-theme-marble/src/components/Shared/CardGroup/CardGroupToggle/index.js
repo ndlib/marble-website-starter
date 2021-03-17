@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import ToggleButton from './ToggleButton'
 import sx from './sx.js'
 import { useDispatch } from 'react-redux'
-import { jsx, Grid, Box } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import {
   DISPLAY_GRID,
   DISPLAY_LIST,
@@ -35,7 +35,7 @@ export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
     return null
   })
   return (
-    <Grid columns={[2, 'auto 100px']} sx={sx.wrapper} >
+    <Flex sx={sx.wrapper} >
       <Box>
         <ExtraControls />
       </Box>
@@ -56,7 +56,7 @@ export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
           })
         }
       </Box>
-    </Grid>
+    </Flex>
   )
 }
 
