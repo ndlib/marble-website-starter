@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles, jsx } from 'theme-ui'
+import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import VisibilitySettings from './VisibilitySettings'
@@ -32,8 +32,8 @@ const PortfolioSettingsContent = ({ callBack }) => {
           changed={layout !== portfolio.layout || privacy !== portfolio.privacy}
         />
       </div>
-      <MultiColumn columns='2'>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '66%'], px: '1rem', py: '1rem' }}>
           <label htmlFor='layoutDisplay'>
             <BaseStyles>
               <h2>Layout</h2>
@@ -50,14 +50,14 @@ const PortfolioSettingsContent = ({ callBack }) => {
               onChange={changePrivacy}
             />
           </label>
-        </Column>
-        <Column>
+        </Box>
+        <Box sx={{ width: ['100%', '33%'], py: '1rem' }}>
           <label htmlFor='delete'>
             <h2>Danger Zone</h2>
             <DangerDelete portfolio={portfolio} />
           </label>
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
 
     </React.Fragment>
   )
