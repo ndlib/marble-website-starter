@@ -5,8 +5,6 @@ import SearchBase from 'components/Shared/SearchBase'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
 import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefinementListFilter'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
 import { TagFilterConfig } from 'searchkit'
 
 const Search = () => {
