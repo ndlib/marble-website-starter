@@ -88,7 +88,7 @@ export const theme = {
     highlightWithOpacity: '#d39f1052',
     callout: '#f3efe3',
   },
-  card: {
+  cards: {
     primary: {
       '& h2': {
         color: 'gray.4',
