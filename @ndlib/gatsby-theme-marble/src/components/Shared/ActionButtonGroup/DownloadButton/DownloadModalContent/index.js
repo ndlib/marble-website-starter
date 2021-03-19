@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles, jsx } from 'theme-ui'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
+import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
 import DownloadImage from './DownloadImage'
 import DownloadMetadata from './DownloadMetadata'
 import DownloadPdf from './DownloadPdf'
@@ -14,14 +12,14 @@ import sx from './sx'
 const DownloadModalContent = ({ marbleItem }) => {
   return (
     <React.Fragment>
-      <MultiColumn columns='2'>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '1rem' }}>
           <BaseStyles>
             <h2 sx={sx.header}>Image</h2>
           </BaseStyles>
           <DownloadImage marbleItem={marbleItem} />
-        </Column>
-        <Column>
+        </Box>
+        <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '1rem' }}>
           <BaseStyles>
             <h2 sx={sx.header}>Metadata</h2>
           </BaseStyles>
@@ -30,8 +28,8 @@ const DownloadModalContent = ({ marbleItem }) => {
             <DownloadPdf marbleItem={marbleItem} />
           </div>
           <DownloadCitation marbleItem={marbleItem} />
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
       <Copyright />
     </React.Fragment>
   )

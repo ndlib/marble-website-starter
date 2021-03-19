@@ -36,10 +36,10 @@ export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
   })
   return (
     <Flex sx={sx.wrapper} >
-      <Box>
+      <Box sx={{ width: '100%', py: '2px', paddingRight: '5px' }}>
         <ExtraControls />
       </Box>
-      <Box>
+      <Box sx={{ minWidth: '100px' }}>
         {
           options.map(opt => {
             const isActive = (layout === opt.display)

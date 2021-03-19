@@ -2,14 +2,11 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx, useThemeUI } from 'theme-ui'
+import { jsx, useThemeUI, Divider, Flex, Box } from 'theme-ui'
 import typy from 'typy'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
-import { Divider } from 'theme-ui'
 import TombstoneMetadata from './TombstoneMetadata'
 import SiblingItems from 'components/Shared/SiblingItems'
 import sx from './sx'
@@ -37,32 +34,32 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
 
   return (
     <>
-      <MultiColumn>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box>
           <TombstoneMetadata marbleItem={marbleItem} />
-        </Column>
-        <Column>
+        </Box>
+        <Box>
           <ManifestImageGroup
             location={location}
             marbleItem={marbleItem}
             allMarbleFile={allMarbleFile}
           />
           <ActionButtonGroup marbleItem={marbleItem} />
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
       <Divider sx={sx.hr} />
-      <MultiColumn columns='5'>
-        <Column colSpan='3'>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '60%'], px: '1rem', py: '1rem' }}>
           <div sx={sx.mainMetadata}>
             <ManifestMetaData marbleItem={mainMetaData} />
           </div>
-        </Column>
-        <Column colSpan='2'>
+        </Box>
+        <Box sx={{ width: ['100%', '40%'], px: '1rem', py: '1rem' }}>
           <div sx={sx.sideMetadata}>
             <ManifestMetaData marbleItem={accessMetadata} />
           </div>
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
       <div sx={sx.contactMetadata}>
         <ManifestMetaData marbleItem={contactUsMetadata} />
       </div>

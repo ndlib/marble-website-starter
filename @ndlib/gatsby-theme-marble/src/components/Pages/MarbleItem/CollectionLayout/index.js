@@ -1,7 +1,8 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
+import { jsx, Flex, Box } from 'theme-ui'
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ManifestDescription from 'components/Shared/ManifestDescription'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
@@ -14,14 +15,14 @@ const CollectionLayout = ({ marbleItem, location }) => {
     marbleItem.childrenMarbleFile[0]) : null
   return (
     <>
-      <MultiColumn columns='5'>
-        <Column colSpan='2'>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '40%'], px: '1rem', py: '1rem' }}>
           <ActionButtonGroup marbleItem={marbleItem} />
           <ManifestDescription marbleItem={marbleItem} />
           <ManifestMetaData marbleItem={marbleItem} />
           <PartiallyDigitized marbleItem={marbleItem} />
-        </Column>
-        <Column colSpan='3'>
+        </Box>
+        <Box sx={{ width: ['100%', '60%'], px: '1rem', py: '1rem' }}>
           {headerItem ? (
             <ManifestImageGroup
               location={location}
@@ -32,8 +33,8 @@ const CollectionLayout = ({ marbleItem, location }) => {
             marbleItem={marbleItem}
             location={location}
           />
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
     </>
   )
 }

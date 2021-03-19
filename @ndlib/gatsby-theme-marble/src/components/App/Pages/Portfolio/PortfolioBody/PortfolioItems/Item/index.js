@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import typy from 'typy'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
 import Card from 'components/Shared/Card'
 import EditItemForm from './EditItemForm'
 import ItemControls from './ItemControls'
@@ -46,12 +44,14 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
   if (annotated) {
     return (
       <div sx={sx.item}>
-        <MultiColumn columns='5'>
-          <Column colSpan='3'>{item.annotation}</Column>
-          <Column colSpan='2'>
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: ['100%', '60%', '60%'], px: '1rem', py: '1rem' }}>
+            {item.annotation}
+          </Box>
+          <Box sx={{ width: ['100%', '40%'], py: '1rem' }}>
             {card}
-          </Column>
-        </MultiColumn>
+          </Box>
+        </Flex>
       </div>
     )
   }
