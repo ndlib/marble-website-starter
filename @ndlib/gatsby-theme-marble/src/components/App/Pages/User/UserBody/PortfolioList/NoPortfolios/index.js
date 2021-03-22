@@ -3,7 +3,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-import NewPortfolioButton from '../NewPortfolioButton'
 
 const NoPortfolios = ({ isOwner = false, button }) => {
   const sx = {
