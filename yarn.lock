@@ -3684,6 +3684,11 @@
     "@emotion/react" "^11.1.1"
     "@theme-ui/css" "0.6.0-alpha.7"
 
+"@theme-ui/preset-bootstrap@^0.3.5":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@theme-ui/preset-bootstrap/-/preset-bootstrap-0.3.5.tgz#de7283defd264bf8eab57fd98271274a8eeb1c38"
+  integrity sha512-dgDGKcyAdXe7wg23iI1vh4srvqYrjKzWDtwZqW2RuKzPgyYbqnmo0gIz+twU3xL3xCeARBs1tsnZ/EgVugEIJA==
+
 "@theme-ui/theme-provider@0.6.0-alpha.7":
   version "0.6.0-alpha.7"
   resolved "https://registry.yarnpkg.com/@theme-ui/theme-provider/-/theme-provider-0.6.0-alpha.7.tgz#a8aae09e10ac4986d1ae239aaf7d4d37bb61148e"
