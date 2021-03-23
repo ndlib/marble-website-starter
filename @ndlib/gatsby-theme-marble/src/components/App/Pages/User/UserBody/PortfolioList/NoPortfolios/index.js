@@ -32,6 +32,11 @@ const NoPortfolios = ({ isOwner = false, button }) => {
 
 NoPortfolios.propTypes = {
   isOwner: PropTypes.bool,
+  button: PropTypes.object,
+}
+
+NoPortfolios.defaultProps = {
+  button: null,
 }
 
 export default NoPortfolios
