@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { JsonLd } from 'gatsby-plugin-next-seo'
 
 export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
-  if (pathname === '/')
+  if (pathname === '/') {
   return (
     <>
       <JsonLd
@@ -17,7 +17,7 @@ export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
         }}
       />
     </>
-  )
+  )}
 }
 
 WebsiteJsonLd.propTypes = {
