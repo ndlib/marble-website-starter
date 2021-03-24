@@ -4,7 +4,6 @@ import { JsonLd } from 'gatsby-plugin-next-seo'
 
 export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
   if (pathname === '/')
-  console.log(pathname)
   return (
     <>
       <JsonLd
@@ -21,7 +20,7 @@ export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
   )
 }
 
-WebsiteJsonLd.propTypes = { 
+WebsiteJsonLd.propTypes = {
   pathname: PropTypes.string,
   siteUrl: PropTypes.string.isRequired,
 }
