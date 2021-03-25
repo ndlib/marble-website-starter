@@ -106,7 +106,12 @@ const PortfolioList = ({
       </>
     )
   }
-  return <NoPortfolios isOwner={isOwner} />
+  return <NoPortfolios isOwner={isOwner} button={(
+    <NewPortfolioButton
+      addFunc={setPortfolios}
+      portfolios={portfolios}
+    />
+  )} />
 }
 
 PortfolioList.propTypes = {
