@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-source-appsync-marble-standard",
+  "name": "@ndlib/gatsby-source-appsync-marble",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -13,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "batch-promises": "^0.0.3",
-    "cli-progress": "^3.9.0",
     "isomorphic-fetch": "^3.0.0"
   }
 }
