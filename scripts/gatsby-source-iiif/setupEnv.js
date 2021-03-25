@@ -6,16 +6,11 @@ const appConfig = process.argv.slice(2)[0]
 const possibleKeys = [
   'SEARCH_URL',
   'SEARCH_INDEX',
-  'GOOGLE_MAP_KEY',
   'USER_CONTENT_PATH',
   'AUTH_CLIENT_ID',
   'AUTH_CLIENT_URL',
   'AUTH_CLIENT_ISSUER',
   'S3_DEST_BUCKET',
-  'ALLOW_ROBOTS',
-  'IIIF_VIEWER_URL',
-  'SKIP_METADATA_PRUNE',
-  'ONLY_SEARCH_CHILDNODES',
   'GRAPHQL_API_KEY',
   'GRAPHQL_API_URL',
 ]
