@@ -22,7 +22,7 @@ export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
 }
 
 WebsiteJsonLd.propTypes = {
-  pathname: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
   siteUrl: PropTypes.string.isRequired,
 }
 
