@@ -56,7 +56,7 @@ const getIiif = (item) => {
   if (getFileType(item.mimeType) === 'image') {
     return {
       default: item.mediaServer + '/' + item.mediaResourceId + '/full/!250,250/0/default.jpg',
-      service: item.mediaServer + '/',
+      service: item.mediaServer + '/' + item.mediaResourceId,
       thumbnail: item.mediaServer + '/' + item.mediaResourceId + '/full/full/0/default.jpg',
     }
   }
