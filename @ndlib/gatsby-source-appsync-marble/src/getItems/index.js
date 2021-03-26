@@ -9,12 +9,13 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
   const { createParentChildLink } = gatsbyInternal.actions
 
   return await batchPromises(
-    10,
+    1,
     itemList,
     itemStub => new Promise((resolve, reject) => {
       // Results for getItemList have an id of "itemId"
       // Children created recursively will have an id of "id"
       const itemId = itemStub.itemId || itemStub.id
+      console.log(itemId)
       fetch(
         url,
         {
