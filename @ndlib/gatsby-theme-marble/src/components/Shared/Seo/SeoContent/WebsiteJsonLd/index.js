@@ -9,7 +9,7 @@ export default function WebsiteJsonLd({ pathname, siteUrl }) {
         {{
           "@context": "https://schema.org",
           "@type": "Website",
-          url: {siteUrl},
+          url: `${siteUrl}/`,
           potentialAction: {
             "@type": "SearchAction",
             target: `${siteUrl}/search?q={search_term_string}`,
