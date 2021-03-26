@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { JsonLd } from 'gatsby-plugin-next-seo'
-import { Website } from 'schema-dts'
 
 export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
   if (pathname === '/') {
