@@ -29,7 +29,7 @@ const ViewerLink = ({
         onKeyDown={(ev) => {
           if (ev.keyCode === 13) {
             setModalOpen(!modalOpen)
-           }
+          }
         }}
         sx={{
           cursor: 'pointer',
