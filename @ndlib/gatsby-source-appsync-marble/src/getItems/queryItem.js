@@ -20,13 +20,12 @@ module.exports = (itemId, website) => {
       description
       digitalAccess
       dimensions
-      expireTime
       files {
         items {
           id
-          iiifImageUri
-          iiifUri
-          objectFileGroupId
+          mediaResourceId
+          mediaServer
+          mimeType
           sequence
         }
       }
