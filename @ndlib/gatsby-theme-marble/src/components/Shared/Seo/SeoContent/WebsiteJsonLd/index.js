@@ -19,6 +19,7 @@ export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
       </>
     )
   }
+  return null
 }
 
 WebsiteJsonLd.propTypes = {
