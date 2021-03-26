@@ -13,7 +13,7 @@ describe('WebsiteJsonLd component', () => {
     expect(testInstance.findByType(JsonLd).props.context).toBe('https://schema.org')
     expect(testInstance.findByType(JsonLd).props.potentialAction.target).toBe('https://marble.nd.edu/search?q={search_term_string}')
     expect(testInstance.findByType(JsonLd).props.potentialAction.type).toBe('SearchAction')
-    expect(testInstance.findByType(JsonLd).props.potentialAction.queryInput).toBe('required name=search_term_string')
+    expect(testInstance.findByType(JsonLd).props.potentialAction.query-input).toBe('required name=search_term_string')
   })
 
   it('renders on homepage', () => {
