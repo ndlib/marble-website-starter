@@ -9,7 +9,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
   const { createParentChildLink } = gatsbyInternal.actions
 
   return await batchPromises(
-    1,
+    10,
     itemList,
     itemStub => new Promise((resolve, reject) => {
       // Results for getItemList have an id of "itemId"
