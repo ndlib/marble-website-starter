@@ -3,7 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-const NoPortfolios = ({ isOwner = false }) => {
+
+const NoPortfolios = ({ isOwner = false, button }) => {
   const sx = {
     border: '1px solid',
     borderColor: 'gray.1',
@@ -17,6 +18,8 @@ const NoPortfolios = ({ isOwner = false }) => {
     return (
       <div sx={sx}>
         <p>You have not created any portfolios yet.</p>
+        {button}
+
       </div>
     )
   }
@@ -29,6 +32,11 @@ const NoPortfolios = ({ isOwner = false }) => {
 
 NoPortfolios.propTypes = {
   isOwner: PropTypes.bool,
+  button: PropTypes.object,
+}
+
+NoPortfolios.defaultProps = {
+  button: null,
 }
 
 export default NoPortfolios

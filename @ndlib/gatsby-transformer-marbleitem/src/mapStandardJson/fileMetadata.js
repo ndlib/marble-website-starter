@@ -50,40 +50,25 @@ const getExtension = (id) => {
   return matches ? matches[0].replace('.', '') : null
 }
 
-// const getIiif = (file) => {
-//   if (getFileType(file.id) === 'image') {
-//     let baseUri
-//     let imagePath
-//     if (file.iiifImageServiceUri && file.filePath) {
-//       baseUri = file.iiifImageServiceUri.replace('libraries', 'library')
-//       imagePath = encodeURIComponent(file.filePath.replace(imageExtension, ''))
-//     } else {
-//       // TODO: THIS IS HERE FOR BACKWARDS SUPPORT WITH JSON FILES. EVENTUALLY REMOVE.
-//       // console.log(file.id)
-//       baseUri = new URL(file.iiifImageUri).origin
-//       imagePath = new URL(file.iiifImageUri).pathname
-//     }
-//     // TODO THIS NEEDS FIXED
-//     baseUri = baseUri.replace('libraries', 'library')
-//     if (baseUri.slice(-1) !== '/') {
-//       baseUri = baseUri + '/'
-//     }
-//     return {
-//       default: baseUri + path.join(imagePath, 'full/full/0/default.jpg'),
-//       service: baseUri,
-//       thumbnail: baseUri + path.join(imagePath, 'full/!250,250/0/default.jpg'),
-//     }
-//   }
-//   return null
-// }
-
-const getIiif = (standardJson) => {
-  if (getFileType(standardJson.id) === 'image') {
-    const iiifUrl = new URL(standardJson.iiifImageUri)
+const getIiif = (file) => {
+  if (getFileType(file.id) === 'image') {
+    let baseUri
+    let imagePath
+    if (file.iiifImageServiceUri && file.filePath) {
+      baseUri = file.iiifImageServiceUri.replace('libraries', 'library')
+      imagePath = encodeURIComponent(file.filePath.replace(imageExtension, ''))
+    } else {
+      // TODO: THIS IS HERE FOR BACKWARDS SUPPORT WITH JSON FILES. EVENTUALLY REMOVE.
+      // console.log(file.id)
+      baseUri = new URL(file.iiifImageUri).origin
+      imagePath = new URL(file.iiifImageUri).pathname
+    }
+    // TODO THIS NEEDS FIXED
+    baseUri = baseUri.replace('libraries', 'library')
     return {
-      default: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/full/0/default.jpg'),
-      service: standardJson.iiifImageUri,
-      thumbnail: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/!250,250/0/default.jpg'),
+      default: baseUri + '/' + path.join(imagePath, 'full/full/0/default.jpg'),
+      service: baseUri + '/' + imagePath,
+      thumbnail: baseUri + '/' + path.join(imagePath, 'full/!250,250/0/default.jpg'),
     }
   }
   return null
