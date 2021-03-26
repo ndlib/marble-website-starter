@@ -5,20 +5,18 @@ import { JsonLd } from 'gatsby-plugin-next-seo'
 export const WebsiteJsonLd = ({ pathname, siteUrl }) => {
   if (pathname === '/') {
     return (
-      <>
-        <JsonLd
-          item={{
-            '@context': 'https://schema.org',
-            '@type': 'Website',
-            url: {siteUrl},
-            potentialAction: {
-              '@type': 'SearchAction',
-              target: `${siteUrl}/search?q={search_term_string}`,
-              'query-input': 'required name=search_term_string',
-            },
-          }}
-        />
-      </>
+      <JsonLd
+        item={{
+          '@context': 'https://schema.org',
+          '@type': 'Website',
+          url: {siteUrl},
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: `${siteUrl}/search?q={search_term_string}`,
+            'query-input': 'required name=search_term_string',
+          },
+        }}
+      />
     )
   }
   return null
