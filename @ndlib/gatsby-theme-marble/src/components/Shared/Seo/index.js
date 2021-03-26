@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import SeoContent from 'components/Shared/Seo/SeoContent'
-import DataLayer from './DataLayer'
 export const Seo = ({
   data,
   location,
@@ -32,7 +31,7 @@ export const Seo = ({
           publicURL
         }
       }
-    `
+    `,
   )
   const { siteMetadata } = site
   return (
