@@ -2,18 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { JsonLd } from '../JsonLd'
 
-export default function WebsiteJsonLd({ pathname, siteUrl }) {
+export default function WebsiteJsonLd( { pathname, siteUrl } ) {
   if (pathname === '/') {
     return (
       <JsonLd>
         {{
-          "@context": "https://schema.org",
-          "@type": "Website",
+          '@context': 'https://schema.org',
+          '@type': 'Website',
           url: `${siteUrl}/`,
           potentialAction: {
-            "@type": "SearchAction",
+            '@type': 'SearchAction',
             target: `${siteUrl}/search?q={search_term_string}`,
-            "query-input": "required name=search_term_string",
+            'query-input': 'required name=search_term_string',
           },
         }}
       </JsonLd>
