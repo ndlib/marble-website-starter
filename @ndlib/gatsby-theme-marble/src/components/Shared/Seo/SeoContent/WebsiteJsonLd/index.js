@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { JsonLd } from '../JsonLd'
 
-export default function WebsiteJsonLd( { pathname, siteUrl } ) {
+export default function WebsiteJsonLd ({ pathname, siteUrl }) {
   if (pathname === '/') {
     return (
       <JsonLd>
