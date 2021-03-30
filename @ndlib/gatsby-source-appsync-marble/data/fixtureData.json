@@ -1,0 +1,167 @@
+[
+  {
+    "id": "cd9cfe13-9a14-5779-96dd-c3a48b1d3713",
+    "slug": "item/2008.026.008",
+    "marbleId": "2008.026.008",
+    "display": "manifest",
+    "title": "Shoes",
+    "description": "Around 1979 Warhol's friend, the fashion designer Halston, commissioned an advertising campaign for his line of women's shoes, made by Garolini. He sent a large cardboard box to the Factory filled with single samples of high-heeled shoes. When they were spilled onto the floor, the artist liked the haphazard patterns they made and began shooting Polaroids. Scores followed, including this print.\n\nfrom Acton, A History of Photography at the University of Notre Dame: Twentieth Century (Notre Dame, 2019)",
+    "iiifUri": "https://presentation-iiif.library.nd.edu/2008.026.008/manifest",
+    "partiallyDigitized": false,
+    "metadata": [
+      {
+        "label": "Creator",
+        "urlField": "creator",
+        "value": [
+          "Andy Warhol (American, 1928 - 1987)"
+        ],
+        "type": "searchList"
+      },
+      {
+        "label": "Date",
+        "urlField": null,
+        "value": [
+          "1980"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "Classification",
+        "urlField": "format",
+        "value": [
+          "photographs"
+        ],
+        "type": "searchList"
+      },
+      {
+        "label": "Medium",
+        "urlField": null,
+        "value": [
+          "dye diffusion transfer print"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "Dimensions",
+        "urlField": null,
+        "value": [
+          "4 1/4 x 3 3/8 in. (10.8 x 8.6 cm)"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "Credit Line",
+        "urlField": null,
+        "value": [
+          "Gift of The Andy Warhol Foundation for the Visual Arts"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "Accession Number",
+        "urlField": null,
+        "value": [
+          "2008.026.008"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "Campus Location",
+        "urlField": null,
+        "value": [
+          "Snite Museum of Art"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "URI Value",
+        "urlField": null,
+        "value": [
+          "Snite%20Museum%20of%20Art"
+        ],
+        "type": "markdown"
+      },
+      {
+        "label": "Access",
+        "urlField": null,
+        "value": [
+          "Not on view, please request access"
+        ],
+        "type": "markdown"
+      },
+      {
+        "label": "Copyright Status",
+        "urlField": null,
+        "value": [
+          "Copyright"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "Copyright Statement",
+        "urlField": null,
+        "value": [
+          "© Artists Rights Society (ARS), New York"
+        ],
+        "type": "list"
+      },
+      {
+        "label": "Subject",
+        "urlField": "keywords",
+        "value": [
+          "dye diffusion transfer prints",
+          "shoes"
+        ],
+        "type": "searchList"
+      },
+      {
+        "label": "Contact Us",
+        "urlField": null,
+        "value": [
+          "Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Snite Museum of Art at [sniteart@nd.edu](mailto:sniteart@nd.edu)."
+        ],
+        "type": "markdown"
+      }
+    ],
+    "marbleParent": null,
+    "copyrightRestricted": true,
+    "citation": "Andy Warhol, Shoes, 1980, dye diffusion transfer print. Snite Museum of Art, University of Notre Dame. Gift of The Andy Warhol Foundation for the Visual Arts, 2008.026.008.",
+    "internal": {
+      "type": "MarbleItem",
+      "contentDigest": "contentDigest"
+    }
+  },
+  {
+    "id": "image-1",
+    "fileType": "image",
+    "sequence": 1,
+    "iiif": {
+      "service": "https://image-iiif.library.nd.edu/iiif/2/2008.026.008%2F2008_026_008-v0002",
+      "default": "https://image-iiif.library.nd.edu/iiif/2/2008.026.008%2F2008_026_008-v0002/full/full/0/default.jpg",
+      "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/2008.026.008%2F2008_026_008-v0002/full/!250,250/0/default.jpg"
+    },
+    "local": null,
+    "parentId": "cd9cfe13-9a14-5779-96dd-c3a48b1d3713",
+    "internal": {
+      "type": "MarbleFile",
+      "contentDigest": "contentDigest"
+    }
+  },
+  {
+    "id": "image-2",
+    "fileType": "image",
+    "sequence": 2,
+    "iiif": {
+      "service": "https://image-iiif.library.nd.edu/iiif/2/2008.026.008%2F2008_026_008-v0001",
+      "default": "https://image-iiif.library.nd.edu/iiif/2/2008.026.008%2F2008_026_008-v0001/full/full/0/default.jpg",
+      "thumbnail": "https://image-iiif.library.nd.edu/iiif/2/2008.026.008%2F2008_026_008-v0001/full/!250,250/0/default.jpg"
+    },
+    "local": null,
+    "parentId": "cd9cfe13-9a14-5779-96dd-c3a48b1d3713",
+    "internal": {
+      "type": "MarbleFile",
+      "contentDigest": "contentDigest"
+    }
+  }
+
+]

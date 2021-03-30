@@ -1,7 +1,7 @@
 const fetch = require('isomorphic-fetch')
 const queryWebsite = require('./queryWebsite')
 
-const getListOfItems = async (pluginOptions, token = '', items = []) => {
+const getItemList = async (pluginOptions, token = '', items = []) => {
   const { url, key, website, websiteBatchLimit } = pluginOptions
 
   return await fetch(
@@ -23,10 +23,10 @@ const getListOfItems = async (pluginOptions, token = '', items = []) => {
       const newItems = result.data.getWebsite.websiteItems.items
       const allItems = items.concat(newItems)
       if (nextToken) {
-        return await getListOfItems(pluginOptions, nextToken, allItems)
+        return await getItemList(pluginOptions, nextToken, allItems)
       }
       return allItems
     })
 }
 
-module.exports = getListOfItems
+module.exports = getItemList

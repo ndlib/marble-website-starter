@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import { jsx, Flex, Box } from 'theme-ui'
 import SearchBase from 'components/Shared/SearchBase'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'

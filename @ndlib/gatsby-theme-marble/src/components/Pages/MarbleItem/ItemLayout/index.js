@@ -2,8 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx, useThemeUI, Divider, Flex, Box } from 'theme-ui'
-import typy from 'typy'
+import { jsx, Divider, Flex, Box } from 'theme-ui'
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
@@ -12,8 +11,6 @@ import SiblingItems from 'components/Shared/SiblingItems'
 import sx from './sx'
 
 const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
-  const context = useThemeUI()
-  const primary = typy(context, 'theme.colors.primary').safeString || '#437D8A'
   const accessFields = ['Accession Number', 'Campus Location', 'Access', 'Identifier']
   const ignoreFields = ['URI Value']
   const mainMetaData = {

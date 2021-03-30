@@ -31,7 +31,7 @@ export const Seo = ({
           publicURL
         }
       }
-    `
+    `,
   )
   const { siteMetadata } = site
   return (
