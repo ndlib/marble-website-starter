@@ -57,11 +57,15 @@ yarn install || { echo "yarn install failed" ;exit 1; }
 
 pushd scripts/gatsby-source-iiif/
   yarn install
+
   echo "${magenta}----- Build ENV Config -------${reset}"
-  node setupEnv.js ${PARAM_CONFIG_PATH} > ${ENV_FILE} --unhandled-rejections=strict
-  echo "path="
-  echo ${PARAM_CONFIG_PATH}
-  node setupEnv.js ${PARAM_CONFIG_PATH}
+  # add the keys at /all/static/hostname to the env
+  node setupEnv.js ${PARAM_CONFIG_PATH} > './ssm-params.txt' --unhandled-rejections=strict
+  source ./ssm-params.txt
+
+  # add the app sync keys to the env
+  node setupEnv.js ${GRAPHQL_API_KEY_BASE_PATH} > './ssm-params.txt' --unhandled-rejections=strict
+  source ./ssm-params.txt
 
   echo "${magenta}----- Get Metadata -------${reset}"
   node getStandard.js ${SITE_DIR} || { echo "Unable to load item metadata" ;exit 1; }
