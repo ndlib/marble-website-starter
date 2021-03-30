@@ -30,6 +30,7 @@ const HitDisplay = ({ hits, displayContext }) => {
 HitDisplay.propTypes = {
   hits: PropTypes.array,
   defaultDisplay: PropTypes.string,
+  displayContext: PropTypes.string,
 }
 HitDisplay.defaultProps = {
   defaultDisplay: 'SEARCH_PAGE',
