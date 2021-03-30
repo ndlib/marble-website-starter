@@ -19167,11 +19167,6 @@ schema-dts@0.6.0:
   resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-0.6.0.tgz#1700eadcc384d39341e0f90ad15d708504124166"
   integrity sha512-mYfPlwuIssnlBkqcwalddhJp23grXIlpI9sDBQuTzM46pftdzXGhbMMzwoszuWZHsH5Zki+LVDeMKjTPRWiAlw==
 
-schema-dts@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-0.8.2.tgz#4a478eec4119023456e3c41b23744af69ff7a8fc"
-  integrity sha512-whRg7QF9wmPfrwAi4NRT/bjMBIdHvzpr4excNN00hn+U2aFXx9NB3JKfooUMJLDqpGEqnZpA61f5muw9lQ50ZA==
-
 schema-utils@^0.4.5:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"

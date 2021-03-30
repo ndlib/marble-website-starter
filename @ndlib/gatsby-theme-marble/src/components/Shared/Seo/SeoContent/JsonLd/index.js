@@ -11,5 +11,5 @@ export function JsonLd ({ children }) {
 }
 
 JsonLd.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.object,
 }
