@@ -183,7 +183,7 @@ const dataLookUp = {
     },
     access: {
       label: 'Conditions Governing Access',
-      type: 'list',
+      type: 'markdown',
       processor: genericFind,
     },
     copyrightStatus: {
@@ -193,7 +193,7 @@ const dataLookUp = {
     },
     copyrightStatement: {
       label: 'Conditions Governing Use',
-      type: 'list',
+      type: 'markdown',
       processor: genericFind,
     },
     dedication: {
