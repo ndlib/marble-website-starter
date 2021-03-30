@@ -11,4 +11,9 @@ describe('WebsiteJsonLd component', () => {
 
     expect(tree).toMatchSnapshot()
   })
+
+  it('renders on homepage', () => {
+    const tree = renderer.create(<WebsiteJsonLd pathname='/some/other' siteUrl='https://marble.nd.edu' />)
+    expect(tree.toJSON()).toBe(null)
+  })
 })
