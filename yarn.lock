@@ -2425,6 +2425,11 @@
     "@emotion/react" "^11.1.1"
     "@theme-ui/css" "^0.6.0"
 
+"@theme-ui/preset-bootstrap@^0.3.5":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@theme-ui/preset-bootstrap/-/preset-bootstrap-0.3.5.tgz#de7283defd264bf8eab57fd98271274a8eeb1c38"
+  integrity sha512-dgDGKcyAdXe7wg23iI1vh4srvqYrjKzWDtwZqW2RuKzPgyYbqnmo0gIz+twU3xL3xCeARBs1tsnZ/EgVugEIJA==
+
 "@theme-ui/theme-provider@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@theme-ui/theme-provider/-/theme-provider-0.6.0.tgz#e8bfbaeb56bd77fe8f957afd984e5a31d4427c7c"
@@ -16682,6 +16687,11 @@ schema-dts@0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-0.6.0.tgz#1700eadcc384d39341e0f90ad15d708504124166"
   integrity sha512-mYfPlwuIssnlBkqcwalddhJp23grXIlpI9sDBQuTzM46pftdzXGhbMMzwoszuWZHsH5Zki+LVDeMKjTPRWiAlw==
+
+schema-dts@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-0.8.2.tgz#4a478eec4119023456e3c41b23744af69ff7a8fc"
+  integrity sha512-whRg7QF9wmPfrwAi4NRT/bjMBIdHvzpr4excNN00hn+U2aFXx9NB3JKfooUMJLDqpGEqnZpA61f5muw9lQ50ZA==
 
 schema-utils@^0.4.5:
   version "0.4.7"
