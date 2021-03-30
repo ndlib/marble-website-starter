@@ -7,16 +7,18 @@ const pdfExtension = new RegExp('pdf$')
 // const compressedExtensions = new RegExp('(zip|7z|bz2|gz|rar|tar)$')
 const dataExtension = new RegExp('(json|xml)$')
 
-module.exports = async (item, gatsbyInternal) => {
+module.exports = async (item, node, gatsbyInternal) => {
   const { actions, createContentDigest, createNodeId } = gatsbyInternal
   const { createNode } = actions
   const marbleFileObject = {
     id: createNodeId(item.id),
-    name: getName(item),
+    name: getName(item, node),
+    title: item.title,
     sequence: item.sequence,
-    file: item.filePath || item.id,
+    file: item.sourceUri,
     fileType: getFileType(item.id),
     iiif: getIiif(item),
+    parentId: node.id,
   }
   const nodeContent = JSON.stringify(marbleFileObject)
   const normalizedTypeNode = {
@@ -31,8 +33,8 @@ module.exports = async (item, gatsbyInternal) => {
   return normalizedTypeNode
 }
 
-const getName = (item) => {
-  return item.collectionId && item.id ? `${item.collectionId}-${item.id.replace(fileExtension, '')}` : null
+const getName = (item, node) => {
+  return node.collectionId && item.id ? `${node.collectionId}-${item.id.replace(fileExtension, '')}` : null
 }
 
 // eslint-disable-next-line complexity
