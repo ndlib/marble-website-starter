@@ -49,7 +49,7 @@ const Search = () => {
           />
         </Column>
         <Column colSpan='3'>
-            <SearchResults defaultDisplay='list' displayContext={displayContext} />
+          <SearchResults defaultDisplay='list' displayContext={displayContext} />
         </Column>
       </MultiColumn>
     </SearchBase>

@@ -43,6 +43,7 @@ export const HitList = ({ hits, displayContext }) => {
 }
 HitList.propTypes = {
   hits: PropTypes.array,
+  displayContext: PropTypes.string,
 }
 
 export const HitGrid = ({ hits, displayContext }) => {
@@ -50,4 +51,5 @@ export const HitGrid = ({ hits, displayContext }) => {
 }
 HitGrid.propTypes = {
   hits: PropTypes.array,
+  displayContext: PropTypes.string,
 }
