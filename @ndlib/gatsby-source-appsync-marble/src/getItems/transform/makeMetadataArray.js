@@ -334,13 +334,13 @@ const dataLookUp = {
       processor: genericFind,
     },
     workType: {
-      label: 'Classification',
+      label: 'Work Type',
       type: 'searchList',
       processor: genericFind,
       urlField: 'format',
     },
     format: {
-      label: 'Object Type',
+      label: 'Format',
       type: 'list',
       processor: genericFind,
     },
