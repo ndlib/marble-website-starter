@@ -8,6 +8,7 @@ import Column from 'components/Shared/Column'
 import { TagFilterConfig } from 'searchkit'
 
 const Search = () => {
+  const displayContext = 'searchList'
   return (
     <SearchBase>
       <SearchFilterBox />
@@ -48,7 +49,7 @@ const Search = () => {
           />
         </Column>
         <Column colSpan='3'>
-          <SearchResults defaultDisplay='list' />
+            <SearchResults defaultDisplay='list' displayContext={displayContext} />
         </Column>
       </MultiColumn>
     </SearchBase>
