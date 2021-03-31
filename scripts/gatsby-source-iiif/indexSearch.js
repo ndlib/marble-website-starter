@@ -169,7 +169,11 @@ const getSearchDataFromManifest = (manifest, collection, parent) => {
   }
 
   if (manifest.workType) {
-    search.formatTag = [manifest.workType]
+    if (manifest.sourceSystem.toLowerCase() === 'archivesspace') {
+      search.formatTag = [manifest.format]
+    } else {
+      search.formatTag = [manifest.workType]
+    }
   }
 
   search.allMetadata = []
