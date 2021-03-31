@@ -1,15 +1,15 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import ActionModal from 'components/Shared/ActionModal'
 import { jsx } from 'theme-ui'
+import ActionModal from 'components/Shared/ActionModal'
+import ViewerContent from './ViewerContent'
 
 const ViewerLink = ({
   marbleItem,
-  index,
-  view,
+  index = 0,
+  view = 'default',
   children,
 }) => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -18,7 +18,7 @@ const ViewerLink = ({
       <>{children}</>
     )
   }
-  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}&cv=${index}&view=${view}`
+  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}&cv=${index}&view=${view}&title=false`
   return (
     <>
       <div
@@ -40,23 +40,16 @@ const ViewerLink = ({
         {children}
       </div>
       <ActionModal
-        contentLabel='Image Viewer'
+        contentLabel={marbleItem.title}
         isOpen={modalOpen}
         closeFunc={() => setModalOpen(false)}
         externalLink={viewerLink}
         fullscreen
       >
-        <iframe
-          allowFullScreen
-          title='IIIF Viewer'
-          src={`${viewerLink}&title=false`}
-          style={{
-            border: 'none',
-            height: 'calc(100vh - 92px - 3rem)',
-            width: 'calc(100vw - 92px)',
-            position: 'absolute',
-            left: '0',
-          }}
+        <ViewerContent
+          marbleItem={marbleItem}
+          index={index}
+          view={view}
         />
       </ActionModal>
     </>
@@ -71,10 +64,6 @@ ViewerLink.propTypes = {
   view: PropTypes.string,
   index: PropTypes.number,
   children: PropTypes.node,
-}
-ViewerLink.defaultProps = {
-  index: 0,
-  view: 'default',
 }
 
 export default ViewerLink

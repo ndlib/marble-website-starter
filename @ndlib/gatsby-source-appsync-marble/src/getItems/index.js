@@ -43,7 +43,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
           // Create item's files
           if (resultHasFiles(result)) {
             result.files.items.forEach(async file => {
-              const fileNode = await transformAndCreateFile(file, gatsbyInternal)
+              const fileNode = await transformAndCreateFile(file, node, gatsbyInternal)
               nodeArray.push(fileNode)
               createParentChildLink({ parent: node, child: fileNode })
             })

@@ -28,7 +28,7 @@ const DownloadPdf = ({ marbleItem }) => {
                   rel='noopener noreferrer'
                   sx={sx.link}
                 >
-                  <span>{pdf.name}</span>
+                  <span>{pdf.title}</span>
                 </a>
 
               </div>

@@ -27,6 +27,8 @@ module.exports = (itemId, website) => {
           mediaServer
           mimeType
           sequence
+          sourceUri
+          title
         }
       }
       format
