@@ -57,21 +57,27 @@ const HitResult = ({ hit, referal }) => {
 
 export const highlightTitle = (name, highlight) => {
   if (highlight && highlight['name.folded']) {
-    return highlight['name.folded']
+    const nameHighlight = highlight['name.folded'][0]
+    const nameVanilla = nameHighlight.replace( /(<([^>]+)>)/ig, '')
+    name = name.replace(nameVanilla, nameHighlight)
   }
   return name
 }
 
 export const highlightCreator = (creator, highlight) => {
   if (highlight && highlight['creator.folded']) {
-    return highlight['creator.folded']
+    const creatorHighlight = highlight['creator.folded'][0]
+    const creatorVanilla = creatorHighlight.replace( /(<([^>]+)>)/ig, '')
+    creator = creator.replace(creatorVanilla, highlight['creator.folded'])
   }
   return creator
 }
 
 export const highlightCollection = (collection, highlight) => {
   if (highlight && highlight['collection.folded']) {
-    return highlight['collection.folded']
+    const collectionHighlight = highlight['collection.folded'][0]
+    const collectionVanilla = collectionHighlight.replace( /(<([^>]+)>)/ig, '')
+    collection = collection.replace(collectionVanilla, highlight['creator.folded'])
   }
   return collection
 }
