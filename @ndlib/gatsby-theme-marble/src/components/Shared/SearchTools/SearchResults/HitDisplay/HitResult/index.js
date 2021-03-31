@@ -57,14 +57,12 @@ const HitResult = ({ hit, referal }) => {
 
 export const highlightTitle = (name, highlight) => {
   if (highlight && highlight['name.folded']) {
-    let highlightVanilla = []
     highlight['name.folded'].forEach(nameHighlight => {
-      const nameVanilla = nameHighlight.replace( /(<([^>]+)>)/ig, '')
+      const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
       let count = 0
       name.forEach(sub => {
-        sub.includes(nameVanilla) ? 
-          name[count] = name[count].replace(nameVanilla, nameHighlight) : null
-          count++
+        sub.includes(nameVanilla) ? name[count] = name[count].replace(nameVanilla, nameHighlight) : null
+        count++
       })
     })
   }
@@ -73,14 +71,12 @@ export const highlightTitle = (name, highlight) => {
 
 export const highlightCreator = (creator, highlight) => {
   if (highlight && highlight['creator.folded']) {
-    let highlightVanilla = []
     highlight['creator.folded'].forEach(creatorHighlight => {
-      const creatorVanilla = creatorHighlight.replace( /(<([^>]+)>)/ig, '')
+      const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
       let count = 0
       creator.forEach(sub => {
-        sub.includes(creatorVanilla) ? 
-          creator[count] = creator[count].replace(creatorVanilla, creatorHighlight) : null
-          count++
+        sub.includes(creatorVanilla) ? creator[count] = creator[count].replace(creatorVanilla, creatorHighlight) : null
+        count++
       })
     })
   }
@@ -90,7 +86,7 @@ export const highlightCreator = (creator, highlight) => {
 export const highlightCollection = (collection, highlight) => {
   if (highlight && highlight['collection.folded']) {
     const collectionHighlight = highlight['collection.folded']
-    const collectionVanilla = collectionHighlight.replace( /(<([^>]+)>)/ig, '')
+    const collectionVanilla = collectionHighlight.replace(/(<([^>]+)>)/ig, '')
     collection = collection.replace(collectionVanilla, highlight['creator.folded'])
   }
   return collection
