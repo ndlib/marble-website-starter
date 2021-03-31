@@ -29,3 +29,13 @@ test('has no cards if the hits are empty', () => {
   const wrapper = shallow(<HitDisplay hits={[]} />)
   expect(wrapper.find(HitResult).length).toEqual(0)
 })
+
+test('hits with searchList context', () => {
+  const wrapper = shallow(<HitDisplay hits={hits} displayContext='searchList' />)
+  expect(wrapper.find('SearchAdditionalTools').exists()).toBeTruthy
+})
+
+test('hits with other context', () => {
+  const wrapper = shallow(<HitDisplay hits={hits} displayContext='other' />)
+  expect(wrapper.find('SearchAdditionalTools').exists()).toBeFalsey
+})
