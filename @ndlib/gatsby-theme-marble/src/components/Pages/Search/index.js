@@ -1,10 +1,9 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, Flex, Box } from 'theme-ui'
 import SearchBase from 'components/Shared/SearchBase'
 import SearchFilterBox from 'components/Shared/SearchTools/SearchFilterBox'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
 import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefinementListFilter'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
 import { TagFilterConfig } from 'searchkit'
 
 const Search = () => {
@@ -12,8 +11,8 @@ const Search = () => {
   return (
     <SearchBase>
       <SearchFilterBox />
-      <MultiColumn columns='4'>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '25%'], px: '1rem', py: '1rem' }}>
           <TagFilterConfig field='creator.keyword' title='Creator' id='creator' />
           <TagFilterConfig field='collection.keyword' title='Collection' id='collection' />
 
@@ -47,11 +46,11 @@ const Search = () => {
             sort='default'
             size='4'
           />
-        </Column>
-        <Column colSpan='3'>
-          <SearchResults defaultDisplay='list' displayContext={displayContext} />
-        </Column>
-      </MultiColumn>
+        </Box>
+        <Box sx={{ width: ['100%', '75%'], px: '1rem', py: '1rem' }}>
+          <SearchResults defaultDisplay='list' />
+        </Box>
+      </Flex>
     </SearchBase>
   )
 }

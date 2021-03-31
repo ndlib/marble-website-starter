@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles, jsx, Card } from 'theme-ui'
+import { jsx, Card } from 'theme-ui'
 import CardWrapper from './CardWrapper'
 import Image from 'components/Shared/Image'
 import ExternalLinkIcon from './ExternalLinkIcon'
@@ -40,29 +40,27 @@ const MarbleCard = ({
       referal={referal}
       onClick={onClick}
     >
-      <Card>
-        <div sx={{ variant: variant }}>
-          <article sx={sx.wrapper(wide)}>
-            <figure sx={sx.figure}>
-              <div sx={sx.imageWrapper(wide)}>
-                <div sx={sx.imageWrapperInner}>
-                  <div sx={sx.imageBoarder}>
-                    <TypeLabel type={type} />
-                    {DisplayImage}
-                    <ExternalLinkIcon target={target} />
-                  </div>
+      <Card variant={variant}>
+        <article sx={sx.wrapper(wide)}>
+          <figure sx={sx.figure}>
+            <div sx={sx.imageWrapper(wide)}>
+              <div sx={sx.imageWrapperInner}>
+                <div sx={sx.imageBoarder}>
+                  <TypeLabel type={type} />
+                  {DisplayImage}
+                  <ExternalLinkIcon target={target} />
                 </div>
               </div>
-              <figcaption sx={sx.figcaption(wide)}>
-                <h2 sx={sx.label} dangerouslySetInnerHTML={{ __html: label }} />
-                <div>
-                  {children}
-                </div>
-                <div className='fade' sx={sx.fadeOut} />
-              </figcaption>
-            </figure>
-          </article>
-        </div>
+            </div>
+            <figcaption sx={sx.figcaption(wide)}>
+              <h2 sx={sx.label} dangerouslySetInnerHTML={{ __html: label }} />
+              <div>
+                {children}
+              </div>
+              <div className='fade' sx={sx.fadeOut} />
+            </figcaption>
+          </figure>
+        </article>
       </Card>
     </CardWrapper>
   )
@@ -87,6 +85,6 @@ MarbleCard.defaultProps = {
   children: null,
   cardClass: 'basicCard',
   showAsList: false,
-  variant: 'card.primary',
+  variant: 'primary',
 }
 export default MarbleCard

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
+import WebsiteJsonLd from './WebsiteJsonLd'
 
 export const SeoContent = ({ title, author, description, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow }) => {
   const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
@@ -35,6 +36,7 @@ export const SeoContent = ({ title, author, description, url, image, pathname, s
           cardType: 'summary_large_image',
         }}
       />
+      <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
     </>
   )
 }

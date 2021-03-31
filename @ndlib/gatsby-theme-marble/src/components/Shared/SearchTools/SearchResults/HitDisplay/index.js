@@ -4,11 +4,11 @@ import CardGroup from 'components/Shared/CardGroup'
 import SearchAdditionalTools from 'components/Shared/SearchTools/SearchAdditionalTools'
 import HitResult from './HitResult'
 
-const HitDisplay = ({ hits, displayContext }) => {
+const HitDisplay = ({ hits, defaultDisplay, displayContext }) => {
   const referal = { type: 'search', query: window.location.search }
   return (
     <CardGroup
-      defaultDisplay='list'
+      defaultDisplay={defaultDisplay}
       toggleGroup='search'
       extraControls={displayContext === 'searchList' ? SearchAdditionalTools : null}
     >
@@ -33,13 +33,13 @@ HitDisplay.propTypes = {
   displayContext: PropTypes.string,
 }
 HitDisplay.defaultProps = {
-  defaultDisplay: 'SEARCH_PAGE',
+  defaultDisplay: 'list',
 }
 
 export default HitDisplay
 
 export const HitList = ({ hits, displayContext }) => {
-  return <HitDisplay hits={hits} defaultDisplay='SEARCH_PAGE' displayContext={displayContext} />
+  return <HitDisplay hits={hits} defaultDisplay='list' displayContext={displayContext} />
 }
 HitList.propTypes = {
   hits: PropTypes.array,
@@ -47,7 +47,7 @@ HitList.propTypes = {
 }
 
 export const HitGrid = ({ hits, displayContext }) => {
-  return <HitDisplay hits={hits} defaultDisplay='COLLECTION_PAGE' displayContext={displayContext} />
+  return <HitDisplay hits={hits} defaultDisplay='grid' displayContext={displayContext} />
 }
 HitGrid.propTypes = {
   hits: PropTypes.array,

@@ -5,68 +5,68 @@ export const theme = {
   textAlign: ['left', 'center', 'right'],
   fonts: {
     body: `
-      -apple-system,
+      -apple-system',
       BlinkMacSystemFont,
-      Segoe UI,
+      'Segoe UI',
       Roboto,
       Oxygen,
       Ubuntu,
       Cantarell,
-      Fira Sans,
-      Droid Sans,
-      Helvetica Neue,
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
       sans-serif
     `,
     bold: `
       -apple-system,
       BlinkMacSystemFont,
-      Segoe UI,
+      'Segoe UI',
       Roboto,
       Oxygen,
       Ubuntu,
       Cantarell,
-      Fira Sans,
-      Droid Sans,
-      Helvetica Neue,
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
       sans-serif
     `,
     heading: `
       -apple-system,
       BlinkMacSystemFont,
-      Segoe UI,
+      'Segoe UI',
       Roboto,
       Oxygen,
       Ubuntu,
       Cantarell,
-      Fira Sans,
-      Droid Sans,
-      Helvetica Neue,
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
       sans-serif
     `,
     logo: `
       -apple-system,
       BlinkMacSystemFont,
-      Segoe UI,
+      'Segoe UI',
       Roboto,
       Oxygen,
       Ubuntu,
       Cantarell,
-      Fira Sans,
-      Droid Sans,
-      Helvetica Neue,
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
       sans-serif
     `,
     menu: `
       -apple-system,
       BlinkMacSystemFont,
-      Segoe UI,
+      'Segoe UI',
       Roboto,
       Oxygen,
       Ubuntu,
       Cantarell,
-      Fira Sans,
-      Droid Sans,
-      Helvetica Neue,
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
       sans-serif
     `,
   },
@@ -88,12 +88,35 @@ export const theme = {
     highlightWithOpacity: '#d39f1052',
     callout: '#f3efe3',
   },
-  styles: {
-    Layout: {
-      color: 'gray.4',
+  cards: {
+    primary: {
+      '& h2': {
+        color: 'gray.4',
+        fontFamily: 'title',
+      },
+      '& figcaption div': {
+        color: 'gray.4',
+      },
+    },
+  },
+  text: {
+    default: {
       fontFamily: 'body',
       fontSize: 0,
       lineHeight: 'body',
+    },
+    heading: {
+      fontFamily: 'heading',
+      fontWeight: '100',
+      lineHeight: 'heading',
+    },
+  },
+  styles: {
+    root: {
+      color: 'gray.4',
+      variant: 'text.default',
+    },
+    Layout: {
       overflowX: 'hidden',
     },
     Header: {
@@ -131,27 +154,22 @@ export const theme = {
       },
     },
     a: {
+      color: 'primary',
       wordBreak: 'break-word',
     },
     h1: {
       color: 'gray.4',
-      fontFamily: 'heading',
       fontSize: 5,
-      fontWeight: '100',
-      lineHeight: 'heading',
+      variant: 'text.heading',
       margin: '1rem 0 0',
     },
     h2: {
-      fontFamily: 'heading',
       fontSize: 4,
-      fontWeight: '100',
-      lineHeight: 'heading',
+      variant: 'text.heading',
     },
     h3: {
-      fontFamily: 'body',
       fontSize: 2,
-      fontWeight: '100',
-      lineHeight: 'heading',
+      variant: 'text.heading',
       margin: '.5rem 0',
     },
 
