@@ -5,7 +5,6 @@ import WebsiteJsonLd from './WebsiteJsonLd'
 import PhotographJsonLd from './PhotographJsonLd'
 
 export const SeoContent = ({ thumbnail, title, author, description, date, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow, classification, creditText, dimensions, data }) => {
-  console.log(data)
   const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
     <>
