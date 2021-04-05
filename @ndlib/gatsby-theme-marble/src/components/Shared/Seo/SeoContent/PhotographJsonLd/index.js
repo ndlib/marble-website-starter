@@ -19,7 +19,7 @@ export default function PhotographJsonLd ({ title, description, date, image, aut
           {
             '@type': 'Person',
             'name': author,
-          }
+          },
         ],
         'artMedium': 'photography',
         'creditText': creditText,

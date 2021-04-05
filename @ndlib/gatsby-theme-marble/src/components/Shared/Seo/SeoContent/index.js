@@ -40,21 +40,21 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, i
       />
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
       { classification === 'photographs' ? 
-          <PhotographJsonLd 
-            title={title}
-            description={description}
-            author={author}
-            date={date}
-            image={image}
-            author={author}
-            creditText={creditText}
-            dimensions={dimensions}
-            thumbnail={thumbnail}
-          />
-        :
-        null }
+        <PhotographJsonLd 
+          title={title}
+          description={description}
+          author={author}
+          date={date}
+          image={image}
+          author={author}
+          creditText={creditText}
+          dimensions={dimensions}
+          thumbnail={thumbnail}
+        />
+        : null }
     </>
-  )}
+  )
+}
 
 SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
