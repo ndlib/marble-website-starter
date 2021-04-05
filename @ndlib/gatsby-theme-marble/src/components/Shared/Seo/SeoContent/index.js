@@ -4,7 +4,7 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import WebsiteJsonLd from './WebsiteJsonLd'
 import PhotographJsonLd from './PhotographJsonLd'
 
-export const SeoContent = ({ thumbnail, title, author, description, date, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow, classification, creditText, dimensions, data }) => {
+export const SeoContent = ({ thumbnail, title, author, description, date, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow, classification, creditText, dimensions }) => {
   const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
     <>
@@ -38,7 +38,8 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, i
         }}
       />
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
-      { classification === 'photographs' ?
+      { classification === 'photographs'
+      ?
         <PhotographJsonLd
           title={title}
           description={description}
