@@ -50,7 +50,7 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, i
           dimensions={dimensions}
           thumbnail={thumbnail}
         />
-      : null }
+        : null }
     </>
   )
 }
