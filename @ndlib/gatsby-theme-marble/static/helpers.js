@@ -38,7 +38,7 @@ export const getCreditText = (creditText, data) => {
 }
 
 export const getDate = (date, data) => {
-  const metaDate= typy(data, 'marbleItem.metadata').safeArray.find(md => {
+  const metaDate = typy(data, 'marbleItem.metadata').safeArray.find(md => {
     return md.label === 'Date'
   })
   return date || (typy(metaDate, 'value[0]').safeString) || null
