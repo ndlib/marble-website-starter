@@ -15,7 +15,6 @@ describe('PhotographJsonLd component', () => {
         thumbnail={'http://fake.io/thumbnail'}
       />)
       .toJSON()
-
     expect(tree).toMatchSnapshot()
   })
 })
