@@ -37,6 +37,13 @@ export const getCreditText = (creditText, data) => {
   return creditText || (typy(metaCreditText, 'value[0]').safeString) || null
 }
 
+export const getDate = (date, data) => {
+  const metaDate= typy(data, 'marbleItem.metadata').safeArray.find(md => {
+    return md.label === 'Date'
+  })
+  return date || (typy(metaDate, 'value[0]').safeString) || null
+}
+
 export const getAuthor = (author, data, siteMetadata) => {
   const creator = typy(data, 'marbleItem.metadata').safeArray.find(md => {
     return md.label === 'Creator'
@@ -50,11 +57,4 @@ export const getDimensions = (dimensions, data) => {
     return md.label === 'Dimensions'
   })
   return dimensions || (typy(metaDimensions, 'value[0]').safeString) || null
-}
-
-export const getDate = (date, data) => {
-  const metaDate= typy(data, 'marbleItem.metadata').safeArray.find(md => {
-    return md.label === 'Date'
-  })
-  return date || (typy(metaDate, 'value[0]').safeString) || null
 }
