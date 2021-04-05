@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer'
 import PhotographJsonLd from './'
 
 describe('PhotographJsonLd component', () => {
+
   it('renders props into values', () => {
     const tree = renderer
       .create(<PhotographJsonLd
@@ -12,8 +13,7 @@ describe('PhotographJsonLd component', () => {
         author={'Fake Author'}
         creditText={'Fake Creditor'}
         dimensions={'2 x 4'}
-        thumbnail={'http://fake.io/thumbnail'}
-      />)
+        thumbnail={'http://fake.io/thumbnail'} />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })
