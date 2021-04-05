@@ -1,13 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
-import Seo, {
-  getTitle,
-  getImage,
-  getDescription,
-  getAuthor,
-} from './'
+import * as helper from '../../../../static/helpers'
 import SeoContent from 'components/Shared/Seo/SeoContent'
+import Seo from 'components/Shared/Seo'
 describe('Seo', () => {
   const siteMetadata = {
     languages: {
@@ -24,6 +20,7 @@ describe('Seo', () => {
       childrenMarbleFile: {
         0: {
           iiif: {
+            default: 'http://image.jpg',
             thumbnail: 'http://thumbnail.jpg',
           },
         },
@@ -34,24 +31,39 @@ describe('Seo', () => {
         {
           label: 'Summary',
           value: ['meta description'],
-
         },
         {
           label: 'Creator',
-          value: ['Fake Author'],
+          value: ['George Orwell'],
+        },
+        {
+          label: 'Date',
+          value: ['1984'],
+        },
+        {
+          label: 'Dimensions',
+          value: ['Fake Dimensions'],
+        },
+        {
+          label: 'Credit Line',
+          value: ['BBC'],
+        },
+        {
+          label: 'Classification',
+          value: ['Book'],
         },
       ],
     },
   }
   test('getTitle', () => {
     const title = 'Title - Mirador Viewer'
-    let actual = getTitle(title, data, siteMetadata)
+    let actual = helper.getTitle(title, data, siteMetadata)
     expect(actual).toEqual('Title - Mirador Viewer')
-    actual = getTitle('', data, siteMetadata)
+    actual = helper.getTitle('', data, siteMetadata)
     expect(actual).toEqual('Title - Marble item')
-    actual = getTitle('', '', siteMetadata)
+    actual = helper.getTitle('', '', siteMetadata)
     expect(actual).toEqual('Default Title')
-    actual = getTitle(title, data, siteMetadata)
+    actual = helper.getTitle(title, data, siteMetadata)
     expect(actual).toEqual('Title - Mirador Viewer')
   })
 
@@ -59,32 +71,86 @@ describe('Seo', () => {
     const defaultImage = {
       publicURL: 'defaultImage.jpg',
     }
-    let actual = getImage(data, defaultImage)
-    expect(actual).toEqual('http://thumbnail.jpg')
-    actual = getImage('', defaultImage)
+    let actual = helper.getImage(data, defaultImage)
+    expect(actual).toEqual('http://image.jpg')
+    actual = helper.getImage('', defaultImage)
+    expect(actual).toEqual('defaultImage.jpg')
+  })
+
+  test('getThumbnail', () => {
+    const defaultImage = {
+      publicURL: 'defaultThumbmail.jpg',
+    }
+    let actual = helper.getThumbnail(data, defaultImage)
+    expect(actual).toEqual('http://thumnail.jpg')
+    actual = helper.getThumbnail('', defaultImage)
     expect(actual).toEqual('defaultImage.jpg')
   })
 
   test('getDescription', () => {
-    let actual = getDescription(null, null, siteMetadata)
+    let actual = helper.getDescription(null, null, siteMetadata)
     expect(actual).toEqual('Default Description')
-    actual = getDescription('description', null, siteMetadata)
+    actual = helper.getDescription('description', null, siteMetadata)
     expect(actual).toEqual('description')
-    actual = getDescription('', data, siteMetadata)
+    actual = helper.getDescription('', data, siteMetadata)
     expect(actual).toEqual('Item description')
     delete data.marbleItem.description
-    actual = getDescription(null, data, siteMetadata)
+    actual = helper.getDescription(null, data, siteMetadata)
     expect(actual).toEqual('meta description')
   })
 
   test('getAuthor', () => {
-    let actual = getAuthor(null, null, siteMetadata)
+    let actual = helper.getAuthor(null, null, siteMetadata)
     expect(actual).toEqual('Default Author')
-    actual = getAuthor('Fake Author', data, siteMetadata)
-    expect(actual).toEqual('Fake Author')
-    actual = getAuthor(null, data, siteMetadata)
-    expect(actual).toEqual('Fake Author')
-    actual = getAuthor(null, null, null)
+    actual = helper.getAuthor('George Orwell', data, siteMetadata)
+    expect(actual).toEqual('George Orwell')
+    actual = helper.getAuthor(null, data, siteMetadata)
+    expect(actual).toEqual('George Orwell')
+    actual = helper.getAuthor(null, null, null)
+    expect(actual).toEqual(null)
+  })
+
+  test('getDate', () => {
+    let actual = helper.getDate(null, null)
+    expect(actual).toEqual(null)
+    actual = helper.getDate('1984', data)
+    expect(actual).toEqual('1984')
+    actual = helper.getDate(null, data)
+    expect(actual).toEqual('1984')
+    actual = helper.getDate(null, null)
+    expect(actual).toEqual(null)
+  })
+
+  test('getDimensions', () => {
+    let actual = helper.getDimensions(null, null)
+    expect(actual).toEqual(null)
+    actual = helper.getDimensions('2 x 4', data)
+    expect(actual).toEqual('2 x 4')
+    actual = helper.getDimensions(null, data)
+    expect(actual).toEqual('Fake Dimensions')
+    actual = helper.getDimensions(null, null)
+    expect(actual).toEqual(null)
+  })
+
+  test('getCreditText', () => {
+    let actual = helper.getCreditText(null, null)
+    expect(actual).toEqual(null)
+    actual = helper.getCreditText('BBC', data)
+    expect(actual).toEqual('BBC')
+    actual = helper.getCreditText(null, data)
+    expect(actual).toEqual('BBC')
+    actual = helper.getCreditText(null, null)
+    expect(actual).toEqual(null)
+  })
+
+  test('getClassification', () => {
+    let actual = helper.getClassification(null, null)
+    expect(actual).toEqual(null)
+    actual = helper.getClassification('Book', data)
+    expect(actual).toEqual('Book')
+    actual = helper.getClassification(null, data)
+    expect(actual).toEqual('Book')
+    actual = helper.getClassification(null, null)
     expect(actual).toEqual(null)
   })
 
