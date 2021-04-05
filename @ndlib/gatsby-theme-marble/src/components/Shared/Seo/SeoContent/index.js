@@ -40,16 +40,16 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, i
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
       { classification === 'photographs'
       ?
-      <PhotographJsonLd
-        title={title}
-        description={description}
-        author={author}
-        date={date}
-        image={image}
-        creditText={creditText}
-        dimensions={dimensions}
-        thumbnail={thumbnail}
-      />
+        <PhotographJsonLd
+          title={title}
+          description={description}
+          author={author}
+          date={date}
+          image={image}
+          creditText={creditText}
+          dimensions={dimensions}
+          thumbnail={thumbnail}
+        />
         : null }
     </>
   )
