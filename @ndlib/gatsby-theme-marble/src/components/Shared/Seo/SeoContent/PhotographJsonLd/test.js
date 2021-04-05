@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer'
 import PhotographJsonLd from './'
 
 describe('PhotographJsonLd component', () => {
+
   it('renders props into values', () => {
     const tree = renderer
       .create(<PhotographJsonLd
