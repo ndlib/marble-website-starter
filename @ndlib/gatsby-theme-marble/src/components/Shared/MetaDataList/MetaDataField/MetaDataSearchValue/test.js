@@ -8,8 +8,18 @@ describe('MetaDataValue', () => {
     const wrapper = shallow(<MetaDataSearchValue values={values} />)
     expect(wrapper.find('Link').length).toEqual(2)
   })
-  test('null', () => {
+  test('empty array', () => {
     const values = []
+    const wrapper = shallow(<MetaDataSearchValue values={values} />)
+    expect(wrapper.find('dd').exists()).toBeFalsy()
+  })
+  test('null', () => {
+    const values = null
+    const wrapper = shallow(<MetaDataSearchValue values={values} />)
+    expect(wrapper.find('dd').exists()).toBeFalsy()
+  })
+  test('null values in array', () => {
+    const values = [null]
     const wrapper = shallow(<MetaDataSearchValue values={values} />)
     expect(wrapper.find('dd').exists()).toBeFalsy()
   })
