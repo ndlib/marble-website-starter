@@ -82,7 +82,7 @@ describe('Seo', () => {
       publicURL: 'defaultThumbmail.jpg',
     }
     let actual = helper.getThumbnail(data, defaultImage)
-    expect(actual).toEqual('http://thumnail.jpg')
+    expect(actual).toEqual('http://thumbnail.jpg')
     actual = helper.getThumbnail('', defaultImage)
     expect(actual).toEqual('defaultImage.jpg')
   })
