@@ -90,6 +90,7 @@ export const theme = {
   },
   cards: {
     primary: {
+      bg: 'inherit',
       '& h2': {
         color: 'gray.4',
         fontFamily: 'title',
