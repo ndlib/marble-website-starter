@@ -15,7 +15,7 @@ module.exports = async (item, node, gatsbyInternal) => {
     name: getName(item, node),
     title: item.title,
     sequence: item.sequence,
-    file: item.sourceUri,
+    file: item.sourceUri ? item.sourceUri.replace('http://archives.nd.edu', 'https://archives.nd.edu') : null,
     fileType: getFileType(item.id),
     iiif: getIiif(item),
     parentId: node.id,
