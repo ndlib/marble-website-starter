@@ -13,7 +13,6 @@ const possibleKeys = [
 ]
 
 const retrieveStageParameters = async () => {
-  const env = {}
   const ssm = new AWS.SSM({ region: 'us-east-1' })
   const params = await ssm.getParametersByPath({
     Path: appConfig,
