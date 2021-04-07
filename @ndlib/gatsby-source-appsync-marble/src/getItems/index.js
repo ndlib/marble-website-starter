@@ -1,11 +1,12 @@
 const fetch = require('isomorphic-fetch')
 const batchPromises = require('batch-promises')
 const queryItem = require('./queryItem')
+const merge = require('./transform/merge')
 const transformAndCreate = require('./transform')
 const transformAndCreateFile = require('./transform/transformAndCreateFile')
 
 const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) => {
-  const { url, website, key } = pluginOptions
+  const { url, website, key, mergeItems = [], logIds = false } = pluginOptions
   const { createParentChildLink } = gatsbyInternal.actions
 
   return await batchPromises(
@@ -15,18 +16,11 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
       // Results for getItemList have an id of "itemId"
       // Children created recursively will have an id of "id"
       const itemId = itemStub.itemId || itemStub.id
-      console.log(itemId)
-      fetch(
-        url,
-        {
-          headers: {
-            'x-api-key': key,
-            'Content-Type': 'application/json',
-          },
-          method: 'POST',
-          mode: 'cors',
-          body: JSON.stringify({ query: queryItem(itemId, website) }),
-        })
+      if (logIds) {
+        console.log(itemId)
+      }
+      const exception = hasMergeException(itemId, mergeItems)
+      fetch(url, request(itemId, website, key))
         .then(result => {
           return result.json()
         })
@@ -38,6 +32,21 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
           return result.data.getItem
         })
         .then(async result => {
+          // Check for exceptions and handle
+          if (exception) {
+            const mergeItem = await fetch(url, request(exception.childId, website, key))
+              .then(exResult => {
+                return exResult.json()
+              })
+              .then(exResult => {
+                if (exResult.error) {
+                  reject(exResult.error)
+                }
+                // prune extra graphQL layers
+                return exResult.data.getItem
+              })
+            result = merge(result, mergeItem)
+          }
           const node = await transformAndCreate(result, gatsbyInternal)
           nodeArray.push(node)
           // Create item's files
@@ -73,12 +82,27 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
   })
 }
 
+const request = (itemId, website, key) => {
+  return {
+    headers: {
+      'x-api-key': key,
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify({ query: queryItem(itemId, website) }),
+  }
+}
 const resultHasChildren = (result) => {
   return result && result.children && result.children.items && result.children.items.length > 0
 }
 
 const resultHasFiles = (result) => {
   return result && result.files && result.files.items && result.files.items.length > 0
+}
+
+const hasMergeException = (id, mergeItems) => {
+  return mergeItems.find(item => item.parentId === id)
 }
 
 module.exports = getItems
