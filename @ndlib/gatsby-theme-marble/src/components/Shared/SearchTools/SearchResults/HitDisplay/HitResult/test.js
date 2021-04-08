@@ -14,7 +14,7 @@ describe('HitResult', () => {
         'name.folded': ['title 2'],
       }
       const actual = highlightTitle(name, highlight)
-      expect(actual).toEqual(highlight['name.folded'])
+      expect(actual).toEqual(['title 1', highlight['name.folded'][0]])
     })
     test('title does not have highlight', () => {
       const name = ['title 1', 'title 2']
@@ -30,7 +30,7 @@ describe('HitResult', () => {
         'creator.folded': ['creator 2'],
       }
       const actual = highlightCreator(creator, highlight)
-      expect(actual).toEqual(highlight['creator.folded'])
+      expect(actual).toEqual(['creator 1', highlight['creator.folded'][0]])
     })
     test('creator does not have highlight', () => {
       const creator = ['creator 1', 'creator 2']
