@@ -1,4 +1,4 @@
-import OktaAuth from '@okta/okta-auth-js'
+import { OktaAuth } from '@okta/okta-auth-js'
 import {
   userIdFromClaims,
 } from 'utils/auth'
