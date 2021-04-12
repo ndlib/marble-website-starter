@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import SeoContent from 'components/Shared/Seo/SeoContent'
-import * as helper from '../../../../static/helpers'
+import * as helper from 'utils/helpers'
 export const Seo = ({
   data,
   location,

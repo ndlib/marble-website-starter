@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
-import * as helper from '../../../../static/helpers'
+import * as helper from 'utils/helpers'
 import SeoContent from 'components/Shared/Seo/SeoContent'
 import Seo from 'components/Shared/Seo'
 describe('Seo', () => {
