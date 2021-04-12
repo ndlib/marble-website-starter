@@ -7,6 +7,7 @@ import SearchRefinementListFilter from 'components/Shared/SearchTools/SearchRefi
 import { TagFilterConfig } from 'searchkit'
 
 const Search = () => {
+  const displayContext = 'searchList'
   return (
     <SearchBase>
       <SearchFilterBox />

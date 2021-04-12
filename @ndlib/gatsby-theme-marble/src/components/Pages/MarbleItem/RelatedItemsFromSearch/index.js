@@ -7,11 +7,12 @@ const RelatedItemsFromSearch = ({ marbleItem }) => {
   if (!process.env.SEARCH_URL || !process.env.SEARCH_INDEX) {
     return null
   }
+  const displayContext = 'itemPage'
   return (
     <div id='related-search-section'>
       <h2>Related Items</h2>
       <SearchBase defaultSearch={customQueryBuilder(marbleItem.marbleId)}>
-        <SearchResults defaultDisplay='grid' hitsPerPage={8} showPagination={false} scrollTo='#related-search-section' />
+        <SearchResults defaultDisplay='grid' hitsPerPage={8} showPagination={false} scrollTo='#related-search-section' displayContext={displayContext} />
       </SearchBase>
     </div>
   )
