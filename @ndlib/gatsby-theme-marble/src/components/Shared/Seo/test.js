@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
-import * as helper from 'utils/helpers'
+import * as helper from './helpers'
 import SeoContent from 'components/Shared/Seo/SeoContent'
 import Seo from 'components/Shared/Seo'
 describe('Seo', () => {
@@ -110,47 +110,12 @@ describe('Seo', () => {
     expect(actual).toEqual(null)
   })
 
-  test('getDate', () => {
-    let actual = helper.getDate(null, null)
+  test('getFieldValue', () => {
+    let actual = helper.getFieldValue(null, null, null)
     expect(actual).toEqual(null)
-    actual = helper.getDate('1984', data)
-    expect(actual).toEqual('1984')
-    actual = helper.getDate(null, data)
-    expect(actual).toEqual('1984')
-    actual = helper.getDate(null, null)
-    expect(actual).toEqual(null)
-  })
-
-  test('getDimensions', () => {
-    let actual = helper.getDimensions(null, null)
-    expect(actual).toEqual(null)
-    actual = helper.getDimensions('2 x 4', data)
-    expect(actual).toEqual('2 x 4')
-    actual = helper.getDimensions(null, data)
-    expect(actual).toEqual('Fake Dimensions')
-    actual = helper.getDimensions(null, null)
-    expect(actual).toEqual(null)
-  })
-
-  test('getCreditText', () => {
-    let actual = helper.getCreditText(null, null)
-    expect(actual).toEqual(null)
-    actual = helper.getCreditText('BBC', data)
-    expect(actual).toEqual('BBC')
-    actual = helper.getCreditText(null, data)
-    expect(actual).toEqual('BBC')
-    actual = helper.getCreditText(null, null)
-    expect(actual).toEqual(null)
-  })
-
-  test('getClassification', () => {
-    let actual = helper.getClassification(null, null)
-    expect(actual).toEqual(null)
-    actual = helper.getClassification('Book', data)
-    expect(actual).toEqual('Book')
-    actual = helper.getClassification(null, data)
-    expect(actual).toEqual('Book')
-    actual = helper.getClassification(null, null)
+    actual = helper.getFieldValue('classification', 'Book', data)
+    expect(actual).toEqual('classification')
+    actual = helper.getFieldValue(null, null, null)
     expect(actual).toEqual(null)
   })
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import SeoContent from 'components/Shared/Seo/SeoContent'
-import * as helper from 'utils/helpers'
+import * as helper from './helpers'
 export const Seo = ({
   data,
   location,
@@ -45,12 +45,12 @@ export const Seo = ({
       url={helper.getUrl(siteMetadata, location.pathname)}
       title={helper.getTitle(title, data, siteMetadata)}
       author={helper.getAuthor(author, data, siteMetadata)}
-      date={helper.getDate(date, data)}
+      date={helper.getFieldValue(date, 'Date', data)}
       image={helper.getImage(data, file)}
       description={helper.getDescription(description, data, siteMetadata)}
-      classification={helper.getClassification(classification, data)}
-      creditText={helper.getCreditText(creditText, data)}
-      dimensions={helper.getDimensions(dimensions, data)}
+      classification={helper.getFieldValue(classification, 'Classification', data)}
+      creditText={helper.getFieldValue(creditText, 'Credit Line', data)}
+      dimensions={helper.getFieldValue(dimensions, 'Dimensions', data)}
       thumbnail={helper.getThumbnail(data, file)}
       pathname={location.pathname}
       siteTitle={typy(siteMetadata, 'title').safeString}

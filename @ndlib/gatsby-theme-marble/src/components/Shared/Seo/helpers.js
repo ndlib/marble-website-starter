@@ -23,25 +23,11 @@ export const getDescription = (description, data, siteMetadata) => {
   return description || (typy(data, 'marbleItem.description').safeString || typy(metaDescription, 'value[0]').safeString) || typy(siteMetadata, 'description').safeString
 }
 
-export const getClassification = (classification, data) => {
-  const metaClassification = typy(data, 'marbleItem.metadata').safeArray.find(md => {
-    return md.label === 'Classification'
+export const getFieldValue = (field, label, data) => {
+  const metaField = typy(data, 'marbleItem.metadata').safeArray.find(md => {
+    return md.label === label
   })
-  return classification || (typy(metaClassification, 'value[0]').safeString) || null
-}
-
-export const getCreditText = (creditText, data) => {
-  const metaCreditText = typy(data, 'marbleItem.metadata').safeArray.find(md => {
-    return md.label === 'Credit Line'
-  })
-  return creditText || (typy(metaCreditText, 'value[0]').safeString) || null
-}
-
-export const getDate = (date, data) => {
-  const metaDate = typy(data, 'marbleItem.metadata').safeArray.find(md => {
-    return md.label === 'Date'
-  })
-  return date || (typy(metaDate, 'value[0]').safeString) || null
+  return field || typy(metaField, 'value[0]').safeString || null
 }
 
 export const getAuthor = (author, data, siteMetadata) => {
@@ -52,9 +38,4 @@ export const getAuthor = (author, data, siteMetadata) => {
     null
 }
 
-export const getDimensions = (dimensions, data) => {
-  const metaDimensions = typy(data, 'marbleItem.metadata').safeArray.find(md => {
-    return md.label === 'Dimensions'
-  })
-  return dimensions || (typy(metaDimensions, 'value[0]').safeString) || null
-}
+
