@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import OktaAuth from '@okta/okta-auth-js'
+import { OktaAuth } from '@okta/okta-auth-js'
 import MaterialButton from 'components/Shared/MaterialButton'
 
 export const OktaLogin = ({ loginReducer }) => {
