@@ -61,7 +61,7 @@ export const highlightTitle = (name, highlight) => {
       const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
       let count = 0
       name.forEach(sub => {
-        //        sub.includes(nameVanilla) ? name[count] = name[count].replace(nameVanilla, nameHighlight) : null
+        sub.includes(nameVanilla) ? name[count] = name[count].replace(nameVanilla, nameHighlight) : null
         count++
       })
     })
@@ -75,7 +75,7 @@ export const highlightCreator = (creator, highlight) => {
       const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
       let count = 0
       creator.forEach(sub => {
-        //        sub.includes(creatorVanilla) ? creator[count] = creator[count].replace(creatorVanilla, creatorHighlight) : null
+        sub.includes(creatorVanilla) ? creator[count] = creator[count].replace(creatorVanilla, creatorHighlight) : null
         count++
       })
     })
