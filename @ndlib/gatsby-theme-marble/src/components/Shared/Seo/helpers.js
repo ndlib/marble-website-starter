@@ -37,5 +37,3 @@ export const getAuthor = (author, data, siteMetadata) => {
   return author || typy(creator, 'value[0]').safeString || typy(siteMetadata, 'author').safeString ||
     null
 }
-
-
