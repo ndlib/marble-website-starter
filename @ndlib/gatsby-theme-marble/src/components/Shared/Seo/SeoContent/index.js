@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import WebsiteJsonLd from './WebsiteJsonLd'
+import PhotographJsonLd from './PhotographJsonLd'
 
-export const SeoContent = ({ title, author, description, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow }) => {
+export const SeoContent = ({ thumbnail, title, author, description, date, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow, classification, creditText, dimensions }) => {
   const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
     <>
@@ -37,6 +38,19 @@ export const SeoContent = ({ title, author, description, url, image, pathname, s
         }}
       />
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
+      { classification === 'photographs'
+        ?
+        <PhotographJsonLd
+          title={title}
+          description={description}
+          author={author}
+          date={date}
+          image={image}
+          creditText={creditText}
+          dimensions={dimensions}
+          thumbnail={thumbnail}
+        />
+        : null }
     </>
   )
 }
@@ -45,6 +59,7 @@ SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string,
   description: PropTypes.string,
+  date: PropTypes.string,
   image: PropTypes.string,
   lang: PropTypes.string,
   noIndex: PropTypes.bool,

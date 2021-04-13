@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
 import SeoContent from 'components/Shared/Seo/SeoContent'
+import * as helper from './helpers'
 export const Seo = ({
   data,
   location,
@@ -34,19 +35,30 @@ export const Seo = ({
     `,
   )
   const { siteMetadata } = site
+  const classification = ''
+  const creditText = ''
+  const dimensions = ''
+  const date = ''
+
   return (
     <SeoContent
-      url={getUrl(siteMetadata, location.pathname)}
-      title={getTitle(title, data, siteMetadata)}
-      author={getAuthor(author, data, siteMetadata)}
-      image={getImage(data, file)}
-      description={getDescription(description, data, siteMetadata)}
+      url={helper.getUrl(siteMetadata, location.pathname)}
+      title={helper.getTitle(title, data, siteMetadata)}
+      author={helper.getAuthor(author, data, siteMetadata)}
+      date={helper.getFieldValue(date, 'Date', data)}
+      image={helper.getImage(data, file)}
+      description={helper.getDescription(description, data, siteMetadata)}
+      classification={helper.getFieldValue(classification, 'Classification', data)}
+      creditText={helper.getFieldValue(creditText, 'Credit Line', data)}
+      dimensions={helper.getFieldValue(dimensions, 'Dimensions', data)}
+      thumbnail={helper.getThumbnail(data, file)}
       pathname={location.pathname}
       siteTitle={typy(siteMetadata, 'title').safeString}
       siteUrl={typy(siteMetadata, 'siteUrl').safeString}
       lang={typy(siteMetadata, 'languages.default').safeString}
       noIndex={noIndex}
       noFollow={noFollow}
+      data={data}
     />
   )
 }
@@ -63,29 +75,3 @@ Seo.propTypes = {
 
 export default Seo
 
-export const getTitle = (title, data, siteMetadata) => {
-  return title || typy(data, 'marbleItem.title').safeString || typy(siteMetadata, 'title').safeString
-}
-
-export const getUrl = (siteMetadata, location) => {
-  return typy(siteMetadata, 'siteUrl').safeString + location
-}
-
-export const getImage = (data, defaultImage) => {
-  return typy(data, 'marbleItem.childrenMarbleFile[0].iiif.thumbnail').safeString || typy(defaultImage, 'publicURL').safeString
-}
-
-export const getDescription = (description, data, siteMetadata) => {
-  const metaDescription = typy(data, 'marbleItem.metadata').safeArray.find(md => {
-    return md.label === 'Summary'
-  })
-  return description || (typy(data, 'marbleItem.description').safeString || typy(metaDescription, 'value[0]').safeString) || typy(siteMetadata, 'description').safeString
-}
-
-export const getAuthor = (author, data, siteMetadata) => {
-  const creator = typy(data, 'marbleItem.metadata').safeArray.find(md => {
-    return md.label === 'Creator'
-  })
-  return author || typy(creator, 'value[0]').safeString || typy(siteMetadata, 'author').safeString ||
-    null
-}
