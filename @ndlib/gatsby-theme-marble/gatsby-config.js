@@ -27,13 +27,6 @@ module.exports = ({
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-next-seo',
-    // Themes do not use the pages directory by default so we add it in manually.
-    {
-      resolve : 'gatsby-plugin-page-creator',
-      options: {
-        path: useLogin ? path.join(__dirname, 'src/pages/app') : path.join(__dirname, 'src/pages/empty'),
-      },
-    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
