@@ -70,7 +70,9 @@ export const highlightCreator = (creator, highlight) => {
       const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
       creator.map((sub, index) => {
         creator[index] = sub.includes(creatorVanilla) ? creator[index].toString().replace(creatorVanilla, creatorHighlight) : creator[index]
+        return creator[index]
       })
+      return creator
     })
   }
   return creator
