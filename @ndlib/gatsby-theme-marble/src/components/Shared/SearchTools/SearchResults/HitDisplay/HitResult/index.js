@@ -66,9 +66,9 @@ export const highlightTitle = (name, highlight) => {
 
 export const highlightCreator = (creator, highlight) => {
   if (highlight && highlight['creator.folded']) {
-    highlight['creator.folded'].forEach((creatorHighlight) => {
+    highlight['creator.folded'].forEawch((creatorHighlight) => {
       const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
-      creator.map((sub, index) => {
+      creator.forEach((sub, index) => {
         creator[index] = sub.includes(creatorVanilla) ? creator[index].toString().replace(creatorVanilla, creatorHighlight) : creator[index]
         return creator[index]
       })
