@@ -57,9 +57,9 @@ const HitResult = ({ hit, referal }) => {
 
 export const highlightTitle = (name, highlight) => {
   if (highlight && highlight['name.folded']) {
-      const nameHighlight = highlight['name.folded'].toString()
-      const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
-      name = name.includes(nameVanilla) ? name.toString().replace(nameVanilla, nameHighlight) : name
+    const nameHighlight = highlight['name.folded'].toString()
+    const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
+    name = name.includes(nameVanilla) ? name.toString().replace(nameVanilla, nameHighlight) : name
   }
   return name
 }
@@ -69,7 +69,7 @@ export const highlightCreator = (creator, highlight) => {
     highlight['creator.folded'].map((creatorHighlight) => {
       const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
       creator.map((sub, index) => {
-        return sub.includes(creatorVanilla) ? creator[index] = creator[index].toString().replace(creatorVanilla, creatorHighlight) : null
+        creator[index] = sub.includes(creatorVanilla) ? creator[index].toString().replace(creatorVanilla, creatorHighlight) : creator[index]
       })
     })
   }
@@ -78,9 +78,8 @@ export const highlightCreator = (creator, highlight) => {
 
 export const highlightCollection = (collection, highlight) => {
   if (highlight && highlight['collection.folded']) {
-    let collectionVanilla = highlight['collection.folded'].toString()
-    let collectionHighlight = collectionVanilla
-    collectionHighlight.replace(/(<([^>]+)>)/ig, '')
+    const collectionHighlight = highlight['collection.folded'].toString()
+    const collectionVanilla = collectionHighlight.replace(/(<([^>]+)>)/ig, '')
     collection = collection.toString().replace(collectionVanilla, highlight['creator.folded'])
     return highlight['collection.folded']
   }
