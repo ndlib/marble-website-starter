@@ -94,7 +94,7 @@ export const highlightCollection = (collection, highlight) => {
     // collection = collection.replace(collectionVanilla, highlight['creator.folded'])
     return highlight['collection.folded']
   }
-  return collection 
+  return collection
 }
 
 export const higlightDisplay = (row) => {
