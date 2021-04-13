@@ -10,7 +10,7 @@ exports.sourceNodes = async (
   gatsbyInternal,
   pluginOptions,
 ) => {
-  const { url, key, website, useFixtures = false, debug = false } = pluginOptions
+  const { url, key, website, useFixtures = false, updateFixtures = false, debug = false } = pluginOptions
   const { cache } = gatsbyInternal
 
   let cachedMarbleNodes
@@ -37,8 +37,12 @@ exports.sourceNodes = async (
       nodeArray: [],
     })
     await cache.set('marbleNodes', nodesData.everything)
-    if (debug) {
-      await writeDebug(nodesData.everything)
+    if (debug || updateFixtures) {
+      const cleanNodeData = nodesData.everything.map(n => {
+        delete n.internal.owner
+        return n
+      })
+      await writeDebug(cleanNodeData, updateFixtures)
     }
   }
 }
