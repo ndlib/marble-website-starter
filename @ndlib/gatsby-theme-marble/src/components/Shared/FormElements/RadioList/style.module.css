@@ -1,0 +1,47 @@
+.options {
+  border: 1px solid #dedede;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.options label {
+  display: block;
+  border-bottom: 1px solid #dedede;
+}
+.options label:last-of-type {
+  border-bottom: none;
+}
+.options input {
+  display: none;
+}
+.radioButton {
+  display: inline-block;
+  text-align: center;
+  width: 60px;
+}
+.options input ~ div {
+  display: inline-block;
+  padding: 1rem;
+  padding-left: 0;
+  width: 100%;
+}
+
+.radioLabel {
+  display: inline-block;
+  padding: 0 1rem 0 0;
+  vertical-align: top;
+  max-width: calc(100% - 60px);
+}
+.options input:checked, .options input:checked ~ div {
+  background-color: #efefef;
+}
+
+.options input ~ div .checkedImg {
+  display: none;
+}
+.options input:checked ~ div .uncheckedImg {
+  display: none;
+}
+.options input:checked ~ div .checkedImg {
+  display: inline-block;
+}
