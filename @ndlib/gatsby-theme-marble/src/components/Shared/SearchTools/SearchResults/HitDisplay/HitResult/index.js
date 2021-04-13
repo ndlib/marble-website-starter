@@ -57,39 +57,44 @@ const HitResult = ({ hit, referal }) => {
 
 export const highlightTitle = (name, highlight) => {
   if (highlight && highlight['name.folded']) {
-    highlight['name.folded'].forEach(nameHighlight => {
-      const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
-      let count = 0
-      name.forEach(sub => {
-        //        sub.includes(nameVanilla) ? name[count] = name[count].replace(nameVanilla, nameHighlight) : null
-        count++
-      })
-    })
+    // highlight['name.folded'].forEach(nameHighlight => {
+    //   const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
+    //   let count = 0
+    //   name.forEach(sub => {
+    //     // eslint-disable-next-line no-unused-expressions
+    //             sub.includes(nameVanilla) ? name[count] = name[count].replace(nameVanilla, nameHighlight) : null
+    //     count++
+    //   })
+    // })
+    return highlight['name.folded']
   }
   return name
 }
 
 export const highlightCreator = (creator, highlight) => {
   if (highlight && highlight['creator.folded']) {
-    highlight['creator.folded'].forEach(creatorHighlight => {
-      const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
-      let count = 0
-      creator.forEach(sub => {
-        //        sub.includes(creatorVanilla) ? creator[count] = creator[count].replace(creatorVanilla, creatorHighlight) : null
-        count++
-      })
-    })
+    // highlight['creator.folded'].forEach(creatorHighlight => {
+    //   const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
+    //   let count = 0
+    //   creator.forEach(sub => {
+    //   // eslint-disable-next-line no-unused-expressions
+    //           sub.includes(creatorVanilla) ? creator[count] = creator[count].replace(creatorVanilla, creatorHighlight) : null
+    //     count++
+    //   })
+    // })
+    return highlight['creator.folded']
   }
   return creator
 }
 
 export const highlightCollection = (collection, highlight) => {
   if (highlight && highlight['collection.folded']) {
-    const collectionHighlight = highlight['collection.folded']
-    const collectionVanilla = collectionHighlight.replace(/(<([^>]+)>)/ig, '')
-    collection = collection.replace(collectionVanilla, highlight['creator.folded'])
+    // const collectionHighlight = highlight['collection.folded']
+    // const collectionVanilla = collectionHighlight.replace(/(<([^>]+)>)/ig, '')
+    // collection = collection.replace(collectionVanilla, highlight['creator.folded'])
+    return highlight['collection.folded']
   }
-  return collection
+  return collection 
 }
 
 export const higlightDisplay = (row) => {
