@@ -41,6 +41,9 @@ if [[ -z "$PARAM_CONFIG_PATH" ]]; then
 fi
 
 if [ $BUILD_ENVIRONMENT == "test" ]; then
+  echo "Seting up Production Test Env"
+  ls -la 
+  ls -la ${SITE_DIR}
   cp ${SITE_DIR}/.env.production-test ${SITE_DIR}/.env.production
 fi
 
