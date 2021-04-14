@@ -31,8 +31,8 @@ if [[ ! -z "${SUBMOD_DIR}" ]]; then
   ls -la ${SUBMOD_DIR}
   echo $SUBMOD_DIR
   echo $SITE_DIR
-  cp -r ${SUBMOD_DIR}/ ${SITE_DIR}/
-  cp -r ${SUBMOD_DIR}/.* ${SITE_DIR}/
+  cp -r ${SUBMOD_DIR}/* ${SITE_DIR}
+  cp -r ${SUBMOD_DIR}/.* ${SITE_DIR}
 
   ls -la ${SITE_DIR}
 fi
