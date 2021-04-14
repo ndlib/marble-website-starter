@@ -71,7 +71,7 @@ pushd scripts/gatsby-source-iiif/
   echo "SEARCH_URL='${SEARCH_URL}'" >> $ENV_FILE
 
   # add the app sync keys to the env
-  node setupEnv.js ${GRAPHQL_API_KEY_BASE_PATH} >> ${ENV_FILE} --unhandled-rejections=strict
+  node setupEnv.js ${GRAPHQL_KEY_BASE} >> ${ENV_FILE} --unhandled-rejections=strict
 
   echo "${magenta}----- Get Metadata -------${reset}"
   node getStandard.js ${SITE_DIR} || { echo "Unable to load item metadata" ;exit 1; }
