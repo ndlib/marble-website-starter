@@ -57,27 +57,22 @@ const HitResult = ({ hit, referal }) => {
 
 export const highlightTitle = (name, highlight) => {
   if (highlight && highlight['name.folded']) {
-    highlight['name.folded'].forEach(nameHighlight => {
-      const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
-      let count = 0
-      name.forEach(sub => {
-        //        sub.includes(nameVanilla) ? name[count] = name[count].replace(nameVanilla, nameHighlight) : null
-        count++
-      })
-    })
+    const nameHighlight = highlight['name.folded'].toString()
+    const nameVanilla = nameHighlight.replace(/(<([^>]+)>)/ig, '')
+    name = name.includes(nameVanilla) ? name.toString().replace(nameVanilla, nameHighlight) : name
   }
   return name
 }
 
 export const highlightCreator = (creator, highlight) => {
   if (highlight && highlight['creator.folded']) {
-    highlight['creator.folded'].forEach(creatorHighlight => {
+    highlight['creator.folded'].forEach((creatorHighlight) => {
       const creatorVanilla = creatorHighlight.replace(/(<([^>]+)>)/ig, '')
-      let count = 0
-      creator.forEach(sub => {
-        //        sub.includes(creatorVanilla) ? creator[count] = creator[count].replace(creatorVanilla, creatorHighlight) : null
-        count++
+      creator.forEach((sub, index) => {
+        creator[index] = sub.includes(creatorVanilla) ? creator[index].toString().replace(creatorVanilla, creatorHighlight) : creator[index]
+        return creator[index]
       })
+      return creator
     })
   }
   return creator
@@ -85,9 +80,10 @@ export const highlightCreator = (creator, highlight) => {
 
 export const highlightCollection = (collection, highlight) => {
   if (highlight && highlight['collection.folded']) {
-    const collectionHighlight = highlight['collection.folded']
+    const collectionHighlight = highlight['collection.folded'].toString()
     const collectionVanilla = collectionHighlight.replace(/(<([^>]+)>)/ig, '')
-    collection = collection.replace(collectionVanilla, highlight['creator.folded'])
+    collection = collection.toString().replace(collectionVanilla, highlight['collection.folded'])
+    return highlight['collection.folded']
   }
   return collection
 }

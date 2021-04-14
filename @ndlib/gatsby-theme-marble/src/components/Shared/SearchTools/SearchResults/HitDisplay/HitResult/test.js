@@ -14,7 +14,7 @@ describe('HitResult', () => {
         'name.folded': ['title 2'],
       }
       const actual = highlightTitle(name, highlight)
-      expect(actual).toEqual(['title 1', highlight['name.folded'][0]])
+      expect(actual).toEqual('title 1,title 2')
     })
     test('title does not have highlight', () => {
       const name = ['title 1', 'title 2']
