@@ -30,7 +30,7 @@ if [[ ! -z "${SUBMOD_DIR}" ]]; then
   echo "move sub module"
   ls -la ${SUBMOD_DIR}
   
-  cp -r ${SUBMOD_DIR}/* ${SITE_DIR}/
+  cp -r ${SUBMOD_DIR} ${SITE_DIR}
 fi
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
