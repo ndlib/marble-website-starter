@@ -27,6 +27,9 @@ ENV_FILE="${SITE_DIR}/.env.production"
 
 # move submodule into place
 if [[ ! -z "${SUBMOD_DIR}" ]]; then
+  echo "move sub module"
+  ls -la ${SUBMOD_DIR}
+  
   mv ${SUBMOD_DIR}/* ${SITE_DIR}
 fi
 
