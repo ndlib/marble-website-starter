@@ -2,7 +2,7 @@ SITE=$1
 BASE_DIR="${PWD}"
 SITE_DIR="${BASE_DIR}/sites/${SITE}"
 ENV_FILE="${SITE_DIR}/.env.development"
-EXAMPLE_FILE="${SITE_DIR}/.env.development-example"
+EXAMPLE_FILE="${SITE_DIR}/.env.development.example"
 
 cp ${EXAMPLE_FILE} ${ENV_FILE}
 
