@@ -32,6 +32,8 @@ if [[ ! -z "${SUBMOD_DIR}" ]]; then
   echo $SUBMOD_DIR
   echo $SITE_DIR
   cp -r ${SUBMOD_DIR}/ ${SITE_DIR}/
+  
+  ls -la ${SITE_DIR}
 fi
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
@@ -46,8 +48,6 @@ fi
 
 if [ $BUILD_ENVIRONMENT == "test" ]; then
   echo "Seting up Production Test Env"
-  ls -la 
-  ls -la ${SITE_DIR}
   cp ${SITE_DIR}/.env.production-test ${SITE_DIR}/.env.production
 fi
 
