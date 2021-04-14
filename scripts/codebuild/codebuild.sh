@@ -27,15 +27,9 @@ ENV_FILE="${SITE_DIR}/.env.production"
 
 # move submodule into place
 if [[ ! -z "${SUBMOD_DIR}" ]]; then
-  echo "move sub module"
-  ls -la ${SUBMOD_DIR}
-  echo $SUBMOD_DIR
-  echo $SITE_DIR
   mv ${SUBMOD_DIR}/* ${SITE_DIR}
   mv ${SUBMOD_DIR}/.env.production ${SITE_DIR}
   mv ${SUBMOD_DIR}/.env.production-test ${SITE_DIR}  
-
-  ls -la ${SITE_DIR}
 fi
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
