@@ -41,7 +41,7 @@ if [[ -z "$PARAM_CONFIG_PATH" ]]; then
 fi
 
 if [ $BUILD_ENVIRONMENT == "test" ]; then
-  cp .env.production-test .env.production
+  cp ${SITE_DIR}/.env.production-test ${SITE_DIR}/.env.production
 fi
 
 echo "${magenta}----- INSTALLATIONS -------${reset}"
