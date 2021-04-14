@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipToMain 1`] = `
+<a
+  className="css-27by69-SkipToMain"
+  href="#mainContent"
+  id="skipToMain"
+>
+  Skip to main content.
+</a>
+`;

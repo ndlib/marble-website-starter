@@ -9,9 +9,13 @@ import Link from 'components/Shared/Link'
   Class to add a themed menu to the site.
   props:
   variant - the style variant for changing propeties in the theme-ui theme see below.
-  items   - array of items in the format of [ {id, label link} ... ]
+  items   - array of items in the format of [ {id, label link, icon, selectedPatterns} ... ]
   label   - label to display at the top.
-
+  Items:
+    items can have several parameters.
+      -label and link for the a tag.
+      -icon if you want to use an icon instead of the label.  currently only does home.
+      -selectedPatterns to add a selected style if the one of the patterns matches the current path
   Theme UI Variant.
   writes a variant called links.${variant}
   Can be edited in the theme.
@@ -70,6 +74,7 @@ const labelOrIcon = (l) => {
 
 Menu.propTypes = {
   variant: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
   items: PropTypes.array,
   label: PropTypes.string,
   children: PropTypes.object,
