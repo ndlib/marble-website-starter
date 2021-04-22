@@ -12,6 +12,14 @@ module.exports = (itemId, website) => {
       copyrightStatus
       copyrightUrl
       createdDate
+      creationPlace {
+        city
+        continent
+        country
+        county
+        historic
+        state
+      }
       creators {
         display
       }
