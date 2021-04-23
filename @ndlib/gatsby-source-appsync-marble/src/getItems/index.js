@@ -27,6 +27,9 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
         .then(result => {
           if (result.error) {
             reject(result.error)
+          } else if (!result.data.getItem) {
+            const err = 'Got result, but it was null for item ' + itemId
+            reject(err)
           }
           // prune extra graphQL layers
           return result.data.getItem
@@ -46,6 +49,10 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
                 return exResult.data.getItem
               })
             result = merge(result, mergeItem)
+          }
+          if (!result) {
+            const err = 'Received empty result for item ' + itemId
+            reject(err)
           }
           const node = await transformAndCreate(result, gatsbyInternal)
           nodeArray.push(node)
@@ -72,6 +79,11 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
           }
           resolve(node)
           return node
+        })
+        .catch(err => {
+          console.error('Oops: ' + err)
+          reject(err)
+          return 1
         })
         // after fetch
     }).then(result => {
