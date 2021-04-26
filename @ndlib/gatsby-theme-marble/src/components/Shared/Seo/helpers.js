@@ -37,3 +37,11 @@ export const getAuthor = (author, data, siteMetadata) => {
   return author || typy(creator, 'value[0]').safeString || typy(siteMetadata, 'author').safeString ||
     null
 }
+
+export const getKeywords = (keywords, data) => {
+  const metaKeywords = typy(data, 'marbleItem.metadata').safeArray.find(md => {
+    return md.label === 'Subject'
+  })
+  const subjects = metaKeywords ? metaKeywords.value.toString() : null
+  return keywords || subjects || null
+}

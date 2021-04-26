@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { JsonLd } from '../JsonLd'
 
-export default function PhotographJsonLd ({ title, description, date, image, author, creditText, dimensions, thumbnail }) {
+export default function PhotographJsonLd ({ title, description, date, image, author, creditText, dimensions, thumbnail, keywords }) {
   return (
     <JsonLd>
       {{
@@ -13,6 +13,7 @@ export default function PhotographJsonLd ({ title, description, date, image, aut
         'description': description,
         'image': image,
         'thumbnailUrl': thumbnail,
+        'keywords': keywords,
         'size': dimensions,
         'artform': 'photograph',
         'creator': [
@@ -37,4 +38,5 @@ PhotographJsonLd.propTypes = {
   creditText: PropTypes.string.isRequired,
   dimensions: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
+  keywords: PropTypes.string.isRequired,
 }

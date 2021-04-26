@@ -39,6 +39,7 @@ export const Seo = ({
   const creditText = ''
   const dimensions = ''
   const date = ''
+  const keywords = ''
 
   return (
     <SeoContent
@@ -51,6 +52,7 @@ export const Seo = ({
       classification={helper.getFieldValue(classification, 'Classification', data)}
       creditText={helper.getFieldValue(creditText, 'Credit Line', data)}
       dimensions={helper.getFieldValue(dimensions, 'Dimensions', data)}
+      keywords={helper.getKeywords(keywords, data)}
       thumbnail={helper.getThumbnail(data, file)}
       pathname={location.pathname}
       siteTitle={typy(siteMetadata, 'title').safeString}
