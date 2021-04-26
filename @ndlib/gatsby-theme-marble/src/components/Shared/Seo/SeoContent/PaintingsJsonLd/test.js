@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import PaintingsJsonLd from './'
 
-describe('PaintingsLd component', () => {
+describe('PaintingsJsonLd component', () => {
 
   it('renders props into values', () => {
     const tree = renderer

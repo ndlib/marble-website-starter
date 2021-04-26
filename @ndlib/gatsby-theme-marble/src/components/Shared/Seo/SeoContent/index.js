@@ -53,20 +53,20 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, k
           thumbnail={thumbnail}
         />
         : null }
-      { classification === 'paintings'
-        ?
-        <PaintingsJsonLd
-          title={title}
-          description={description}
-          author={author}
-          date={date}
-          image={image}
-          creditText={creditText}
-          keywords={keywords}
-          dimensions={dimensions}
-          thumbnail={thumbnail}
-        />
-        : null }
+        { classification === 'paintings'
+          ?
+          <PaintingsJsonLd
+            title={title}
+            description={description}
+            author={author}
+            date={date}
+            image={image}
+            creditText={creditText}
+            keywords={keywords}
+            dimensions={dimensions}
+            thumbnail={thumbnail}
+          />
+          : null }
     </>
   )
 }
