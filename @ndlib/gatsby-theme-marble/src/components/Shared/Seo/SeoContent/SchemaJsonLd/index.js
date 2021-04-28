@@ -81,8 +81,8 @@ SchemaJsonLd.propTypes = {
   acquisition: PropTypes.string,
   accessionNumber: PropTypes.string,
   identifier: PropTypes.string,
-  campusLocation: PropTypes.string,
   language: PropTypes.string,
+  campusLocation: PropTypes.string,
 }
 
 export default SchemaJsonLd
