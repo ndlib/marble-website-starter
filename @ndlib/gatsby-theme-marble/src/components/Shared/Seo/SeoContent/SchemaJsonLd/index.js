@@ -24,7 +24,7 @@ export const SchemaJsonLd = (props) => {
     acquisition, 
     accessionNumber,
     campusLocation,
-    identifier
+    identifier,
   } = props
   return (
     <JsonLd>
@@ -71,7 +71,20 @@ SchemaJsonLd.propTypes = {
   dimensions: PropTypes.string,
   thumbnail: PropTypes.string.isRequired,
   keywords: PropTypes.string,
+  creditText: PropTypes.string,
+  classification: PropTypes.string,
+  copyrightStatus: PropTypes.string,
+  keywords: PropTypes.string,
+  dimensions: PropTypes.string,
   relatedLocation: PropTypes.string,
+  publisher: PropTypes.string,
+  materialType: PropTypes.string,
+  physicalCharacteristic: PropTypes.string,
+  language: PropTypes.string,
+  acquistion: PropTypes.string,
+  accessionNumber: PropTypes.string,
+  identifier: PropTypes.string,
+  campusLocation: PropTypes.string,
 }
 
 export default SchemaJsonLd
