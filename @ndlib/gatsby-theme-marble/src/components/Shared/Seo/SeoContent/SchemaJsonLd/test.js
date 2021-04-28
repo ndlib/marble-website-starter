@@ -10,7 +10,6 @@ describe('SchemaJsonLd component', () => {
         title={'1984'}
         image={'http://fake.io/image'}
         author={'George Orwell'}
-        creditText={'The World atlarge'}
         dimensions={'2 x 4'}
         thumbnail={'http://fake.io/thumbnail'}
         url={'http://object.io/page'}
@@ -18,7 +17,7 @@ describe('SchemaJsonLd component', () => {
         date={'Present'}
         description={'Dystopian nightmare'}
         language={'Newspeak'}
-        keywords={'totalitarian','society','thoughtcrime','doublespeak'}
+        keywords={'totalitarian', 'society', 'thoughtcrime', 'doublespeak'}
         physicalCharacteristic={'8in x 6in'}
         classification={'Book'}
         materialType={'Paper'}
@@ -28,7 +27,7 @@ describe('SchemaJsonLd component', () => {
         identifier={'2+2=5'}
         acquisition={'a gift from me'}
         campusLocation={'library'}
-        />)
+      />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })
