@@ -32,7 +32,7 @@ export const SeoContent = (props) => {
     acquisition,
     accessionNumber,
     identifier,
-    campusLocation
+    campusLocation,
   } = props
   const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
@@ -96,16 +96,32 @@ export const SeoContent = (props) => {
 
 SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
-  url: PropTypes.string,
   description: PropTypes.string,
+  author:PropTypes.string.isRequired,
   date: PropTypes.string,
+  url: PropTypes.string,
   image: PropTypes.string,
+  thumbnail: PropTypes.string,
   lang: PropTypes.string,
   noIndex: PropTypes.bool,
   noFollow: PropTypes.bool,
   pathname: PropTypes.string,
   siteUrl: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
+  creditText: PropTypes.string,
+  classification: PropTypes.string,
+  copyrightStatus: PropTypes.string,
+  keywords: PropTypes.string,
+  dimensions: PropTypes.string,
+  relatedLocation: PropTypes.string,
+  publisher: PropTypes.string,
+  materialType: PropTypes.string,
+  physicalCharacteristic: PropTypes.string,
+  language: PropTypes.string,
+  acquistion: PropTypes.string,
+  accessionNumber: PropTypes.string,
+  identifier: PropTypes.string,
+  campusLocation: PropTypes.string,
 }
 
 export default SeoContent
