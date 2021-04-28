@@ -53,8 +53,8 @@ export const Seo = ({
 
   return (
     <SeoContent
-      url={helper.getUrl(siteMetadata, location.pathname)}
       title={helper.getTitle(title, data, siteMetadata)}
+      url={helper.getUrl(siteMetadata, location.pathname)}
       author={helper.getAuthor(author, data, siteMetadata)}
       date={helper.getFieldValue(date, 'Date', data)}
       image={helper.getImage(data, file)}
