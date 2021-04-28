@@ -1,12 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import PaintingsJsonLd from './'
+import SchemaJsonLd from './'
 
-describe('PaintingsJsonLd component', () => {
+describe('SchemaJsonLd component', () => {
 
   it('renders props into values', () => {
     const tree = renderer
-      .create(<PaintingsJsonLd
+      .create(<SchemaJsonLd
         title={'Fake Title'}
         description={'This is a fake description'}
         image={'http://fake.io/image'}

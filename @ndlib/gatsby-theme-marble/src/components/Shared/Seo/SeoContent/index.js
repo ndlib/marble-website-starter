@@ -2,10 +2,38 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import WebsiteJsonLd from './WebsiteJsonLd'
-import PhotographJsonLd from './PhotographJsonLd'
-import PaintingsJsonLd from './PaintingsJsonLd'
+import SchemaJsonLd from './SchemaJsonLd'
 
-export const SeoContent = ({ thumbnail, title, author, description, date, url, keywords, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow, classification, creditText, dimensions }) => {
+export const SeoContent = (props) => {
+  const {
+    thumbnail,
+    title,
+    author,
+    description,
+    date,
+    url,
+    keywords,
+    image,
+    pathname,
+    siteUrl,
+    siteTitle,
+    lang,
+    noIndex,
+    noFollow,
+    classification,
+    creditText,
+    dimensions,
+    relatedLocation,
+    copyrightStatus,
+    publisher,
+    materialType,
+    physicalCharacteristic,
+    language,
+    acquisition,
+    accessionNumber,
+    identifier,
+    campusLocation
+  } = props
   const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
     <>
@@ -39,34 +67,29 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, k
         }}
       />
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
-      { classification === 'photographs'
-        ?
-        <PhotographJsonLd
-          title={title}
-          description={description}
-          author={author}
-          date={date}
-          image={image}
-          creditText={creditText}
-          keywords={keywords}
-          dimensions={dimensions}
-          thumbnail={thumbnail}
-        />
-        : null }
-        { classification === 'paintings'
-          ?
-          <PaintingsJsonLd
-            title={title}
-            description={description}
-            author={author}
-            date={date}
-            image={image}
-            creditText={creditText}
-            keywords={keywords}
-            dimensions={dimensions}
-            thumbnail={thumbnail}
-          />
-          : null }
+      <SchemaJsonLd
+        title={title}
+        description={description}
+        author={author}
+        date={date}
+        url={url}
+        image={image}
+        creditText={creditText}
+        classification={classification}
+        copyrightStatus={copyrightStatus}
+        keywords={keywords}
+        dimensions={dimensions}
+        thumbnail={thumbnail}
+        relatedLocation={relatedLocation}
+        publisher={publisher}
+        materialType={materialType}
+        physicalCharacteristic={physicalCharacteristic}
+        language={language}
+        acquisition={acquisition}
+        accessionNumber={accessionNumber}
+        identifier={identifier}
+        campusLocation={campusLocation}
+      />
     </>
   )
 }
