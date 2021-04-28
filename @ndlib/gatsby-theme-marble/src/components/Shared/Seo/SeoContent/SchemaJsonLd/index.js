@@ -79,9 +79,9 @@ SchemaJsonLd.propTypes = {
   materialType: PropTypes.string,
   physicalCharacteristic: PropTypes.string,
   acquisition: PropTypes.string,
+  accessionNumber: PropTypes.string,
   identifier: PropTypes.string,
   campusLocation: PropTypes.string,
-  accessionNumber: PropTypes.string,
   language: PropTypes.string,
 }
 
