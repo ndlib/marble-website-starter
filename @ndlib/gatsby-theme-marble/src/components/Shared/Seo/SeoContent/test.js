@@ -8,7 +8,7 @@ describe('SeoContent', () => {
     title: 'A New Test Title',
     url: 'https://example.test/some/page',
     description: 'A different description',
-    image: '/wubbzy.gif',
+    thumbnail: '/wubbzy.gif',
     lang: 'en-gb',
     pathname: '/some/page',
     siteUrl: 'https://example.test',
