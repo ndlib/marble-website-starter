@@ -1,7 +1,7 @@
 const getFileType = require('../../getFileType')
 const getIiif = require('../../getIiif')
 module.exports = (item) => {
-  if (Array.isArray(item.files?.items)) {
+  if (item && item.files && Array.isArray(item.files.items)) {
     const iiifImageNode = item.files.items.find(f => {
       return getFileType(f.id) === 'image'
     })
