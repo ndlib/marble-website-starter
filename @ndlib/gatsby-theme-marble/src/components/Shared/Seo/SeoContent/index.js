@@ -67,6 +67,7 @@ SeoContent.propTypes = {
   description: PropTypes.string,
   date: PropTypes.string,
   image: PropTypes.string,
+  thumbnail: PropTypes.string,
   lang: PropTypes.string,
   noIndex: PropTypes.bool,
   noFollow: PropTypes.bool,
