@@ -1,6 +1,6 @@
 const citationGenerator = require('./citationGenerator')
 const makeMetadataArray = require('./makeMetadataArray')
-
+const formatSearchData = require('./formatSearchData')
 module.exports = async (appSyncItem, gatsbyInternal) => {
   const { actions, createContentDigest, createNodeId } = gatsbyInternal
   const { createNode } = actions
@@ -19,6 +19,7 @@ module.exports = async (appSyncItem, gatsbyInternal) => {
     parentId: appSyncItem.parentId,
     partiallyDigitized: mapFieldOrDefault(appSyncItem, 'partiallyDigitized', false),
     sequence: appSyncItem.sequence,
+    searchData: await formatSearchData(appSyncItem),
     slug: slug,
     title: appSyncItem.title,
   }

@@ -58,6 +58,31 @@ exports.createSchemaCustomization = ({ actions }) => {
     citation: String
     parentId: String
     marbleParent: MarbleItem @link(by: "id", from: "parentId")
+    searchData: searchData
+  }
+
+  type searchData {
+    id: String
+    name: String
+    creator: [String]
+    collection: String
+    parent: String
+    identifier: [String]
+    geographicLocation: [String]
+    repository: String
+    themeTag: [String]
+    expandedThemeTag: [String]
+    centuryTag: [String]
+    date: String
+    lowestSearchRange: Int
+    highestSearchRange: Int
+    workType: [String]
+    thumbnail: String
+    language: [String]
+    type: String
+    url: String
+    formatTag: [String]
+    allMetadata: [String]
   }
 
   # things expected to be there
