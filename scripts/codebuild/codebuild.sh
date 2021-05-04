@@ -75,12 +75,6 @@ pushd scripts/environment-configuration/
 
   # add the app sync keys to the env
   node setupEnv.js ${GRAPHQL_KEY_BASE} >> ${ENV_FILE} --unhandled-rejections=strict
-
-  # echo "${magenta}----- Get Metadata -------${reset}"
-  # node getStandard.js ${SITE_DIR} || { echo "Unable to load item metadata" ;exit 1; }
-  #
-  # echo "${magenta}----- Index -------${reset}"
-  # node indexSearch.js ${ENV_FILE} || { echo "Unable to send data to site index" ;exit 1; }
 popd
 
 echo "${magenta}----- Unit Tests -------${reset}"
