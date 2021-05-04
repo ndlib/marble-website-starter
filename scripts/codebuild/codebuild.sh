@@ -29,7 +29,7 @@ ENV_FILE="${SITE_DIR}/.env.production"
 if [[ ! -z "${SUBMOD_DIR}" ]]; then
   mv ${SUBMOD_DIR}/* ${SITE_DIR}
   mv ${SUBMOD_DIR}/.env.production ${SITE_DIR}
-  mv ${SUBMOD_DIR}/.env.production-test ${SITE_DIR}  
+  mv ${SUBMOD_DIR}/.env.production-test ${SITE_DIR}
 fi
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
@@ -61,7 +61,7 @@ cp ./scripts/codebuild/config.json ~/.config/gatsby/
 # install app dependencies
 yarn install || { echo "yarn install failed" ;exit 1; }
 
-pushd scripts/gatsby-source-iiif/
+pushd scripts/environment-configuration/
   yarn install
 
   echo "${magenta}----- Build ENV Config -------${reset}"
@@ -76,11 +76,11 @@ pushd scripts/gatsby-source-iiif/
   # add the app sync keys to the env
   node setupEnv.js ${GRAPHQL_KEY_BASE} >> ${ENV_FILE} --unhandled-rejections=strict
 
-  echo "${magenta}----- Get Metadata -------${reset}"
-  node getStandard.js ${SITE_DIR} || { echo "Unable to load item metadata" ;exit 1; }
-
-  echo "${magenta}----- Index -------${reset}"
-  node indexSearch.js ${ENV_FILE} || { echo "Unable to send data to site index" ;exit 1; }
+  # echo "${magenta}----- Get Metadata -------${reset}"
+  # node getStandard.js ${SITE_DIR} || { echo "Unable to load item metadata" ;exit 1; }
+  #
+  # echo "${magenta}----- Index -------${reset}"
+  # node indexSearch.js ${ENV_FILE} || { echo "Unable to send data to site index" ;exit 1; }
 popd
 
 echo "${magenta}----- Unit Tests -------${reset}"
