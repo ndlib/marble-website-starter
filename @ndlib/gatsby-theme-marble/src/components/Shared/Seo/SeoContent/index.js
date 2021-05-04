@@ -24,6 +24,12 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, i
           images: [
             {
               url: thumbnail,
+              width: 250,
+              height: 197,
+              alt: description,
+            },
+            {
+              url: image,
               width: 800,
               height: 600,
               alt: description,
