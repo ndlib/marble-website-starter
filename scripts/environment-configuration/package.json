@@ -1,0 +1,9 @@
+{
+  "name": "environment-configuration",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "APACHE2",
+  "dependencies": {
+    "aws-sdk": "^2.561.0"
+  }
+}
