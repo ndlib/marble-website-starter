@@ -47,7 +47,7 @@ module.exports = (itemId, website) => {
       display
     }
     id
-    iiifUri
+    iiifResourceId
     languages {
      display
     }
