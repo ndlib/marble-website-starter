@@ -57,11 +57,6 @@ Now we're ready to download the files that will be the source of content to do t
 
 Setup the index for local development.
 Update ./site/.env.development so the keys SEARCH_URL and SEARCH_INDEX point to an elasticsearch index.
-run
-```
-cd scripts/gatsby-source-iiif
-node indexSearch ../../sites/marble/.env.development
-```
 
 
 Start the development server:
@@ -105,7 +100,7 @@ marble-website-starter
   ↳ gatsby-config.js      // This file is required by Gatsby to configure the site and use the theme
 ↳ scripts
   ↳ codebuild             // AWS Codebuild orchestration scripts
-  ↳ gatsby-source-iiif    // Scripts to retrieve content for the site you are building
+  ↳ environment-configuration    // Setup environment variables
 
 ```
 
