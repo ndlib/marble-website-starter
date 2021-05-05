@@ -9,6 +9,9 @@ exports.onPostBuild = async (
   gatsbyInternal,
   pluginOptions,
 ) => {
+  if (process.env.GITHUB_ACTIONS) {
+    return
+  }
   const { graphql } = gatsbyInternal
   const { url, searchIndex, region } = pluginOptions
   const options = {
