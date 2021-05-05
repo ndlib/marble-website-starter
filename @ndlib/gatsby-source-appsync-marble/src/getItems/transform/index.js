@@ -1,10 +1,10 @@
 const citationGenerator = require('./citationGenerator')
 const makeMetadataArray = require('./makeMetadataArray')
 const formatSearchData = require('./formatSearchData')
-module.exports = async (appSyncItem, gatsbyInternal) => {
+module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
   const { actions, createContentDigest, createNodeId } = gatsbyInternal
   const { createNode } = actions
-
+  const { iiifRoot } = pluginOptions
   const slug = `item/${appSyncItem.id}`
   const marbleObject = {
     id: createNodeId(appSyncItem.id),
@@ -13,7 +13,7 @@ module.exports = async (appSyncItem, gatsbyInternal) => {
     copyrightRestricted: isCopyrightRestricted(appSyncItem),
     description: mapFieldOrDefault(appSyncItem, 'description', ''),
     display:  mapFieldOrDefault(appSyncItem, 'level', 'manifest'),
-    iiifUri: mapFieldOrDefault(appSyncItem, 'iiifUri', ''),
+    iiifUri: appSyncItem.iiifResourceId && iiifRoot ? `${iiifRoot}/${appSyncItem.iiifResourceId}` : '',
     marbleId: appSyncItem.id,
     metadata: makeMetadataArray(appSyncItem),
     parentId: appSyncItem.parentId,
