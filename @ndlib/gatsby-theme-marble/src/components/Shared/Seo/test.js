@@ -52,6 +52,10 @@ describe('Seo', () => {
           label: 'Classification',
           value: ['Book'],
         },
+        {
+          label: 'Subject',
+          value: ['1', '2', '3', '4', '5'],
+        },
       ],
     },
   }
@@ -108,6 +112,15 @@ describe('Seo', () => {
     expect(actual).toEqual('George Orwell')
     actual = helper.getAuthor(null, null, null)
     expect(actual).toEqual(null)
+  })
+
+  test('getKeywords', () => {
+    let actual = helper.getAuthor(null, null)
+    expect(actual).toEqual(null)
+    actual = helper.getKeywords(['5', '4', '3', '2', '1'], data)
+    expect(actual).toEqual(['5', '4', '3', '2', '1'])
+    actual = helper.getKeywords(null, data)
+    expect(actual).toEqual('1,2,3,4,5')
   })
 
   test('getFieldValue', () => {
