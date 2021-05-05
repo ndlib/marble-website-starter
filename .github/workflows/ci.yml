@@ -58,6 +58,7 @@ jobs:
     - name: "Add environment variables"
       run: |
         echo "SEARCH_URL='https://search-testy-search-testy-u2vq42wckv4epdwlul2nthzvsi.us-east-1.es.amazonaws.com'" >> sites/marble/.env.production
+        echo "S3_DEST_BUCKET='ci-bucket'" >> sites/marble/.env.production
     - name: "Build"
       run: |
         yarn workspace marble build
