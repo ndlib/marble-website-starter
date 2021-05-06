@@ -9,6 +9,7 @@ export const ToggleButton = ({ option, action, active }) => {
     <label htmlFor={option.display}>
       <input
         type='image'
+        id={option.display}
         src={active ? option.activeIcon : option.inactiveIcon}
         alt={`${option.display} view`}
         onClick={() => {
