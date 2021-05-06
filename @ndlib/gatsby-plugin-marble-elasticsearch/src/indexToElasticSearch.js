@@ -1,11 +1,11 @@
-module.exports = async (client, siteIndex, searchData) => {
+module.exports = async (client, searchIndex, nodes) => {
   console.log('Sending data to ElasticSearch')
 
   // convert the data to bulk index format
   const body = []
-  searchData.forEach((node) => {
-    body.push({ index:  { _index: siteIndex, _type: '_doc', _id: node.searchData.id } })
-    body.push(node.searchData)
+  nodes.forEach((node) => {
+    body.push({ index:  { _index: searchIndex, _type: '_doc', _id: node.id } })
+    body.push(node)
   })
 
   const bulkResponse = await client.bulk({ refresh: true, body })
