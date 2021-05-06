@@ -53,6 +53,12 @@ export const SeoContent = (props) => {
           images: [
             {
               url: thumbnail,
+              width: 250,
+              height: 197,
+              alt: description,
+            },
+            {
+              url: image,
               width: 800,
               height: 600,
               alt: description,
