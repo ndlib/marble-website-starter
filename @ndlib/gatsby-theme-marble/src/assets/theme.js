@@ -121,7 +121,7 @@ export const theme = {
     },
     Header: {
       color: 'background',
-      fontFamliy: 'menu',
+      fontFamily: 'menu',
       fontWeight: '100',
       margin: '0 auto',
       padding: 0,
