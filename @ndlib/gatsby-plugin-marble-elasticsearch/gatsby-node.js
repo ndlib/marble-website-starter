@@ -1,10 +1,10 @@
 const { Client } = require('elasticsearch')
 const auth = require('http-aws-es')
 const AWS = require('aws-sdk')
-const marbleItemSearchQuery = require('./src/marbleItemSearchQuery')
 const setupIndex = require('./src/setupIndex')
 const indexToElasticSearch = require('./src/indexToElasticSearch')
 
+// eslint-disable-next-line complexity
 exports.onPostBuild = async (
   gatsbyInternal,
   pluginOptions,
@@ -13,7 +13,21 @@ exports.onPostBuild = async (
     return
   }
   const { graphql } = gatsbyInternal
-  const { url, searchIndex, region } = pluginOptions
+  const {
+    url,
+    searchIndex,
+    region,
+    query,
+    selector,
+    mappings,
+    settings,
+  } = pluginOptions
+
+  if (!url || !searchIndex || !region || !query || !selector || !mappings || !settings) {
+    console.error('Missing required parameter for marble-elasticsearch plugin')
+    return 1
+  }
+
   const options = {
     host: url,
     port:443,
@@ -22,15 +36,16 @@ exports.onPostBuild = async (
     requestTimeout: 1200000,
     awsConfig: new AWS.Config({ region: region }),
   }
-  const client = Client(options)
 
-  const { errors, data } = await graphql(marbleItemSearchQuery)
+  const client = Client(options)
+  const { errors, data } = await graphql(query)
+
   if (errors) {
     console.error(errors)
     return 1
   } else {
-    const searchData = data.allMarbleItem.nodes
-    await setupIndex(client, searchIndex)
+    const searchData = selector(data)
+    await setupIndex(client, pluginOptions)
     await indexToElasticSearch(client, searchIndex, searchData)
   }
 }
