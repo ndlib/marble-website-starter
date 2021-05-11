@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Box } from 'theme-ui'
+import { jsx, Box, Heading } from 'theme-ui'
 import Link from 'components/Shared/Link'
 
 /*
@@ -24,19 +24,19 @@ import Link from 'components/Shared/Link'
     foooter:
     vertical
 */
-export const Menu = ({ variant, items, label, children, location }) => {
+export const Menu = ({ variant, items, label, children, location, expand }) => {
+  console.log('variant', variant)
   return (
     <Box as='nav' sx={{ variant: `links.${variant}` }}>
-      {label ? <h3>{label}</h3> : null}
+      {label ? <Heading as='h3' variant='menuHeading'>{label}</Heading> : null}
       <div>
-        {items.map(l => {
+        {expand && items.map(l => {
           return (
             <Link
               to={l.link}
               key={l.id}
               title={l.label}
-              activeClassName='selected'
-              partiallyActive={selectedUrl(l, location)}
+              className={selectedUrl(l, location) ? 'selected' : ''}
             >{labelOrIcon(l)}
             </Link>)
         })}
@@ -77,12 +77,14 @@ Menu.propTypes = {
   location: PropTypes.object.isRequired,
   items: PropTypes.array,
   label: PropTypes.string,
+  expand: PropTypes.bool,
   children: PropTypes.object,
 }
 
 Menu.defaultProps = {
   items: [],
   label: '',
+  expand: true,
 }
 
 export const findNavInData = (id, navData) => {
