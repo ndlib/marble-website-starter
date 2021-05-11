@@ -1,6 +1,7 @@
 {
   "private": true,
   "workspaces": [
+    "@ndlib/gatsby-plugin-marble-elasticsearch",
     "@ndlib/gatsby-source-appsync-marble",
     "@ndlib/gatsby-starter-marble",
     "@ndlib/gatsby-theme-marble",

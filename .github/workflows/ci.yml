@@ -30,13 +30,6 @@ jobs:
         git submodule update
         yarn install
 
-    - name: "Install Metadata"
-      run: |
-        cd scripts/gatsby-source-iiif/
-        yarn install
-        node getStandard.js
-        cp "../../sites/marble/.env.test" "../../sites/marble/.env.production"
-
     - name: "Unit Tests"
       run: |
         pushd @ndlib/gatsby-theme-marble
@@ -62,7 +55,10 @@ jobs:
         fi
       env:
         CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
-
+    - name: "Add environment variables"
+      run: |
+        echo "SEARCH_URL='https://search-testy-search-testy-u2vq42wckv4epdwlul2nthzvsi.us-east-1.es.amazonaws.com'" >> sites/marble/.env.production
+        echo "S3_DEST_BUCKET='ci-bucket'" >> sites/marble/.env.production
     - name: "Build"
       run: |
         yarn workspace marble build

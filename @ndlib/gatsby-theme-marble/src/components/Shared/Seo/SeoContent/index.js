@@ -2,9 +2,38 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import WebsiteJsonLd from './WebsiteJsonLd'
-import PhotographJsonLd from './PhotographJsonLd'
+import SchemaJsonLd from './SchemaJsonLd'
 
-export const SeoContent = ({ thumbnail, title, author, description, date, url, image, pathname, siteUrl, siteTitle, lang, noIndex, noFollow, classification, creditText, dimensions }) => {
+export const SeoContent = (props) => {
+  const {
+    thumbnail,
+    title,
+    author,
+    description,
+    date,
+    url,
+    keywords,
+    image,
+    pathname,
+    siteUrl,
+    siteTitle,
+    lang,
+    noIndex,
+    noFollow,
+    classification,
+    creditText,
+    dimensions,
+    relatedLocation,
+    copyrightStatus,
+    publisher,
+    materialType,
+    physicalCharacteristic,
+    language,
+    acquisition,
+    accessionNumber,
+    identifier,
+    campusLocation,
+  } = props
   const titleFix = title.includes('Digital Collections') ? title : '%s | Digital Collections'
   return (
     <>
@@ -23,6 +52,12 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, i
           description: description,
           images: [
             {
+              url: thumbnail,
+              width: 250,
+              height: 197,
+              alt: description,
+            },
+            {
               url: image,
               width: 800,
               height: 600,
@@ -38,35 +73,61 @@ export const SeoContent = ({ thumbnail, title, author, description, date, url, i
         }}
       />
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
-      { classification === 'photographs'
-        ?
-        <PhotographJsonLd
-          title={title}
-          description={description}
-          author={author}
-          date={date}
-          image={image}
-          creditText={creditText}
-          dimensions={dimensions}
-          thumbnail={thumbnail}
-        />
-        : null }
+      <SchemaJsonLd
+        title={title}
+        description={description}
+        author={author}
+        date={date}
+        url={url}
+        image={image}
+        creditText={creditText}
+        classification={classification}
+        copyrightStatus={copyrightStatus}
+        keywords={keywords}
+        dimensions={dimensions}
+        thumbnail={thumbnail}
+        relatedLocation={relatedLocation}
+        publisher={publisher}
+        materialType={materialType}
+        physicalCharacteristic={physicalCharacteristic}
+        language={language}
+        acquisition={acquisition}
+        accessionNumber={accessionNumber}
+        identifier={identifier}
+        campusLocation={campusLocation}
+      />
     </>
   )
 }
 
 SeoContent.propTypes = {
   title: PropTypes.string.isRequired,
-  url: PropTypes.string,
   description: PropTypes.string,
+  author:PropTypes.string.isRequired,
   date: PropTypes.string,
+  url: PropTypes.string,
   image: PropTypes.string,
+  thumbnail: PropTypes.string,
   lang: PropTypes.string,
   noIndex: PropTypes.bool,
   noFollow: PropTypes.bool,
   pathname: PropTypes.string,
   siteUrl: PropTypes.string.isRequired,
   siteTitle: PropTypes.string.isRequired,
+  creditText: PropTypes.string,
+  classification: PropTypes.string,
+  copyrightStatus: PropTypes.string,
+  keywords: PropTypes.string,
+  dimensions: PropTypes.string,
+  relatedLocation: PropTypes.string,
+  publisher: PropTypes.string,
+  materialType: PropTypes.string,
+  physicalCharacteristic: PropTypes.string,
+  language: PropTypes.string,
+  acquistion: PropTypes.string,
+  accessionNumber: PropTypes.string,
+  identifier: PropTypes.string,
+  campusLocation: PropTypes.string,
 }
 
 export default SeoContent

@@ -18,7 +18,8 @@ const ViewerLink = ({
       <>{children}</>
     )
   }
-  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}&cv=${index}&view=${view}&title=false`
+  const downloadable = marbleItem.copyrightRestricted ? 'dl=false' : 'dl=true'
+  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}&cv=${index}&view=${view}&title=false&${downloadable}`
   return (
     <>
       <div
