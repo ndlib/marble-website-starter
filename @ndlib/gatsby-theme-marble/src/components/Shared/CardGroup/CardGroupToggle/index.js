@@ -46,6 +46,7 @@ export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
             return (
               <ToggleButton
                 key={opt.display}
+                id={opt.display}
                 option={opt}
                 action={() => {
                   dispatch(setGridListView(toggleGroup, opt.display))
