@@ -72,6 +72,10 @@ const labelOrIcon = (l) => {
   return l.label
 }
 
+export const makeNewForCodeClimate = () => {
+  return true
+}
+
 Menu.propTypes = {
   variant: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
