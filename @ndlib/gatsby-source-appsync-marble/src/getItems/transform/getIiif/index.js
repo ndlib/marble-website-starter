@@ -1,4 +1,4 @@
-const getFileType = require('./getFileType')
+const getFileType = require('../getFileType')
 
 module.exports = (item) => {
   if (getFileType(item.mimeType) === 'image' && item.mediaServer && item.mediaResourceId) {

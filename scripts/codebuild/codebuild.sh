@@ -82,6 +82,7 @@ failures=0
 trap 'failures=$((failures+1))' ERR
 
 yarn workspace @ndlib/gatsby-theme-marble test
+yarn workspace @ndlib/gatsby-source-appsync-marble test
 yarn workspace ${WORKSPACE_NAME} test
 
 if ((failures != 0)); then
