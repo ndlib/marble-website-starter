@@ -7,18 +7,18 @@ plugins:
           filters:
             - "(property (Identifier propTypes))"
 exclude_paths:
-- **/config/
-- **/node_modules/
-- **/test.js
-- **/__tests__
-- **/*.css
-- __mocks__/
-- **/content/
-- gatsby-*.js
-- jest/
-- yarn.lock
-- .*.yml
-- **/*.md
-- scripts/*
-- site/*
-- **/sx.js
+- "**/config/"
+- "**/node_modules/"
+- "**/test.js"
+- "**/__tests__"
+- "**/*.css"
+- "__mocks__/"
+- "**/content/"
+- "gatsby-*.js"
+- "jest/"
+- "yarn.lock"
+- ".*.yml"
+- "**/*.md"
+- "scripts/*"
+- "site/*"
+- "**/sx.js"
