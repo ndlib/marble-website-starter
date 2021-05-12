@@ -1,8 +1,53 @@
-export const theme = {
-  space: [0, 4, 8, 16, 32],
-  breakpoints: ['840px', '1024px', '1600px'],
-  flexDirection: ['column', 'row', 'column-reverse'],
-  textAlign: ['left', 'center', 'right'],
+/**
+* Uses preset bootstrap as a basis
+* https://github.com/system-ui/theme-ui/blob/develop/packages/preset-bootstrap/src/index.ts
+*/
+
+import merge from 'lodash.merge'
+import bootstrapTheme from '@theme-ui/preset-bootstrap'
+
+/*
+space: [0, 4, 8, 16, 32],
+breakpoints: ['840px', '1024px', '1600px'],
+flexDirection: ['column', 'row', 'column-reverse'],
+textAlign: ['left', 'center', 'right'],
+fontSizes: [16, 18, 20, 22, 24, 32],
+lineHeights: {
+  body: 1.45,
+  heading: 1.1,
+},
+*/
+const light = '#e1e8f2'
+const lightDark = '#c1cddd'
+
+const buttonShared = {
+  fontSize: 3,
+  px: '1.5rem',
+  borderRadius: '.6em',
+  bg: 'primary',
+  '&:hover': {
+    transform: 'scale(1.02)',
+    cursor: 'pointer',
+  },
+  '& a': {
+    textDecoration: 'none',
+  },
+}
+
+const theme = merge({}, bootstrapTheme, {
+  colors: {
+    background: '#fff',
+    primary: '#0c2340',
+    primaryDark: '#081629',
+    primaryLight: '#143865',
+    primaryBright: '#1c4f8f',
+    secondary: '#ae9142',
+    secondaryDark: '#8c7535',
+    secondaryLight: '#d39f10',
+    light: '#e1e8f2',
+    lightDark: '#c1cddd',
+    lightLight: '#edf2f9',
+  },
   fonts: {
     body: `
       -apple-system',
@@ -70,46 +115,117 @@ export const theme = {
       sans-serif
     `,
   },
-  fontSizes: [16, 18, 20, 22, 24, 32],
-  lineHeights: {
-    body: 1.45,
-    heading: 1.1,
-  },
-  colors: {
-    gray: ['#efefef', '#dedede', '#666', '#333', '#111'],
-    background: '#fff',
-    primary: '#ae9142',
-    primaryText: 'rgba(255, 255, 255, 0.5)',
-    primaryLightText: '#fff',
-    primaryWithOpacity: '#ae914266',
-    secondary: '#302205',
-    attention: '#aa272f',
-    highlight: '#d39f10',
-    highlightWithOpacity: '#d39f1052',
-    callout: '#f3efe3',
-  },
   cards: {
     primary: {
       '& h2': {
-        color: 'gray.4',
+        color: 'primary',
         fontFamily: 'title',
+        fontSize: '4',
       },
       '& figcaption div': {
-        color: 'gray.4',
+        color: 'gray.9',
+      },
+    },
+  },
+  buttons: {
+    primary: {
+      ...buttonShared,
+      color: 'white',
+      bg: 'primary',
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'white',
+      },
+    },
+    secondary: {
+      ...buttonShared,
+      bg: 'secondary',
+      color: 'white',
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'white',
+      },
+    },
+    light: {
+      ...buttonShared,
+      color: 'text',
+      bg: 'light',
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'text',
+      },
+    },
+    inverse: {
+      ...buttonShared,
+      color: 'text',
+      bg: 'white',
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'white',
       },
     },
   },
   text: {
     default: {
       fontFamily: 'body',
-      fontSize: 0,
+      fontSize: 3,
       lineHeight: 'body',
+      fontWeight: 'body',
+      color: 'text',
     },
     heading: {
       fontFamily: 'heading',
       fontWeight: '100',
       lineHeight: 'heading',
+      color: 'primary',
     },
+  },
+  links: {
+    header: {
+      position: 'relative',
+      display: 'flex',
+      margin: '0 0 -2.7rem',
+      justifyContent: 'flex-end',
+      '& div': {
+        display: 'flex',
+        opacity: '1',
+        transition: 'all 1s',
+        my: '5px',
+        background: 'white',
+      },
+      '& input': {
+        width: '300px',
+        py: '1.25rem',
+      },
+      '& a, button': {
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+        height: '100%',
+        padding: '1.25rem 1.375rem',
+        opacity: '1',
+        lineHeight: '1.2',
+        textDecoration: 'none',
+        color: 'text',
+        borderTop: '0.25rem solid transparent',
+        borderBottom: '0.25rem solid transparent',
+        transition: 'all 325ms ease-in-out',
+        bg: 'white',
+        '&:hover': {
+          background: light,
+          borderBottom: `0.25rem solid ${lightDark}`,
+          transform: 'none',
+          cursor: 'pointer',
+        },
+        '&.selected': {
+          background: light,
+          borderBottom: `0.25rem solid ${lightDark}`,
+          transform: 'none',
+          cursor: 'pointer',
+        },
+      },
+    },
+
   },
   styles: {
     root: {
@@ -172,7 +288,6 @@ export const theme = {
       variant: 'text.heading',
       margin: '.5rem 0',
     },
-
   },
-}
+})
 export default theme
