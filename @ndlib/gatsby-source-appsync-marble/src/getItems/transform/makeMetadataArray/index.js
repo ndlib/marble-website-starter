@@ -1,4 +1,4 @@
-const punctuationStripper = require('./punctuationStripper')
+const punctuationStripper = require('../punctuationStripper')
 
 module.exports = (item) => {
   const currentSource = dataLookUp[item.sourceSystem.toLowerCase()]

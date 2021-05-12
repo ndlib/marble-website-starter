@@ -42,6 +42,7 @@ jobs:
         trap 'failures=$((failures+1))' ERR
 
         yarn workspace marble test
+        yarn workspace @ndlib/gatsby-source-appsync-marble test
         yarn workspace @ndlib/gatsby-theme-marble coverage
 
         pushd @ndlib/gatsby-theme-marble
