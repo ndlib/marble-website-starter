@@ -56,6 +56,7 @@ module.exports = (itemId, website) => {
     }
     level
     linkToSource
+    medium
     objectFileGroupId
     parentId
     partiallyDigitized
