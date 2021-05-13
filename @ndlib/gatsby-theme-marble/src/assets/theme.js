@@ -17,8 +17,20 @@ lineHeights: {
   heading: 1.1,
 },
 */
-const light = '#e1e8f2'
-const lightDark = '#c1cddd'
+
+export const colors = {
+  background: '#fff',
+  primary: '#0c2340',
+  primaryDark: '#081629',
+  primaryLight: '#143865',
+  primaryBright: '#1c4f8f',
+  secondary: '#ae9142',
+  secondaryDark: '#8c7535',
+  secondaryLight: '#d39f10',
+  light: '#e1e8f2',
+  lightDark: '#c1cddd',
+  lightLight: '#edf2f9',
+}
 
 const buttonShared = {
   fontSize: 3,
@@ -35,19 +47,7 @@ const buttonShared = {
 }
 
 const theme = merge({}, bootstrapTheme, {
-  colors: {
-    background: '#fff',
-    primary: '#0c2340',
-    primaryDark: '#081629',
-    primaryLight: '#143865',
-    primaryBright: '#1c4f8f',
-    secondary: '#ae9142',
-    secondaryDark: '#8c7535',
-    secondaryLight: '#d39f10',
-    light: '#e1e8f2',
-    lightDark: '#c1cddd',
-    lightLight: '#edf2f9',
-  },
+  colors: colors,
   fonts: {
     body: `
       -apple-system',
@@ -165,6 +165,68 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
   },
+  sections: {
+    default: {
+      bg: 'white',
+      maxWidth: '65rem',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      '& div.sectionContent': {
+        maxWidth: '65rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        alignSelf: 'center',
+        py: '2rem',
+      },
+      '& div.sectionImage': {
+      },
+    },
+    fullBleed: {
+      bg: 'white',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      mx: '5vw',
+      pt: '2rem',
+      '& div.sectionImage': {
+        m: '-2rem 0 -2rem 5vw',
+      },
+      '& div.sectionContent': {
+        maxWidth: '65rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        alignSelf: 'center',
+        py: '2rem',
+      },
+    },
+    fullBleedLight: {
+      '::before': {
+        content: '""',
+        display: 'block',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: '100%',
+        width: '100vw',
+        zIndex: -1,
+        bg: 'inherit',
+      },
+      bg: 'light',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      px: '5vw',
+      '& div.sectionImage': {
+        m: '-1rem 0 -1rem 0',
+      },
+      '& div.sectionContent': {
+        maxWidth: '65rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        alignSelf: 'center',
+        py: '2rem',
+        width: 'auto',
+      },
+    },
+  },
   text: {
     default: {
       fontFamily: 'body',
@@ -212,20 +274,23 @@ const theme = merge({}, bootstrapTheme, {
         transition: 'all 325ms ease-in-out',
         bg: 'white',
         '&:hover': {
-          background: light,
-          borderBottom: `0.25rem solid ${lightDark}`,
+          background: 'var(--theme-ui-colors-light)',
+          borderBottomWidth: '0.25rem',
+          borderBottomStyle: 'solid',
+          borderBottomColor: 'var(--theme-ui-colors-lightDark)',
           transform: 'none',
           cursor: 'pointer',
         },
         '&.selected': {
-          background: light,
-          borderBottom: `0.25rem solid ${lightDark}`,
+          background: 'var(--theme-ui-colors-light)',
+          borderBottomWidth: '0.25rem',
+          borderBottomStyle: 'solid',
+          borderBottomColor: 'var(--theme-ui-colors-lightDark)',
           transform: 'none',
           cursor: 'pointer',
         },
       },
     },
-
   },
   styles: {
     root: {
