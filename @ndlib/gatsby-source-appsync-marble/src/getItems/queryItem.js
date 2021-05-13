@@ -10,6 +10,9 @@ module.exports = (itemId, website) => {
      }
     }
     collectionId
+    collections {
+      display
+    }
     copyrightStatement
     copyrightStatus
     copyrightUrl
