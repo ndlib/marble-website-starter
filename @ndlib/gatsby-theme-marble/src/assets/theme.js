@@ -271,6 +271,22 @@ const theme = merge({}, bootstrapTheme, {
     },
   },
   links: {
+    default: {
+      color: 'primaryBright',
+      wordBreak: 'break-word',
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
+    breadcrumb: {
+      color: 'gray.7',
+      mr: '0.75rem',
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
     header: {
       position: 'relative',
       display: 'flex',
@@ -321,49 +337,17 @@ const theme = merge({}, bootstrapTheme, {
     },
   },
   styles: {
+    a: {
+      color: 'primaryBright',
+      textDecoration: 'none',
+      wordBreak: 'break-word',
+      ':hover': {
+        textDecoration: 'underline',
+      },
+    },
     root: {
       color: 'gray.4',
       variant: 'text.default',
-    },
-    Layout: {
-      overflowX: 'hidden',
-    },
-    Header: {
-      color: 'background',
-      fontFamily: 'menu',
-      fontWeight: '100',
-      margin: '0 auto',
-      padding: 0,
-      width: '100vw',
-      a: {
-        color: 'inherit',
-      },
-    },
-    Main: {
-      margin: '0 auto',
-      width: '100%',
-      '& a': {
-        color: 'primary',
-      },
-    },
-    a: {
-      color: 'primary',
-      wordBreak: 'break-word',
-    },
-    h1: {
-      color: 'gray.4',
-      fontSize: 5,
-      variant: 'text.heading',
-      margin: '1rem 0 0',
-    },
-    h2: {
-      fontSize: 4,
-      variant: 'text.heading',
-    },
-    h3: {
-      fontSize: 2,
-      variant: 'text.heading',
-      margin: '.5rem 0',
     },
   },
 })

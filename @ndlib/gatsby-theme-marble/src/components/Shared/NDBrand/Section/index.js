@@ -26,6 +26,7 @@ NDBrandSection.propTypes = {
   variant: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   image: PropTypes.object,
+  props: PropTypes.object,
 }
 
 NDBrandSection.defaultProps = {
