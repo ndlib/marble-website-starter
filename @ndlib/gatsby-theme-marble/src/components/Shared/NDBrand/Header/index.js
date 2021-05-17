@@ -41,12 +41,12 @@ query {
 * variant - used to set a configurable variant in the theme file.
 *           Defaults to default
 */
-export const NDBrandHeader = ({ location, variant }) => {
+export const NDBrandHeader = ({ location, variant, titleOverride }) => {
   const { site, menusJson } = useStaticQuery(query)
   const menu = typy(menusJson, 'items').safeArray
 
   const [showSearch, setShowSearch] = useState(false)
-
+  const title = titleOverride || site.siteMetadata.title
   return (
     <Box as='header' variant={'header.' + variant} sx={{
       gridRow: 'header',
@@ -62,17 +62,17 @@ export const NDBrandHeader = ({ location, variant }) => {
       borderBottomWidth: '5px',
       borderBottomColor: 'dark',
       borderBottomStyle: 'solid',
-      opacity: '.9',
+      opacity: '1',
       zIndex: 1,
     }}>
-      <div sx={{
+      <div className='mark' sx={{
         gridRow: 'title',
         gridColumn: 'mark',
         justifySelf: 'right',
       }}>
         <ClickableNDLogoWhite />
       </div>
-      <div sx={{
+      <div className='title' sx={{
         gridRow: 'title',
         gridColumn: 'title',
         alignSelf: 'flex-start',
@@ -83,8 +83,8 @@ export const NDBrandHeader = ({ location, variant }) => {
           p: 0,
           fontFamily: 'title',
           fontSize: '8',
-        }}>{site.siteMetadata.title}</Heading>
-        <p sx={{
+        }}>{title}</Heading>
+        {site.siteMetadata.subTitle ? (<p sx={{
           color: 'white',
           my: 0,
           py: 0,
@@ -93,9 +93,9 @@ export const NDBrandHeader = ({ location, variant }) => {
           fontSize: '2',
           top: '-13px',
           position: 'relative',
-        }}>{site.siteMetadata.subTitle}</p>
+        }}>{site.siteMetadata.subTitle}</p>) : null }
       </div>
-      <div sx={{ gridRow: 'nav-header', gridColumn: 'container' }}>
+      <div className='nav' sx={{ gridRow: 'nav-header', gridColumn: 'container' }}>
         {showSearch ? (
           <NDBrandNavSearch location={location} searchPath='search' setShowSearch={setShowSearch} />
         ) : (
@@ -123,7 +123,10 @@ export const NDBrandHeader = ({ location, variant }) => {
 NDBrandHeader.propTypes = {
   variant: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
-  image: PropTypes.object,
+  titleOverride: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
 }
 
 NDBrandHeader.defaultProps = {

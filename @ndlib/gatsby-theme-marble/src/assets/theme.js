@@ -241,6 +241,34 @@ const theme = merge({}, bootstrapTheme, {
       lineHeight: 'heading',
       color: 'primary',
     },
+    menuHeading: {
+      color: 'primary',
+      py: '1em',
+    },
+    lede: {
+      fontSize: 4,
+    },
+    pageTitle: {
+      color: 'primary',
+      fontWeight: '100',
+      fontSize: 7,
+      ml: '0',
+      '::after': {
+        content: '""',
+        marginLeft: '-0.5em',
+        marginTop: '0.2em',
+        marginBottom: '0.7em',
+        width: '1.5em',
+        height: '0.1em',
+        minHeight: '5px',
+        bg: 'secondary',
+        display: 'block',
+      },
+    },
+    sectionTitle: {
+      fontSize: 7,
+      color: 'primary',
+    },
   },
   links: {
     header: {
@@ -316,22 +344,6 @@ const theme = merge({}, bootstrapTheme, {
       width: '100%',
       '& a': {
         color: 'primary',
-      },
-    },
-    Footer: {
-      backgroundColor: 'secondary',
-      bottom: 0,
-      color: 'background',
-      left: 0,
-      minHeight: '64px',
-      overflow: 'hidden',
-      position: 'static',
-      a: {
-        color: 'background',
-        textDecoration: 'none',
-      },
-      img: {
-        margin: '40px',
       },
     },
     a: {

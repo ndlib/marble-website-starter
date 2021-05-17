@@ -2,17 +2,17 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Flex, Heading } from 'theme-ui'
+import { jsx, Flex, Heading, Box } from 'theme-ui'
 
 export const NDBrandHeroFullBleed = ({ location, variant, image, lede, title, button }) => {
   const gutterWidth = '5vw'
 
   return (
-    <div id='page-header' variant={`pageHeaders.${variant}`} sx={{
+    <Box id='page-header' variant={`hero.${variant}`} sx={{
       position: 'relative',
       display: 'grid',
       gridTemplateRows: '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',
-      gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start title-start] 1fr [title-end image-start] 2fr [image-end container-end] ${gutterWidth} [screen-end]`,
+      gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start title-start] 2fr [title-end image-start] 2fr [image-end container-end] ${gutterWidth} [screen-end]`,
       '::before': {
         content: '""',
         display: 'block',
@@ -27,25 +27,26 @@ export const NDBrandHeroFullBleed = ({ location, variant, image, lede, title, bu
         gridRow: 'header-start/title-end',
       },
     }}>
-      <Heading as='h1' variant='pageTitle' sx={{ ml: 0, marginTop: '4rem', gridColumn: 'title', gridRow: 'title', alignSelf: 'flex-end' }}>
-        {title}
-      </Heading>
-      <Flex sx={{ gridColumn: 'title', gridRow: 'lede', bg: 'white', pr: '2rem', height: '200px', alignItems: 'flex-start', flexDirection: 'column' }}>
-        <p variant='lede' sx={{ display: 'block' }}>
+      <Flex className='lede' sx={{ gridColumn: '1/3', gridRow: '3', bg: 'white', pr: '2rem', height: '220px', alignItems: 'flex-start', flexDirection: 'column', zIndex: 1 }}>
+        {title ? (<Heading as='h1' variant='pageTitle' sx={{ ml: 0, marginTop: '4rem', gridColumn: 'title', gridRow: 'title', alignSelf: 'flex-end' }}>{title}</Heading>) : null }
+        <p variant='lede' sx={{ display: 'block', pl: '5vw' }}>
           {lede}
         </p>
-        <Flex sx={{ alignItems: 'end', justifyItems: 'end', width: '100%', flexDirection: 'row' }}>
-          {button}
-        </Flex>
+        {button ? (
+          <Flex sx={{ alignItems: 'end', justifyItems: 'end', width: '100%', flexDirection: 'row', pl: '5vw' }}>
+            {button}
+          </Flex>) : null }
       </Flex>
       <div sx={{
-        gridRow: 'title-start/header-end',
-        gridColumn: 'image-start/screen-end',
+        gridRow: '1/-1',
+        gridColumn: 'screen',
+        maxHeight: '80vw',
+        maxWidth: 'none',
       }}>
         {image}
       </div>
 
-    </div>
+    </Box>
 
   )
 }
@@ -60,7 +61,7 @@ NDBrandHeroFullBleed.propTypes = {
 }
 
 NDBrandHeroFullBleed.defaultProps = {
-  variant: 'default',
+  variant: 'fullBleed',
 }
 
 export default NDBrandHeroFullBleed
