@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 
-export const NDBrandEmptyPageHeader = ({ location, variant }) => {
+export const NDBrandHeroBarckgroundOnly = ({ location, variant }) => {
   const gutterWidth = '5vw'
 
   return (
@@ -32,13 +32,13 @@ export const NDBrandEmptyPageHeader = ({ location, variant }) => {
   )
 }
 
-NDBrandEmptyPageHeader.propTypes = {
+NDBrandHeroBarckgroundOnly.propTypes = {
   variant: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
 }
 
-NDBrandEmptyPageHeader.defaultProps = {
+NDBrandHeroBarckgroundOnly.defaultProps = {
   variant: 'default',
 }
 
-export default NDBrandEmptyPageHeader
+export default NDBrandHeroBarckgroundOnly

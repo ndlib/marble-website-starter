@@ -36,13 +36,22 @@ const buttonShared = {
   fontSize: 3,
   px: '1.5rem',
   borderRadius: '.6em',
-  bg: 'primary',
   '&:hover': {
     transform: 'scale(1.02)',
     cursor: 'pointer',
+    textDecoration: 'none',
   },
   '& a': {
     textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none',
+    },
+  },
+  '&.more a': {
+    '&:after': {
+      content: '" > "',
+      color: 'secondary',
+    },
   },
 }
 
@@ -136,6 +145,12 @@ const theme = merge({}, bootstrapTheme, {
         ...buttonShared['& a'],
         color: 'white',
       },
+      '&.more a': {
+        '&:after': {
+          ...buttonShared['&.more a']['&:after'],
+          color: 'white',
+        },
+      },
     },
     secondary: {
       ...buttonShared,
@@ -161,7 +176,7 @@ const theme = merge({}, bootstrapTheme, {
       bg: 'white',
       '& a': {
         ...buttonShared['& a'],
-        color: 'white',
+        color: 'primary',
       },
     },
   },
