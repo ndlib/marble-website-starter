@@ -6,7 +6,7 @@ import { jsx, Grid } from 'theme-ui'
 
 export const NDBrandSectionLeftNav = ({ location, variant, children, ...props }) => {
   return (
-    <Grid variant={`sections.${variant}`} as='section' sx={{ ml: '5vw', mr: '5vw' }} columns={['100% 0%', '22vw 68vw', '22vw 68vw']} {...props} >
+    <Grid variant={`sections.${variant}`} as='section' columns={['100% 0%', '22vw 68vw', '22vw 68vw']} {...props} >
       {children}
     </Grid>
   )
@@ -19,7 +19,7 @@ NDBrandSectionLeftNav.propTypes = {
 }
 
 NDBrandSectionLeftNav.defaultProps = {
-  variant: 'default',
+  variant: 'leftNav',
 }
 
 export default NDBrandSectionLeftNav

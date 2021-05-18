@@ -169,61 +169,70 @@ const theme = merge({}, bootstrapTheme, {
     default: {
       bg: 'white',
       maxWidth: '65rem',
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      px: '5vw',
+      py: '2rem',
+      /*
       '& div.sectionContent': {
         maxWidth: '65rem',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        alignSelf: 'center',
         py: '2rem',
       },
       '& div.sectionImage': {
       },
+      */
+    },
+    sidebar: {
+      bg: 'white',
+      mt: '5rem',
+      pl: '5vw',
+      maxWidth: '22vw',
+    },
+    defaultWithSidebar: {
+      bg: 'white',
+      maxWidth: '65rem',
+      px: '2rem',
+      py: '2rem',
+    },
+    fullBleedWithSidebar: {
+      bg: 'white',
+      px: '2rem',
+      py: '2rem',
     },
     fullBleed: {
       bg: 'white',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      mx: '5vw',
+      px: '5vw',
+      py: '2rem',
+      /*
       '& div.sectionImage': {
         m: '-2rem 0 -2rem 5vw',
       },
       '& div.sectionContent': {
-        maxWidth: '65rem',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        maxWidth: '90vw',
         alignSelf: 'center',
         py: '2rem',
       },
+      */
     },
     fullBleedLight: {
-      '::before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: '100%',
-        width: '100vw',
-        zIndex: -1,
-        bg: 'inherit',
-      },
       bg: 'light',
-      marginLeft: 'auto',
-      marginRight: 'auto',
       px: '5vw',
+      my: '2rem',
+      /*
       '& div.sectionImage': {
         m: '-1rem 0 -1rem 0',
       },
       '& div.sectionContent': {
         maxWidth: '65rem',
-        marginLeft: 'auto',
-        marginRight: 'auto',
         alignSelf: 'center',
         py: '2rem',
         width: 'auto',
       },
+      */
+    },
+    fullBleedDark: {
+      bg: 'primary',
+      color: 'white',
+      px: '5vw',
+      my: '2rem',
     },
   },
   text: {
