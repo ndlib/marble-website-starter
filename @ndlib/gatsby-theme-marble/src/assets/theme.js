@@ -186,7 +186,6 @@ const theme = merge({}, bootstrapTheme, {
       marginLeft: 'auto',
       marginRight: 'auto',
       mx: '5vw',
-      pt: '2rem',
       '& div.sectionImage': {
         m: '-2rem 0 -2rem 5vw',
       },
@@ -324,6 +323,7 @@ const theme = merge({}, bootstrapTheme, {
           borderBottomColor: 'var(--theme-ui-colors-lightDark)',
           transform: 'none',
           cursor: 'pointer',
+          textDecoration: 'none',
         },
         '&.selected': {
           background: 'var(--theme-ui-colors-light)',
@@ -332,6 +332,44 @@ const theme = merge({}, bootstrapTheme, {
           borderBottomColor: 'var(--theme-ui-colors-lightDark)',
           transform: 'none',
           cursor: 'pointer',
+        },
+      },
+      footer: {
+        '& a': {
+          color: 'white',
+          py: '25px',
+          px: '25px',
+          textDecoration: 'none',
+          fontWeight: '600',
+          fontFamily: 'heading',
+        },
+      },
+      leftNav: {
+        '& h3': {
+          color: 'primary',
+          p: '0',
+        },
+        '& div': {
+          px: '.5rem',
+          pb: '1rem',
+          '& a': {
+            padding: '0.7em 1em',
+            '&.selected': {
+              fontWeight: '700',
+            },
+          },
+        },
+        '& a': {
+          py: '1rem',
+          display: 'block',
+          color: 'primary',
+          textDecoration: 'none',
+          '&:hover': {
+            bg: 'var(--theme-ui-colors-light)',
+          },
+          '&.selected': {
+            fontWeight: '700',
+          },
         },
       },
     },
