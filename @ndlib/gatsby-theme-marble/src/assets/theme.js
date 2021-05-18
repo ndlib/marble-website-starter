@@ -169,7 +169,7 @@ const theme = merge({}, bootstrapTheme, {
     default: {
       bg: 'white',
       maxWidth: '65rem',
-      px: '5vw',
+      mx: '5vw',
       py: '2rem',
       /*
       '& div.sectionContent': {
@@ -216,7 +216,6 @@ const theme = merge({}, bootstrapTheme, {
       bg: 'light',
       px: '5vw',
       my: '2rem',
-      /*
       '& div.sectionImage': {
         m: '-1rem 0 -1rem 0',
       },
@@ -226,7 +225,6 @@ const theme = merge({}, bootstrapTheme, {
         py: '2rem',
         width: 'auto',
       },
-      */
     },
     fullBleedDark: {
       bg: 'primary',
@@ -276,6 +274,14 @@ const theme = merge({}, bootstrapTheme, {
     sectionTitle: {
       fontSize: 7,
       color: 'primary',
+    },
+  },
+  html: {
+    default: {
+      maxWidth: '65rem',
+    },
+    fullBleed: {
+      maxWidth: '100vw',
     },
   },
   links: {
@@ -343,42 +349,43 @@ const theme = merge({}, bootstrapTheme, {
           cursor: 'pointer',
         },
       },
-      footer: {
-        '& a': {
-          color: 'white',
-          py: '25px',
-          px: '25px',
-          textDecoration: 'none',
-          fontWeight: '600',
-          fontFamily: 'heading',
-        },
+    },
+    footer: {
+      '& a': {
+        color: 'white',
+        py: '25px',
+        px: '25px',
+        textDecoration: 'none',
+        fontWeight: '600',
+        fontFamily: 'heading',
       },
-      leftNav: {
-        '& h3': {
-          color: 'primary',
-          p: '0',
-        },
-        '& div': {
-          px: '.5rem',
-          pb: '1rem',
-          '& a': {
-            padding: '0.7em 1em',
-            '&.selected': {
-              fontWeight: '700',
-            },
-          },
-        },
+    },
+    leftNav: {
+      '& h3': {
+        color: 'primary',
+        p: '0',
+      },
+      '& div': {
+        px: '.5rem',
+        pb: '1rem',
         '& a': {
-          py: '1rem',
-          display: 'block',
-          color: 'primary',
-          textDecoration: 'none',
-          '&:hover': {
-            bg: 'var(--theme-ui-colors-light)',
-          },
+          padding: '0.7em 1em',
           '&.selected': {
             fontWeight: '700',
           },
+        },
+      },
+      '& a': {
+        py: '1rem',
+        display: 'block',
+        color: 'primary',
+        textDecoration: 'none',
+        '&:hover': {
+          bg: 'var(--theme-ui-colors-light)',
+          textDecoration: 'none',
+        },
+        '&.selected': {
+          fontWeight: '700',
         },
       },
     },
@@ -391,6 +398,9 @@ const theme = merge({}, bootstrapTheme, {
       ':hover': {
         textDecoration: 'underline',
       },
+    },
+    h2: {
+      variant: 'text.heading',
     },
     root: {
       color: 'gray.4',
