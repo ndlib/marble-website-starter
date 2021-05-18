@@ -7,19 +7,19 @@ const MetaDataAidValue = ({ values }) => {
     <>
     {
       values.map(val => {
-          return (
-            <dd key={val}>
-              <BaseStyles>
-                <a href={val} target='_blank' rel='noopener noreferrer' >
-                  {val}
-                </a>
-              </BaseStyles>
-            </dd>
-          )
+        return (
+          <dd key={val}>
+            <BaseStyles>
+              <a href={val} target='_blank' rel='noopener noreferrer' >
+                {val}
+              </a>
+            </BaseStyles>
+          </dd>
+        )
       })
     }
     </>
-      )
+  )
 }
 
 MetaDataAidValue.propTypes = {
