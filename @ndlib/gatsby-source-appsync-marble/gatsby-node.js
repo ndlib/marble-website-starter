@@ -10,15 +10,18 @@ exports.sourceNodes = async (
   gatsbyInternal,
   pluginOptions,
 ) => {
-  const { url, key, website, useFixtures = false, updateFixtures = false, debug = false } = pluginOptions
+  const { url, key, website, itemList, useFixtures = false, updateFixtures = false, debug = false } = pluginOptions
   const { cache } = gatsbyInternal
 
   let cachedMarbleNodes
   if (useFixtures) {
     // Create a fake cache as the fixture and load it manually.
     cachedMarbleNodes = fixtureData
-  } else if (!url || !key || !website) {
-    console.error('Attempted to use the plugin without a required parameter!!!')
+  } else if (!url || !key) {
+    console.error('Missing AppSync connection parameters.')
+    return 1
+  } else if (!website && !itemList) {
+    console.error('Missing website or itemList.')
     return 1
   } else {
     cachedMarbleNodes = await cache.get('marbleNodes')
@@ -29,11 +32,11 @@ exports.sourceNodes = async (
     return await cacheRebuild(cachedMarbleNodes, gatsbyInternal)
   } else {
     await macDNS(url)
-    const itemList = await getItemList(pluginOptions)
+    const listOfItems = itemList || await getItemList(pluginOptions)
     const nodesData = await getItems({
       gatsbyInternal: gatsbyInternal,
       pluginOptions: pluginOptions,
-      itemList: itemList,
+      itemList: listOfItems,
       nodeArray: [],
     })
     await cache.set('marbleNodes', nodesData.everything)
