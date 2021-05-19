@@ -37,7 +37,6 @@ const retrieveFmpSecrets = async () => {
     username: 'dev',
     password: 'dev',
     host: 'dev',
-    api_url: 'dev',
     database: 'dev',
   }
   if (process.env.FMP_CRED_PATH) {
