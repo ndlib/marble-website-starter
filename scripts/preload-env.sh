@@ -1,5 +1,6 @@
 GRAPHQL_API_KEY_BASE_PATH='/all/stacks/sm-test-maintain-metadata/'
 STATIC_SITE_PATH="/all/static-host/marble-website-test/"
+FMP_CRED_PATH="/all/filemaker_credentials"
 
 # add the config for okta into the env
 node ./scripts/environment-configuration/setupEnv.js ${STATIC_SITE_PATH} > './ssm-params.txt' --unhandled-rejections=strict

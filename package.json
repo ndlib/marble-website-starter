@@ -3,6 +3,7 @@
   "workspaces": [
     "@ndlib/gatsby-plugin-marble-elasticsearch",
     "@ndlib/gatsby-source-appsync-marble",
+    "@ndlib/gatsby-source-filemaker",
     "@ndlib/gatsby-starter-marble",
     "@ndlib/gatsby-theme-marble",
     "@ndlib/gatsby-transformer-marbleitem",
