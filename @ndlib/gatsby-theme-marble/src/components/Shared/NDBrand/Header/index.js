@@ -44,7 +44,6 @@ query {
 export const NDBrandHeader = ({ location, variant, titleOverride, additionalNavButtons }) => {
   const { site, menusJson } = useStaticQuery(query)
   const menu = typy(menusJson, 'items').safeArray
-  console.log(menu)
   const [showSearch, setShowSearch] = useState(false)
   const title = titleOverride || site.siteMetadata.title
   return (

@@ -37,7 +37,6 @@ export const putAuthSettingsInStore = (location) => {
 }
 
 export const setAuthClient = (authClientSettings) => {
-  console.log(process.env.USER_CONTENT_PATH)
   return {
     type: SET_AUTH_CLIENT,
     authClientSettings: authClientSettings,
