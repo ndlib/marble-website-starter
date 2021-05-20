@@ -14,6 +14,7 @@ const CalloutBox = ({ children }) => {
         margin: '2rem auto',
         maxWidth: ['100%', '100%', '80%'],
         padding: '1rem',
+        wordWrap: 'break-word',
       }}>{children}</div>
   )
 }

@@ -4,6 +4,7 @@ import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
 import MetaDataMarkdownValue from './MetaDataMarkdownValue'
+import MetaDataAidValue from './MetaDataAidValue'
 import { useTranslation } from 'react-i18next'
 import { jsx } from 'theme-ui'
 import sx from './sx'
@@ -17,7 +18,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
     value = [value]
   }
 
-  const MetadataValueComponent = getComponent(type)
+  const MetadataValueComponent = getComponent(type, label)
 
   if (value && value.length !== 0) {
     return (
@@ -43,11 +44,15 @@ const MetaDataField = ({ metadata, skipHtml }) => {
   return null
 }
 
-const getComponent = (type) => {
+const getComponent = (type, label) => {
   if (type === 'searchList') {
     return MetaDataSearchValue
   } else if (type === 'markdown') {
-    return MetaDataMarkdownValue
+    if (label === 'Link to Finding Aid') {
+      return MetaDataAidValue
+    } else {
+      return MetaDataMarkdownValue
+    }
   }
 
   return MetaDataValue

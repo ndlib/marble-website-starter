@@ -10,6 +10,9 @@ module.exports = (itemId, website) => {
      }
     }
     collectionId
+    collections {
+      display
+    }
     copyrightStatement
     copyrightStatus
     copyrightUrl
@@ -53,6 +56,7 @@ module.exports = (itemId, website) => {
     }
     level
     linkToSource
+    medium
     objectFileGroupId
     parentId
     partiallyDigitized
