@@ -5,7 +5,7 @@ import DownloadImage from './'
 import ImagePreview from './ImagePreview'
 import ImagePager from './ImagePager'
 import ImageSettings from './ImageSettings'
-import MaterialButton from 'components/Shared/MaterialButton'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import * as download from 'utils/download'
 
 console.error = jest.fn()

@@ -1,8 +1,62 @@
-export const theme = {
-  space: [0, 4, 8, 16, 32],
-  breakpoints: ['840px', '1024px', '1600px'],
-  flexDirection: ['column', 'row', 'column-reverse'],
-  textAlign: ['left', 'center', 'right'],
+/**
+* Uses preset bootstrap as a basis
+* https://github.com/system-ui/theme-ui/blob/develop/packages/preset-bootstrap/src/index.ts
+*/
+
+import merge from 'lodash.merge'
+import bootstrapTheme from '@theme-ui/preset-bootstrap'
+
+/*
+space: [0, 4, 8, 16, 32],
+breakpoints: ['840px', '1024px', '1600px'],
+flexDirection: ['column', 'row', 'column-reverse'],
+textAlign: ['left', 'center', 'right'],
+fontSizes: [16, 18, 20, 22, 24, 32],
+lineHeights: {
+  body: 1.45,
+  heading: 1.1,
+},
+*/
+
+export const colors = {
+  background: '#fff',
+  primary: '#0c2340',
+  primaryDark: '#081629',
+  primaryLight: '#143865',
+  primaryBright: '#1c4f8f',
+  secondary: '#ae9142',
+  secondaryDark: '#8c7535',
+  secondaryLight: '#d39f10',
+  light: '#e1e8f2',
+  lightDark: '#c1cddd',
+  lightLight: '#edf2f9',
+}
+
+const buttonShared = {
+  fontSize: 3,
+  px: '1.5rem',
+  borderRadius: '.6em',
+  '&:hover': {
+    transform: 'scale(1.02)',
+    cursor: 'pointer',
+    textDecoration: 'none',
+  },
+  '& a': {
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none',
+    },
+  },
+  '&.more a': {
+    '&:after': {
+      content: '" > "',
+      color: 'secondary',
+    },
+  },
+}
+
+const theme = merge({}, bootstrapTheme, {
+  colors: colors,
   fonts: {
     body: `
       -apple-system',
@@ -70,109 +124,311 @@ export const theme = {
       sans-serif
     `,
   },
-  fontSizes: [16, 18, 20, 22, 24, 32],
-  lineHeights: {
-    body: 1.45,
-    heading: 1.1,
-  },
-  colors: {
-    gray: ['#efefef', '#dedede', '#666', '#333', '#111'],
-    background: '#fff',
-    primary: '#ae9142',
-    primaryText: 'rgba(255, 255, 255, 0.5)',
-    primaryLightText: '#fff',
-    primaryWithOpacity: '#ae914266',
-    secondary: '#302205',
-    attention: '#aa272f',
-    highlight: '#d39f10',
-    highlightWithOpacity: '#d39f1052',
-    callout: '#f3efe3',
-  },
   cards: {
     primary: {
       '& h2': {
-        color: 'gray.4',
+        color: 'primary',
         fontFamily: 'title',
+        fontSize: '4',
       },
       '& figcaption div': {
-        color: 'gray.4',
+        color: 'gray.9',
+      },
+    },
+  },
+  buttons: {
+    primary: {
+      ...buttonShared,
+      color: 'white',
+      bg: 'primary',
+      '&:hover': {
+        bg: 'primaryBright',
+      },
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'white',
+      },
+      '&.more a': {
+        '&:after': {
+          ...buttonShared['&.more a']['&:after'],
+          color: 'white',
+        },
+      },
+    },
+    secondary: {
+      ...buttonShared,
+      bg: 'secondary',
+      color: 'white',
+      '&:hover': {
+        bg: 'secondaryDark',
+      },
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'white',
+      },
+    },
+    light: {
+      ...buttonShared,
+      color: 'text',
+      bg: 'light',
+      '&:hover': {
+        bg: 'lightDark',
+      },
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'text',
+      },
+    },
+    inverse: {
+      ...buttonShared,
+      color: 'primary',
+      bg: 'white',
+      '& a': {
+        ...buttonShared['& a'],
+        color: 'primary',
+      },
+    },
+  },
+  sections: {
+    default: {
+      bg: 'white',
+      mx: '5vw',
+      pt: '2rem',
+      '& div.sectionContent': {
+        minWidth: '60rem',
+        maxWidth: '65rem',
+      },
+    },
+    sidebar: {
+      bg: 'white',
+      mt: '5rem',
+      pl: '5vw',
+      '& div.sectionContent': {
+        minWidth: '16vw',
+        maxWidth: '17vw',
+      },
+    },
+    defaultWithSidebar: {
+      bg: 'white',
+      pl: '2rem',
+      pt: '2rem',
+      '& div.sectionContent': {
+        minWidth: '60rem',
+        maxWidth: '65rem',
+      },
+    },
+    fullBleedWithSidebar: {
+      bg: 'white',
+      pl: '2rem',
+      pt: '2rem',
+      mr: '5vw',
+      '& div.sectionContent': {
+        minWidth: '60vw',
+        maxWidth: '72vw',
+      },
+    },
+    fullBleed: {
+      bg: 'white',
+      mx: '5vw',
+      pl: '2rem',
+      py: '2rem',
+      '& div.sectionContent': {
+        minWidth: '70vw',
+        maxWidth: '90vw',
+      },
+    },
+    fullBleedLight: {
+      bg: 'light',
+      px: '5vw',
+      mt: '2rem',
+      '& div.sectionImage': {
+        m: '-1rem 0 -1rem 0',
+      },
+      '& div.sectionContent': {
+        py: '2rem',
+        width: '90vw',
+      },
+    },
+    fullBleedDark: {
+      bg: 'primary',
+      color: 'white',
+      px: '5vw',
+      mt: '2rem',
+      '& div.sectionImage': {
+        m: '-1rem 0 -1rem 0',
+      },
+      '& div.sectionContent': {
+        py: '2rem',
+        width: '90vw',
       },
     },
   },
   text: {
     default: {
       fontFamily: 'body',
-      fontSize: 0,
+      fontSize: 3,
       lineHeight: 'body',
+      fontWeight: 'body',
+      color: 'text',
     },
     heading: {
       fontFamily: 'heading',
       fontWeight: '100',
       lineHeight: 'heading',
+      color: 'primary',
+    },
+    menuHeading: {
+      color: 'primary',
+      py: '1em',
+    },
+    lede: {
+      fontSize: 4,
+    },
+    pageTitle: {
+      color: 'primary',
+      fontWeight: '100',
+      fontSize: 7,
+      ml: '0',
+      '::after': {
+        content: '""',
+        marginLeft: '-0.5em',
+        marginTop: '0.2em',
+        marginBottom: '0.7em',
+        width: '1.5em',
+        height: '0.1em',
+        minHeight: '5px',
+        bg: 'secondary',
+        display: 'block',
+      },
+    },
+    sectionTitle: {
+      fontSize: 7,
+      color: 'primary',
+    },
+  },
+  html: {
+    default: {
+      maxWidth: '65rem',
+    },
+    fullBleed: {
+      maxWidth: '100vw',
+    },
+  },
+  links: {
+    default: {
+      color: 'primaryBright',
+      wordBreak: 'break-word',
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
+    breadcrumb: {
+      color: 'gray.7',
+      mr: '0.75rem',
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
+    footer: {
+      color: 'white',
+    },
+    header: {
+      position: 'relative',
+      display: 'flex',
+      margin: '0 0 -2.7rem',
+      justifyContent: 'flex-end',
+      '& div': {
+        display: 'flex',
+        opacity: '1',
+        transition: 'all 1s',
+        my: '5px',
+        background: 'white',
+      },
+      '& input': {
+        width: '300px',
+        py: '1.25rem',
+      },
+      '& a, button': {
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+        height: '100%',
+        padding: '1.25rem 1.375rem',
+        opacity: '1',
+        lineHeight: '1.2',
+        textDecoration: 'none',
+        color: 'text',
+        borderTop: '0.25rem solid transparent',
+        borderBottom: '0.25rem solid transparent',
+        transition: 'all 325ms ease-in-out',
+        bg: 'white',
+        '&:hover': {
+          background: 'var(--theme-ui-colors-light)',
+          borderBottomWidth: '0.25rem',
+          borderBottomStyle: 'solid',
+          borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+          transform: 'none',
+          cursor: 'pointer',
+          textDecoration: 'none',
+        },
+        '&.selected': {
+          background: 'var(--theme-ui-colors-light)',
+          borderBottomWidth: '0.25rem',
+          borderBottomStyle: 'solid',
+          borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+          transform: 'none',
+          cursor: 'pointer',
+        },
+      },
+    },
+    leftNav: {
+      '& h3': {
+        color: 'primary',
+        p: '0',
+      },
+      '& div': {
+        px: '.5rem',
+        pb: '1rem',
+        '& a': {
+          padding: '0.7em 1em',
+          '&.selected': {
+            fontWeight: '700',
+          },
+        },
+      },
+      '& a': {
+        py: '1rem',
+        display: 'block',
+        color: 'primary',
+        textDecoration: 'none',
+        '&:hover': {
+          bg: 'var(--theme-ui-colors-light)',
+          textDecoration: 'none',
+        },
+        '&.selected': {
+          fontWeight: '700',
+        },
+      },
     },
   },
   styles: {
+    a: {
+      color: 'primaryBright',
+      textDecoration: 'none',
+      wordBreak: 'break-word',
+      ':hover': {
+        textDecoration: 'underline',
+      },
+    },
+    h2: {
+      variant: 'text.heading',
+    },
     root: {
       color: 'gray.4',
       variant: 'text.default',
     },
-    Layout: {
-      overflowX: 'hidden',
-    },
-    Header: {
-      color: 'background',
-      fontFamily: 'menu',
-      fontWeight: '100',
-      margin: '0 auto',
-      padding: 0,
-      width: '100vw',
-      a: {
-        color: 'inherit',
-      },
-    },
-    Main: {
-      margin: '0 auto',
-      width: '100%',
-      '& a': {
-        color: 'primary',
-      },
-    },
-    Footer: {
-      backgroundColor: 'secondary',
-      bottom: 0,
-      color: 'background',
-      left: 0,
-      minHeight: '64px',
-      overflow: 'hidden',
-      position: 'static',
-      a: {
-        color: 'background',
-        textDecoration: 'none',
-      },
-      img: {
-        margin: '40px',
-      },
-    },
-    a: {
-      color: 'primary',
-      wordBreak: 'break-word',
-    },
-    h1: {
-      color: 'gray.4',
-      fontSize: 5,
-      variant: 'text.heading',
-      margin: '1rem 0 0',
-    },
-    h2: {
-      fontSize: 4,
-      variant: 'text.heading',
-    },
-    h3: {
-      fontSize: 2,
-      variant: 'text.heading',
-      margin: '.5rem 0',
-    },
-
   },
-}
+})
 export default theme

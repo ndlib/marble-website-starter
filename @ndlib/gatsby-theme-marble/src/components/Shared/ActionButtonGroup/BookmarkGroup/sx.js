@@ -13,7 +13,7 @@ module.exports = {
   },
   optionsOpen: {
     border: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     borderRadius: '.5rem',
     display: 'block',
     maxWidth: ['90vw', '600px', '600px'],
@@ -29,7 +29,7 @@ module.exports = {
     backgroundColor: 'primary',
     border: 'none',
     borderRadius: '.5rem',
-    color: 'primaryLightText',
+    color: 'white',
     fontSize: '1rem',
     outline: 'none',
     padding: '.5rem',

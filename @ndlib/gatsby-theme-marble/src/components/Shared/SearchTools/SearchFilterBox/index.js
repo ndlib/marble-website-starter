@@ -6,7 +6,6 @@ import {
   ResetFilters,
 } from 'searchkit'
 import { useTranslation } from 'react-i18next'
-import HeroBox from 'components/Shared/HeroBox'
 import sx from './sx'
 
 const SearchFilterBox = () => {
@@ -15,7 +14,12 @@ const SearchFilterBox = () => {
   const fields = ['name^2', 'creator^2', 'allMetadata']
 
   return (
-    <HeroBox backgroundColor='gray.0'>
+    <div sx={{
+      '& form': {
+        border: '1px black solid',
+        borderRadius: '10px',
+      },
+    }}>
       <SearchBox
         queryFields={fields}
         placeholder={fieldLabel}
@@ -29,7 +33,7 @@ const SearchFilterBox = () => {
           <ResetFilters />
         </div>
       </div>
-    </HeroBox>
+    </div>
   )
 }
 

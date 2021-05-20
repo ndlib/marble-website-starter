@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import ImagePager from './'
-import MaterialButton from 'components/Shared/MaterialButton'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 describe('ImagePager', () => {
   const sxStyle = {}

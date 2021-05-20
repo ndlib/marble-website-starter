@@ -3,12 +3,12 @@ module.exports = {
     '& > dl > div': {
       backgroundColor: 'transparent !important',
       borderBottom: '1px solid',
-      borderColor: 'gray.1',
+      borderColor: 'gray.3',
       position: 'relative',
     },
     '& > dl > div:first-of-type': {
       borderTop: '1px solid',
-      borderColor: 'gray.1',
+      borderColor: 'gray.3',
     },
     '& dt': {
       position: 'absolute',
@@ -23,10 +23,10 @@ module.exports = {
     },
   },
   sideMetadata: {
-    backgroundColor: 'callout',
+    backgroundColor: 'lightLight',
     border: '1px solid',
     borderLeft: '3px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.3',
     padding: '1rem',
     '& > dl > div': {
       backgroundColor: 'transparent !important',

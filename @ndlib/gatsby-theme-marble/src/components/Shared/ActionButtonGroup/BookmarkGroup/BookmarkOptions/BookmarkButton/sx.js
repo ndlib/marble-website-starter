@@ -16,7 +16,7 @@ module.exports = {
     whiteSpace: 'nowrap',
     width: '100%',
     '&:hover': {
-      backgroundColor: 'gray.0',
+      backgroundColor: 'lightLight',
       opacity: '1.0',
     },
   },

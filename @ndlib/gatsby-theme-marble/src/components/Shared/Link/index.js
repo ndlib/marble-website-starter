@@ -1,4 +1,7 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
+import { jsx, Link as ThemeLink } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 
@@ -7,7 +10,7 @@ import { Link as GatsbyLink } from 'gatsby'
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
+const Link = ({ variant, children, to, activeClassName, partiallyActive, ...other }) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
@@ -21,6 +24,7 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
     }
     return (
       <GatsbyLink
+        sx={{ variant: 'links.' + variant }}
         to={to}
         activeClassName={activeClassName}
         partiallyActive={partiallyActive}
@@ -31,9 +35,9 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
     )
   }
   return (
-    <a href={to} target='_blank' rel='noopener noreferrer' {...other}>
+    <ThemeLink variant={variant} href={to} target='_blank' rel='noopener noreferrer' {...other}>
       {children}
-    </a>
+    </ThemeLink>
   )
 }
 
@@ -41,8 +45,14 @@ Link.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
   activeClassName: PropTypes.string,
+  variant: PropTypes.string.isRequired,
   partiallyActive: PropTypes.bool,
 }
+
+Link.defaultProps = {
+  variant: 'default',
+}
+
 export default Link
 
 export const isExternal = (link) => {

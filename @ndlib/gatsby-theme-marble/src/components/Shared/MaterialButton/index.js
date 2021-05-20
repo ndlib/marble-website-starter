@@ -2,30 +2,25 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import style from './style.module.css'
 
 const MaterialButton = ({
   children,
   onClick,
   primary = false,
-  wide = false,
+  inverse = false,
   id,
   disabled = false,
 }) => {
   return (
-    <button
+    <Button
       id={id}
       className={style.materialButton}
       onClick={(e) => onClick(e)}
-      sx={{
-        backgroundColor: primary ? 'primary' : 'gray.0',
-        border: 'none',
-        color: primary ? 'white' : 'gray.4',
-        width: wide ? '250px' : '100px',
-      }}
+      variant={primary ? 'primary' : inverse ? 'inverse' : 'light'}
       disabled={disabled}
-    >{children}</button>
+    >{children}</Button>
   )
 }
 
@@ -33,7 +28,7 @@ MaterialButton.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
   primary: PropTypes.bool,
-  wide: PropTypes.bool,
+  inverse: PropTypes.bool,
   id: PropTypes.string,
   disabled: PropTypes.bool,
 }
