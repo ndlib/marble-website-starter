@@ -141,6 +141,9 @@ const theme = merge({}, bootstrapTheme, {
       ...buttonShared,
       color: 'white',
       bg: 'primary',
+      '&:hover': {
+        bg: 'primaryBright',
+      },
       '& a': {
         ...buttonShared['& a'],
         color: 'white',
@@ -156,6 +159,9 @@ const theme = merge({}, bootstrapTheme, {
       ...buttonShared,
       bg: 'secondary',
       color: 'white',
+      '&:hover': {
+        bg: 'secondaryDark',
+      },
       '& a': {
         ...buttonShared['& a'],
         color: 'white',
@@ -165,6 +171,9 @@ const theme = merge({}, bootstrapTheme, {
       ...buttonShared,
       color: 'text',
       bg: 'light',
+      '&:hover': {
+        bg: 'lightDark',
+      },
       '& a': {
         ...buttonShared['& a'],
         color: 'text',
@@ -172,7 +181,7 @@ const theme = merge({}, bootstrapTheme, {
     },
     inverse: {
       ...buttonShared,
-      color: 'text',
+      color: 'primary',
       bg: 'white',
       '& a': {
         ...buttonShared['& a'],
@@ -183,69 +192,75 @@ const theme = merge({}, bootstrapTheme, {
   sections: {
     default: {
       bg: 'white',
-      maxWidth: '65rem',
       mx: '5vw',
-      py: '2rem',
-      /*
+      pt: '2rem',
       '& div.sectionContent': {
+        minWidth: '60rem',
         maxWidth: '65rem',
-        py: '2rem',
       },
-      '& div.sectionImage': {
-      },
-      */
     },
     sidebar: {
       bg: 'white',
       mt: '5rem',
       pl: '5vw',
-      maxWidth: '22vw',
+      '& div.sectionContent': {
+        minWidth: '16vw',
+        maxWidth: '17vw',
+      },
     },
     defaultWithSidebar: {
       bg: 'white',
-      maxWidth: '65rem',
-      px: '2rem',
-      py: '2rem',
+      pl: '2rem',
+      pt: '2rem',
+      '& div.sectionContent': {
+        minWidth: '60rem',
+        maxWidth: '65rem',
+      },
     },
     fullBleedWithSidebar: {
       bg: 'white',
-      px: '2rem',
-      py: '2rem',
+      pl: '2rem',
+      pt: '2rem',
+      mr: '5vw',
+      '& div.sectionContent': {
+        minWidth: '60vw',
+        maxWidth: '72vw',
+      },
     },
     fullBleed: {
       bg: 'white',
-      px: '5vw',
+      mx: '5vw',
+      pl: '2rem',
       py: '2rem',
-      /*
-      '& div.sectionImage': {
-        m: '-2rem 0 -2rem 5vw',
-      },
       '& div.sectionContent': {
+        minWidth: '70vw',
         maxWidth: '90vw',
-        alignSelf: 'center',
-        py: '2rem',
       },
-      */
     },
     fullBleedLight: {
       bg: 'light',
       px: '5vw',
-      my: '2rem',
+      mt: '2rem',
       '& div.sectionImage': {
         m: '-1rem 0 -1rem 0',
       },
       '& div.sectionContent': {
-        maxWidth: '65rem',
-        alignSelf: 'center',
         py: '2rem',
-        width: 'auto',
+        width: '90vw',
       },
     },
     fullBleedDark: {
       bg: 'primary',
       color: 'white',
       px: '5vw',
-      my: '2rem',
+      mt: '2rem',
+      '& div.sectionImage': {
+        m: '-1rem 0 -1rem 0',
+      },
+      '& div.sectionContent': {
+        py: '2rem',
+        width: '90vw',
+      },
     },
   },
   text: {
@@ -315,6 +330,9 @@ const theme = merge({}, bootstrapTheme, {
       '&:hover': {
         textDecoration: 'underline',
       },
+    },
+    footer: {
+      color: 'white',
     },
     header: {
       position: 'relative',

@@ -41,10 +41,10 @@ query {
 * variant - used to set a configurable variant in the theme file.
 *           Defaults to default
 */
-export const NDBrandHeader = ({ location, variant, titleOverride }) => {
+export const NDBrandHeader = ({ location, variant, titleOverride, additionalNavButtons }) => {
   const { site, menusJson } = useStaticQuery(query)
   const menu = typy(menusJson, 'items').safeArray
-
+  console.log(menu)
   const [showSearch, setShowSearch] = useState(false)
   const title = titleOverride || site.siteMetadata.title
   return (
@@ -100,6 +100,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride }) => {
           <NDBrandNavSearch location={location} searchPath='search' setShowSearch={setShowSearch} />
         ) : (
           <Menu variant='header' items={menu} location={location}>
+            {additionalNavButtons}
             <Button sx={{
               borderRadius: '0',
               borderLeftWidth: '1px',
@@ -127,10 +128,15 @@ NDBrandHeader.propTypes = {
     PropTypes.object,
     PropTypes.string,
   ]),
+  additionalNavButtons: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 }
 
 NDBrandHeader.defaultProps = {
   variant: 'default',
+  additionalNavButtons: [],
 }
 
 export default NDBrandHeader

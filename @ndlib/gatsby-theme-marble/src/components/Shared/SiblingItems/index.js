@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
-import { jsx, BaseStyles } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 import typy from 'typy'
 import CardGroup from 'components/Shared/CardGroup'
 import ManifestCard from 'components/Shared/ManifestCard'
@@ -20,16 +20,14 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
 
     return (
       <>
-        <BaseStyles>
-          <h2>Also from&nbsp;
-            <Link
-              to={typy(marbleItem, 'marbleParent.slug').safeString}
-              sx={{ textDecoration: 'none' }}
-            >
-              <i>{typy(marbleItem, 'marbleParent.title').safeString}</i>
-            </Link>
-          </h2>
-        </BaseStyles>
+        <Heading as='h2' variant='sectionTitle'>Also from&nbsp;
+          <Link
+            to={typy(marbleItem, 'marbleParent.slug').safeString}
+            sx={{ textDecoration: 'none' }}
+          >
+            <i>{typy(marbleItem, 'marbleParent.title').safeString}</i>
+          </Link>
+        </Heading>
         <CardGroup defaultDisplay={DISPLAY_GRID} toggleGroup='sibling-items'>
           {
             nearSiblings.map(sibling => {

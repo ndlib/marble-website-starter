@@ -6,7 +6,13 @@ import { jsx, Grid } from 'theme-ui'
 
 export const NDBrandSectionLeftNav = ({ location, variant, children, ...props }) => {
   return (
-    <Grid variant={`sections.${variant}`} as='section' columns={['100% 0%', '22vw 68vw', '22vw 68vw']} {...props} >
+    <Grid
+      variant={`sections.${variant}`}
+      as='section'
+      gap={'1vw'}
+      columns={['100% 0%', '22vw 77vw', '22vw 77vw']}
+      {...props}
+    >
       {children}
     </Grid>
   )

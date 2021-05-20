@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 
 const DropDown = ({ sxStyle, buttonLabel, options }) => {
   const [open, setOpen] = useState(false)
@@ -18,13 +18,14 @@ const DropDown = ({ sxStyle, buttonLabel, options }) => {
         }
       }}
     >
-      <button
+      <Button
+        variant='primary'
         className='dropdown-toggle'
         onClick={() => setOpen(!open)}
         sx={sxStyle.toggle}
       >
         { buttonLabel }
-      </button>
+      </Button>
       <div
         role='listbox'
         sx={open ? sxStyle.optionsOpen : sxStyle.optionsClosed}>

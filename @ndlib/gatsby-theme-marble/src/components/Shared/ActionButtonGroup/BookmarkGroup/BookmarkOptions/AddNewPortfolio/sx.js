@@ -8,8 +8,8 @@ module.exports = {
     height: '36px',
     width: '100%',
     '&:hover': {
-      backgroundColor: 'primary',
-      color: 'primaryLightText',
+      backgroundColor: 'lightLight',
+      color: 'text',
     },
   },
   errorButton: {
@@ -52,7 +52,7 @@ module.exports = {
   submitButton: {
     backgroundColor: 'primary',
     border: 'none',
-    color: 'primaryLightText',
+    color: 'text',
     cursor: 'pointer',
     display: 'inline-block',
     fontSize: '.8rem',
@@ -65,7 +65,7 @@ module.exports = {
   submitButtonDisabled: {
     backgroundColor: 'primaryWithOpacity',
     border: 'none',
-    color: 'primaryLightText',
+    color: 'text',
     cursor: 'default',
     display: 'inline-block',
     fontSize: '.8rem',
