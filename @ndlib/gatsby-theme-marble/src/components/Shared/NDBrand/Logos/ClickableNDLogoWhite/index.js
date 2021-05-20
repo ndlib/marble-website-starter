@@ -3,7 +3,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Image } from 'theme-ui'
-import ndLogo from '@ndlib/gatsby-theme-marble/src/assets/logos/ND_mark_white.svg'
 
 const ClickableNDLogoWhite = ({ variant, width, height }) => {
   return (

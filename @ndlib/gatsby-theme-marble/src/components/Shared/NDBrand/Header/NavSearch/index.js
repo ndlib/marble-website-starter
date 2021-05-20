@@ -22,10 +22,10 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
   }
 
   return (
-    <Box sx={{ variant: variant }}>
+    <Box sx={{ variant: variant }} {...props}>
       <div>
         <Button title='Search' onClick={() => {
-          submitSearch(location, inputRef, 'search')
+          submitSearch(location, inputRef, searchPath)
         }} sx={{
           borderRadius: '0',
           borderRightWidth: '1px',

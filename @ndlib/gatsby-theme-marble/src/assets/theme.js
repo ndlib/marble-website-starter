@@ -383,16 +383,6 @@ const theme = merge({}, bootstrapTheme, {
         },
       },
     },
-    footer: {
-      '& a': {
-        color: 'white',
-        py: '25px',
-        px: '25px',
-        textDecoration: 'none',
-        fontWeight: '600',
-        fontFamily: 'heading',
-      },
-    },
     leftNav: {
       '& h3': {
         color: 'primary',
