@@ -47,9 +47,12 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter 
 
 NDBrandLayout.propTypes = {
   location: PropTypes.object.isRequired,
-  children: PropTypes.array.isRequired,
   pageHeader: PropTypes.object,
   siteHeader: PropTypes.object,
   siteFooter: PropTypes.object,
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+  ]).isRequired,
 }
 export default NDBrandLayout
