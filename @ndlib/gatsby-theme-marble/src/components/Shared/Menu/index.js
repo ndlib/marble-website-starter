@@ -77,7 +77,11 @@ Menu.propTypes = {
   items: PropTypes.array,
   label: PropTypes.string,
   expand: PropTypes.bool,
-  children: PropTypes.object,
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+
 }
 
 Menu.defaultProps = {

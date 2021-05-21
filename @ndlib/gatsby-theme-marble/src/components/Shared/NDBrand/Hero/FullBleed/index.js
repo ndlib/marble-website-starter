@@ -57,7 +57,10 @@ NDBrandHeroFullBleed.propTypes = {
   image: PropTypes.object,
   button: PropTypes.object,
   title: PropTypes.string,
-  lede: PropTypes.string,
+  lede: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
 }
 
 NDBrandHeroFullBleed.defaultProps = {
