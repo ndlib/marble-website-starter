@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Draggable } from 'react-beautiful-dnd'
-import style from './style.module.css'
+import * as style from './style.module.css'
 import dragHandle from 'assets/icons/svg/baseline-drag_handle-24px.svg'
 
 const SortableItem = ({ item, index, itemComponent }) => {

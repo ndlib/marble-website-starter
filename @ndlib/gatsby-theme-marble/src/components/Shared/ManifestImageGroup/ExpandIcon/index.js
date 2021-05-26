@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import expandIcon from 'assets/icons/svg/baseline-fullscreen-24px.svg'
-import style from './style.module.css'
+import * as style from './style.module.css'
 const ExpandIcon = ({ label }) => {
   return (
     <span className={style.expandWrapper}>

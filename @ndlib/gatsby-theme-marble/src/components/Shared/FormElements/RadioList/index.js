@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import checked from 'assets/icons/svg/baseline-radio_button_checked-24px.svg'
 import unchecked from 'assets/icons/svg/baseline-radio_button_unchecked-24px.svg'
-import style from './style.module.css'
+import * as style from './style.module.css'
 
 const RadioList = ({ options, fieldName, onChange }) => {
   if (!options || options.length < 1) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import style from 'components/App/FormElements/style.module.css'
+import * as style from 'components/App/FormElements/style.module.css'
 import localStyle from './style.module.css'
 
 const ImageSelect = ({ items, currentImage, fieldName, onChange }) => {

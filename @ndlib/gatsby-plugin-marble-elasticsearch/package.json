@@ -12,8 +12,11 @@
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "license": "APACHE2",
   "dependencies": {
-    "aws-sdk": "^2.893.0",
+    "aws-sdk": "^2.916.0",
     "elasticsearch": "^16.7.2",
     "http-aws-es": "^6.0.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^3.6.1"
   }
 }

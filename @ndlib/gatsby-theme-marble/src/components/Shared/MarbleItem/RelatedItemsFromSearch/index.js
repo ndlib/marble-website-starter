@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { graphql, useStaticQuery } from 'gatsby'
 import SearchBase from 'components/Shared/SearchBase'
 import SearchResults from 'components/Shared/SearchTools/SearchResults'
 
 const RelatedItemsFromSearch = ({ marbleItem }) => {
-  if (!process.env.SEARCH_URL || !process.env.SEARCH_INDEX) {
+  const { marbleConfiguration } = useStaticQuery(query)
+  if (!marbleConfiguration.search || !marbleConfiguration.search.index || marbleConfiguration.search.url) {
     return null
   }
   const displayContext = 'itemPage'
@@ -40,3 +42,14 @@ const customQueryBuilder = (id) => {
     },
   }
 }
+
+export const query = graphql`
+query {
+  marbleConfiguration {
+    search {
+      url
+      index
+    }
+  }
+}
+`

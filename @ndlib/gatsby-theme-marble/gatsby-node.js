@@ -1,5 +1,25 @@
 const fs = require('fs')
 
+exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
+  if (stage === 'build-javascript' || stage === 'develop') {
+    actions.setWebpackConfig({
+      plugins: [
+        plugins.provide({ process: 'process/browser' })
+      ]
+    })
+  }
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        path: require.resolve("path-browserify")
+      },
+      fallback: {
+        fs: false,
+      }
+    }
+  })
+}
+
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
   const contentPath = options.contentPath || 'content'
@@ -9,82 +29,49 @@ exports.onPreBootstrap = ({ reporter }, options) => {
   }
 }
 
+exports.sourceNodes = async ( gatsbyInternal, pluginOptions) => {
+  const { iiifViewerUrl, searchUrl, searchIndex } = pluginOptions
+  const { actions, createContentDigest, createNodeId } = gatsbyInternal
+  const { createNode } = actions
+  const marbleConfiguration = {
+    id: createNodeId('1'),
+    iiifViewerUrl: iiifViewerUrl,
+    search: {
+      url: searchUrl,
+      index: searchIndex,
+    }
+  }
+  const nodeContent = JSON.stringify(marbleConfiguration)
+  const normalizedTypeNode = {
+    ...marbleConfiguration,
+    internal: {
+      type: 'MarbleConfiguration',
+      content: nodeContent,
+      contentDigest: createContentDigest(marbleConfiguration),
+    },
+  }
+  await createNode(normalizedTypeNode)
+}
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+
+  if (page.path.match(/^\/user/)) {
+    page.matchPath = '/user/*'
+    // Update the page.
+    createPage(page)
+  } else if (page.path.match(/^\/myportfolio/)) {
+    page.matchPath = '/myportfolio/*'
+    // Update the page.
+    createPage(page)
+  }
+}
+
 // predefine stuff we expect from configuration.js
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
   const typeDefs = `
-  ### Marble Item Stuff
-  type metadataData @dontInfer {
-    label: String
-    value: [String]
-    urlField: String
-    type: String
-  }
-  type marbleIiifFile @dontInfer {
-    default: String
-    service: String
-    thumbnail: String
-  }
-  type MarbleFile implements Node {
-    id: String!
-    marbleId: String!
-    collection: MarbleItem
-    parentId: String
-    name: String
-    title: String
-    sequence: Int
-    file: String
-    extension: String
-    fileType: String
-    iiif: marbleIiifFile
-    local: File @link(by: "name", from: "name")
-    marbleParent: MarbleItem @link(by: "id", from: "parentId")
-  }
-  type MarbleItem implements Node {
-    id: String!
-    marbleId: String!
-    slug: String!
-    display: String
-    title: String!
-    description: String
-    sequence: Int
-    iiifUri: String
-    partiallyDigitized: Boolean
-    metadata: [metadataData]
-    copyrightRestricted: Boolean
-    childrenMarbleItem: [MarbleItem]
-    childrenMarbleFile: [MarbleFile] @link(by: "parentId", from: "id")
-    citation: String
-    parentId: String
-    marbleParent: MarbleItem @link(by: "marbleId", from: "parentId")
-    searchData: searchData
-  }
-
-  type searchData {
-    id: String
-    name: String
-    creator: [String]
-    collection: [String]
-    parent: String
-    identifier: [String]
-    geographicLocation: [String]
-    repository: String
-    themeTag: [String]
-    expandedThemeTag: [String]
-    centuryTag: [String]
-    date: String
-    lowestSearchRange: Int
-    highestSearchRange: Int
-    workType: [String]
-    thumbnail: String
-    language: [String]
-    type: String
-    url: String
-    formatTag: [String]
-    allMetadata: [String]
-  }
-
   # things expected to be there
   type menuItems @dontInfer {
     id: String
@@ -104,18 +91,4 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   `
   createTypes(typeDefs)
-}
-
-exports.onCreatePage = async ({ page, actions }) => {
-  const { createPage } = actions
-
-  if (page.path.match(/^\/user/)) {
-    page.matchPath = '/user/*'
-    // Update the page.
-    createPage(page)
-  } else if (page.path.match(/^\/myportfolio/)) {
-    page.matchPath = '/myportfolio/*'
-    // Update the page.
-    createPage(page)
-  }
 }

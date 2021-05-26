@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import Gravatar from 'components/Shared/Gravatar'
 import { getData } from 'utils/api'
-import style from './style.module.css'
+import * as style from './style.module.css'
 
 export const UserCartouche = ({ user, loginReducer }) => {
   const [fullUser, setUser] = useState(user)

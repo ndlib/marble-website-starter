@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import gravatar from 'gravatar'
-import style from './style.module.css'
+import * as style from './style.module.css'
 import NoUserImage from 'assets/images/noUser.svg'
 export const Gravatar = ({ email, size }) => {
   if (!email) {

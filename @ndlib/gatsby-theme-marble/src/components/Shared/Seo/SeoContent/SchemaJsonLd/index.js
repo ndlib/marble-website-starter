@@ -63,7 +63,7 @@ export const SchemaJsonLd = (props) => {
 
 SchemaJsonLd.propTypes = {
   title: PropTypes.string.isRequired,
-  url: PropTypes.isRequired,
+  url: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   date: PropTypes.string,
   image: PropTypes.string.isRequired,

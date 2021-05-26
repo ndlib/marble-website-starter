@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
-import style from './style.module.css'
+import * as style from './style.module.css'
 
 const MaterialButton = ({
   children,
