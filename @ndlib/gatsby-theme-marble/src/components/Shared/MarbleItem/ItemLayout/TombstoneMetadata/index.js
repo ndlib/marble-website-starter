@@ -12,7 +12,6 @@ const TombstoneMetadata = ({ marbleItem }) => {
   const creators = filterForLabledField(marbleItem, 'Creator')
   const dates = filterForLabledField(marbleItem, 'Date')
   const campusLocations = filterForLabledField(marbleItem, 'Campus Location')
-  const partOfCollection = typy(marbleItem, 'marbleParent').safeObject
   const uriValue = filterForLabledField(marbleItem, 'URI Value')
 
   const hasUri = typy(uriValue, '[0].value').safeArray.length > 0
