@@ -9,7 +9,7 @@ export const NDBrandSectionLeftNav = ({ location, variant, children, ...props })
     <Grid
       variant={`sections.${variant}`}
       as='section'
-      gap={'1vw'}
+      gap={'0'}
       columns={['100% 0%', '22vw 77vw', '22vw 77vw']}
       {...props}
     >

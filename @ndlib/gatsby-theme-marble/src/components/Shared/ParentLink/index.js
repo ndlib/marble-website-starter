@@ -1,33 +1,32 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import Link from 'components/Shared/Link'
-import { jsx, BaseStyles } from 'theme-ui'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
+import { jsx } from 'theme-ui'
 import typy from 'typy'
 
-const ParentLink = ({ children }) => {
-  const parentObject = typy(children, '[0].props.data.marbleItem.marbleParent').safeObject
+const ParentLink = ({ marbleItem }) => {
+  console.log('MI', marbleItem)
+  const parentObject = typy(marbleItem, 'marbleParent').safeObject
   if (parentObject && parentObject.title && parentObject.slug) {
     return (
-      <BaseStyles>
-        <Link
-          to={parentObject.slug}
-          sx={{
-            fontSize: '.8rem',
-            textDecoration: 'none',
-            '&:hover': {
-              textDecoration: 'underline',
-            },
-          }}
-        >Part of <i>{parentObject.title}</i> Collection
-        </Link>
-      </BaseStyles>
+      <Link
+        to={parentObject.slug}
+        sx={{
+          fontSize: '.8rem',
+          textDecoration: 'none',
+          '&:hover': {
+            textDecoration: 'underline',
+          },
+        }}
+      >Part of <i>{parentObject.title}</i> Collection
+      </Link>
     )
   }
   return null
 }
 
 ParentLink.propTypes = {
-  children: PropTypes.node,
+  marbleItem: PropTypes.node,
 }
 
 export default ParentLink

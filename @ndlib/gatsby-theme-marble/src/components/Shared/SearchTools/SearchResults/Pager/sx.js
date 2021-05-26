@@ -10,7 +10,7 @@ module.exports = {
     },
     '& .sk-toggle__item': {
       backgroundColor: 'background',
-      borderColor: 'gray.1',
+      borderColor: 'gray.4',
       color: 'gray.4',
     },
     '& .sk-toggle__item:hover': {
@@ -19,7 +19,7 @@ module.exports = {
     },
     '& .sk-toggle__item.is-disabled:hover': {
       backgroundColor: 'background',
-      borderColor: 'gray.1',
+      borderColor: 'gray.4',
       color: 'gray.4',
       cursor: 'default',
     },

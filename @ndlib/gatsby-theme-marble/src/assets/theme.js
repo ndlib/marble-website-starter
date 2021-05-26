@@ -142,6 +142,7 @@ const theme = merge({}, bootstrapTheme, {
       color: 'white',
       bg: 'primary',
       '&:hover': {
+        ...buttonShared['&:hover'],
         bg: 'primaryBright',
       },
       '& a': {
@@ -160,6 +161,7 @@ const theme = merge({}, bootstrapTheme, {
       bg: 'secondary',
       color: 'white',
       '&:hover': {
+        ...buttonShared['&:hover'],
         bg: 'secondaryDark',
       },
       '& a': {
@@ -172,6 +174,7 @@ const theme = merge({}, bootstrapTheme, {
       color: 'text',
       bg: 'light',
       '&:hover': {
+        ...buttonShared['&:hover'],
         bg: 'lightDark',
       },
       '& a': {
@@ -183,6 +186,10 @@ const theme = merge({}, bootstrapTheme, {
       ...buttonShared,
       color: 'primary',
       bg: 'white',
+      '&:hover': {
+        ...buttonShared['&:hover'],
+        bg: 'lightLight',
+      },
       '& a': {
         ...buttonShared['& a'],
         color: 'primary',
@@ -193,7 +200,7 @@ const theme = merge({}, bootstrapTheme, {
     default: {
       bg: 'white',
       mx: '5vw',
-      pt: '2rem',
+      pb: '3rem',
       '& div.sectionContent': {
         minWidth: '60rem',
         maxWidth: '65rem',
@@ -211,7 +218,7 @@ const theme = merge({}, bootstrapTheme, {
     defaultWithSidebar: {
       bg: 'white',
       pl: '2rem',
-      pt: '2rem',
+      pb: '3rem',
       '& div.sectionContent': {
         minWidth: '60rem',
         maxWidth: '65rem',
@@ -219,8 +226,8 @@ const theme = merge({}, bootstrapTheme, {
     },
     fullBleedWithSidebar: {
       bg: 'white',
-      pl: '2rem',
-      pt: '2rem',
+      pl: '1vw',
+      pb: '3rem',
       mr: '5vw',
       '& div.sectionContent': {
         minWidth: '60vw',
@@ -229,9 +236,10 @@ const theme = merge({}, bootstrapTheme, {
     },
     fullBleed: {
       bg: 'white',
-      mx: '5vw',
-      pl: '2rem',
-      py: '2rem',
+      ml: '4vw',
+      pl: '1vw',
+      mr: '5vw',
+      pb: '3rem',
       '& div.sectionContent': {
         minWidth: '70vw',
         maxWidth: '90vw',
@@ -240,7 +248,7 @@ const theme = merge({}, bootstrapTheme, {
     fullBleedLight: {
       bg: 'light',
       px: '5vw',
-      mt: '2rem',
+      mb: '3rem',
       '& div.sectionImage': {
         m: '-1rem 0 -1rem 0',
       },
@@ -253,7 +261,7 @@ const theme = merge({}, bootstrapTheme, {
       bg: 'primary',
       color: 'white',
       px: '5vw',
-      mt: '2rem',
+      mb: '3rem',
       '& div.sectionImage': {
         m: '-1rem 0 -1rem 0',
       },

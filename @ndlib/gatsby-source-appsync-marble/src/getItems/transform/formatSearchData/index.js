@@ -1,6 +1,7 @@
 const realDatesFromCatalogedDates = require('../searchData/realDatesFromCatalogedDates')
 const determineProvider = require('../searchData/determineProvider')
 const getCreators = require('../searchData/getCreators')
+const getCollection = require('../searchData/getCollection')
 const getGeographicLocations = require('../searchData/getGeographicLocations')
 const getIdentifiers = require('../searchData/getIdentifiers')
 const getLanguages = require('../searchData/getLanguages')
@@ -14,12 +15,11 @@ module.exports = async (item) => {
   const allMetadataKeys = [
     'description', 'dimensions', 'language', 'license', 'access', 'format', 'dedication', 'medium', 'classification', 'workType',
   ]
-
   const searchData = {
     id: item.id,
     name: item.title,
     creator: creators,
-    collection: item.collectionId,
+    collection: getCollection(item),
     parent: item.parentId,
     identifier: getIdentifiers(item),
     geographicLocation: getGeographicLocations(item),

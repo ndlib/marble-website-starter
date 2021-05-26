@@ -10,7 +10,7 @@ const SortableList = ({ items, itemComponent, onUpdate }) => {
   const [orderedItems, setItemOrder] = useState([...items])
   const sx = (dragging) => {
     return {
-      backgroundColor: dragging ? 'gray.1' : 'white',
+      backgroundColor: dragging ? 'gray.4' : 'white',
       margin: `1rem 0`,
       padding: dragging ? `1rem .5rem` : `1rem 0`,
     }

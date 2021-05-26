@@ -11,6 +11,7 @@ export const NDBrandHeroFullBleed = ({ location, variant, image, lede, title, bu
     <Box id='page-header' variant={`hero.${variant}`} sx={{
       position: 'relative',
       display: 'grid',
+      pb: '2rem',
       gridTemplateRows: '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',
       gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start title-start] 2fr [title-end image-start] 2fr [image-end container-end] ${gutterWidth} [screen-end]`,
       '::before': {

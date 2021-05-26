@@ -2,7 +2,7 @@ module.exports = {
   none: {
     backgroundColor: 'background',
     borderBottom: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     fontSize: '.85rem',
     fontStyle: 'italic',
     height: '60px',

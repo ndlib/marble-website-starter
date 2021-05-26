@@ -15,12 +15,15 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
     }
   })
 
+  if (!searchPath.startsWith('/')) {
+    searchPath = '/' + searchPath
+  }
+
   const submitSearch = (location, inputRef, searchPath) => {
     const qs = queryString.parse(location.search)
     qs.q = `${inputRef.current.value}`
-    navigate(`/${searchPath}?${queryString.stringify(qs)}`)
+    navigate(`${searchPath}?${queryString.stringify(qs)}`)
   }
-
   return (
     <Box sx={{ variant: variant }} {...props}>
       <div>
@@ -44,7 +47,7 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
           onKeyDown={(e) => {
             // Submit on enter key press
             if (e.keyCode === 13) {
-              submitSearch(location, inputRef, 'search')
+              submitSearch(location, inputRef, searchPath)
             }
           }}
           sx={{ border: 0 }} placeholder='Search the collection' ariaLabel='Search' />

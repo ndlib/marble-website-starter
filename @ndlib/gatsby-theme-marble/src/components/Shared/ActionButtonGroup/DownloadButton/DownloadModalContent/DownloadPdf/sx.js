@@ -1,7 +1,7 @@
 module.exports = {
   wrapper: {
     border: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     maxHeight: '30vh',
     minHeight: '40px',
     overflowY: 'scroll',

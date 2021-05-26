@@ -59,6 +59,10 @@ module.exports = (itemId, website) => {
     medium
     objectFileGroupId
     parentId
+    parent {
+      id
+      title
+    }    
     partiallyDigitized
     physicalAccess
     publishers {

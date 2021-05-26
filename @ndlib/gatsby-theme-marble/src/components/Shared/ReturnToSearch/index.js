@@ -3,10 +3,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import Link from 'components/Shared/Link'
-import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
-import sx from './sx'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
+import { useThemeUI, jsx } from 'theme-ui'
 import { useTranslation } from 'react-i18next'
+
+const sx = {
+  pl: 0,
+  pt: '1.5rem',
+  pb: '2rem',
+  m: 0,
+  listStyle: 'none',
+  fontSize: 1,
+  svg: {
+    mr: '.75rem',
+  },
+}
+
 export const ReturnToSearch = ({ location }) => {
   const { t } = useTranslation()
   const context = useThemeUI()
@@ -15,10 +27,10 @@ export const ReturnToSearch = ({ location }) => {
     const linkText = t('common:item.returnToSearch')
     const target = `/search${location.state.referal.query}`
     return (
-      <BaseStyles>
+      <div sx={sx}>
         <Link
           to={target}
-          sx={sx.link}
+          variant='breadcrumb'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -30,9 +42,9 @@ export const ReturnToSearch = ({ location }) => {
             <path d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z' fill={iconColor} />
             <path d='M0 0h24v24H0z' fill='none' />
           </svg>
-          <span sx={sx.text}>{linkText}</span>
+          {linkText}
         </Link>
-      </BaseStyles>
+      </div>
     )
   }
   return null

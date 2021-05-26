@@ -77,7 +77,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, additionalNavB
         alignSelf: 'flex-start',
       }}>
         <Heading as='h1' sx={{
-          color: 'gray.1',
+          color: 'gray.4',
           m: 0,
           p: 0,
           fontFamily: 'title',

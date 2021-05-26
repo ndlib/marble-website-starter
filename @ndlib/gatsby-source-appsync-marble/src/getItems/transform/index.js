@@ -16,7 +16,7 @@ module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
     iiifUri: appSyncItem.iiifResourceId && iiifRoot ? `${iiifRoot}/${appSyncItem.iiifResourceId}` : '',
     marbleId: appSyncItem.id,
     metadata: makeMetadataArray(appSyncItem),
-    parentId: appSyncItem.parentId,
+    parentId:  appSyncItem.parentId,
     partiallyDigitized: mapFieldOrDefault(appSyncItem, 'partiallyDigitized', false),
     sequence: appSyncItem.sequence,
     searchData: await formatSearchData(appSyncItem),

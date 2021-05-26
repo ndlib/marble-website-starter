@@ -8,6 +8,7 @@ import { jsx } from 'theme-ui'
 export const NDBrandBreadcrumbs = ({ location, variant, breadcrumbs, currentPageTitle, ...props }) => {
   const sx = {
     pl: 0,
+    pt: '1.5rem',
     pb: '2rem',
     m: 0,
     listStyle: 'none',

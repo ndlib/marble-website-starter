@@ -193,7 +193,7 @@ const dataLookUp = {
     },
     copyrightStatement: {
       label: 'Conditions Governing Use',
-      type: 'list',
+      type: 'markdown',
       processor: genericFind,
     },
     dedication: {

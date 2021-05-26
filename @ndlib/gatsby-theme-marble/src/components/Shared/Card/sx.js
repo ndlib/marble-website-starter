@@ -32,7 +32,7 @@ module.exports = {
   },
   imageBoarder: {
     border: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     display: 'inline-block',
     margin: '0 auto',
     padding: '4px',
