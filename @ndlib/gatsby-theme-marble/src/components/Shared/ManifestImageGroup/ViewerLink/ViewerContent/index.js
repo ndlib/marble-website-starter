@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 
-const ViewerContent = ({ marbleItem, index, view }) => {
-  const { type, target } = viewerSettings(marbleItem, index, view)
+const ViewerContent = ({ marbleItem, index, view, viewerUrl }) => {
+  const { type, target } = viewerSettings(marbleItem, index, view, viewerUrl)
   const style = {
     border: 'none',
     height: 'calc(100vh - 89px - 3rem)',
@@ -39,10 +39,11 @@ ViewerContent.propTypes = {
   marbleItem: PropTypes.object.isRequired,
   view: PropTypes.string,
   index: PropTypes.number,
+  viewerUrl: PropTypes.string
 }
 export default ViewerContent
 
-const viewerSettings = (marbleItem, index, view) => {
+const viewerSettings = (marbleItem, index, view, viewerUrl) => {
   const pdfs = typy(marbleItem, 'childrenMarbleFile').safeArray.filter(f => {
     return f.fileType === 'pdf'
   })
@@ -56,6 +57,6 @@ const viewerSettings = (marbleItem, index, view) => {
 
   return {
     type: 'iiif',
-    target: `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}&cv=${index}&view=${view}&title=false`,
+    target: `${viewerUrl}${marbleItem.iiifUri}&cv=${index}&view=${view}&title=false`,
   }
 }

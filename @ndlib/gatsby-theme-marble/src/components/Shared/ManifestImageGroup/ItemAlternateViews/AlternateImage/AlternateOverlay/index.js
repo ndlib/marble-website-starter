@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import style from './style.module.css'
+import * as style from './style.module.css'
 
 const AlternateOverlay = ({ isLast, overlayNumber }) => {
   // index starts at 1, since we are already showing the first image above this

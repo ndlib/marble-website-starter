@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactMarkdown from 'react-markdown/with-html'
-import style from './style.module.css'
+import ReactMarkdown from 'react-markdown'
+import * as style from './style.module.css'
 
 const ManifestDescription = ({ marbleItem }) => {
   if (marbleItem && marbleItem.description) {

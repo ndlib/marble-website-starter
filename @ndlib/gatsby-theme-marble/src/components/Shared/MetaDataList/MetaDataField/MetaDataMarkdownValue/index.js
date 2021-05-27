@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactMarkdown from 'react-markdown/with-html'
+import ReactMarkdown from 'react-markdown'
 import { BaseStyles } from 'theme-ui'
 
 const MetaDataMarkdownValue = ({ values, skipHtml }) => {

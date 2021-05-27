@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { graphql, useStaticQuery } from 'gatsby'
 import typy from 'typy'
 import {
   SearchkitProvider,
@@ -7,9 +8,10 @@ import {
 } from 'searchkit'
 
 const SearchBase = ({ children, defaultSearch }) => {
+  const { marbleConfiguration } = useStaticQuery(query)
   const searchBase = {
-    url: process.env.SEARCH_URL,
-    app: process.env.SEARCH_INDEX,
+    url: typy(marbleConfiguration, 'search.url').safeString,
+    app: typy(marbleConfiguration, 'search.index').safeString,
   }
   if (!typy(searchBase, 'url').isString || !typy(searchBase, 'app').isString) {
     return (
@@ -36,3 +38,14 @@ SearchBase.propTypes = {
 }
 
 export default SearchBase
+
+export const query = graphql`
+query {
+  marbleConfiguration {
+    search {
+      url
+      index
+    }
+  }
+}
+`

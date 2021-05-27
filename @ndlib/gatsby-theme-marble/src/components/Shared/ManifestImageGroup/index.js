@@ -11,7 +11,7 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
   if (!marbleItem) {
     return null
   }
-  const label = process.env.IIIF_VIEWER_URL ? 'Open in external viewer application' : marbleItem.title
+  const label = 'Open in external viewer application'
   return (
     <section>
       <h2 className='accessibilityOnly'>Images</h2>

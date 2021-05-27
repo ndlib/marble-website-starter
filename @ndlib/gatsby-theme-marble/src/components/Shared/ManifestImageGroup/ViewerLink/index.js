@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { graphql, useStaticQuery } from 'gatsby'
 import { jsx } from 'theme-ui'
 import ActionModal from 'components/Shared/ActionModal'
 import ViewerContent from './ViewerContent'
@@ -12,14 +13,15 @@ const ViewerLink = ({
   view = 'default',
   children,
 }) => {
+  const { marbleConfiguration } = useStaticQuery(query)
   const [modalOpen, setModalOpen] = useState(false)
-  if (!process.env.IIIF_VIEWER_URL) {
+  if (!marbleConfiguration.iiifViewerUrl) {
     return (
       <>{children}</>
     )
   }
   const downloadable = marbleItem.copyrightRestricted ? 'dl=false' : 'dl=true'
-  const viewerLink = `${process.env.IIIF_VIEWER_URL}${marbleItem.iiifUri}&cv=${index}&view=${view}&title=false&${downloadable}`
+  const viewerLink = `${marbleConfiguration.iiifViewerUrl}${marbleItem.iiifUri}&cv=${index}&view=${view}&title=false&${downloadable}`
   return (
     <>
       <div
@@ -48,6 +50,7 @@ const ViewerLink = ({
         fullscreen
       >
         <ViewerContent
+          viewerUrl={marbleConfiguration.iiifViewerUrl}
           marbleItem={marbleItem}
           index={index}
           view={view}
@@ -68,3 +71,11 @@ ViewerLink.propTypes = {
 }
 
 export default ViewerLink
+
+export const query = graphql`
+query {
+  marbleConfiguration {
+    iiifViewerUrl
+  }
+}
+`

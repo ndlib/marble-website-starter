@@ -9,6 +9,9 @@ i18n.use(initReactI18next).init({
   ns: ['translations'],
   defaultNS: 'translations',
   resources: { en: { translations: {} } },
+  react: {
+    useSuspense: true,
+  },
 })
 
 export default i18n

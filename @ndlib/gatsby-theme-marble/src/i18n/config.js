@@ -15,7 +15,7 @@ export default {
   ns: ['common', 'text'],
   defaultNS: 'common',
   returnObjects: true,
-  debug: process.env.NODE_ENV === 'development',
+  debug: false,
   interpolation: {
     escapeValue: false, // not needed for react!!
   },
