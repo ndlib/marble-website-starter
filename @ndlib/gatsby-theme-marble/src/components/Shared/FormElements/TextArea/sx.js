@@ -9,7 +9,7 @@ module.exports = {
   textArea: {
     backgroundColor: 'background',
     border: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     fontFamily: 'body',
     fontSize: '1rem',
     height: '14rem',

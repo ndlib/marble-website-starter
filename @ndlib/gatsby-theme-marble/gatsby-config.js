@@ -1,8 +1,6 @@
 const path = require('path')
 
-module.exports = ({
-  useLogin = false,
-}) => ({
+module.exports = () => ({
   flags: {
     DEV_SSR: true,
   },

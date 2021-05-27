@@ -9,7 +9,7 @@ module.exports = {
   input: {
     backgroundColor: 'background',
     border: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     fontFamily: 'body',
     height: '40px',
     maxWidth: '100%',

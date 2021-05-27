@@ -8,7 +8,7 @@ const PartiallyDigitized = ({ marbleItem }) => {
     return (
       <div
         sx={{
-          backgroundColor: 'gray.1',
+          backgroundColor: 'gray.4',
           padding: '0.5rem',
         }}
       ><b>Dataset not complete.</b> &mdash; This content may be only partially digitized.

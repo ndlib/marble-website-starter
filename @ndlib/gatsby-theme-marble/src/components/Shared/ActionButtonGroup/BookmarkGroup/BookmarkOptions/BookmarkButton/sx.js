@@ -3,7 +3,7 @@ module.exports = {
     backgroundColor: 'white',
     border: 'none',
     borderBottom: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     cursor: 'pointer',
     fontSize: '1rem',
     margin: '0',

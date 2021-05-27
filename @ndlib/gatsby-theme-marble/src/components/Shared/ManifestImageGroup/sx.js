@@ -1,6 +1,6 @@
 module.exports = {
   wrapper: {
-    backgroundColor: 'gray.1',
+    backgroundColor: 'gray.4',
     display: 'flex',
     height: '60vh',
     marginBottom: '1rem',

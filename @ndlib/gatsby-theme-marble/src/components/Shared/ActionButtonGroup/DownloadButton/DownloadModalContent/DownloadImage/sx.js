@@ -1,6 +1,6 @@
 module.exports = {
   wrapper: {
-    backgroundColor: 'gray.1',
+    backgroundColor: 'gray.4',
     display: 'flex',
     height: 'calc(100vh - 390px)',
     marginBottom: '1rem',
@@ -22,7 +22,7 @@ module.exports = {
   select: {
     fontSize: '18px',
     border: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     backgroundColor: 'background',
     color: 'gray.4',
     height: '32px',

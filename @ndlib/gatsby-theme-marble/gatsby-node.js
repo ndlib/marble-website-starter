@@ -57,7 +57,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     childrenMarbleFile: [MarbleFile] @link(by: "parentId", from: "id")
     citation: String
     parentId: String
-    marbleParent: MarbleItem @link(by: "id", from: "parentId")
+    marbleParent: MarbleItem @link(by: "marbleId", from: "parentId")
     searchData: searchData
   }
 
@@ -65,7 +65,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     id: String
     name: String
     creator: [String]
-    collection: String
+    collection: [String]
     parent: String
     identifier: [String]
     geographicLocation: [String]

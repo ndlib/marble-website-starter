@@ -20,7 +20,7 @@ export const LogOut = ({ dispatch, loginReducer }) => {
 
   const sx = {
     border: '1px solid',
-    borderColor: 'gray.1',
+    borderColor: 'gray.4',
     color: 'gray.4',
     margin: '1rem',
     padding: '.5rem',
