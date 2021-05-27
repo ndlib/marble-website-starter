@@ -33,7 +33,7 @@ exports.onPostBuild = async (
     port:443,
     protocol:'https',
     connectionClass: auth,
-    requestTimeout: 12000000,
+    requestTimeout: 1200000000,
     awsConfig: new AWS.Config({ region: region }),
   }
 
