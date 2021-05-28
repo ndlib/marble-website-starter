@@ -6,8 +6,6 @@
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "main": "index.js",
   "dependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/helper-skip-transparent-expression-wrappers": "^7.12.1",
     "@blueprintjs/core": "^3.44.3",
     "@blueprintjs/icons": "^3.26.1",
     "@emotion/core": "^11.0.0",
@@ -17,9 +15,6 @@
     "@types/googlemaps": "^3.39.6",
     "@types/markerclustererplus": "^2.1.29",
     "autoprefixer": "^10.2.5",
-    "babel-eslint": "^10.0.2",
-    "babel-jest": "^27.0.1",
-    "babel-preset-gatsby": "^1.5.0",
     "crypto": "^1.0.1",
     "fetch": "^1.1.0",
     "gatsby": "^3.6.1",
@@ -78,11 +73,14 @@
     "typy": "^3.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/helper-skip-transparent-expression-wrappers": "^7.12.1",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^26.0.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-gatsby": "^1.6.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^7.2.0",
@@ -99,12 +97,13 @@
     "eslint-plugin-standard": "^5.0.0",
     "gatsby-plugin-root-import": "^2.0.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.0.1",
+    "jest": "^26.0.1",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
     "path": "^0.12.7",
     "path-browserify": "^1.0.1",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "react-test-renderer": "^17.0.2"
   },
   "keywords": [
     "gatsby"
