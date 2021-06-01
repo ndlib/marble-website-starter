@@ -89,6 +89,14 @@ exports.createSchemaCustomization = ({ actions }) => {
     default: String
     allowed: [String]
   }
+  type searchConfig @dontInfer {
+    index: String
+    url: String
+  }
+  type MarbleConfiguration implements Node {
+    iiifViewerUrl: String
+    search: searchConfig
+  }
   `
   createTypes(typeDefs)
 }
