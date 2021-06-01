@@ -38,7 +38,7 @@ exports.onPostBuild = async (
   }
 
   const client = Client(options)
-  console.log('requestTimeout', client.requestTimeout)
+  console.log('requestTimeout', client, client.options, client.config, client.configuration)
   const { errors, data } = await graphql(query)
 
   if (errors) {
