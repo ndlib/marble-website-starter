@@ -1,10 +1,11 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import Gravatar from 'components/Shared/Gravatar'
 import { getData } from 'utils/api'
-import * as style from './style.module.css'
 
 export const UserCartouche = ({ user, loginReducer }) => {
   const [fullUser, setUser] = useState(user)
@@ -36,9 +37,34 @@ export const UserCartouche = ({ user, loginReducer }) => {
       onClick={() => {
         navigate(`/user/${fullUser.userName}`)
       }}
-      className={style.cartouche}
+      className='cartouche'
+      sx={{
+        backgroundColor: '#fff',
+        border: '1px solid #dedede',
+        borderRadius: '20px',
+        color: '#333',
+        cursor: 'pointer',
+        fontSize: '1rem',
+        fontStyle: 'normal',
+        lineHeight: '1.45rem',
+        margin: '0 0.5rem',
+        outline: 'none',
+        padding: '0.25rem 1rem',
+        textDecoration: 'none',
+        verticalAlign: 'baseline',
+      }}
     >
-      <span className={style.gravatarWrapper}>
+      <span
+        className='gravatarWrapper'
+        sx={{
+          display: 'inline-block',
+          height: '22px',
+          marginRight: '.25rem',
+          overflow: 'hidden',
+          verticalAlign: 'top',
+          width: '22px',
+        }}
+        >
         <Gravatar
           email={fullUser.email}
           size={22}

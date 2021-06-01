@@ -14,6 +14,9 @@ describe('ManifestImageGroup', () => {
     allFile: {
       nodes: [],
     },
+    marbleConfiguration: {
+      iiifViewerUrl: 'https://viewer.url/?='
+    }
   }
   test('image', () => {
     useStaticQuery.mockImplementationOnce(() => {

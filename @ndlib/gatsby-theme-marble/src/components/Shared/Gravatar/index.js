@@ -1,7 +1,7 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import gravatar from 'gravatar'
-import * as style from './style.module.css'
 import NoUserImage from 'assets/images/noUser.svg'
 export const Gravatar = ({ email, size }) => {
   if (!email) {
@@ -9,7 +9,8 @@ export const Gravatar = ({ email, size }) => {
       <img
         src={NoUserImage}
         alt={`User unavailable`}
-        className={style.gravatar}
+        className='gravatar'
+        sx={sx}
       />
     )
   }
@@ -18,7 +19,8 @@ export const Gravatar = ({ email, size }) => {
     <img
       src={src}
       alt={`Globally Recognized Avatar for ${email}`}
-      className={style.gravatar}
+      className='gravatar'
+      sx={sx}
     />
   )
 }
@@ -36,7 +38,13 @@ export const gravatarImg = (email, size = 400) => {
       protocol: 'https',
       size: size,
       rating: 'pg',
-      default: 'retro',
+      default: 'retro', // https://en.gravatar.com/site/implement/images/
     },
   )
+}
+
+const sx = {
+  border: '1px solid #dedede',
+  height: 'auto',
+  width: '100%',
 }

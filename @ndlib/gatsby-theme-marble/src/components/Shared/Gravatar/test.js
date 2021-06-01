@@ -7,11 +7,11 @@ describe('Gravatar', () => {
   test('no size', () => {
     jest.spyOn(gravatar, 'url').mockImplementation(() => `https://gravatar.url`)
     const wrapper = shallow(<Gravatar email={'email@email.com'} />)
-    expect(wrapper.find('img').props().src).toEqual('https://gravatar.url')
+    expect(wrapper.dive().find('img').props().src).toEqual('https://gravatar.url')
   })
   test('size', () => {
     jest.spyOn(gravatar, 'url').mockImplementation(() => `https://gravatar100.url`)
     const wrapper = shallow(<Gravatar email={'email@email.com'} size={100} />)
-    expect(wrapper.find('img').props().src).toEqual('https://gravatar100.url')
+    expect(wrapper.dive().find('img').props().src).toEqual('https://gravatar100.url')
   })
 })

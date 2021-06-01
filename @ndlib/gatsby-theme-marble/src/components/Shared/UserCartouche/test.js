@@ -4,7 +4,7 @@ import { navigate } from 'gatsby'
 import { UserCartouche } from './'
 import Gravatar from 'components/Shared/Gravatar'
 
-test('UserCartouche', () => {
+test.skip('UserCartouche', () => {
   const user = {
     email: 'me@service.mail',
     fullName: 'Dude McGuy',
