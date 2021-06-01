@@ -77,4 +77,24 @@ describe('TombstoneMetadata', () => {
     const wrapper = mount(<TombstoneMetadata marbleItem={item} />)
     expect(wrapper.find('div').at(3).text()).toContain('Part of: PARENT')
   })
+
+  test('it filters out the ( ) text from the snite', () => {
+    const item = {
+      id: 'ABC123',
+      description: 'How the Grinch Stole Christmas',
+      metadata: [
+        {
+          label: 'Creator (place 1534-3243)',
+          value: ['Dr. Seuss'],
+        },
+        {
+          label: 'Date',
+          value: ['1957'],
+        },
+      ],
+    }
+    
+    const wrapper = mount(<TombstoneMetadata marbleItem={item} />)
+    expect(wrapper.find('div').at(1)).html()).toContain('Creator')
+  })
 })
