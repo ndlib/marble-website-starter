@@ -33,11 +33,12 @@ exports.onPostBuild = async (
     port:443,
     protocol:'https',
     connectionClass: auth,
-    requestTimeout: 1200000000,
+    requestTimeout: 1800000000,
     awsConfig: new AWS.Config({ region: region }),
   }
 
   const client = Client(options)
+  console.log('requestTimeout', client, client.options, client.config, client.configuration)
   const { errors, data } = await graphql(query)
 
   if (errors) {
