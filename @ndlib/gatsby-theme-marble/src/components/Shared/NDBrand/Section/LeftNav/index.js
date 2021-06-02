@@ -25,7 +25,7 @@ NDBrandSectionLeftNav.propTypes = {
 }
 
 NDBrandSectionLeftNav.defaultProps = {
-  variant: 'leftNav',
+  variant: 'navLeft',
 }
 
 export default NDBrandSectionLeftNav

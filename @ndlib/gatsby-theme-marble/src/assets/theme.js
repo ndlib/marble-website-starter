@@ -371,10 +371,33 @@ const theme = merge({}, bootstrapTheme, {
         cursor: 'pointer',
       },
     },
+    navLeft: {
+      py: '1rem',
+      display: 'block',
+      color: 'primary',
+      textDecoration: 'none',
+      '&:hover': {
+        bg: 'var(--theme-ui-colors-light)',
+        textDecoration: 'none',
+      },
+      '&.selected': {
+        fontWeight: '700',
+      },
+    },
     footer: {
       color: 'white',
     },
-    leftNav: {
+  },
+  navSearch: {
+    default: {
+      bg: 'light',
+      borderBottomWidth: '0.25rem',
+      borderBottomStyle: 'solid',
+      borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+    },
+  },
+  menus: {
+    navLeft: {
       '& h3': {
         color: 'primary',
         p: '0',
@@ -389,30 +412,7 @@ const theme = merge({}, bootstrapTheme, {
           },
         },
       },
-      '& a': {
-        py: '1rem',
-        display: 'block',
-        color: 'primary',
-        textDecoration: 'none',
-        '&:hover': {
-          bg: 'var(--theme-ui-colors-light)',
-          textDecoration: 'none',
-        },
-        '&.selected': {
-          fontWeight: '700',
-        },
-      },
     },
-  },
-  navSearch: {
-    default: {
-      bg: 'light',
-      borderBottomWidth: '0.25rem',
-      borderBottomStyle: 'solid',
-      borderBottomColor: 'var(--theme-ui-colors-lightDark)',
-    },
-  },
-  menus: {
     navTop: {
       position: 'relative',
       display: 'flex',
