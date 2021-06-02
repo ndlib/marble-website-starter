@@ -97,7 +97,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, additionalNavB
       <div className='nav' sx={{ gridRow: 'nav-header', gridColumn: 'container' }}>
         <Menu variant='navTop' items={menu} location={location} expand={!showSearch}>
           {!showSearch ? (
-            <div>
+            <>
               {additionalNavButtons}
               <Button variant='links.navTop' sx={{
                 borderRadius: '0',
@@ -112,7 +112,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, additionalNavB
                   </svg>
                 </svg>
               </Button>
-            </div>
+            </>
           ) : (
             <NDBrandNavSearch location={location} searchPath='search' setShowSearch={setShowSearch} />
           )}
