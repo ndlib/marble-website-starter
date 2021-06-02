@@ -2,7 +2,6 @@
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import sx from './sx'
-import { isPropertyAccessExpression } from 'typescript'
 
 const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false, valid, warning }) => {
   return (
