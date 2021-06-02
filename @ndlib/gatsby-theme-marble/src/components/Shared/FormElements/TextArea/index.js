@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import sx from './sx'
 
-const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false }) => {
+const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false, valid, warning }) => {
   return (
     <div sx={sx.wrapper}>
       <label
@@ -12,12 +12,15 @@ const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false }) 
       >{label}</label>
       <textarea
         id={id}
-        sx={sx.textArea}
+        sx={valid ? sx.textarea : sx.textInvalid}
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={onChange}
         aria-label={label}
       />
+      {
+        valid ? null : <em sx={sx.warning}>{warning}</em>
+      }
     </div>
   )
 }
@@ -28,6 +31,8 @@ TextArea.propTypes = {
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
+  valid: PropTypes.bool,
+  warning: PropTypes.string,
 }
 
 TextArea.defaultProps = {
