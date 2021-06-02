@@ -31,7 +31,7 @@ TextArea.propTypes = {
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
-  valid: PropTypes.string,
+  valid: PropTypes.bool,
   warning: PropTypes.string,
 }
 
