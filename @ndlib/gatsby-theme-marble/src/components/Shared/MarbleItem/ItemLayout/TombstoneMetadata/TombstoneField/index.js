@@ -11,7 +11,7 @@ const TombstoneField = ({ field, sxStyle, searchField, uriValue }) => {
       {
         field.map((values, i) => {
           return values.value.map((value, j) => {
-            const uri = uriValue != null ? uriValue : encodeURI(value)
+            const uri = uriValue != null ? uriValue : encodeURI(value).replace(/&/g, '%26')
             return searchField ? (
               <Link
                 key={`${i}-${j}`}
