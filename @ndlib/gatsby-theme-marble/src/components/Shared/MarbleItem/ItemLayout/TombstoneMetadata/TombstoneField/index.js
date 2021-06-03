@@ -14,7 +14,6 @@ const TombstoneField = ({ field, sxStyle, searchField, uriValue, icon, filterTit
             const uri = uriValue != null ? uriValue : encodeURI(value)
             let title = value
             if (filterTitle) {
-              console.log('hi', filterTitle)
               title = value.replace(new RegExp(filterTitle), '')
             }
             return searchField ? (
