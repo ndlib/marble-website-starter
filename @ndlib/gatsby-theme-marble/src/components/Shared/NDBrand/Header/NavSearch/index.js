@@ -52,7 +52,15 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
               submitSearch(location, inputRef, searchPath)
             }
           }}
-          sx={{ border: 0 }} placeholder='Search the collection' ariaLabel='Search' />
+          onFocus={(e) => {
+            console.log(e)
+            e.target.parentNode.style = 'border-color: var(--theme-ui-colors-primaryBright)'
+          }}
+          onBlur={(e) => {
+            e.target.parentElement.style = 'border-color: gray.4'
+          }
+          }
+          sx={{ border: 0, outline: 'none' }} placeholder='Search the collection' ariaLabel='Search' />
         {setShowSearch ? (
           <Button variant='links.navTop' sx={{
             borderRadius: '0',
