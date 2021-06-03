@@ -59,7 +59,7 @@ const theme = merge({}, bootstrapTheme, {
   colors: colors,
   fonts: {
     body: `
-      -apple-system',
+      -apple-system,
       BlinkMacSystemFont,
       'Segoe UI',
       Roboto,
@@ -404,7 +404,6 @@ const theme = merge({}, bootstrapTheme, {
       },
       '& div': {
         px: '.5rem',
-        pb: '1rem',
         '& a': {
           padding: '0.7em 1em',
           '&.selected': {
@@ -445,12 +444,10 @@ const theme = merge({}, bootstrapTheme, {
         textDecoration: 'underline',
       },
     },
-    h2: {
-      variant: 'text.heading',
-    },
     root: {
       color: 'gray.4',
       variant: 'text.default',
+      fontFamily: 'body',
     },
   },
 })
