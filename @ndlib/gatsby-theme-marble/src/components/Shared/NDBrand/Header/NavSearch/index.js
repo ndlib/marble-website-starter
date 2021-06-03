@@ -4,8 +4,6 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Box, Button, Input } from 'theme-ui'
 import { navigate } from 'gatsby'
-import { connect } from 'react-redux'
-import { useTranslation } from 'react-i18next'
 import queryString from 'query-string'
 
 export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch, ...props }) => {
