@@ -57,7 +57,6 @@ const findProvider = (standardJson) => {
 
   switch (standardJson.repository.toLowerCase()) {
     case 'rare':
-    case 'curate':
       return ['Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame']
     case 'museum':
       return ['Snite Museum of Art']
