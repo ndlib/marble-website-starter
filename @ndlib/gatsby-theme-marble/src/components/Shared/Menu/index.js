@@ -26,7 +26,7 @@ import Link from 'components/Shared/Link'
 */
 export const Menu = ({ variant, items, label, children, location, expand }) => {
   return (
-    <Box as='nav' sx={{ variant: `links.${variant}` }}>
+    <Box as='nav' sx={{ variant: `menus.${variant}` }}>
       {label ? <Heading as='h3' variant='menuHeading'>{label}</Heading> : null}
       <div>
         {expand && items.map(l => {
@@ -35,6 +35,7 @@ export const Menu = ({ variant, items, label, children, location, expand }) => {
               to={l.link}
               key={l.id}
               title={l.label}
+              variant={variant}
               className={selectedUrl(l, location) ? 'selected' : ''}
             >{labelOrIcon(l)}
             </Link>)

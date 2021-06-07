@@ -59,7 +59,7 @@ const theme = merge({}, bootstrapTheme, {
   colors: colors,
   fonts: {
     body: `
-      -apple-system',
+      -apple-system,
       BlinkMacSystemFont,
       'Segoe UI',
       Roboto,
@@ -339,66 +339,71 @@ const theme = merge({}, bootstrapTheme, {
         textDecoration: 'underline',
       },
     },
+    navTop: {
+      display: 'flex',
+      alignItems: 'center',
+      position: 'relative',
+      fontSize: 2,
+      padding: '1.2rem 1.375rem',
+      opacity: '1',
+      lineHeight: '1.2',
+      textDecoration: 'none',
+      color: 'text',
+      borderTop: '0.25rem solid transparent',
+      borderBottom: '0.25rem solid transparent',
+      transition: 'all 325ms ease-in-out',
+      bg: 'white',
+      '&:hover': {
+        background: 'var(--theme-ui-colors-light)',
+        borderBottomWidth: '0.25rem',
+        borderBottomStyle: 'solid',
+        borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+        transform: 'none',
+        cursor: 'pointer',
+        textDecoration: 'none',
+      },
+      '&.selected': {
+        background: 'var(--theme-ui-colors-light)',
+        borderBottomWidth: '0.25rem',
+        borderBottomStyle: 'solid',
+        borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+        transform: 'none',
+        cursor: 'pointer',
+      },
+    },
+    navLeft: {
+      py: '1rem',
+      display: 'block',
+      color: 'primary',
+      textDecoration: 'none',
+      '&:hover': {
+        bg: 'var(--theme-ui-colors-light)',
+        textDecoration: 'none',
+      },
+      '&.selected': {
+        fontWeight: '700',
+      },
+    },
     footer: {
       color: 'white',
     },
-    header: {
-      position: 'relative',
-      display: 'flex',
-      margin: '0 0 -2.7rem',
-      justifyContent: 'flex-end',
-      '& div': {
-        display: 'flex',
-        opacity: '1',
-        transition: 'all 1s',
-        my: '5px',
-        background: 'white',
-      },
-      '& input': {
-        width: '300px',
-        py: '1.25rem',
-      },
-      '& a, button': {
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        height: '100%',
-        padding: '1.25rem 1.375rem',
-        opacity: '1',
-        lineHeight: '1.2',
-        textDecoration: 'none',
-        color: 'text',
-        borderTop: '0.25rem solid transparent',
-        borderBottom: '0.25rem solid transparent',
-        transition: 'all 325ms ease-in-out',
-        bg: 'white',
-        '&:hover': {
-          background: 'var(--theme-ui-colors-light)',
-          borderBottomWidth: '0.25rem',
-          borderBottomStyle: 'solid',
-          borderBottomColor: 'var(--theme-ui-colors-lightDark)',
-          transform: 'none',
-          cursor: 'pointer',
-          textDecoration: 'none',
-        },
-        '&.selected': {
-          background: 'var(--theme-ui-colors-light)',
-          borderBottomWidth: '0.25rem',
-          borderBottomStyle: 'solid',
-          borderBottomColor: 'var(--theme-ui-colors-lightDark)',
-          transform: 'none',
-          cursor: 'pointer',
-        },
-      },
+  },
+  navSearch: {
+    default: {
+      bg: 'light',
+      borderBottomWidth: '0.25rem',
+      borderBottomStyle: 'solid',
+      borderBottomColor: 'var(--theme-ui-colors-lightDark)',
     },
-    leftNav: {
+  },
+  menus: {
+    navLeft: {
       '& h3': {
         color: 'primary',
         p: '0',
       },
       '& div': {
         px: '.5rem',
-        pb: '1rem',
         '& a': {
           padding: '0.7em 1em',
           '&.selected': {
@@ -406,18 +411,27 @@ const theme = merge({}, bootstrapTheme, {
           },
         },
       },
-      '& a': {
-        py: '1rem',
-        display: 'block',
-        color: 'primary',
-        textDecoration: 'none',
-        '&:hover': {
-          bg: 'var(--theme-ui-colors-light)',
-          textDecoration: 'none',
-        },
-        '&.selected': {
-          fontWeight: '700',
-        },
+    },
+    navTop: {
+      position: 'relative',
+      display: 'flex',
+      margin: '0 0 -2.7rem',
+      justifyContent: 'flex-end',
+      maxHeight: '80px',
+      '& div': {
+        display: 'flex',
+        minWidth: '691px',
+        opacity: '1',
+        transition: 'all 1s',
+        background: 'white',
+        maxHeight: '80px',
+        minHeight: '80px',
+      },
+      '& input': {
+        width: '100%',
+        py: '1.1rem',
+        maxHeight: '80px',
+        minHeight: '80px',
       },
     },
   },
@@ -430,12 +444,10 @@ const theme = merge({}, bootstrapTheme, {
         textDecoration: 'underline',
       },
     },
-    h2: {
-      variant: 'text.heading',
-    },
     root: {
       color: 'gray.4',
       variant: 'text.default',
+      fontFamily: 'body',
     },
   },
 })

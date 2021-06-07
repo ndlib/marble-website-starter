@@ -27,7 +27,7 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
   return (
     <Box sx={{ variant: variant }} {...props}>
       <div>
-        <Button title='Search' onClick={() => {
+        <Button variant='links.navTop' title='Search' onClick={() => {
           submitSearch(location, inputRef, searchPath)
         }} sx={{
           borderRadius: '0',
@@ -50,9 +50,17 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
               submitSearch(location, inputRef, searchPath)
             }
           }}
-          sx={{ border: 0 }} placeholder='Search the collection' ariaLabel='Search' />
+          onFocus={(e) => {
+            console.log(e)
+            e.target.parentNode.style = 'border-color: var(--theme-ui-colors-primaryBright)'
+          }}
+          onBlur={(e) => {
+            e.target.parentElement.style = 'border-color: gray.4'
+          }
+          }
+          sx={{ border: 0, outline: 'none' }} placeholder='Search the collection' ariaLabel='Search' />
         {setShowSearch ? (
-          <Button sx={{
+          <Button variant='links.navTop' sx={{
             borderRadius: '0',
             borderLeftWidth: '1px',
             borderLeftStyle: 'solid',
@@ -83,7 +91,7 @@ NDBrandNavSearch.propTypes = {
 }
 
 NDBrandNavSearch.defaultProps = {
-  variant: 'links.header',
+  variant: 'navSearch.default',
 }
 
 export default NDBrandNavSearch

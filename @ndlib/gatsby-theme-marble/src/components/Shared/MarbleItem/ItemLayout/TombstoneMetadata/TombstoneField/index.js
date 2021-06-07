@@ -5,21 +5,25 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 
-const TombstoneField = ({ field, sxStyle, searchField, uriValue }) => {
+const TombstoneField = ({ field, sxStyle, searchField, uriValue, icon, filterTitle }) => {
   return (
     <div sx={sxStyle}>
       {
         field.map((values, i) => {
           return values.value.map((value, j) => {
             const uri = uriValue != null ? uriValue : encodeURIComponent(value)
+            let title = value
+            if (filterTitle) {
+              title = value.replace(new RegExp(filterTitle), '')
+            }
             return searchField ? (
               <Link
                 key={`${i}-${j}`}
                 to={`/search?${searchField}=${uri}`}
-              >{value}
+              >{icon} {title}
               </Link>
             ) : (
-              <span key={`${i}-${j}`}>{value}</span>
+              <span key={`${i}-${j}`}>{icon} {title}</span>
             )
           })
         })
@@ -37,6 +41,8 @@ TombstoneField.propTypes = {
   sxStyle: PropTypes.object,
   searchField: PropTypes.string,
   uriValue: PropTypes.array,
+  icon: PropTypes.object,
+  filterTitle: PropTypes.string,
 }
 
 export default TombstoneField

@@ -1,11 +1,11 @@
 module.exports = {
   wrapper: {
     '& > div': {
-      margin: '0 0 1rem',
+      margin: '0 0 .5rem',
     },
   },
   creators: {
-    fontSize: '1.5rem',
+    fontSize: '2',
     fontStyle: 'italic',
     marginBottom: '1rem',
     '& a': {
@@ -14,11 +14,21 @@ module.exports = {
     },
   },
   dates: {
-    fontSize: '1.25rem',
-    marginBottom: '1rem',
+    fontSize: '5',
+    mt: '0',
+    color: 'gray.6',
+  },
+  partOf: {
+    mb: '0',
+    fontSize: 2,
+    '& a': {
+      textDecoration: 'none',
+    },
   },
   campusLocations: {
-    marginBottom: '1rem',
+    py: '1.5rem',
+    mb: '0',
+    fontSize: 1,
     '& a': {
       display: 'block',
       textDecoration: 'none',
