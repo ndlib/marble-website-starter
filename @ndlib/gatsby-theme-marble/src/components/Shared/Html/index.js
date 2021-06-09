@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 
 const Html = ({ html, variant, sx }) => {
   const themeUi = useThemeUI()
-  console.log(themeUi)
   const htmlSx = {
     '& a': themeUi.theme.links.default,
     '& h2': themeUi.theme.text.heading,

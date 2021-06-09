@@ -11,7 +11,7 @@ const TombstoneField = ({ field, sxStyle, searchField, uriValue, icon, filterTit
       {
         field.map((values, i) => {
           return values.value.map((value, j) => {
-            const uri = uriValue != null ? uriValue : encodeURI(value)
+            const uri = uriValue != null ? uriValue : encodeURIComponent(value)
             let title = value
             if (filterTitle) {
               title = value.replace(new RegExp(filterTitle), '')

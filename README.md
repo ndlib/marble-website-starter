@@ -51,13 +51,12 @@ yarn workspace @ndlib/gatsby-theme-marble watch
 #### Main Marble Website:
 Now we're ready to download the files that will be the source of content to do this run:
 ```
-./scripts/reset-local-files.sh
+./scripts/setup-development.sh marble
 ```
 
 
 Setup the index for local development.
-Update ./site/.env.development so the keys SEARCH_URL and SEARCH_INDEX point to an elasticsearch index.
-
+Update ./site/<siteName>/.env.development so the keys SEARCH_URL and SEARCH_INDEX point to an elasticsearch index.
 
 Start the development server:
 ```

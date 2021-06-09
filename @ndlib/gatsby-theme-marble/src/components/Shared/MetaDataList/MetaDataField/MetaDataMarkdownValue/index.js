@@ -10,13 +10,10 @@ const MetaDataMarkdownValue = ({ values, skipHtml }) => {
         values.map(val => {
           return (
             <dd key={val}>
-              <BaseStyles>
-                <ReactMarkdown
-                  source={val}
-                  escapeHtml={false}
-                  skipHtml={skipHtml}
-                />
-              </BaseStyles>
+              <ReactMarkdown
+                escapeHtml={false}
+                skipHtml={skipHtml}
+              >{val}</ReactMarkdown>
             </dd>
           )
         })
