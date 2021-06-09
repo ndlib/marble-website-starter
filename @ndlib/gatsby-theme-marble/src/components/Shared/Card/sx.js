@@ -89,4 +89,22 @@ module.exports = {
     lineHeight: 'heading',
     margin: '.5rem 0',
   },
+  cardWrapper: {
+    '&.chevronWrapper': {
+      display: 'none',
+    },
+    '&:hover.chevronWrapper': {
+      display: 'block',
+    },
+  },
+  'div.chevronWrapper': {
+    display: 'none',
+  },
+  chevron: {
+    position: 'absolute',
+    right: '0',
+    marginTop: '5rem',
+    color: 'secondary',
+    size: '2em',
+  },
 }
