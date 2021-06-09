@@ -32,10 +32,10 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
   return (
     <>
       <Flex sx={{ flexWrap: 'wrap', width: '90vw' }}>
-        <Box sx={{ width: ['100%', '40%'] }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '40%'], pr: '1vw', display: ['none', 'none', 'none', 'block'] }}>
           <TombstoneMetadata marbleItem={marbleItem} />
         </Box>
-        <Box sx={{ width: ['100%', '60%'] }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '60%'] }}>
           <ManifestImageGroup
             location={location}
             marbleItem={marbleItem}
@@ -44,14 +44,14 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
           <ActionButtonGroup marbleItem={marbleItem} />
         </Box>
       </Flex>
-      <Divider sx={sx.hr} />
+      <Divider sx={{ display: ['none', 'none', 'none', 'block'] }} />
       <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '60%'], px: '1rem', py: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '60%'], px: '1rem', py: '1rem' }}>
           <div sx={sx.mainMetadata}>
             <ManifestMetaData marbleItem={mainMetaData} />
           </div>
         </Box>
-        <Box sx={{ width: ['100%', '40%'], px: '1rem', py: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '40%'], px: '1rem', py: '1rem' }}>
           <div sx={sx.sideMetadata}>
             <ManifestMetaData marbleItem={accessMetadata} />
           </div>

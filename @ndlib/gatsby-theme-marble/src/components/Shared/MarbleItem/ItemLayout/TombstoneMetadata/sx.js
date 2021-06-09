@@ -14,7 +14,7 @@ module.exports = {
     },
   },
   dates: {
-    fontSize: '5',
+    fontSize: '4',
     mt: '0',
     color: 'gray.6',
   },
