@@ -3,7 +3,7 @@ module.exports = {
     backgroundColor: 'primary',
     display: 'block',
     overflow: 'hidden',
-    position: 'absolute',
+    position: 'relative',
     width: '100%',
     zIndex: '1',
   },
@@ -35,12 +35,20 @@ module.exports = {
   svg: {
     verticalAlign: 'middle',
   },
-  content: {
-    maxHeight: 'calc(100vh - 80px - 3rem)',
-    marginTop: '3rem',
-    padding: '1rem',
-    overflowX: 'hidden',
-    overflowY: 'scroll',
+  container: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch',
+    maxHeight: 'calc(100vh - 80px - 3.5rem)',
     position: 'relative',
+  },
+  body: {
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    position: 'relative',
+    padding: '1rem',
+  },
+  footer: {
+    padding: '1rem',
   },
 }
