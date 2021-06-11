@@ -32,7 +32,11 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
   return (
     <>
       <Flex sx={{ flexWrap: 'wrap', width: '90vw' }}>
-        <Box sx={{ width: ['100%', '100%', '100%', '40%'], pr: '1vw', display: ['none', 'none', 'none', 'block'] }}>
+        <Box sx={{
+          width: ['100%', '100%', '100%', '40%'],
+          pr: '1vw',
+          display: ['none', 'none', 'none', 'block'],
+        }}>
           <TombstoneMetadata marbleItem={marbleItem} />
         </Box>
         <Box sx={{ width: ['100%', '100%', '100%', '60%'] }}>
