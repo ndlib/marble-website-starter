@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Flex, Heading } from 'theme-ui'
 
-export const NDBrandHeroDefault = ({ location, variant, image, lede, title, button }) => {
+export const NDBrandHeroDefault = ({ variant, image, lede, title, button }) => {
   const gutterWidth = '5vw'
 
   return (
@@ -52,7 +52,6 @@ export const NDBrandHeroDefault = ({ location, variant, image, lede, title, butt
 
 NDBrandHeroDefault.propTypes = {
   variant: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired,
   image: PropTypes.object,
   button: PropTypes.object,
   title: PropTypes.string,

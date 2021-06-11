@@ -4,11 +4,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
 
-export const NDBrandSection = ({ location, variant, image, children, ...props }) => {
+export const NDBrandSection = ({ variant, image, children, ...props }) => {
   const sectionSx = {}
   const imageTag = (image) ? (<Flex className='sectionImage' sx={{ width: '25%' }}>{image}</Flex>) : null
   if (image) {
-    sectionSx['width'] = '75%'
+    sectionSx.width = '75%'
   }
 
   return (
@@ -24,7 +24,6 @@ export const NDBrandSection = ({ location, variant, image, children, ...props })
 NDBrandSection.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired,
   image: PropTypes.object,
   props: PropTypes.object,
 }

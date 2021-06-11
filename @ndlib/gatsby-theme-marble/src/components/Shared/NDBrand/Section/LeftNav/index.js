@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Grid } from 'theme-ui'
 
-export const NDBrandSectionLeftNav = ({ location, variant, children, ...props }) => {
+export const NDBrandSectionLeftNav = ({ variant, children, ...props }) => {
   return (
     <Grid
       variant={`sections.${variant}`}
@@ -21,7 +21,6 @@ export const NDBrandSectionLeftNav = ({ location, variant, children, ...props })
 NDBrandSectionLeftNav.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired,
 }
 
 NDBrandSectionLeftNav.defaultProps = {

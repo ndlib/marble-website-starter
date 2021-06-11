@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 const ManifestDescription = ({ marbleItem }) => {
   if (marbleItem && marbleItem.description) {
@@ -15,11 +16,10 @@ const ManifestDescription = ({ marbleItem }) => {
           width: 'fit-content',
           maxWidth: '45em',
         }}
-        >
-        <ReactMarkdown
-          source={marbleItem.description}
-          escapeHtml={false}
-        />
+      >
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+          {marbleItem.description}
+        </ReactMarkdown>
       </div>
     )
   }

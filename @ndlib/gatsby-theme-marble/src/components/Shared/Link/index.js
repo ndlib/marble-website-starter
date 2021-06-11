@@ -10,7 +10,7 @@ import { Link as GatsbyLink } from 'gatsby'
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-const Link = ({ variant, children, to, activeClassName, partiallyActive, ...other }) => {
+const Link = ({ variant, children, to, activeClassName, ...other }) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
@@ -27,7 +27,6 @@ const Link = ({ variant, children, to, activeClassName, partiallyActive, ...othe
         sx={{ variant: 'links.' + variant }}
         to={to}
         activeClassName={activeClassName}
-        partiallyActive={partiallyActive}
         {...other}
       >
         {children}
@@ -46,7 +45,6 @@ Link.propTypes = {
   to: PropTypes.string.isRequired,
   activeClassName: PropTypes.string,
   variant: PropTypes.string.isRequired,
-  partiallyActive: PropTypes.bool,
 }
 
 Link.defaultProps = {
