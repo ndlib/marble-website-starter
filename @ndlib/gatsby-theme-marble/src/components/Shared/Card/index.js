@@ -8,7 +8,7 @@ import ExternalLinkIcon from './ExternalLinkIcon'
 import TypeLabel from './TypeLabel'
 import { LayoutContext } from 'components/Shared/CardGroup'
 import sx from './sx'
-import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight'
+import { FaChevronRight } from 'react-icons/fa'
 
 const MarbleCard = ({
   target,
@@ -42,9 +42,6 @@ const MarbleCard = ({
       onClick={onClick}
       sx={sx.cardWrapper}
     >
-     <div className='chevronWrapper'>
-        <FiChevronRight  sx={sx.chevron}/>
-      </div>
       <Card variant={variant}>
         <article sx={sx.wrapper(wide)}>
           <figure sx={sx.figure}>

@@ -331,6 +331,11 @@ const theme = merge({}, bootstrapTheme, {
         textDecoration: 'underline',
       },
     },
+    card: {
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
     breadcrumb: {
       color: 'gray.7',
       mr: '0.75rem',

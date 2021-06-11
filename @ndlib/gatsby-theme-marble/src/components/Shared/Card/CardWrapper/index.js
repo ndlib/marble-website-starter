@@ -5,6 +5,7 @@ import { jsx } from 'theme-ui'
 import Link from 'components/Shared/Link'
 import buildReferalState from 'utils/buildReferalState'
 import sx from '../sx'
+import { FaChevronRight } from 'react-icons/fa'
 
 const CardWrapper = ({
   target,
@@ -21,6 +22,9 @@ const CardWrapper = ({
           onClick(e)
         }}
       >
+        <div className='chevronWrapper'>
+          <FaChevronRight sx={sx.chevron} />
+        </div>
         {children}
       </button>
     )
@@ -28,17 +32,24 @@ const CardWrapper = ({
     return (
       <Link
         to={target}
+        variant='card'
         state={buildReferalState(location, referal)}
         sx={sx.clickableWrapper}
       >
+        <div className='chevronWrapper'>
+          <FaChevronRight sx={sx.chevron} />
+        </div>
         {children}
       </Link>
     )
   }
   return (
-    <React.Fragment>
+    <>
+      <div className='chevronWrapper'>
+        <FaChevronRight sx={sx.chevron} />
+      </div>
       {children}
-    </React.Fragment>
+    </>
   )
 }
 

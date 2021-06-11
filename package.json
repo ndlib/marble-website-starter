@@ -41,6 +41,5 @@
     "prettier": "^2.3.0"
   },
   "dependencies": {
-    "@react-icons/all-files": "^4.1.0"
   }
 }

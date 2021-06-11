@@ -12,6 +12,15 @@ module.exports = {
     textAlign: 'left',
     textDecoration: 'none',
     width: '100%',
+    '& div.chevronWrapper': {
+      display: 'none',
+    },
+    '&:hover': {
+      textDecoration: 'none',
+      '& div.chevronWrapper': {
+        display: 'block',
+      },
+    },
   },
   wrapper: (wide) => {
     return wide ? {
@@ -89,22 +98,11 @@ module.exports = {
     lineHeight: 'heading',
     margin: '.5rem 0',
   },
-  cardWrapper: {
-    '&.chevronWrapper': {
-      display: 'none',
-    },
-    '&:hover.chevronWrapper': {
-      display: 'block',
-    },
-  },
-  'div.chevronWrapper': {
-    display: 'none',
-  },
   chevron: {
     position: 'absolute',
     right: '0',
     marginTop: '5rem',
     color: 'secondary',
-    size: '2em',
+    fontSize: 3,
   },
 }
