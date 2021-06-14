@@ -8,7 +8,6 @@ import ExternalLinkIcon from './ExternalLinkIcon'
 import TypeLabel from './TypeLabel'
 import { LayoutContext } from 'components/Shared/CardGroup'
 import sx from './sx'
-import { FaChevronRight } from 'react-icons/fa'
 
 const MarbleCard = ({
   target,
