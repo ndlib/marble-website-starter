@@ -13,7 +13,7 @@
   "license": "APACHE2",
   "dependencies": {
     "aws-sdk": "^2.916.0",
-    "elasticsearch": "^15.0.0",
+    "elasticsearch": "^16.7.2",
     "http-aws-es": "^6.0.0"
   },
   "peerDependencies": {
