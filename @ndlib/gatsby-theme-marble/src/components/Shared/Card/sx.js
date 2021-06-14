@@ -24,7 +24,7 @@ module.exports = {
     },
     '& h2': {
       fontSize: 3,
-    }
+    },
   },
   wrapper: (wide) => {
     return wide ? {
