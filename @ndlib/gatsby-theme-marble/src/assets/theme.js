@@ -211,6 +211,7 @@ const theme = merge({}, bootstrapTheme, {
       mt: '5rem',
       pl: '5vw',
       '& div.sectionContent': {
+        display: ['none', 'none', 'none', 'block'],
         minWidth: '16vw',
         maxWidth: '17vw',
       },
@@ -226,12 +227,12 @@ const theme = merge({}, bootstrapTheme, {
     },
     fullBleedWithSidebar: {
       bg: 'white',
-      pl: '1vw',
+      pl: ['5vw', '5vw', '5vw', '1vw'],
       pb: '3rem',
       mr: '5vw',
       '& div.sectionContent': {
         minWidth: '60vw',
-        maxWidth: '72vw',
+        maxWidth: ['90vw', '90vw', '90vw', '72vw'],
       },
     },
     fullBleed: {
@@ -419,7 +420,7 @@ const theme = merge({}, bootstrapTheme, {
       bg: 'light',
       borderBottomWidth: '0.25rem',
       borderBottomStyle: 'solid',
-      borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+      borderBottomColor: ['transparent', 'transparent', 'transparent', 'var(--theme-ui-colors-lightDark)'],
     },
   },
   menus: {

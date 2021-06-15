@@ -13,19 +13,22 @@ const ActionModal = ({
   closeFunc,
   fullscreen = false,
   children,
+  appElement = 'gatsby-focus-wrapper',
+  parentSelector,
 }) => {
   const context = useThemeUI()
   const iconColor = typy(context, 'theme.colors.background').safeString || '#fff'
-  const appElement = typeof document !== 'undefined' ? document.getElementById('gatsby-focus-wrapper') : null
+  const appElementId = typeof document !== 'undefined' ? document.getElementById(appElement) : null
   return (
     <ReactModal
       style={modalStyle(fullscreen)}
       closeTimeoutMS={200}
-      appElement={appElement}
+      appElement={appElementId}
       isOpen={isOpen}
       contentLabel={contentLabel}
       onRequestClose={closeFunc}
       shouldCloseOnOverlayClick
+      parentSelector={parentSelector}
     >
       <div sx={sx.wrapper}>
         <h1
@@ -67,6 +70,7 @@ ActionModal.propTypes = {
   closeFunc: PropTypes.func.isRequired,
   fullscreen: PropTypes.bool,
   children: PropTypes.node,
+  appElement: PropTypes.string,
 }
 
 export default ActionModal

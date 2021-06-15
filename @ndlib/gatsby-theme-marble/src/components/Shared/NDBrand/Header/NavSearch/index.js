@@ -8,6 +8,7 @@ import queryString from 'query-string'
 
 export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch, ...props }) => {
   const inputRef = React.createRef()
+  const qs = queryString.parse(location.search)
 
   useEffect(() => {
     if (inputRef.current) {
@@ -58,6 +59,7 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
             e.target.parentElement.style = 'border-color: gray.4'
           }
           }
+          defaultValue={qs.q}
           sx={{ border: 0, outline: 'none' }} placeholder='Search the collection' ariaLabel='Search' />
         {setShowSearch ? (
           <Button variant='links.navTop' sx={{

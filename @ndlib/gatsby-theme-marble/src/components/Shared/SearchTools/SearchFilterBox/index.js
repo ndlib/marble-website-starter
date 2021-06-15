@@ -29,9 +29,6 @@ const SearchFilterBox = () => {
         <div sx={sx.filters}>
           <SelectedFilters />
         </div>
-        <div sx={sx.reset}>
-          <ResetFilters />
-        </div>
       </div>
     </div>
   )

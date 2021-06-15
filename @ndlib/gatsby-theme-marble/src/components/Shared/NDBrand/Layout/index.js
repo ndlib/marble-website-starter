@@ -8,6 +8,7 @@ import NDBrandHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBr
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { FaHome, FaSearch, FaGripLines, FaTimes } from 'react-icons/fa'
 import typy from 'typy'
+import queryString from 'query-string'
 
 const gutterWidth = '5vw'
 export const query = graphql`
@@ -36,8 +37,12 @@ query {
 
 const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter, titleOverride }) => {
   const { menusJson } = useStaticQuery(query)
+  const qs = queryString.parse(location.search)
+
   const menu = typy(menusJson, 'items').safeArray
   const [showMenu, setShowMenu] = useState(false)
+  const [showSearch, setShowSearch] = useState(qs.q)
+
   const navDrawerItems = menu.map(l => {
     return (
       <Link
@@ -87,7 +92,7 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter,
       borderLeftWidth: [0, 0, 0, '1px'],
       borderLeftStyle: 'solid',
       borderLeftColor: 'gray.4',
-    }} onClick={() => setShowMenu(true)} title='show search'>
+    }} onClick={() => setShowSearch(!showSearch)} title='show search'>
       <FaSearch />
       <span>Search</span>
     </Button>)
@@ -115,6 +120,19 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter,
       boxSizing: 'border-box',
       transition: '.25s ease-in-out',
     }}>
+      <div className='overlay' sx={{
+        display: showMenu ? 'block' : 'none',
+        position: 'fixed',
+        right: '14rem',
+        top: 0,
+        height: '100%',
+        width: '100%',
+        zIndex: 10,
+      }}
+        role='button'
+        title='close navigation'
+        onClick={() => setShowMenu(!showMenu)}
+      />
       {showMenu ? (
         <nav id='drawer' sx={{
           m: 0,
@@ -140,6 +158,8 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter,
         location={location}
         titleOverride={titleOverride}
         menuItems={items}
+        setShowSearch={setShowSearch}
+        showSearch={showSearch}
       />
       <div id='content' sx={{
         gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start sidebar-start] 22vw [sidebar-end content-start] minmax(0, 1fr) [content-end container-end] ${gutterWidth} [screen-end]`,

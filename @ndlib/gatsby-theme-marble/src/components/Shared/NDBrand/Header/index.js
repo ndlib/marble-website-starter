@@ -1,12 +1,11 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Box, Heading, Flex } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import ClickableNDLogoWhite from '../Logos/ClickableNDLogoWhite'
 import NDBrandNavSearch from './NavSearch'
-import typy from 'typy'
 
 export const query = graphql`
 query {
@@ -40,9 +39,8 @@ query {
 * variant - used to set a configurable variant in the theme file.
 *           Defaults to default
 */
-export const NDBrandHeader = ({ location, variant, titleOverride, menuItems }) => {
+export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, showSearch, setShowSearch }) => {
   const { site } = useStaticQuery(query)
-  const [showSearch, setShowSearch] = useState(false)
 
   const title = titleOverride || site.siteMetadata.title
 
@@ -114,11 +112,14 @@ NDBrandHeader.propTypes = {
     PropTypes.string,
   ]),
   menuItems: PropTypes.node,
+  showSearch: PropTypes.bool,
+  setShowSearch: PropTypes.func,
 }
 
 NDBrandHeader.defaultProps = {
   variant: 'default',
   additionalNavButtons: [],
+  showSearch: false,
 }
 
 export default NDBrandHeader
