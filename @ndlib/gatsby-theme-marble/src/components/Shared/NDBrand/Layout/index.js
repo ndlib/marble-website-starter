@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 const gutterWidth = '5vw'
 
-const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter }) => {
+const NDBrandLayout = ({ children, pageHeader, siteHeader, siteFooter }) => {
   return (
     <Container sx={{
       display: 'grid',
@@ -16,7 +16,7 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter 
       {siteHeader}
       <div id='content' sx={{
         gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start sidebar-start] 22vw [sidebar-end content-start] minmax(0, 1fr) [content-end container-end] ${gutterWidth} [screen-end]`,
-        gridTemplateRows: `[header-start] auto [header-end content-start] 1fr [content-end]`,
+        gridTemplateRows: '[header-start] auto [header-end content-start] 1fr [content-end]',
       }}>
         <div id='page-header'>
           {pageHeader}
@@ -46,7 +46,6 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter 
 }
 
 NDBrandLayout.propTypes = {
-  location: PropTypes.object.isRequired,
   pageHeader: PropTypes.object,
   siteHeader: PropTypes.object,
   siteFooter: PropTypes.object,

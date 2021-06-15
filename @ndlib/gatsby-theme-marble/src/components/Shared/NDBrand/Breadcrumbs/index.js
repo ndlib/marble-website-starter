@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
 import { jsx } from 'theme-ui'
 
-export const NDBrandBreadcrumbs = ({ location, variant, breadcrumbs, currentPageTitle, ...props }) => {
+export const NDBrandBreadcrumbs = ({ variant, breadcrumbs, currentPageTitle, ...props }) => {
   const sx = {
     pl: 0,
     pt: '1.5rem',
@@ -31,7 +31,6 @@ export const NDBrandBreadcrumbs = ({ location, variant, breadcrumbs, currentPage
 
 NDBrandBreadcrumbs.propTypes = {
   variant: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired,
   breadcrumbs: PropTypes.array.isRequired,
   currentPageTitle: PropTypes.string.isRequired,
   props: PropTypes.object,

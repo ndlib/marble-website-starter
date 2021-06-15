@@ -9,7 +9,7 @@ describe('ManifestDescription', () => {
       description: 'This is the description of the manifest.',
     }
     const wrapper = mount(<ManifestDescription marbleItem={marbleItem} />)
-    expect(wrapper.find('ReactMarkdown').props().source).toEqual(marbleItem.description)
+    expect(wrapper.find('ReactMarkdown').props().children).toEqual(marbleItem.description)
   })
   test('without description', () => {
     const marbleItem = {}

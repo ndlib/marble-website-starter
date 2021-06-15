@@ -61,8 +61,11 @@ const getComponent = (type, label) => {
 MetaDataField.propTypes = {
   metadata: PropTypes.shape({
     label: PropTypes.string.isRequired,
-    value: PropTypes.array.isRequired,
-    type:  PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.string,
+    ]).isRequired,
+    type:  PropTypes.string,
     urlField: PropTypes.string,
   }).isRequired,
   skipHtml: PropTypes.bool,

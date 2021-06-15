@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer'
 import SchemaJsonLd from './'
 
 describe('SchemaJsonLd component', () => {
-
   it('renders props into values', () => {
     const tree = renderer
       .create(<SchemaJsonLd

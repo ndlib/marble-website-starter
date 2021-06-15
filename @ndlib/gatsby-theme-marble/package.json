@@ -68,6 +68,7 @@
     "react-typography": "^0.16.19",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "rehype-raw": "^5.1.0",
     "searchkit": "2.4.4",
     "theme-ui": "^0.9.1",
     "typography": "^0.16.21",
