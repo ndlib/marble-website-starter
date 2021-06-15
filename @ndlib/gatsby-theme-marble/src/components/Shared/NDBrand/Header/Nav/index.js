@@ -2,12 +2,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Box, Button, Heading, Flex } from 'theme-ui'
-import { graphql, useStaticQuery } from 'gatsby'
-import ClickableNDLogoWhite from '../Logos/ClickableNDLogoWhite'
+import { jsx, Box } from 'theme-ui'
 import NDBrandNavSearch from './NavSearch'
-import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
-import typy from 'typy'
 
 /*
 * Builds and ND Webtheme Header Navigation.
