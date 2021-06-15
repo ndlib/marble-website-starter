@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CardGroup from 'components/Shared/CardGroup'
-import SearchAdditionalTools from 'components/Shared/SearchTools/SearchAdditionalTools'
 import HitResult from './HitResult'
 
 const HitDisplay = ({ hits, defaultDisplay, extraControls }) => {
@@ -35,6 +34,7 @@ HitDisplay.propTypes = {
 }
 HitDisplay.defaultProps = {
   defaultDisplay: 'list',
+  extraControls: PropTypes.node,
 }
 
 export default HitDisplay
@@ -44,7 +44,8 @@ export const HitList = ({ hits, extraControls }) => {
 }
 HitList.propTypes = {
   hits: PropTypes.array,
-  displayContext: PropTypes.string,
+  extraControls: PropTypes.node,
+
 }
 
 export const HitGrid = ({ hits, extraControls }) => {
@@ -52,5 +53,5 @@ export const HitGrid = ({ hits, extraControls }) => {
 }
 HitGrid.propTypes = {
   hits: PropTypes.array,
-  displayContext: PropTypes.string,
+  extraControls: PropTypes.node,
 }
