@@ -171,11 +171,12 @@ describe('makeMetadataArray', () => {
     })
 
     test('sets the provider for curate', () => {
-      defaultData.repository = 'curate'
+      defaultData.repository = 'rare'
       const test = [
         {
           label: 'Campus Location',
           type: 'list',
+          urlField: undefined,
           value:  [
             'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
@@ -190,10 +191,11 @@ describe('makeMetadataArray', () => {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact false at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame at [rarebook@nd.edu](mailto:rarebook@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
+      console.log('result', result)
       expect(result).toEqual(test)
     })
 
