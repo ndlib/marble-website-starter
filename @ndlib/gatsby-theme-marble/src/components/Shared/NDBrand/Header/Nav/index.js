@@ -21,7 +21,6 @@ import typy from 'typy'
 
 export const NDBrandHeader = ({ location, variant, items }) => {
   const [showSearch, setShowSearch] = useState(false)
-  const [showMenu, setShowMenu] = useState(false)
 
   return (
     <Box className='nav' sx={{ maxHeight: 0 }}>
@@ -42,11 +41,7 @@ export const NDBrandHeader = ({ location, variant, items }) => {
 NDBrandHeader.propTypes = {
   variant: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
-  titleOverride: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-  ]),
-  additionalNavButtons: PropTypes.oneOfType([
+  items: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
   ]),

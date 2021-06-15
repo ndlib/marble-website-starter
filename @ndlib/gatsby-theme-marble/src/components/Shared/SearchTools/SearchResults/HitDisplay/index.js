@@ -31,7 +31,7 @@ const HitDisplay = ({ hits, defaultDisplay, extraControls }) => {
 HitDisplay.propTypes = {
   hits: PropTypes.array,
   defaultDisplay: PropTypes.string,
-  displayContext: PropTypes.string,
+  extraControls: PropTypes.node,
 }
 HitDisplay.defaultProps = {
   defaultDisplay: 'list',

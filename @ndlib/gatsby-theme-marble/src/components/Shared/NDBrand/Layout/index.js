@@ -8,7 +8,6 @@ import NDBrandHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBr
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { FaHome, FaSearch, FaGripLines, FaTimes } from 'react-icons/fa'
 import typy from 'typy'
-import queryString from 'query-string'
 
 const gutterWidth = '5vw'
 export const query = graphql`
@@ -35,9 +34,8 @@ query {
   }
 `
 
-const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter, titleOverride }) => {
+const NDBrandLayout = ({ location, children, pageHeader, siteFooter, titleOverride }) => {
   const { menusJson } = useStaticQuery(query)
-  const qs = queryString.parse(location.search)
 
   const menu = typy(menusJson, 'items').safeArray
   const [showMenu, setShowMenu] = useState(false)
@@ -120,15 +118,16 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter,
       boxSizing: 'border-box',
       transition: '.25s ease-in-out',
     }}>
-      <div className='overlay' sx={{
-        display: showMenu ? 'block' : 'none',
-        position: 'fixed',
-        right: '14rem',
-        top: 0,
-        height: '100%',
-        width: '100%',
-        zIndex: 10,
-      }}
+      <div className='overlay'
+        sx={{
+          display: showMenu ? 'block' : 'none',
+          position: 'fixed',
+          right: '14rem',
+          top: 0,
+          height: '100%',
+          width: '100%',
+          zIndex: 10,
+        }}
         role='button'
         title='close navigation'
         onClick={() => setShowMenu(!showMenu)}
@@ -194,8 +193,8 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter,
 
 NDBrandLayout.propTypes = {
   pageHeader: PropTypes.object,
-  siteHeader: PropTypes.object,
   siteFooter: PropTypes.object,
+  titleOverride: PropTypes.node,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
