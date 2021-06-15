@@ -12,24 +12,20 @@ const ActionModal = ({
   isOpen,
   closeFunc,
   fullscreen = false,
-  footer,
   children,
-  appElement = 'gatsby-focus-wrapper',
-  parentSelector,
 }) => {
   const context = useThemeUI()
   const iconColor = typy(context, 'theme.colors.background').safeString || '#fff'
-  const appElementId = typeof document !== 'undefined' ? document.getElementById(appElement) : null
+  const appElement = typeof document !== 'undefined' ? document.getElementById('gatsby-focus-wrapper') : null
   return (
     <ReactModal
       style={modalStyle(fullscreen)}
       closeTimeoutMS={200}
-      appElement={appElementId}
+      appElement={appElement}
       isOpen={isOpen}
       contentLabel={contentLabel}
       onRequestClose={closeFunc}
       shouldCloseOnOverlayClick
-      parentSelector={parentSelector}
     >
       <div sx={sx.wrapper}>
         <h1
@@ -59,12 +55,7 @@ const ActionModal = ({
         </button>
       </div>
       <BaseStyles>
-        <div sx={sx.container}>
-          <div sx={bodyStyle(!!footer)}>{children}</div>
-          {footer && (
-            <div sx={sx.footer}>{footer}</div>
-          )}
-        </div>
+        <div sx={sx.content}>{children}</div>
       </BaseStyles>
     </ReactModal>
   )
@@ -75,9 +66,7 @@ ActionModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeFunc: PropTypes.func.isRequired,
   fullscreen: PropTypes.bool,
-  footer: PropTypes.node,
   children: PropTypes.node,
-  appElement: PropTypes.string,
 }
 
 export default ActionModal
@@ -103,12 +92,5 @@ export const modalStyle = (fullscreen) => {
       width: fullscreen ? '95vw' : '500px',
       maxWidth: '95vw',
     },
-  }
-}
-
-export const bodyStyle = (hasFooter) => {
-  return {
-    ...sx.body,
-    paddingBottom: hasFooter ? '0' : '1rem',
   }
 }
