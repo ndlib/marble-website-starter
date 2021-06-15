@@ -6,11 +6,12 @@ module.exports = {
     '& .sk-selected-filters-option .sk-selected-filters-option__remove-action': {
       color: 'black',
       backgroundColor: 'light',
-      px: '.5rem',
+      px: '.4rem',
       borderRadius: '.6em',
-      fontSize: 2,
+      fontSize: 1,
+      lineHeight: '.6rem',
       whiteSpace: 'nowrap',
-      py: '0.2rem',
+      py: '0.1rem',
       '&:hover': {
         transform: 'scale(1.02)',
         cursor: 'pointer',

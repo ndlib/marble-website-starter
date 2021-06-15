@@ -41,7 +41,7 @@ const NDBrandLayout = ({ location, children, pageHeader, siteHeader, siteFooter,
 
   const menu = typy(menusJson, 'items').safeArray
   const [showMenu, setShowMenu] = useState(false)
-  const [showSearch, setShowSearch] = useState(qs.q)
+  const [showSearch, setShowSearch] = useState(false)
 
   const navDrawerItems = menu.map(l => {
     return (

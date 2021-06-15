@@ -13,10 +13,10 @@ import {
 import Pager from './Pager'
 import { sourceFilter, highlightFields } from './searchSettings'
 
-export const SearchResults = ({ defaultDisplay, hitsPerPage, showPagination, scrollTo, displayContext }) => {
-  let displayComponent = HitGrid({ displayContext })
+export const SearchResults = ({ defaultDisplay, hitsPerPage, showPagination, scrollTo, extraControls }) => {
+  let displayComponent = HitGrid({ extraControls })
   if (defaultDisplay === 'list') {
-    displayComponent = HitList({ displayContext })
+    displayComponent = HitList({ extraControls })
   }
   return (
     <>

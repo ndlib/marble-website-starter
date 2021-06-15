@@ -15,9 +15,17 @@ const SearchFilterBox = () => {
 
   return (
     <div sx={{
+      mt: '-1rem',
       '& form': {
-        border: '1px black solid',
-        borderRadius: '10px',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'gray.4',
+        borderBottomWidth: '0.25rem',
+        borderBottomStyle: 'solid',
+        borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+        '& input': {
+          fontSize: 6,
+        },
       },
     }}>
       <SearchBox
