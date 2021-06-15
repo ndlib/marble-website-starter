@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
-import { BaseStyles } from 'theme-ui'
+import rehypeRaw from 'rehype-raw'
 
 const MetaDataMarkdownValue = ({ values, skipHtml }) => {
   return (
@@ -11,7 +11,7 @@ const MetaDataMarkdownValue = ({ values, skipHtml }) => {
           return (
             <dd key={val}>
               <ReactMarkdown
-                escapeHtml={false}
+                rehypePlugins={[rehypeRaw]}
                 skipHtml={skipHtml}
               >{val}</ReactMarkdown>
             </dd>

@@ -195,6 +195,18 @@ const theme = merge({}, bootstrapTheme, {
         color: 'primary',
       },
     },
+    text: {
+      backgroundColor: 'transparent',
+      border: 'none',
+      color: 'primaryBright',
+      cursor: 'pointer',
+      textDecoration: 'none',
+      padding: '0',
+      wordBreak: 'break-word',
+      ':hover': {
+        textDecoration: 'underline',
+      },
+    },
   },
   sections: {
     default: {
