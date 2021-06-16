@@ -195,7 +195,6 @@ describe('makeMetadataArray', () => {
         },
       ]
       const result = makeMetadataArray(defaultData)
-      console.log('result', result)
       expect(result).toEqual(test)
     })
 
