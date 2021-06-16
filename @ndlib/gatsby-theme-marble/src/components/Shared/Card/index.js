@@ -39,6 +39,7 @@ const MarbleCard = ({
       location={location}
       referal={referal}
       onClick={onClick}
+      sx={sx.cardWrapper}
     >
       <Card variant={variant}>
         <article sx={sx.wrapper(wide)}>
