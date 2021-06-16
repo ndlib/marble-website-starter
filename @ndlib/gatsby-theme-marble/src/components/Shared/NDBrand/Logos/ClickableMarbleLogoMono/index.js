@@ -9,7 +9,7 @@ const ClickableMarbleLogoMono = ({ variant, width, height, url, ...props }) => {
   return (
     <div sx={{ variant: 'ClickableNDLogoWhite.' + variant }} {...props}>
       <a href={url} title='Marble: Museums, Archives, Rare Books and Libraries Exploration'>
-        <Image src={marbleLogo} width={width} height={height} alt='Marble: Museums, Archives, Rare Books and Libraries Exploration' />
+        <Image src={marbleLogo} alt='Marble: Museums, Archives, Rare Books and Libraries Exploration' />
       </a>
     </div>
   )

@@ -9,8 +9,8 @@ export const NDBrandHeroBarckgroundOnly = ({ variant }) => {
 
   return (
     <div id='page-header' variant={`pageHeaders.${variant}`} sx={{
+      display: ['none', 'none', 'none', 'grid'],
       position: 'relative',
-      display: 'grid',
       gridColumn: 'screen',
       gridRow: 'header',
       gridTemplateRows: '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',

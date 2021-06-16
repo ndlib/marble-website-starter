@@ -16,13 +16,13 @@ const CollectionLayout = ({ marbleItem, location }) => {
   return (
     <>
       <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '40%'], px: '1rem', py: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '40%'], px: '1rem', py: '1rem' }}>
           <ActionButtonGroup marbleItem={marbleItem} />
           <ManifestDescription marbleItem={marbleItem} />
           <ManifestMetaData marbleItem={marbleItem} />
           <PartiallyDigitized marbleItem={marbleItem} />
         </Box>
-        <Box sx={{ width: ['100%', '60%'], px: '1rem', py: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '60%'], px: '1rem', py: '1rem' }}>
           {headerItem ? (
             <ManifestImageGroup
               location={location}

@@ -57,7 +57,6 @@ const findProvider = (standardJson) => {
 
   switch (standardJson.repository.toLowerCase()) {
     case 'rare':
-    case 'curate':
       return ['Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame']
     case 'museum':
       return ['Snite Museum of Art']
@@ -77,7 +76,6 @@ const findContact = (standardJson) => {
   let contact = ''
   switch (standardJson.repository.toLowerCase()) {
     case 'rare':
-    case 'curate':
       contact = 'rarebook@nd.edu'
       break
     case 'museum':
@@ -107,7 +105,6 @@ const getUriValue = (standardJson) => {
   let uriValue = ''
   switch (standardJson.repository.toLowerCase()) {
     case 'rare':
-    case 'curate':
       uriValue = 'Rare%20Books%20%26%20Special%20Collections'
       break
     case 'museum':

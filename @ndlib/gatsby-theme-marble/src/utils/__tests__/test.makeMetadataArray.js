@@ -171,11 +171,12 @@ describe('makeMetadataArray', () => {
     })
 
     test('sets the provider for curate', () => {
-      defaultData.repository = 'curate'
+      defaultData.repository = 'rare'
       const test = [
         {
           label: 'Campus Location',
           type: 'list',
+          urlField: undefined,
           value:  [
             'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
           ],
