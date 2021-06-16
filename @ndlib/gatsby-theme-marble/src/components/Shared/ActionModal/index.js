@@ -12,6 +12,7 @@ const ActionModal = ({
   isOpen,
   closeFunc,
   fullscreen = false,
+  footer,
   children,
 }) => {
   const context = useThemeUI()
@@ -55,7 +56,12 @@ const ActionModal = ({
         </button>
       </div>
       <BaseStyles>
-        <div sx={sx.content}>{children}</div>
+        <div sx={sx.container}>
+          <div sx={bodyStyle(!!footer)}>{children}</div>
+          {footer && (
+            <div sx={sx.footer}>{footer}</div>
+          )}
+        </div>
       </BaseStyles>
     </ReactModal>
   )
@@ -66,6 +72,7 @@ ActionModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeFunc: PropTypes.func.isRequired,
   fullscreen: PropTypes.bool,
+  footer: PropTypes.node,
   children: PropTypes.node,
 }
 
@@ -92,5 +99,12 @@ export const modalStyle = (fullscreen) => {
       width: fullscreen ? '95vw' : '500px',
       maxWidth: '95vw',
     },
+  }
+}
+
+export const bodyStyle = (hasFooter) => {
+  return {
+    ...sx.body,
+    paddingBottom: hasFooter ? '0' : '1rem',
   }
 }
