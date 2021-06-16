@@ -26,8 +26,13 @@ test('it finds items in the parent field', () => {
   const item = {
     parent: {
       title: 'collection!',
+      level: 'collection',
+      parent: {
+        title: 'another',
+        level: 'collection',
+      },
     },
   }
 
-  expect(getCollection(item)).toEqual(['collection!'])
+  expect(getCollection(item)).toEqual(['collection!', 'another'])
 })
