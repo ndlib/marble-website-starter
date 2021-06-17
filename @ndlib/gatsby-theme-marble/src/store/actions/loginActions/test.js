@@ -28,7 +28,7 @@ describe('loginActions', () => {
     expect(setAuthClient({ some: 'settings' })).toEqual({
       type: SET_AUTH_CLIENT,
       authClientSettings: { some: 'settings' },
-      userContentPath: process.env.USER_CONTENT_PATH,
+      userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/',
     })
   })
   test.skip('getTokenAndPutInStore', () => {})
