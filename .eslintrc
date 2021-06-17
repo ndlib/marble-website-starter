@@ -13,7 +13,8 @@
     "promise"
   ],
   "env" : {
-    "browser" : true
+    "browser" : true,
+    "node"  : true
   },
   "globals" : {
     "__DEV__"      : false,
