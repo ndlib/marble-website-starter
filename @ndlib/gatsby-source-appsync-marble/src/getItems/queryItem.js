@@ -45,6 +45,17 @@ module.exports = (itemId, website) => {
        title
      }
     }
+    images {
+     items {
+       id
+       mediaResourceId
+       mediaServer
+       mimeType
+       sequence
+       sourceUri
+       title
+     }
+    }
     format
     geographicLocations {
       display
@@ -57,12 +68,12 @@ module.exports = (itemId, website) => {
     level
     linkToSource
     medium
-    objectFileGroupId
+    imageGroupId
     parentId
     parent {
       id
       title
-    }    
+    }
     partiallyDigitized
     physicalAccess
     publishers {
