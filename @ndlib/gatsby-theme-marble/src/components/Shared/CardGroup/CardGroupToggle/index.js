@@ -37,7 +37,7 @@ export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
       <Box sx={{ width: '100%', py: '2px', paddingRight: '5px' }}>
         {extraControls}
       </Box>
-      <Box sx={{ minWidth: '68px' }}>
+      <Box sx={{ minWidth: '68px', display: ['none', 'none', 'block'] }}>
         {
           options.map(opt => {
             const isActive = (layout === opt.display)

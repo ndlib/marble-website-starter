@@ -41,6 +41,7 @@ SearchResults.propTypes = {
   hitsPerPage: PropTypes.number,
   showPagination: PropTypes.bool,
   scrollTo: PropTypes.string,
+  extraControls: PropTypes.node,
 }
 
 SearchResults.defaultProps = {
