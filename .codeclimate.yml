@@ -2,7 +2,7 @@ version: "2"
 checks:
   method-lines:
     config:
-      threshold: 100
+      threshold: 75
   similar-code:
     enabled: true
     config:
