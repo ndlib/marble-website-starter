@@ -1,11 +1,19 @@
 version: "2"
+checks:
+  method-lines:
+    config:
+      threshold: 50
+  similar-code:
+    enabled: true
+    config:
+      threshold: 80
 plugins:
   duplication:
     config:
       languages:
         javascript:
           filters:
-            - "(property (Identifier propTypes))"
+            - "(object (Identifier PropTypes))"
 exclude_paths:
 - "**/config/"
 - "**/node_modules/"
