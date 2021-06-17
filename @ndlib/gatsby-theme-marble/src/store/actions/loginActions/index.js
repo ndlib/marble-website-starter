@@ -1,4 +1,4 @@
-// import { OktaAuth } from '@okta/okta-auth-js'
+import OktaAuth  from '@okta/okta-auth-js'
 import {
   userIdFromClaims,
 } from 'utils/auth'
@@ -21,17 +21,18 @@ export const STATUS_AUTHENTICATED_NOT_LOGGED_IN = 'STATUS_AUTHENTICATED_NOT_LOGG
 export const STATUS_LOGGED_IN = 'STATUS_LOGGED_IN'
 
 export const putAuthSettingsInStore = (location) => {
+  console.log('putAuthSettingsInStore', location)
   return dispatch => {
-    // const authClientSettings = {
-    //   url: process.env.AUTH_CLIENT_URL,
-    //   clientId: process.env.AUTH_CLIENT_ID,
-    //   redirectUri: `${location.origin}/user`,
-    //   issuer: process.env.AUTH_CLIENT_ISSUER,
-    //   ignoreSignature: true,
-    //   responseType: 'id_token',
-    //   responseMode: 'fragment',
-    //   pkce: true,
-    // }
+    const authClientSettings = {
+      url: 'https://okta.nd.edu',
+      clientId: '0oa1f3ut0aKpdwap5357',
+      redirectUri: `${location.origin}/user`,
+      issuer: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
+      ignoreSignature: true,
+      responseType: 'id_token',
+      responseMode: 'fragment',
+      pkce: true,
+    }
     dispatch(setAuthClient(authClientSettings))
   }
 }
@@ -40,43 +41,43 @@ export const setAuthClient = (authClientSettings) => {
   return {
     type: SET_AUTH_CLIENT,
     authClientSettings: authClientSettings,
-    // userContentPath: process.env.USER_CONTENT_PATH,
+    userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/' //process.env.USER_CONTENT_PATH,
   }
 }
 
 export const getTokenAndPutInStore = (loginReducer, location) => {
   return dispatch => {
-    // if (loginReducer.authClientSettings) {
-    //   const authClient = new OktaAuth(loginReducer.authClientSettings)
-    //   try {
-    //     authClient.tokenManager.get('idToken')
-    //       .then(idToken => {
-    //         if (idToken) {
-    //           if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
-    //             dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
-    //           }
-    //           // If ID Token isn't found, try to parse it from the current URL
-    //         } else if (location.hash) {
-    //           authClient.token.parseFromUrl()
-    //             .then(res => {
-    //               // Store parsed token in Token Manager
-    //               const { idToken } = res.tokens
-    //               authClient.tokenManager.add('idToken', idToken)
-    //               dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
-    //             })
-    //             .catch(error => {
-    //               console.error(error)
-    //               dispatch(authorizationError())
-    //             })
-    //           // No token and user has not tried to login
-    //         } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
-    //           dispatch(setNotLoggedIn())
-    //         }
-    //       })
-    //   } catch {
-    //     // console.error('Could not access tokenManager.')
-    //   }
-    // }
+    if (loginReducer.authClientSettings) {
+      const authClient = new OktaAuth(loginReducer.authClientSettings)
+      try {
+        authClient.tokenManager.get('idToken')
+          .then(idToken => {
+            if (idToken) {
+              if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
+                dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
+              }
+              // If ID Token isn't found, try to parse it from the current URL
+            } else if (location.hash) {
+              authClient.token.parseFromUrl()
+                .then(res => {
+                  // Store parsed token in Token Manager
+                  const { idToken } = res.tokens
+                  authClient.tokenManager.add('idToken', idToken)
+                  dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
+                })
+                .catch(error => {
+                  console.error(error)
+                  dispatch(authorizationError())
+                })
+              // No token and user has not tried to login
+            } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
+              dispatch(setNotLoggedIn())
+            }
+          })
+      } catch {
+        // console.error('Could not access tokenManager.')
+      }
+    }
 
   }
 }
