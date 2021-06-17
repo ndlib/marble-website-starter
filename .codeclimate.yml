@@ -5,7 +5,7 @@ plugins:
       languages:
         javascript:
           filters:
-            - "s(:property, s(:Identifier, :propTypes))"
+            - "(property (Identifier propTypes))"
 exclude_paths:
 - "**/config/"
 - "**/node_modules/"
