@@ -36,7 +36,7 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
       width: ['100%'],
     },
     grid: {
-      width: ['100%', '50%', '50%', '33.33%'],
+      width: ['100%', '100%', '50%', '50%', '33.33%'],
       padding: '1rem',
     },
   }

@@ -31,7 +31,8 @@ module.exports = {
       '& em': {
         backgroundColor: 'highlight',
       },
-      height: '250px',
+      height: ['435px', '435px', '250px'],
+      overflow: ['hidden', 'hidden', 'inherit'],
       position: 'relative',
     } : {
       '& em': {
@@ -40,7 +41,6 @@ module.exports = {
       height: '435px',
       overflow: 'hidden',
       position: 'relative',
-
     }
   },
   imageBoarder: {
@@ -63,10 +63,11 @@ module.exports = {
   },
   imageWrapper: (wide) => {
     return wide ? {
-      display: 'inline-block',
+      display: ['block', 'block', 'inline-block'],
       verticalAlign: 'top',
-      width: '250px',
-    } : {}
+      width: ['', '', '250px'],
+    } : {
+    }
   },
   imageWrapperInner: {
     boxSizing: 'border-box',
@@ -79,13 +80,16 @@ module.exports = {
     return wide ? {
       borderBottom: '6px solid',
       borderColor: 'primary',
-      display: 'inline-block',
-      height: '265px',
-      marginLeft: '1.5rem',
-      overflow: 'hidden',
+      display: ['block', 'block', 'inline-block'],
+      height: ['170px', '170px', '265px'],
+      marginLeft: [0, 0, '1.5rem'],
       padding: '.5rem',
+      overflow: 'hidden',
       position: 'relative',
-      width: 'calc(100% - 250px - 1.5rem)',
+      width: ['100%', '100%', 'calc(100% - 250px - 1.5rem)'],
+      '& div': {
+        display: ['none', 'block', 'block'],
+      },
     } : {
       borderBottom: '6px solid',
       borderColor: 'primary',
@@ -93,6 +97,9 @@ module.exports = {
       overflow: 'hidden',
       padding: '.5rem',
       position: 'relative',
+      '& div': {
+        display: ['none', 'block', 'block'],
+      },
     }
   },
   label: {
