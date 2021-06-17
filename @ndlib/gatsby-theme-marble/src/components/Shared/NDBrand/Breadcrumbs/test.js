@@ -52,3 +52,12 @@ test('truncates the titles at 60 chars and trims space if the 60th char is a spa
   const wrapper = shallow(<NDBrandBreadcrumbs breadcrumbs={bcs} currentPageTitle={longTitle} />)
   expect(wrapper.find('li').last().props()).toEqual(test)
 })
+
+test('truncates the titles at 60 chars even if it has already split at a special character', () => {
+  const longTitle = 'superlong title that will get split because that is what we want : with a special char.'
+  const test = { children:  ['superlong title that will get split because that is what we...', ' › '] }
+  const bcs = []
+
+  const wrapper = shallow(<NDBrandBreadcrumbs breadcrumbs={bcs} currentPageTitle={longTitle} />)
+  expect(wrapper.find('li').last().props()).toEqual(test)
+})

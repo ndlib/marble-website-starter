@@ -58,6 +58,7 @@ const trimTitle = (title) => {
     const splitTitle = title.split(/[:_([]/)
     if (splitTitle[0].length > 60) {
       // match the first 60 characters up to a space or end of line
+      // note that if the characters do not have a space in it it will choose the last chars up that space.
       return splitTitle[0].match(/.{1,60}(\s|$)/g)[0].trim() + '...'
     }
     return splitTitle[0].trim()
