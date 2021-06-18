@@ -58,11 +58,11 @@ const findProvider = (item) => {
   switch (item.repository.toLowerCase()) {
     case 'rare':
     case 'curate':
-      return ['Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame']
+      return ['Rare Books & Special Collections, Hesburgh Libraries']
     case 'museum':
       return ['Snite Museum of Art']
     case 'unda':
-      return ['University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame']
+      return ['University of Notre Dame Archives, Hesburgh Libraries']
     case 'hesb':
       return ['General Collection, Hesburgh Libraries']
     default:
