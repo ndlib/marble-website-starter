@@ -1,7 +1,6 @@
 html,
 body {
   margin: 0;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased !important;
 }
 #gatsby-focus-wrapper {
