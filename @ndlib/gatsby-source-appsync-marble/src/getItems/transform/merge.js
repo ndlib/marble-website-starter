@@ -20,7 +20,7 @@ module.exports = (parent, child) => {
     'iiifUri',
     'level',
     'linkToSource',
-    'objectFileGroupId',
+    'imageGroupId',
     'parentId',
     'partiallyDigitized',
     'repository',
@@ -33,6 +33,7 @@ module.exports = (parent, child) => {
   ]
   const chooseChildFields = [
     'children',
+    'images',
     'files',
   ]
   const mergeArrayFields = [
