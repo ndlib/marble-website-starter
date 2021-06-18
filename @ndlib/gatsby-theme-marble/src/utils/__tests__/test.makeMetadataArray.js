@@ -123,7 +123,7 @@ describe('makeMetadataArray', () => {
           type: 'list',
           urlField: undefined,
           value:  [
-            'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
+            'Rare Books & Special Collections, Hesburgh Libraries',
           ],
         },
         {
@@ -150,7 +150,7 @@ describe('makeMetadataArray', () => {
           label: 'Campus Location',
           type: 'list',
           value:  [
-            'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
+            'Rare Books & Special Collections, Hesburgh Libraries',
           ],
         },
         {
@@ -178,7 +178,7 @@ describe('makeMetadataArray', () => {
           type: 'list',
           urlField: undefined,
           value:  [
-            'Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame',
+            'Rare Books & Special Collections, Hesburgh Libraries',
           ],
         },
         {
@@ -206,7 +206,7 @@ describe('makeMetadataArray', () => {
           type: 'list',
           urlField: undefined,
           value:  [
-            'University of Notre Dame Archives, Hesburgh Libraries, University of Notre Dame',
+            'University of Notre Dame Archives, Hesburgh Libraries',
           ],
         },
         {

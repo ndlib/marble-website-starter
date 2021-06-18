@@ -1,16 +1,11 @@
 html,
 body {
   margin: 0;
-  overflow: hidden;
-  position: fixed;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased !important;
 }
 #gatsby-focus-wrapper {
-  height: 100vh;
-  overflow-y: scroll;
-  position: relative;
-  width: 100vw;
-  -webkit-overflow-scrolling: touch;
+
 }
 div {
   box-sizing: border-box;
