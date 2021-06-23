@@ -1,23 +1,21 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import AboutIIIF from './AboutIIIF'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import download from 'utils/download'
 
 const DownloadMetadata = ({ marbleItem }) => {
   return (
     <React.Fragment>
       <AboutIIIF />
-      <MaterialButton
+      <Button
         onClick={
           () => download(`${marbleItem.iiifUri}/`, `${marbleItem.marbleId || 'manifest'}.json`)
         }
-        wide
-        primary
+        variant='primary'
       >Download IIIF Manifest
-      </MaterialButton>
+      </Button>
     </React.Fragment>
   )
 }
