@@ -47,6 +47,7 @@ DropDown.propTypes = {
   }).isRequired,
   buttonLabel: PropTypes.node.isRequired,
   options: PropTypes.node.isRequired,
+  sxTiny: PropTypes.bool,
 }
 
 export default DropDown

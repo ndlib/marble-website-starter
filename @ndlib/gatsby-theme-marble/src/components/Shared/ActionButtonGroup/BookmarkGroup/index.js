@@ -37,15 +37,17 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
   if (!isLoggedIn(loginReducer)) {
     return null
   }
-
-  const style = size === 'tiny' ? true : false
+  if (!size) {
+    size = ''
+  }
+  const style = (size === 'tiny')
   const buttonLabel = size === 'tiny' ? (
     <FaBookmark sx={sx.bookmark} />
   ) : (
     <BookmarkLabel
-    sxStyle={sx}
-    text='Save to a portfolio'
-  />
+      sxStyle={sx}
+      text='Save to a portfolio'
+    />
   )
   return (
     <DropDown
@@ -66,6 +68,7 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
 BookmarkGroup.propTypes = {
   marbleItem: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
+  size: PropTypes.string,
 }
 
 export const mapStateToProps = (state) => {
