@@ -44,7 +44,6 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
   const { site } = useStaticQuery(query)
 
   const title = titleOverride || site.siteMetadata.title
-  console.log(variant)
   return (
     <Box as='header' sx={{
       variant: 'NDBrandHeader',
