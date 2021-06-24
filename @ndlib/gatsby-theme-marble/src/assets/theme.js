@@ -124,6 +124,21 @@ const theme = merge({}, bootstrapTheme, {
       sans-serif
     `,
   },
+  NDBrandHeader: {
+    p: '1.5rem 0',
+    display: 'grid',
+    textAlign: 'left',
+    borderTopWidth: '5px',
+    borderTopColor: 'secondary',
+    borderTopStyle: 'solid',
+    backgroundColor: 'primary',
+    borderBottomWidth: '5px',
+    borderBottomColor: 'dark',
+    borderBottomStyle: 'solid',
+  },
+  NDBrandLayout: {
+
+  },
   cards: {
     primary: {
       '& h2': {
@@ -305,6 +320,14 @@ const theme = merge({}, bootstrapTheme, {
     lede: {
       fontSize: 4,
     },
+    siteHeader: {
+      color: 'white',
+      m: 0,
+      mb: '.5rem',
+      p: 0,
+      fontFamily: 'title',
+      fontSize: '8',
+    },
     pageTitle: {
       color: 'primary',
       fontWeight: '100',
@@ -351,6 +374,13 @@ const theme = merge({}, bootstrapTheme, {
       textDecoration: 'none',
       '&:hover': {
         textDecoration: 'underline',
+      },
+    },
+    siteHeader: {
+      color: 'white',
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'none',
       },
     },
     navDrawer: {
@@ -454,7 +484,7 @@ const theme = merge({}, bootstrapTheme, {
     navTop: {
       position: ['static', 'static', 'static', 'relative'],
       display: 'flex',
-      top: '-38px',
+      top: '0',
       justifyContent: ['none', 'none', 'none', 'flex-end'],
       width: ['100%', '100%', '100%', 'inherit'],
       maxHeight: '80px',

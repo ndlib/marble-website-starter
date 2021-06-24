@@ -15,11 +15,11 @@ import NDBrandNavSearch from './NavSearch'
 *           Defaults to default
 */
 
-export const NDBrandHeader = ({ location, variant, items }) => {
+export const NDBrandHeaderNav = ({ location, variant, items }) => {
   const [showSearch, setShowSearch] = useState(false)
 
   return (
-    <Box className='nav' sx={{ maxHeight: 0 }}>
+    <Box className='nav' variant={variant} sx={{ maxHeight: 0 }}>
       <Box as='nav' sx={{ variant: `menus.navTop` }}>
         <div>
           {!showSearch ? (
@@ -34,7 +34,7 @@ export const NDBrandHeader = ({ location, variant, items }) => {
   )
 }
 
-NDBrandHeader.propTypes = {
+NDBrandHeaderNav.propTypes = {
   variant: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   items: PropTypes.oneOfType([
@@ -43,9 +43,9 @@ NDBrandHeader.propTypes = {
   ]),
 }
 
-NDBrandHeader.defaultProps = {
+NDBrandHeaderNav.defaultProps = {
   variant: 'default',
   additionalNavButtons: [],
 }
 
-export default NDBrandHeader
+export default NDBrandHeaderNav

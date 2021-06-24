@@ -36,7 +36,7 @@ export const NDBrandBreadcrumbs = ({ variant, breadcrumbs, currentPageTitle, ...
     '& li': {
       display: ['none', 'none', 'none', 'inline-block'],
       mr: '0.75rem',
-      '&:nth-last-child(2)': {
+      '&:nth-last-of-type(2)': {
         display: 'inline-block',
       },
     },
