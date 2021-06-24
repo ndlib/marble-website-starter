@@ -18,12 +18,12 @@ const HitResult = ({ hit, referal, loginReducer }) => {
     thumbnail,
     type,
   } = typy(hit, '["_source"]').safeObject
-  var bookmark
-  if(loginReducer) {
+  let bookmark
+  if (loginReducer) {
     bookmark = isLoggedIn(loginReducer) ? (
-      <BookmarkGroup marbleItem={hit} size='tiny'/>
+      <BookmarkGroup marbleItem={hit} size='tiny' />
     ) : null
-  }else{
+  } else {
     bookmark = null
   }
   return (

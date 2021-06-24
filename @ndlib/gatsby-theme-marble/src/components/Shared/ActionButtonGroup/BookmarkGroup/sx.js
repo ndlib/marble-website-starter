@@ -47,7 +47,7 @@ module.exports = {
     width: '.5rem',
     minHeight: '.5rem',
     marginRigth: '2rem',
-},
+  },
   tinyWrapper: {
     cursor: 'pointer',
     outline: 'none',
