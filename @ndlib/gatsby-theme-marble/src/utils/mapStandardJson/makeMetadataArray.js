@@ -61,7 +61,7 @@ const findProvider = (standardJson) => {
     case 'museum':
       return ['Snite Museum of Art']
     case 'unda':
-      return ['University of Notre Dame Archives, Hesburgh Libraries']
+      return ['University Archives, Hesburgh Libraries']
     case 'hesb':
       return ['General Collection, Hesburgh Libraries']
     default:

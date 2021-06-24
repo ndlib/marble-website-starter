@@ -125,7 +125,7 @@ const theme = merge({}, bootstrapTheme, {
     `,
   },
   NDBrandHeader: {
-    p: '1.5rem 0',
+    p: ['1.5rem 0 0', '1.5rem 0 0', '1.5rem 0 0', '1.5rem 0'],
     display: 'grid',
     textAlign: 'left',
     borderTopWidth: '5px',
@@ -137,7 +137,6 @@ const theme = merge({}, bootstrapTheme, {
     borderBottomStyle: 'solid',
   },
   NDBrandLayout: {
-
   },
   cards: {
     primary: {
@@ -422,6 +421,12 @@ const theme = merge({}, bootstrapTheme, {
       '&.menu': {
         display: ['block', 'block', 'block', 'none'],
       },
+      '&.search': {
+        bg: 'light',
+        '&:hover': {
+          borderBottomWidth: '0',
+        },
+      },
       '&:hover': {
         background: ['white', 'white', 'white', 'var(--theme-ui-colors-light)'],
         borderBottomWidth: '0.25rem',
@@ -505,6 +510,7 @@ const theme = merge({}, bootstrapTheme, {
       '& input': {
         width: '100%',
         py: '1.1rem',
+        bg: 'light',
       },
     },
   },
