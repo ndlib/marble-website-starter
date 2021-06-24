@@ -5,7 +5,7 @@ import { jsx, Image } from 'theme-ui'
 import PropTypes from 'prop-types'
 import marbleLogo from '@ndlib/gatsby-theme-marble/src/assets/logos/Marble.Logo.Mono.Small.svg'
 
-const MarbleLogoMono = ({ variant, width, height, ...props }) => {
+const MarbleLogoMono = ({ variant }) => {
   return (
     <Image variant={variant} src={marbleLogo} alt='Marble: Museums, Archives, Rare Books and Libraries Exploration' />
   )
@@ -13,15 +13,10 @@ const MarbleLogoMono = ({ variant, width, height, ...props }) => {
 
 MarbleLogoMono.propTpyes = {
   variant: PropTypes.string,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired,
 }
 
 MarbleLogoMono.defaultProps = {
   variant: 'primary',
-  width: 200,
-  height: 48,
 }
 
 export default MarbleLogoMono
