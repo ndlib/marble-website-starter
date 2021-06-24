@@ -19,7 +19,7 @@ export const NDBrandHeaderNav = ({ location, variant, items }) => {
   const [showSearch, setShowSearch] = useState(false)
 
   return (
-    <Box className='nav' sx={{ maxHeight: 0 }}>
+    <Box className='nav' variant={variant} sx={{ maxHeight: 0 }}>
       <Box as='nav' sx={{ variant: `menus.navTop` }}>
         <div>
           {!showSearch ? (
