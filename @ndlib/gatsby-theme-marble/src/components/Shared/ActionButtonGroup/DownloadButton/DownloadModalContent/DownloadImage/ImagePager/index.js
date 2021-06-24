@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 const ImagePager = ({ sxStyle, images, selected, setSelected }) => {
   if (images.length < 2) {
@@ -9,13 +8,14 @@ const ImagePager = ({ sxStyle, images, selected, setSelected }) => {
   }
   return (
     <div sx={sxStyle.controlWrapper}>
-      <MaterialButton
+      <Button
         onClick={() => {
           setSelected(selected - 1)
         }}
         disabled={selected === 0}
+        variant='light'
       >&lt;
-      </MaterialButton>
+      </Button>
       <select
         onChange={(event) => {
           setSelected(parseInt(event.target.value, 10))
@@ -36,13 +36,14 @@ const ImagePager = ({ sxStyle, images, selected, setSelected }) => {
           })
         }
       </select>
-      <MaterialButton
+      <Button
         onClick={() => {
           setSelected(selected + 1)
         }}
         disabled={selected === images.length - 1}
+        variant='light'
       >&gt;
-      </MaterialButton>
+      </Button>
     </div>
   )
 }

@@ -5,7 +5,6 @@ import DownloadImage from './'
 import ImagePreview from './ImagePreview'
 import ImagePager from './ImagePager'
 import ImageSettings from './ImageSettings'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import * as download from 'utils/download'
 
 console.error = jest.fn()
@@ -33,7 +32,7 @@ describe('DownloadImage', () => {
     expect(wrapper.find(ImagePager).props().images).toEqual(images)
     expect(wrapper.find(ImageSettings).exists()).toBeTruthy()
     act(() => {
-      wrapper.find(MaterialButton).props().onClick()
+      wrapper.find('button').props().onClick()
     })
     expect(downloadSpy).toHaveBeenCalled()
   })
