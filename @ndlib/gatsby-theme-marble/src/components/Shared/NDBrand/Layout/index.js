@@ -182,6 +182,8 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
 }
 
 NDBrandLayout.propTypes = {
+  location: PropTypes.object,
+  variant: PropTypes.string,
   pageHeader: PropTypes.object,
   siteFooter: PropTypes.object,
   titleOverride: PropTypes.node,
