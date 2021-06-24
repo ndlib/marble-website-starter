@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import typy from 'typy'
 import ImagePreview from './ImagePreview'
 import ImagePager from './ImagePager'
 import ImageSettings from './ImageSettings'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { download } from 'utils/download'
 import {
   imageUrl,
@@ -62,17 +61,16 @@ const DownloadImage = ({ marbleItem }) => {
         setFormat={setFormat}
       />
       <div sx={sx.controlWrapper}>
-        <MaterialButton
+        <Button
           onClick={() => {
             download(
               imageUrl(images, selected, size, format),
               imageName(marbleItem, images, selected, format),
             )
           }}
-          primary
-          wide
+          variant='primary'
         >Download Image
-        </MaterialButton>
+        </Button>
       </div>
     </React.Fragment>
   )
