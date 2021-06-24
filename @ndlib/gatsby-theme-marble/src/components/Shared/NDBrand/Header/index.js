@@ -46,7 +46,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
   const title = titleOverride || site.siteMetadata.title
   return (
     <Box as='header' sx={{
-      variant: 'NDBrandHeader',
+      variant: variant,
       gridRow: 'header',
       width: '100vw',
       opacity: '1',
@@ -100,7 +100,7 @@ NDBrandHeader.propTypes = {
 }
 
 NDBrandHeader.defaultProps = {
-  variant: 'header',
+  variant: 'NDBrandHeader',
   additionalNavButtons: [],
   showSearch: false,
 }

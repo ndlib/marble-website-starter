@@ -109,7 +109,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
 
   return (
     <Container sx={{
-      variant: 'NDBrandLayout',
+      variant: variant,
       display: 'grid',
       minHeight: '100%',
       width: '100%',
@@ -194,6 +194,6 @@ NDBrandLayout.propTypes = {
 }
 
 NDBrandLayout.defaultProps = {
-  variant: 'layout',
+  variant: 'NDBrandLayout',
 }
 export default NDBrandLayout
