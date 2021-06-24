@@ -34,7 +34,7 @@ query {
   }
 `
 
-const NDBrandLayout = ({ location, children, pageHeader, siteFooter, titleOverride }) => {
+const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, titleOverride }) => {
   const { menusJson } = useStaticQuery(query)
 
   const menu = typy(menusJson, 'items').safeArray
@@ -109,6 +109,7 @@ const NDBrandLayout = ({ location, children, pageHeader, siteFooter, titleOverri
 
   return (
     <Container sx={{
+      variant: 'NDBrandLayout',
       display: 'grid',
       minHeight: '100%',
       width: '100%',
@@ -188,5 +189,9 @@ NDBrandLayout.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]).isRequired,
+}
+
+NDBrandLayout.defaultProps = {
+  variant: 'layout',
 }
 export default NDBrandLayout

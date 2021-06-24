@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { jsx, Box, Heading, Flex } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import ClickableNDLogoWhite from '../Logos/ClickableNDLogoWhite'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import NDBrandNavSearch from './NavSearch'
 
 export const query = graphql`
@@ -43,21 +44,12 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
   const { site } = useStaticQuery(query)
 
   const title = titleOverride || site.siteMetadata.title
-
+  console.log(variant)
   return (
-    <Box as='header' variant={'header.' + variant} sx={{
+    <Box as='header' sx={{
+      variant: 'NDBrandHeader',
       gridRow: 'header',
-      padding: '1.5rem 0 0',
-      display: 'grid',
       width: '100vw',
-      textAlign: 'left',
-      borderTopWidth: '5px',
-      borderTopColor: 'secondary',
-      borderTopStyle: 'solid',
-      backgroundColor: 'primary',
-      borderBottomWidth: '5px',
-      borderBottomColor: 'dark',
-      borderBottomStyle: 'solid',
       opacity: '1',
       zIndex: 1,
     }}>
@@ -67,24 +59,16 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
         }}>
           <ClickableNDLogoWhite />
         </div>
-        <div className='title' sx={{
-          width: '300px',
-        }}>
-          <Heading as='h1' sx={{
-            color: 'gray.4',
-            m: 0,
-            p: 0,
-            fontFamily: 'title',
-            fontSize: '8',
-          }}>{title}</Heading>
+        <div className='title' sx={{}}>
+          <Heading as='h1' variant='siteHeader'><Link variant='siteHeader' to='/'>{title}</Link></Heading>
           {site.siteMetadata.subTitle ? (<p sx={{
             color: 'white',
             my: 0,
+            mt: '-15px',
             py: 0,
-            marginLeft: '120px',
             fontFamily: 'serif',
             fontSize: '2',
-            top: '-13px',
+
             position: 'relative',
           }}>{site.siteMetadata.subTitle}</p>) : null }
         </div>
@@ -117,7 +101,7 @@ NDBrandHeader.propTypes = {
 }
 
 NDBrandHeader.defaultProps = {
-  variant: 'default',
+  variant: 'header',
   additionalNavButtons: [],
   showSearch: false,
 }
