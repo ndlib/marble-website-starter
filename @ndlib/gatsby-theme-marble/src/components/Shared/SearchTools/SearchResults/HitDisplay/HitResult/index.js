@@ -1,10 +1,14 @@
 /** @jsx jsx */
+import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import ManifestCard from 'components/Shared/ManifestCard'
 import typy from 'typy'
+import { connect } from 'react-redux'
+import BookmarkGroup from 'components/Shared/ActionButtonGroup/BookmarkGroup'
+import { isLoggedIn } from 'utils/auth'
 
-const HitResult = ({ hit, referal }) => {
+const HitResult = ({ hit, referal, loginReducer }) => {
   const {
     name,
     creator,
@@ -14,44 +18,55 @@ const HitResult = ({ hit, referal }) => {
     thumbnail,
     type,
   } = typy(hit, '["_source"]').safeObject
+  var bookmark
+  if(loginReducer) {
+    bookmark = isLoggedIn(loginReducer) ? (
+      <BookmarkGroup marbleItem={hit} size='tiny'/>
+    ) : null
+  }else{
+    bookmark = null
+  }
   return (
-    <ManifestCard
-      key={hit}
-      label={highlightTitle(name, hit.highlight)}
-      target={url}
-      image={thumbnail}
-      referal={referal}
-      creator={highlightCreator(creator, hit.highlight)}
-      collectionName={highlightCollection(collection, hit.highlight)}
-      date={date}
-      type={type}
-    >
-      {
-        hit.highlight && hit.highlight['identifier.idMatch'] ? Object.values(hit.highlight['identifier.idMatch'])
-          .map(
-            (idMatch) => {
-              return higlightDisplay(idMatch)
-            }) : null
-      }
-      {
-        hit.highlight && hit.highlight['allMetadata.folded'] ? Object.values(hit.highlight['allMetadata.folded'])
-          .map(
-            (blob) => {
-              let row = ''
-              const stringSplit = '::'
-              blob.split(stringSplit).map(
-                (meta) => {
-                  row += meta.includes('<em>') ? meta : ''
-                  return row
-                },
-              )
-              return row !== '' ? (
-                higlightDisplay(row)
-              ) : null
-            },
-          ) : null
-      }
-    </ManifestCard>
+    <>
+      <ManifestCard
+        key={hit}
+        label={highlightTitle(name, hit.highlight)}
+        target={url}
+        image={thumbnail}
+        referal={referal}
+        creator={highlightCreator(creator, hit.highlight)}
+        collectionName={highlightCollection(collection, hit.highlight)}
+        date={date}
+        type={type}
+      >
+        {
+          hit.highlight && hit.highlight['identifier.idMatch'] ? Object.values(hit.highlight['identifier.idMatch'])
+            .map(
+              (idMatch) => {
+                return higlightDisplay(idMatch)
+              }) : null
+        }
+        {
+          hit.highlight && hit.highlight['allMetadata.folded'] ? Object.values(hit.highlight['allMetadata.folded'])
+            .map(
+              (blob) => {
+                let row = ''
+                const stringSplit = '::'
+                blob.split(stringSplit).map(
+                  (meta) => {
+                    row += meta.includes('<em>') ? meta : ''
+                    return row
+                  },
+                )
+                return row !== '' ? (
+                  higlightDisplay(row)
+                ) : null
+              },
+            ) : null
+        }
+      </ManifestCard>
+      {bookmark}
+    </>
   )
 }
 
@@ -106,4 +121,10 @@ HitResult.propTypes = {
   hit: PropTypes.object,
   referal: PropTypes.object,
 }
-export default HitResult
+
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
+export default connect(
+  mapStateToProps,
+)(HitResult)

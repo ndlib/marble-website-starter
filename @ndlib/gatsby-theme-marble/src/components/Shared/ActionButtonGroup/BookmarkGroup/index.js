@@ -10,9 +10,10 @@ import BookmarkLabel from './BookmarkLabel'
 import BookmarkOptions from './BookmarkOptions'
 import { getData } from 'utils/api'
 import { isLoggedIn } from 'utils/auth'
+import { FaBookmark } from 'react-icons/fa'
 import sx from './sx'
 
-export const BookmarkGroup = ({ marbleItem, loginReducer }) => {
+export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
   const [portfolios, setPortfolios] = useState([])
 
   useEffect(() => {
@@ -37,15 +38,20 @@ export const BookmarkGroup = ({ marbleItem, loginReducer }) => {
     return null
   }
 
+  const style = size === 'tiny' ? true : false
+  const buttonLabel = size === 'tiny' ? (
+    <FaBookmark sx={sx.bookmark} />
+  ) : (
+    <BookmarkLabel
+    sxStyle={sx}
+    text='Save to a portfolio'
+  />
+  )
   return (
     <DropDown
       sxStyle={sx}
-      buttonLabel={(
-        <BookmarkLabel
-          sxStyle={sx}
-          text='Save to a portfolio'
-        />
-      )}
+      sxTiny={style}
+      buttonLabel={buttonLabel}
       options={(
         <BookmarkOptions
           portfolios={portfolios}
