@@ -52,7 +52,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
       opacity: '1',
       zIndex: 1,
     }}>
-      <Box sx={{ display: ['block', 'block', 'flex'], width: '100vw', flexDirection: 'row-reverse', justifyContent: 'space-between' }}>
+      <Box className='titleContainer' sx={{ display: ['block', 'block', 'flex'], width: '100vw', flexDirection: 'row-reverse', justifyContent: 'space-between' }}>
         <div className='mark' sx={{
           width: ['100vw', '100vw', '200px'],
           bg: ['primaryDark', 'primaryDark', 'primary'],
@@ -69,7 +69,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
             height='16'
             sx={{ display: ['block', 'block', 'none'] }} />
         </div>
-        <div className='title' sx={{ mx: '5vw', pt: ['7px', '7px', '0'] }}>
+        <div className='title' sx={{ mx: '5vw' }}>
           <Heading as='h1' variant='siteHeader'>
             <Link variant='siteHeader' to='/'>{title}</Link>
           </Heading>
