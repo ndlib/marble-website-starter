@@ -52,14 +52,27 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
       opacity: '1',
       zIndex: 1,
     }}>
-      <Flex sx={{ width: '90vw', mx: '5vw', flexDirection: 'row-reverse', justifyContent: 'space-between' }}>
+      <Box sx={{ display: ['block', 'block', 'flex'], width: '100vw', flexDirection: 'row-reverse', justifyContent: 'space-between' }}>
         <div className='mark' sx={{
-          width: '200px',
-        }}>
-          <ClickableNDLogoWhite />
+          width: ['100vw', '100vw', '200px'],
+          bg: ['primaryDark', 'primaryDark', 'primary'],
+          mx: ['auto', 'auto', '5vw'],
+          display: ['flex', 'flex', 'block'],
+          justifyContent: ['center', 'center', 'inherit'],
+          py: ['15px', '15px', '0'] }}
+        >
+          <ClickableNDLogoWhite sx={{ display: ['none', 'none', 'block'] }} />
+          <img
+            src='https://static.nd.edu/images/brandbar/dept-nd-white.svg'
+            alt='Universtiy of Notre Dame'
+            width='300'
+            height='16'
+            sx={{ display: ['block', 'block', 'none'] }} />
         </div>
-        <div className='title' sx={{}}>
-          <Heading as='h1' variant='siteHeader'><Link variant='siteHeader' to='/'>{title}</Link></Heading>
+        <div className='title' sx={{ mx: '5vw', pt: ['7px', '7px', '0'] }}>
+          <Heading as='h1' variant='siteHeader'>
+            <Link variant='siteHeader' to='/'>{title}</Link>
+          </Heading>
           {site.siteMetadata.subTitle ? (<p sx={{
             color: 'white',
             my: 0,
@@ -71,7 +84,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
             position: 'relative',
           }}>{site.siteMetadata.subTitle}</p>) : null }
         </div>
-      </Flex>
+      </Box>
       <Box className='nav' sx={{ maxHeight: ['75px', '75px', '75px', 0] }}>
         <Box as='nav' sx={{ variant: `menus.navTop` }}>
           <div>

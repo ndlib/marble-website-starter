@@ -125,7 +125,7 @@ const theme = merge({}, bootstrapTheme, {
     `,
   },
   NDBrandHeader: {
-    p: ['1.5rem 0 0', '1.5rem 0 0', '1.5rem 0 0', '1.5rem 0'],
+    p: ['0', '0', '1.5rem 0 0'],
     display: 'grid',
     textAlign: 'left',
     borderTopWidth: '5px',
@@ -320,12 +320,8 @@ const theme = merge({}, bootstrapTheme, {
       fontSize: 4,
     },
     siteHeader: {
-      color: 'white',
       m: 0,
-      mb: '.5rem',
       p: 0,
-      fontFamily: 'title',
-      fontSize: '8',
     },
     pageTitle: {
       color: 'primary',
@@ -378,6 +374,8 @@ const theme = merge({}, bootstrapTheme, {
     siteHeader: {
       color: 'white',
       textDecoration: 'none',
+      fontFamily: 'title',
+      fontSize: '8',
       '&:hover': {
         textDecoration: 'none',
       },
