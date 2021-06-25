@@ -172,6 +172,17 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
           gridColumn: 'container',
           gridRow: 'content',
           position: 'relative',
+          '&:before': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            top: '0',
+            bottom: '0',
+            left: '70vw',
+            width: '30vw',
+            zIndex: '-1',
+            background: '#fff',
+          },
         }}>
           {children}
         </main>
