@@ -12,11 +12,11 @@
   "portfolioPage": {
     "defaultLayout": {
       "value": "Default",
-      "description": "Shows only the items themselves."
+      "description": "Shows the items in your portfolio in grid view."
     },
     "annotatedLayout": {
       "value": "Annotated",
-      "description": "Shows a list with a larger area for your annotations and direct links to iiif viewers if applicable."
+      "description": "Shows the items in your portfolio in a list with a larger area for your annotations."
     },
     "visibilityPrivate": {
       "value": "private",
