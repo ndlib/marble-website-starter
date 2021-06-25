@@ -8,7 +8,7 @@ module.exports = async (client, searchIndex, nodes) => {
     body.push(node)
   })
 
-  const bulkResponse = await client.bulk({ timeout: '18000000s', refresh: true, body })
+  const bulkResponse = await client.bulk({ timeout: '30m', refresh: true, body })
   if (bulkResponse.errors) {
     const erroredDocuments = []
     // The items array has the same order of the dataset we just indexed.
