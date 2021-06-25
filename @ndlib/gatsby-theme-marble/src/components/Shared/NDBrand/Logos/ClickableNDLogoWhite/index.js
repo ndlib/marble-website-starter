@@ -4,9 +4,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Image } from 'theme-ui'
 
-const ClickableNDLogoWhite = ({ variant, width, height }) => {
+const ClickableNDLogoWhite = ({ variant, width, height, ...props }) => {
   return (
-    <div sx={{ variant: variant }}>
+    <div sx={{ variant: variant }} {...props} >
       <a href='https://nd.edu' title='University of Notre Dame'>
         <Image src='https://static.nd.edu/images/marks/gold-white/ndmark.svg' width={width} height={height} alt='University of Notre Dame' />
       </a>

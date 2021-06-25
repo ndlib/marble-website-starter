@@ -125,7 +125,7 @@ const theme = merge({}, bootstrapTheme, {
     `,
   },
   NDBrandHeader: {
-    p: ['1.5rem 0 0', '1.5rem 0 0', '1.5rem 0 0', '1.5rem 0'],
+    p: '0',
     display: 'grid',
     textAlign: 'left',
     borderTopWidth: '5px',
@@ -135,6 +135,19 @@ const theme = merge({}, bootstrapTheme, {
     borderBottomWidth: '5px',
     borderBottomColor: 'dark',
     borderBottomStyle: 'solid',
+    '& .title': {
+      mx: '5vw',
+      mb: [0, 0, 0, '1.25rem'],
+      p: ['.5rem 0', '.5rem 0', '1.5rem 0', '1.5rem 0 0'],
+    },
+    '& .mark': {
+      my: ['.5rem', '.5rem', '1.5rem'],
+    },
+    '& .titleContainer': {
+      borderBottomWidth: ['5px', '5px', '5px', 0],
+      borderBottomColor: 'primaryDark',
+      borderBottomStyle: 'solid',
+    },
   },
   NDBrandLayout: {
   },
@@ -320,12 +333,8 @@ const theme = merge({}, bootstrapTheme, {
       fontSize: 4,
     },
     siteHeader: {
-      color: 'white',
       m: 0,
-      mb: '.5rem',
       p: 0,
-      fontFamily: 'title',
-      fontSize: '8',
     },
     pageTitle: {
       color: 'primary',
@@ -378,6 +387,8 @@ const theme = merge({}, bootstrapTheme, {
     siteHeader: {
       color: 'white',
       textDecoration: 'none',
+      fontFamily: 'title',
+      fontSize: '8',
       '&:hover': {
         textDecoration: 'none',
       },
@@ -494,6 +505,7 @@ const theme = merge({}, bootstrapTheme, {
       width: ['100%', '100%', '100%', 'inherit'],
       maxHeight: '80px',
       minHeight: '80px',
+      mt: [0, 0, 0, '-1rem'],
       borderBottomWidth: ['0.25rem', '0.25rem', '0.25rem', 0],
       borderBottomStyle: 'solid',
       borderBottomColor: ['gray.4', 'gray.4', 'gray.4'],
