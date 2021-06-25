@@ -206,7 +206,7 @@ describe('makeMetadataArray', () => {
           type: 'list',
           urlField: undefined,
           value:  [
-            'University of Notre Dame Archives, Hesburgh Libraries',
+            'University Archives, Hesburgh Libraries',
           ],
         },
         {
@@ -219,7 +219,7 @@ describe('makeMetadataArray', () => {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact University of Notre Dame Archives, Hesburgh Libraries at [archives@nd.edu](mailto:archives@nd.edu).'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact University Archives, Hesburgh Libraries at [archives@nd.edu](mailto:archives@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)
