@@ -28,7 +28,6 @@ module.exports = {
     borderLeft: '3px solid',
     borderColor: 'gray.3',
     marginTop: '-1rem',
-    
     '& > dl > div': {
       backgroundColor: 'transparent !important',
       position: 'relative',
@@ -53,7 +52,7 @@ module.exports = {
     },
     '& dd': {
       padding: '.5rem',
-    }
+    },
   },
   hr: {
     borderTop: '2px solid',

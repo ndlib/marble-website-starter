@@ -55,7 +55,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
             <ManifestMetaData marbleItem={mainMetaData} />
           </div>
         </Box>
-        <Box sx={{ width: ['100%', '100%', '100%', '60%'], px: '1rem'}}>
+        <Box sx={{ width: ['100%', '100%', '100%', '60%'], px: '1rem' }}>
           <div sx={sx.sideMetadata}>
             <ManifestMetaData marbleItem={accessMetadata} />
           </div>
