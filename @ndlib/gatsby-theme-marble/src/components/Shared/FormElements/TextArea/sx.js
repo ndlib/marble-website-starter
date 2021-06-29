@@ -13,7 +13,7 @@ module.exports = {
     fontFamily: 'body',
     height: '100px',
     maxWidth: '100%',
-    outline: 'none',
+    
     padding: '10px 10px',
     verticalAlign: 'top',
     width: '800px',
@@ -29,7 +29,7 @@ module.exports = {
     fontFamily: 'body',
     height: '100px',
     maxWidth: '100%',
-    outline: 'none',
+    
     padding: '10px 10px',
     verticalAlign: 'top',
     width: '800px',

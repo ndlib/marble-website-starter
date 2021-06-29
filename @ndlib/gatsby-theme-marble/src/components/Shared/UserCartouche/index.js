@@ -48,7 +48,7 @@ export const UserCartouche = ({ user, loginReducer }) => {
         fontStyle: 'normal',
         lineHeight: '1.45rem',
         margin: '0 0.5rem',
-        outline: 'none',
+        
         padding: '0.25rem 1rem',
         textDecoration: 'none',
         verticalAlign: 'baseline',

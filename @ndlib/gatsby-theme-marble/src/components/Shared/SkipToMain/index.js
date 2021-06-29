@@ -13,8 +13,6 @@ const active = {
   overflow: 'auto',
   margin: '10px 35%',
   padding: '5px',
-  borderRadius: '15px',
-  border: '4px solid yellow',
   textAlign: 'center',
   fontSize: '1.2em',
   zIndex: '999',

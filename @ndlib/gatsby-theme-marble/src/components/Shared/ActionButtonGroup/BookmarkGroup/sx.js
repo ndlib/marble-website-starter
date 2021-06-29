@@ -5,7 +5,6 @@ module.exports = {
     margin: '.5rem',
     marginLeft: '0',
     maxWidth: '85vw',
-    outline: 'none',
     position: 'relative',
     textAlign: 'center',
     userSelect: 'none',
@@ -17,7 +16,7 @@ module.exports = {
     borderRadius: '.5rem',
     display: 'block',
     maxWidth: ['90vw', '600px', '600px'],
-    outline: 'none',
+
     overflow: 'hidden',
     position: 'absolute',
     zIndex: '1',
@@ -31,7 +30,7 @@ module.exports = {
     borderRadius: '.5rem',
     color: 'white',
     fontSize: '1rem',
-    outline: 'none',
+
     padding: '.5rem',
     width: '200px',
   },

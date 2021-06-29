@@ -8,7 +8,7 @@ module.exports = {
     backgroundColor: 'background',
     border: 'none',
     display: 'block',
-    outline: 'none',
+    
     textAlign: 'left',
     textDecoration: 'none',
     width: '100%',
