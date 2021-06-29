@@ -21,6 +21,7 @@ module.exports = {
     overflow: 'hidden',
     position: 'absolute',
     zIndex: '1',
+    right: '0',
   },
   optionsClosed: {
     display: 'none',
@@ -34,5 +35,30 @@ module.exports = {
     outline: 'none',
     padding: '.5rem',
     width: '200px',
+  },
+  tiny : {
+    backgroundColor: 'white',
+    color: 'primary',
+    border: 'none',
+    borderRadius: '.5rem',
+    bottom: '3rem',
+    position: 'relative',
+    float: 'right',
+    width: '.5rem',
+    minHeight: '.5rem',
+    marginRigth: '2rem',
+  },
+  tinyWrapper: {
+    cursor: 'pointer',
+    outline: 'none',
+    position: 'relative',
+    userSelect: 'none',
+    float: 'right',
+    '& :hover': {
+      color: 'white',
+    },
+  },
+  bookmark: {
+    marginLeft: '-.5rem',
   },
 }
