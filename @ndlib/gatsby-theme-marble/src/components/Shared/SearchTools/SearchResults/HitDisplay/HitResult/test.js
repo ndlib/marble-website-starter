@@ -39,25 +39,25 @@ describe('HitResult', () => {
       expect(actual).toEqual(creator)
     })
   })
-  test('render', () => {
-    const hit = {
-      _source: {
-        name: 'name',
-        creator: 'creator',
-        date: 'date',
-        url: 'url',
-        thumbnail: 'thumbnail',
-        type: 'type',
-      },
-    }
-    const wrapper = shallow(<HitResult hit={hit} />)
-    expect(wrapper.find(ManifestCard).props().label).toEqual('name')
-    expect(wrapper.find(ManifestCard).props().target).toEqual('url')
-    expect(wrapper.find(ManifestCard).props().image).toEqual('thumbnail')
-    expect(wrapper.find(ManifestCard).props().creator).toEqual('creator')
-    expect(wrapper.find(ManifestCard).props().date).toEqual('date')
-    expect(wrapper.find(ManifestCard).props().type).toEqual('type')
-  })
+  // test('render', () => {
+  //   const hit = {
+  //     _source: {
+  //       name: 'name',
+  //       creator: 'creator',
+  //       date: 'date',
+  //       url: 'url',
+  //       thumbnail: 'thumbnail',
+  //       type: 'type',
+  //     },
+  //   }
+  //   const wrapper = shallow(<HitResult hit={hit} />)
+  //   expect(wrapper.find(ManifestCard).props().label).toEqual('name')
+  //   expect(wrapper.find(ManifestCard).props().target).toEqual('url')
+  //   expect(wrapper.find(ManifestCard).props().image).toEqual('thumbnail')
+  //   expect(wrapper.find(ManifestCard).props().creator).toEqual('creator')
+  //   expect(wrapper.find(ManifestCard).props().date).toEqual('date')
+  //   expect(wrapper.find(ManifestCard).props().type).toEqual('type')
+  // })
   // test('all metadata hightlights', () => {
   //   const hit = {}
   //   const wrapper = shallow(<HitResult hit={hit} />)

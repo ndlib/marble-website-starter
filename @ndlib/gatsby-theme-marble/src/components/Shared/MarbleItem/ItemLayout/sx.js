@@ -27,7 +27,7 @@ module.exports = {
     border: '1px solid',
     borderLeft: '3px solid',
     borderColor: 'gray.3',
-    padding: '1rem',
+    marginTop: '-1rem',
     '& > dl > div': {
       backgroundColor: 'transparent !important',
       position: 'relative',
@@ -35,16 +35,25 @@ module.exports = {
     '& dt': {
       position: 'absolute',
       verticalAlign: 'top',
-      width: '120px',
+      width: ['120px', '200px', '200px'],
     },
     '& dd': {
       display: 'inline-block',
-      marginLeft: '120px',
+      marginLeft: ['120px', '200px', '200px'],
       verticalAlign: 'top',
-      width: 'calc(100% - 120px)',
+      width: ['calc(100% - 120px)', 'calc(100% - 200px)', 'calc(100% - 200px)'],
     },
   },
-  contactMetadata: {},
+  contactMetadata: {
+    width: 'calc(100% - .5rem)',
+    '& > dl > div': {
+      padding: '1.5rem',
+      paddingTop: '0',
+    },
+    '& dd': {
+      padding: '.5rem',
+    },
+  },
   hr: {
     borderTop: '2px solid',
     borderColor: '#337684',

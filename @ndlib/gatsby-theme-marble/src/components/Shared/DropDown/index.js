@@ -4,13 +4,15 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
 
-const DropDown = ({ sxStyle, buttonLabel, options }) => {
+const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
   const [open, setOpen] = useState(false)
+  const toggleStyle = sxTiny ? sxStyle.tiny : sxStyle.toggle
+  const wrapperStyle = sxTiny ? sxStyle.tinyWrapper : sxStyle.wrapper
 
   return (
     <div
       className='wrapper'
-      sx={sxStyle.wrapper}
+      sx={wrapperStyle}
       role='button'
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -22,7 +24,7 @@ const DropDown = ({ sxStyle, buttonLabel, options }) => {
         variant='primary'
         className='dropdown-toggle'
         onClick={() => setOpen(!open)}
-        sx={sxStyle.toggle}
+        sx={toggleStyle}
       >
         { buttonLabel }
       </Button>
@@ -45,6 +47,7 @@ DropDown.propTypes = {
   }).isRequired,
   buttonLabel: PropTypes.node.isRequired,
   options: PropTypes.node.isRequired,
+  sxTiny: PropTypes.bool,
 }
 
 export default DropDown
