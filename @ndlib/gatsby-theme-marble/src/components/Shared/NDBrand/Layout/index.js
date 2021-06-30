@@ -47,11 +47,13 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
 
   useEffect(() => {
     if (showMenu) {
+      // focus on the first element in the side menu.
       setTimeout(() => {
         menuStartRef.current.focus()
       }, 500)
     } else {
       setTimeout(() => {
+        // focus on the menu button again.
         menuButtonRef.current.focus()
       }, 50)
     }
