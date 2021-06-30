@@ -46,7 +46,6 @@ module.exports = {
     overflowX: 'hidden',
     overflowY: 'auto',
     position: 'relative',
-    padding: '1rem',
   },
   footer: {
     padding: '1rem',

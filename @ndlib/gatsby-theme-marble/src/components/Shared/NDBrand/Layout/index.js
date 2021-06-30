@@ -5,10 +5,10 @@ import { jsx, Container, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { graphql, useStaticQuery } from 'gatsby'
 import NDBrandHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Header'
+import NDBrandDrawer from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Drawer'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { FaHome, FaSearch, FaGripLines, FaTimes } from 'react-icons/fa'
 import typy from 'typy'
-import * as ariaAppHider from 'react-modal/lib/helpers/ariaAppHider'
 
 const gutterWidth = '5vw'
 export const query = graphql`
@@ -42,26 +42,22 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
   const [showMenu, setShowMenu] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
   const menuStartRef = useRef()
-  const menuEndRef = useRef()
+  const menuButtonRef = useRef()
   const menuId = 'mainMenu'
 
   useEffect(() => {
-    const el = document.querySelectorAll('#nav-background')
-    console.log(el)
-    if (!el) {
-      return
-    }
     if (showMenu) {
-      ariaAppHider.hide(el)
       setTimeout(() => {
         menuStartRef.current.focus()
       }, 500)
     } else {
-      ariaAppHider.show(el)
+      setTimeout(() => {
+        menuButtonRef.current.focus()
+      }, 50)
     }
   }, [menuStartRef, showMenu])
 
-  const navDrawerItems = menu.map((l, i) => {
+  const navDrawerItems = menu.map((l) => {
     return (
       <Link
         to={l.link}
@@ -69,7 +65,6 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
         title={l.label}
         variant={'navDrawer'}
         className={''}
-        ref={i + 1 == menu.length ? menuEndRef : null}
       > {l.label}
       </Link>)
   })
@@ -107,28 +102,33 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
   }))
 
   items.push((
-    <Button variant='links.navTop' sx={{
-      borderRadius: '0',
-      borderLeftWidth: [0, 0, 0, '1px'],
-      borderLeftStyle: 'solid',
-      borderLeftColor: 'gray.4',
-    }} key='toggle-search' onClick={() => setShowSearch(!showSearch)} title='show search'>
+    <Button
+      variant='links.navTop'
+      sx={{
+        borderRadius: '0',
+        borderLeftWidth: [0, 0, 0, '1px'],
+        borderLeftStyle: 'solid',
+        borderLeftColor: 'gray.4',
+      }} key='toggle-search' onClick={() => setShowSearch(!showSearch)} title='show search'>
       <FaSearch />
       <span>Search</span>
     </Button>)
   )
   items.push((
-    <Button variant='links.navTop' sx={{
-      borderRadius: '0',
-      borderLeftWidth: [0, 0, 0, '1px'],
-      borderLeftStyle: 'solid',
-      borderLeftColor: 'gray.4',
-    }}
+    <Button
+      variant='links.navTop'
+      sx={{
+        borderRadius: '0',
+        borderLeftWidth: [0, 0, 0, '1px'],
+        borderLeftStyle: 'solid',
+        borderLeftColor: 'gray.4',
+      }}
       className='menu'
       onClick={() => setShowMenu(!showMenu)}
       title='Toggle Menu'
       ariacontrols={menuId}
       key='toggle-menu'
+      ref={menuButtonRef}
     >
       { showMenu ? <FaTimes /> : (<><FaGripLines /><span>Menu</span></>) }
     </Button>)
@@ -146,47 +146,8 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
       boxSizing: 'border-box',
       transition: '.25s ease-in-out',
     }}>
-      <div className='overlay'
-        sx={{
-          visibility: showMenu ? 'visible' : 'hidden',
-          position: 'fixed',
-          right: '14rem',
-          top: 0,
-          height: '100%',
-          width: '100%',
-          zIndex: 10,
-        }}
-        role='button'
-        title='close navigation'
-        onClick={() => setShowMenu(!showMenu)}
-      />
-      <nav aria-label='Main Menu' aria-modal='true' aria-hidden='false' aria-expanded={showMenu.toString()} id={menuId} sx={{
-        m: 0,
-        p: '20px',
-        visibility: showMenu ? 'visible' : 'hidden',
-        position: 'fixed',
-        top: '0',
-        right: '0px',
-        height: '100%',
-        width: showMenu ? '14rem' : '0',
-        background: 'white',
-        overflowX: 'hidden',
-        overflowY: 'scroll',
-        bg: 'gray.2',
-        borderLeft: '1px solid gray.4',
-        boxShadow: '0 0 8px 0 rgb(0 0 0 / 25%)',
-        overflowScrolling: 'touch',
-        zIndex: 10,
-      }}
-      onKeyUp={(e => {
-        if (e.keyCode === 27) {
-          setShowMenu(!showMenu)
-        }
-      })}
-      >
-        {navDrawerItems}
-      </nav>
-      <div id='nav-background'>
+      <NDBrandDrawer navDrawerItems={navDrawerItems} showMenu={showMenu} setShowMenu={setShowMenu} menuId={menuId} />
+      <div id='nav-background' aria-hidden={showMenu ? 'true' : 'false'}>
         <NDBrandHeader
           location={location}
           titleOverride={titleOverride}
