@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
@@ -48,7 +49,6 @@ export const UserCartouche = ({ user, loginReducer }) => {
         fontStyle: 'normal',
         lineHeight: '1.45rem',
         margin: '0 0.5rem',
-        
         padding: '0.25rem 1rem',
         textDecoration: 'none',
         verticalAlign: 'baseline',
@@ -63,8 +63,7 @@ export const UserCartouche = ({ user, loginReducer }) => {
           overflow: 'hidden',
           verticalAlign: 'top',
           width: '22px',
-        }}
-        >
+        }} >
         <Gravatar
           email={fullUser.email}
           size={22}
