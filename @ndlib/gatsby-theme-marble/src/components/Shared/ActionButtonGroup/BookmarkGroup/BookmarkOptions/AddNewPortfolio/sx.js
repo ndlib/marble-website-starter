@@ -32,7 +32,7 @@ module.exports = {
     fontFamily: 'body',
     fontSize: '16px',
     height: '36px',
-    
+
     padding: '0 1rem',
     verticalAlign: 'top',
     width: 'calc(100% - 80px)',
@@ -44,7 +44,7 @@ module.exports = {
     fontFamily: 'body',
     fontSize: '16px',
     height: '36px',
-    
+
     padding: '0 1rem',
     verticalAlign: 'top',
     width: 'calc(100% - 80px)',
@@ -59,7 +59,6 @@ module.exports = {
     fontVariant: 'small-caps',
     height: '36px',
     width: '80px',
-    
     verticalAlign: 'top',
   },
   submitButtonDisabled: {
@@ -72,7 +71,6 @@ module.exports = {
     fontVariant: 'small-caps',
     height: '36px',
     width: '80px',
-    
     verticalAlign: 'top',
   },
 }

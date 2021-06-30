@@ -4,7 +4,6 @@ module.exports = {
     fontFamily: 'body',
     fontSize: '1rem',
     height: '40px',
-    
     padding: '0 0.5rem',
     verticalAlign: 'top',
     width: 'calc(100% - 40px)',
@@ -14,7 +13,6 @@ module.exports = {
     color: 'background',
     cursor: 'pointer',
     height: '40px',
-    
     width: '40px',
   },
   svg: {

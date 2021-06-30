@@ -8,7 +8,6 @@ module.exports = {
     fontSize: '1rem',
     margin: '0',
     overflow: 'hidden',
-    
     padding: '.5rem 1rem',
     textAlign: 'left',
     textOverflow: 'ellipsis',
