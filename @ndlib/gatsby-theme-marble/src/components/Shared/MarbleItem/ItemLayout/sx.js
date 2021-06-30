@@ -1,5 +1,8 @@
 module.exports = {
   mainMetadata: {
+    '& > dl': {
+      mt: 0,
+    },
     '& > dl > div': {
       backgroundColor: 'transparent !important',
       borderBottom: '1px solid',
@@ -13,13 +16,14 @@ module.exports = {
     '& dt': {
       position: 'absolute',
       verticalAlign: 'top',
-      width: ['120px', '200px', '200px'],
+      width: ['120px', '200px'],
     },
     '& dd': {
       display: 'inline-block',
-      marginLeft: ['120px', '200px', '200px'],
+      marginLeft: ['120px', '200px'],
       verticalAlign: 'top',
-      width: ['calc(100% - 120px)', 'calc(100% - 200px)', 'calc(100% - 200px)'],
+      overflowWrap: 'break-word',
+      width: ['calc(100% - 120px)', 'calc(100% - 200px)'],
     },
   },
   sideMetadata: {
@@ -53,14 +57,5 @@ module.exports = {
     '& dd': {
       padding: '.5rem',
     },
-  },
-  hr: {
-    borderTop: '2px solid',
-    borderColor: '#337684',
-    marginBottom: ['2rem', '3rem', '3rem'],
-    marginTop: ['2rem', '3rem', '3rem'],
-    maxWidth: '80%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
   },
 }
