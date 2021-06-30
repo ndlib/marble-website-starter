@@ -8,9 +8,9 @@ const ViewerContent = ({ marbleItem, index, view, viewerUrl }) => {
     border: 'none',
     height: 'calc(100vh - 89px - 3rem)',
     width: '100%',
-    position: 'absolute',
+    position: 'relative',
     left: '0',
-    top: '57px',
+    top: '0',
     overflow: 'hidden',
   }
   switch (type) {
@@ -39,7 +39,7 @@ ViewerContent.propTypes = {
   marbleItem: PropTypes.object.isRequired,
   view: PropTypes.string,
   index: PropTypes.number,
-  viewerUrl: PropTypes.string
+  viewerUrl: PropTypes.string,
 }
 export default ViewerContent
 

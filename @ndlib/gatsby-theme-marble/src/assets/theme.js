@@ -404,6 +404,8 @@ const theme = merge({}, bootstrapTheme, {
         background: 'var(--theme-ui-colors-light)',
         textDecoration: 'none',
       },
+      '&:focus': {
+      },
     },
     navTop: {
       fontSize: 2,
