@@ -420,6 +420,7 @@ const theme = merge({}, bootstrapTheme, {
       borderBottomColor: 'transparent',
       transition: 'all 325ms ease-in-out',
       bg: 'white',
+      zIndex: 5,
       '& svg': {
         display: 'block',
         mx: 'auto',

@@ -1,23 +1,24 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles } from 'theme-ui'
+import Link from 'components/Shared/Link'
+import { jsx } from 'theme-ui'
 
-const MetaDataAidValue = ({ values }) => {
+const MetaDataAidValue = ({ values, styles }) => {
   return (
     <>
-    {
-      values.map(val => {
-        return (
-          <dd key={val}>
-            <BaseStyles>
-              <a href={val} target='_blank' rel='noopener noreferrer' >
+      {
+        values.map(val => {
+          return (
+            <dd sx={styles} key={val}>
+              <Link to={val} target='_blank' rel='noopener noreferrer' >
                 {val}
-              </a>
-            </BaseStyles>
-          </dd>
-        )
-      })
-    }
+              </Link>
+            </dd>
+          )
+        })
+      }
     </>
   )
 }

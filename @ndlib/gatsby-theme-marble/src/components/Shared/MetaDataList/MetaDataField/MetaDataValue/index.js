@@ -1,17 +1,18 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles } from 'theme-ui'
+import { jsx } from 'theme-ui'
 
-const MetaDataValue = ({ values }) => {
+const MetaDataValue = ({ values, styles }) => {
+  console.log(styles)
   return (
     <>
       {
         values.map(val => {
           return (
-            <dd key={val}>
-              <BaseStyles>
-                <p>{val}</p>
-              </BaseStyles>
+            <dd sx={styles} key={val}>
+              {val}
             </dd>
           )
         })

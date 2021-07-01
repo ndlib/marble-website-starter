@@ -14,8 +14,10 @@ const TombstoneMetadata = ({ marbleItem }) => {
   const dates = filterForLabledField(marbleItem, 'Date')
   const campusLocations = filterForLabledField(marbleItem, 'Campus Location')
   const uriValue = filterForLabledField(marbleItem, 'URI Value')
+  const collections = filterForLabledField(marbleItem, 'Collection')
 
   const hasCreator = typy(creators, '[0].value').safeArray.length > 0
+  const hasCollection = typy(collections, '[0].value').safeArray.length > 0
   const isUnknown = typy(creators, '[0].value').safeArray.length > 0 && typy(creators, '[0].value').safeArray[0].toLowerCase() === 'unknown'
 
   return (
@@ -37,7 +39,11 @@ const TombstoneMetadata = ({ marbleItem }) => {
           Part of: <Link to={marbleItem.marbleParent.slug}>{marbleItem.marbleParent.title}</Link>
         </div>
       ) : null }
-
+      {hasCollection ? (
+        <div sx={sx.partOf}>
+        Part of: <Link to={'/search?collection[0]=' + collections[0].value}>{collections[0].value}</Link>
+        </div>
+      ) : null}
       <TombstoneField
         field={campusLocations}
         sxStyle={sx.campusLocations}

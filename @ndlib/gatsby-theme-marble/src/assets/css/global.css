@@ -27,7 +27,7 @@ dd {
   margin-inline-start: 0;
 }
 dl div {
-  padding: 0.5rem;
+  padding: 0;
 }
 dl div:nth-of-type(even) {
   background-color: #f0f0f0;
@@ -38,7 +38,7 @@ code {
 }
 
 input[type=image]:focus {
-  
+
 }
 input[type=image]:hover {
   opacity: 1;
@@ -78,7 +78,7 @@ button.sk-search-box__icon {
   border: none;
   background-color: white;
   margin-top: 0;
-  
+
 }
 
 .sk-selected-filters-option,

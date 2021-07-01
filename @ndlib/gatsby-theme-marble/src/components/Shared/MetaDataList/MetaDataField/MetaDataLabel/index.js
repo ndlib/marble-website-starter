@@ -3,15 +3,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-import sx from './sx.js'
 
-const MetaDataLabel = ({ labels }) => {
+const MetaDataLabel = ({ labels, styles }) => {
   return (
     <>
       {
         labels.map(val => {
           return (
-            <dt sx={sx.dt} key={val}>{val}</dt>
+            <dt sx={styles} key={val}>{val}</dt>
           )
         })
       }

@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
@@ -19,17 +20,18 @@ const MetaDataField = ({ metadata, skipHtml }) => {
   }
 
   const MetadataValueComponent = getComponent(type, label)
-
   if (value && value.length !== 0) {
     return (
-      <div>
+      <>
         <MetaDataLabel
           labels={[label]}
+          styles={sx.dt}
         />
         <MetadataValueComponent
           values={value}
           urlField={urlField}
           skipHtml={skipHtml}
+          styles={sx.dd}
         />
         {
           label === 'Link to Finding Aid' ? (
@@ -38,7 +40,7 @@ const MetaDataField = ({ metadata, skipHtml }) => {
             </div>
           ) : null
         }
-      </div>
+      </>
     )
   }
   return null
@@ -48,7 +50,7 @@ const getComponent = (type, label) => {
   if (type === 'searchList') {
     return MetaDataSearchValue
   } else if (type === 'markdown') {
-    if (label === 'Link to Finding Aid') {
+    if (label === 'Link to Finding Aid' || label === 'Link to Library Catalog') {
       return MetaDataAidValue
     } else {
       return MetaDataMarkdownValue
