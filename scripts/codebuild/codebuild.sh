@@ -76,6 +76,10 @@ pushd scripts/environment-configuration/
   # add the app sync keys to the env
   export FMP_CRED_PATH="/all/filemaker_credentials"
   node setupEnv.js ${GRAPHQL_KEY_BASE} >> ${ENV_FILE} --unhandled-rejections=strict
+  
+  echo "TEST"
+  echo "GRAPHQL_API_URL='${GRAPHQL_API_URL}'"
+
 popd
 
 echo "${magenta}----- Unit Tests -------${reset}"
