@@ -3,8 +3,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Flex, Heading, Box } from 'theme-ui'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 
-export const NDBrandHeroFullBleed = ({ variant, image, lede, title, button }) => {
+export const NDBrandHeroFullBleed = ({ variant, image, lede, title, button, link }) => {
   const gutterWidth = '5vw'
 
   return (
@@ -36,8 +37,9 @@ export const NDBrandHeroFullBleed = ({ variant, image, lede, title, button }) =>
         maxHeight: '80vw',
         maxWidth: 'none',
       }}>
-        {image}
-      </div>
+        <Link to={link}>
+          {image}
+        </Link></div>
     </Box>
 
   )
