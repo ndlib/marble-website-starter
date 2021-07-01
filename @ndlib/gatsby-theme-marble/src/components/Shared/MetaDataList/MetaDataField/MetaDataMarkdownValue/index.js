@@ -9,9 +9,9 @@ import { jsx, useThemeUI } from 'theme-ui'
 const MetaDataMarkdownValue = ({ values, skipHtml, styles }) => {
   const themeUi = useThemeUI()
   const htmlSx = {
-    '& a': themeUi.theme.links.default,
-    '& h2': themeUi.theme.text.heading,
-    '& h3': themeUi.theme.text.heading,
+    '& a': themeUi.theme.links ? themeUi.theme.links.default : {},
+    '& h2': themeUi.theme.text ? themeUi.theme.text.heading : {},
+    '& h3': themeUi.theme.text ? themeUi.theme.text.heading : {},
     '& > dl > div': {
       p: 0,
     },
@@ -38,6 +38,7 @@ const MetaDataMarkdownValue = ({ values, skipHtml, styles }) => {
 MetaDataMarkdownValue.propTypes = {
   values: PropTypes.array,
   skipHtml: PropTypes.bool,
+  styles: PropTypes.object,
 }
 
 MetaDataMarkdownValue.defaultProps = {
