@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { jsx, Flex, Heading, Box } from 'theme-ui'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 
-export const NDBrandHeroFullBleed = ({ variant, image, lede, title, button, link }) => {
+export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attribution }) => {
   const gutterWidth = '5vw'
 
   return (
@@ -25,7 +25,7 @@ export const NDBrandHeroFullBleed = ({ variant, image, lede, title, button, link
         zIndex: 1,
         display: ['none', 'none', 'none', 'block'],
       }}>
-        {lede ? (<Heading as='h1' variant='pageTitle' sx={{ ml: '5vw', marginTop: '.5rem', fontSize: 1, alignSelf: 'flex-end' }}>{lede}</Heading>) : null }
+        {title ? (<Heading as='h1' variant='pageTitle' sx={{ ml: '5vw', marginTop: '.5rem', fontSize: 1, alignSelf: 'flex-end' }}>{title}</Heading>) : null }
         {button ? (
           <Flex sx={{ alignItems: 'end', justifyItems: 'end', width: '100%', flexDirection: 'row', pl: '5vw' }}>
             {button}
@@ -37,7 +37,7 @@ export const NDBrandHeroFullBleed = ({ variant, image, lede, title, button, link
         maxHeight: '80vw',
         maxWidth: 'none',
       }}>
-        <Link to={link}>
+        <Link to={link} title={attribution}>
           {image}
         </Link></div>
     </Box>
@@ -50,10 +50,8 @@ NDBrandHeroFullBleed.propTypes = {
   image: PropTypes.object,
   button: PropTypes.object,
   title: PropTypes.string,
-  lede: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
+  attribution: PropTypes.string,
+  link: PropTypes.string,
 }
 
 NDBrandHeroFullBleed.defaultProps = {

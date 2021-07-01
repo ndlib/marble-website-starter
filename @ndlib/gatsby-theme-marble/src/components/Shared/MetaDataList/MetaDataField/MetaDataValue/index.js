@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 
 const MetaDataValue = ({ values, styles }) => {
-  console.log(styles)
   return (
     <>
       {
