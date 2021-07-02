@@ -1,4 +1,5 @@
 const AuthAPI = require('./authapi.js')
+const fetch = require('node-fetch')
 
 class FMRest {
   /**
