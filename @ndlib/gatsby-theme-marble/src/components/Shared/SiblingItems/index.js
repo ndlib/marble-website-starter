@@ -25,7 +25,7 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
             to={typy(marbleItem, 'marbleParent.slug').safeString}
             sx={{ textDecoration: 'none' }}
           >
-            <i>{typy(marbleItem, 'marbleParent.title').safeString}</i>
+            <em>{typy(marbleItem, 'marbleParent.title').safeString}</em>
           </Link>
         </Heading>
         <CardGroup defaultDisplay={DISPLAY_GRID} toggleGroup='sibling-items'>
