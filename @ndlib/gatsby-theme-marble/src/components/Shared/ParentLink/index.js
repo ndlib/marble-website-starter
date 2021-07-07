@@ -18,7 +18,7 @@ const ParentLink = ({ marbleItem }) => {
             textDecoration: 'underline',
           },
         }}
-      >Part of <i>{parentObject.title}</i> Collection
+      >Part of <em>{parentObject.title}</em> Collection
       </Link>
     )
   }
