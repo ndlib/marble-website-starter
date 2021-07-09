@@ -239,6 +239,7 @@ const theme = merge({}, bootstrapTheme, {
     default: {
       bg: 'white',
       mx: '5vw',
+      pl: '1vw',
       pb: '3rem',
       '& div.sectionContent': {
         minWidth: [0, 0, 0, '40rem'],
