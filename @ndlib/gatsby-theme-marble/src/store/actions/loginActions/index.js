@@ -1,4 +1,4 @@
-import OktaAuth  from '@okta/okta-auth-js'
+import OktaAuth from '@okta/okta-auth-js'
 import {
   userIdFromClaims,
 } from 'utils/auth'
@@ -41,7 +41,7 @@ export const setAuthClient = (authClientSettings) => {
   return {
     type: SET_AUTH_CLIENT,
     authClientSettings: authClientSettings,
-    userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/' //process.env.USER_CONTENT_PATH,
+    userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/', // process.env.USER_CONTENT_PATH,
   }
 }
 
@@ -78,7 +78,6 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
         // console.error('Could not access tokenManager.')
       }
     }
-
   }
 }
 

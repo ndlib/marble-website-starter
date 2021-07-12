@@ -54,6 +54,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
             const err = 'Received empty result for item ' + itemId
             reject(err)
           }
+
           const node = await transformAndCreate(result, gatsbyInternal, pluginOptions)
           nodeArray.push(node)
           // Create item's files

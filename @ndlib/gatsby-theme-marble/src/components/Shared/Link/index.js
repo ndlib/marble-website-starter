@@ -56,3 +56,7 @@ export default Link
 export const isExternal = (link) => {
   return link.startsWith('http')
 }
+
+export const hasNamedAnchor = (link) => {
+  return link.includes('#')
+}

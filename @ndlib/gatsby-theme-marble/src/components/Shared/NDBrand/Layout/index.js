@@ -9,6 +9,7 @@ import NDBrandDrawer from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBr
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { FaHome, FaSearch, FaGripLines, FaTimes } from 'react-icons/fa'
 import typy from 'typy'
+import { selectedUrl } from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 
 const gutterWidth = '5vw'
 export const query = graphql`
@@ -80,8 +81,19 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
   >Home
   </Link>)
 
-  const items = []
-  items.push(
+  const items = menu.map(l => {
+    return (
+      <Link
+        to={l.link}
+        key={l.id}
+        title={l.label}
+        variant={'navTop'}
+        className={'menuLinks' + (selectedUrl(l, location) ? ' selected' : '')}
+      > {l.label}
+      </Link>)
+  })
+
+  items.unshift(
     <Link
       to={'/'}
       key={'/'}
@@ -91,17 +103,6 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
     > <FaHome />
       <span>Home</span>
     </Link>)
-  items.push(menu.map(l => {
-    return (
-      <Link
-        to={l.link}
-        key={l.id}
-        title={l.label}
-        variant={'navTop'}
-        className={'menuLinks'}
-      > {l.label}
-      </Link>)
-  }))
 
   items.push((
     <Button
@@ -164,7 +165,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
           <div id='page-header'>
             {pageHeader}
           </div>
-          <main sx={{
+          <main id='mainContent' sx={{
             gridColumn: 'container',
             gridRow: 'content',
             position: 'relative',
