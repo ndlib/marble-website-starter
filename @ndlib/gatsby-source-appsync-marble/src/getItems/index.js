@@ -55,30 +55,28 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
             reject(err)
           }
 
-          if (!skipAlephItems(result)) {
-            const node = await transformAndCreate(result, gatsbyInternal, pluginOptions)
-            nodeArray.push(node)
-            // Create item's files
-            if (resultHasFiles(result)) {
-              result.files.items.forEach(async file => {
-                const fileNode = await transformAndCreateFile(file, node, gatsbyInternal)
-                nodeArray.push(fileNode)
-                createParentChildLink({ parent: node, child: fileNode })
-              })
-            }
-            // Check for and create child items
-            if (resultHasChildren(result)) {
-              const nodesData = await getItems({
-                gatsbyInternal: gatsbyInternal,
-                pluginOptions: pluginOptions,
-                itemList: result.children.items,
-                nodeArray: nodeArray,
-              })
-              nodesData.children.forEach(child => {
-                createParentChildLink({ parent: node, child: child })
-              })
-              nodeArray = nodesData.everything
-            }
+          const node = await transformAndCreate(result, gatsbyInternal, pluginOptions)
+          nodeArray.push(node)
+          // Create item's files
+          if (resultHasFiles(result)) {
+            result.files.items.forEach(async file => {
+              const fileNode = await transformAndCreateFile(file, node, gatsbyInternal)
+              nodeArray.push(fileNode)
+              createParentChildLink({ parent: node, child: fileNode })
+            })
+          }
+          // Check for and create child items
+          if (resultHasChildren(result)) {
+            const nodesData = await getItems({
+              gatsbyInternal: gatsbyInternal,
+              pluginOptions: pluginOptions,
+              itemList: result.children.items,
+              nodeArray: nodeArray,
+            })
+            nodesData.children.forEach(child => {
+              createParentChildLink({ parent: node, child: child })
+            })
+            nodeArray = nodesData.everything
           }
           resolve(node)
           return node
@@ -118,12 +116,6 @@ const resultHasFiles = (result) => {
 
 const hasMergeException = (id, mergeItems) => {
   return mergeItems.find(item => item.parentId === id)
-}
-
-const skipAlephItems = (result) => {
-  return false
-  // expand for media.
-  // return (result.TYPE === 'Item' && result.sourceSystem === 'Aleph' && result.images.items.length === 0)
 }
 
 module.exports = getItems
