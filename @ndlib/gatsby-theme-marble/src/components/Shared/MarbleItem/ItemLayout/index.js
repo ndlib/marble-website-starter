@@ -48,6 +48,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
           <ActionButtonGroup marbleItem={marbleItem} />
         </Box>
       </Flex>
+      <Divider sx={{ mx: '5vw', my: '2rem' }} />
       <Flex sx={{ flexWrap: 'wrap' }}>
         <Box sx={{ width: ['100%', '100%', '100%', '60%'], pr: [0, 0, 0, '2rem'], pt: '1rem' }}>
           <div sx={sx.mainMetadata}>
@@ -63,7 +64,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
       <div sx={sx.contactMetadata}>
         <ManifestMetaData marbleItem={contactUsMetadata} />
       </div>
-      <Divider sx={sx.hr} />
+      <Divider sx={{ mx: '5vw', my: '2rem' }} />
       <SiblingItems
         marbleItem={marbleItem}
         numberBeforeAndAfter={3}

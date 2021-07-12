@@ -1,7 +1,6 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import Link from 'components/Shared/Link'
 
