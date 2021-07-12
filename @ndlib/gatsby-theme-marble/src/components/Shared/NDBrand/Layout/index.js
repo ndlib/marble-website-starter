@@ -9,6 +9,7 @@ import NDBrandDrawer from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBr
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { FaHome, FaSearch, FaGripLines, FaTimes } from 'react-icons/fa'
 import typy from 'typy'
+import { selectedUrl } from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 
 const gutterWidth = '5vw'
 export const query = graphql`
@@ -187,18 +188,6 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
       </div>
     </Container>
   )
-}
-
-const selectedUrl = (l, location) => {
-  let ret = false
-  if (location && l.selectedPatterns) {
-    l.selectedPatterns.forEach((item) => {
-      if (location.pathname.match(item)) {
-        ret = true
-      }
-    })
-  }
-  return ret
 }
 
 NDBrandLayout.propTypes = {

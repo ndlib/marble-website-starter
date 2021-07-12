@@ -34,7 +34,7 @@ export const sx = {
 
 const SkipToMain = ({ location }) => {
   return (
-    <Link sx={sx} id='skipToMain' to={location.pathname + '?scrollto=mainContent'}>Skip to main content.</Link>
+    <Link sx={sx} id='skipToMain' to={'#mainContent'}>Skip to main content.</Link>
   )
 }
 

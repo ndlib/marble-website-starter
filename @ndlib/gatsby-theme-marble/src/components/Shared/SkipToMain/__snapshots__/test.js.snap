@@ -3,7 +3,7 @@
 exports[`SkipToMain 1`] = `
 <a
   className="css-1om2bve-SkipToMain"
-  href="/path?scrollto=mainContent"
+  href="/#mainContent"
   id="skipToMain"
 >
   Skip to main content.

@@ -46,7 +46,7 @@ export const Menu = ({ variant, items, label, children, location, expand }) => {
   )
 }
 
-const selectedUrl = (l, location) => {
+export const selectedUrl = (l, location) => {
   let ret = false
   if (location && l.selectedPatterns) {
     l.selectedPatterns.forEach((item) => {
