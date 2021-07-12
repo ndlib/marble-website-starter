@@ -80,8 +80,19 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
   >Home
   </Link>)
 
-  const items = []
-  items.push(
+  const items = menu.map(l => {
+    return (
+      <Link
+        to={l.link}
+        key={l.id}
+        title={l.label}
+        variant={'navTop'}
+        className={'menuLinks' + (selectedUrl(l, location) ? ' selected' : '')}
+      > {l.label}
+      </Link>)
+  })
+
+  items.unshift(
     <Link
       to={'/'}
       key={'/'}
@@ -91,17 +102,6 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
     > <FaHome />
       <span>Home</span>
     </Link>)
-  items.push(menu.map(l => {
-    return (
-      <Link
-        to={l.link}
-        key={l.id}
-        title={l.label}
-        variant={'navTop'}
-        className={'menuLinks'}
-      > {l.label}
-      </Link>)
-  }))
 
   items.push((
     <Button
@@ -164,7 +164,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
           <div id='page-header'>
             {pageHeader}
           </div>
-          <main sx={{
+          <main id='mainContent' sx={{
             gridColumn: 'container',
             gridRow: 'content',
             position: 'relative',
@@ -187,6 +187,18 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
       </div>
     </Container>
   )
+}
+
+const selectedUrl = (l, location) => {
+  let ret = false
+  if (location && l.selectedPatterns) {
+    l.selectedPatterns.forEach((item) => {
+      if (location.pathname.match(item)) {
+        ret = true
+      }
+    })
+  }
+  return ret
 }
 
 NDBrandLayout.propTypes = {

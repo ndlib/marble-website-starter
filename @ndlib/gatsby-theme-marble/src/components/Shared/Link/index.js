@@ -4,7 +4,6 @@ import React from 'react'
 import { jsx, Link as ThemeLink } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import { navigate } from '@reach/router'
 
 // https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links
 
@@ -16,7 +15,6 @@ const Link = ({ variant, children, to, activeClassName, ...other }) => {
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
   const external = isExternal(to)
-  const namedAnchor = hasNamedAnchor(to)
 
   // Use Gatsby Link for internal links, and <a> for others
   if (!external) {
@@ -24,7 +22,6 @@ const Link = ({ variant, children, to, activeClassName, ...other }) => {
     if (!to.startsWith('/')) {
       to = `/${to}`
     }
-
     return (
       <GatsbyLink
         sx={{ variant: 'links.' + variant }}
