@@ -32,14 +32,13 @@ export const sx = {
   '&:active': active,
 }
 
-const SkipToMain = ({ location }) => {
+const SkipToMain = () => {
   return (
     <Link sx={sx} id='skipToMain' to={'#mainContent'}>Skip to main content.</Link>
   )
 }
 
 SkipToMain.propTypes = {
-  location: PropTypes.object,
 }
 
 export default SkipToMain
