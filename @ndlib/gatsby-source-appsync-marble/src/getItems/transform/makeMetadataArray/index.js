@@ -36,6 +36,13 @@ const genericArrayFind = (item, id) => {
   return false
 }
 
+const findEmbarkCreationPlace = (item) => {
+  const id = 'creationPlace'
+  if (item && item[id]) {
+    return Object.values(item[id]).join(', ')
+  }
+}
+
 const listAll = (item, id) => {
   if (id in item && item[id]) {
     let renderedList = ''
@@ -201,6 +208,12 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
+    geographicLocations: {
+      label: 'Related Location',
+      type: 'list',
+      processor: genericArrayFind,
+      urlField: 'geographicLocation',
+    },
     subjects: {
       label: 'Subject',
       type: 'searchList',
@@ -304,6 +317,12 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
+    geographicLocations: {
+      label: 'Related Location',
+      type: 'list',
+      processor: genericArrayFind,
+      urlField: 'geographicLocation',
+    },
     subjects: {
       label: 'Subject',
       type: 'searchList',
@@ -339,6 +358,11 @@ const dataLookUp = {
       processor: genericFind,
       urlField: 'format',
     },
+    creationPlace: {
+      label: 'Related Location',
+      type: 'list',
+      processor: listAll,
+    },
     format: {
       label: 'Object Type',
       type: 'list',
@@ -358,11 +382,6 @@ const dataLookUp = {
       label: 'Credit Line',
       type: 'list',
       processor: genericFind,
-    },
-    creationPlace: {
-      label: 'Related Location',
-      type: 'list',
-      processor: listAll,
     },
     uniqueIdentifier: {
       label: 'Accession Number',
@@ -485,6 +504,11 @@ const dataLookUp = {
       label: 'Immediate Source of Acquisition',
       type: 'list',
       processor: genericFind,
+    },
+    geographicLocations: {
+      label: 'Related Location',
+      type: 'list',
+      processor: genericArrayFind,
     },
     subjects: {
       label: 'Subject',
