@@ -49,7 +49,11 @@ const archivalCollectionCitation = (item, slug) => {
 
 const findArtist = (creators) => {
   if (creators && creators.length > 0) {
-    return creators[0].fullName
+    if(creators[0].fullName) {
+      return creators[0].fullName
+    }else{
+      return creators[0].default
+    }
   }
 }
 
