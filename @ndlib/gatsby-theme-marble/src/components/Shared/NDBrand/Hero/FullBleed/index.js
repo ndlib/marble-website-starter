@@ -39,6 +39,7 @@ export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attr
       }}>
         <Link to={link} title={attribution}>
           {image}
+          {attribution ? (<span sx={{ position: 'relative', bottom: '1.5rem', color: 'white', left: '75vw', px:'1rem', bg: 'gray.8' }}>{attribution}</span>) : null}
         </Link></div>
     </Box>
 
