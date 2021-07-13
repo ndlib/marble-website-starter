@@ -36,13 +36,6 @@ const genericArrayFind = (item, id) => {
   return false
 }
 
-const findEmbarkCreationPlace = (item) => {
-  const id = 'creationPlace'
-  if (item && item[id]) {
-    return Object.values(item[id]).join(', ')
-  }
-}
-
 const listAll = (item, id) => {
   if (id in item && item[id]) {
     let renderedList = ''
