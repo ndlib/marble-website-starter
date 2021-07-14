@@ -99,7 +99,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
       key={'/'}
       title={'Home'}
       variant={'navTop'}
-      className={''}
+      className={selectedUrl({ selectedPatterns: ['^/$'] }, location) ? ' selected' : ''}
     > <FaHome />
       <span>Home</span>
     </Link>)

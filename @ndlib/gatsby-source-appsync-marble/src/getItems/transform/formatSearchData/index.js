@@ -48,6 +48,12 @@ module.exports = async (item) => {
     }
   })
   // searchData.allMetadata = searchData.allMetadata.concat(loadSubItemTitles(item))
+  if (searchData.geographicLocations) {
+    searchData.allMetadata = searchData.allMetadata.concat(Object.values(searchData.geographicLocations))
+  }
+  if (searchData.creationPlace) {
+    searchData.allMetadata = searchData.allMetadata.concat(Object.values(searchData.creationPlace))
+  }
   searchData.allMetadata = searchData.allMetadata.concat(searchData.centuryTag)
   searchData.allMetadata = searchData.allMetadata.concat(searchData.themeTag)
   searchData.allMetadata = searchData.allMetadata.concat(searchData.expandedThemeTag)
