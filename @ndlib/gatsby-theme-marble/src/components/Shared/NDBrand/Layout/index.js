@@ -67,7 +67,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
         key={l.id}
         title={l.label}
         variant={'navDrawer'}
-        className={''}
+        className={selectedUrl(l, location) ? ' selected' : ''}
       > {l.label}
       </Link>)
   })
@@ -76,7 +76,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
     key={'/'}
     title={'Home'}
     variant={'navDrawer'}
-    className={''}
+    className={selectedUrl({ selectedPatterns: ['^/$'] }, location) ? ' selected' : ''}
     innerRef={menuStartRef}
   >Home
   </Link>)
