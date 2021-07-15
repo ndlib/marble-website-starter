@@ -20,7 +20,7 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
 
     return (
       <>
-        <Heading as='h2' variant='sectionTitle'>Also from&nbsp;
+        <Heading as='h2'>Also from&nbsp;
           <Link
             to={typy(marbleItem, 'marbleParent.slug').safeString}
             sx={{ textDecoration: 'none' }}
