@@ -10,6 +10,8 @@ module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
     id: createNodeId(appSyncItem.id),
     citation: citationGenerator(appSyncItem, slug),
     collection: appSyncItem.collectionId,
+    sourceSystem: appSyncItem.sourceSystem,
+    sourceType: appSyncItem.TYPE,
     copyrightRestricted: isCopyrightRestricted(appSyncItem),
     description: mapFieldOrDefault(appSyncItem, 'description', ''),
     display:  mapFieldOrDefault(appSyncItem, 'level', 'manifest'),

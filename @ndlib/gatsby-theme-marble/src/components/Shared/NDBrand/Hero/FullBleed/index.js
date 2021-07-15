@@ -25,7 +25,7 @@ export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attr
         zIndex: 1,
         display: ['none', 'none', 'none', 'block'],
       }}>
-        {title ? (<Heading as='h1' variant='pageTitle' sx={{ ml: '5vw', marginTop: '.5rem', fontSize: 1, alignSelf: 'flex-end' }}>{title}</Heading>) : null }
+        {title ? (<Heading as='h2' variant='pageTitle' sx={{ ml: '5vw', marginTop: '.5rem', alignSelf: 'flex-end' }}>{title}</Heading>) : null }
         {button ? (
           <Flex sx={{ alignItems: 'end', justifyItems: 'end', width: '100%', flexDirection: 'row', pl: '5vw' }}>
             {button}
