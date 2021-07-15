@@ -34,7 +34,7 @@ module.exports = (parent, child) => {
   const chooseChildFields = [
     'children',
     'images',
-    'files',
+    'media',
   ]
   const mergeArrayFields = [
     'creators',

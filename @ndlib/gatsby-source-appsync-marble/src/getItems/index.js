@@ -57,14 +57,12 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
 
           const node = await transformAndCreate(result, gatsbyInternal, pluginOptions)
           nodeArray.push(node)
-          // Create item's files
-          if (resultHasFiles(result)) {
-            result.files.items.forEach(async file => {
-              const fileNode = await transformAndCreateFile(file, node, gatsbyInternal)
-              nodeArray.push(fileNode)
-              createParentChildLink({ parent: node, child: fileNode })
-            })
-          }
+          // Create item's files (images and media)
+          resultFiles(result).forEach(async file => {
+            const fileNode = await transformAndCreateFile(file, node, gatsbyInternal)
+            nodeArray.push(fileNode)
+            createParentChildLink({ parent: node, child: fileNode })
+          })
           // Check for and create child items
           if (resultHasChildren(result)) {
             const nodesData = await getItems({
@@ -109,8 +107,10 @@ const resultHasChildren = (result) => {
   return result && result.children && result.children.items && result.children.items.length > 0
 }
 
-const resultHasFiles = (result) => {
-  return result && result.files && result.files.items && result.files.items.length > 0
+const resultFiles = (result) => {
+  const images = result?.images?.items || []
+  const media = result?.media?.items || []
+  return images.concat(media)
 }
 
 const hasMergeException = (id, mergeItems) => {
