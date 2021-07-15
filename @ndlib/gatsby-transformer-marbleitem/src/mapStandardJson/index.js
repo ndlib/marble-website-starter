@@ -8,6 +8,8 @@ module.exports = (standardJson) => {
   return {
     title: standardJson.title,
     slug: slug,
+    sourceSystem: standardJson.sourceSystem,
+    sourceType: standardJson.TYPE,
     description: mapFieldOrDefault(standardJson, 'description', ''),
     display: standardJson.level ? standardJson.level.toLowerCase() : 'manifest',
     iiifUri: mapFieldOrDefault(standardJson, 'iiifUri', ''),

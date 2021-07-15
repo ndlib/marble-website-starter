@@ -57,6 +57,20 @@ const buttonShared = {
 
 const theme = merge({}, bootstrapTheme, {
   colors: colors,
+  fontSizes: ['0.75rem', // '80%',
+    '0.875rem',
+    '1rem',
+    '1.075rem',
+    '1.25rem',
+    '1.5rem',
+    '1.75rem',
+    '2rem',
+    '2.5rem',
+    '3.5rem',
+    '4.5rem',
+    '5.5rem',
+    '6rem'],
+
   fonts: {
     body: `
     "Libre Franklin", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif
@@ -285,33 +299,31 @@ const theme = merge({}, bootstrapTheme, {
   text: {
     default: {
       fontFamily: 'body',
-      fontSize: 2,
+      fontSize: 3,
       lineHeight: 'body',
       fontWeight: 'body',
       color: 'text',
     },
     heading: {
       fontFamily: 'heading',
-      fontWeight: 'normal',
+      fontWeight: 'heading',
       lineHeight: 'heading',
       color: 'primary',
     },
     menuHeading: {
-      color: 'primary',
       py: '1em',
     },
     lede: {
-      fontSize: 4,
+      fontSize: 3,
     },
     siteHeader: {
       m: 0,
       p: 0,
     },
     pageTitle: {
-      color: 'primary',
-      fontWeight: '100',
-      fontSize: 6,
       ml: '0',
+      fontSize: 6,
+      color: 'primary',
       '::after': {
         content: '""',
         marginLeft: ['-0.1em', '-0.1em', '-0.1em', '-0.5em'],
@@ -325,7 +337,6 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
     sectionTitle: {
-      fontSize: 7,
       color: 'primary',
     },
   },
@@ -365,7 +376,7 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
     navDrawer: {
-      fontSize: 2,
+      fontSize: 3,
       display: 'block',
       lineHeight: '1.2',
       textDecoration: 'none',
@@ -379,7 +390,7 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
     navTop: {
-      fontSize: 2,
+      fontSize: 3,
       fontFamily: 'menu',
       fontWeight: 'normal',
       lineHeight: 1,
@@ -519,6 +530,24 @@ const theme = merge({}, bootstrapTheme, {
     li: {
       variant: 'text.default',
       fontFamily: 'body',
+    },
+    h1: {
+      color: 'primary',
+    },
+    h2: {
+      color: 'primary',
+    },
+    h3: {
+      color: 'primary',
+    },
+    h4: {
+      color: 'primary',
+    },
+    h5: {
+      color: 'primary',
+    },
+    h6: {
+      color: 'primary',
     },
   },
 })

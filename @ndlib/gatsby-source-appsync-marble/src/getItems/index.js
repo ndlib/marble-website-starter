@@ -79,7 +79,6 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
             nodeArray = nodesData.everything
           }
           resolve(node)
-          return node
         })
         .catch(err => {
           console.error('Oops: ' + err)
@@ -116,6 +115,12 @@ const resultHasFiles = (result) => {
 
 const hasMergeException = (id, mergeItems) => {
   return mergeItems.find(item => item.parentId === id)
+}
+
+const alephEmptyResult = (result) => {
+  if (result.TYPE === 'Item' && result.sourceSystem === 'Aleph' && result.images.items.length === 0) {
+    console.log(result)
+  }
 }
 
 module.exports = getItems
