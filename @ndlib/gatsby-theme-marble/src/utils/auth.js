@@ -9,9 +9,11 @@ export const isLoggedIn = (loginReducer) => {
 }
 
 export const ownsPage = (loginReducer, userId) => {
-  return isLoggedIn(loginReducer) && typy(loginReducer, 'user.uuid').safeString === userId
+  console.log(loginReducer, userId)
+  return isLoggedIn(loginReducer) && typy(loginReducer, 'user.portfolioUserId').safeString === userId
 }
 
+// TODO REMOVE :::
 export const userIdFromClaims = (claims) => {
   if (claims.sub && claims.iss) {
     return `${claims.sub}.${btoa(claims.iss)}`

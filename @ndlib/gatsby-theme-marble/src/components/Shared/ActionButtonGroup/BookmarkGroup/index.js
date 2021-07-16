@@ -20,10 +20,30 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
     const abortController = new AbortController()
     getData({
       loginReducer: loginReducer,
-      contentType: 'user',
-      id: typy(loginReducer, 'user.userName').safeString,
-      successFunc: (data) => {
-        setPortfolios(sortCollections(data))
+      contentType: 'data.getPortfolioUser.portfolioCollections.items',
+      body: `query {
+        getPortfolioUser {
+          portfolioCollections {
+            items {
+              portfolioCollectionId
+              title
+              dateModifiedInDynamo
+              imageUri
+              description
+              privacy
+              featuredCollection
+              highlightedCollection
+              portfolioItems {
+                items {
+                  portfolioItemId
+                }
+              }
+            }
+          }
+        }
+      }`,
+      successFunc: (result) => {
+        setPortfolios(result)
       },
       errorFunc: (e) => {
         console.error(e)
@@ -41,14 +61,16 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
     size = ''
   }
   const style = (size === 'tiny')
-  const buttonLabel = size === 'tiny' ? (
-    <FaBookmark sx={sx.bookmark} />
-  ) : (
-    <BookmarkLabel
-      sxStyle={sx}
-      text='Save to a portfolio'
-    />
-  )
+  const buttonLabel = size === 'tiny'
+    ? (
+      <FaBookmark sx={sx.bookmark} />
+    )
+    : (
+      <BookmarkLabel
+        sxStyle={sx}
+        text='Save to a portfolio'
+      />
+    )
   return (
     <DropDown
       sxStyle={sx}
@@ -78,10 +100,3 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(BookmarkGroup)
-
-// sort by timestamp most recent first
-export const sortCollections = (data) => {
-  return typy(data, 'collections').safeArray.sort((a, b) => {
-    return b.updated - a.updated
-  })
-}

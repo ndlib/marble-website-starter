@@ -11,20 +11,22 @@ const BookmarkOptions = ({ portfolios, marbleItem, setFunc }) => {
   return (
     <React.Fragment>
       {
-        portfolios.length > 0 ? (
-          portfolios.map(
-            collection => {
-              return (
-                <BookmarkButton
-                  key={collection.uuid}
-                  marbleItem={marbleItem}
-                  collection={collection}
-                />
-              )
-            })
-        ) : (
-          <div sx={sx.none}>You do not have any portfolios.</div>
-        )
+        portfolios.length > 0
+          ? (
+            portfolios.map(
+              collection => {
+                return (
+                  <BookmarkButton
+                    key={collection.portfolioCollectionId}
+                    marbleItem={marbleItem}
+                    collection={collection}
+                  />
+                )
+              })
+          )
+          : (
+            <div sx={sx.none}>You do not have any portfolios.</div>
+          )
       }
       <AddNewPortfolio
         addFunc={setFunc}

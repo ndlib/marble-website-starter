@@ -53,6 +53,11 @@ const buttonShared = {
       color: 'secondary',
     },
   },
+  '&:disabled': {
+    color: 'gray.1',
+    bg: 'light',
+    cursor: 'not-allowed',
+  },
 }
 
 const theme = merge({}, bootstrapTheme, {
@@ -182,6 +187,9 @@ const theme = merge({}, bootstrapTheme, {
           color: 'white',
         },
       },
+      '&:disabled': {
+        ...buttonShared['&:disabled'],
+      },
     },
     secondary: {
       ...buttonShared,
@@ -194,6 +202,9 @@ const theme = merge({}, bootstrapTheme, {
       '& a': {
         ...buttonShared['& a'],
         color: 'white',
+      },
+      '&:disabled': {
+        ...buttonShared['&:disabled'],
       },
     },
     light: {
@@ -208,6 +219,9 @@ const theme = merge({}, bootstrapTheme, {
         ...buttonShared['& a'],
         color: 'text',
       },
+      '&:disabled': {
+        ...buttonShared['&:disabled'],
+      },
     },
     inverse: {
       ...buttonShared,
@@ -220,6 +234,11 @@ const theme = merge({}, bootstrapTheme, {
       '& a': {
         ...buttonShared['& a'],
         color: 'primary',
+      },
+      '&:disabled': {
+        ...buttonShared['&:disabled'],
+        bg: 'white',
+        color: 'gray.2',
       },
     },
     text: {

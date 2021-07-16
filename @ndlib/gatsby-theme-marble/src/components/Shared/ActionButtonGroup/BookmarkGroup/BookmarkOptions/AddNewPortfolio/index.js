@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
-import { createData } from 'utils/api'
+import { getData } from 'utils/api'
 import sx from './sx'
 
 const defaultTitle = 'My Portfolio'
@@ -56,17 +56,47 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
         className='submit-button'
         onClick={() => {
           setCreating(true)
-          createData({
+          getData({
             loginReducer: loginReducer,
-            contentType: 'collection',
-            id: loginReducer.user.uuid,
-            body: {
-              title: title,
-              description: null,
-              image: null,
-              layout: 'default',
-              privacy: 'private',
-            },
+            contentType: 'data.savePortfolioCollection',
+            body: `mutation {
+              savePortfolioCollection(
+                title: "${title}",
+                privacy: private,
+                layout: "default",
+                description: null,
+                imageUri: null
+              ) {
+                dateAddedToDynamo
+                dateModifiedInDynamo
+                description
+                featuredCollection
+                highlightedCollection
+                imageUri
+                layout
+                portfolioCollectionId
+                portfolioUserId
+                privacy
+                title
+                portfolioItems {
+                  items {
+                    annotation
+                    dateAddedToDynamo
+                    dateModifiedInDynamo
+                    description
+                    imageUri
+                    internalItemId
+                    itemType
+                    portfolioCollectionId
+                    portfolioItemId
+                    portfolioUserId
+                    sequence
+                    title
+                    uri
+                  }
+                }
+              }
+            }`,
             successFunc: (data) => successFunc({
               data: data,
               portfolios: portfolios,

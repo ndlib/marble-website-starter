@@ -1,7 +1,6 @@
-import OktaAuth  from '@okta/okta-auth-js'
-import {
-  userIdFromClaims,
-} from 'utils/auth'
+import OktaAuth from '@okta/okta-auth-js'
+import typy from 'typy'
+import { userIdFromClaims } from 'utils/auth'
 export const GET_AUTHENTICATION = 'GET_AUTHENTICATION'
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER'
 export const AUTH_ERROR = 'AUTH_ERROR'
@@ -21,7 +20,7 @@ export const STATUS_AUTHENTICATED_NOT_LOGGED_IN = 'STATUS_AUTHENTICATED_NOT_LOGG
 export const STATUS_LOGGED_IN = 'STATUS_LOGGED_IN'
 
 export const putAuthSettingsInStore = (location) => {
-  console.log('putAuthSettingsInStore', location)
+  // console.log('putAuthSettingsInStore', location)
   return dispatch => {
     const authClientSettings = {
       url: 'https://okta.nd.edu',
@@ -41,7 +40,7 @@ export const setAuthClient = (authClientSettings) => {
   return {
     type: SET_AUTH_CLIENT,
     authClientSettings: authClientSettings,
-    userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/' //process.env.USER_CONTENT_PATH,
+    userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/', // process.env.USER_CONTENT_PATH,
   }
 }
 
@@ -78,7 +77,6 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
         // console.error('Could not access tokenManager.')
       }
     }
-
   }
 }
 
@@ -106,47 +104,83 @@ export const getUser = () => {
 }
 export const storeAuthenticationAndGetLogin = (idToken, loginReducer) => {
   const { userContentPath } = loginReducer
-  const url = `${userContentPath}user-id/${userIdFromClaims(idToken.claims)}`
+  // const url = `${userContentPath}user-id/${userIdFromClaims(idToken.claims)}`
+  const url = 'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql'
+  const body = `query {
+      getPortfolioUser {
+        bio
+        dateAddedToDynamo
+        dateModifiedInDynamo
+        department
+        email
+        fullName
+        portfolioUserId
+        primaryAffiliation
+      }
+    }`
   return dispatch => {
     dispatch(authenticateUser(idToken))
+    console.log('idToken', idToken.idToken)
     return fetch(
       url, {
-        method: 'get',
+        method: 'POST',
+        mode: 'cors',
         headers: {
-          Authorization: idToken,
+          Authorization: idToken.idToken,
+          'Content-Type': 'application/json',
+          // Origin: 'http://localhost:8000',
         },
+        body: JSON.stringify({ query: body }),
       }).then(response => {
       if (response.status >= 200 && response.status < 400) {
         return response.json()
       }
+    // return fetch(
+    //   url, {
+    //     method: 'get',
+    //     headers: {
+    //       Authorization: idToken,
+    //     },
+    //   }).then(response => {
+    //   if (response.status >= 200 && response.status < 400) {
+    //     return response.json()
+    //   }
     }).catch(() => {
+      console.log('no user')
       return dispatch(noUser())
     }).then(json => {
-      if (!json.userName) {
-        return dispatch(noUser())
+      console.log('json', json)
+      const user = typy(json, 'data.getPortfolioUser').safeObject
+      if (user && user.portfolioUserId) {
+        return dispatch(logUserIn(user))
       }
-      return dispatch(logUserIn(json))
+      return dispatch(noUser())
     })
   }
 }
 
-export const createNewUser = (slug, body, loginReducer) => {
+export const createNewUser = (body, loginReducer) => {
   return dispatch => {
     dispatch(getUser())
     fetch(
-      `${loginReducer.userContentPath}user/${slug}`,
+      // `${loginReducer.userContentPath}user/${slug}`,
+      'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql',
       {
-        method: 'post',
-        body: JSON.stringify(body),
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({ query: body }),
         headers: {
           Authorization: loginReducer.token.idToken,
-          Origin: 'http://localhost:8000',
+          'Content-Type': 'application/json',
+          // Origin: 'http://localhost:8000',
         },
       },
     ).then(response => {
       return response.json()
     }).then(json => {
-      return dispatch(logUserIn(json))
+      const user = typy(json, 'data.getPortfolioUser').safeObject
+      console.log('USER:', user)
+      return dispatch(logUserIn(user))
     }).catch(error => {
       console.error('Error: ', error)
       return dispatch(noUser())

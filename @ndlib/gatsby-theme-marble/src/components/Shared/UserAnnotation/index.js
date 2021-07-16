@@ -40,7 +40,7 @@ export const UserAnnotation = ({ location, loginReducer }) => {
         <Attribution>
           <UserCartouche user={{ uuid: `${userId}=` }} /> provided the annotation:</Attribution>
         <p>{item.annotation}</p>
-        <Attribution>See <Link to={`/myportfolio/${item.collectionId}`}>portfolio</Link>.</Attribution>
+        <Attribution>See <Link to={`/user/xyz/${item.collectionId}`}>portfolio</Link>.</Attribution>
       </CalloutBox>
     )
   }

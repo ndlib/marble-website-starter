@@ -18,7 +18,7 @@ const VisibilityLabel = ({ visibility }) => {
         verticalAlign: 'middle',
       }}
     >
-      {visibility.toUpperCase()}
+      {visibility ? visibility.toUpperCase() : 'ERROR'}
     </strong>
   )
 }
