@@ -3,7 +3,7 @@
 * https://github.com/system-ui/theme-ui/blob/develop/packages/preset-bootstrap/src/index.ts
 */
 
-import merge from 'lodash.merge'
+import { merge } from 'theme-ui'
 import bootstrapTheme from '@theme-ui/preset-bootstrap'
 
 /*
@@ -55,7 +55,7 @@ const buttonShared = {
   },
 }
 
-const theme = merge({}, bootstrapTheme, {
+const theme = merge(bootstrapTheme, {
   colors: colors,
   fontSizes: ['0.75rem', // '80%',
     '0.875rem',
@@ -244,6 +244,7 @@ const theme = merge({}, bootstrapTheme, {
       bg: 'white',
       pl: '2rem',
       pb: '3rem',
+      mr: '5vw',
       '& div.sectionContent': {
         minWidth: [0, 0, 0, '40rem'],
         maxWidth: '58rem',
@@ -322,7 +323,7 @@ const theme = merge({}, bootstrapTheme, {
     },
     pageTitle: {
       ml: '0',
-      fontSize: 6,
+      fontSize: 8,
       color: 'primary',
       '::after': {
         content: '""',
@@ -523,7 +524,7 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
     root: {
-      color: 'gray.4',
+      color: 'text',
       variant: 'text.default',
       fontFamily: 'body',
     },
@@ -535,6 +536,7 @@ const theme = merge({}, bootstrapTheme, {
       color: 'primary',
     },
     h2: {
+      variant: 'text.heading',
       color: 'primary',
     },
     h3: {

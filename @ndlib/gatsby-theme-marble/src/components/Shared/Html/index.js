@@ -8,9 +8,10 @@ const Html = ({ html, variant, sx }) => {
   const themeUi = useThemeUI()
   const htmlSx = {
     '& a': themeUi.theme.links.default,
-    '& h2': themeUi.theme.text.heading,
-    '& h3': themeUi.theme.text.heading,
+    '& h2': themeUi.theme.styles.h2,
+    '& h3': themeUi.theme.styles.h3,
     '& p': themeUi.theme.text.default,
+    '& li': themeUi.theme.styles.li,
     ...sx,
   }
 
