@@ -25,7 +25,7 @@ export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attr
         zIndex: 1,
         display: ['none', 'none', 'none', 'block'],
       }}>
-        {title ? (<Heading as='h2' variant='pageTitle' sx={{ ml: '5vw', marginTop: '.5rem', alignSelf: 'flex-end' }}>{title}</Heading>) : null }
+        {title ? (<Heading as='h2' variant='pageTitle' sx={{ ml: '5vw', mt: '.75rem', alignSelf: 'flex-end', fontSize: 6 }}>{title}</Heading>) : null }
         {button ? (
           <Flex sx={{ alignItems: 'end', justifyItems: 'end', width: '100%', flexDirection: 'row', pl: '5vw' }}>
             {button}
@@ -39,7 +39,7 @@ export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attr
       }}>
         <Link to={link} title={attribution}>
           {image}
-          {attribution ? (<span sx={{ position: 'relative', bottom: '1.5rem', color: 'white', left: '75vw', px:'1rem', bg: 'gray.8' }}>{attribution}</span>) : null}
+          {attribution ? (<span sx={{ position: 'relative', bottom: '1.3rem', color: 'white', left: '75vw', px:'1rem', bg: 'gray.8' }}>{attribution}</span>) : null}
         </Link></div>
     </Box>
 

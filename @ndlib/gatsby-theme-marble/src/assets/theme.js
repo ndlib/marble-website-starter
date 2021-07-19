@@ -292,7 +292,7 @@ const theme = merge(bootstrapTheme, {
         m: '-1rem 0 -1rem 0',
       },
       '& div.sectionContent': {
-        py: '2rem',
+        py: '4rem',
         width: '90vw',
       },
     },
