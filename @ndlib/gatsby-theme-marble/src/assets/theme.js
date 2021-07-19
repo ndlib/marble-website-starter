@@ -436,10 +436,10 @@ const theme = merge(bootstrapTheme, {
         textDecoration: 'none',
       },
       '&.selected': {
-        background: 'var(--theme-ui-colors-light)',
+        background: ['white', 'white', 'white', 'var(--theme-ui-colors-light)'],
         borderBottomWidth: '0.25rem',
         borderBottomStyle: 'solid',
-        borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+        borderBottomColor: ['white', 'white', 'white', 'var(--theme-ui-colors-lightDark)'],
         transform: 'none',
         cursor: 'pointer',
       },
