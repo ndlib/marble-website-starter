@@ -19,7 +19,7 @@ module.exports = {
     verticalAlign: 'top',
   },
   copied: {
-    color: 'gray.2',
+    color: 'gray.4',
     display: 'block',
     fontSize: '.75rem',
     padding: '.25rem 0',
