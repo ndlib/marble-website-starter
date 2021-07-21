@@ -11,12 +11,9 @@ const BrowseBar = ({
 }) => {
   return (
     <Link to={target} sx={sx.browseSection}>
-      <picture sx={sx.browseImage}>
-        <img
-          alt={label}
-          src={image}
-        />
-      </picture>
+      <div sx={{ pr: '.75rem' }}>
+        {image}
+      </div>
       <div sx={sx.label}>
         {label}
       </div>

@@ -87,6 +87,8 @@ exports.createSchemaCustomization = ({ actions }) => {
     marbleId: String!
     slug: String!
     display: String
+    sourceSystem: String
+    sourceType: String
     title: String!
     description: String
     sequence: Int

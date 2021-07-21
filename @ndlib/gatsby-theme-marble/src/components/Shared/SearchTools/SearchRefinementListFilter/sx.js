@@ -11,14 +11,12 @@ const sx = {
       backgroundImage: `url(${checkboxEmpty})`,
       backgroundSize: '16px',
       backgroundRepeat: 'no-repeat',
-      outline: 'none',
     },
     '& input[type="checkbox"]:checked': {
       appearance: 'none',
       backgroundImage: `url(${checkboxChecked}) !important`,
       backgroundSize: '16px',
       backgroundRepeat: 'no-repeat',
-      outline: 'none',
     },
   },
 }

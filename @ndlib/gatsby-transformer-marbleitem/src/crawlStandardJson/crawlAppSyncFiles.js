@@ -4,7 +4,9 @@ module.exports = (item, gatsbyInternal) => {
   const { actions, createNodeId, createContentDigest } = gatsbyInternal
   const { createNode } = actions
 
-  item.files.items.forEach(async (file) => {
+  const images = item?.images?.items || []
+  const media = item?.media?.items || []
+  images.concat(media).forEach(async (file) => {
     // Check to see if the node exists before creating.
     const parentId = createNodeId(item.id)
     const fileId = createNodeId(`${item.id}-${file.id}`)

@@ -11,7 +11,7 @@ const PartiallyDigitized = ({ marbleItem }) => {
           backgroundColor: 'gray.4',
           padding: '0.5rem',
         }}
-      ><b>Dataset not complete.</b> &mdash; This content may be only partially digitized.
+      ><strong>Dataset not complete.</strong> &mdash; This content may be only partially digitized.
       </div>
     )
   }

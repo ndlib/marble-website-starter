@@ -6,14 +6,14 @@ import SearchResults from 'components/Shared/SearchTools/SearchResults'
 
 const RelatedItemsFromSearch = ({ marbleItem }) => {
   const { marbleConfiguration } = useStaticQuery(query)
-  if (!marbleConfiguration.search || !marbleConfiguration.search.index || marbleConfiguration.search.url) {
+  if (!marbleConfiguration.search || !marbleConfiguration.search.index || !marbleConfiguration.search.url) {
     return null
   }
   const displayContext = 'itemPage'
   return (
     <div id='related-search-section'>
       <h2>Related Items</h2>
-      <SearchBase defaultSearch={customQueryBuilder(marbleItem.marbleId)}>
+      <SearchBase defaultSearch={customQueryBuilder(marbleItem.marbleId, marbleConfiguration.search.index)}>
         <SearchResults defaultDisplay='grid' hitsPerPage={8} showPagination={false} scrollTo='#related-search-section' displayContext={displayContext} />
       </SearchBase>
     </div>
@@ -27,13 +27,13 @@ RelatedItemsFromSearch.propTypes = {
 }
 export default RelatedItemsFromSearch
 
-const customQueryBuilder = (id) => {
+const customQueryBuilder = (id, index) => {
   return {
     more_like_this: {
-      fields: ['name', 'creator', 'collection', 'workType', 'allMetadata'],
+      fields: ['name', 'creator', 'collection', 'allMetadata'],
       like: [
         {
-          _index: 'marble',
+          _index: index,
           _id: id,
         },
       ],

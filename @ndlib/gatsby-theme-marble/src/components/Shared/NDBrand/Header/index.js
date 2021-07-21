@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Box, Heading, Flex } from 'theme-ui'
+import { jsx, Box, Heading } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import ClickableNDLogoWhite from '../Logos/ClickableNDLogoWhite'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
@@ -91,7 +91,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
             {!showSearch ? (
               menuItems
             ) : (
-              <NDBrandNavSearch location={location} searchPath='search' setShowSearch={setShowSearch} />
+              <NDBrandNavSearch key='search' location={location} searchPath='search' setShowSearch={setShowSearch} />
             )}
           </div>
         </Box>

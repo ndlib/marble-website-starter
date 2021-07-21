@@ -8,7 +8,6 @@ module.exports = {
     backgroundColor: 'background',
     border: 'none',
     display: 'block',
-    outline: 'none',
     textAlign: 'left',
     textDecoration: 'none',
     width: '100%',
@@ -21,9 +20,6 @@ module.exports = {
       '& div.chevronWrapper': {
         display: 'block',
       },
-    },
-    '& h2': {
-      fontSize: 3,
     },
   },
   wrapper: (wide) => {

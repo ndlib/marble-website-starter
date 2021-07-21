@@ -34,7 +34,7 @@ module.exports = (itemId, website) => {
     digitalAccess
     digitizationSource
     dimensions
-    files {
+    media {
      items {
        id
        mediaResourceId

@@ -11,7 +11,7 @@ import SiblingItems from 'components/Shared/SiblingItems'
 import sx from './sx'
 
 const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
-  const accessFields = ['Accession Number', 'Campus Location', 'Access', 'Identifier']
+  const accessFields = ['Accession Number', 'Campus Location', 'Access', 'Identifier', 'Link to Library Catalog', 'Link to Finding Aid']
   const ignoreFields = ['URI Value']
   const mainMetaData = {
     metadata: marbleItem.metadata.filter(item => {
@@ -48,14 +48,14 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
           <ActionButtonGroup marbleItem={marbleItem} />
         </Box>
       </Flex>
-      <Divider />
+      <Divider sx={{ mx: '5vw', my: '2rem' }} />
       <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '100%', '100%', '60%'], px: '1rem', pt: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '60%'], pr: [0, 0, 0, '2rem'], pt: '1rem' }}>
           <div sx={sx.mainMetadata}>
             <ManifestMetaData marbleItem={mainMetaData} />
           </div>
         </Box>
-        <Box sx={{ width: ['100%', '100%', '100%', '60%'], px: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '40%'], px: 0, mt: '1rem' }}>
           <div sx={sx.sideMetadata}>
             <ManifestMetaData marbleItem={accessMetadata} />
           </div>
@@ -64,7 +64,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
       <div sx={sx.contactMetadata}>
         <ManifestMetaData marbleItem={contactUsMetadata} />
       </div>
-      <Divider sx={sx.hr} />
+      <Divider sx={{ mx: '5vw', my: '2rem' }} />
       <SiblingItems
         marbleItem={marbleItem}
         numberBeforeAndAfter={3}

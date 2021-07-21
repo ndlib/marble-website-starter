@@ -58,7 +58,7 @@ const crawlStandardJson = (standardJson, collection, parent, gatsbyInternal) => 
       crawlStandardJson(item, collection, normalizedTypeNode, gatsbyInternal)
     })
   }
-  if (standardJson.files && standardJson.files.items && standardJson.files.items.length > 0) {
+  if (standardJson.images || standardJson.media) {
     crawlAppSyncFiles(standardJson, gatsbyInternal)
   }
 }

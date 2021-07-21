@@ -5,11 +5,7 @@ import SkipToMain from './'
 
 test('SkipToMain', () => {
   const tree = renderer
-    .create(<SkipToMain />)
+    .create(<SkipToMain location={{ pathname: 'path' }} />)
     .toJSON()
   expect(tree).toMatchSnapshot()
-
-  expect(tree.props.href).toEqual('#mainContent')
-  expect(tree.props.className).toEqual('css-27by69-SkipToMain')
-  expect(tree.children[0]).toEqual('Skip to main content.')
 })

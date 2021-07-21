@@ -3,7 +3,7 @@
 * https://github.com/system-ui/theme-ui/blob/develop/packages/preset-bootstrap/src/index.ts
 */
 
-import merge from 'lodash.merge'
+import { merge } from 'theme-ui'
 import bootstrapTheme from '@theme-ui/preset-bootstrap'
 
 /*
@@ -60,21 +60,25 @@ const buttonShared = {
   },
 }
 
-const theme = merge({}, bootstrapTheme, {
+const theme = merge(bootstrapTheme, {
   colors: colors,
+  fontSizes: ['0.75rem', // '80%',
+    '0.875rem',
+    '1rem',
+    '1.075rem',
+    '1.25rem',
+    '1.5rem',
+    '1.75rem',
+    '2rem',
+    '2.5rem',
+    '3.5rem',
+    '4.5rem',
+    '5.5rem',
+    '6rem'],
+
   fonts: {
     body: `
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif
+    "Libre Franklin", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif
     `,
     bold: `
       -apple-system,
@@ -90,17 +94,7 @@ const theme = merge({}, bootstrapTheme, {
       sans-serif
     `,
     heading: `
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif
+    "Sumana", Georgia, "Times New Roman", Times, serif;
     `,
     logo: `
       -apple-system,
@@ -116,17 +110,7 @@ const theme = merge({}, bootstrapTheme, {
       sans-serif
     `,
     menu: `
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif
+      "Libre Franklin", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif
     `,
   },
   NDBrandHeader: {
@@ -258,6 +242,7 @@ const theme = merge({}, bootstrapTheme, {
     default: {
       bg: 'white',
       mx: '5vw',
+      pl: '1vw',
       pb: '3rem',
       '& div.sectionContent': {
         minWidth: [0, 0, 0, '40rem'],
@@ -278,6 +263,7 @@ const theme = merge({}, bootstrapTheme, {
       bg: 'white',
       pl: '2rem',
       pb: '3rem',
+      mr: '5vw',
       '& div.sectionContent': {
         minWidth: [0, 0, 0, '40rem'],
         maxWidth: '58rem',
@@ -325,7 +311,7 @@ const theme = merge({}, bootstrapTheme, {
         m: '-1rem 0 -1rem 0',
       },
       '& div.sectionContent': {
-        py: '2rem',
+        py: '4rem',
         width: '90vw',
       },
     },
@@ -340,26 +326,24 @@ const theme = merge({}, bootstrapTheme, {
     },
     heading: {
       fontFamily: 'heading',
-      fontWeight: '100',
+      fontWeight: 'heading',
       lineHeight: 'heading',
       color: 'primary',
     },
     menuHeading: {
-      color: 'primary',
       py: '1em',
     },
     lede: {
-      fontSize: 4,
+      fontSize: 3,
     },
     siteHeader: {
       m: 0,
       p: 0,
     },
     pageTitle: {
-      color: 'primary',
-      fontWeight: '100',
-      fontSize: 6,
       ml: '0',
+      fontSize: 8,
+      color: 'primary',
       '::after': {
         content: '""',
         marginLeft: ['-0.1em', '-0.1em', '-0.1em', '-0.5em'],
@@ -373,7 +357,6 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
     sectionTitle: {
-      fontSize: 7,
       color: 'primary',
     },
   },
@@ -413,7 +396,7 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
     navDrawer: {
-      fontSize: 2,
+      fontSize: 3,
       display: 'block',
       lineHeight: '1.2',
       textDecoration: 'none',
@@ -423,20 +406,25 @@ const theme = merge({}, bootstrapTheme, {
         background: 'var(--theme-ui-colors-light)',
         textDecoration: 'none',
       },
+      '&:focus': {
+      },
     },
     navTop: {
-      fontSize: 2,
-      padding: ['1rem 1.375rem', '1rem 1.375rem', '1rem 1.375rem', '1.2rem 1.375rem'],
+      fontSize: 3,
+      fontFamily: 'menu',
+      fontWeight: 'normal',
+      lineHeight: 1,
+      padding: ['1rem 1.375rem', '1rem 1.375rem', '1rem 1.375rem', '1.25rem 1.375rem 1rem'],
       opacity: '1',
-      lineHeight: '1.2',
       textDecoration: 'none',
-      color: 'text',
+      color: 'gray.8',
       borderTop: '0.25rem solid transparent',
       borderBottomWidth: '0.25rem',
       borderBottomStyle: 'solid',
       borderBottomColor: 'transparent',
       transition: 'all 325ms ease-in-out',
       bg: 'white',
+      zIndex: 5,
       '& svg': {
         display: 'block',
         mx: 'auto',
@@ -467,10 +455,10 @@ const theme = merge({}, bootstrapTheme, {
         textDecoration: 'none',
       },
       '&.selected': {
-        background: 'var(--theme-ui-colors-light)',
+        background: ['white', 'white', 'white', 'var(--theme-ui-colors-light)'],
         borderBottomWidth: '0.25rem',
         borderBottomStyle: 'solid',
-        borderBottomColor: 'var(--theme-ui-colors-lightDark)',
+        borderBottomColor: ['white', 'white', 'white', 'var(--theme-ui-colors-lightDark)'],
         transform: 'none',
         cursor: 'pointer',
       },
@@ -485,7 +473,7 @@ const theme = merge({}, bootstrapTheme, {
         textDecoration: 'none',
       },
       '&.selected': {
-        fontWeight: '700',
+        fontWeight: 'bold',
       },
     },
     footer: {
@@ -494,6 +482,7 @@ const theme = merge({}, bootstrapTheme, {
   },
   navSearch: {
     default: {
+      zIndex: '10',
       bg: 'light',
       borderBottomWidth: '0.25rem',
       borderBottomStyle: 'solid',
@@ -511,7 +500,7 @@ const theme = merge({}, bootstrapTheme, {
         '& a': {
           padding: '0.7em 1em',
           '&.selected': {
-            fontWeight: '700',
+            fontWeight: 'bold',
           },
         },
       },
@@ -523,8 +512,7 @@ const theme = merge({}, bootstrapTheme, {
       justifyContent: ['none', 'none', 'none', 'flex-end'],
       width: ['100%', '100%', '100%', 'inherit'],
       maxHeight: '80px',
-      minHeight: '80px',
-      mt: [0, 0, 0, '-1rem'],
+      mt: [0, 0, 0, '-1.2rem'],
       borderBottomWidth: ['0.25rem', '0.25rem', '0.25rem', 0],
       borderBottomStyle: 'solid',
       borderBottomColor: ['gray.4', 'gray.4', 'gray.4'],
@@ -555,9 +543,32 @@ const theme = merge({}, bootstrapTheme, {
       },
     },
     root: {
-      color: 'gray.4',
+      color: 'text',
       variant: 'text.default',
       fontFamily: 'body',
+    },
+    li: {
+      variant: 'text.default',
+      fontFamily: 'body',
+    },
+    h1: {
+      color: 'primary',
+    },
+    h2: {
+      variant: 'text.heading',
+      color: 'primary',
+    },
+    h3: {
+      color: 'primary',
+    },
+    h4: {
+      color: 'primary',
+    },
+    h5: {
+      color: 'primary',
+    },
+    h6: {
+      color: 'primary',
     },
   },
 })

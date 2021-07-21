@@ -1,10 +1,12 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles } from 'theme-ui'
+import { jsx } from 'theme-ui'
 
 import Link from 'components/Shared/Link'
 
-const MetaDataSearchValue = ({ values, urlField }) => {
+const MetaDataSearchValue = ({ values, urlField, styles }) => {
   if (!values) {
     return null
   }
@@ -19,10 +21,8 @@ const MetaDataSearchValue = ({ values, urlField }) => {
           })
 
           return (
-            <dd key={val}>
-              <BaseStyles>
-                {links}
-              </BaseStyles>
+            <dd sx={styles} key={val}>
+              {links}
             </dd>
           )
         })

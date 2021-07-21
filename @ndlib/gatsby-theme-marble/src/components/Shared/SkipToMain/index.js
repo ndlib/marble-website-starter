@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { jsx } from 'theme-ui'
+import Link from 'components/Shared/Link'
 
 const active = {
   color: '#fff',
@@ -13,8 +14,6 @@ const active = {
   overflow: 'auto',
   margin: '10px 35%',
   padding: '5px',
-  borderRadius: '15px',
-  border: '4px solid yellow',
   textAlign: 'center',
   fontSize: '1.2em',
   zIndex: '999',
@@ -34,8 +33,11 @@ export const sx = {
 
 const SkipToMain = () => {
   return (
-    <a sx={sx} id='skipToMain' href='#mainContent'>Skip to main content.</a>
+    <Link sx={sx} id='skipToMain' to={'#mainContent'}>Skip to main content.</Link>
   )
+}
+
+SkipToMain.propTypes = {
 }
 
 export default SkipToMain

@@ -11,7 +11,7 @@
 }
 .actionButton:focus,
 .actionButton:active {
-  outline: none;
+  
 }
 .actionButton:hover {
   border: 1px solid #efefef;

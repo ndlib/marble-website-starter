@@ -54,5 +54,9 @@ Link.defaultProps = {
 export default Link
 
 export const isExternal = (link) => {
-  return link.startsWith('http')
+  return link.startsWith('http') || link.startsWith('mailto') || link.startsWith('tel')
+}
+
+export const hasNamedAnchor = (link) => {
+  return link.includes('#')
 }

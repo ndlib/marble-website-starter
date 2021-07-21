@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 
 export function JsonLd ({ children }) {
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{
+      lang: 'en',
+    }}>
       <script type='application/ld+json'>{JSON.stringify(children)}</script>
     </Helmet>
   )
