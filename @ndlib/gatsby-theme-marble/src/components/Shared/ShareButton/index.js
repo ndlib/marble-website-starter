@@ -16,7 +16,6 @@ const ShareButton = ({ path }) => {
       />
       <ActionModal
         isOpen={shareOpen}
-        aria-modal='true'
         contentLabel='Share'
         closeFunc={() => setShareOpen(false)}
       >
