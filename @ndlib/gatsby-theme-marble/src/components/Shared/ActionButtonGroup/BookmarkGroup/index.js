@@ -47,6 +47,7 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
     <BookmarkLabel
       sxStyle={sx}
       text='Save to a portfolio'
+      aria-label='Save to a portfolio'
     />
   )
   return (
@@ -54,6 +55,7 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
       sxStyle={sx}
       sxTiny={style}
       buttonLabel={buttonLabel}
+      tabIndex={0}
       options={(
         <BookmarkOptions
           portfolios={portfolios}

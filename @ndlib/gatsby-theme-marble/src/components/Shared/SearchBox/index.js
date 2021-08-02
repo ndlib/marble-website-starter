@@ -9,7 +9,7 @@ const SearchBox = ({ location, boxLabel }) => {
   return (
     <div className='sk-search-box'>
       <SearchButton
-        aria-label='Search'
+        aria-label='Search tool'
         className='sk-search-box__icon'
         location={location}
         searchPath='search'

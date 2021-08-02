@@ -27,6 +27,7 @@ const BookmarkOptions = ({ portfolios, marbleItem, setFunc }) => {
         )
       }
       <AddNewPortfolio
+        type='checkbox'
         addFunc={setFunc}
         portfolios={portfolios}
       />
