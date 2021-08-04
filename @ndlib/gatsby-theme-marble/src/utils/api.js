@@ -108,16 +108,21 @@ export const getPortfolioUser = ({ loginReducer }) => {
 }
 
 export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
-  console.log('getPortfolioQuery', isOwner)
   let contentType = 'data.getExposedPortfolioCollection'
   let resolver = 'getExposedPortfolioCollection'
+  let usePublicUrl = true
+  let queryFront = ''
+  let queryEnd = ''
 
   if (isOwner) {
     contentType = 'data.getPortfolioCollection'
     resolver = 'getPortfolioCollection'
+    usePublicUrl = false
+    queryFront = 'query {'
+    queryEnd = '}'
   }
 
-  const query = `query {
+  const query = `${queryFront}
     ${resolver}(portfolioCollectionId: "${portfolioId}") {
       dateAddedToDynamo
       dateModifiedInDynamo
@@ -148,17 +153,21 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
         }
       }
     }
-  }`
+  ${queryEnd}`
 
-  return getData({ loginReducer: loginReducer, contentType: contentType, query: query })
+  return getData({ loginReducer: loginReducer, contentType: contentType, query: query, usePublicUrl: usePublicUrl })
 }
 
-export const getData = ({ loginReducer, contentType, query, signal }) => {
+export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
   console.log('NEW:lr=', loginReducer)
-
+  let url = 'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql'
+  console.log('public url', usePublicUrl)
+  if (usePublicUrl) {
+    url = 'https://496ozs7o1j.execute-api.us-east-1.amazonaws.com/prod/query/getExposedPortfolioCollection'
+  }
   return fetch(
     // `${loginReducer.userContentPath}${contentType}/${id}`,
-    'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql',
+    url,
     {
       method: 'POST',
       signal: signal,
