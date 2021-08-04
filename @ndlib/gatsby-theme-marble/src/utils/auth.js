@@ -8,9 +8,10 @@ export const isLoggedIn = (loginReducer) => {
   return (loginReducer.status === STATUS_LOGGED_IN)
 }
 
-export const ownsPage = (loginReducer, userId) => {
-  console.log(loginReducer, userId)
-  return isLoggedIn(loginReducer) && typy(loginReducer, 'user.portfolioUserId').safeString === userId
+export const ownsPage = (loginReducer, location) => {
+  console.log(loginReducer, location)
+  const portfolioUserId = typy(loginReducer, 'user.portfolioUserId').safeString
+  return location && location.pathname && isLoggedIn(loginReducer) && portfolioUserId && location.pathname.includes(portfolioUserId)
 }
 
 // TODO REMOVE :::

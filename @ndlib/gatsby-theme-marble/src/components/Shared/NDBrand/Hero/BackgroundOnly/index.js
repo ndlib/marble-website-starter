@@ -15,7 +15,7 @@ export const NDBrandHeroBarckgroundOnly = ({ variant }) => {
       gridRow: 'header',
       gridTemplateRows: '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',
       gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start title-start] 1fr [title-end image-start] 0 [image-end container-end] ${gutterWidth} [screen-end]`,
-      marginBottom: 'calc(-1 * 3.5rem)',
+      mb: 'calc(-1 * 3.5rem)',
       '::before': {
         content: '""',
         display: 'block',
