@@ -31,8 +31,8 @@ describe('ManifestImageGroup', () => {
         {
           label: 'Classification',
           value: ['sculptures'],
-        }
-      ]
+        },
+      ],
     }
     const allMarbleFile = {
       nodes: [

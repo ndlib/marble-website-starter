@@ -15,7 +15,7 @@ const marbleItem = {
     {
       label: 'Classification',
       value: ['sculptures'],
-    }
+    },
   ],
   childrenMarbleFile: [
     { service: 'http://image.here/1' },
