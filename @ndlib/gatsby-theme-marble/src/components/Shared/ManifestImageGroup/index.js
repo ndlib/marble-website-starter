@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// eslint-disable complexity
 import PropTypes from 'prop-types'
 import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
