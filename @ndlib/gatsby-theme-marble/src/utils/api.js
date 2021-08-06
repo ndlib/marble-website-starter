@@ -1,7 +1,7 @@
 import typy from 'typy'
 
 export const savePortfolioCollectionQuery = ({ portfolio, loginReducer }) => {
-  const query = `mutation {
+  const query = JSON.stringify({ query: `mutation {
     savePortfolioCollection(
       portfolioCollectionId: "${portfolio.portfolioCollectionId}",
       featuredCollection: ${portfolio.featuredCollection},
@@ -41,13 +41,13 @@ export const savePortfolioCollectionQuery = ({ portfolio, loginReducer }) => {
         }
       }
     }
-  }`
+  }` })
 
   return getData({ loginReducer: loginReducer, contentType: 'data.savePortfolioCollection', query: query })
 }
 
 export const savePortfolioItemQuery = ({ item, loginReducer }) => {
-  const query = `mutation {
+  const query = JSON.stringify({ query: `mutation {
     savePortfolioItem(
       portfolioCollectionId: "${item.portfolioCollectionId}",
       portfolioItemId: "${item.portfolioItemId}"
@@ -67,7 +67,7 @@ export const savePortfolioItemQuery = ({ item, loginReducer }) => {
       annotation
     }
   }
-  `
+  ` })
   return getData({ loginReducer: loginReducer, contentType: 'data.savePortfolioItem', query: query })
 }
 
@@ -79,7 +79,7 @@ const emptyString = (field) => {
 }
 
 export const getPortfolioUser = ({ loginReducer }) => {
-  const query = `query {
+  const query = JSON.stringify({ query: `query {
     getPortfolioUser {
       bio
       dateAddedToDynamo
@@ -102,7 +102,7 @@ export const getPortfolioUser = ({ loginReducer }) => {
         }
       }
     }
-  }`
+  }` })
 
   return getData({ loginReducer: loginReducer, contentType: 'data.getPortfolioUser', query: query })
 }
@@ -111,8 +111,8 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
   let contentType = 'data.getExposedPortfolioCollection'
   let resolver = 'getExposedPortfolioCollection'
   let usePublicUrl = true
-  let queryFront = ''
-  let queryEnd = ''
+  let queryFront = 'query {'
+  let queryEnd = '}'
 
   if (isOwner) {
     contentType = 'data.getPortfolioCollection'
@@ -122,7 +122,7 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
     queryEnd = '}'
   }
 
-  const query = `${queryFront}
+  let query = `${queryFront}
     ${resolver}(portfolioCollectionId: "${portfolioId}") {
       dateAddedToDynamo
       dateModifiedInDynamo
@@ -155,6 +155,10 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
     }
   ${queryEnd}`
 
+  console.log(query)
+  // if (isOwner) {
+  query = JSON.stringify({ query: query })
+  // }
   return getData({ loginReducer: loginReducer, contentType: contentType, query: query, usePublicUrl: usePublicUrl })
 }
 
@@ -162,9 +166,17 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
   console.log('NEW:lr=', loginReducer)
   let url = 'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql'
   console.log('public url', usePublicUrl)
+
+  const headers = {
+    'Content-Type': 'application/json',
+  }
+
   if (usePublicUrl) {
     url = 'https://496ozs7o1j.execute-api.us-east-1.amazonaws.com/prod/query/getExposedPortfolioCollection'
+  } else {
+    headers['Authorization'] = typy(loginReducer, 'token.idToken').safeString
   }
+
   return fetch(
     // `${loginReducer.userContentPath}${contentType}/${id}`,
     url,
@@ -175,7 +187,7 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
         Authorization: typy(loginReducer, 'token.idToken').safeString,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ query: query }),
+      body: query,
       mode: 'cors',
     })
     .then(result => {
