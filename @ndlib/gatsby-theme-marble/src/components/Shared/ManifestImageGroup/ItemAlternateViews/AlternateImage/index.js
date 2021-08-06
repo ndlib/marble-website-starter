@@ -1,6 +1,5 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-// eslint-disable complexity
 import React from 'react'
 import PropTypes from 'prop-types'
 import ViewerLink from 'components/Shared/ManifestImageGroup/ViewerLink'
