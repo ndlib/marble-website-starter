@@ -10,6 +10,13 @@ const marbleItem = {
   slug: 'slug',
   title: 'title',
   iiifUri: 'http://iiif.url',
+  description: '',
+  metadata: [
+    {
+      label: 'Classification',
+      value: ['sculptures'],
+    }
+  ],
   childrenMarbleFile: [
     { service: 'http://image.here/1' },
     { service: 'http://image.here/2' },
@@ -19,7 +26,6 @@ const location = {}
 describe('AlternateImage', () => {
   test('length == 1', () => {
     const wrapper = shallow(<AlternateImage marbleItem={marbleItem} index={1} max={5} length={1} location={location} />)
-
     expect(wrapper.find(ViewerLink).exists()).toBeFalsy()
     expect(wrapper.find(AlternateOverlay).exists()).toBeFalsy()
     expect(wrapper.find(Image).exists()).toBeFalsy()
@@ -27,9 +33,11 @@ describe('AlternateImage', () => {
 
   test('length > 1', () => {
     const wrapper = shallow(<AlternateImage marbleItem={marbleItem} index={1} max={5} length={4} location={location} />)
-
     expect(wrapper.find(ViewerLink).exists()).toBeTruthy()
     expect(wrapper.find(AlternateOverlay).exists()).toBeTruthy()
     expect(wrapper.find(Image).exists()).toBeTruthy()
+    expect(wrapper.findWhere(img => {
+      return img.prop('alt') === 'This is a sculpture called title.'
+    }).exists()).toBeTruthy()
   })
 })

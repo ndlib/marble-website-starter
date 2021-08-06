@@ -27,7 +27,7 @@ export const getFieldValue = (field, label, data) => {
   const metaField = typy(data, 'marbleItem.metadata').safeArray.find(md => {
     return md.label === label
   })
-  return field || typy(metaField, 'value[0]').safeString || null
+  return field || typy(metaField, 'value[0]').safeString || ''
 }
 
 export const getAuthor = (author, data, siteMetadata) => {

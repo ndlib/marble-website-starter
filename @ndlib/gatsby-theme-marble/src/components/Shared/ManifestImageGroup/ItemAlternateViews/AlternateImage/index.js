@@ -6,6 +6,7 @@ import ViewerLink from 'components/Shared/ManifestImageGroup/ViewerLink'
 import Image from 'components/Shared/Image'
 import AlternateOverlay from './AlternateOverlay'
 import buildReferalState from 'utils/buildReferalState'
+import { getFieldValue } from 'components/Shared/Seo/helpers.js'
 import { findAltImage } from 'utils/findImage'
 import { jsx } from 'theme-ui'
 import sx from './sx'
@@ -22,6 +23,11 @@ export const AlternateImage = ({
   if (length > 1) {
     const isLast = max === index && max + 1 !== length
     const spacing = 0.25
+    const data = {
+      marbleItem,
+    }
+    const classification = (getFieldValue(null, 'Classification', data).endsWith('s')) ?
+    (getFieldValue(null, 'Classification', data)).slice(0, -1) : (getFieldValue(null, 'Classification', data))
     return (
       <div sx={sx.wrapper(spacing, max)}>
         <ViewerLink
@@ -38,7 +44,9 @@ export const AlternateImage = ({
           />
           <Image
             src={findAltImage(allMarbleFile, index)}
-            alt={`Alternate View ${index}`}
+            alt={(!marbleItem.description && (classification.length > 1)) 
+              ? `This is a ${classification} called ${marbleItem.title}.` 
+              : (marbleItem.description ? marbleItem.description : 'Open in external viewer application')}
             title={`Alternate View ${index}`}
           />
         </ViewerLink>
