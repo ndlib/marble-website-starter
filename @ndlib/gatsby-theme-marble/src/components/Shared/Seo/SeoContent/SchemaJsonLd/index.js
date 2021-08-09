@@ -5,6 +5,7 @@ import { JsonLd } from '../JsonLd'
 export const SchemaJsonLd = (props) => {
   const {
     thumbnail,
+    pathname,
     title,
     author,
     description,
@@ -26,42 +27,46 @@ export const SchemaJsonLd = (props) => {
     campusLocation,
     identifier,
   } = props
-  return (
-    <JsonLd>
-      {{
-        '@context': 'https://schema.org',
-        '@type': 'VisualArtwork',
-        name: title,
-        creator: [
-          {
-            '@type': 'Person',
-            name: author,
-          },
-        ],
-        url: url,
-        locationCreated: relatedLocation,
-        dateCreated: date,
-        description: description,
-        inLanguage: language,
-        image: image,
-        thumbnailUrl: thumbnail,
-        keywords: keywords,
-        size: dimensions || physicalCharacteristic,
-        artMedium: classification,
-        artform: materialType,
-        creditText: creditText,
-        copyrightNotice: copyrightStatus,
-        publisher: publisher,
-        identifier: identifier || accessionNumber,
-        sponsor: acquisition,
-        maintainer: campusLocation,
-        provider: creditText,
-      }}
-    </JsonLd>
-  )
+  if (pathname.includes('/featured/') || !pathname === '/') {
+    return (
+      <JsonLd>
+        {{
+          '@context': 'https://schema.org',
+          '@type': 'VisualArtwork',
+          name: title,
+          creator: [
+            {
+              '@type': 'Person',
+              name: author,
+            },
+          ],
+          url: url,
+          locationCreated: relatedLocation,
+          dateCreated: date,
+          description: description,
+          inLanguage: language,
+          image: image,
+          thumbnailUrl: thumbnail,
+          keywords: keywords,
+          size: dimensions || physicalCharacteristic,
+          artMedium: classification,
+          artform: materialType,
+          creditText: creditText,
+          copyrightNotice: copyrightStatus,
+          publisher: publisher,
+          identifier: identifier || accessionNumber,
+          sponsor: acquisition,
+          maintainer: campusLocation,
+          provider: creditText,
+        }}
+      </JsonLd>
+    )
+  }
+  return null
 }
 
 SchemaJsonLd.propTypes = {
+  pathname: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

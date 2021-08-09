@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import WebsiteJsonLd from './WebsiteJsonLd'
 import SchemaJsonLd from './SchemaJsonLd'
+import HubJsonLd from './HubJsonLd'
 
 export const SeoContent = (props) => {
   const {
@@ -74,6 +75,31 @@ export const SeoContent = (props) => {
       />
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
       <SchemaJsonLd
+        pathname={pathname}
+        title={title}
+        description={description}
+        author={author}
+        date={date}
+        url={url}
+        image={image}
+        creditText={creditText}
+        classification={classification}
+        copyrightStatus={copyrightStatus}
+        keywords={keywords}
+        dimensions={dimensions}
+        thumbnail={thumbnail}
+        relatedLocation={relatedLocation}
+        publisher={publisher}
+        materialType={materialType}
+        physicalCharacteristic={physicalCharacteristic}
+        language={language}
+        acquisition={acquisition}
+        accessionNumber={accessionNumber}
+        identifier={identifier}
+        campusLocation={campusLocation}
+      />
+      <HubJsonLd
+        pathname={pathname}
         title={title}
         description={description}
         author={author}
