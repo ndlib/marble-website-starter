@@ -75,12 +75,10 @@ export const SeoContent = (props) => {
       />
       <WebsiteJsonLd siteUrl={siteUrl} pathname={pathname} />
       <SchemaJsonLd
-        pathname={pathname}
+        url={url}
         title={title}
         description={description}
-        author={author}
         date={date}
-        url={url}
         image={image}
         creditText={creditText}
         classification={classification}
@@ -97,6 +95,8 @@ export const SeoContent = (props) => {
         accessionNumber={accessionNumber}
         identifier={identifier}
         campusLocation={campusLocation}
+        pathname={pathname}
+        author={author}
       />
       <HubJsonLd
         pathname={pathname}
