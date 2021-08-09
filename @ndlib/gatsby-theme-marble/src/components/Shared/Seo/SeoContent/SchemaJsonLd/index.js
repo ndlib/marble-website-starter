@@ -27,7 +27,7 @@ export const SchemaJsonLd = (props) => {
     campusLocation,
     identifier,
   } = props
-  if (pathname.includes('/featured/') || !pathname === '/') {
+  if (!pathname.includes('/featured/') && pathname !== '/') {
     return (
       <JsonLd>
         {{
