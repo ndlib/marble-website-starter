@@ -38,7 +38,7 @@ const Voiceover = ({ text }) => {
 }
 
 Voiceover.propTypes = {
-  text: PropTypes.object.isRequired,
+  text: PropTypes.string.isRequired,
 }
 
 export default Voiceover
