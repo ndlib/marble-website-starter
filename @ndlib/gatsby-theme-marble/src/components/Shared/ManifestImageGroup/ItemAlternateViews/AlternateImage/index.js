@@ -26,8 +26,9 @@ export const AlternateImage = ({
     const data = {
       marbleItem,
     }
-    const classification = (getFieldValue(null, 'Classification', data).endsWith('s'))
-      ? (getFieldValue(null, 'Classification', data)).slice(0, -1) : (getFieldValue(null, 'Classification', data))
+    const classification = (getFieldValue(null, 'Classification', data))
+    const material = (getFieldValue(null, 'Material Type', data))
+    const type = classification || material
     return (
       <div sx={sx.wrapper(spacing, max)}>
         <ViewerLink
@@ -44,9 +45,9 @@ export const AlternateImage = ({
           />
           <Image
             src={findAltImage(allMarbleFile, index)}
-            alt={(!marbleItem.description && (classification.length > 1))
-              ? `This is a ${classification} called ${marbleItem.title}.`
-              : (marbleItem.description ? marbleItem.description : 'Open in external viewer application')}
+            alt={(classification.length > 1 || material.length > 1)
+              ? `This is called ${marbleItem.title} within the category of ${type}.`
+              : 'Open in external viewer application'}
             title={`Alternate View ${index}`}
           />
         </ViewerLink>

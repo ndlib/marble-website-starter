@@ -16,8 +16,9 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
   const data = {
     marbleItem,
   }
-  const classification = (getFieldValue(null, 'Classification', data).endsWith('s'))
-    ? (getFieldValue(null, 'Classification', data)).slice(0, -1) : (getFieldValue(null, 'Classification', data))
+  const classification = (getFieldValue(null, 'Classification', data))
+  const material = (getFieldValue(null, 'Material Type', data))
+  const type = classification || material
   return (
     <section>
       <h2 className='accessibilityOnly'>Images</h2>
@@ -28,9 +29,9 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
         <picture sx={sx.wrapper}>
           <img
             src={findImage(allMarbleFile, marbleItem)}
-            alt={(!marbleItem.description && (classification.length > 1))
-              ? `This is a ${classification} called ${marbleItem.title}.`
-              : (marbleItem.description ? marbleItem.description : label)}
+            alt={(classification.length > 1 || material.length > 1)
+              ? `This is called ${marbleItem.title} within the category of ${type}.`
+              : 'Open in external viewer application'}
             title={label}
             sx={sx.image}
           />
