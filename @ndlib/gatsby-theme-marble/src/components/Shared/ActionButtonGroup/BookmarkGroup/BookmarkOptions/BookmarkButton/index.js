@@ -5,12 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import { jsx } from 'theme-ui'
-import {
-  createData,
-  deleteData,
-  patchData,
-  getData,
-} from 'utils/api'
+import { getData, savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
 import sx from './sx'
 
 export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
@@ -66,51 +61,46 @@ export default connect(
 )(BookmarkButton)
 
 export const addItem = (collection, marbleItem, func, loginReducer) => {
-  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString
-  createData({
-    loginReducer: loginReducer,
-    contentType: 'item',
-    id: collection.uuid,
-    body: {
-      title: typy(marbleItem, 'title').safeString || '',
-      image: image,
-      link: marbleItem.slug,
-      manifest: marbleItem.iiifUri,
-      annotation: null,
-    },
-    successFunc: (data) => {
+  console.log('addItem', collection, marbleItem)
+  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem._source.thumbnail
+  const item = {
+    portfolioCollectionId: collection.portfolioCollectionId,
+    portfolioItemId: marbleItem.marbleId || marbleItem._source.identifier[0],
+    imageUri: image,
+    itemType: 'internal',
+    sequence: typy(collection, 'portfolioItems.items').safeArray.length,
+    title: marbleItem.title ? marbleItem.title.replaceAll('"', '&quot;') : marbleItem._source.name.replaceAll('"', '&quot;'),
+  }
+  savePortfolioItemQuery({ loginReducer: loginReducer, item: item })
+    .then((data) => {
+      console.log('xcollection', collection)
       func(data)
-      if (!collection.image) {
-        const body = { image: image }
-        patchData({
-          loginReducer: loginReducer,
-          contentType: 'collection',
-          id: collection.uuid,
-          body: body,
-          successFunc: () => {
+      // TODO if there is no collection image set it
+      if (!collection.imageUri || collection.imageUri === 'null') {
+        console.log('set image', image)
+        collection.imageUri = image
+        savePortfolioCollectionQuery({ loginReducer: loginReducer, portfolio: collection })
+
+          .then((result) => {
+            console.log('d', result)
             console.log('updated collection image')
-          },
-          errorFunc: (e) => {
+          })
+          .catch((e) => {
             console.error(e)
-          },
-        })
+          })
       }
-    },
-    errorFunc: (e) => {
+    })
+    .catch((e) => {
       console.error(e)
-    },
-  })
+    })
 }
-export const deleteItem = (item, func, loginReducer) => {
-  deleteData({
-    loginReducer: loginReducer,
-    contentType: 'item',
-    id: item.uuid,
-    successFunc: () => {
+export const deleteItem = (item, collection, func, loginReducer) => {
+  console.log('deleteItem', item, collection)
+  removeCollectionItem({ loginReducer: loginReducer, item: item })
+    .then(() => {
       func(null)
-    },
-    errorFunc: (e) => {
+    })
+    .catch((e) => {
       console.error(e)
-    },
-  })
+    })
 }

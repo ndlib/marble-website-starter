@@ -27,6 +27,7 @@ const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
         type='button'
         tabIndex={0}
         onClick={() => setOpen(!open)}
+        title={buttonLabel}
         sx={toggleStyle}
       >
         { buttonLabel }

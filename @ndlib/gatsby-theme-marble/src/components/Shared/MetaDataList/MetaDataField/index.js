@@ -6,14 +6,12 @@ import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
 import MetaDataMarkdownValue from './MetaDataMarkdownValue'
 import MetaDataAidValue from './MetaDataAidValue'
-import { useTranslation } from 'react-i18next'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
 const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, urlField, type } = metadata
-  const { t } = useTranslation()
   let { value } = metadata
   if (!Array.isArray(value) && value) {
     value = [value]
@@ -33,13 +31,6 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           skipHtml={skipHtml}
           styles={sx.dd}
         />
-        {
-          label === 'Link to Finding Aid' && (
-            <div sx={sx.aidContext}>
-              {t('text:aidContext')}
-            </div>
-          )
-        }
       </>
     )
   }
