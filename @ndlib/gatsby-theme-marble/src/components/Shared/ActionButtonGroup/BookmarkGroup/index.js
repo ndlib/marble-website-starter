@@ -3,52 +3,28 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import typy from 'typy'
 import { jsx } from 'theme-ui'
 import DropDown from 'components/Shared/DropDown'
 import BookmarkLabel from './BookmarkLabel'
 import BookmarkOptions from './BookmarkOptions'
-import { getData } from 'utils/api'
+import { getPortfolioUser } from 'utils/api'
 import { isLoggedIn } from 'utils/auth'
 import { FaBookmark } from 'react-icons/fa'
 import sx from './sx'
 
 export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
   const [portfolios, setPortfolios] = useState([])
-
+  console.log(marbleItem)
   useEffect(() => {
     const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'data.getPortfolioUser.portfolioCollections.items',
-      body: `query {
-        getPortfolioUser {
-          portfolioCollections {
-            items {
-              portfolioCollectionId
-              title
-              dateModifiedInDynamo
-              imageUri
-              description
-              privacy
-              featuredCollection
-              highlightedCollection
-              portfolioItems {
-                items {
-                  portfolioItemId
-                }
-              }
-            }
-          }
-        }
-      }`,
-      successFunc: (result) => {
-        setPortfolios(result)
-      },
-      errorFunc: (e) => {
+    getPortfolioUser({ loginReducer: loginReducer })
+      .then((result) => {
+        console.log('res', result.portfolioCollections.items)
+        setPortfolios(result.portfolioCollections.items)
+      })
+      .catch((e) => {
         console.error(e)
-      },
-    })
+      })
     return () => {
       abortController.abort()
     }

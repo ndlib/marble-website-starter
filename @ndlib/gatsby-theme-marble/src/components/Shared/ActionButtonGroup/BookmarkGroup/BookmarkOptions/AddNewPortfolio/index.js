@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
-import { getData } from 'utils/api'
+import { savePortfolioCollectionQuery } from 'utils/api'
 import sx from './sx'
 
 const defaultTitle = 'My Portfolio'
@@ -56,60 +56,30 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
         className='submit-button'
         onClick={() => {
           setCreating(true)
-          getData({
+          const portfolio = {
+            title: title,
+            privacy: 'private',
+            layout: 'default',
+            description: null,
+            imageUri: null,
+          }
+          savePortfolioCollectionQuery({
             loginReducer: loginReducer,
-            contentType: 'data.savePortfolioCollection',
-            body: `mutation {
-              savePortfolioCollection(
-                title: "${title}",
-                privacy: private,
-                layout: "default",
-                description: null,
-                imageUri: null
-              ) {
-                dateAddedToDynamo
-                dateModifiedInDynamo
-                description
-                featuredCollection
-                highlightedCollection
-                imageUri
-                layout
-                portfolioCollectionId
-                portfolioUserId
-                privacy
-                title
-                portfolioItems {
-                  items {
-                    annotation
-                    dateAddedToDynamo
-                    dateModifiedInDynamo
-                    description
-                    imageUri
-                    internalItemId
-                    itemType
-                    portfolioCollectionId
-                    portfolioItemId
-                    portfolioUserId
-                    sequence
-                    title
-                    uri
-                  }
-                }
-              }
-            }`,
-            successFunc: (data) => successFunc({
-              data: data,
-              portfolios: portfolios,
-              addFunc: addFunc,
-              setCreating: setCreating,
-              setEditable: setEditable,
-              setTitle: setTitle,
-            }),
-            errorFunc: (e) => {
+            portfolio: portfolio,
+          })
+            .then((data) => {
+              const ps = [...portfolios]
+              ps.unshift(data)
+              addFunc(ps)
+              setCreating(false)
+              setEditable(false)
+              setTitle(defaultTitle)
+            })
+
+            .catch((e) => {
               console.error(e)
               setError(true)
-            },
-          })
+            })
         }}
         disabled={creating || !valid}
         sx={creating || !valid ? sx.submitButtonDisabled : sx.submitButton}

@@ -1,11 +1,41 @@
 import typy from 'typy'
 
+export const savePortfolioUser = ({ user, loginReducer }) => {
+  const query = `mutation {
+  savePortfolioUser(
+    bio: "${user.bio}",
+    email: "${user.email}",
+    fullName: "${user.fullName}"
+  ) {
+    bio
+    dateAddedToDynamo
+    dateModifiedInDynamo
+    department
+    email
+    fullName
+    portfolioUserId
+    primaryAffiliation
+    portfolioCollections {
+      items {
+        portfolioCollectionId
+        imageUri
+        description
+        portfolioUserId
+        title
+      }
+    }
+  }
+}`
+
+  return getData({ loginReducer: loginReducer, contentType: 'data.savePortfolioUser', query: query })
+}
+
 export const savePortfolioCollectionQuery = ({ portfolio, loginReducer }) => {
   const query = JSON.stringify({ query: `mutation {
     savePortfolioCollection(
-      portfolioCollectionId: "${portfolio.portfolioCollectionId}",
-      featuredCollection: ${portfolio.featuredCollection},
-      highlightedCollection: ${portfolio.highlightedCollection},
+      ${(portfolio.portfolioCollectionId) ? `portfolioCollectionId: "${portfolio.portfolioCollectionId}"` : ''},
+      ${(portfolio.featuredCollection) ? `featuredCollection: ${portfolio.featuredCollection}"` : ''},
+      ${(portfolio.highlightedCollection) ? `highlightedCollection: ${portfolio.highlightedCollection}"` : ''},
       title: "${emptyString(portfolio.title)}",
       privacy: ${portfolio.privacy},
       layout: "${portfolio.layout}",
@@ -162,6 +192,20 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
   return getData({ loginReducer: loginReducer, contentType: contentType, query: query, usePublicUrl: usePublicUrl })
 }
 
+export const removeCollection = ({ portfolio, loginReducer }) => {
+  const query = JSON.stringify({ query: `mutation { removePortfolioCollection(portfolioCollectionId: "${portfolio.portfolioCollectionId}") {
+    recordsDeleted
+  } }` })
+  return getData({ loginReducer: loginReducer, contentType: 'data.removePortfolioCollection', query: query })
+}
+
+export const removeCollectionItem = ({ item, loginReducer }) => {
+  const query = JSON.stringify({ query: `mutation { removePortfolioItem(portfolioItemId: "${item.portfolioItemId}", portfolioCollectionId: "${item.portfolioCollectionId}") {
+    recordsDeleted
+  } }` })
+  return getData({ loginReducer: loginReducer, contentType: 'data.removePortfolioCollection', query: query })
+}
+
 export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
   console.log('NEW:lr=', loginReducer)
   let url = 'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql'
@@ -253,25 +297,25 @@ export const patchData = ({ loginReducer, contentType, id, body, successFunc, er
 
 export const deleteData = ({ loginReducer, contentType, id, successFunc, errorFunc }) => {
   console.error('ERROR function deleteData removed.')
-  // if (loginReducer.userContentPath && contentType && id) {
-  //   fetch(
-  //     `${loginReducer.userContentPath}${contentType}/${id}`,
-  //     {
-  //       method: 'DELETE',
-  //       headers: {
-  //         Authorization: typy(loginReducer, 'token.idToken').safeString,
-  //         'Access-Control-Request-Method': 'DELETE',
-  //         'Access-Control-Request-Headers': 'Authorization',
-  //       },
-  //       mode: 'cors',
-  //     })
-  //     .then(async (result) => {
-  //       if (result.status === 204) {
-  //         successFunc()
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       errorFunc(error)
-  //     })
-  // }
+// if (loginReducer.userContentPath && contentType && id) {
+//   fetch(
+//     `${loginReducer.userContentPath}${contentType}/${id}`,
+//     {
+//       method: 'DELETE',
+//       headers: {
+//         Authorization: typy(loginReducer, 'token.idToken').safeString,
+//         'Access-Control-Request-Method': 'DELETE',
+//         'Access-Control-Request-Headers': 'Authorization',
+//       },
+//       mode: 'cors',
+//     })
+//     .then(async (result) => {
+//       if (result.status === 204) {
+//         successFunc()
+//       }
+//     })
+//     .catch((error) => {
+//       errorFunc(error)
+//     })
+// }
 }

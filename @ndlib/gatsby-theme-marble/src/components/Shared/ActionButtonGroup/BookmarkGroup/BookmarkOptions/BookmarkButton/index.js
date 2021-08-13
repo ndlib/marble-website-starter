@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import { jsx } from 'theme-ui'
-import { getData } from 'utils/api'
+import { getData, savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
 import sx from './sx'
 
 export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
@@ -41,85 +41,47 @@ export default connect(
 
 export const addItem = (collection, marbleItem, func, loginReducer) => {
   console.log('addItem', collection, marbleItem)
-  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString
-  getData({
-    loginReducer: loginReducer,
-    // contentType: 'item',
-    // id: collection.uuid,
-    body: `mutation {
-      savePortfolioItem(
-        portfolioCollectionId: "${collection.portfolioCollectionId}",
-        portfolioItemId: "${marbleItem.marbleId}"
-        imageUri: "${image}",
-        itemType: internal,
-        sequence: ${typy(collection, 'portfolioItems.items').safeArray.length},
-        title: "${marbleItem.title.replaceAll('"', '&quot;')}"
-      ) {
-        portfolioItemId
-        portfolioCollectionId
-      }
-    }
-    `,
-    successFunc: (data) => {
-      console.log('x', collection)
+  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem['_source'].thumbnail
+  const item = {
+    portfolioCollectionId: collection.portfolioCollectionId,
+    portfolioItemId: marbleItem.marbleId || marbleItem['_source'].identifier[0],
+    imageUri: image,
+    itemType: 'internal',
+    sequence: typy(collection, 'portfolioItems.items').safeArray.length,
+    title: marbleItem.title ? marbleItem.title.replaceAll('"', '&quot;') : marbleItem['_source'].name.replaceAll('"', '&quot;'),
+  }
+  savePortfolioItemQuery({ loginReducer: loginReducer, item: item })
+    .then((data) => {
+      console.log('xcollection', collection)
       func(data)
       // TODO if there is no collection image set it
       if (!collection.imageUri || collection.imageUri === 'null') {
         console.log('set image', image)
-        const body = `mutation {
-          savePortfolioCollection(
-            description: "${collection.description}",
-            portfolioCollectionId: "${collection.portfolioCollectionId}",
-            title: "${collection.title}",
-            privacy: ${collection.privacy},
-            layout: "${collection.layout}",
-            description: "${collection.description}",
-            imageUri: "${image}",
-            featuredCollection: ${collection.featuredCollection},
-            highlightedCollection: ${collection.highlightedCollection}
-          ) {
-            portfolioCollectionId
-            imageUri
-          }
-        }`
-        getData({
-          loginReducer: loginReducer,
-          body: body,
-          successFunc: (result) => {
+        collection.imageUri = image
+        savePortfolioCollectionQuery({ loginReducer: loginReducer, portfolio: collection })
+
+          .then((result) => {
             console.log('d', result)
             console.log('updated collection image')
-          },
-          errorFunc: (e) => {
+          })
+          .catch((e) => {
             console.error(e)
-          },
-        })
+          })
       }
-    },
-    errorFunc: (e) => {
+    })
+    .catch((e) => {
       console.error(e)
-    },
-  })
+    })
 }
 export const deleteItem = (item, collection, func, loginReducer) => {
   console.log('deleteItem', item, collection)
-  getData({
-    loginReducer: loginReducer,
-    // contentType: 'item',
-    // id: item.uuid,
-    body: `mutation {
-      removePortfolioItem(
-        portfolioCollectionId: "${collection.portfolioCollectionId}",
-        portfolioItemId: "${item.portfolioItemId}") {
-        recordsDeleted
-      }
-    }`,
-    successFunc: () => {
+  removeCollectionItem({ loginReducer: loginReducer, item: item })
+    .then(() => {
       func(null)
-    },
-    errorFunc: (e) => {
+    })
+    .catch((e) => {
       console.error(e)
-    },
-  })
+    })
 }
 
 const itemInCollection = (collection, marbleItem) => {

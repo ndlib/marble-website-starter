@@ -24,6 +24,7 @@ const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
         variant='primary'
         className='dropdown-toggle'
         onClick={() => setOpen(!open)}
+        title={buttonLabel}
         sx={toggleStyle}
       >
         { buttonLabel }

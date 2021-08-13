@@ -275,7 +275,7 @@ const theme = merge(bootstrapTheme, {
       pb: '3rem',
       mr: '5vw',
       '& div.sectionContent': {
-        minWidth: '60vw',
+        minWidth: '100%',
         maxWidth: ['90vw', '90vw', '90vw', '72vw'],
       },
     },
