@@ -26,10 +26,11 @@ export const AlternateImage = ({
     const data = {
       marbleItem,
     }
-    marbleItem.alttext = function() {
+    marbleItem.alttext = function () {
       return (classification.length > 1 || material.length > 1)
-      ? `This is called ${marbleItem.title} within the category of ${type}.`
-      : 'Open in external viewer application'}
+        ? `This is called ${marbleItem.title} within the category of ${type}.`
+        : 'Open in external viewer application'
+    }
     const classification = (getFieldValue(null, 'Classification', data))
     const material = (getFieldValue(null, 'Material Type', data))
     const type = classification || material
@@ -49,7 +50,7 @@ export const AlternateImage = ({
           />
           <Image
             src={findAltImage(allMarbleFile, index)}
-            alt={marbleItem.alttext()}
+            alt={marbleItem.alttext ()}
             title={`Alternate View ${index}`}
           />
         </ViewerLink>
