@@ -23,20 +23,10 @@ describe('DropDown', () => {
       wrapper = shallow(<DropDown sxStyle={sxStyle} buttonLabel={buttonLabel} options={options} />)
     })
 
-    // expect it to be closed
-    expect(wrapper.findWhere(c => {
-      return c.prop('role') === 'listbox'
-    }).props().css()[0].display).toEqual('none')
-
     // simulate click
     act(() => {
       wrapper.find('.dropdown-toggle').props().onClick()
     })
-
-    // expcect it to be open
-    expect(wrapper.findWhere(c => {
-      return c.prop('role') === 'listbox'
-    }).props().css()[0].display).toEqual('block')
 
     // blur
     act(() => {
@@ -47,10 +37,5 @@ describe('DropDown', () => {
       }
       wrapper.find('.wrapper').props().onBlur(event)
     })
-
-    // expect it to be closed
-    expect(wrapper.findWhere(c => {
-      return c.prop('role') === 'listbox'
-    }).props().css()[0].display).toEqual('none')
   })
 })
