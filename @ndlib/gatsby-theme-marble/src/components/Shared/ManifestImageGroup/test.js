@@ -25,7 +25,7 @@ describe('ManifestImageGroup', () => {
     const marbleItem = {
       id: 'id',
       slug: 'slug',
-      title: 'Sample Object',
+      title: 'title',
       description: '',
       metadata: [
         {
@@ -54,7 +54,7 @@ describe('ManifestImageGroup', () => {
       return img.prop('src') === 'http://image.default'
     }).exists()).toBeTruthy()
     expect(wrapper.findWhere(img => {
-      return img.prop('alt') === 'This is a sculpture called Sample Object.'
+      return img.prop('alt') === 'This is called title within the category of sculptures.'
     }).exists()).toBeTruthy()
     expect(wrapper.find(ItemAlternateViews).exists()).toBeTruthy()
   })

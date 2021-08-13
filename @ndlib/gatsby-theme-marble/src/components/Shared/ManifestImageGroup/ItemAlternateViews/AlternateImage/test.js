@@ -37,7 +37,7 @@ describe('AlternateImage', () => {
     expect(wrapper.find(AlternateOverlay).exists()).toBeTruthy()
     expect(wrapper.find(Image).exists()).toBeTruthy()
     expect(wrapper.findWhere(img => {
-      return img.prop('alt') === 'This is a sculpture called title.'
+      return img.prop('alt') === 'This is called title within the category of sculptures.'
     }).exists()).toBeTruthy()
   })
 })
