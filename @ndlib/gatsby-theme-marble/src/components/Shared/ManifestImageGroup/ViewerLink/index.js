@@ -44,6 +44,7 @@ const ViewerLink = ({
       </div>
       <ActionModal
         contentLabel={marbleItem.title}
+        aria-modal='true'
         isOpen={modalOpen}
         closeFunc={() => setModalOpen(false)}
         externalLink={viewerLink}
