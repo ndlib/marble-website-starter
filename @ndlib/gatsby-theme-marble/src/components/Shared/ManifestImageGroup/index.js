@@ -34,7 +34,7 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
         <picture sx={sx.wrapper}>
           <img
             src={findImage(allMarbleFile, marbleItem)}
-            alt={marbleItem.alttext ()}
+            alt={marbleItem.alttext()}
             title={label}
             sx={sx.image}
           />

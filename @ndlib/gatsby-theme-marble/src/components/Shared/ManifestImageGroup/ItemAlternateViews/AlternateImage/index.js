@@ -50,7 +50,7 @@ export const AlternateImage = ({
           />
           <Image
             src={findAltImage(allMarbleFile, index)}
-            alt={marbleItem.alttext ()}
+            alt={marbleItem.alttext()}
             title={`Alternate View ${index}`}
           />
         </ViewerLink>
