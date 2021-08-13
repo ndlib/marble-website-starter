@@ -12,6 +12,10 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
   if (!marbleItem) {
     return null
   }
+  marbleItem.alttext = function() {
+    return (classification.length > 1 || material.length > 1)
+    ? `This is called ${marbleItem.title} within the category of ${type}.`
+    : 'Open in external viewer application'}
   const label = 'Open in external viewer application'
   const data = {
     marbleItem,
@@ -29,9 +33,7 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
         <picture sx={sx.wrapper}>
           <img
             src={findImage(allMarbleFile, marbleItem)}
-            alt={(classification.length > 1 || material.length > 1)
-              ? `This is called ${marbleItem.title} within the category of ${type}.`
-              : 'Open in external viewer application'}
+            alt={marbleItem.alttext()}
             title={label}
             sx={sx.image}
           />
