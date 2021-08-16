@@ -125,11 +125,11 @@ describe('Seo', () => {
 
   test('getFieldValue', () => {
     let actual = helper.getFieldValue(null, null, null)
-    expect(actual).toEqual(null)
+    expect(actual).toEqual('')
     actual = helper.getFieldValue('classification', 'Book', data)
     expect(actual).toEqual('classification')
     actual = helper.getFieldValue(null, null, null)
-    expect(actual).toEqual(null)
+    expect(actual).toEqual('')
   })
 
   test('rendering', () => {
