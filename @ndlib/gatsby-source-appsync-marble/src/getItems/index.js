@@ -54,7 +54,11 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
             const err = 'Received empty result for item ' + itemId
             reject(err)
           }
-
+          if (alephEmptyResult(result)) {
+            console.log('Skipping', result.id)
+            resolve('Valid result, be we do not want it')
+            return
+          }
           const node = await transformAndCreate(result, gatsbyInternal, pluginOptions)
           nodeArray.push(node)
           // Create item's files (images and media)
@@ -118,9 +122,7 @@ const hasMergeException = (id, mergeItems) => {
 }
 
 const alephEmptyResult = (result) => {
-  if (result.TYPE === 'Item' && result.sourceSystem === 'Aleph' && result.images.items.length === 0) {
-    console.log(result)
-  }
+  return (result.TYPE === 'Item' && result.sourceSystem === 'Aleph' && result.images.items.length === 0)
 }
 
 module.exports = getItems
