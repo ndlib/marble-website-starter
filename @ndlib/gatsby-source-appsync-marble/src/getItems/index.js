@@ -6,7 +6,7 @@ const transformAndCreate = require('./transform')
 const transformAndCreateFile = require('./transform/transformAndCreateFile')
 
 const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) => {
-  const { url, website, key, mergeItems = [], logIds = false } = pluginOptions
+  const { url, website, key, mergeItems = [], logIds = false, skipEmptyAleph = true } = pluginOptions
   const { createParentChildLink } = gatsbyInternal.actions
 
   return await batchPromises(
@@ -54,7 +54,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray }) 
             const err = 'Received empty result for item ' + itemId
             reject(err)
           }
-          if (alephEmptyResult(result)) {
+          if (skipEmptyAleph && alephEmptyResult(result)) {
             console.log('Skipping', result.id)
             resolve('Valid result, be we do not want it')
             return
