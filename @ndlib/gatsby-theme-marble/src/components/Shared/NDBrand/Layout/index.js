@@ -165,7 +165,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
           <div id='page-header'>
             {pageHeader}
           </div>
-          <main id='mainContent' sx={{
+          <section sx={{
             gridColumn: 'container',
             gridRow: 'content',
             position: 'relative',
@@ -182,7 +182,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
             },
           }}>
             {children}
-          </main>
+          </section>
           {siteFooter}
         </div>
       </div>
