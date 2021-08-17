@@ -1,9 +1,9 @@
 import typy from 'typy'
 
 export const savePortfolioUser = ({ user, loginReducer }) => {
-  const query = `mutation {
+  const query = JSON.stringify({ query: `mutation {
   savePortfolioUser(
-    bio: "${user.bio}",
+    bio: """${user.bio}""",
     email: "${user.email}",
     fullName: "${user.fullName}"
   ) {
@@ -25,7 +25,7 @@ export const savePortfolioUser = ({ user, loginReducer }) => {
       }
     }
   }
-}`
+}` })
 
   return getData({ loginReducer: loginReducer, contentType: 'data.savePortfolioUser', query: query })
 }
@@ -208,7 +208,7 @@ export const removeCollectionItem = ({ item, loginReducer }) => {
 
 export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
   console.log('NEW:lr=', loginReducer)
-  let url = 'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql'
+  let url = 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql'
   console.log('public url', usePublicUrl)
 
   const headers = {
