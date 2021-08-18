@@ -248,7 +248,6 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
       return result.json()
     })
     .then((result) => {
-      console.log('get data=', contentType, result)
       return typy(result, contentType).safeObjectOrEmpty
     })
 }
