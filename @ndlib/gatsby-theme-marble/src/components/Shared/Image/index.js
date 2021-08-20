@@ -16,6 +16,7 @@ const Image = ({
   alt, // alt text for the image
   title, // title attribute on iamge
   loading, // image loading or lazy loading auto, lazy, eager
+  imageStyle, // optional styling for img tag
 }) => {
   const imageSrc = src || serviceURL(service, region, size) || noImage
   return (
@@ -32,7 +33,7 @@ const Image = ({
         src={imageSrc}
         alt={alt || ''}
         title={title}
-        sx={sx.fallBack}
+        sx={imageStyle}
         loading={loading}
       />
     </picture>
@@ -47,6 +48,7 @@ Image.propTypes = {
   alt: PropTypes.string,
   title: PropTypes.string,
   loading: PropTypes.string,
+  imageStyle: PropTypes.object,
 }
 
 Image.defaultProps = {
@@ -54,6 +56,7 @@ Image.defaultProps = {
   size: '!250,250',
   alt: 'a static image',
   loading: 'lazy',
+  imageStyle: sx.fallBack,
 }
 export default Image
 
