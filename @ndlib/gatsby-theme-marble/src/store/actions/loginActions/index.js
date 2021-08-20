@@ -73,6 +73,7 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
             } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
               dispatch(setNotLoggedIn())
             }
+            console.log('loggin in', loginReducer.status)
           })
       } catch {
         // console.error('Could not access tokenManager.')
