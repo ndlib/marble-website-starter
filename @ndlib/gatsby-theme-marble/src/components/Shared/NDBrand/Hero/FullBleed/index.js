@@ -7,6 +7,20 @@ import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 
 export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attribution }) => {
   const gutterWidth = '5vw'
+  const bannerLink = link
+    ? (
+      <Link to={link} title={attribution}>
+        {image}
+        {attribution ? (<span sx={{ position: 'relative', bottom: '1.45rem', right: '10vw', float: 'right', marginLeft: '6rem', color: 'white', px:'1rem', bg: 'gray.8' }}>{attribution}</span>) : null}
+      </Link>
+    )
+    : (
+      // Placeholder that takes up the same space as the actual banner so there is no layout shift
+      <>
+        <div sx={{ width: '100vw', height: 'calc(100vw * 0.3481818)', backgroundColor: '#DDDDDD' }} />
+        <span sx={{ visibility: 'hidden', position: 'relative', bottom: '1.45rem', right: '10vw', float: 'right', marginLeft: '6rem', color: 'white', px:'1rem', bg: 'gray.8' }}>title</span>
+      </>
+    )
 
   return (
     <Box id='page-header' variant={`hero.${variant}`} sx={{
@@ -26,10 +40,12 @@ export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attr
         display: ['none', 'none', 'none', 'block'],
       }}>
         {title ? (<Heading as='h2' variant='pageTitle' sx={{ ml: '5vw', mt: '.75rem', alignSelf: 'flex-end', fontSize: 6 }}>{title}</Heading>) : null }
-        {button ? (
-          <Flex sx={{ alignItems: 'end', justifyItems: 'end', width: '100%', flexDirection: 'row', pl: '5vw' }}>
-            {button}
-          </Flex>) : null }
+        {button
+          ? (
+            <Flex sx={{ alignItems: 'end', justifyItems: 'end', width: '100%', flexDirection: 'row', pl: '5vw' }}>
+              {button}
+            </Flex>)
+          : null }
       </Flex>
       <div sx={{
         gridRow: '1/-1',
@@ -37,10 +53,8 @@ export const NDBrandHeroFullBleed = ({ variant, image, title, button, link, attr
         maxHeight: '80vw',
         maxWidth: 'none',
       }}>
-        <Link to={link} title={attribution}>
-          {image}
-          {attribution ? (<span sx={{ position: 'relative', bottom: '1.3rem', color: 'white', left: '75vw', px:'1rem', bg: 'gray.8' }}>{attribution}</span>) : null}
-        </Link></div>
+        {bannerLink}
+      </div>
     </Box>
 
   )
