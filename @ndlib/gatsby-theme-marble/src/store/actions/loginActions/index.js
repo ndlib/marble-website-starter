@@ -118,13 +118,13 @@ export const storeAuthenticationAndGetLogin = (idToken, loginReducer) => {
       if (response.status >= 200 && response.status < 400) {
         return response.json()
       }
-    }).catch(() => {
-      return dispatch(noUser())
     }).then(json => {
-      if (!json.userName) {
+      if (!json?.userName) {
         return dispatch(noUser())
       }
       return dispatch(logUserIn(json))
+    }).catch(() => {
+      return dispatch(noUser())
     })
   }
 }
