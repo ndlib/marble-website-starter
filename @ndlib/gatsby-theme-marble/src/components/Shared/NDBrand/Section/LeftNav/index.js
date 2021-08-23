@@ -10,7 +10,7 @@ export const NDBrandSectionLeftNav = ({ variant, children, ...props }) => {
       variant={`sections.${variant}`}
       as='section'
       gap={'0'}
-      columns={['0 100vw', '0 100vw', '0 100vw', '22vw 77vw']}
+      columns={['0 100%', '0 100%', '0 100%', '23% 77%']}
       {...props}
     >
       {children}
