@@ -17,6 +17,6 @@
     "isomorphic-fetch": "^3.0.0"
   },
   "peerDependencies": {
-    "gatsby": "^3.7.0"
+    "gatsby": "^3.12.0"
   }
 }
