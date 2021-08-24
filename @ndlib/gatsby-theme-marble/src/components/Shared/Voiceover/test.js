@@ -1,11 +1,11 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import SkipToMain from './'
+import Voiceover from './'
 
-test('SkipToMain', () => {
+test('Voiceover', () => {
   const tree = renderer
-    .create(<SkipToMain location={{ pathname: 'path' }} />)
+    .create(<Voiceover text='Test' />)
     .toJSON()
   expect(tree).toMatchSnapshot()
 })

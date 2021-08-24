@@ -48,18 +48,19 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
     <Box as='header' sx={{
       variant: variant,
       gridRow: 'header',
-      width: '100vw',
+      width: '100%',
       opacity: '1',
       zIndex: 1,
     }}>
-      <Box className='titleContainer' sx={{ display: ['block', 'block', 'flex'], width: '100vw', flexDirection: 'row-reverse', justifyContent: 'space-between' }}>
+      <Box className='titleContainer' sx={{ display: ['block', 'block', 'flex'], width: '100%', flexDirection: 'row-reverse', justifyContent: 'space-between' }}>
         <div className='mark' sx={{
-          width: ['100vw', '100vw', '200px'],
+          width: ['100%', '100%', '200px'],
           bg: ['primaryDark', 'primaryDark', 'primary'],
           mx: ['auto', 'auto', '5vw'],
           display: ['flex', 'flex', 'block'],
           justifyContent: ['center', 'center', 'inherit'],
-          py: ['15px', '15px', '0'] }}
+          py: ['15px', '15px', '0'],
+        }}
         >
           <ClickableNDLogoWhite sx={{ display: ['none', 'none', 'block'] }} />
           <img
@@ -86,7 +87,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
         </div>
       </Box>
       <Box className='nav' sx={{ maxHeight: ['75px', '75px', '75px', 0] }}>
-        <Box as='nav' sx={{ variant: `menus.navTop` }}>
+        <Box as='nav' sx={{ variant: 'menus.navTop' }}>
           <div>
             {!showSearch ? (
               menuItems

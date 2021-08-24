@@ -6,6 +6,7 @@ export const SearchButton = ({ searchReducer, submitSearch, searchPath, classNam
   const { rawInput } = searchReducer
   return (
     <button
+      aria-label='Search'
       className={className}
       onClick={() => submitSearch(location, rawInput, searchPath)}
     >

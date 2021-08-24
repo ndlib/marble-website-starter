@@ -6,6 +6,7 @@ describe('SchemaJsonLd component', () => {
   it('renders props into values', () => {
     const tree = renderer
       .create(<SchemaJsonLd
+        pathname={'/item/1951.003/'}
         title={'1984'}
         image={'http://fake.io/image'}
         author={'George Orwell'}

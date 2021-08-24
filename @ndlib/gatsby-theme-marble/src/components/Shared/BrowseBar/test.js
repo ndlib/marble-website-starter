@@ -8,7 +8,6 @@ describe('BrowseBar', () => {
 
   test('mounts properly', () => {
     const wrapper = mount(<BrowseBar label='label' target='/some/path' image='put-in-image-div' />)
-    console.log(wrapper.debug())
     expect(wrapper.find(Link).props().to).toEqual('/some/path')
     expect(wrapper.find('div.css-sx6q4r-BrowseBar').exists()).toBeTruthy()
     expect(wrapper.find('div.css-sx6q4r-BrowseBar').text()).toEqual('put-in-image-div')

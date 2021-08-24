@@ -4,6 +4,7 @@ import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
 import findImage from 'utils/findImage'
+import { getFieldValue } from 'components/Shared/Seo/helpers.js'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
@@ -11,7 +12,18 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
   if (!marbleItem) {
     return null
   }
+  marbleItem.alttext = function () {
+    return (classification.length > 1 || material.length > 1)
+      ? `This is called ${marbleItem.title} within the category of ${type}.`
+      : 'Open in external viewer application'
+  }
   const label = 'Open in external viewer application'
+  const data = {
+    marbleItem,
+  }
+  const classification = (getFieldValue(null, 'Classification', data))
+  const material = (getFieldValue(null, 'Material Type', data))
+  const type = classification || material
   return (
     <section>
       <h2 className='accessibilityOnly'>Images</h2>
@@ -22,7 +34,7 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
         <picture sx={sx.wrapper}>
           <img
             src={findImage(allMarbleFile, marbleItem)}
-            alt={label}
+            alt={marbleItem.alttext()}
             title={label}
             sx={sx.image}
           />

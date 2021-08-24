@@ -299,7 +299,7 @@ const theme = merge(bootstrapTheme, {
       },
       '& div.sectionContent': {
         py: '2rem',
-        width: '90vw',
+        width: '100%',
       },
     },
     fullBleedDark: {
@@ -312,7 +312,7 @@ const theme = merge(bootstrapTheme, {
       },
       '& div.sectionContent': {
         py: '4rem',
-        width: '90vw',
+        width: '100%',
       },
     },
   },
@@ -365,7 +365,7 @@ const theme = merge(bootstrapTheme, {
       maxWidth: '65rem',
     },
     fullBleed: {
-      maxWidth: '100vw',
+      maxWidth: '100%',
     },
   },
   links: {
@@ -519,7 +519,7 @@ const theme = merge(bootstrapTheme, {
       mr: '5vw',
       '& div': {
         display: 'flex',
-        minWidth: ['100vw', '100vw', '100vw', '550px'],
+        minWidth: ['100%', '100%', '100%', '550px'],
         justifyContent: ['space-around', 'space-around', 'space-around', 'flex-start'],
         opacity: '1',
         transition: 'all 1s',

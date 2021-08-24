@@ -37,21 +37,21 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
     size = ''
   }
   const style = (size === 'tiny')
-  const buttonLabel = size === 'tiny'
-    ? (
-      <FaBookmark sx={sx.bookmark} />
-    )
-    : (
-      <BookmarkLabel
-        sxStyle={sx}
-        text='Save to a portfolio'
-      />
-    )
+  const buttonLabel = size === 'tiny' ? (
+    <FaBookmark sx={sx.bookmark} />
+  ) : (
+    <BookmarkLabel
+      sxStyle={sx}
+      text='Save to a portfolio'
+      aria-label='Save to a portfolio'
+    />
+  )
   return (
     <DropDown
       sxStyle={sx}
       sxTiny={style}
       buttonLabel={buttonLabel}
+      tabIndex={0}
       options={(
         <BookmarkOptions
           portfolios={portfolios}

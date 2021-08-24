@@ -13,7 +13,7 @@ const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
     <div
       className='wrapper'
       sx={wrapperStyle}
-      role='button'
+      type='button'
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
           setOpen(false)
@@ -23,6 +23,9 @@ const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
       <Button
         variant='primary'
         className='dropdown-toggle'
+        aria-label='Save to a Portfolio'
+        type='button'
+        tabIndex={0}
         onClick={() => setOpen(!open)}
         title={buttonLabel}
         sx={toggleStyle}
@@ -30,7 +33,6 @@ const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
         { buttonLabel }
       </Button>
       <div
-        role='listbox'
         sx={open ? sxStyle.optionsOpen : sxStyle.optionsClosed}>
         { options }
       </div>

@@ -1,8 +1,8 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
+import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-import Link from 'components/Shared/Link'
 
 const active = {
   color: '#fff',
@@ -31,13 +31,14 @@ export const sx = {
   '&:active': active,
 }
 
-const SkipToMain = () => {
+const Voiceover = ({ text }) => {
   return (
-    <Link sx={sx} id='skipToMain' to={'#mainContent'}>Skip to main content.</Link>
+    <p sx={sx} id='hiddenVoiceover'>{text}</p>
   )
 }
 
-SkipToMain.propTypes = {
+Voiceover.propTypes = {
+  text: PropTypes.string.isRequired,
 }
 
-export default SkipToMain
+export default Voiceover

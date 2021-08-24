@@ -25,6 +25,14 @@ describe('ManifestImageGroup', () => {
     const marbleItem = {
       id: 'id',
       slug: 'slug',
+      title: 'title',
+      description: '',
+      metadata: [
+        {
+          label: 'Classification',
+          value: ['sculptures'],
+        },
+      ],
     }
     const allMarbleFile = {
       nodes: [
@@ -44,6 +52,9 @@ describe('ManifestImageGroup', () => {
     expect(wrapper.find(ExpandIcon).exists()).toBeTruthy()
     expect(wrapper.findWhere(img => {
       return img.prop('src') === 'http://image.default'
+    }).exists()).toBeTruthy()
+    expect(wrapper.findWhere(img => {
+      return img.prop('alt') === 'This is called title within the category of sculptures.'
     }).exists()).toBeTruthy()
     expect(wrapper.find(ItemAlternateViews).exists()).toBeTruthy()
   })

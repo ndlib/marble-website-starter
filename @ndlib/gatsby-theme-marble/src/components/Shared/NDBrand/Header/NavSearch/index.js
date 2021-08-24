@@ -60,7 +60,7 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
           }
           }
           defaultValue={qs.q}
-          sx={{ border: 0, outline: 'none' }} placeholder='Search the collection' ariaLabel='Search' />
+          sx={{ border: 0, outline: 'none' }} placeholder='Search the collection' aria-label='This is the search tool,' />
         {setShowSearch ? (
           <Button className='search' variant='links.navTop' sx={{
             borderRadius: '0',

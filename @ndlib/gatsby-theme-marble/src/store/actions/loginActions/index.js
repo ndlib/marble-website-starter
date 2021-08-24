@@ -1,4 +1,4 @@
-import OktaAuth from '@okta/okta-auth-js'
+import { OktaAuth } from '@okta/okta-auth-js'
 import typy from 'typy'
 import { userIdFromClaims } from 'utils/auth'
 export const GET_AUTHENTICATION = 'GET_AUTHENTICATION'
@@ -136,25 +136,12 @@ export const storeAuthenticationAndGetLogin = (idToken, loginReducer) => {
       if (response.status >= 200 && response.status < 400) {
         return response.json()
       }
-    // return fetch(
-    //   url, {
-    //     method: 'get',
-    //     headers: {
-    //       Authorization: idToken,
-    //     },
-    //   }).then(response => {
-    //   if (response.status >= 200 && response.status < 400) {
-    //     return response.json()
-    //   }
-    }).catch(() => {
-      console.log('no user')
-      return dispatch(noUser())
     }).then(json => {
-      console.log('json', json)
-      const user = typy(json, 'data.getPortfolioUser').safeObject
-      if (user && user.portfolioUserId) {
-        return dispatch(logUserIn(user))
+      if (!json?.userName) {
+        return dispatch(noUser())
       }
+      return dispatch(logUserIn(json))
+    }).catch(() => {
       return dispatch(noUser())
     })
   }

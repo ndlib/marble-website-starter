@@ -25,7 +25,7 @@ export const SearchField = ({ submitSearch, searchReducer, searchPath, dispatch,
         placeholder={fieldLabel}
         onChange={(e) => dispatch(updateInput(e.target.value))}
         value={decodeURIComponent(rawInput)}
-        aria-label={fieldLabel}
+        aria-label='Search tool,'
         onKeyDown={(e) => {
           // Submit on enter key press
           if (e.keyCode === 13) {

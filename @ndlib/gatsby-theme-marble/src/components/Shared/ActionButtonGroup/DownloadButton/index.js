@@ -16,6 +16,7 @@ const DownloadButton = ({ marbleItem }) => {
       />
       <ActionModal
         isOpen={downloadOpen}
+        aria-modal='true'
         contentLabel='Download'
         closeFunc={() => setDownloadOpen(false)}
         fullscreen

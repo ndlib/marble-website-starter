@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import { jsx } from 'theme-ui'
-import { getData, savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
 import sx from './sx'
 
 export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
