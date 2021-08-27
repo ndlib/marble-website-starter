@@ -10,8 +10,8 @@ import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { FaHome, FaSearch, FaGripLines, FaTimes } from 'react-icons/fa'
 import typy from 'typy'
 import { selectedUrl } from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
+import sx from './sx'
 
-const gutterWidth = '5vw'
 export const query = graphql`
 query {
   site {
@@ -107,12 +107,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
   items.push((
     <Button
       variant='links.navTop'
-      sx={{
-        borderRadius: '0',
-        borderLeftWidth: [0, 0, 0, '1px'],
-        borderLeftStyle: 'solid',
-        borderLeftColor: 'gray.4',
-      }} key='toggle-search' onClick={() => setShowSearch(!showSearch)} title='show search'>
+      sx={sx.navButton} key='toggle-search' onClick={() => setShowSearch(!showSearch)} title='show search'>
       <FaSearch />
       <span>Search</span>
     </Button>),
@@ -120,12 +115,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
   items.push((
     <Button
       variant='links.navTop'
-      sx={{
-        borderRadius: '0',
-        borderLeftWidth: [0, 0, 0, '1px'],
-        borderLeftStyle: 'solid',
-        borderLeftColor: 'gray.4',
-      }}
+      sx={sx.navButton}
       className='menu'
       onClick={() => setShowMenu(!showMenu)}
       title='Toggle Menu'
@@ -138,17 +128,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
   )
 
   return (
-    <Container sx={{
-      variant: variant,
-      display: 'grid',
-      minHeight: '100%',
-      width: '100%',
-      position: 'relative',
-      gridTemplateRows: '[header-start] auto [header-end main-start] minmax(auto, 1fr) [main-end footer-start] auto [footer-end]',
-      right: showMenu ? '14rem' : 'auto',
-      boxSizing: 'border-box',
-      transition: '.25s ease-in-out',
-    }}>
+    <Container sx={sx.layoutContainer({ variant, showMenu })}>
       <NDBrandDrawer navDrawerItems={navDrawerItems} showMenu={showMenu} setShowMenu={setShowMenu} menuId={menuId} />
       <div id='nav-background' aria-hidden={showMenu ? 'true' : 'false'}>
         <NDBrandHeader
@@ -158,29 +138,9 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
           setShowSearch={setShowSearch}
           showSearch={showSearch}
         />
-        <div id='content' sx={{
-          gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start sidebar-start] 22vw [sidebar-end content-start] minmax(0, 1fr) [content-end container-end] ${gutterWidth} [screen-end]`,
-          gridTemplateRows: '[header-start] auto [header-end content-start] 1fr [content-end]',
-        }}>
-          <div id='page-header'>
-            {pageHeader}
-          </div>
-          <section sx={{
-            gridColumn: 'container',
-            gridRow: 'content',
-            position: 'relative',
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: '0',
-              bottom: '0',
-              right: '0',
-              width: '30vw',
-              zIndex: '-1',
-              background: '#fff',
-            },
-          }}>
+        <div id='content' sx={sx.content}>
+          {pageHeader}
+          <section sx={sx.contentSection}>
             {children}
           </section>
           {siteFooter}

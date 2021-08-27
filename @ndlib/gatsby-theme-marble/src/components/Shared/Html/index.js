@@ -16,7 +16,7 @@ const Html = ({ html, variant, sx }) => {
   }
 
   return (
-    <Text sx={htmlSx} as='p' dangerouslySetInnerHTML={{ __html: html }} />
+    <Text sx={htmlSx} variant={variant} as='div' dangerouslySetInnerHTML={{ __html: html }} />
   )
 }
 

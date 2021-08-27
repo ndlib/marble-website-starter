@@ -22,7 +22,6 @@ const RadioList = ({ options, fieldName, onChange }) => {
                 type='radio'
                 name={fieldName}
                 value={option.value}
-                className={style.option}
                 defaultChecked={option.checked}
                 onChange={(event) => {
                   onChange(event.target.value)

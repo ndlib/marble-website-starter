@@ -55,8 +55,8 @@ const ActionModal = ({
           </svg>
         </button>
       </div>
-      <BaseStyles>
-        <div sx={sx.container}>
+      <BaseStyles sx={sx.contentContainer}>
+        <div sx={sx.flexContainer}>
           <div sx={bodyStyle(!!footer)}>{children}</div>
           {footer && (
             <div sx={sx.footer}>{footer}</div>
