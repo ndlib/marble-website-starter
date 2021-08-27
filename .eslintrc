@@ -87,6 +87,9 @@
     }],
     "jsx-a11y/mouse-events-have-key-events" : 1,
     "jsx-a11y/no-access-key"  : 1,
+    "jsx-a11y/no-autofocus"   : [ 1, {
+      "ignoreNonDOM"  : true,
+    }],
     "jsx-a11y/no-distracting-elements"  : [ 2, {
       "elements"  : [ "marquee", "blink" ],
     }],

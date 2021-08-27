@@ -1,70 +1,44 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useEffect } from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { FaTimes } from 'react-icons/fa'
+import sx from './sx'
 
 const NDBrandDrawer = ({ setShowMenu, showMenu, navDrawerItems, menuId }) => {
+  const keyUpHandler = (event) => {
+    if (event.code === 'Escape') {
+      setShowMenu(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keyup', keyUpHandler)
+    return () => {
+      document.removeEventListener('keyup', keyUpHandler)
+    }
+  })
+
+  if (!showMenu) {
+    return null
+  }
+
   return (
     <>
       <div className='overlay'
-        sx={{
-          visibility: showMenu ? 'visible' : 'hidden',
-          position: 'fixed',
-          right: '14rem',
-          top: 0,
-          height: '100%',
-          width: '100%',
-          zIndex: 10,
-        }}
+        sx={sx.overlay}
         role='button'
         title='close navigation'
-        onClick={() => setShowMenu(!showMenu)}
+        onClick={() => setShowMenu(false)}
       />
       <nav
         aria-label='Main Menu'
-        aria-hidden={showMenu ? 'false' : 'true'}
-        aria-expanded={showMenu.toString()}
         id={menuId}
-        sx={{
-          m: 0,
-          p: '20px',
-          visibility: showMenu ? 'visible' : 'hidden',
-          position: 'fixed',
-          top: '0',
-          right: '0px',
-          height: '100%',
-          width: showMenu ? '14rem' : '0',
-          background: 'white',
-          overflowX: 'hidden',
-          overflowY: 'scroll',
-          bg: 'gray.2',
-          borderLeft: '1px solid gray.4',
-          boxShadow: '0 0 8px 0 rgb(0 0 0 / 25%)',
-          overflowScrolling: 'touch',
-          zIndex: 10,
-        }}
-        onKeyUp={(e => {
-          if (e.keyCode === 27) {
-            setShowMenu(!showMenu)
-          }
-        })}
+        sx={sx.navigation}
       >
         {navDrawerItems}
-        <div sx={{
-          position: 'absolute',
-          zIndex: 10,
-          bottom: 0,
-          left: 0,
-          width: '14rem',
-          display: 'flex',
-          justifyContent: 'center',
-          borderTopColor: 'gray.4',
-          borderTopStyle: 'solid',
-          borderTopWidth: '1px',
-          py: '1rem',
-        }}>
+        <div sx={sx.closeBox}>
           <Button
             name='Filter'
             sx={{
@@ -72,7 +46,7 @@ const NDBrandDrawer = ({ setShowMenu, showMenu, navDrawerItems, menuId }) => {
               lineHeight: 0,
             }}
             title='Close Menu'
-            onClick={() => setShowMenu(!showMenu)}
+            onClick={() => setShowMenu(false)}
           ><FaTimes /></Button>
         </div>
       </nav>
