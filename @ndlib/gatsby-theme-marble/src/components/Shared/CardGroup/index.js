@@ -24,7 +24,7 @@ allowToggle - true to see the toggle false to not display
 defaultState - the default state the toggle should be in grid or list
   (or you can use DISPLAY_GRID or DISPLAY list from store/actions/displayActions)
 */
-export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, defaultDisplay }) => {
+export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, defaultDisplay, gridWidthRule }) => {
   const layout = useSelector(state => state.displayReducer[toggleGroup])
 
   if (!typy(children).isArray) {
@@ -34,9 +34,23 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
     list: {
       padding: '1rem',
       width: ['100%'],
+      figure: {
+        display: 'inline-block',
+        verticalAlign: 'top',
+        width: '300px',
+      },
+      figcaption: {
+        display: 'inline-block',
+        verticalAlign: 'top',
+        width: 'calc( 100% - 300px)',
+      },
+      '.card a': {
+        paddingBottom: '0',
+        '&:hover': { paddingBottom: '0' },
+      },
     },
     grid: {
-      width: ['100%', '100%', '50%', '50%', '33.33%'],
+      width: gridWidthRule,
       padding: '1rem',
     },
   }
@@ -45,11 +59,13 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
   return (
     <LayoutContext.Provider value={displayLayout}>
       {
-        allowToggle ? (<CardGroupToggle
-          toggleGroup={toggleGroup}
-          layout={displayLayout}
-          extraControls={extraControls}
-        />) : null
+        allowToggle
+          ? (<CardGroupToggle
+            toggleGroup={toggleGroup}
+            layout={displayLayout}
+            extraControls={extraControls}
+          />)
+          : null
       }
       <Flex sx={{ flexWrap: 'wrap' }}>
         {
@@ -68,12 +84,14 @@ CardGroup.propTypes = {
   toggleGroup: PropTypes.string,
   extraControls: PropTypes.func,
   allowToggle: PropTypes.bool,
+  gridWidthRule: PropTypes.arrayOf(PropTypes.string),
 }
 
 CardGroup.defaultProps = {
   toggleGroup: 'default',
   defaultDisplay: DISPLAY_GRID,
   allowToggle: true,
+  gridWidthRule: ['100%', '100%', '50%', '50%', '33.33%'],
 }
 
 export default CardGroup
