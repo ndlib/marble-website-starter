@@ -9,6 +9,22 @@ export const listOrder = (list, sort) => {
     list.sort((a, b) => {
       return a.key && b.key ? a.key.localeCompare(b.key, undefined, { numeric: true }) : 0
     })
+  } else if (sort === 'century') {
+    list.sort((a, b) => {
+      if (!a.key || !b.key) {
+        return 0
+      } else if (a.key.startsWith('Pre-')) {
+        return -1
+      } else if (b.key.startsWith('Pre-')) {
+        return 1
+      }
+      const aBC = a.key.includes('BC')
+      const bBC = b.key.includes('BC')
+      // -1 if first item is BC; 1 if second item is BC; else 0
+      const eraDiff = bBC - aBC
+      const directionOperator = (aBC ? -1 : 1) // Inverts comparison when comparing BC dates; higher numbers first
+      return eraDiff || (a.key.localeCompare(b.key, undefined, { numeric: true }) * directionOperator)
+    })
   }
 
   return list

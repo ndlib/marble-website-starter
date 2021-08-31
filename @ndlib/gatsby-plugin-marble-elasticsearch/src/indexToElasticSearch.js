@@ -2,13 +2,12 @@ module.exports = async (client, searchIndex, nodes) => {
   console.log('Sending data to ElasticSearch')
 
   // convert the data to bulk index format
-  let body = []
+  const body = []
   nodes.forEach((node) => {
     body.push({ index:  { _index: searchIndex, _type: '_doc', _id: node.id } })
     body.push(node)
   })
-  body = chunkResults(10000, body)
-  const bulkResponses = await Promise.all(body.map((n) => client.bulk({ timeout: '30m', refresh: true, body: n })))
+  const bulkResponses = await processChunk(client, chunkResults(1000, body))
   const erroredDocuments = []
   bulkResponses.forEach((bulkResponse) => {
     if (bulkResponse.errors) {
@@ -50,4 +49,16 @@ const chunkResults = (chunkSize, arr) => {
     R.push(arr.slice(i, i + chunkSize))
   }
   return R
+}
+
+const processChunk = async (client, chunks, index = 0) => {
+  let responses = []
+  const chunk = chunks[index]
+  const result = await client.bulk({ timeout: '30m', refresh: true, body: chunk })
+  responses.push(result)
+  if (index < chunks.length - 1) {
+    const next = await processChunk(client, chunks, index + 1)
+    responses = responses.concat(next)
+  }
+  return responses
 }

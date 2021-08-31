@@ -8,8 +8,9 @@ const getLanguages = require('../searchData/getLanguages')
 const getKeywordsFromSubjects = require('../searchData/getKeywordsFromSubjects')
 const getThumbnail = require('../searchData/getThumbnail')
 
-module.exports = async (item) => {
-  const dateData = realDatesFromCatalogedDates(item.createdDate)
+module.exports = async (item, pluginOptions) => {
+  const { timePeriodCutoff } = pluginOptions
+  const dateData = realDatesFromCatalogedDates(item.createdDate, timePeriodCutoff)
   const creators = getCreators(item)
   const themes = getKeywordsFromSubjects(item)
   const allMetadataKeys = [

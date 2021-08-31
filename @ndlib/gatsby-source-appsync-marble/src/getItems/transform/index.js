@@ -21,7 +21,7 @@ module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
     parentId:  appSyncItem.parentId,
     partiallyDigitized: mapFieldOrDefault(appSyncItem, 'partiallyDigitized', false),
     sequence: appSyncItem.sequence,
-    searchData: await formatSearchData(appSyncItem),
+    searchData: await formatSearchData(appSyncItem, pluginOptions),
     slug: slug,
     title: appSyncItem.title,
   }
