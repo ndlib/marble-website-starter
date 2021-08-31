@@ -1,3 +1,4 @@
+import '@okta/okta-auth-js/polyfill'
 import { OktaAuth } from '@okta/okta-auth-js'
 import typy from 'typy'
 import { userIdFromClaims } from 'utils/auth'
@@ -25,7 +26,7 @@ export const putAuthSettingsInStore = (location) => {
     const authClientSettings = {
       url: 'https://okta.nd.edu',
       clientId: '0oa1f3ut0aKpdwap5357',
-      redirectUri: `${location.origin}/user`,
+      redirectUri: `${location.origin}/loginReturn`,
       issuer: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
       ignoreSignature: true,
       responseType: 'id_token',
@@ -47,7 +48,7 @@ export const setAuthClient = (authClientSettings) => {
 export const getTokenAndPutInStore = (loginReducer, location) => {
   return dispatch => {
     if (loginReducer.authClientSettings) {
-      const authClient = new OktaAuth(loginReducer.authClientSettings)
+      // const authClient = new OktaAuth(loginReducer.authClientSettings)
       try {
         authClient.tokenManager.get('idToken')
           .then(idToken => {

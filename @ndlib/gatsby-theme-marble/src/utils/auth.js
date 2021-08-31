@@ -5,7 +5,8 @@ const isBrowser = typeof window !== `undefined`
 
 export const isLoggedIn = (loginReducer) => {
   if (!isBrowser) return false
-  return (loginReducer.status === STATUS_LOGGED_IN)
+
+  return (loginReducer && loginReducer.status === STATUS_LOGGED_IN)
 }
 
 export const ownsPage = (loginReducer, location) => {

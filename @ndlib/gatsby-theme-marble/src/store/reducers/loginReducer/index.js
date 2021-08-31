@@ -27,6 +27,7 @@ export const defaultState = {
 
 // eslint-disable-next-line complexity
 export default (state = defaultState, action) => {
+  console.log("state=", state, action)
   switch (action.type) {
     case SET_NOT_LOGGED_IN:
       return {
