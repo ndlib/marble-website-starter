@@ -23,7 +23,7 @@ extraControls - React compontents you want to display along side of the toggle.
 allowToggle - true to see the toggle false to not display
 defaultState - the default state the toggle should be in grid or list
   (or you can use DISPLAY_GRID or DISPLAY list from store/actions/displayActions)
-  gridWidthRule - accepts an array widths for the available breakpoints
+  gridWidthRule - accepts a string or an array of strings as the width rule for cards displayed in grid view. Defaults to ['100%', '100%', '50%', '50%', '33.33%']
 */
 export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, defaultDisplay, gridWidthRule }) => {
   const layout = useSelector(state => state.displayReducer[toggleGroup])
