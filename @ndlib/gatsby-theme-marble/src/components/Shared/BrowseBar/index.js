@@ -24,7 +24,7 @@ const BrowseBar = ({
 BrowseBar.propTypes = {
   target: PropTypes.string,
   label: PropTypes.string.isRequired,
-  image: PropTypes.string,
+  image: PropTypes.node,
 }
 
 export default BrowseBar

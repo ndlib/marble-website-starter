@@ -77,7 +77,7 @@ SchemaJsonLd.propTypes = {
   creditText: PropTypes.string,
   classification: PropTypes.string,
   copyrightStatus: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
+  keywords: PropTypes.string,
   dimensions: PropTypes.string,
   relatedLocation: PropTypes.string,
   publisher: PropTypes.string,

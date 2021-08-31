@@ -35,12 +35,16 @@ module.exports = {
   svg: {
     verticalAlign: 'middle',
   },
-  container: {
+  contentContainer: {
+    height: 'calc(100vh - 80px - 3.5rem)',
+  },
+  flexContainer: {
     display: 'flex',
     flexFlow: 'column nowrap',
     alignItems: 'stretch',
-    maxHeight: 'calc(100vh - 80px - 3.5rem)',
+    height: '100%',
     position: 'relative',
+    justifyContent: 'space-between',
   },
   body: {
     overflowX: 'hidden',

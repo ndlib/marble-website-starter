@@ -59,7 +59,7 @@ export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
 }
 
 CardGroupToggle.propTypes = {
-  extraControls: PropTypes.func,
+  extraControls: PropTypes.node,
   toggleGroup: PropTypes.string.isRequired,
   layout: PropTypes.string.isRequired,
 }
