@@ -13,15 +13,17 @@ const HitDisplay = ({ hits, defaultDisplay, extraControls }) => {
       extraControls={extraControls}
     >
       {
-        hits ? hits.map(
-          (hit, index) => (
-            <HitResult
-              hit={hit}
-              key={index}
-              referal={referal}
-            />
-          ),
-        ) : null
+        hits
+          ? hits.map(
+            (hit, index) => (
+              <HitResult
+                hit={hit}
+                key={index}
+                referal={referal}
+              />
+            ),
+          )
+          : null
       }
     </CardGroup>
   )
