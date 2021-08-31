@@ -1,0 +1,51 @@
+module.exports = {
+  defaultHeroBanner: {
+    position: 'relative',
+    display: 'grid',
+    gridTemplateRows: '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',
+    gridTemplateColumns: '[screen-start] 5vw [container-start title-start] 1fr [title-end image-start] 2fr [image-end container-end] 5vw [screen-end]',
+    '::before': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      top: '0',
+      bottom: '0',
+      left: '0',
+      right: '0',
+      zIndex:'-1',
+      backgroundImage: 'url(https://conductor.nd.edu/stylesheets/themes/ndt/v3/images/hdr-main-building-800.jpg)',
+      backgroundRepeat: 'repeat',
+      gridRow: 'header-start/title-end',
+    },
+  },
+  bannerHeading: {
+    ml: 0,
+    pr: '2rem',
+    marginTop: '4rem',
+    gridColumn: 'title',
+    gridRow: 'title',
+    alignSelf: 'flex-end',
+  },
+  descriptionSection: {
+    gridColumn: 'title',
+    gridRow: 'lede',
+    bg: 'white',
+    pr: '2rem',
+    height: '200px',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  },
+  descriptionText: {
+    display: 'block',
+  },
+  descriptionButton: {
+    alignItems: 'end',
+    justifyItems: 'end',
+    width: '100%',
+    flexDirection: 'row',
+  },
+  bannerImageContainer: {
+    gridRow: 'title-start/header-end',
+    gridColumn: 'image-start/screen-end',
+  },
+}

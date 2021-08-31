@@ -3,7 +3,6 @@ import { jsx } from 'theme-ui'
 import {
   SearchBox,
   SelectedFilters,
-  ResetFilters,
 } from 'searchkit'
 import { useTranslation } from 'react-i18next'
 import sx from './sx'
@@ -42,7 +41,7 @@ const SearchFilterBox = () => {
   )
 }
 
-const customQueryBuilder = (query, options) => {
+const customQueryBuilder = (query) => {
   return {
     bool : {
       should : [

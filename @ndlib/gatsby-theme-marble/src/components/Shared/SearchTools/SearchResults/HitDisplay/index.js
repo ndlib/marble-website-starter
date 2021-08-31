@@ -36,7 +36,6 @@ HitDisplay.propTypes = {
 }
 HitDisplay.defaultProps = {
   defaultDisplay: 'list',
-  extraControls: PropTypes.node,
 }
 
 export default HitDisplay

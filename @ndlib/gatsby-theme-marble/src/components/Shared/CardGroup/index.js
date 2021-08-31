@@ -82,7 +82,7 @@ CardGroup.propTypes = {
   children: PropTypes.node,
   defaultDisplay: PropTypes.string,
   toggleGroup: PropTypes.string,
-  extraControls: PropTypes.func,
+  extraControls: PropTypes.node,
   allowToggle: PropTypes.bool,
   gridWidthRule: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
