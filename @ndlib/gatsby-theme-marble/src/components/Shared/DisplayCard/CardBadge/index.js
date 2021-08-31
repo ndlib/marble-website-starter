@@ -34,7 +34,7 @@ const CardBadge = ({ type }) => {
       return (
         <span sx={containerSx}>
           <IconContext.Provider value={{ color: 'white' }}>
-            <MdOpenInNew sx={iconSx}/>
+            <MdOpenInNew sx={iconSx} />
           </IconContext.Provider>
         </span>
       )
@@ -42,7 +42,7 @@ const CardBadge = ({ type }) => {
       return (
         <span sx={containerSx}>
           <IconContext.Provider value={{ color: 'white' }}>
-            <MdCollectionsBookmark sx={iconSx}/>
+            <MdCollectionsBookmark sx={iconSx} />
           </IconContext.Provider>
         </span>
       )
@@ -50,11 +50,12 @@ const CardBadge = ({ type }) => {
       return (
         <span sx={containerSx}>
           <IconContext.Provider value={{ color: 'white' }}>
-            <MdPictureAsPdf sx={iconSx}/>
+            <MdPictureAsPdf sx={iconSx} />
           </IconContext.Provider>
         </span>
       )
     default:
+      console.error('Unspecified CardBadge icon.')
       return null
   }
 }
