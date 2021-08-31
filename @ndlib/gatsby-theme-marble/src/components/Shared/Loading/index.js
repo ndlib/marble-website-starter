@@ -6,7 +6,7 @@ const Loading = () => {
     <div className={style.skThreeBounce}>
       <div className={`${style.skChild} ${style.skBounce1}`} />
       <div className={`${style.skChild} ${style.skBounce2}`} />
-      <div className={`${style.skChild} ${style.skBounce3}`} />
+      <div className={style.skChild} />
     </div>
   )
 }
