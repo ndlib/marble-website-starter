@@ -17,14 +17,15 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
   console.log(marbleItem)
   useEffect(() => {
     const abortController = new AbortController()
-    getPortfolioUser({ loginReducer: loginReducer })
-      .then((result) => {
-        console.log('res', result.portfolioCollections.items)
-        setPortfolios(result.portfolioCollections.items)
-      })
-      .catch((e) => {
-        console.error(e)
-      })
+    if (loginReducer.user.portfolioUserId) {
+      getPortfolioUser({ userName: loginReducer.user.portfolioUserId, loginReducer: loginReducer })
+        .then((result) => {
+          setPortfolios(result.portfolioCollections.items)
+        })
+        .catch((e) => {
+          console.error(e)
+        })
+    }
     return () => {
       abortController.abort()
     }

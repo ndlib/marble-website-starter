@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import typy from 'typy'
 import { jsx } from 'theme-ui'
 import sx from './sx'
+import { savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
 
 export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
   const [item, setItem] = useState(itemInCollection(collection, marbleItem))
