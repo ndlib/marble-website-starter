@@ -101,6 +101,7 @@ module.exports = {
       width: '36px',
     },
   },
+  // Note list and grid under "cardGroup" override some aspects of the DisplayCards themselves to adjust for the changes in layout.
   cardGroup: {
     list: {
       padding: '1rem',
@@ -123,7 +124,7 @@ module.exports = {
     },
     grid: {
       padding: '1rem',
-      // width: // included in file to allow override of gridWidthRule
+      // use the gridWidthRule prop on CardGroup instead to set "width" of cards
     },
     toggle: {
       justifyContent: 'space-between',
