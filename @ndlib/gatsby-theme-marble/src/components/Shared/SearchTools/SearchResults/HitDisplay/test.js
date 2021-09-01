@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import HitDisplay, { HitList, HitGrid } from './'
 import HitResult from './HitResult'
-import CardGroup from 'components/Shared/CardGroup'
+import CardGroup from 'components/Shared/DisplayCard/CardGroup'
 
 const hits = [
   { _id: 'a', highlight: { 'allMetadata.folded': ['<em>data</em>'] } },

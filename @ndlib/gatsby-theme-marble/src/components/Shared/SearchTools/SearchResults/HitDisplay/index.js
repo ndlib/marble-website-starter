@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CardGroup from 'components/Shared/CardGroup'
+import CardGroup from 'components/Shared/DisplayCard/CardGroup'
 import HitResult from './HitResult'
 
 const HitDisplay = ({ hits, defaultDisplay, extraControls }) => {

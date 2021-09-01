@@ -3,6 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import sx from '../../../sx.js'
 
 export const ToggleButton = ({ option, action, active }) => {
   return (
@@ -15,13 +16,7 @@ export const ToggleButton = ({ option, action, active }) => {
         onClick={() => {
           action(option)
         }}
-        sx={active ? {
-          backgroundColor: 'primary',
-          cursor: 'default',
-        } : {
-          backgroundColor:'#dedede',
-          opacity: '.3',
-        }}
+        sx={active ? sx.cardGroup.toggleButton.active : sx.cardGroup.toggleButton.inactive}
       />
     </label>
   )

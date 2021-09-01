@@ -310,6 +310,11 @@ const dataLookUp = {
       type: 'list',
       processor: genericFind,
     },
+    digitizationSource: {
+      label: 'Digitization Source',
+      type: 'list',
+      processor: genericFind,
+    },
     geographicLocations: {
       label: 'Related Location',
       type: 'list',

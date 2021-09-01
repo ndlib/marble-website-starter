@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ToggleButton from './ToggleButton'
-import sx from './sx.js'
+import sx from '../../sx.js'
 import { useDispatch } from 'react-redux'
 import { jsx, Flex, Box } from 'theme-ui'
 import {
@@ -33,7 +33,7 @@ export const CardGroupToggle = ({ toggleGroup, layout, extraControls }) => {
   ]
 
   return (
-    <Flex sx={sx.wrapper} >
+    <Flex sx={sx.cardGroup.toggle} >
       <Box sx={{ width: '100%', py: '2px', paddingRight: '5px' }}>
         {extraControls}
       </Box>
