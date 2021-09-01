@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import CardGroup from 'components/Shared/CardGroup'
+import CardGroup from 'components/Shared/DisplayCard/CardGroup'
 import MarbleItemCard from 'components/Shared/DisplayCard/MarbleItemCard'
 import findImage from 'utils/findImage'
 

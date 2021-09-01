@@ -101,4 +101,48 @@ module.exports = {
       width: '36px',
     },
   },
+  cardGroup: {
+    list: {
+      padding: '1rem',
+      width: ['100%'],
+      figure: {
+        display: 'inline-block',
+        verticalAlign: 'top',
+        width: '300px',
+      },
+      figcaption: {
+        display: 'inline-block',
+        padding: '0 1rem !important',
+        verticalAlign: 'top',
+        width: 'calc( 100% - 300px)',
+      },
+      '.card a': {
+        paddingBottom: '0',
+        '&:hover': { paddingBottom: '0' },
+      },
+    },
+    grid: {
+      padding: '1rem',
+      // width: // included in file to allow override of gridWidthRule
+    },
+    toggle: {
+      justifyContent: 'space-between',
+      '& input': {
+        borderRadius: '.25rem',
+        margin: '2px',
+        padding: '2px',
+        width : '30px',
+      },
+    },
+    toggleButton: {
+      active: {
+        backgroundColor: 'primary',
+        cursor: 'default',
+      },
+      inactive: {
+        backgroundColor:'#dedede',
+        opacity: '.3',
+      },
+    },
+  },
 }

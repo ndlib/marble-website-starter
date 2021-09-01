@@ -9,6 +9,7 @@ import CardGroupToggle from './CardGroupToggle'
 import {
   DISPLAY_GRID,
 } from 'store/actions/displayActions'
+import sx from '../sx.js'
 export const LayoutContext = React.createContext(DISPLAY_GRID)
 
 /*
@@ -30,28 +31,13 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
   if (!typy(children).isArray) {
     return null
   }
-  const sx = {
-    list: {
-      padding: '1rem',
-      width: ['100%'],
-      figure: {
-        display: 'inline-block',
-        verticalAlign: 'top',
-        width: '300px',
-      },
-      figcaption: {
-        display: 'inline-block',
-        verticalAlign: 'top',
-        width: 'calc( 100% - 300px)',
-      },
-      '.card a': {
-        paddingBottom: '0',
-        '&:hover': { paddingBottom: '0' },
-      },
-    },
+
+  // do a little sx override here to allow custom setting of the gridWidthRule
+  const localSx = {
+    list: sx.cardGroup.list,
     grid: {
+      ...sx.cardGroup.grid,
       width: gridWidthRule,
-      padding: '1rem',
     },
   }
   const displayLayout = layout || defaultDisplay
@@ -70,7 +56,7 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
       <Flex sx={{ flexWrap: 'wrap' }}>
         {
           typy(children).safeArray.map((child, index) => {
-            return (<Box key={index} sx={sx[displayLayout]}>{child}</Box>)
+            return (<Box key={index} sx={localSx.[displayLayout]}>{child}</Box>)
           })
         }
       </Flex>
