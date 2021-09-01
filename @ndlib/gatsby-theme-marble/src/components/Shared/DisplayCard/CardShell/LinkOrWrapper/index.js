@@ -2,35 +2,18 @@
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
+import sx from '../../sx.js'
 
 const LinkOrWrapper = ({ target, children }) => {
-  const linkSx = {
-    display: 'block',
-    position: 'relative',
-  }
   return target
     ? (
       <Link
         to={target}
-        sx={{
-          ...linkSx,
-          color: 'unset',
-          textDecoration: 'none',
-          paddingBottom: '1.5rem',
-          transitionDuration: '.3s',
-          '&:hover': {
-            textDecoration: 'none',
-            backgroundColor: 'light',
-            transform: 'scale(1.025)',
-            paddingBottom: '1.25rem',
-            borderBottom: '0.25rem solid',
-            borderColor: 'lightDark',
-          },
-        }}
+        sx={sx.linkOrWrapper.link}
       >{children}</Link>
     )
     : (
-      <div sx={linkSx}>{children}</div>
+      <div sx={sx.linkOrWrapper.wrapper}>{children}</div>
     )
 }
 

@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import { jsx, Heading } from 'theme-ui'
 import CardShell from './CardShell'
+import sx from './sx.js'
 
 const DisplayCard = ({
   // variant,
@@ -20,52 +21,21 @@ const DisplayCard = ({
       rightBadge={rightBadge}
       controls={controls}
     >
-      <figure
-        className='cardImage'
-        sx={{
-          margin: '0 auto',
-          border: '1px solid',
-          borderColor: 'gray.2',
-        }}>
-        <div
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'gray.1',
-            maxWidth: '100%',
-            height: '300px',
-            width: '100%',
-            margin: '0 auto',
-          }}
-        >
+      <figure sx={sx.displayCard.figure}>
+        <div sx={sx.displayCard.image}>
           <img
             src={image}
             alt={title}
-            sx={{
-              display: 'block',
-              objectFit: 'contain',
-              width: '100%',
-              height: '300px',
-            }}
           />
         </div>
       </figure>
-      <figcaption sx={{
-        padding: '0 0.5rem',
-      }}>
+      <figcaption sx={sx.displayCard.figcaption}>
         <Heading
           as='h2'
           variant='styles.h2'
-          sx={{
-            marginTop: '0.5rem',
-            maxHeight: 'calc(1.25rem * 1.2 * 3)', // fontSize * lineHeight * numOfLines
-            overflowY: 'hidden',
-          }}
+          sx={sx.displayCard.heading}
         >{title}</Heading>
-        <div className='cardText'>
-          {children}
-        </div>
+        <div sx={sx.displayCard.additionalText}>{children}</div>
       </figcaption>
 
     </CardShell>
