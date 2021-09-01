@@ -1,4 +1,4 @@
-module.exports = (dates) => {
+module.exports = (dates, timePeriodCutoff = 1400) => {
   if (!Array.isArray(dates)) {
     dates = [dates]
   }
@@ -9,8 +9,8 @@ module.exports = (dates) => {
 
   const result = {
     dates: dates,
-    lowestSearchRange: 50000,
-    highestSearchRange: -50000,
+    lowestSearchRange: 500000,
+    highestSearchRange: -500000,
     circa: false,
     undated: false,
     extractedYears: [],
@@ -21,7 +21,7 @@ module.exports = (dates) => {
   setLowestAndHighestYear(result)
   setCircaDate(result)
   setUndated(result)
-  setCenturyTags(result)
+  setCenturyTags(result, timePeriodCutoff)
 
   return result
 }
@@ -51,19 +51,24 @@ const setCircaDate = (result) => {
 }
 
 // adds century tags to the date data
-const setCenturyTags = (result) => {
+const setCenturyTags = (result, timePeriodCutoff) => {
   if (result.undated) {
     result.centuryTags.push('undated')
     return
   }
 
-  for (let i = result.lowestSearchRange; i <= result.highestSearchRange; i += 100) {
-    const pre = i.toString().slice(0, -2)
-    result.centuryTags.push(pre + '00-' + (pre === '20' ? 'present' : pre + '99'))
+  const roundDownToHundred = (year) => {
+    return Math.floor(year / 100) * 100
   }
-  // add the end because it can be passed in the loop
-  const pre = result.highestSearchRange.toString().slice(0, -2)
-  result.centuryTags.push(pre + '00-' + (pre === '20' ? 'present' : pre + '99'))
+
+  for (let begin = roundDownToHundred(result.lowestSearchRange); begin <= result.highestSearchRange; begin += 100) {
+    const end = begin + 99
+    if (end < timePeriodCutoff) {
+      result.centuryTags.push(`Pre-${timePeriodCutoff}`)
+    } else {
+      result.centuryTags.push(resolveYearString(begin) + '-' + resolveYearString(end))
+    }
+  }
 
   // uniq
   result.centuryTags = [...new Set(result.centuryTags)]
@@ -147,10 +152,22 @@ const lookUpOrdinalDateModifiers = (text) => {
   }
 }
 
-// find all the years 3 and 4 digit in here.
-// still a problem with 2 digit ones.
 const extractGeneralDate = (d) => {
-  return d.match(/([0-9]{3,4})/g)
+  // Treat BCE years as negative numbers. E.g. 1500-700 BCE = [-1500, -700]
+  // This should handle date ranges that span across eras. 200 BCE-600 CE = [-200, 600]
+  // 0 is the only number less than 3 digits that is valid. 100 BCE-0 = [-100, 0]
+  const bcYears = (d.match(/([0-9]{3,})(?=.*B\.?C\.?E?)/gi) || []).map(year => -year)
+  const ceYears = (d.match(/([0-9]{3,}|(?<=^|-)0(?=$|-))(?!.*B\.?C\.?E?)/gi) || [])
+  return bcYears.concat(ceYears)
+}
+
+const resolveYearString = (year, allowFutureYear) => {
+  if (year >= 0) {
+    const currentYear = new Date().getFullYear()
+    return (!allowFutureYear && year >= currentYear) ? 'present' : year.toString()
+  } else {
+    return Math.abs(year) + ' BCE'
+  }
 }
 
 // The following code is no longer used in the functions above

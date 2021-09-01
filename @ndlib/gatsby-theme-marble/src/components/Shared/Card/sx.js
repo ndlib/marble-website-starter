@@ -27,7 +27,7 @@ module.exports = {
       '& em': {
         backgroundColor: 'highlight',
       },
-      height: ['435px', '435px', '250px'],
+      height: ['435px', '435px', '100%'],
       overflow: ['hidden', 'hidden', 'inherit'],
       position: 'relative',
     } : {

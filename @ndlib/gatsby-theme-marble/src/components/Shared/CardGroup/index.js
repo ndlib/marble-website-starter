@@ -45,11 +45,15 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
   return (
     <LayoutContext.Provider value={displayLayout}>
       {
-        allowToggle ? (<CardGroupToggle
-          toggleGroup={toggleGroup}
-          layout={displayLayout}
-          extraControls={extraControls}
-        />) : null
+        allowToggle
+          ? (
+            <CardGroupToggle
+              toggleGroup={toggleGroup}
+              layout={displayLayout}
+              extraControls={extraControls}
+            />
+          )
+          : null
       }
       <Flex sx={{ flexWrap: 'wrap' }}>
         {
@@ -66,7 +70,7 @@ CardGroup.propTypes = {
   children: PropTypes.node,
   defaultDisplay: PropTypes.string,
   toggleGroup: PropTypes.string,
-  extraControls: PropTypes.func,
+  extraControls: PropTypes.node,
   allowToggle: PropTypes.bool,
 }
 

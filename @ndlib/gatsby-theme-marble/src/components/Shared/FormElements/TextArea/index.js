@@ -3,12 +3,13 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import sx from './sx'
 
-const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false, valid = true, warning }) => {
+const TextArea = ({ id, label, hideLabel, defaultValue, onChange, disabled, valid, warning }) => {
   return (
     <div sx={sx.wrapper}>
       <label
         htmlFor={id}
         sx={sx.label}
+        className={hideLabel ? 'accessibilityOnly' : ''}
       >{label}</label>
       <textarea
         id={id}
@@ -28,6 +29,7 @@ const TextArea = ({ id, label, defaultValue = '', onChange, disabled = false, va
 TextArea.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  hideLabel: PropTypes.bool,
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
@@ -36,6 +38,10 @@ TextArea.propTypes = {
 }
 
 TextArea.defaultProps = {
+  hideLabel: false,
+  defaultValue: '',
+  disabled: false,
+  valid: true,
   onChange: (event) => {
     console.warn(`TextArea changed to "${event.target.value}" but no function was specified in props.`)
   },

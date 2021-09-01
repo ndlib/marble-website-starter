@@ -4,7 +4,7 @@ body {
   -webkit-font-smoothing: antialiased !important;
 }
 #gatsby-focus-wrapper {
-
+  overflow-x: hidden;
 }
 div {
   box-sizing: border-box;

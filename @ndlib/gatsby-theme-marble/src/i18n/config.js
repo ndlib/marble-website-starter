@@ -3,7 +3,8 @@ import defaultCommonJSON from 'assets/i18n/json/common.default.en'
 import commonJSON from 'assets/i18n/json/common.en'
 import defaultTextJSON from 'assets/i18n/json/text.default.en'
 import textJSON from 'assets/i18n/json/text.en'
-export default {
+
+const config = {
   lng: 'en',
   fallbackLng: 'en',
   resources: {
@@ -20,6 +21,8 @@ export default {
     escapeValue: false, // not needed for react!!
   },
   react: {
-    wait: true,
+    useSuspense: true,
   },
 }
+
+export default config

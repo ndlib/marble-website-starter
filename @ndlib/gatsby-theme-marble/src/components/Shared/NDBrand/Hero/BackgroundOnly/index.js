@@ -3,41 +3,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
+import sx from './sx'
 
-export const NDBrandHeroBarckgroundOnly = ({ variant }) => {
-  const gutterWidth = '5vw'
-
+const NDBrandHeroBackgroundOnly = ({ variant }) => {
   return (
-    <div id='page-header' variant={`pageHeaders.${variant}`} sx={{
-      display: ['none', 'none', 'none', 'grid'],
-      position: 'relative',
-      gridColumn: 'screen',
-      gridRow: 'header',
-      gridTemplateRows: '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',
-      gridTemplateColumns: `[screen-start] ${gutterWidth} [container-start title-start] 1fr [title-end image-start] 0 [image-end container-end] ${gutterWidth} [screen-end]`,
-      mb: 'calc(-1 * 3.5rem)',
-      '::before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        top: '0',
-        bottom: '0',
-        left: '0',
-        right: '0',
-        zIndex:'-1',
-        backgroundImage: 'url(https://conductor.nd.edu/stylesheets/themes/ndt/v3/images/hdr-main-building-800.jpg)',
-        backgroundRepeat: 'repeat',
-      },
-    }} />
+    <div id='page-header' variant={`pageHeaders.${variant}`} sx={sx.backgroundHeroBanner} />
   )
 }
 
-NDBrandHeroBarckgroundOnly.propTypes = {
+NDBrandHeroBackgroundOnly.propTypes = {
   variant: PropTypes.string.isRequired,
 }
 
-NDBrandHeroBarckgroundOnly.defaultProps = {
+NDBrandHeroBackgroundOnly.defaultProps = {
   variant: 'default',
 }
 
-export default NDBrandHeroBarckgroundOnly
+export default NDBrandHeroBackgroundOnly

@@ -36,14 +36,19 @@ const buttonShared = {
   fontSize: 3,
   px: '1.5rem',
   borderRadius: '.6em',
-  '&:hover': {
+  '&:disabled': {
+    backgroundColor: 'gray.5',
+    color: 'gray.2',
+    cursor: 'not-allowed',
+  },
+  '&:hover:not(:disabled)': {
     transform: 'scale(1.02)',
     cursor: 'pointer',
     textDecoration: 'none',
   },
   '& a': {
     textDecoration: 'none',
-    '&:hover': {
+    '&:hover:not(:disabled)': {
       textDecoration: 'none',
     },
   },
@@ -157,8 +162,8 @@ const theme = merge(bootstrapTheme, {
       ...buttonShared,
       color: 'white',
       bg: 'primary',
-      '&:hover': {
-        ...buttonShared['&:hover'],
+      '&:hover:not(:disabled)': {
+        ...buttonShared['&:hover:not(:disabled)'],
         bg: 'primaryBright',
       },
       '& a': {
@@ -179,8 +184,8 @@ const theme = merge(bootstrapTheme, {
       ...buttonShared,
       bg: 'secondary',
       color: 'white',
-      '&:hover': {
-        ...buttonShared['&:hover'],
+      '&:hover:not(:disabled)': {
+        ...buttonShared['&:hover:not(:disabled)'],
         bg: 'secondaryDark',
       },
       '& a': {
@@ -195,8 +200,8 @@ const theme = merge(bootstrapTheme, {
       ...buttonShared,
       color: 'text',
       bg: 'light',
-      '&:hover': {
-        ...buttonShared['&:hover'],
+      '&:hover:not(:disabled)': {
+        ...buttonShared['&:hover:not(:disabled)'],
         bg: 'lightDark',
       },
       '& a': {
@@ -211,8 +216,8 @@ const theme = merge(bootstrapTheme, {
       ...buttonShared,
       color: 'primary',
       bg: 'white',
-      '&:hover': {
-        ...buttonShared['&:hover'],
+      '&:hover:not(:disabled)': {
+        ...buttonShared['&:hover:not(:disabled)'],
         bg: 'lightLight',
       },
       '& a': {
@@ -233,7 +238,7 @@ const theme = merge(bootstrapTheme, {
       textDecoration: 'none',
       padding: '0',
       wordBreak: 'break-word',
-      ':hover': {
+      ':hover:not(:disabled)': {
         textDecoration: 'underline',
       },
     },
@@ -538,7 +543,7 @@ const theme = merge(bootstrapTheme, {
       color: 'primaryBright',
       textDecoration: 'none',
       wordBreak: 'break-word',
-      ':hover': {
+      ':hover:not(:disabled)': {
         textDecoration: 'underline',
       },
     },
