@@ -56,7 +56,7 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
       <Flex sx={{ flexWrap: 'wrap' }}>
         {
           typy(children).safeArray.map((child, index) => {
-            return (<Box key={index} sx={localSx.[displayLayout]}>{child}</Box>)
+            return (<Box key={index} sx={localSx[displayLayout]}>{child}</Box>)
           })
         }
       </Flex>
