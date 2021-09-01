@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import { jsx, Heading } from 'theme-ui'
 import CardShell from './CardShell'
+import CardImage from './CardImage'
 import sx from './sx.js'
 
 const DisplayCard = ({
@@ -22,12 +23,7 @@ const DisplayCard = ({
       controls={controls}
     >
       <figure sx={sx.displayCard.figure}>
-        <div sx={sx.displayCard.image}>
-          <img
-            src={image}
-            alt={title}
-          />
-        </div>
+        <CardImage image={image} alt={title} />
       </figure>
       <figcaption sx={sx.displayCard.figcaption}>
         <Heading
@@ -43,8 +39,7 @@ const DisplayCard = ({
 }
 
 DisplayCard.propTypes = {
-  // variant: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   leftBadge: PropTypes.node,
   rightBadge: PropTypes.node,
   controls: PropTypes.node,
