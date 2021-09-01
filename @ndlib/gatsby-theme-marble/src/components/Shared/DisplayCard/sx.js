@@ -81,4 +81,24 @@ module.exports = {
       // keep for easier override
     },
   },
+  cardBadge: {
+    icon: {
+      height: '18px',
+      width: '18px',
+      marginTop: '9px',
+    },
+    container: {
+      backgroundColor: 'primary',
+      borderRadius: '20px',
+      height: '36px',
+      lineHeight: '36px',
+      margin: '0',
+      position: 'absolute',
+      right: '0',
+      textAlign: 'center',
+      top: '0',
+      verticalAlign: 'middle',
+      width: '36px',
+    },
+  },
 }

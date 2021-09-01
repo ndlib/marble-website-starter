@@ -8,49 +8,31 @@ import {
   MdCollectionsBookmark,
   MdPictureAsPdf,
 } from 'react-icons/md'
+import sx from '../sx.js'
 
 const CardBadge = ({ type }) => {
-  const iconSx = {
-    height: '18px',
-    width: '18px',
-    marginTop: '9px',
-  }
-  const containerSx = {
-    backgroundColor: 'primary',
-    borderRadius: '20px',
-    height: '36px',
-    lineHeight: '36px',
-    margin: '0',
-    position: 'absolute',
-    right: '0',
-    textAlign: 'center',
-    top: '0',
-    verticalAlign: 'middle',
-    width: '36px',
-  }
-
   switch (type) {
     case 'link':
       return (
-        <span sx={containerSx}>
+        <span sx={sx.cardBadge.container}>
           <IconContext.Provider value={{ color: 'white' }}>
-            <MdOpenInNew sx={iconSx} />
+            <MdOpenInNew sx={sx.cardBadge.icon} />
           </IconContext.Provider>
         </span>
       )
     case 'collection':
       return (
-        <span sx={containerSx}>
+        <span sx={sx.cardBadge.container}>
           <IconContext.Provider value={{ color: 'white' }}>
-            <MdCollectionsBookmark sx={iconSx} />
+            <MdCollectionsBookmark sx={sx.cardBadge.icon} />
           </IconContext.Provider>
         </span>
       )
     case 'pdf':
       return (
-        <span sx={containerSx}>
+        <span sx={sx.cardBadge.container}>
           <IconContext.Provider value={{ color: 'white' }}>
-            <MdPictureAsPdf sx={iconSx} />
+            <MdPictureAsPdf sx={sx.cardBadge.icon} />
           </IconContext.Provider>
         </span>
       )
