@@ -16,6 +16,7 @@ const VisibilityLabel = ({ visibility }) => {
         fontVariant: 'small-caps',
         padding: '0.5rem 1rem',
         verticalAlign: 'middle',
+        wordBreak: 'initial',
       }}
     >
       {visibility.toUpperCase()}

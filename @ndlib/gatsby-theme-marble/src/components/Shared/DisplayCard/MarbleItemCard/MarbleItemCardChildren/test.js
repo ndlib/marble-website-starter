@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import ManifestCardChildren from './'
+import MarbleItemCardChildren from './'
 
-describe('ManifestCardChildren', () => {
+describe('MarbleItemCardChildren', () => {
   const item = {
     id: 'fancyId',
     description: 'In 1814 we took a little trip,',
@@ -26,7 +26,7 @@ describe('ManifestCardChildren', () => {
     const props = {
       children: <div className='child'>children are loud</div>,
     }
-    const wrapper = mount(<ManifestCardChildren parentProps={props} />)
+    const wrapper = mount(<MarbleItemCardChildren parentProps={props} />)
     expect(wrapper.find('.child').text()).toEqual('children are loud')
   })
 
@@ -34,7 +34,7 @@ describe('ManifestCardChildren', () => {
     const props = {
       children: <div className='child'>A song about an alligator.</div>,
     }
-    const wrapper = mount(<ManifestCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} collectionName={item.metadata[2].value} />)
+    const wrapper = mount(<MarbleItemCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} collectionName={item.metadata[2].value} />)
     expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
     expect(wrapper.find('p').at(2).text()).toEqual('Part of: The Spectacular Johnny Horton')
@@ -46,7 +46,7 @@ describe('ManifestCardChildren', () => {
 
   test('no children', () => {
     const props = { children: item.description }
-    const wrapper = mount(<ManifestCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} />)
+    const wrapper = mount(<MarbleItemCardChildren parentProps={props} creator={item.metadata[0].value} date={item.metadata[1].value} />)
     expect(wrapper.find('p').at(0).html()).toContain('Johnny Horton<br>Andrew Jackson')
     expect(wrapper.find('p').at(1).text()).toEqual('1814')
     expect(wrapper.findWhere(c => {

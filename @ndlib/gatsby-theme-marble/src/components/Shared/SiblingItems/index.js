@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import Link from 'components/Shared/Link'
 import { jsx, Heading } from 'theme-ui'
 import typy from 'typy'
-import CardGroup from 'components/Shared/CardGroup'
-import ManifestCard from 'components/Shared/ManifestCard'
+import CardGroup from 'components/Shared/DisplayCard/CardGroup'
+import MarbleItemCard from 'components/Shared/DisplayCard/MarbleItemCard'
 import getArrayNeighbors from 'utils/getArrayNeighbors'
 import findImage from 'utils/findImage'
 import { DISPLAY_GRID } from 'store/actions/displayActions'
@@ -32,11 +32,11 @@ const SiblingItems = ({ marbleItem, numberBeforeAndAfter }) => {
           {
             nearSiblings.map(sibling => {
               return (
-                <ManifestCard
+                <MarbleItemCard
                   key={sibling.slug}
                   target={sibling.slug}
                   image={findImage(sibling.childrenMarbleFile, sibling, true)}
-                  label={sibling.title}
+                  title={sibling.title}
                   showSummary
                 />
               )

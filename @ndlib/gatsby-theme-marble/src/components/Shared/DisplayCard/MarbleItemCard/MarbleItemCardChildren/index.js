@@ -6,7 +6,7 @@ import { jsx } from 'theme-ui'
 import ChildField from './ChildField'
 import typy from 'typy'
 
-export const ManifestCardChildren = ({ parentProps, date, creator, collectionName }) => {
+export const MarbleItemCardChildren = ({ parentProps, date, creator, collectionName }) => {
   const collectionDisplay = typy(collectionName, '[0]').safeString ? 'Part of: ' + collectionName[0] : ''
   return (
     <>
@@ -18,7 +18,7 @@ export const ManifestCardChildren = ({ parentProps, date, creator, collectionNam
   )
 }
 
-ManifestCardChildren.propTypes = {
+MarbleItemCardChildren.propTypes = {
   date: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
@@ -30,4 +30,4 @@ ManifestCardChildren.propTypes = {
   collectionName: PropTypes.array,
   parentProps: PropTypes.object,
 }
-export default ManifestCardChildren
+export default MarbleItemCardChildren

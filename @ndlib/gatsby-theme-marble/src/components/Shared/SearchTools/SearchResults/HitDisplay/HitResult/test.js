@@ -4,7 +4,7 @@ import HitResult, {
   highlightTitle,
   highlightCreator,
 } from './'
-import ManifestCard from 'components/Shared/ManifestCard'
+import MarbleItemCard from 'components/Shared/DisplayCard/MarbleItemCard'
 
 describe('HitResult', () => {
   describe('highlightTitle', () => {
@@ -51,18 +51,18 @@ describe('HitResult', () => {
   //     },
   //   }
   //   const wrapper = shallow(<HitResult hit={hit} />)
-  //   expect(wrapper.find(ManifestCard).props().label).toEqual('name')
-  //   expect(wrapper.find(ManifestCard).props().target).toEqual('url')
-  //   expect(wrapper.find(ManifestCard).props().image).toEqual('thumbnail')
-  //   expect(wrapper.find(ManifestCard).props().creator).toEqual('creator')
-  //   expect(wrapper.find(ManifestCard).props().date).toEqual('date')
-  //   expect(wrapper.find(ManifestCard).props().type).toEqual('type')
+  //   expect(wrapper.find(MarbleItemCard).props().label).toEqual('name')
+  //   expect(wrapper.find(MarbleItemCard).props().target).toEqual('url')
+  //   expect(wrapper.find(MarbleItemCard).props().image).toEqual('thumbnail')
+  //   expect(wrapper.find(MarbleItemCard).props().creator).toEqual('creator')
+  //   expect(wrapper.find(MarbleItemCard).props().date).toEqual('date')
+  //   expect(wrapper.find(MarbleItemCard).props().type).toEqual('type')
   // })
   // test('all metadata hightlights', () => {
   //   const hit = {}
   //   const wrapper = shallow(<HitResult hit={hit} />)
 
   // expect(wrapper.find(HitResult).at(0).children().html()).toEqual('<div class="css-1itje8o"><em>data</em></div>')
-  // expect(wrapper.find(ManifestCard).at(2).children().html()).toEqual('<div class="css-1itje8o"><em>line2data</em></div>')
+  // expect(wrapper.find(MarbleItemCard).at(2).children().html()).toEqual('<div class="css-1itje8o"><em>line2data</em></div>')
   // })
 })

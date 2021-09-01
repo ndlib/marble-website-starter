@@ -9,6 +9,7 @@ import CardGroupToggle from './CardGroupToggle'
 import {
   DISPLAY_GRID,
 } from 'store/actions/displayActions'
+import sx from '../sx.js'
 export const LayoutContext = React.createContext(DISPLAY_GRID)
 
 /*
@@ -18,26 +19,25 @@ You can also set a group of card lists to be toggled together by using the same 
 This allows you to set one mode and have other lists save and reuse that mode.
 
 Params
-toggleGroup  -  a parameter that joins groups of lists to the same toggledd setting. ie. search
+toggleGroup  -  a parameter that joins groups of lists to the same toggled setting. ie. search
 extraControls - React compontents you want to display along side of the toggle.
 allowToggle - true to see the toggle false to not display
-defaultState - the default state the toggle should be in grid or list
-  (or you can use DISPLAY_GRID or DISPLAY list from store/actions/displayActions)
+defaultDisplay - the default state the toggle should be in "grid" or "list" (or you can use DISPLAY_GRID or DISPLAY_LIST from store/actions/displayActions)
+gridWidthRule - accepts a string or an array of strings as the width rule for cards displayed in grid view. Defaults to ['100%', '100%', '50%', '50%', '33.33%']
 */
-export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, defaultDisplay }) => {
+export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, defaultDisplay, gridWidthRule }) => {
   const layout = useSelector(state => state.displayReducer[toggleGroup])
 
   if (!typy(children).isArray) {
     return null
   }
-  const sx = {
-    list: {
-      padding: '1rem',
-      width: ['100%'],
-    },
+
+  // do a little sx override here to allow custom setting of the gridWidthRule
+  const localSx = {
+    list: sx.cardGroup.list,
     grid: {
-      width: ['100%', '100%', '50%', '50%', '33.33%'],
-      padding: '1rem',
+      ...sx.cardGroup.grid,
+      width: gridWidthRule,
     },
   }
   const displayLayout = layout || defaultDisplay
@@ -46,19 +46,17 @@ export const CardGroup = ({ toggleGroup, extraControls, children, allowToggle, d
     <LayoutContext.Provider value={displayLayout}>
       {
         allowToggle
-          ? (
-            <CardGroupToggle
-              toggleGroup={toggleGroup}
-              layout={displayLayout}
-              extraControls={extraControls}
-            />
-          )
+          ? (<CardGroupToggle
+            toggleGroup={toggleGroup}
+            layout={displayLayout}
+            extraControls={extraControls}
+          />)
           : null
       }
       <Flex sx={{ flexWrap: 'wrap' }}>
         {
           typy(children).safeArray.map((child, index) => {
-            return (<Box key={index} sx={sx[displayLayout]}>{child}</Box>)
+            return (<Box key={index} sx={localSx[displayLayout]}>{child}</Box>)
           })
         }
       </Flex>
@@ -72,12 +70,17 @@ CardGroup.propTypes = {
   toggleGroup: PropTypes.string,
   extraControls: PropTypes.node,
   allowToggle: PropTypes.bool,
+  gridWidthRule: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]),
 }
 
 CardGroup.defaultProps = {
   toggleGroup: 'default',
   defaultDisplay: DISPLAY_GRID,
   allowToggle: true,
+  gridWidthRule: ['100%', '100%', '50%', '50%', '33.33%'],
 }
 
 export default CardGroup

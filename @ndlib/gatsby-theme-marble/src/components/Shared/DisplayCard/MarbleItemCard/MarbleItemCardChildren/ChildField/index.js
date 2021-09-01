@@ -2,13 +2,18 @@
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import typy from 'typy'
-import sx from '../../sx'
 
 export const ChildField = ({ field }) => {
   if (field) {
     return (
       <p
-        sx={sx.lineStyle}
+        sx={{
+          '& em': {
+            backgroundColor: 'highlight',
+          },
+          margin: '0',
+          marginBottom: '.25rem',
+        }}
         dangerouslySetInnerHTML={{ __html: typy(field).isArray ? field.join('<br/>') : field }}
       />
     )
