@@ -1,4 +1,4 @@
-import '@okta/okta-auth-js/polyfill'
+//import '@okta/okta-auth-js/polyfill'
 import { OktaAuth } from '@okta/okta-auth-js'
 import typy from 'typy'
 import { userIdFromClaims } from 'utils/auth'
