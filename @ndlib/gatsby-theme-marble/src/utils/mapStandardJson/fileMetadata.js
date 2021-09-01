@@ -56,7 +56,7 @@ const getIiif = (standardJson) => {
     return {
       default: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/full/0/default.jpg'),
       service: standardJson.iiifImageUri,
-      thumbnail: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/!250,250/0/default.jpg'),
+      thumbnail: iiifUrl.origin + path.join(iiifUrl.pathname, 'full/!300,300/0/default.jpg'),
     }
   }
   return null

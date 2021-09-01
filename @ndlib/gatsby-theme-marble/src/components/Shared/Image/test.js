@@ -15,7 +15,7 @@ describe('Image', () => {
     const wrapper = mount(<Image service='service' alt='alt Txt' />)
     expect(wrapper.find('picture').exists()).toBeTruthy()
     expect(wrapper.find('img').props().alt).toEqual('alt Txt')
-    expect(wrapper.find('img').props().src).toEqual('service/full/!250,250/0/default.jpg')
+    expect(wrapper.find('img').props().src).toEqual('service/full/!300,300/0/default.jpg')
   })
 
   test('null', () => {

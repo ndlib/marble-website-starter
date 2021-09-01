@@ -68,7 +68,7 @@ const getIiif = (file) => {
     return {
       default: baseUri + '/' + path.join(imagePath, 'full/full/0/default.jpg'),
       service: baseUri + '/' + imagePath,
-      thumbnail: baseUri + '/' + path.join(imagePath, 'full/!250,250/0/default.jpg'),
+      thumbnail: baseUri + '/' + path.join(imagePath, 'full/!300,300/0/default.jpg'),
     }
   }
   return null
