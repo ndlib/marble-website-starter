@@ -12,7 +12,7 @@ const CardShell = ({
   children,
 }) => {
   return (
-    <ThemeCard sx={sx.cardShell.themeCard}>
+    <ThemeCard className='card' sx={sx.cardShell.themeCard}>
       <LinkOrWrapper target={target}>
         {children}
         <div sx={sx.cardShell.leftBadge}>{leftBadge}</div>
@@ -24,7 +24,6 @@ const CardShell = ({
 }
 
 CardShell.propTypes = {
-  // variant: PropTypes.string.isRequired,
   leftBadge: PropTypes.node,
   rightBadge: PropTypes.node,
   controls: PropTypes.node,
@@ -33,7 +32,6 @@ CardShell.propTypes = {
 }
 
 CardShell.defaultProps = {
-  // variant: 'default',
   leftBadge: null,
   rightBadge: null,
 }
