@@ -146,14 +146,14 @@ const dataLookUp = {
     },
     workType: {
       label: 'Material Type',
-      type: 'searchList',
+      type: 'list',
       processor: genericFind,
-      urlField: 'format',
     },
     format: {
       label: 'Genre/Physical Characteristic',
-      type: 'list',
+      type: 'searchList',
       processor: genericFind,
+      urlField: 'format',
     },
     dimensions: {
       label: 'Dimensions',

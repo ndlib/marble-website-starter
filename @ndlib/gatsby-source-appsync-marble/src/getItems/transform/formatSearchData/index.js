@@ -38,7 +38,9 @@ module.exports = async (item, pluginOptions) => {
     url: '/item/' + item.id,
   }
 
-  if (item.workType) {
+  if (item.sourceSystem.toLowerCase() === 'archivesspace' && item.format) {
+    searchData.formatTag = [item.format]
+  } else if (item.workType) {
     searchData.formatTag = [item.workType]
   }
 
