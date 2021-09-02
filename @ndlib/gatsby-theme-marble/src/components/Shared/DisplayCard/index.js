@@ -30,7 +30,8 @@ const DisplayCard = ({
           as='h2'
           variant='styles.h2'
           sx={sx.displayCard.heading}
-        >{title}</Heading>
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
         <div sx={sx.displayCard.additionalText}>{children}</div>
       </figcaption>
 
