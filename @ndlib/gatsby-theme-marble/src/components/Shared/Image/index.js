@@ -53,7 +53,7 @@ Image.propTypes = {
 
 Image.defaultProps = {
   region: 'full',
-  size: '!250,250',
+  size: '!300,300',
   alt: 'a static image',
   loading: 'lazy',
   imageStyle: sx.fallBack,

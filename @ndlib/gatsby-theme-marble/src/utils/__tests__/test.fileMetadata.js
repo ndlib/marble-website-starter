@@ -19,7 +19,7 @@ describe('mapImageMetadata', () => {
       iiif: {
         default: 'https://image.server.com/iiif/file/full/full/0/default.jpg',
         service: 'https://image.server.com/iiif/file',
-        thumbnail: 'https://image.server.com/iiif/file/full/!250,250/0/default.jpg',
+        thumbnail: 'https://image.server.com/iiif/file/full/!300,300/0/default.jpg',
       },
       fileType: 'image',
       sequence: 0,

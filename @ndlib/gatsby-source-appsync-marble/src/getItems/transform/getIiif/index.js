@@ -6,7 +6,7 @@ module.exports = (item) => {
     return {
       default: item.mediaServer + '/' + item.mediaResourceId + '/full/full/0/default.jpg',
       service: item.mediaServer + '/' + item.mediaResourceId,
-      thumbnail: item.mediaServer + '/' + item.mediaResourceId + '/full/!250,250/0/default.jpg',
+      thumbnail: item.mediaServer + '/' + item.mediaResourceId + '/full/!300,300/0/default.jpg',
     }
   }
   return null
