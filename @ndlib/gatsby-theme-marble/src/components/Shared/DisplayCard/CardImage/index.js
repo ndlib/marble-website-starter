@@ -8,18 +8,19 @@ const CardImage = ({ image, alt }) => {
   if (!image) {
     image = noImage
   }
-
+  console.log(image)
   return (
     <picture sx={sx.displayCard.image}>
       {
-        image && image.includes('static')
-          ? null
-          : (
+        // only make a source set for images coming from our image server
+        image.includes('image-iiif')
+          ? (
             <source
-              srcSet={image.replace('.jpg', '.webp')}
+              srcSet={image.replace(/\.(jpg|png)/g, '.webp')}
               type='image/webp'
             />
           )
+          : null
       }
       <img
         src={image}
