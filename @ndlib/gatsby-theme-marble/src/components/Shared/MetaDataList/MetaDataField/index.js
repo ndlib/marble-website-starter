@@ -34,11 +34,11 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           styles={sx.dd}
         />
         {
-          label === 'Link to Finding Aid' ? (
-            <div className='aidContext' sx={sx.aidContext}>
+          label === 'Link to Finding Aid' && (
+            <div sx={sx.aidContext}>
               {t('text:aidContext')}
             </div>
-          ) : null
+          )
         }
       </>
     )
