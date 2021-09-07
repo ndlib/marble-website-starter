@@ -11,7 +11,7 @@ describe('getIiif', () => {
     expect(result).toEqual({
       default: 'https://media-server.com/abc/full/full/0/default.jpg',
       service: 'https://media-server.com/abc',
-      thumbnail: 'https://media-server.com/abc/full/!250,250/0/default.jpg',
+      thumbnail: 'https://media-server.com/abc/full/!300,300/0/default.jpg',
     })
   })
   test('type !== image', () => {

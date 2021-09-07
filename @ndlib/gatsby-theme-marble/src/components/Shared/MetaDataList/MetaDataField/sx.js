@@ -1,8 +1,9 @@
 module.exports = {
   aidContext: {
     fontSize: '2',
-    ml: '1rem',
+    ml: '2rem',
     mr: '1rem',
+    fontStyle: 'italic',
   },
   dt: {
     pl: '1rem',

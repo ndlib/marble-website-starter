@@ -27,51 +27,54 @@ const HitResult = ({ hit, referal, loginReducer }) => {
   } else {
     bookmark = null
   }
+
   return (
-    <MarbleItemCard
-      key={hit}
-      title={highlightTitle(name, hit.highlight)}
-      target={url}
-      image={thumbnail}
-      referal={referal}
-      creator={highlightCreator(creator, hit.highlight)}
-      collectionName={highlightCollection(collection, hit.highlight)}
-      date={date}
-      type={type}
-      rightIcon={bookmark}
-    >
-      {
-        hit.highlight && hit.highlight['identifier.idMatch']
-          ? Object.values(hit.highlight['identifier.idMatch'])
-            .map(
-              (idMatch) => {
-                return higlightDisplay(idMatch)
-              })
-          : null
-      }
-      {
-        hit.highlight && hit.highlight['allMetadata.folded']
-          ? Object.values(hit.highlight['allMetadata.folded'])
-            .map(
-              (blob) => {
-                let row = ''
-                const stringSplit = '::'
-                blob.split(stringSplit).map(
-                  (meta) => {
-                    row += meta.includes('<em>') ? meta : ''
-                    return row
-                  },
-                )
-                return row !== ''
-                  ? (
-                    higlightDisplay(row)
+    <div sx={{ '& em': { backgroundColor: 'highlight' } }}>
+      <MarbleItemCard
+        key={hit}
+        title={highlightTitle(name, hit.highlight)}
+        target={url}
+        image={thumbnail}
+        referal={referal}
+        creator={highlightCreator(creator, hit.highlight)}
+        collectionName={highlightCollection(collection, hit.highlight)}
+        date={date}
+        type={type}
+        rightIcon={bookmark}
+      >
+        {
+          hit.highlight && hit.highlight['identifier.idMatch']
+            ? Object.values(hit.highlight['identifier.idMatch'])
+              .map(
+                (idMatch) => {
+                  return higlightDisplay(idMatch)
+                })
+            : null
+        }
+        {
+          hit.highlight && hit.highlight['allMetadata.folded']
+            ? Object.values(hit.highlight['allMetadata.folded'])
+              .map(
+                (blob) => {
+                  let row = ''
+                  const stringSplit = '::'
+                  blob.split(stringSplit).map(
+                    (meta) => {
+                      row += meta.includes('<em>') ? meta : ''
+                      return row
+                    },
                   )
-                  : null
-              },
-            )
-          : null
-      }
-    </MarbleItemCard>
+                  return row !== ''
+                    ? (
+                      higlightDisplay(row)
+                    )
+                    : null
+                },
+              )
+            : null
+        }
+      </MarbleItemCard>
+    </div>
   )
 }
 
@@ -113,11 +116,6 @@ export const higlightDisplay = (row) => {
     <div
       key={row}
       dangerouslySetInnerHTML={{ __html: row }}
-      sx={{
-        '& > em': {
-          backgroundColor: 'highlight',
-        },
-      }}
     />
   )
 }

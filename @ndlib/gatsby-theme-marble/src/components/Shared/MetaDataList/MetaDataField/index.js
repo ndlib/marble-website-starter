@@ -31,6 +31,13 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           skipHtml={skipHtml}
           styles={sx.dd}
         />
+        {
+          label === 'Link to Finding Aid' && (
+            <div sx={sx.aidContext}>
+              {t('text:aidContext')}
+            </div>
+          )
+        }
       </>
     )
   }
