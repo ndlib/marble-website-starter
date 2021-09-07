@@ -32,7 +32,22 @@ export const putAuthSettingsInStore = (location) => {
       responseMode: 'fragment',
       pkce: true,
     }
-    dispatch(setAuthClient(authClientSettings))
+
+    const authClient = new OktaAuth(authClientSettings)
+    authClient.tokenManager.on('expired', function (key, expiredToken) {
+      console.log('Token with key', key, ' has expired:')
+      console.log(expiredToken)
+      authClient.tokenManager.renew('idToken')
+      console.log('renew?')
+      authClient.tokenManager.get('idToken')
+        .then(idToken => {
+          if (idToken) {
+            console.log('resetting', idToken)
+            dispatch(storeAuthenticationAndGetLogin(idToken))
+          }
+        })
+    })
+    dispatch(setAuthClient(authClient))
   }
 }
 
@@ -47,7 +62,7 @@ export const setAuthClient = (authClientSettings) => {
 export const getTokenAndPutInStore = (loginReducer, location) => {
   return dispatch => {
     if (loginReducer.authClientSettings) {
-      const authClient = new OktaAuth(loginReducer.authClientSettings)
+      const authClient = loginReducer.authClientSettings
       try {
         authClient.tokenManager.get('idToken')
           .then(idToken => {
@@ -56,26 +71,12 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                 dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
               }
               // If ID Token isn't found, try to parse it from the current URL
-            } else if (location.hash) {
-              authClient.token.parseFromUrl()
-                .then(res => {
-                  // Store parsed token in Token Manager
-                  const { idToken } = res.tokens
-                  authClient.tokenManager.add('idToken', idToken)
-                  dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
-                })
-                .catch(error => {
-                  console.error(error)
-                  dispatch(authorizationError())
-                })
-              // No token and user has not tried to login
             } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
               dispatch(setNotLoggedIn())
             }
-            console.log('loggin in', loginReducer.status)
           })
       } catch {
-        // console.error('Could not access tokenManager.')
+        console.error('Could not access tokenManager.')
       }
     }
   }
@@ -96,6 +97,7 @@ export const authenticateUser = (idToken) => {
   return {
     type: AUTHENTICATE_USER,
     token: idToken,
+    user: idToken.claims,
   }
 }
 export const getUser = () => {
@@ -104,31 +106,8 @@ export const getUser = () => {
   }
 }
 export const storeAuthenticationAndGetLogin = (idToken, loginReducer) => {
-  const { userContentPath } = loginReducer
-  const url = `${userContentPath}user-id/${userIdFromClaims(idToken.claims)}`
   return dispatch => {
-    dispatch(authenticateUser(idToken))
-    return fetch(
-      url, {
-        method: 'get',
-        headers: {
-          Authorization: idToken,
-        },
-      }).then(response => {
-      if (response.status >= 200 && response.status < 400) {
-        return response.json()
-      }
-    }).then(json => {
-      const user = typy(json, 'data.getPortfolioUser').safeObject
-      console.log('USER login:', user)
-
-      if (!user?.portfolioUserId) {
-        return dispatch(noUser())
-      }
-      return dispatch(logUserIn(user))
-    }).catch(() => {
-      return dispatch(noUser())
-    })
+    return dispatch(authenticateUser(idToken))
   }
 }
 
@@ -148,9 +127,9 @@ export const createNewUser = (slug, body, loginReducer) => {
     ).then(response => {
       return response.json()
     }).then(json => {
-      return dispatch(logUserIn(json))
+      const user = typy(json, 'data.getPortfolioUser').safeObject
+      return dispatch(logUserIn(user))
     }).catch(error => {
-      console.error('Error: ', error)
       return dispatch(noUser())
     })
   }
