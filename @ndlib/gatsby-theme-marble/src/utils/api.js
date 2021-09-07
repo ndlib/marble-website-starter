@@ -109,8 +109,8 @@ const emptyString = (field) => {
 }
 
 export const getPortfolioUser = ({ userName, loginReducer }) => {
-  const isOwner = (loginReducer && loginReducer.user && loginReducer.user.portfolioUserId && userName && loginReducer.user.portfolioUserId === userName)
-
+  const isOwner = (loginReducer && loginReducer.user && loginReducer.user.netid && userName && loginReducer.user.netid === userName)
+  
   const query = JSON.stringify({ query: `query {
     getPortfolioUser(portfolioUserId: "${userName}") {
       bio

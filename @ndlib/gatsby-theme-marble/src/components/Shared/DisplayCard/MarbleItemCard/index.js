@@ -15,6 +15,7 @@ const MarbleItemCard = (props) => {
     date,
     type,
   } = props
+  console.log("collection name", collectionName)
   return (
     <DisplayCard
       title={title}
