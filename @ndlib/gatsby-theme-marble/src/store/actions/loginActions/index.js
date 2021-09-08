@@ -64,6 +64,7 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
     if (loginReducer.authClientSettings) {
       const authClient = loginReducer.authClientSettings
       try {
+        console.log(location)
         authClient.tokenManager.get('idToken')
           .then(idToken => {
             if (idToken) {
@@ -71,6 +72,19 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                 dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
               }
               // If ID Token isn't found, try to parse it from the current URL
+            } else if (location.hash) {
+              authClient.token.parseFromUrl()
+                .then(res => {
+                  // Store parsed token in Token Manager
+                  const { idToken } = res.tokens
+                  authClient.tokenManager.add('idToken', idToken)
+                  dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
+                })
+                .catch(error => {
+                  console.error(error)
+                  dispatch(authorizationError())
+                })
+              // No token and user has not tried to login
             } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
               dispatch(setNotLoggedIn())
             }
