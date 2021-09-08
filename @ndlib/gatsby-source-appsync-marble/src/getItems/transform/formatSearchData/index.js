@@ -38,6 +38,8 @@ module.exports = async (item, pluginOptions) => {
     url: '/item/' + item.id,
   }
 
+  searchData.hasImages = !!searchData.thumbnail
+
   if (item.sourceSystem.toLowerCase() === 'archivesspace' && item.format) {
     searchData.formatTag = [item.format]
   } else if (item.workType) {
