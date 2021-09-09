@@ -20,7 +20,6 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
       console.log(loginReducer.user.netid)
       getPortfolioUser({ userName: loginReducer.user.netid, loginReducer: loginReducer })
         .then((result) => {
-          console.log("load portfolios")
           setPortfolios(result.portfolioCollections.items)
         })
         .catch((e) => {

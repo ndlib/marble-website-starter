@@ -27,7 +27,7 @@ export const defaultState = {
 
 // eslint-disable-next-line complexity
 export default (state = defaultState, action) => {
-  console.log("loginReducer", action)
+  console.log('loginReducer', action)
   switch (action.type) {
     case SET_NOT_LOGGED_IN:
       return {
@@ -44,7 +44,7 @@ export default (state = defaultState, action) => {
         ...state,
         status: STATUS_LOGGED_IN,
         token: action.token,
-        user: action.token.claims
+        user: action.token.claims,
       }
     case AUTH_ERROR:
       return {

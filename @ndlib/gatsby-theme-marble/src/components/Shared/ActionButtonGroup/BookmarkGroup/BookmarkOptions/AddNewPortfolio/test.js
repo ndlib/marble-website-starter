@@ -12,8 +12,8 @@ describe('AddNewPortfolio', () => {
 
   test('render and click', () => {
     jest.spyOn(Api, 'savePortfolioCollectionQuery').mockImplementationOnce(() => {
-      return new Promise(async (resolve, reject) => {
-        resolve("data")
+      return new Promise((resolve) => {
+        resolve('data')
       })
     })
 
