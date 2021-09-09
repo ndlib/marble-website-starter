@@ -38,7 +38,7 @@ describe('ownsPage', () => {
       status: STATUS_LOGGED_IN,
       user: { netid: 'jimbob' },
     }
-    expect(ownsPage(loginReducer, { pathname: '/user/jimbob'})).toBeTruthy()
+    expect(ownsPage(loginReducer, { pathname: '/user/jimbob' })).toBeTruthy()
   })
 
   test('logged in and ownsPage false', () => {
@@ -46,7 +46,7 @@ describe('ownsPage', () => {
       status: STATUS_LOGGED_IN,
       user: { netid: 'bobbyjim' },
     }
-    expect(ownsPage(loginReducer, { pathname: '/user/jimbob'})).toBeFalsy()
+    expect(ownsPage(loginReducer, { pathname: '/user/jimbob' })).toBeFalsy()
   })
 })
 
