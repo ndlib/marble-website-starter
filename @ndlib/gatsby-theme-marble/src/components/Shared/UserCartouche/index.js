@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import Gravatar from 'components/Shared/Gravatar'
 
@@ -60,10 +59,4 @@ UserCartouche.propTypes = {
   }).isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(UserCartouche)
+export default UserCartouche

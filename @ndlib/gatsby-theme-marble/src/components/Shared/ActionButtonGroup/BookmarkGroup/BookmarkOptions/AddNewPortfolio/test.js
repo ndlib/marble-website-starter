@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import { AddNewPortfolio, successFunc } from './'
+import * as Api from 'utils/api'
 
 describe('AddNewPortfolio', () => {
   const mockSetState = jest.fn()
@@ -10,6 +11,12 @@ describe('AddNewPortfolio', () => {
   }))
 
   test('render and click', () => {
+    jest.spyOn(Api, 'savePortfolioCollectionQuery').mockImplementationOnce(() => {
+      return new Promise(async (resolve, reject) => {
+        resolve("data")
+      })
+    })
+
     let wrapper
     const props = {
       portfolios: [],

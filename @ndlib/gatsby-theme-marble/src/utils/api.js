@@ -110,7 +110,7 @@ const emptyString = (field) => {
 
 export const getPortfolioUser = ({ userName, loginReducer }) => {
   const isOwner = (loginReducer && loginReducer.user && loginReducer.user.netid && userName && loginReducer.user.netid === userName)
-  
+
   const query = JSON.stringify({ query: `query {
     getPortfolioUser(portfolioUserId: "${userName}") {
       bio
@@ -131,6 +131,11 @@ export const getPortfolioUser = ({ userName, loginReducer }) => {
           dateModifiedInDynamo
           privacy
           title
+          portfolioItems {
+            items {
+              portfolioItemId
+            }
+          }
         }
       }
     }
@@ -172,8 +177,6 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
       }
     }
   }` })
-  console.log(query)
-  console.log(isOwner)
 
   return getData({ loginReducer: loginReducer, contentType: 'data.getPortfolioCollection', query: query, usePublicUrl: !isOwner })
 }

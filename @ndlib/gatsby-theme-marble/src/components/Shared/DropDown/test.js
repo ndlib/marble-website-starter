@@ -20,7 +20,7 @@ describe('DropDown', () => {
     const options = <div className='options' />
 
     act(() => {
-      wrapper = shallow(<DropDown sxStyle={sxStyle} buttonLabel={buttonLabel} options={options} />)
+      wrapper = shallow(<DropDown sxStyle={sxStyle} buttonText='hi' buttonLabel={buttonLabel} options={options} />)
     })
 
     // simulate click
