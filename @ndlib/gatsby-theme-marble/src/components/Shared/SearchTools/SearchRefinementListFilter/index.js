@@ -30,13 +30,25 @@ export const listOrder = (list, sort) => {
   return list
 }
 
-export const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, size, sort }) => {
+export const SearchRefinementListFilter = ({ field, label, operator, defaultSearch, size, sort, labelOverrides }) => {
   if (defaultSearchIsThisField(defaultSearch, field)) {
     return null
   }
 
   if (!field || !label) {
     return null
+  }
+
+  const getLabel = (item) => {
+    if (!labelOverrides) {
+      return item.key
+    }
+    for (const [key, value] of Object.entries(labelOverrides)) {
+      if (key === item.key) {
+        return value
+      }
+    }
+    return item.key
   }
 
   return (
@@ -47,7 +59,11 @@ export const SearchRefinementListFilter = ({ field, label, operator, defaultSear
         title={label}
         operator={operator}
         bucketsTransform={(list) => {
-          return listOrder(list, sort)
+          const sorted = listOrder(list, sort)
+          return sorted.map((item) => ({
+            ...item,
+            label: getLabel(item),
+          }))
         }}
         size={parseInt(size, 10)}
         sort={sort}
@@ -62,6 +78,7 @@ SearchRefinementListFilter.propTypes = {
   operator: PropTypes.string,
   size: PropTypes.string,
   sort: PropTypes.string,
+  labelOverrides: PropTypes.object,
 }
 
 SearchRefinementListFilter.defaultProps = {
