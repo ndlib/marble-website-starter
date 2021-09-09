@@ -14,10 +14,7 @@
   ],
   "env" : {
     "browser" : true,
-    "es6" : true,
-    "node" : true,
-    "worker" : true,
-    "jest/globals" : true
+    "node"  : true
   },
   "globals" : {
     "__DEV__"      : false,
