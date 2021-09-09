@@ -39,6 +39,7 @@ const customQueryBuilder = (id, index) => {
       ],
       min_term_freq: 1,
       max_query_terms: 25,
+      minimum_should_match: 1,
     },
   }
 }
