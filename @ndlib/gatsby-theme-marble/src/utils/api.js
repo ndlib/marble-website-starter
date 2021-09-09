@@ -138,6 +138,11 @@ export const getPortfolioUser = ({ userName, loginReducer }) => {
           dateModifiedInDynamo
           privacy
           title
+          portfolioItems {
+            items {
+              portfolioItemId
+            }
+          }
         }
       }
     }
@@ -182,8 +187,6 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
     }
   }`,
   })
-  console.log(query)
-  console.log(isOwner)
 
   return getData({ loginReducer: loginReducer, contentType: 'data.getPortfolioCollection', query: query, usePublicUrl: !isOwner })
 }

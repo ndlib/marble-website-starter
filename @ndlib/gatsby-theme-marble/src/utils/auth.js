@@ -9,7 +9,7 @@ export const isLoggedIn = (loginReducer) => {
 }
 
 export const ownsPage = (loginReducer, location) => {
-  const portfolioUserId = typy(loginReducer, 'user.portfolioUserId').safeString
+  const portfolioUserId = typy(loginReducer, 'user.netid').safeString
   return location && location.pathname && isLoggedIn(loginReducer) && portfolioUserId && location.pathname.includes(portfolioUserId)
 }
 

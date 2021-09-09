@@ -20,7 +20,6 @@ export const STATUS_AUTHENTICATED_NOT_LOGGED_IN = 'STATUS_AUTHENTICATED_NOT_LOGG
 export const STATUS_LOGGED_IN = 'STATUS_LOGGED_IN'
 
 export const putAuthSettingsInStore = (location) => {
-  console.log('putAuthSettingsInStore', location)
   return dispatch => {
     const authClientSettings = {
       url: 'https://okta.nd.edu',
@@ -31,21 +30,25 @@ export const putAuthSettingsInStore = (location) => {
       responseType: 'id_token',
       responseMode: 'fragment',
       pkce: true,
+      tokenManager: {
+        expireEarlySeconds: 180,
+        autoRenew: true,
+      },
     }
-
+    console.log('setup tokens')
     const authClient = new OktaAuth(authClientSettings)
     authClient.tokenManager.on('expired', function (key, expiredToken) {
       console.log('Token with key', key, ' has expired:')
       console.log(expiredToken)
-      authClient.tokenManager.renew('idToken')
       console.log('renew?')
       authClient.tokenManager.get('idToken')
-        .then(idToken => {
-          if (idToken) {
-            console.log('resetting', idToken)
-            dispatch(storeAuthenticationAndGetLogin(idToken))
-          }
-        })
+
+      authClient.tokenManager.renew('idToken').then(idToken => {
+        if (idToken) {
+          console.log('resetting', idToken)
+          dispatch(storeAuthenticationAndGetLogin(idToken))
+        }
+      })
     })
     dispatch(setAuthClient(authClient))
   }
@@ -64,7 +67,6 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
     if (loginReducer.authClientSettings) {
       const authClient = loginReducer.authClientSettings
       try {
-        console.log(location)
         authClient.tokenManager.get('idToken')
           .then(idToken => {
             if (idToken) {
@@ -87,6 +89,8 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
               // No token and user has not tried to login
             } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
               dispatch(setNotLoggedIn())
+            } else if (loginReducer.token && typeof window !== 'undefined') {
+              window.location = '/user'
             }
           })
       } catch {
@@ -129,7 +133,7 @@ export const createNewUser = (slug, body, loginReducer) => {
   return dispatch => {
     dispatch(getUser())
     fetch(
-      `${loginReducer.userContentPath}user/${slug}`,
+      'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql',
       {
         method: 'post',
         body: JSON.stringify(body),

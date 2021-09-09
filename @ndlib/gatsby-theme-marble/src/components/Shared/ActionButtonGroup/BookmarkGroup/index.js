@@ -14,12 +14,13 @@ import sx from './sx'
 
 export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
   const [portfolios, setPortfolios] = useState([])
-  console.log(marbleItem)
   useEffect(() => {
     const abortController = new AbortController()
     if (loginReducer.user.netid) {
+      console.log(loginReducer.user.netid)
       getPortfolioUser({ userName: loginReducer.user.netid, loginReducer: loginReducer })
         .then((result) => {
+          console.log("load portfolios")
           setPortfolios(result.portfolioCollections.items)
         })
         .catch((e) => {
@@ -54,6 +55,7 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
       sxStyle={sx}
       sxTiny={style}
       buttonLabel={buttonLabel}
+      buttonText='Save to a Portfolio'
       tabIndex={0}
       options={(
         <BookmarkOptions
