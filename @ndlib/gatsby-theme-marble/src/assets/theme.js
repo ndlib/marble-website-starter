@@ -58,11 +58,6 @@ const buttonShared = {
       color: 'secondary',
     },
   },
-  '&:disabled': {
-    color: 'gray.1',
-    bg: 'light',
-    cursor: 'not-allowed',
-  },
 }
 
 const theme = merge(bootstrapTheme, {
