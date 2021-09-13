@@ -33,19 +33,19 @@ export const putAuthSettingsInStore = (location) => {
       tokenManager: {
         expireEarlySeconds: 180,
         autoRenew: true,
-      }
+      },
     }
-    console.log("setup tokens")
+    console.log('setup tokens')
     const authClient = new OktaAuth(authClientSettings)
     authClient.tokenManager.on('expired', function (key, expiredToken) {
       console.log('Token with key', key, ' has expired:')
       console.log(expiredToken)
-      console.log("renew?")
+      console.log('renew?')
       authClient.tokenManager.get('idToken')
 
       authClient.tokenManager.renew('idToken').then(idToken => {
         if (idToken) {
-          console.log("resetting", idToken)
+          console.log('resetting', idToken)
           dispatch(storeAuthenticationAndGetLogin(idToken))
         }
       })
@@ -70,11 +70,13 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
         authClient.tokenManager.get('idToken')
           .then(idToken => {
             if (idToken) {
+              console.log('id token?')
               if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
                 dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
               }
               // If ID Token isn't found, try to parse it from the current URL
             } else if (location.hash) {
+              console.log('hashed')
               authClient.token.parseFromUrl()
                 .then(res => {
                   // Store parsed token in Token Manager
@@ -87,10 +89,21 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                   dispatch(authorizationError())
                 })
               // No token and user has not tried to login
-            } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
-              dispatch(setNotLoggedIn())
             } else if (loginReducer.token && typeof window !== `undefined`) {
-              window.location = '/user'
+              console.log('get new token! via redrirect?')
+              loginReducer.authClientSettings.token.getWithRedirect({
+                scopes: [
+                  'openid',
+                  'email',
+                  'profile',
+                  'netid',
+                  'directory',
+                ],
+                pkce: false,
+              })
+            } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
+              console.log('not logged in')
+              dispatch(setNotLoggedIn())
             }
           })
       } catch {
@@ -115,7 +128,7 @@ export const authenticateUser = (idToken) => {
   return {
     type: AUTHENTICATE_USER,
     token: idToken,
-    user: idToken.claims
+    user: idToken.claims,
   }
 }
 export const getUser = () => {

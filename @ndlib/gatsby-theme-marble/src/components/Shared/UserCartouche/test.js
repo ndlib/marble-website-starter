@@ -11,7 +11,7 @@ test.skip('UserCartouche', () => {
     userName: 'dude',
   }
   navigate.mockImplementationOnce(() => {})
-  const wrapper = shallow(<UserCartouche user={user} loginReducer={{}} />)
+  const wrapper = shallow(<UserCartouche user={user} />)
   expect(wrapper.find(Gravatar).props().email).toEqual('me@service.mail')
   expect(wrapper.find('button').html()).toContain('Dude McGuy')
   wrapper.find('.cartouche').simulate('click')
