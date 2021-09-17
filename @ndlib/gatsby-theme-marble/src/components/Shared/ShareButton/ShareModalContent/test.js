@@ -25,7 +25,6 @@ describe('ShareModalContent', () => {
     expect(wrapper.find('input').props().value).toEqual('http://example.com/item/1')
     expect(wrapper.find('button').exists()).toBeTruthy()
     expect(wrapper.find('svg').exists()).toBeTruthy()
-    expect(wrapper.find('em').exists()).toBeFalsy()
   })
 
   test('onClick', () => {

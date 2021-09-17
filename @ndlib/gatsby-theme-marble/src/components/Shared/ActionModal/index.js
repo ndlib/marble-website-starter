@@ -105,11 +105,15 @@ export const modalStyle = (fullscreen) => {
 }
 
 export const containerStyle = ({ short }) => {
-  const style = sx.contentContainer
-  if (short) {
-    style.height = 'auto'
+  if (!short) {
+    return sx.contentContainer
   }
-  return style
+  return {
+    ...sx.contentContainer,
+    height: 'auto',
+    maxHeight: 'calc(100vh - 80px - 3.5rem)',
+    overflow: 'auto',
+  }
 }
 
 export const bodyStyle = (hasFooter) => {
