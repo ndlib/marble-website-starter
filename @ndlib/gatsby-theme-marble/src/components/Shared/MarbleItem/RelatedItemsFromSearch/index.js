@@ -29,17 +29,30 @@ export default RelatedItemsFromSearch
 
 const customQueryBuilder = (id, index) => {
   return {
-    more_like_this: {
-      fields: ['name', 'creator', 'collection', 'allMetadata'],
-      like: [
-        {
-          _index: index,
-          _id: id,
+    bool: {
+      must: {
+        more_like_this: {
+          fields: ['name', 'creator', 'collection', 'allMetadata'],
+          like: [
+            {
+              _index: index,
+              _id: id,
+            },
+          ],
+          min_term_freq: 1,
+          max_query_terms: 25,
+          minimum_should_match: 1,
         },
-      ],
-      min_term_freq: 1,
-      max_query_terms: 25,
-      minimum_should_match: 1,
+      },
+      filter: {
+        bool: {
+          must_not: {
+            term: {
+              type: 'collection',
+            },
+          },
+        },
+      },
     },
   }
 }
