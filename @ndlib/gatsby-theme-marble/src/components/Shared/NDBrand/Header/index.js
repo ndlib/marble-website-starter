@@ -74,26 +74,30 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
           <Heading as='h1' variant='siteHeader'>
             <Link variant='siteHeader' to='/'>{title}</Link>
           </Heading>
-          {site.siteMetadata.subTitle ? (<p sx={{
-            color: 'white',
-            my: 0,
-            mt: '-15px',
-            py: 0,
-            fontFamily: 'serif',
-            fontSize: '2',
+          {site.siteMetadata.subTitle && !titleOverride
+            ? (<p sx={{
+              color: 'white',
+              my: 0,
+              mt: '-15px',
+              py: 0,
+              fontFamily: 'serif',
+              fontSize: '2',
 
-            position: 'relative',
-          }}>{site.siteMetadata.subTitle}</p>) : null }
+              position: 'relative',
+            }}>{site.siteMetadata.subTitle}</p>)
+            : null }
         </div>
       </Box>
       <Box className='nav' sx={{ maxHeight: ['75px', '75px', '75px', 0] }}>
         <Box as='nav' sx={{ variant: 'menus.navTop' }}>
           <div>
-            {!showSearch ? (
-              menuItems
-            ) : (
-              <NDBrandNavSearch key='search' location={location} searchPath='search' setShowSearch={setShowSearch} />
-            )}
+            {!showSearch
+              ? (
+                menuItems
+              )
+              : (
+                <NDBrandNavSearch key='search' location={location} searchPath='search' setShowSearch={setShowSearch} />
+              )}
           </div>
         </Box>
       </Box>
