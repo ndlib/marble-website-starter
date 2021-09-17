@@ -10,7 +10,7 @@ const CalloutBox = ({ children }) => {
       sx={{
         border: '1px solid',
         borderColor: 'gray.4',
-        backgroundColor: 'background',
+        backgroundColor: 'lightLight',
         margin: '2rem auto',
         maxWidth: ['100%', '100%', '80%'],
         padding: '1rem',

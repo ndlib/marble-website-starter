@@ -9,10 +9,12 @@ import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ChildManifests from 'components/Shared/ChildManifests'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
+import UserAnnotation from 'components/Shared/UserAnnotation'
 
 const CollectionLayout = ({ marbleItem, location }) => {
-  const headerItem = marbleItem.childrenMarbleFile ? (
-    marbleItem.childrenMarbleFile[0]) : null
+  const headerItem = marbleItem.childrenMarbleFile
+    ? (marbleItem.childrenMarbleFile[0])
+    : null
   return (
     <>
       <Flex sx={{ flexWrap: 'wrap' }}>
@@ -23,12 +25,13 @@ const CollectionLayout = ({ marbleItem, location }) => {
           <PartiallyDigitized marbleItem={marbleItem} />
         </Box>
         <Box sx={{ width: ['100%', '100%', '100%', '60%'], px: '1rem', py: '1rem' }}>
-          {headerItem ? (
+          {headerItem && (
             <ManifestImageGroup
               location={location}
               marbleItem={marbleItem}
             />
-          ) : null}
+          )}
+          <UserAnnotation location={location} />
           <ChildManifests
             marbleItem={marbleItem}
             location={location}
