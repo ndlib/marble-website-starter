@@ -8,6 +8,7 @@ import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import TombstoneMetadata from './TombstoneMetadata'
 import SiblingItems from 'components/Shared/SiblingItems'
+import UserAnnotation from 'components/Shared/UserAnnotation'
 import sx from './sx'
 
 const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
@@ -48,6 +49,7 @@ const ItemLayout = ({ location, marbleItem, allMarbleFile }) => {
           <ActionButtonGroup marbleItem={marbleItem} />
         </Box>
       </Flex>
+      <UserAnnotation location={location} />
       <Divider sx={{ mx: '5vw', my: '2rem' }} />
       <Flex sx={{ flexWrap: 'wrap' }}>
         <Box sx={{ width: ['100%', '100%', '100%', '60%'], pr: [0, 0, 0, '2rem'], pt: '1rem' }}>
