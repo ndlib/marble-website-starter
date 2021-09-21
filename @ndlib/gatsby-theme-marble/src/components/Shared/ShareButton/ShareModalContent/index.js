@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
-import { useThemeUI, jsx } from 'theme-ui'
+import { useThemeUI, jsx, Box } from 'theme-ui'
 import sx from './sx'
 
 const ShareModalContent = ({ path }) => {
@@ -25,14 +25,14 @@ const ShareModalContent = ({ path }) => {
   const context = useThemeUI()
   const iconColor = typy(context, 'theme.colors.background').safeString || '#fff'
   return (
-    <React.Fragment>
-      <label htmlFor={inputRef}>
+    <Box sx={{ margin: '1rem' }}>
+      <label>
         <input
           ref={inputRef}
           value={fullPath}
           onClick={() => onClick(inputRef, setIsCopied)}
           sx={sx.input}
-          aria-label={inputRef}
+          aria-label='Item URL'
           readOnly
         />
       </label>
@@ -57,15 +57,12 @@ const ShareModalContent = ({ path }) => {
           />
         </svg>
       </button>
-      {
-        isCopied ? (
-          <em
-            sx={sx.copied}
-          >Copied to clipboard
-          </em>
-        ) : null
-      }
-    </React.Fragment>
+      <em
+        sx={isCopied ? sx.copied : sx.copiedHidden}
+      >
+        Copied to clipboard
+      </em>
+    </Box>
   )
 }
 

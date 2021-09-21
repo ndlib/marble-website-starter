@@ -18,6 +18,7 @@ const ShareButton = ({ path }) => {
         isOpen={shareOpen}
         contentLabel='Share'
         closeFunc={() => setShareOpen(false)}
+        short
       >
         <ShareModalContent path={path} />
       </ActionModal>

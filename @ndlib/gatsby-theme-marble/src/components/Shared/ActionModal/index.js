@@ -12,6 +12,7 @@ const ActionModal = ({
   isOpen,
   closeFunc,
   fullscreen = false,
+  short = false,
   footer,
   children,
 }) => {
@@ -55,7 +56,7 @@ const ActionModal = ({
           </svg>
         </button>
       </div>
-      <BaseStyles sx={sx.contentContainer}>
+      <BaseStyles sx={containerStyle({ short })}>
         <div sx={sx.flexContainer}>
           <div sx={bodyStyle(!!footer)}>{children}</div>
           {footer && (
@@ -72,6 +73,7 @@ ActionModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeFunc: PropTypes.func.isRequired,
   fullscreen: PropTypes.bool,
+  short: PropTypes.bool,
   footer: PropTypes.node,
   children: PropTypes.node,
 }
@@ -99,6 +101,18 @@ export const modalStyle = (fullscreen) => {
       width: fullscreen ? '95vw' : '500px',
       maxWidth: '95vw',
     },
+  }
+}
+
+export const containerStyle = ({ short }) => {
+  if (!short) {
+    return sx.contentContainer
+  }
+  return {
+    ...sx.contentContainer,
+    height: 'auto',
+    maxHeight: 'calc(100vh - 80px - 3.5rem)',
+    overflow: 'auto',
   }
 }
 
