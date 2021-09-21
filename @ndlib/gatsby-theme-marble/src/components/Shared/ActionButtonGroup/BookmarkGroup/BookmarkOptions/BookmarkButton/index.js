@@ -4,38 +4,21 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { jsx } from 'theme-ui'
 import { getData, savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
 import sx from './sx'
 import { savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
+import { useAlertContext } from '@ndlib/gatsby-theme-marble/src/context/AlertContext'
 
 export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
-  const [item, setItem] = useState(null)
-  useEffect(() => {
-    const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'collection',
-      id: collection.uuid,
-      successFunc: (data) => {
-        const i = data.items.find(item => {
-          return item.manifest === marbleItem.iiifUri
-        })
-        setItem(i || '')
-      },
-      errorFunc: (e) => {
-        console.error(e)
-      },
-    })
-    return () => {
-      abortController.abort()
-    }
-  }, [collection.uuid, marbleItem.iiifUri, loginReducer])
+  const [item, setItem] = useState(itemInCollection(collection, marbleItem))
+  const { addAlert } = useAlertContext()
 
   return (
     <button
       onClick={() => {
-        item ? deleteItem(item, setItem, loginReducer) : addItem(collection, marbleItem, setItem, loginReducer)
+        item ? deleteItem(item, collection, setItem, loginReducer, addAlert) : addItem(collection, marbleItem, setItem, loginReducer, addAlert)
       }}
       sx={sx.button}
     >
@@ -61,9 +44,8 @@ export default connect(
   mapStateToProps,
 )(BookmarkButton)
 
-export const addItem = (collection, marbleItem, func, loginReducer) => {
-  console.log('addItem', collection, marbleItem)
-  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem._source.thumbnail
+export const addItem = (collection, marbleItem, func, loginReducer, addAlert) => {
+  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem['_source'].thumbnail
   const item = {
     portfolioCollectionId: collection.portfolioCollectionId,
     portfolioItemId: marbleItem.marbleId || marbleItem._source.identifier[0],
@@ -74,18 +56,11 @@ export const addItem = (collection, marbleItem, func, loginReducer) => {
   }
   savePortfolioItemQuery({ loginReducer: loginReducer, item: item })
     .then((data) => {
-      console.log('xcollection', collection)
+      addAlert((<div>{marbleItem.title} added to <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
       func(data)
-      // TODO if there is no collection image set it
       if (!collection.imageUri || collection.imageUri === 'null') {
-        console.log('set image', image)
         collection.imageUri = image
         savePortfolioCollectionQuery({ loginReducer: loginReducer, portfolio: collection })
-
-          .then((result) => {
-            console.log('d', result)
-            console.log('updated collection image')
-          })
           .catch((e) => {
             console.error(e)
           })
@@ -95,11 +70,11 @@ export const addItem = (collection, marbleItem, func, loginReducer) => {
       console.error(e)
     })
 }
-export const deleteItem = (item, collection, func, loginReducer) => {
-  console.log('deleteItem', item, collection)
+export const deleteItem = (item, collection, func, loginReducer, addAlert) => {
   removeCollectionItem({ loginReducer: loginReducer, item: item })
     .then(() => {
       func(null)
+      addAlert((<div>{item.title} removed to <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
     })
     .catch((e) => {
       console.error(e)

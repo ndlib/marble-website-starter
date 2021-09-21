@@ -25,7 +25,7 @@ export const UserAnnotation = ({ location, loginReducer }) => {
           setItem(data)
         },
         errorFunc: () => {
-          console.warn(`Query string item not found`)
+          console.warn('Query string item not found')
         },
       })
       return () => {
