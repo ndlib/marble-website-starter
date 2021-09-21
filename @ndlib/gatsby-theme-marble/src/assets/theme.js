@@ -204,7 +204,7 @@ const theme = merge(bootstrapTheme, {
       bg: 'white',
       '&:hover:not(:disabled)': {
         ...buttonShared['&:hover:not(:disabled)'],
-        bg: 'lightLight',
+        bg: 'white',
       },
       '& a': {
         ...buttonShared['& a'],
