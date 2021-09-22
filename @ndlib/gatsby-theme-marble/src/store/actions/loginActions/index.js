@@ -1,4 +1,5 @@
-import OktaAuth from '@okta/okta-auth-js'
+import '@okta/okta-auth-js/polyfill'
+import { OktaAuth } from '@okta/okta-auth-js/cjs'
 import typy from 'typy'
 import { userIdFromClaims } from 'utils/auth'
 export const GET_AUTHENTICATION = 'GET_AUTHENTICATION'
@@ -89,7 +90,7 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                   dispatch(authorizationError())
                 })
               // No token and user has not tried to login
-            } else if (loginReducer.token && typeof window !== `undefined`) {
+            } else if (loginReducer.token && typeof window !== 'undefined') {
               console.log('get new token! via redrirect?')
               loginReducer.authClientSettings.token.getWithRedirect({
                 scopes: [
