@@ -1,4 +1,5 @@
-import OktaAuth from '@okta/okta-auth-js'
+import '@okta/okta-auth-js/polyfill'
+import { OktaAuth } from '@okta/okta-auth-js/cjs'
 import typy from 'typy'
 import { userIdFromClaims } from 'utils/auth'
 export const GET_AUTHENTICATION = 'GET_AUTHENTICATION'
