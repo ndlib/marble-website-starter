@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
@@ -12,6 +13,7 @@ import sx from './sx'
 // eslint-disable-next-line complexity
 const MetaDataField = ({ metadata, skipHtml }) => {
   const { label, urlField, type } = metadata
+  const { t } = useTranslation()
   let { value } = metadata
   if (!Array.isArray(value) && value) {
     value = [value]
