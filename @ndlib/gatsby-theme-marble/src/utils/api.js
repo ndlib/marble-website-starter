@@ -1,27 +1,181 @@
 import typy from 'typy'
 
-export const getData = ({ loginReducer, contentType, id, successFunc, errorFunc, signal }) => {
-  if (loginReducer.userContentPath && contentType && id) {
-    fetch(
-      `${loginReducer.userContentPath}${contentType}/${id}`,
-      {
-        method: 'GET',
-        signal: signal,
-        headers: {
-          Authorization: typy(loginReducer, 'token.idToken').safeString,
-        },
-        mode: 'cors',
-      })
-      .then(result => {
-        return result.json()
-      })
-      .then((data) => {
-        successFunc(data)
-      })
-      .catch((error) => {
-        errorFunc(error)
-      })
+export const savePortfolioCollectionQuery = ({ portfolio, loginReducer }) => {
+  const query = `mutation {
+    savePortfolioCollection(
+      portfolioCollectionId: "${portfolio.portfolioCollectionId}",
+      featuredCollection: ${portfolio.featuredCollection},
+      highlightedCollection: ${portfolio.highlightedCollection},
+      title: "${emptyString(portfolio.title)}",
+      privacy: ${portfolio.privacy},
+      layout: "${portfolio.layout}",
+      description: "${emptyString(portfolio.description)}",
+      imageUri: "${emptyString(portfolio.imageUri)}"
+    ) {
+      dateAddedToDynamo
+      dateModifiedInDynamo
+      description
+      featuredCollection
+      highlightedCollection
+      imageUri
+      layout
+      portfolioCollectionId
+      portfolioUserId
+      privacy
+      title
+      portfolioItems {
+        items {
+          annotation
+          dateAddedToDynamo
+          dateModifiedInDynamo
+          description
+          imageUri
+          internalItemId
+          itemType
+          portfolioCollectionId
+          portfolioItemId
+          portfolioUserId
+          sequence
+          title
+          uri
+        }
+      }
+    }
+  }`
+
+  return getData({ loginReducer: loginReducer, contentType: 'data.savePortfolioCollection', query: query })
+}
+
+export const savePortfolioItemQuery = ({ item, loginReducer }) => {
+  const query = `mutation {
+    savePortfolioItem(
+      portfolioCollectionId: "${item.portfolioCollectionId}",
+      portfolioItemId: "${item.portfolioItemId}"
+      imageUri: "${item.imageUri}",
+      internalItemId: "${item.portfolioItemId}"
+      itemType: internal,
+      sequence: ${item.sequence},
+      title: "${emptyString(item.title)}",
+      annotation: "${emptyString(item.annotation)}",
+      description: "${emptyString(item.description)}",
+    ) {
+      portfolioItemId
+      portfolioCollectionId
+      imageUri
+      sequence
+      title
+      annotation
+    }
   }
+  `
+  return getData({ loginReducer: loginReducer, contentType: 'data.savePortfolioItem', query: query })
+}
+
+const emptyString = (field) => {
+  if (typeof (field) === 'undefined' || field === null) {
+    return ''
+  }
+  return field
+}
+
+export const getPortfolioUser = ({ loginReducer }) => {
+  const query = `query {
+    getPortfolioUser {
+      bio
+      dateAddedToDynamo
+      dateModifiedInDynamo
+      department
+      email
+      fullName
+      portfolioUserId
+      primaryAffiliation
+      portfolioCollections {
+        items {
+          portfolioCollectionId
+          imageUri
+          description
+          portfolioUserId
+          dateAddedToDynamo
+          dateModifiedInDynamo
+          privacy
+          title
+        }
+      }
+    }
+  }`
+
+  return getData({ loginReducer: loginReducer, contentType: 'data.getPortfolioUser', query: query })
+}
+
+export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
+  console.log('getPortfolioQuery', isOwner)
+  let contentType = 'data.getExposedPortfolioCollection'
+  let resolver = 'getExposedPortfolioCollection'
+
+  if (isOwner) {
+    contentType = 'data.getPortfolioCollection'
+    resolver = 'getPortfolioCollection'
+  }
+
+  const query = `query {
+    ${resolver}(portfolioCollectionId: "${portfolioId}") {
+      dateAddedToDynamo
+      dateModifiedInDynamo
+      description
+      featuredCollection
+      highlightedCollection
+      imageUri
+      layout
+      portfolioCollectionId
+      portfolioUserId
+      privacy
+      title
+      portfolioItems {
+        items {
+          annotation
+          dateAddedToDynamo
+          dateModifiedInDynamo
+          description
+          imageUri
+          internalItemId
+          itemType
+          portfolioCollectionId
+          portfolioItemId
+          portfolioUserId
+          sequence
+          title
+          uri
+        }
+      }
+    }
+  }`
+
+  return getData({ loginReducer: loginReducer, contentType: contentType, query: query })
+}
+
+export const getData = ({ loginReducer, contentType, query, signal }) => {
+  console.log('NEW:lr=', loginReducer)
+
+  return fetch(
+    // `${loginReducer.userContentPath}${contentType}/${id}`,
+    'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql',
+    {
+      method: 'POST',
+      signal: signal,
+      headers: {
+        Authorization: typy(loginReducer, 'token.idToken').safeString,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query: query }),
+      mode: 'cors',
+    })
+    .then(result => {
+      return result.json()
+    })
+    .then((result) => {
+      console.log('get data=', contentType, result)
+      return typy(result, contentType).safeObjectOrEmpty
+    })
 }
 
 export const createData = ({ loginReducer, contentType, id, body, successFunc, errorFunc }) => {
