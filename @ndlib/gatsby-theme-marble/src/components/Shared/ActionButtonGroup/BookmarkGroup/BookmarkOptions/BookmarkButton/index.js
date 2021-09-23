@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import typy from 'typy'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { jsx } from 'theme-ui'
-import { getData, savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
 import sx from './sx'
 import { savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
 import { useAlertContext } from '@ndlib/gatsby-theme-marble/src/context/AlertContext'
@@ -45,7 +44,7 @@ export default connect(
 )(BookmarkButton)
 
 export const addItem = (collection, marbleItem, func, loginReducer, addAlert) => {
-  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem['_source'].thumbnail
+  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem._source.thumbnail
   const item = {
     portfolioCollectionId: collection.portfolioCollectionId,
     portfolioItemId: marbleItem.marbleId || marbleItem._source.identifier[0],
@@ -79,4 +78,10 @@ export const deleteItem = (item, collection, func, loginReducer, addAlert) => {
     .catch((e) => {
       console.error(e)
     })
+}
+
+const itemInCollection = (collection, marbleItem) => {
+  return typy(collection, 'portfolioItems.items').safeArray.find(item => {
+    return item.portfolioItemId === marbleItem.marbleId
+  })
 }
