@@ -19,4 +19,4 @@ NDBrandHeroBackgroundOnly.defaultProps = {
   variant: 'default',
 }
 
-export default 
+export default NDBrandHeroBackgroundOnly
