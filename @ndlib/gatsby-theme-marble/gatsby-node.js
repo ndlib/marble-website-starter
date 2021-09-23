@@ -4,19 +4,19 @@ exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
   if (stage === 'build-javascript' || stage === 'develop') {
     actions.setWebpackConfig({
       plugins: [
-        plugins.provide({ process: 'process/browser' })
-      ]
+        plugins.provide({ process: 'process/browser' }),
+      ],
     })
   }
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        path: require.resolve("path-browserify")
+        path: require.resolve('path-browserify'),
       },
       fallback: {
         fs: false,
-      }
-    }
+      },
+    },
   })
 }
 
@@ -29,7 +29,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
   }
 }
 
-exports.sourceNodes = async ( gatsbyInternal, pluginOptions) => {
+exports.sourceNodes = async (gatsbyInternal, pluginOptions) => {
   const { iiifViewerUrl, searchUrl, searchIndex } = pluginOptions
   const { actions, createContentDigest, createNodeId } = gatsbyInternal
   const { createNode } = actions
@@ -39,7 +39,7 @@ exports.sourceNodes = async ( gatsbyInternal, pluginOptions) => {
     search: {
       url: searchUrl,
       index: searchIndex,
-    }
+    },
   }
   const nodeContent = JSON.stringify(marbleConfiguration)
   const normalizedTypeNode = {
