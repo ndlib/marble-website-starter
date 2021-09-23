@@ -55,7 +55,7 @@ export const addItem = (collection, marbleItem, func, loginReducer, addAlert) =>
   }
   savePortfolioItemQuery({ loginReducer: loginReducer, item: item })
     .then((data) => {
-      addAlert((<div>{marbleItem.title} added to <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
+      addAlert((<div>{marbleItem.title} has been added to <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
       func(data)
       if (!collection.imageUri || collection.imageUri === 'null') {
         collection.imageUri = image
@@ -73,7 +73,7 @@ export const deleteItem = (item, collection, func, loginReducer, addAlert) => {
   removeCollectionItem({ loginReducer: loginReducer, item: item })
     .then(() => {
       func(null)
-      addAlert((<div>{item.title} removed to <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
+      addAlert((<div>{item.title} has been removed from <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
     })
     .catch((e) => {
       console.error(e)

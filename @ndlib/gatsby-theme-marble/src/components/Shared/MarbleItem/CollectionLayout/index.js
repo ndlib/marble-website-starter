@@ -9,7 +9,6 @@ import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ChildManifests from 'components/Shared/ChildManifests'
 import PartiallyDigitized from 'components/Shared/PartiallyDigitized'
-import UserAnnotation from 'components/Shared/UserAnnotation'
 
 const CollectionLayout = ({ marbleItem, location }) => {
   const headerItem = marbleItem.childrenMarbleFile
@@ -31,7 +30,6 @@ const CollectionLayout = ({ marbleItem, location }) => {
               marbleItem={marbleItem}
             />
           )}
-          <UserAnnotation location={location} />
           <ChildManifests
             marbleItem={marbleItem}
             location={location}
