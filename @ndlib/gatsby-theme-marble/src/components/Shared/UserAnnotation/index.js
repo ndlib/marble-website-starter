@@ -1,47 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import typy from 'typy'
 import queryString from 'query-string'
-import CalloutBox from 'components/Shared/CalloutBox'
-import Attribution from 'components/Shared/Attribution'
-import Link from 'components/Shared/Link'
-import UserCartouche from 'components/Shared/UserCartouche'
-import { getData } from 'utils/api'
+import PortfolioUserLayer from '../../App/Layers/PortfolioUserLayer'
+import PortfolioLayer from '../../App/Layers/PortfolioLayer'
+import Annotation from './Annotation'
 
-export const UserAnnotation = ({ location, loginReducer }) => {
-  const [shouldShow] = useState(typy(location, 'pathname').safeString.includes('/item/'))
-  const [item, setItem] = useState(null)
-  const [qs] = useState(queryString.parse(location.search) || {})
-  const [userId] = useState(Object.keys(qs)[0])
-  useEffect(() => {
-    const abortController = new AbortController()
-    if (shouldShow) {
-      getData({
-        loginReducer: loginReducer,
-        contentType: 'item',
-        id: qs[userId],
-        successFunc: (data) => {
-          setItem(data)
-        },
-        errorFunc: () => {
-          console.warn('Query string item not found')
-        },
-      })
-      return () => {
-        abortController.abort()
-      }
-    }
-  }, [loginReducer, qs, shouldShow, userId])
+export const UserAnnotation = ({ location, loginReducer, itemId }) => {
+  const qs = queryString.parse(location.search) || {}
+  const userName = Object.keys(qs)[0]
+  const portfolioId = qs[userName]
 
-  if (shouldShow && item) {
+  if (userName) {
     return (
-      <CalloutBox>
-        <Attribution>
-          <UserCartouche user={{ uuid: `${userId}=` }} /> provided the annotation:</Attribution>
-        <p>{item.annotation}</p>
-        <Attribution>See <Link to={`/myportfolio/${item.collectionId}`}>portfolio</Link>.</Attribution>
-      </CalloutBox>
+      <PortfolioUserLayer userName={userName} location={location} loginReducer={loginReducer}>
+        <PortfolioLayer portfolioId={portfolioId} location={location} loginReducer={loginReducer}>
+          <Annotation location={location} itemId={itemId} />
+        </PortfolioLayer>
+      </PortfolioUserLayer>
     )
   }
   return null
@@ -50,6 +26,7 @@ export const UserAnnotation = ({ location, loginReducer }) => {
 UserAnnotation.propTypes = {
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
+  itemId: PropTypes.string.isRequired,
 }
 export const mapStateToProps = (state) => {
   return { ...state }
