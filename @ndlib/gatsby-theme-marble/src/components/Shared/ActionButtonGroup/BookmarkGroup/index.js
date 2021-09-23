@@ -3,32 +3,29 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import typy from 'typy'
 import { jsx } from 'theme-ui'
 import DropDown from 'components/Shared/DropDown'
 import BookmarkLabel from './BookmarkLabel'
 import BookmarkOptions from './BookmarkOptions'
-import { getData } from 'utils/api'
+import { getPortfolioUser } from 'utils/api'
 import { isLoggedIn } from 'utils/auth'
 import { FaBookmark } from 'react-icons/fa'
 import sx from './sx'
 
 export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
   const [portfolios, setPortfolios] = useState([])
-
   useEffect(() => {
     const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'user',
-      id: typy(loginReducer, 'user.userName').safeString,
-      successFunc: (data) => {
-        setPortfolios(sortCollections(data))
-      },
-      errorFunc: (e) => {
-        console.error(e)
-      },
-    })
+    if (loginReducer.user.netid) {
+      console.log(loginReducer.user.netid)
+      getPortfolioUser({ userName: loginReducer.user.netid, loginReducer: loginReducer })
+        .then((result) => {
+          setPortfolios(result.portfolioCollections.items)
+        })
+        .catch((e) => {
+          console.error(e)
+        })
+    }
     return () => {
       abortController.abort()
     }
@@ -41,20 +38,23 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
     size = ''
   }
   const style = (size === 'tiny')
-  const buttonLabel = size === 'tiny' ? (
-    <FaBookmark sx={sx.bookmark} />
-  ) : (
-    <BookmarkLabel
-      sxStyle={sx}
-      text='Save to a portfolio'
-      aria-label='Save to a portfolio'
-    />
-  )
+  const buttonLabel = size === 'tiny'
+    ? (
+      <FaBookmark sx={sx.bookmark} />
+    )
+    : (
+      <BookmarkLabel
+        sxStyle={sx}
+        text='Save to a portfolio'
+        aria-label='Save to a portfolio'
+      />
+    )
   return (
     <DropDown
       sxStyle={sx}
       sxTiny={style}
       buttonLabel={buttonLabel}
+      buttonText='Save to a Portfolio'
       tabIndex={0}
       options={(
         <BookmarkOptions

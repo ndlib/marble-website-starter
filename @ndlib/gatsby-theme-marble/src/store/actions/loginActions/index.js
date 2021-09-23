@@ -1,7 +1,7 @@
-import OktaAuth from '@okta/okta-auth-js'
-import {
-  userIdFromClaims,
-} from 'utils/auth'
+import '@okta/okta-auth-js/polyfill'
+import { OktaAuth } from '@okta/okta-auth-js/cjs'
+import typy from 'typy'
+import { userIdFromClaims } from 'utils/auth'
 export const GET_AUTHENTICATION = 'GET_AUTHENTICATION'
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER'
 export const AUTH_ERROR = 'AUTH_ERROR'
@@ -21,7 +21,6 @@ export const STATUS_AUTHENTICATED_NOT_LOGGED_IN = 'STATUS_AUTHENTICATED_NOT_LOGG
 export const STATUS_LOGGED_IN = 'STATUS_LOGGED_IN'
 
 export const putAuthSettingsInStore = (location) => {
-  console.log('putAuthSettingsInStore', location)
   return dispatch => {
     const authClientSettings = {
       url: 'https://okta.nd.edu',
@@ -32,8 +31,27 @@ export const putAuthSettingsInStore = (location) => {
       responseType: 'id_token',
       responseMode: 'fragment',
       pkce: true,
+      tokenManager: {
+        expireEarlySeconds: 180,
+        autoRenew: true,
+      },
     }
-    dispatch(setAuthClient(authClientSettings))
+    console.log('setup tokens')
+    const authClient = new OktaAuth(authClientSettings)
+    authClient.tokenManager.on('expired', function (key, expiredToken) {
+      console.log('Token with key', key, ' has expired:')
+      console.log(expiredToken)
+      console.log('renew?')
+      authClient.tokenManager.get('idToken')
+
+      authClient.tokenManager.renew('idToken').then(idToken => {
+        if (idToken) {
+          console.log('resetting', idToken)
+          dispatch(storeAuthenticationAndGetLogin(idToken))
+        }
+      })
+    })
+    dispatch(setAuthClient(authClient))
   }
 }
 
@@ -48,16 +66,18 @@ export const setAuthClient = (authClientSettings) => {
 export const getTokenAndPutInStore = (loginReducer, location) => {
   return dispatch => {
     if (loginReducer.authClientSettings) {
-      const authClient = new OktaAuth(loginReducer.authClientSettings)
+      const authClient = loginReducer.authClientSettings
       try {
         authClient.tokenManager.get('idToken')
           .then(idToken => {
             if (idToken) {
+              console.log('id token?')
               if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
                 dispatch(storeAuthenticationAndGetLogin(idToken, loginReducer))
               }
               // If ID Token isn't found, try to parse it from the current URL
             } else if (location.hash) {
+              console.log('hashed')
               authClient.token.parseFromUrl()
                 .then(res => {
                   // Store parsed token in Token Manager
@@ -70,12 +90,25 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                   dispatch(authorizationError())
                 })
               // No token and user has not tried to login
+            } else if (loginReducer.token && typeof window !== 'undefined') {
+              console.log('get new token! via redrirect?')
+              loginReducer.authClientSettings.token.getWithRedirect({
+                scopes: [
+                  'openid',
+                  'email',
+                  'profile',
+                  'netid',
+                  'directory',
+                ],
+                pkce: false,
+              })
             } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
+              console.log('not logged in')
               dispatch(setNotLoggedIn())
             }
           })
       } catch {
-        // console.error('Could not access tokenManager.')
+        console.error('Could not access tokenManager.')
       }
     }
   }
@@ -96,6 +129,7 @@ export const authenticateUser = (idToken) => {
   return {
     type: AUTHENTICATE_USER,
     token: idToken,
+    user: idToken.claims,
   }
 }
 export const getUser = () => {
@@ -104,28 +138,8 @@ export const getUser = () => {
   }
 }
 export const storeAuthenticationAndGetLogin = (idToken, loginReducer) => {
-  const { userContentPath } = loginReducer
-  const url = `${userContentPath}user-id/${userIdFromClaims(idToken.claims)}`
   return dispatch => {
-    dispatch(authenticateUser(idToken))
-    return fetch(
-      url, {
-        method: 'get',
-        headers: {
-          Authorization: idToken,
-        },
-      }).then(response => {
-      if (response.status >= 200 && response.status < 400) {
-        return response.json()
-      }
-    }).then(json => {
-      if (!json?.userName) {
-        return dispatch(noUser())
-      }
-      return dispatch(logUserIn(json))
-    }).catch(() => {
-      return dispatch(noUser())
-    })
+    return dispatch(authenticateUser(idToken))
   }
 }
 
@@ -133,7 +147,7 @@ export const createNewUser = (slug, body, loginReducer) => {
   return dispatch => {
     dispatch(getUser())
     fetch(
-      `${loginReducer.userContentPath}user/${slug}`,
+      'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql',
       {
         method: 'post',
         body: JSON.stringify(body),
@@ -145,9 +159,9 @@ export const createNewUser = (slug, body, loginReducer) => {
     ).then(response => {
       return response.json()
     }).then(json => {
-      return dispatch(logUserIn(json))
+      const user = typy(json, 'data.getPortfolioUser').safeObject
+      return dispatch(logUserIn(user))
     }).catch(error => {
-      console.error('Error: ', error)
       return dispatch(noUser())
     })
   }

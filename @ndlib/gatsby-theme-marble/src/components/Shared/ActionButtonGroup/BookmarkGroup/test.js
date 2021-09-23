@@ -20,21 +20,4 @@ describe('BookmarkGroup', () => {
     const wrapper = shallow(<BookmarkGroup marbleItem={{}} loginReducer={loginReducer} />)
     expect(wrapper.find(DropDown).exists()).toBeTruthy()
   })
-
-  test('sortCollections - most recent (largest timestamp) first', () => {
-    const data = {
-      collections: [
-        { updated: '03' },
-        { updated: '01' },
-        { updated: '10' },
-      ],
-    }
-    const expected = [
-      { updated: '10' },
-      { updated: '03' },
-      { updated: '01' },
-    ]
-    const actual = sortCollections(data)
-    expect(actual).toEqual(expected)
-  })
 })

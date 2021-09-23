@@ -3,40 +3,17 @@
 import React, { useState, useEffect } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import Gravatar from 'components/Shared/Gravatar'
-import { getData } from 'utils/api'
 
-export const UserCartouche = ({ user, loginReducer }) => {
-  const [fullUser, setUser] = useState(user)
-
-  useEffect(() => {
-    const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'user-id',
-      id: user.uuid,
-      successFunc: (data) => {
-        setUser(data)
-      },
-      errorFunc: (e) => {
-        console.error(e)
-      },
-      signal: abortController.signal,
-    })
-    return () => {
-      abortController.abort()
-    }
-  }, [loginReducer, user.uuid])
-
-  if (!fullUser.userName || !fullUser.email || !fullUser.fullName) {
+export const UserCartouche = ({ user }) => {
+  if (!user.portfolioUserId || !user.email || !user.fullName) {
     return null
   }
   return (
     <button
       onClick={() => {
-        navigate(`/user/${fullUser.userName}`)
+        navigate(`/user/${user.portfolioUserId}`)
       }}
       className='cartouche'
       sx={{
@@ -65,11 +42,11 @@ export const UserCartouche = ({ user, loginReducer }) => {
           width: '22px',
         }} >
         <Gravatar
-          email={fullUser.email}
+          email={user.email}
           size={22}
         />
       </span>
-      {fullUser.fullName}
+      {user.fullName}
     </button>
   )
 }
@@ -78,16 +55,8 @@ UserCartouche.propTypes = {
   user: PropTypes.shape({
     fullName: PropTypes.string,
     email: PropTypes.string,
-    userName: PropTypes.string,
-    uuid: PropTypes.string,
+    portfolioUserId: PropTypes.string,
   }).isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(UserCartouche)
+export default UserCartouche

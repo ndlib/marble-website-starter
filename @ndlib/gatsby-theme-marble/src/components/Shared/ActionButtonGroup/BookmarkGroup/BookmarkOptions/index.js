@@ -16,7 +16,7 @@ const BookmarkOptions = ({ portfolios, marbleItem, setFunc }) => {
             collection => {
               return (
                 <BookmarkButton
-                  key={collection.uuid}
+                  key={collection.portfolioCollectionId}
                   marbleItem={marbleItem}
                   collection={collection}
                 />

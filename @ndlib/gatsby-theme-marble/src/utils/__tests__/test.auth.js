@@ -36,17 +36,17 @@ describe('ownsPage', () => {
   test('logged in and ownsPage true', () => {
     const loginReducer = {
       status: STATUS_LOGGED_IN,
-      user: { uuid: 'jimbob' },
+      user: { netid: 'jimbob' },
     }
-    expect(ownsPage(loginReducer, 'jimbob')).toBeTruthy()
+    expect(ownsPage(loginReducer, { pathname: '/user/jimbob' })).toBeTruthy()
   })
 
   test('logged in and ownsPage false', () => {
     const loginReducer = {
       status: STATUS_LOGGED_IN,
-      user: { uuid: 'bobbyjim' },
+      user: { netid: 'bobbyjim' },
     }
-    expect(ownsPage(loginReducer, 'jimbob')).toBeFalsy()
+    expect(ownsPage(loginReducer, { pathname: '/user/jimbob' })).toBeFalsy()
   })
 })
 

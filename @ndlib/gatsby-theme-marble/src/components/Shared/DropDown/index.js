@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
 
-const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
+const DropDown = ({ sxStyle, sxTiny, buttonLabel, buttonText, options }) => {
   const [open, setOpen] = useState(false)
   const toggleStyle = sxTiny ? sxStyle.tiny : sxStyle.toggle
   const wrapperStyle = sxTiny ? sxStyle.tinyWrapper : sxStyle.wrapper
@@ -27,6 +27,7 @@ const DropDown = ({ sxStyle, sxTiny, buttonLabel, options }) => {
         type='button'
         tabIndex={0}
         onClick={() => setOpen(!open)}
+        title={buttonText}
         sx={toggleStyle}
       >
         { buttonLabel }
@@ -48,6 +49,7 @@ DropDown.propTypes = {
     optionsClosed: PropTypes.object.isRequired,
   }).isRequired,
   buttonLabel: PropTypes.node.isRequired,
+  buttonText: PropTypes.string.isRequired,
   options: PropTypes.node.isRequired,
   sxTiny: PropTypes.bool,
 }

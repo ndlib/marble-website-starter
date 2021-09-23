@@ -8,7 +8,6 @@ const CardImage = ({ image, alt }) => {
   if (!image) {
     image = noImage
   }
-  console.log(image)
   return (
     <picture sx={sx.displayCard.image}>
       {

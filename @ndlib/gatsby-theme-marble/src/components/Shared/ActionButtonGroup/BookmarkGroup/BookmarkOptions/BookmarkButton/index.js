@@ -4,42 +4,20 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { jsx } from 'theme-ui'
-import {
-  createData,
-  deleteData,
-  patchData,
-  getData,
-} from 'utils/api'
 import sx from './sx'
+import { savePortfolioItemQuery, savePortfolioCollectionQuery, removeCollectionItem } from 'utils/api'
+import { useAlertContext } from '@ndlib/gatsby-theme-marble/src/context/AlertContext'
 
 export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
-  const [item, setItem] = useState(null)
-  useEffect(() => {
-    const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'collection',
-      id: collection.uuid,
-      successFunc: (data) => {
-        const i = data.items.find(item => {
-          return item.manifest === marbleItem.iiifUri
-        })
-        setItem(i || '')
-      },
-      errorFunc: (e) => {
-        console.error(e)
-      },
-    })
-    return () => {
-      abortController.abort()
-    }
-  }, [collection.uuid, marbleItem.iiifUri, loginReducer])
+  const [item, setItem] = useState(itemInCollection(collection, marbleItem))
+  const { addAlert } = useAlertContext()
 
   return (
     <button
       onClick={() => {
-        item ? deleteItem(item, setItem, loginReducer) : addItem(collection, marbleItem, setItem, loginReducer)
+        item ? deleteItem(item, collection, setItem, loginReducer, addAlert) : addItem(collection, marbleItem, setItem, loginReducer, addAlert)
       }}
       sx={sx.button}
     >
@@ -65,52 +43,45 @@ export default connect(
   mapStateToProps,
 )(BookmarkButton)
 
-export const addItem = (collection, marbleItem, func, loginReducer) => {
-  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString
-  createData({
-    loginReducer: loginReducer,
-    contentType: 'item',
-    id: collection.uuid,
-    body: {
-      title: typy(marbleItem, 'title').safeString || '',
-      image: image,
-      link: marbleItem.slug,
-      manifest: marbleItem.iiifUri,
-      annotation: null,
-    },
-    successFunc: (data) => {
+export const addItem = (collection, marbleItem, func, loginReducer, addAlert) => {
+  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem._source.thumbnail
+  const item = {
+    portfolioCollectionId: collection.portfolioCollectionId,
+    portfolioItemId: marbleItem.marbleId || marbleItem._source.identifier[0],
+    imageUri: image,
+    itemType: 'internal',
+    sequence: typy(collection, 'portfolioItems.items').safeArray.length,
+    title: marbleItem.title ? marbleItem.title.replaceAll('"', '&quot;') : marbleItem._source.name.replaceAll('"', '&quot;'),
+  }
+  savePortfolioItemQuery({ loginReducer: loginReducer, item: item })
+    .then((data) => {
+      addAlert((<div>{marbleItem.title} has been added to <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
       func(data)
-      if (!collection.image) {
-        const body = { image: image }
-        patchData({
-          loginReducer: loginReducer,
-          contentType: 'collection',
-          id: collection.uuid,
-          body: body,
-          successFunc: () => {
-            console.log('updated collection image')
-          },
-          errorFunc: (e) => {
+      if (!collection.imageUri || collection.imageUri === 'null') {
+        collection.imageUri = image
+        savePortfolioCollectionQuery({ loginReducer: loginReducer, portfolio: collection })
+          .catch((e) => {
             console.error(e)
-          },
-        })
+          })
       }
-    },
-    errorFunc: (e) => {
+    })
+    .catch((e) => {
       console.error(e)
-    },
-  })
+    })
 }
-export const deleteItem = (item, func, loginReducer) => {
-  deleteData({
-    loginReducer: loginReducer,
-    contentType: 'item',
-    id: item.uuid,
-    successFunc: () => {
+export const deleteItem = (item, collection, func, loginReducer, addAlert) => {
+  removeCollectionItem({ loginReducer: loginReducer, item: item })
+    .then(() => {
       func(null)
-    },
-    errorFunc: (e) => {
+      addAlert((<div>{item.title} has been removed from <Link to={`/user/${collection.portfolioUserId}`}>{collection.title}</Link></div>), 'secondary')
+    })
+    .catch((e) => {
       console.error(e)
-    },
+    })
+}
+
+const itemInCollection = (collection, marbleItem) => {
+  return typy(collection, 'portfolioItems.items').safeArray.find(item => {
+    return item.portfolioItemId === marbleItem.marbleId
   })
 }

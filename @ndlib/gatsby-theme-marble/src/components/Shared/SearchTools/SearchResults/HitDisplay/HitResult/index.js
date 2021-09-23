@@ -40,7 +40,6 @@ const HitResult = ({ hit, referal, loginReducer }) => {
         collectionName={highlightCollection(collection, hit.highlight)}
         date={date}
         type={type}
-        rightIcon={bookmark}
       >
         {
           hit.highlight && hit.highlight['identifier.idMatch']
@@ -128,6 +127,7 @@ HitResult.propTypes = {
 export const mapStateToProps = (state) => {
   return { ...state }
 }
+
 export default connect(
   mapStateToProps,
 )(HitResult)

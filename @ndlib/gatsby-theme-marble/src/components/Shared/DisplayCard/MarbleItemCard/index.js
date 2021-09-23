@@ -4,6 +4,7 @@ import { jsx } from 'theme-ui'
 import DisplayCard from 'components/Shared/DisplayCard'
 import CardBadge from 'components/Shared/DisplayCard/CardBadge'
 import MarbleItemCardChildren from './MarbleItemCardChildren'
+import BookmarkGroup from 'components/Shared/ActionButtonGroup/BookmarkGroup'
 
 const MarbleItemCard = (props) => {
   const {
@@ -21,6 +22,7 @@ const MarbleItemCard = (props) => {
       target={target}
       image={image}
       leftBadge={type === 'collection' ? <CardBadge type='collection' /> : null}
+      rightBadge={<BookmarkGroup marbleItem={props} size='tiny' />}
     >
       <MarbleItemCardChildren
         date={date}

@@ -35,16 +35,14 @@ export const gravatarImg = (email, size = 400) => {
   return gravatar.url(
     email,
     {
-      protocol: 'https',
-      size: size,
-      rating: 'pg',
-      default: 'retro', // https://en.gravatar.com/site/implement/images/
+      s: size,
+      r: 'pg',
+      default: 'mp', // https://en.gravatar.com/site/implement/images/
     },
+    'https'
   )
 }
 
 const sx = {
   border: '1px solid #dedede',
-  height: 'auto',
-  width: '100%',
 }

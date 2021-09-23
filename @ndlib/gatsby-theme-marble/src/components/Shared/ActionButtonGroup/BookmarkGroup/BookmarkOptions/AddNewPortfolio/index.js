@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
-import { createData } from 'utils/api'
+import { savePortfolioCollectionQuery } from 'utils/api'
 import sx from './sx'
 
 const defaultTitle = 'My Portfolio'
@@ -56,30 +56,30 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
         className='submit-button'
         onClick={() => {
           setCreating(true)
-          createData({
+          const portfolio = {
+            title: title,
+            privacy: 'private',
+            layout: 'default',
+            description: null,
+            imageUri: null,
+          }
+          savePortfolioCollectionQuery({
             loginReducer: loginReducer,
-            contentType: 'collection',
-            id: loginReducer.user.uuid,
-            body: {
-              title: title,
-              description: null,
-              image: null,
-              layout: 'default',
-              privacy: 'private',
-            },
-            successFunc: (data) => successFunc({
-              data: data,
-              portfolios: portfolios,
-              addFunc: addFunc,
-              setCreating: setCreating,
-              setEditable: setEditable,
-              setTitle: setTitle,
-            }),
-            errorFunc: (e) => {
+            portfolio: portfolio,
+          })
+            .then((data) => {
+              const ps = [...portfolios]
+              ps.unshift(data)
+              addFunc(ps)
+              setCreating(false)
+              setEditable(false)
+              setTitle(defaultTitle)
+            })
+
+            .catch((e) => {
               console.error(e)
               setError(true)
-            },
-          })
+            })
         }}
         disabled={creating || !valid}
         sx={creating || !valid ? sx.submitButtonDisabled : sx.submitButton}

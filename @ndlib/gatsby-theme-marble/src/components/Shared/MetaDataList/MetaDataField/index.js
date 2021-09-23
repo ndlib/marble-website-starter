@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import MetaDataLabel from './MetaDataLabel'
 import MetaDataValue from './MetaDataValue'
 import MetaDataSearchValue from './MetaDataSearchValue'
 import MetaDataMarkdownValue from './MetaDataMarkdownValue'
 import MetaDataAidValue from './MetaDataAidValue'
-import { useTranslation } from 'react-i18next'
 import { jsx } from 'theme-ui'
 import sx from './sx'
 
@@ -33,13 +33,6 @@ const MetaDataField = ({ metadata, skipHtml }) => {
           skipHtml={skipHtml}
           styles={sx.dd}
         />
-        {
-          label === 'Link to Finding Aid' && (
-            <div sx={sx.aidContext}>
-              {t('text:aidContext')}
-            </div>
-          )
-        }
       </>
     )
   }
