@@ -1,17 +1,32 @@
 const fs = require('fs')
 
-exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
-  if (stage === 'build-javascript' || stage === 'develop') {
+exports.onCreateWebpackConfig = ({ actions, stage, loaders, plugins }) => {
+  if (stage === 'build-html' || stage === 'develop-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /okta-auth-js/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  } else if (stage === 'build-javascript' || stage === 'develop') {
     actions.setWebpackConfig({
       plugins: [
-        plugins.provide({ process: 'process/browser' }),
+        plugins.provide({ process: 'process/browser' }), // keep in theme even if okta related things move to marble-web
+        plugins.provide({ Buffer: ['buffer', 'Buffer'] }),
       ],
     })
   }
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        path: require.resolve('path-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+        buffer: require.resolve('buffer'),
+        path: require.resolve('path-browserify'), // keep in theme even if okta related things move to marble-web
       },
       fallback: {
         fs: false,
