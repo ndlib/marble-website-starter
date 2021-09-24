@@ -73,6 +73,7 @@ module.exports = (itemId, website) => {
     parent {
       id
       title
+      level
     }
     partiallyDigitized
     physicalAccess

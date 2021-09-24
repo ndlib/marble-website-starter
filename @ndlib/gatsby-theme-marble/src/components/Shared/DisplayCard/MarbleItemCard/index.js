@@ -46,7 +46,7 @@ MarbleItemCard.propTypes = {
     PropTypes.string,
     PropTypes.array,
   ]),
-  collectionName: PropTypes.string,
+  collectionName: PropTypes.array,
   type: PropTypes.string,
 }
 
