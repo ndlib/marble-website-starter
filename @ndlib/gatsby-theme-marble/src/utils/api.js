@@ -210,7 +210,6 @@ export const removeCollectionItem = ({ item, loginReducer }) => {
 }
 
 export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
-  console.log('query', contentType)
   let url = 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql'
   url = 'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql'
 

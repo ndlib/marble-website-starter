@@ -17,7 +17,6 @@ export const BookmarkGroup = ({ marbleItem, loginReducer, size }) => {
   useEffect(() => {
     const abortController = new AbortController()
     if (loginReducer.user.netid) {
-      console.log(loginReducer.user.netid)
       getPortfolioUser({ userName: loginReducer.user.netid, loginReducer: loginReducer })
         .then((result) => {
           setPortfolios(result.portfolioCollections.items)

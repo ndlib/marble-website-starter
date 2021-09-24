@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 export const initialContext = {
   alerts: {},
-  addAlerts: () => {},
+  addAlert: () => {},
+  removeAlert: () => {},
 }
 
 export const AlertContext = React.createContext(initialContext)

@@ -5,7 +5,6 @@ import { jsx } from 'theme-ui'
 import typy from 'typy'
 
 const ParentLink = ({ marbleItem }) => {
-  console.log('MI', marbleItem)
   const parentObject = typy(marbleItem, 'marbleParent').safeObject
   if (parentObject && parentObject.title && parentObject.slug) {
     return (
