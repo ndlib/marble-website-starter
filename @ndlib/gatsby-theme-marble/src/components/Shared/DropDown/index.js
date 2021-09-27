@@ -26,7 +26,10 @@ const DropDown = ({ sxStyle, sxTiny, buttonLabel, buttonText, options }) => {
         aria-label='Save to a Portfolio'
         type='button'
         tabIndex={0}
-        onClick={() => setOpen(!open)}
+        onClick={(e) => {
+          e.preventDefault()
+          setOpen(!open)
+        }}
         title={buttonText}
         sx={toggleStyle}
       >

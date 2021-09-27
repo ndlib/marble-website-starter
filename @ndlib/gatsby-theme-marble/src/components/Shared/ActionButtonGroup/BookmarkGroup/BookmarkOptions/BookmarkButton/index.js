@@ -13,10 +13,10 @@ import { useAlertContext } from '@ndlib/gatsby-theme-marble/src/context/AlertCon
 export const BookmarkButton = ({ collection, marbleItem, loginReducer }) => {
   const [item, setItem] = useState(itemInCollection(collection, marbleItem))
   const { addAlert } = useAlertContext()
-
   return (
     <button
-      onClick={() => {
+      onClick={(e) => {
+        e.preventDefault()
         item ? deleteItem(item, collection, setItem, loginReducer, addAlert) : addItem(collection, marbleItem, setItem, loginReducer, addAlert)
       }}
       sx={sx.button}
@@ -44,10 +44,10 @@ export default connect(
 )(BookmarkButton)
 
 export const addItem = (collection, marbleItem, func, loginReducer, addAlert) => {
-  const image = typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || marbleItem._source.thumbnail
+  const image = safeImage(marbleItem)
   const item = {
     portfolioCollectionId: collection.portfolioCollectionId,
-    portfolioItemId: marbleItem.marbleId || marbleItem._source.identifier[0],
+    portfolioItemId: safeId(marbleItem),
     imageUri: image,
     itemType: 'internal',
     sequence: typy(collection, 'portfolioItems.items').safeArray.length,
@@ -80,8 +80,16 @@ export const deleteItem = (item, collection, func, loginReducer, addAlert) => {
     })
 }
 
-const itemInCollection = (collection, marbleItem) => {
+export const itemInCollection = (collection, marbleItem) => {
   return typy(collection, 'portfolioItems.items').safeArray.find(item => {
-    return item.portfolioItemId === marbleItem.marbleId
+    return item.portfolioItemId === safeId(marbleItem)
   })
+}
+
+export const safeId = (marbleItem) => {
+  return typy(marbleItem, 'marbleId').safeString || typy(marbleItem, '_source.identifier[0]').safeString || typy(marbleItem, 'target').safeString.replace('item/', '')
+}
+
+export const safeImage = (marbleItem) => {
+  return typy(marbleItem, 'childrenMarbleFile[0].iiif.thumbnail').safeString || typy(marbleItem, 'image').safeString || typy(marbleItem, '_source.thumbnail').safeString || null
 }

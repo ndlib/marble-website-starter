@@ -6,7 +6,7 @@ module.exports = {
     borderColor: 'gray.4',
     cursor: 'pointer',
     fontSize: '1rem',
-    margin: '0',
+    margin: '0 !important',
     overflow: 'hidden',
     padding: '.5rem 1rem',
     textAlign: 'left',
@@ -16,6 +16,7 @@ module.exports = {
     width: '100%',
     '&:hover': {
       backgroundColor: 'lightLight',
+      color: 'text',
       opacity: '1.0',
     },
   },

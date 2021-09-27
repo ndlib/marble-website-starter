@@ -25,7 +25,10 @@ describe('DropDown', () => {
 
     // simulate click
     act(() => {
-      wrapper.find('.dropdown-toggle').props().onClick()
+      const event = {
+        preventDefault: jest.fn(),
+      }
+      wrapper.find('.dropdown-toggle').props().onClick(event)
     })
 
     // blur

@@ -34,7 +34,10 @@ describe('AddNewPortfolio', () => {
 
     // click button
     act(() => {
-      wrapper.find('.add-button').props().onClick()
+      const event = {
+        preventDefault: jest.fn(),
+      }
+      wrapper.find('.add-button').props().onClick(event)
     })
 
     // expect input and submit button
