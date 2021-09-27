@@ -8,6 +8,8 @@ module.exports = (item) => {
   return []
 }
 
+// this is almost certainly not getting called because the
+// graphql is no longer recursive like that.
 const getAncestorTitlesRecursive = (item) => {
   let results = []
   if (item.level === 'collection' && item.title) {
