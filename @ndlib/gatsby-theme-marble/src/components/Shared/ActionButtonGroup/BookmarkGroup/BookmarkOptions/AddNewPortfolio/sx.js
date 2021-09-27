@@ -6,6 +6,7 @@ module.exports = {
     fontSize: '16px',
     fontStyle: 'oblique',
     height: '36px',
+    margin: '0 !important',
     width: '100%',
     '&:hover': {
       backgroundColor: 'lightLight',

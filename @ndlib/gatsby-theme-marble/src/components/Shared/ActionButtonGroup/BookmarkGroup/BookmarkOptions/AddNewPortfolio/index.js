@@ -19,7 +19,10 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
     return (
       <button
         className='add-button'
-        onClick={() => setEditable(true)}
+        onClick={(e) => {
+          e.preventDefault()
+          setEditable(true)
+        }}
         sx={sx.createButton}
       >Create A New Portfolio
       </button>
