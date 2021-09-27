@@ -1,4 +1,3 @@
-import React from 'react'
 import { safeId, safeImage, itemInCollection } from './'
 
 describe('BookmarkButton functions', () => {
