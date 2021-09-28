@@ -30,6 +30,13 @@ export const putAuthSettingsInStore = (location) => {
       ignoreSignature: true,
       responseType: 'id_token',
       responseMode: 'fragment',
+      scopes: [
+        'openid',
+        'email',
+        'profile',
+        'netid',
+        'directory',
+      ],
       pkce: true,
       tokenManager: {
         expireEarlySeconds: 180,
@@ -52,6 +59,7 @@ export const setAuthClient = (authClientSettings) => {
 }
 
 export const getTokenAndPutInStore = (loginReducer, location) => {
+  console.log('getTokenAndPutInStore')
   return dispatch => {
     if (loginReducer.authClientSettings) {
       const authClient = loginReducer.authClientSettings
@@ -85,7 +93,7 @@ export const getTokenAndPutInStore = (loginReducer, location) => {
                   'netid',
                   'directory',
                 ],
-                pkce: false,
+                pkce: true,
               })
             } else if (loginReducer.status === 'STATUS_FRESH_LOAD_NOT_LOGGED_IN') {
               dispatch(setNotLoggedIn())
