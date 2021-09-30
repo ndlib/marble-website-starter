@@ -26,7 +26,7 @@ const sx = {
     },
     '& .sk-item-list-option.is-active .sk-item-list-option__text': {
       color: '#943838',
-    }
+    },
   },
 }
 export default sx
