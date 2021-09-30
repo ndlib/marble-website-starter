@@ -12,8 +12,9 @@ export const HubJsonLd = (props) => {
     url,
     image,
     language,
+    materialType,
   } = props
-  if (pathname.includes('/featured/')) {
+  if (pathname.includes('/featured/') || materialType == 'LibraryCollection') {
     return (
       <JsonLd>
         {{
