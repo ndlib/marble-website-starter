@@ -210,29 +210,26 @@ export const removeCollectionItem = ({ item, loginReducer }) => {
 }
 
 export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
-  let url = 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql'
-  url = 'https://aeo5vugbxrgvzkhjjoithljz4y.appsync-api.us-east-1.amazonaws.com/graphql'
+  let url = process.env.GRAPHQL_API_URL
 
   const headers = {
     'Content-Type': 'application/json',
   }
 
   if (usePublicUrl) {
-    url = 'https://496ozs7o1j.execute-api.us-east-1.amazonaws.com/prod/query/getPortfolioCollection'
+    url = process.env.PUBLIC_GRAPHQL_API_URL
   } else {
     headers.Authorization = typy(loginReducer, 'token.idToken').safeString
+    console.log(typy(loginReducer, 'token.idToken').safeString)
   }
 
+  console.log(url)
   return fetch(
-    // `${loginReducer.userContentPath}${contentType}/${id}`,
     url,
     {
       method: 'POST',
       signal: signal,
-      headers: {
-        Authorization: typy(loginReducer, 'token.idToken').safeString,
-        'Content-Type': 'application/json',
-      },
+      headers: headers,
       body: query,
       mode: 'cors',
     })
