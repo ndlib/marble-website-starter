@@ -14,7 +14,7 @@ export const HubJsonLd = (props) => {
     language,
     materialType,
   } = props
-  if (pathname.includes('/featured/') || materialType == 'LibraryCollection') {
+  if (pathname.includes('/featured/') || materialType === 'LibraryCollection') {
     return (
       <JsonLd>
         {{
@@ -48,6 +48,7 @@ HubJsonLd.propTypes = {
   image: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   language: PropTypes.string,
+  materialType: PropTypes.string,
 }
 
 export default HubJsonLd
