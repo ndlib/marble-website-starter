@@ -80,6 +80,8 @@ pushd scripts/environment-configuration/
   echo
 popd
 
+cat ${ENV_FILE}
+
 echo "${magenta}----- Unit Tests -------${reset}"
 failures=0
 trap 'failures=$((failures+1))' ERR
