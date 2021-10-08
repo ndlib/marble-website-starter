@@ -15,6 +15,6 @@ module.exports = {
     'name.folded',
     'creator.folded',
     'collection.folded',
-    'identifier.idMatch',
+    'identifier.idMatch', // remove this to remove expanded tags
   ],
 }
