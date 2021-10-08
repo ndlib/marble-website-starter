@@ -65,8 +65,6 @@ pushd scripts/environment-configuration/
   yarn install
 
   echo "${magenta}----- Build ENV Config -------${reset}"
-  # add the keys at /all/static/hostname to the env
-  # node setupEnv.js ${PARAM_CONFIG_PATH} > './ssm-params.txt' --unhandled-rejections=strict
 
   # put the env sourced vars in the environment file.
   echo "S3_DEST_BUCKET='${S3_DEST_BUCKET}'" >> $ENV_FILE
@@ -76,11 +74,13 @@ pushd scripts/environment-configuration/
   # add the app sync keys to the env
   export FMP_CRED_PATH="/all/filemaker_credentials"
   node setupEnv.js ${GRAPHQL_KEY_BASE} >> ${ENV_FILE} --unhandled-rejections=strict
-  
+
   echo "TEST"
   echo "GRAPHQL_API_URL='${GRAPHQL_API_URL}'"
-
+  echo
 popd
+
+cat ${ENV_FILE}
 
 echo "${magenta}----- Unit Tests -------${reset}"
 failures=0

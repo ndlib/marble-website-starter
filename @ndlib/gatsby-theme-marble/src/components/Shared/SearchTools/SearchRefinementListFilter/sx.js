@@ -18,6 +18,15 @@ const sx = {
       backgroundSize: '16px',
       backgroundRepeat: 'no-repeat',
     },
+    '& .sk-item-list-option__count': {
+      color: 'black',
+    },
+    '& .sk-item-list-option__text': {
+      color: 'black',
+    },
+    '& .sk-item-list-option.is-active .sk-item-list-option__text': {
+      color: '#943838',
+    },
   },
 }
 export default sx

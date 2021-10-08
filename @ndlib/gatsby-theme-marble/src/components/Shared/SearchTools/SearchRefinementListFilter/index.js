@@ -53,21 +53,23 @@ export const SearchRefinementListFilter = ({ field, label, operator, defaultSear
 
   return (
     <div sx={sx.wrapper}>
-      <RefinementListFilter
-        field={field}
-        id={label.replace(' ', '').toLowerCase()}
-        title={label}
-        operator={operator}
-        bucketsTransform={(list) => {
-          const sorted = listOrder(list, sort)
-          return sorted.map((item) => ({
-            ...item,
-            label: getLabel(item),
-          }))
-        }}
-        size={parseInt(size, 10)}
-        sort={sort}
-      />
+      <label htmlFor={label.replace(' ', '').toLowerCase()}>
+        <RefinementListFilter
+          field={field}
+          id={label.replace(' ', '').toLowerCase()}
+          title={label}
+          operator={operator}
+          bucketsTransform={(list) => {
+            const sorted = listOrder(list, sort)
+            return sorted.map((item) => ({
+              ...item,
+              label: getLabel(item),
+            }))
+          }}
+          size={parseInt(size, 10)}
+          sort={sort}
+        />
+      </label>
     </div>
   )
 }

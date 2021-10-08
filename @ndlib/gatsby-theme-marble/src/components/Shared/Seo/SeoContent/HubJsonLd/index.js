@@ -14,6 +14,7 @@ export const HubJsonLd = (props) => {
     language,
     materialType,
   } = props
+
   if (pathname.includes('/featured/') || materialType === 'Collection') {
     return (
       <JsonLd>
