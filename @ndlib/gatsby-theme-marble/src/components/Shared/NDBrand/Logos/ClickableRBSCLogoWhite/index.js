@@ -13,7 +13,7 @@ const ClickableRBSCLogoWhite = ({ variant, width, height, rbscWidthHeight }) => 
         <Image src={ndLogo} width={width} height={height} alt='Hesburgh Libraries, University of Notre Dame' sx={{ marginBottom: '0.5rem !important' }} />
       </a>
       <a href='https://rarebooks.library.nd.edu/' >
-        <Image src={rbsc} width={rbscWidthHeight} height={rbscWidthHeight} alt='Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame' />
+        <Image src={rbsc} width={rbscWidthHeight} height={rbscWidthHeight} sx={{ maxWidth: `${rbscWidthHeight}px`, display: 'block' }} alt='Rare Books & Special Collections, Hesburgh Libraries, University of Notre Dame' />
       </a>
     </div>
   )
