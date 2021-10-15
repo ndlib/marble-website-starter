@@ -5,14 +5,23 @@ import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
 
 export const NDBrandSection = ({ variant, image, children, ...props }) => {
-  const sectionSx = {}
-  const imageTag = (image) ? (<Flex className='sectionImage' sx={{ width: '25%' }}>{image}</Flex>) : null
+  const sectionSx = {
+    'p:first-of-type': {
+      mt: ['revert', 'revert', '0'],
+    },
+  }
+
+  const containerSx = {}
+
+  const imageTag = (image) ? (<Box className='sectionImage' sx={{ mr: '1rem' }}>{image}</Box>) : null
   if (image) {
-    sectionSx.width = '75%'
+    sectionSx.width = '100%'
+
+    containerSx.flexWrap = ['wrap', 'wrap', 'nowrap']
   }
 
   return (
-    <Flex as='section' variant={`sections.${variant}`} {...props}>
+    <Flex as='section' variant={`sections.${variant}`} sx={containerSx} {...props}>
       {imageTag}
       <Box as='div' className='sectionContent' sx={sectionSx}>
         {children}
