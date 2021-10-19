@@ -2,7 +2,12 @@ module.exports = {
   defaultHeroBanner: {
     position: 'relative',
     display: 'grid',
-    gridTemplateRows: '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',
+    gridTemplateRows: [
+      '[header-start] 180px [title-start] auto [title-end lede-start] auto [lede-end] 1rem [header-end]',
+      '[header-start] 280px [title-start] auto [title-end lede-start] auto [lede-end] 1rem [header-end]',
+      '[header-start] 360px [title-start] auto [title-end lede-start] auto [lede-end] 1rem [header-end]',
+      '[header-start] 5rem [title-start] auto [title-end lede-start] auto [lede-end] 3.5rem [header-end]',
+    ],
     gridTemplateColumns: '[screen-start] 5vw [container-start title-start] 1fr [title-end image-start] 2fr [image-end container-end] 5vw [screen-end]',
     '::before': {
       content: '""',
@@ -19,19 +24,20 @@ module.exports = {
     },
   },
   bannerHeading: {
-    ml: 0,
+    ml: '0',
     pr: '2rem',
     marginTop: '4rem',
-    gridColumn: 'title',
-    gridRow: 'title',
+    gridColumn: ['title-start/lede-end', 'title-start/lede-end', 'title-start/lede-end', 'title'],
+    gridRow: ['title'],
     alignSelf: 'flex-end',
   },
   descriptionSection: {
-    gridColumn: 'title',
+    gridColumn: ['screen-start/lede-end', 'screen-start/lede-end', 'screen-start/lede-end', 'title'],
     gridRow: 'lede',
-    bg: 'white',
+    bg: ['light', 'light', 'light', 'white'],
     pr: '2rem',
-    height: '200px',
+    pl: ['5vw', '5vw', '5vw', '0'],
+    height: ['160px', '160px', '200px', '200px'],
     alignItems: 'flex-start',
     flexDirection: 'column',
   },
@@ -45,7 +51,7 @@ module.exports = {
     flexDirection: 'row',
   },
   bannerImageContainer: {
-    gridRow: 'title-start/header-end',
-    gridColumn: 'image-start/screen-end',
+    gridRow: ['header-start/header-end', 'header-start/header-end', 'header-start/header-end', 'title-start/header-end'],
+    gridColumn: ['screen-start/screen-end', 'screen-start/screen-end', 'screen-start/screen-end', 'image-start/screen-end'],
   },
 }
