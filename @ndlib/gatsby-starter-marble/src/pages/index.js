@@ -16,7 +16,7 @@ const Home = ({ data, location }) => {
         location={location}
       />
       <I18nextProvider i18n={i18next}>
-        <div>Hello MARBLE</div>
+        <div>Hello Marble</div>
       </I18nextProvider>
 
     </Layout>

@@ -1,7 +1,7 @@
 {
   "name": "@ndlib/gatsby-theme-marble",
   "private": false,
-  "description": "A Gatsby Theme for a MARBLE website.",
+  "description": "A Gatsby Theme for a Marble website.",
   "version": "0.5.0",
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "main": "index.js",
