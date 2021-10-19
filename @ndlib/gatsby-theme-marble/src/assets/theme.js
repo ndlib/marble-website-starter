@@ -54,7 +54,7 @@ const buttonShared = {
   },
   '&.more a': {
     '&:after': {
-      content: '" > "',
+      content: '" › "',
       color: 'secondary',
     },
   },
