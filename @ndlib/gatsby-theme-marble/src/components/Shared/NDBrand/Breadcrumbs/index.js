@@ -66,6 +66,16 @@ const trimTitle = (title) => {
   return title
 }
 
+export const getBreadcrumbs = (item, breadcrumbs = []) => {
+  if (item.marbleParent) {
+    getBreadcrumbs(item.marbleParent, breadcrumbs)
+    breadcrumbs.push({
+      url: item.marbleParent.slug,
+      title: item.marbleParent.title,
+    })
+  }
+  return breadcrumbs
+}
 NDBrandBreadcrumbs.propTypes = {
   variant: PropTypes.string.isRequired,
   breadcrumbs: PropTypes.array.isRequired,
