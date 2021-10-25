@@ -5,7 +5,7 @@ module.exports = {
     },
   },
   sideMetadata: {
-    backgroundColor: 'lightLight',
+    backgroundColor: 'light',
     border: '1px solid',
     borderLeft: '3px solid',
     borderColor: 'gray.3',
