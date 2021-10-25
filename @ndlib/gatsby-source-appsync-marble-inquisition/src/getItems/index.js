@@ -49,7 +49,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
             result.parentTitles.push(parent.title)
           }
 
-          if (result.parentId === 'root' || !resultHasChildren(result)) { 
+          if (!resultHasChildren(result)) { 
             const node = result // 
             const insertNode = await transformAndCreate(result, gatsbyInternal, pluginOptions)
             nodeArray.push(insertNode)
