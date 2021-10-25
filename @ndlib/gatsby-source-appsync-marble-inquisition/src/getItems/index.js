@@ -51,13 +51,15 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
 
           if (result.parentId === 'root' || !resultHasChildren(result)) { 
             const node = result // 
-            nodeArray.push(await transformAndCreate(result, gatsbyInternal, pluginOptions))
+            const insertNode = await transformAndCreate(result, gatsbyInternal, pluginOptions)
+            nodeArray.push(insertNode)
 
             // Create item's files (images and media)
             resultFiles(result).forEach(async file => {
-              const fileNode = await transformAndCreateFile(file, node, gatsbyInternal)
+              const fileNode = await transformAndCreateFile(file, insertNode, gatsbyInternal)
               nodeArray.push(fileNode)
-              //createParentChildLink({ parent: node, child: fileNode })
+              //sconsole.log(insertNode, fileNode)
+              //createParentChildLink({ parent: insertNode, child: fileNode })
             })
           }
 
@@ -67,10 +69,6 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
 
           // Check for and create child items
           if (resultHasChildren(result)) {
-            if (result.title === 'I. Inquisitorial Manuals') {
-              console.log("found")
-            }
-
             const nodesData = await getItems({
               gatsbyInternal: gatsbyInternal,
               pluginOptions: pluginOptions,
@@ -80,7 +78,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
               parent: result,
             })
             nodesData.children.forEach(child => {
-              //createParentChildLink({ parent: node, child: child })
+              //createParentChildLink({ parent: insertNodes, child: child })
             })
           }            
           resolve(result)                 
