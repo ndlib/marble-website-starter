@@ -1,6 +1,7 @@
 module.exports = {
   browseSection: {
     display: 'flex',
+    alignItems: 'center',
     '&:hover': {
       textDecoration: 'none',
       transform: 'scale(1.02)',
