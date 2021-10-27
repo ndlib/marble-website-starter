@@ -65,6 +65,8 @@ const findProvider = (item) => {
       return ['University Archives, Hesburgh Libraries']
     case 'hesb':
       return ['General Collection, Hesburgh Libraries']
+    case 'archt':
+      return ['Architecture Library, Hesburgh Libraries']
     default:
       return false
   }
@@ -89,6 +91,9 @@ const findContact = (item) => {
       break
     case 'hesb':
       contact = 'asklib@nd.edu'
+      break
+    case 'archt':
+      contact = 'asklib.nd.edu'
       break
     default:
       contact = ''
@@ -121,6 +126,8 @@ const getUriValue = (item) => {
     case 'hesb':
       uriValue = 'General%20Collection%2C%20Hesburgh%20Libraries'
       break
+    case 'archt':
+      uriValue = 'Architecture%20Library%2C%20Hesburgh%20Libraries'
     default:
       uriValue = ''
       break
