@@ -53,10 +53,10 @@ module.exports = {
   submitButton: {
     backgroundColor: 'primary',
     border: 'none',
-    color: 'text',
+    color: 'white',
     cursor: 'pointer',
     display: 'inline-block',
-    fontSize: '.8rem',
+    fontSize: '1.1rem',
     fontVariant: 'small-caps',
     height: '36px',
     width: '80px',
