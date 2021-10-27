@@ -11,11 +11,13 @@ import Link from 'components/Shared/Link'
   variant - the style variant for changing propeties in the theme-ui theme see below.
   items   - array of items in the format of [ {id, label link, icon, selectedPatterns} ... ]
   label   - label to display at the top.
+  expand  - denotes if this menu is expaned or not used when there is more than one menu on a page
   Items:
     items can have several parameters.
       -label and link for the a tag.
       -icon if you want to use an icon instead of the label.  currently only does home.
       -selectedPatterns to add a selected style if the one of the patterns matches the current path
+      -items - a list of sub items that will get called in a menu diving down further.
   Theme UI Variant.
   writes a variant called links.${variant}
   Can be edited in the theme.
@@ -25,20 +27,26 @@ import Link from 'components/Shared/Link'
     vertical
 */
 export const Menu = ({ variant, items, label, children, location, expand }) => {
+  console.log(items)
   return (
     <Box as='nav' sx={{ variant: `menus.${variant}` }}>
       {label ? <Heading as='h3' variant='menuHeading'>{label}</Heading> : null}
       <div>
         {expand && items.map(l => {
           return (
-            <Link
-              to={l.link}
-              key={l.id}
-              title={l.label}
-              variant={variant}
-              className={selectedUrl(l, location) ? 'selected' : ''}
-            >{labelOrIcon(l)}
-            </Link>)
+            <>
+              <Link
+                to={l.link}
+                key={l.id}
+                title={l.label}
+                variant={variant}
+                className={selectedUrl(l, location) ? 'selected' : ''}
+              >
+                {labelOrIcon(l)}
+              </Link>
+              {(l.items && l.items.length > 0) ? <Menu variant={variant} items={l.items} location={location} expand={true} /> : null}
+            </>
+          )
         })}
         {children}
       </div>
