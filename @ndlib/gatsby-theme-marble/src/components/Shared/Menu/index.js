@@ -17,7 +17,7 @@ import Link from 'components/Shared/Link'
       -label and link for the a tag.
       -icon if you want to use an icon instead of the label.  currently only does home.
       -selectedPatterns to add a selected style if the one of the patterns matches the current path
-      -items - a list of sub items that will get called in a menu diving down further. 
+      -items - a list of sub items that will get called in a menu diving down further.
   Theme UI Variant.
   writes a variant called links.${variant}
   Can be edited in the theme.
@@ -42,11 +42,11 @@ export const Menu = ({ variant, items, label, children, location, expand }) => {
                 variant={variant}
                 className={selectedUrl(l, location) ? 'selected' : ''}
               >
-                {labelOrIcon(l)}              
+                {labelOrIcon(l)}
               </Link>
-              {(l.items && l.items.length > 0) ? <Menu variant={variant} items={l.items} location={location} expand={true} /> : null  }
+              {(l.items && l.items.length > 0) ? <Menu variant={variant} items={l.items} location={location} expand={true} /> : null}
             </>
-            )
+          )
         })}
         {children}
       </div>
