@@ -12,5 +12,10 @@ module.exports = (item) => {
     return 'General Collection, Hesburgh Libraries'
   }
 
+  if (['archt'].includes(item.repository.toLowerCase())) {
+    return 'Architecture Library, Hesburgh Libraries'
+  }
+
+
   return 'Rare Books & Special Collections'
 }
