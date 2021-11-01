@@ -69,7 +69,7 @@ pushd scripts/environment-configuration/
   # put the env sourced vars in the environment file.
   echo "S3_DEST_BUCKET='${S3_DEST_BUCKET}'" >> $ENV_FILE
   echo "GRAPHQL_KEY_BASE='${GRAPHQL_KEY_BASE}'" >> $ENV_FILE
-  echo "SEARCH_URL='${SEARCH_URL}'" >> $ENV_FILE
+  # echo "SEARCH_URL='${SEARCH_URL}'" >> $ENV_FILE
 
   # add the app sync keys to the env
   export FMP_CRED_PATH="/all/filemaker_credentials"
