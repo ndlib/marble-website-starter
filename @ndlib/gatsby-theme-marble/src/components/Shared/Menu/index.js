@@ -27,7 +27,6 @@ import Link from 'components/Shared/Link'
     vertical
 */
 export const Menu = ({ variant, items, label, children, location, expand }) => {
-  console.log(items)
   return (
     <Box as='nav' sx={{ variant: `menus.${variant}` }}>
       {label ? <Heading as='h3' variant='menuHeading'>{label}</Heading> : null}
