@@ -1,7 +1,7 @@
 module.exports = {
   cardShell: {
     themeCard: {
-      minHeight: '350px',
+      minHeight: '400px',
       '& button': {
         margin: '0.25rem',
         marginTop: '0.5rem',
