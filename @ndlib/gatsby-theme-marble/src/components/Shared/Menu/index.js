@@ -33,10 +33,9 @@ export const Menu = ({ variant, items, label, children, location, expand }) => {
       <div>
         {expand && items.map(l => {
           return (
-            <>
+            <React.Fragment key={l.id}>
               <Link
                 to={l.link}
-                key={l.id}
                 title={l.label}
                 variant={variant}
                 className={selectedUrl(l, location) ? 'selected' : ''}
@@ -44,7 +43,7 @@ export const Menu = ({ variant, items, label, children, location, expand }) => {
                 {labelOrIcon(l)}
               </Link>
               {(l.items && l.items.length > 0) ? <Menu variant={variant} items={l.items} location={location} expand={true} /> : null}
-            </>
+            </React.Fragment>
           )
         })}
         {children}
