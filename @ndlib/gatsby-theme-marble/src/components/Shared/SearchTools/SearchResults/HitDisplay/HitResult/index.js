@@ -50,28 +50,30 @@ const HitResult = ({ hit, referal, loginReducer }) => {
                 })
             : null
         }
-        {
-          hit.highlight && hit.highlight['allMetadata.folded']
-            ? Object.values(hit.highlight['allMetadata.folded'])
-              .map(
-                (blob) => {
-                  let row = ''
-                  const stringSplit = '::'
-                  blob.split(stringSplit).map(
-                    (meta) => {
-                      row += meta.includes('<em>') ? meta : ''
-                      return row
-                    },
-                  )
-                  return row !== ''
-                    ? (
-                      higlightDisplay(row)
+        <div className='metaResults'>
+          {
+            hit.highlight && hit.highlight['allMetadata.folded']
+              ? Object.values(hit.highlight['allMetadata.folded'])
+                .map(
+                  (blob) => {
+                    let row = ''
+                    const stringSplit = '::'
+                    blob.split(stringSplit).map(
+                      (meta) => {
+                        row += meta.includes('<em>') ? meta : ''
+                        return row
+                      },
                     )
-                    : null
-                },
-              )
-            : null
-        }
+                    return row !== ''
+                      ? (
+                        higlightDisplay(row)
+                      )
+                      : null
+                  },
+                )
+              : null
+          }
+        </div>
       </MarbleItemCard>
     </div>
   )

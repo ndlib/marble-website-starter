@@ -74,11 +74,19 @@ module.exports = {
     },
     heading: {
       marginTop: '0.5rem',
-      maxHeight: 'calc(1.25rem * 1.2 * 3)', // fontSize * lineHeight * numOfLines
-      overflowY: 'hidden',
+      display:' -webkit-box',
+      maxWidth: '100%',
+      '-webkit-line-clamp': '2',
+      '-webkit-box-orient': 'vertical',
+      overflow: 'hidden',
     },
     additionalText: {
       // keep for easier override
+      display:' -webkit-box',
+      maxWidth: '100%',
+      '-webkit-line-clamp': '4',
+      '-webkit-box-orient': 'vertical',
+      overflow: 'hidden',
     },
   },
   cardBadge: {
@@ -107,7 +115,7 @@ module.exports = {
       padding: '1rem',
       width: ['100%'],
       figure: {
-        display: 'inline-block',
+        display: ['block', 'block', 'inline-block', 'inline-block', 'inline-block'],
         verticalAlign: 'top',
         width: '300px',
       },
@@ -115,16 +123,28 @@ module.exports = {
         display: 'inline-block',
         padding: '0 1rem !important',
         verticalAlign: 'top',
-        width: 'calc( 100% - 300px)',
+        width: ['100%', '100%', 'calc( 100% - 300px)', 'calc( 100% - 300px)', 'calc( 100% - 300px)'],
+        '&  div:first-of-type': {
+          '-webkit-line-clamp': '8 !important',
+        },
       },
       '.card a': {
         paddingBottom: '0',
         '&:hover': { paddingBottom: '0' },
       },
+      '.card': {
+        minHeight: ['400px', '400px', '350px', '350px', '350px'],
+      },
     },
     grid: {
       padding: '1rem',
       // use the gridWidthRule prop on CardGroup instead to set "width" of cards
+      '.card': {
+        minHeight: '400px',
+        '.metaResults': {
+          display: 'none',
+        },
+      },
     },
     toggle: {
       justifyContent: 'space-between',
