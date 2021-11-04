@@ -74,18 +74,18 @@ module.exports = {
     },
     heading: {
       marginTop: '0.5rem',
-      display:' -webkit-box',
+      display:'-webkit-box',
       maxWidth: '100%',
-      '-webkit-line-clamp': '2',
-      '-webkit-box-orient': 'vertical',
+      WebkitLineClamp: '2',
+      WebkitBoxOrient: 'vertical',
       overflow: 'hidden',
     },
     additionalText: {
       // keep for easier override
-      display:' -webkit-box',
+      display:'-webkit-box',
       maxWidth: '100%',
-      '-webkit-line-clamp': '4',
-      '-webkit-box-orient': 'vertical',
+      WebkitLineClamp: '4',
+      WebkitBoxOrient: 'vertical',
       overflow: 'hidden',
     },
   },
@@ -125,7 +125,7 @@ module.exports = {
         verticalAlign: 'top',
         width: ['100%', '100%', 'calc( 100% - 300px)', 'calc( 100% - 300px)', 'calc( 100% - 300px)'],
         '&  div:first-of-type': {
-          '-webkit-line-clamp': '8 !important',
+          WebkitLineClamp: '8 !important',
         },
       },
       '.card a': {
