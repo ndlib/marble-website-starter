@@ -49,8 +49,17 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
             result.parentTitles.push(parent.title)
           }
 
+          if (result.parentId === 'root') {
+            collection = result
+          }
+
+          // make sure the root node passes this logic if you want a root node for a collection
           if (!resultHasChildren(result)) { 
-            const node = result // 
+            // if there is a collection linkToSource and not a result linkToSource
+            if (collection.linkToSource && !result.linkToSource) {
+              result.linkToSource = collection.linkToSource
+            }
+
             const insertNode = await transformAndCreate(result, gatsbyInternal, pluginOptions)
             nodeArray.push(insertNode)
 
@@ -58,13 +67,8 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
             resultFiles(result).forEach(async file => {
               const fileNode = await transformAndCreateFile(file, insertNode, gatsbyInternal)
               nodeArray.push(fileNode)
-              //sconsole.log(insertNode, fileNode)
-              //createParentChildLink({ parent: insertNode, child: fileNode })
+              // createParentChildLink({ parent: insertNode, child: fileNode })
             })
-          }
-
-          if (result.parentId === 'root') {
-            collection = result
           }
 
           // Check for and create child items
@@ -78,7 +82,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
               parent: result,
             })
             nodesData.children.forEach(child => {
-              //createParentChildLink({ parent: insertNodes, child: child })
+              // createParentChildLink({ parent: insertNodes, child: child })
             })
           }            
           resolve(result)                 
