@@ -51,7 +51,7 @@ module.exports = {
     flexDirection: 'row',
   },
   bannerImageContainer: {
-    gridRow: ['header-start/header-end', 'header-start/header-end', 'header-start/header-end', 'title-start/header-end'],
+    gridRow: ['header-start/title-end', 'header-start/title-end', 'header-start/title-end', 'title-start/header-end'],
     gridColumn: ['screen-start/screen-end', 'screen-start/screen-end', 'screen-start/screen-end', 'image-start/screen-end'],
   },
 }
