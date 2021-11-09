@@ -46,7 +46,7 @@ const TombstoneMetadata = ({ marbleItem }) => {
           Part of: <Link to={marbleItem.marbleParent.slug}>{marbleItem.marbleParent.title}</Link>
         </div>
       ) : null }
-      {hasCollection ? (
+      {hasCollection && !marbleItem.marbleParent ? (
         <div sx={sx.partOf}>
         Part of: <Link to={'/search?collection[0]=' + collections[0].value}>{collections[0].value}</Link>
         </div>
