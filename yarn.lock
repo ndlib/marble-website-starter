@@ -7972,6 +7972,14 @@ gatsby-plugin-google-tagmanager@^3.5.0:
     "@babel/runtime" "^7.15.4"
     web-vitals "^1.1.2"
 
+gatsby-plugin-google-tagmanager@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-4.1.1.tgz#ff9c84ced409ef0b6bd738a760ddbbd9d7245167"
+  integrity sha512-0JPruScocp95N8EJyQ1Q6spEVoUrny89toiOxVIPwX0WSDCdcEw9OJ7sFs+RfLHhJ8fGCwp7CUrlvMDl6FjPrQ==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    web-vitals "^1.1.2"
+
 gatsby-plugin-image@^1.5.0:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.14.0.tgz#b6d3c14b280b150ad32b3975e90e685b50365bf4"
