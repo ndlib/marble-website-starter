@@ -247,11 +247,14 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
           result[field] = decodeURIComponent(result[field])
         }
       })
-      // fix collection title
+      // fix collection title and description
       if (typy(result, 'portfolioCollections.items').isArray) {
         result.portfolioCollections.items.forEach((item, index) => {
           if (item.title) {
             result.portfolioCollections.items[index].title = decodeURIComponent(result.portfolioCollections.items[index].title)
+          }
+          if (item.description) {
+            result.portfolioCollections.items[index].description = decodeURIComponent(result.portfolioCollections.items[index].description)
           }
         })
       }
