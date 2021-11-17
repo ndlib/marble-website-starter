@@ -4,9 +4,9 @@ export const savePortfolioUser = ({ user, loginReducer }) => {
   const query = JSON.stringify({
     query: `mutation {
   savePortfolioUser(
-    bio: """${user.bio}""",
-    email: "${user.email}",
-    fullName: "${user.fullName}"
+    bio: """${encodeURIComponent(user.bio)}""",
+    email: "${encodeURIComponent(user.email)}",
+    fullName: "${encodeURIComponent(user.fullName)}"
   ) {
     bio
     dateAddedToDynamo
@@ -39,10 +39,10 @@ export const savePortfolioCollectionQuery = ({ portfolio, loginReducer }) => {
       ${(portfolio.portfolioCollectionId) ? `portfolioCollectionId: "${portfolio.portfolioCollectionId}"` : ''},
       ${(portfolio.featuredCollection) ? `featuredCollection: ${portfolio.featuredCollection}"` : ''},
       ${(portfolio.highlightedCollection) ? `highlightedCollection: ${portfolio.highlightedCollection}"` : ''},
-      title: "${emptyString(portfolio.title)}",
+      title: "${encodeURIComponent(emptyString(portfolio.title))}",
       privacy: ${portfolio.privacy},
       layout: "${portfolio.layout}",
-      description: "${emptyString(portfolio.description)}",
+      description: "${encodeURIComponent(emptyString(portfolio.description))}",
       imageUri: "${emptyString(portfolio.imageUri)}"
     ) {
       dateAddedToDynamo
@@ -91,8 +91,7 @@ export const savePortfolioItemQuery = ({ item, loginReducer }) => {
       itemType: internal,
       sequence: ${item.sequence},
       title: "${emptyString(item.title)}",
-      annotation: "${emptyString(item.annotation)}",
-      description: "${emptyString(item.description)}",
+      annotation: "${encodeURIComponent(emptyString(item.annotation))}",
     ) {
       portfolioItemId
       portfolioCollectionId
@@ -220,10 +219,10 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
     url = process.env.PUBLIC_GRAPHQL_API_URL
   } else {
     headers.Authorization = typy(loginReducer, 'token.idToken').safeString
-    console.log(typy(loginReducer, 'token.idToken').safeString)
+    // console.log(typy(loginReducer, 'token.idToken').safeString)
   }
 
-  console.log(url)
+  // console.log(url)
   return fetch(
     url,
     {
@@ -238,5 +237,33 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
     })
     .then((result) => {
       return typy(result, contentType).safeObjectOrEmpty
+    })
+    .then(result => {
+      // console.log('unsanitary', result)
+      // fix some fields that might be at the top level
+      const fixableFields = ['bio', 'email', 'fullName', 'description', 'annotation', 'title']
+      fixableFields.forEach(field => {
+        if (typy(result, field).isString) {
+          result[field] = decodeURIComponent(result[field])
+        }
+      })
+      // fix collection title
+      if (typy(result, 'portfolioCollections.items').isArray) {
+        result.portfolioCollections.items.forEach((item, index) => {
+          if (item.title) {
+            result.portfolioCollections.items[index].title = decodeURIComponent(result.portfolioCollections.items[index].title)
+          }
+        })
+      }
+      // fix item annotation
+      if (typy(result, 'portfolioItems.items').isArray) {
+        result.portfolioItems.items.forEach((item, index) => {
+          if (item.annotation) {
+            result.portfolioItems.items[index].annotation = decodeURIComponent(result.portfolioItems.items[index].annotation)
+          }
+        })
+      }
+      // console.log('sanitary', result)
+      return result
     })
 }
