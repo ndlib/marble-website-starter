@@ -5,7 +5,7 @@ module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
   const { actions, createContentDigest, createNodeId } = gatsbyInternal
   const { createNode } = actions
   const { iiifRoot } = pluginOptions
-  const slug = appSyncItem.uniqueIdentifier ? `item/${appSyncItem.uniqueIdentifier}` : `item/${appSyncItem.id}`
+  const slug = `item/${appSyncItem.id}`
   const marbleObject = {
     id: createNodeId(appSyncItem.id),
     citation: citationGenerator(appSyncItem, slug),
