@@ -35,7 +35,7 @@ module.exports = async (item, pluginOptions) => {
     thumbnail: getThumbnail(item),
     language: getLanguages(item),
     type: item.level,
-    url: '/item/' + item.id,
+    url: item.uniqueIdentifier ? '/item/' + item.uniqueIdentifier : '/item/' + item.id,
   }
 
   searchData.hasImages = !!searchData.thumbnail
