@@ -6,7 +6,7 @@ import { jsx, Box, Button, Input } from 'theme-ui'
 import { navigate } from 'gatsby'
 import queryString from 'query-string'
 
-export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch, ...props }) => {
+export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch, forceImages, ...props }) => {
   const inputRef = React.createRef()
   const qs = queryString.parse(location.search)
 
@@ -23,7 +23,11 @@ export const NDBrandNavSearch = ({ location, variant, searchPath, setShowSearch,
   const submitSearch = (location, inputRef, searchPath) => {
     const qs = queryString.parse(location.search)
     qs.q = `${inputRef.current.value}`
-    navigate(`${searchPath}?${queryString.stringify(qs)}`)
+    if (forceImages && !qs['images[0]']) {
+      navigate(`${searchPath}?${queryString.stringify(qs)}&images[0]=true`)
+    } else {
+      navigate(`${searchPath}?${queryString.stringify(qs)}`)
+    }
   }
   return (
     <Box sx={{ variant: variant }} {...props}>
@@ -98,10 +102,12 @@ NDBrandNavSearch.propTypes = {
   location: PropTypes.object.isRequired,
   searchPath: PropTypes.string.isRequired,
   setShowSearch: PropTypes.func,
+  forceImages: PropTypes.bool,
 }
 
 NDBrandNavSearch.defaultProps = {
   variant: 'navSearch.default',
+  forceImages: true,
 }
 
 export default NDBrandNavSearch
