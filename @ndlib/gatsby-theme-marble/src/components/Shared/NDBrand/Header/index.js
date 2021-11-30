@@ -96,7 +96,13 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
                 menuItems
               )
               : (
-                <NDBrandNavSearch key='search' location={location} searchPath='search' setShowSearch={setShowSearch} />
+                <NDBrandNavSearch
+                  key='search'
+                  location={location}
+                  searchPath='search'
+                  forceImages
+                  setShowSearch={setShowSearch}
+                />
               )}
           </div>
         </Box>
