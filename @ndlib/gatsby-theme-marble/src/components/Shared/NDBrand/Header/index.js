@@ -100,7 +100,7 @@ export const NDBrandHeader = ({ location, variant, titleOverride, menuItems, sho
                   key='search'
                   location={location}
                   searchPath='search'
-                  forceImages={true}
+                  forceImages
                   setShowSearch={setShowSearch}
                 />
               )}
