@@ -1,4 +1,5 @@
-module.exports = {
+import backgroundImage from 'assets/images/hdr-main-building-800.jpg'
+const sx = {
   defaultHeroBanner: {
     position: 'relative',
     display: 'grid',
@@ -18,7 +19,7 @@ module.exports = {
       left: '0',
       right: '0',
       zIndex:'-1',
-      backgroundImage: 'url(https://conductor.nd.edu/stylesheets/themes/ndt/v3/images/hdr-main-building-800.jpg)',
+      backgroundImage: `url(${backgroundImage})`,
       backgroundRepeat: 'repeat',
       gridRow: 'header-start/title-end',
     },
@@ -55,3 +56,4 @@ module.exports = {
     gridColumn: ['screen-start/screen-end', 'screen-start/screen-end', 'screen-start/screen-end', 'image-start/screen-end'],
   },
 }
+export default sx
