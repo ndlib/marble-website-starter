@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 export const initialContext = {
   portfoioUser: {},
   updatePortfolioUser: () => {},
-  isPorfolioOwner: () => false,
+  isPortfolioOwner: () => false,
   portfolioUserLoading: () => {},
   removeUserPortfolio: () => {},
   createNewPortfolio: () => {},
