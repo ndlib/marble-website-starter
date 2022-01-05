@@ -94,6 +94,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     link: String
     icon: String
     selectedPatterns: [String]
+    items: [menuItems]
   }
   type MenusJson implements Node @dontInfer {
     id: String
