@@ -45,7 +45,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 }
 
 exports.sourceNodes = async (gatsbyInternal, pluginOptions) => {
-  const { iiifViewerUrl, searchUrl, searchIndex } = pluginOptions
+  const { iiifViewerUrl, searchUrl, searchIndex, readAuth } = pluginOptions
   const { actions, createContentDigest, createNodeId } = gatsbyInternal
   const { createNode } = actions
   const marbleConfiguration = {
@@ -54,6 +54,7 @@ exports.sourceNodes = async (gatsbyInternal, pluginOptions) => {
     search: {
       url: searchUrl,
       index: searchIndex,
+      basicAuth: readAuth,
     },
   }
   const nodeContent = JSON.stringify(marbleConfiguration)
@@ -108,6 +109,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   type searchConfig @dontInfer {
     index: String
     url: String
+    basicAuth: String
   }
   type MarbleConfiguration implements Node {
     iiifViewerUrl: String

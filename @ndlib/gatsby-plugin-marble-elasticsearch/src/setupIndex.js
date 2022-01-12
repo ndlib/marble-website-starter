@@ -1,15 +1,22 @@
 module.exports = async (client, pluginOptions) => {
   const { searchIndex, settings, mappings } = pluginOptions
-  const indexExists = await client.indices.exists({ index: searchIndex })
-  if (indexExists) {
-    console.log('Deleting existing index: ' + searchIndex)
-    await client.indices.delete({ index: searchIndex })
-  }
+
+  console.log('Attempting to delete existing index.')
+  const response = await client.indices.delete({ index: searchIndex }).catch(
+    (e) => {
+      console.log('Could not delete index or there is no index to delete.')
+      console.log(e)
+    },
+  )
+  console.log(response)
 
   const node = {}
   node.settings = await settings(client)
   node.mappings = await mappings()
-  const index = { index: searchIndex, body: node }
+  const index = {
+    index: searchIndex,
+    body: node,
+  }
 
   console.log('Creating index:  ' + searchIndex)
   await client.indices.create(index).catch((e) => {
