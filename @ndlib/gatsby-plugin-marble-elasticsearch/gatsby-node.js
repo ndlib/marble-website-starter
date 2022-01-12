@@ -1,6 +1,4 @@
-const { Client } = require('elasticsearch')
-const auth = require('http-aws-es')
-const AWS = require('aws-sdk')
+const { Client } = require('@opensearch-project/opensearch')
 const setupIndex = require('./src/setupIndex')
 const indexToElasticSearch = require('./src/indexToElasticSearch')
 
@@ -29,17 +27,15 @@ exports.onPostBuild = async (
   }
 
   const options = {
-    host: url,
-    port:443,
-    protocol:'https',
-    connectionClass: auth,
-    requestTimeout: '2000000000',
-    awsConfig: new AWS.Config({ region: region }),
+    node: url,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+
   }
 
-  const client = Client(options)
+  const client = new Client(options)
   const { errors, data } = await graphql(query)
-
   if (errors) {
     console.error(errors)
     return 1

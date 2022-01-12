@@ -12,8 +12,8 @@
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "license": "APACHE2",
   "dependencies": {
+    "@opensearch-project/opensearch": "https://github.com/opensearch-project/opensearch-js",
     "aws-sdk": "^2.916.0",
-    "elasticsearch": "^16.7.2",
     "http-aws-es": "^6.0.0"
   },
   "peerDependencies": {

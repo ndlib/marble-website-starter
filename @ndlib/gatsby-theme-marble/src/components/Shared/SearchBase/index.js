@@ -12,13 +12,19 @@ const SearchBase = ({ children, defaultSearch }) => {
   const searchBase = {
     url: typy(marbleConfiguration, 'search.url').safeString,
     app: typy(marbleConfiguration, 'search.index').safeString,
+    basicAuth: typy(marbleConfiguration, 'search.basicAuth').safeString, // 'readOnly:readOnly1!',
   }
-  if (!typy(searchBase, 'url').isString || !typy(searchBase, 'app').isString) {
+  if (!typy(searchBase, 'url').isString || !typy(searchBase, 'app').isString || !typy(searchBase, 'basicAuth').isString) {
     return (
       <>{children}</>
     )
   }
-  const sk = new SearchkitManager(`${searchBase.url}/${searchBase.app}`)
+  const sk = new SearchkitManager(
+    `${searchBase.url}/${searchBase.app}`,
+    {
+      basicAuth: searchBase.basicAuth,
+    },
+  )
   if (defaultSearch) {
     sk.addDefaultQuery((query) => {
       return query.addQuery(defaultSearch)
@@ -45,6 +51,7 @@ query {
     search {
       url
       index
+      basicAuth
     }
   }
 }
