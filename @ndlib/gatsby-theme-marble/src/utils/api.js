@@ -209,7 +209,7 @@ export const removeCollectionItem = ({ item, loginReducer }) => {
 }
 
 export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
-  let url = process.env.GRAPHQL_API_URL
+  let url = process.env.GRAPHQL_API_URL_KEY_PATH
 
   const headers = {
     'Content-Type': 'application/json',
