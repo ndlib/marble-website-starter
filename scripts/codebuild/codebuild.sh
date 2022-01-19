@@ -24,13 +24,13 @@ if [[ -z "$S3_DEST_BUCKET" ]]; then
 fi
 
 # ENV_FILE="${SITE_DIR}/.env.production"
-#
-# # move submodule into place
-# if [[ ! -z "${SUBMOD_DIR}" ]]; then
-#   mv ${SUBMOD_DIR}/* ${SITE_DIR}
-#   mv ${SUBMOD_DIR}/.env.production ${SITE_DIR}
-#   mv ${SUBMOD_DIR}/.env.production-test ${SITE_DIR}
-# fi
+
+# move submodule into place
+if [[ ! -z "${SUBMOD_DIR}" ]]; then
+  mv ${SUBMOD_DIR}/* ${SITE_DIR}
+  # mv ${SUBMOD_DIR}/.env.production ${SITE_DIR}
+  # mv ${SUBMOD_DIR}/.env.production-test ${SITE_DIR}
+fi
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
 # must contain search_url and search_index key/values
