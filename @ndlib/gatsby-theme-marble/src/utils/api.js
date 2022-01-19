@@ -209,10 +209,7 @@ export const removeCollectionItem = ({ item, loginReducer }) => {
 }
 
 export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
-  let url = process.env.GRAPHQL_API_URL
-  console.log('1:', url)
-  url = 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql'
-  console.log('2:', url)
+  let url = 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql' // process.env.GRAPHQL_API_URL
   const headers = {
     'Content-Type': 'application/json',
   }
@@ -220,7 +217,6 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
   if (usePublicUrl) {
     // follow URL should come from configuration instead
     url = 'https://t8mhrjrn63.execute-api.us-east-1.amazonaws.com/prod/query/getPortfolioCollection'
-    console.log('3:', url)
   } else {
     headers.Authorization = typy(loginReducer, 'token.idToken').safeString
     // console.log(typy(loginReducer, 'token.idToken').safeString)
