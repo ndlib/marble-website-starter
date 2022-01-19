@@ -23,14 +23,14 @@ if [[ -z "$S3_DEST_BUCKET" ]]; then
     S3_DEST_BUCKET="marbleb-prod-website-sitebucket397a1860-1ny38m2va9ueb"
 fi
 
-ENV_FILE="${SITE_DIR}/.env.production"
-
-# move submodule into place
-if [[ ! -z "${SUBMOD_DIR}" ]]; then
-  mv ${SUBMOD_DIR}/* ${SITE_DIR}
-  mv ${SUBMOD_DIR}/.env.production ${SITE_DIR}
-  mv ${SUBMOD_DIR}/.env.production-test ${SITE_DIR}
-fi
+# ENV_FILE="${SITE_DIR}/.env.production"
+#
+# # move submodule into place
+# if [[ ! -z "${SUBMOD_DIR}" ]]; then
+#   mv ${SUBMOD_DIR}/* ${SITE_DIR}
+#   mv ${SUBMOD_DIR}/.env.production ${SITE_DIR}
+#   mv ${SUBMOD_DIR}/.env.production-test ${SITE_DIR}
+# fi
 
 # AWS parameter store key path(ex: /all/static-host/<stackname>/)
 # must contain search_url and search_index key/values
@@ -42,10 +42,10 @@ if [[ -z "$PARAM_CONFIG_PATH" ]]; then
     exit 2
 fi
 
-if [ $BUILD_ENVIRONMENT == "test" ]; then
-  echo "Setting up Production Test Env"
-  cp ${SITE_DIR}/.env.production-test ${SITE_DIR}/.env.production
-fi
+# if [ $BUILD_ENVIRONMENT == "test" ]; then
+#   echo "Setting up Production Test Env"
+#   cp ${SITE_DIR}/.env.production-test ${SITE_DIR}/.env.production
+# fi
 
 echo "${magenta}----- INSTALLATIONS -------${reset}"
 # install yarn

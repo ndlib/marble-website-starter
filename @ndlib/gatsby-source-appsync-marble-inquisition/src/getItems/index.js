@@ -33,7 +33,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
           // prune extra graphQL layers
           return result.data.getItem
         })
-        .then(async result => {        
+        .then(async result => {
           if (!result) {
             const err = 'Received empty result for item ' + itemId
             reject(err)
@@ -42,9 +42,10 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
           if (parent) {
             if (!result.parentTitles) {
               result.parentTitles = []
-              if (process.env.ONLY_SEARCH_CHILDNODES !== 'true') {
-                result.parentTitles.push(collection.title)
-              }              
+              // THIS IS ALWAYS FALSE
+              // if (process.env.ONLY_SEARCH_CHILDNODES !== 'true') {
+              //   result.parentTitles.push(collection.title)
+              // }
             }
             result.parentTitles.push(parent.title)
           }
@@ -54,7 +55,7 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
           }
 
           // make sure the root node passes this logic if you want a root node for a collection
-          if (!resultHasChildren(result)) { 
+          if (!resultHasChildren(result)) {
             // if there is a collection linkToSource and not a result linkToSource
             if (collection.linkToSource && !result.linkToSource) {
               result.linkToSource = collection.linkToSource
@@ -77,15 +78,15 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
               gatsbyInternal: gatsbyInternal,
               pluginOptions: pluginOptions,
               itemList: result.children.items,
-              nodeArray: nodeArray, 
+              nodeArray: nodeArray,
               collection: collection,
               parent: result,
             })
             nodesData.children.forEach(child => {
               // createParentChildLink({ parent: insertNodes, child: child })
             })
-          }            
-          resolve(result)                 
+          }
+          resolve(result)
         })
         .catch(err => {
           console.error('Oops: ' + err)
@@ -96,8 +97,8 @@ const getItems = async ({ gatsbyInternal, pluginOptions, itemList, nodeArray, co
     }).then(result => {
       return result
     }),
-  ).then(async results => {    
-    return {children: results}
+  ).then(async results => {
+    return { children: results }
   })
 }
 

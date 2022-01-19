@@ -216,7 +216,8 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
   }
 
   if (usePublicUrl) {
-    url = process.env.PUBLIC_GRAPHQL_API_URL
+    // follow URL should come from configuration instead
+    url = 'https://t8mhrjrn63.execute-api.us-east-1.amazonaws.com/prod/query/getPortfolioCollection'
   } else {
     headers.Authorization = typy(loginReducer, 'token.idToken').safeString
     // console.log(typy(loginReducer, 'token.idToken').safeString)

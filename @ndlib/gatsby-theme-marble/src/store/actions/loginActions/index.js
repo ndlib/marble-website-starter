@@ -54,7 +54,7 @@ export const setAuthClient = (authClientSettings) => {
   return {
     type: SET_AUTH_CLIENT,
     authClientSettings: authClientSettings,
-    userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/', // process.env.USER_CONTENT_PATH,
+    userContentPath: 'https://lsqjyc4asg.execute-api.us-east-1.amazonaws.com/prod/',
   }
 }
 
