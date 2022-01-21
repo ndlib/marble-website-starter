@@ -24,6 +24,7 @@ module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
     searchData: await formatSearchData(appSyncItem, pluginOptions),
     slug: slug,
     title: appSyncItem.title,
+    additionalDescription: appSyncItem.additionalNotes,
   }
   const nodeContent = JSON.stringify(marbleObject)
   const normalizedTypeNode = {

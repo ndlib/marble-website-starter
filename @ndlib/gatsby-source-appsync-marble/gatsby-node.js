@@ -102,6 +102,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     parentId: String
     marbleParent: MarbleItem @link(by: "marbleId", from: "parentId")
     searchData: searchData
+    additionalDescription: String
   }
 
   type searchData {

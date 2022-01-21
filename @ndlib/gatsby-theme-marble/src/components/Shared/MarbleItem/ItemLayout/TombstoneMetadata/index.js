@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import typy from 'typy'
 import TombstoneField from './TombstoneField'
 import ManifestDescription from '@ndlib/gatsby-theme-marble/src/components/Shared/ManifestDescription'
+import AdditionalDescription from '@ndlib/gatsby-theme-marble/src/components/Shared/AdditionalDescription'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import Voiceover from '@ndlib/gatsby-theme-marble/src/components/Shared/Voiceover'
 import { FaMapMarkerAlt } from 'react-icons/fa'
@@ -29,34 +30,41 @@ const TombstoneMetadata = ({ marbleItem }) => {
         field={dates}
         sxStyle={sx.dates}
       />
-      {hasCreator ? (
-        <React.Fragment>
-          <Voiceover text='Creator' />
-          <TombstoneField
-            field={hasCreator ? (isUnknown ? [{ value: ['Unknown creator'] }] : creators) : ''}
-            searchField={hasCreator ? (isUnknown ? null : 'creator[0]') : null}
-            sxStyle={sx.creators}
-            filterTitle='\(.*\)$'
-          />
-        </React.Fragment>
-      ) : null}
+      {hasCreator
+        ? (
+          <React.Fragment>
+            <Voiceover text='Creator' />
+            <TombstoneField
+              field={hasCreator ? (isUnknown ? [{ value: ['Unknown creator'] }] : creators) : ''}
+              searchField={hasCreator ? (isUnknown ? null : 'creator[0]') : null}
+              sxStyle={sx.creators}
+              filterTitle='\(.*\)$'
+            />
+          </React.Fragment>
+        )
+        : null}
 
-      {marbleItem.marbleParent ? (
-        <div sx={sx.partOf}>
+      {marbleItem.marbleParent
+        ? (
+          <div sx={sx.partOf}>
           Part of: <Link to={marbleItem.marbleParent.slug}>{marbleItem.marbleParent.title}</Link>
-        </div>
-      ) : null }
-      {hasCollection && !marbleItem.marbleParent ? (
-        <div sx={sx.partOf}>
+          </div>
+        )
+        : null }
+      {hasCollection && !marbleItem.marbleParent
+        ? (
+          <div sx={sx.partOf}>
         Part of: <Link to={'/search?collection[0]=' + collections[0].value}>{collections[0].value}</Link>
-        </div>
-      ) : null}
+          </div>
+        )
+        : null}
       <TombstoneField
         field={campusLocations}
         sxStyle={sx.campusLocations}
         icon={(<FaMapMarkerAlt />)}
       />
       <ManifestDescription marbleItem={marbleItem} />
+      <AdditionalDescription marbleItem={marbleItem} />
     </div>
   )
 }
