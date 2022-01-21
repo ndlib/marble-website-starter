@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
 import ActionButtonGroup from 'components/Shared/ActionButtonGroup'
 import ManifestDescription from 'components/Shared/ManifestDescription'
+import AdditionalDescription from '@ndlib/gatsby-theme-marble/src/components/Shared/AdditionalDescription'
 import ManifestMetaData from 'components/Shared/ManifestMetaData'
 import ManifestImageGroup from 'components/Shared/ManifestImageGroup'
 import ChildManifests from 'components/Shared/ChildManifests'
@@ -20,6 +21,7 @@ const CollectionLayout = ({ marbleItem, location }) => {
         <Box sx={{ width: ['100%', '100%', '100%', '40%'], px: '1rem', py: '1rem' }}>
           <ActionButtonGroup marbleItem={marbleItem} />
           <ManifestDescription marbleItem={marbleItem} />
+          <AdditionalDescription marbleItem={marbleItem} alignLeft />
           <ManifestMetaData marbleItem={marbleItem} />
           <PartiallyDigitized marbleItem={marbleItem} />
         </Box>

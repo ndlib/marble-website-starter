@@ -1,19 +1,22 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, useThemeUI } from 'theme-ui'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 
-const AdditionalDescription = ({ marbleItem }) => {
+const AdditionalDescription = ({ marbleItem, alignLeft = false }) => {
+  const themeUi = useThemeUI()
+
   if (marbleItem && marbleItem.additionalDescription) {
     return (
       <div
         className='descriptionBlock'
         sx={{
-          marginLeft: 'auto',
+          marginLeft: alignLeft ? '0' : 'auto',
           marginRight: 'auto',
           width: 'fit-content',
           maxWidth: '45em',
+          '& a': themeUi.theme.links ? themeUi.theme.links.default : {},
         }}
       >
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>
@@ -29,7 +32,9 @@ AdditionalDescription.propTypes = {
   marbleItem: PropTypes.shape({
     description: PropTypes.string,
     additionalDescription: PropTypes.string,
+
   }),
+  alignLeft: PropTypes.bool,
 }
 
 export default AdditionalDescription
