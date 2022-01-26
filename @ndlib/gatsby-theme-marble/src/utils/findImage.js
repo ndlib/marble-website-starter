@@ -33,3 +33,21 @@ export const findAltImage = (images, index) => {
     ? `${typy(images, `nodes[${index}].iiif.service`).safeString}/square/125,/0/default.jpg`
     : noImage
 }
+
+export const findDefaultImage = (marbleItem, thumbnail = false) => {
+  if (typy(marbleItem, 'defaultImage.default').isString) {
+    if (thumbnail) {
+      return marbleItem.defaultImage.thumbnail
+    }
+    return marbleItem.defaultImage.default
+  }
+
+  // No images were found, check to see if it is a PDF
+  const containsPDF = typy(marbleItem, 'childrenMarbleFile').safeArray.find(file => file.fileType === 'pdf')
+  if (containsPDF) {
+    return pdfImage
+  }
+
+  // No image and not a pdf, return noImage icon
+  return noImage
+}

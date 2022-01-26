@@ -34,6 +34,6 @@ describe('ItemAlternateViews', () => {
     const wrapper = shallow(<ItemAlternateViews marbleItem={marbleItem} viewer='mirador' location={location} allMarbleFile={allMarbleFile} />)
 
     expect(wrapper.find('div').exists()).toBeTruthy()
-    expect(wrapper.find(AlternateImage).length).toEqual(2)
+    expect(wrapper.find(AlternateImage).length).toEqual(3)
   })
 })

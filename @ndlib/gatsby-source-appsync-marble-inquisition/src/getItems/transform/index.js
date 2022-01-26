@@ -1,6 +1,7 @@
 const citationGenerator = require('./citationGenerator')
 const makeMetadataArray = require('./makeMetadataArray')
 const formatSearchData = require('./formatSearchData')
+const getIiif = require('./getIiif')
 module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
   const { actions, createContentDigest, createNodeId } = gatsbyInternal
   const { createNode } = actions
@@ -13,6 +14,7 @@ module.exports = async (appSyncItem, gatsbyInternal, pluginOptions) => {
     sourceSystem: appSyncItem.sourceSystem,
     sourceType: appSyncItem.TYPE,
     copyrightRestricted: isCopyrightRestricted(appSyncItem),
+    defaultImage: getIiif(appSyncItem.defaultImage),
     description: mapFieldOrDefault(appSyncItem, 'description', ''),
     display:  mapFieldOrDefault(appSyncItem, 'level', 'manifest'),
     iiifUri: appSyncItem.iiifResourceId && iiifRoot ? `${iiifRoot}/${appSyncItem.iiifResourceId}` : '',

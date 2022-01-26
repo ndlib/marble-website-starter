@@ -30,6 +30,15 @@ module.exports = (itemId, website) => {
     }
     dedication
     defaultFilePath
+    defaultImage {
+      id
+      mediaResourceId
+      mediaServer
+      mimeType
+      sequence
+      sourceUri
+      title
+    }
     description
     digitalAccess
     digitizationSource

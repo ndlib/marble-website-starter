@@ -12,13 +12,13 @@ const ItemAlternateViews = ({ marbleItem, viewer, location, allMarbleFile }) => 
     return (
       <div>
         {
-          allMarbleFile.nodes.slice(1, Math.min(MAX_IMAGES + 1, allMarbleFile.nodes.length)).map((canvas, index) => {
+          allMarbleFile.nodes.map((canvas, index) => {
             return (
               <AlternateImage
                 allMarbleFile={allMarbleFile}
                 key={index}
                 marbleItem={marbleItem}
-                index={index + 1}
+                index={index}
                 max={MAX_IMAGES}
                 length={marbleItem.childrenMarbleFile.length}
                 location={location}

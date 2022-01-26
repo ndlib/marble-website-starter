@@ -1,7 +1,7 @@
 const getFileType = require('../getFileType')
 
 module.exports = (item) => {
-  if (getFileType(item.mimeType) === 'image' && item.mediaServer && item.mediaResourceId) {
+  if (item && getFileType(item.mimeType) === 'image' && item.mediaServer && item.mediaResourceId) {
     item.mediaServer = item.mediaServer.replace('libraries', 'library')
     return {
       default: item.mediaServer + '/' + item.mediaResourceId + '/full/full/0/default.jpg',

@@ -15,8 +15,8 @@ describe('ManifestImageGroup', () => {
       nodes: [],
     },
     marbleConfiguration: {
-      iiifViewerUrl: 'https://viewer.url/?='
-    }
+      iiifViewerUrl: 'https://viewer.url/?=',
+    },
   }
   test('image', () => {
     useStaticQuery.mockImplementationOnce(() => {
@@ -27,6 +27,7 @@ describe('ManifestImageGroup', () => {
       slug: 'slug',
       title: 'title',
       description: '',
+      defaultImage: { default: 'https://default.image' },
       metadata: [
         {
           label: 'Classification',
@@ -51,7 +52,7 @@ describe('ManifestImageGroup', () => {
     expect(wrapper.find(ViewerLink).exists()).toBeTruthy()
     expect(wrapper.find(ExpandIcon).exists()).toBeTruthy()
     expect(wrapper.findWhere(img => {
-      return img.prop('src') === 'http://image.default'
+      return img.prop('src') === 'https://default.image'
     }).exists()).toBeTruthy()
     expect(wrapper.findWhere(img => {
       return img.prop('alt') === 'This is called title within the category of sculptures.'
