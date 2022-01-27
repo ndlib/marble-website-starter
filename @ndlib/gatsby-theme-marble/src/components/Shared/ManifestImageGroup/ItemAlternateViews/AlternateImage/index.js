@@ -21,12 +21,12 @@ export const AlternateImage = ({
   location,
 }) => {
   if (length > 1) {
-    const isLast = max === index && max + 1 !== length
+    const isLast = max === index + 1 && max + 1 !== length
     const spacing = 0.25
     const data = {
       marbleItem,
     }
-    marbleItem.alttext = function () {
+    const alttext = function () {
       return (classification.length > 1 || material.length > 1)
         ? `This is called ${marbleItem.title} within the category of ${type}.`
         : 'Open in external viewer application'
@@ -50,8 +50,8 @@ export const AlternateImage = ({
           />
           <Image
             src={findAltImage(allMarbleFile, index)}
-            alt={marbleItem.alttext()}
-            title={`Alternate View ${index}`}
+            alt={alttext()}
+            title={`Alternate View ${index + 1}`}
           />
         </ViewerLink>
       </div>

@@ -95,6 +95,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     sourceType: String
     title: String!
     description: String
+    defaultImage: marbleIiifFile
     sequence: Int
     iiifUri: String
     partiallyDigitized: Boolean
