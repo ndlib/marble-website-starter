@@ -4,7 +4,6 @@
 <a href="https://codeclimate.com/github/ndlib/marble-website-starter/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a22d19847d3109fcb568/test_coverage" /></a>
 [![Build Status](https://travis-ci.org/ndlib/marble-website-starter.svg?branch=master)](https://travis-ci.org/ndlib/marble-website-starter)
 <!-- Badges end -->
-__This repository is currently under active development and is not ready for production.__
 
 ## About the Project
 
