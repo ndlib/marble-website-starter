@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ViewerLink from './ViewerLink'
 import ExpandIcon from './ExpandIcon'
 import ItemAlternateViews from './ItemAlternateViews'
-import { findDefaultImage } from 'utils/findImage'
+import { findImage } from 'utils/findImage'
 import { getFieldValue } from 'components/Shared/Seo/helpers.js'
 import { jsx } from 'theme-ui'
 import sx from './sx'
@@ -33,7 +33,7 @@ export const ManifestImageGroup = ({ location, marbleItem, allMarbleFile }) => {
       >
         <picture sx={sx.wrapper}>
           <img
-            src={findDefaultImage(marbleItem)}
+            src={findImage(allMarbleFile, marbleItem)}
             alt={alttext()}
             title={label}
             sx={sx.image}
