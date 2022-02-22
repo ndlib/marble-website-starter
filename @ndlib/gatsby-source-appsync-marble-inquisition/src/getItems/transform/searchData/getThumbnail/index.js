@@ -2,7 +2,8 @@ const getIiif = require('../../getIiif')
 // eslint-disable-next-line complexity
 module.exports = (item) => {
   if (item) {
-    if (item.defaultImage) {
+    // some fields may not be null when there is no defaultImage so check the two we care about
+    if (item.defaultImage && item.defaultImage.mediaServer && item.defaultImage.mediaResourceId) {
       const iiifImage = getIiif(item.defaultImage)
       if (iiifImage) {
         return iiifImage.thumbnail
