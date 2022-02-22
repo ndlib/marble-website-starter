@@ -4,7 +4,7 @@ import pdfImage from 'assets/images/pdf.svg'
 
 // eslint-disable-next-line complexity
 export const findImage = (images, marbleItem, thumbnail = false) => {
-  // try and use the default image - we should always have one, but sometimes we do not
+  // the default image if it exists
   let returnImage = findDefaultImage(marbleItem, thumbnail)
 
   // check the child images if default image returned null and was assigned a "no image" image
