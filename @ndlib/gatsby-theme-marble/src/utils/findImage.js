@@ -4,23 +4,20 @@ import pdfImage from 'assets/images/pdf.svg'
 
 // eslint-disable-next-line complexity
 export const findImage = (images, marbleItem, thumbnail = false) => {
-  // Find the first usable image
-  const image = typy(images, 'nodes').safeArray.find(node => node.fileType === 'image') || typy(marbleItem, 'childrenMarbleFile').safeArray.find(file => file.fileType === 'image')
-  if (image && thumbnail) {
-    return typy(image, 'local.publicURL').safeString || typy(image, 'iiif.thumbnail').safeString
-  } else if (image) {
-    return typy(image, 'local.publicURL').safeString ||
-    typy(image, 'iiif.default').safeString
-  }
+  // the default image if it exists
+  let returnImage = findDefaultImage(marbleItem, thumbnail)
 
-  // No images were found, check to see if it is a PDF
-  const containsPDF = typy(marbleItem, 'childrenMarbleFile').safeArray.find(file => file.fileType === 'pdf')
-  if (containsPDF) {
-    return pdfImage
+  // check the child images if default image returned null and was assigned a "no image" image
+  if (returnImage === noImage || returnImage === pdfImage) {
+    const image = typy(images, 'nodes').safeArray.find(node => node.fileType === 'image') || typy(marbleItem, 'childrenMarbleFile').safeArray.find(file => file.fileType === 'image')
+    if (image && thumbnail) {
+      returnImage = typy(image, 'local.publicURL').safeString || typy(image, 'iiif.thumbnail').safeString
+    } else if (image) {
+      returnImage = typy(image, 'local.publicURL').safeString ||
+      typy(image, 'iiif.default').safeString
+    }
   }
-
-  // No image and not a pdf, return noImage icon
-  return noImage
+  return returnImage
 }
 export default findImage
 
