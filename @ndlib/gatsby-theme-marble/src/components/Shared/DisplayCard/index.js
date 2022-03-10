@@ -14,6 +14,7 @@ const DisplayCard = ({
   title,
   target,
   children,
+  referalState,
 }) => {
   return (
     <CardShell
@@ -21,6 +22,7 @@ const DisplayCard = ({
       leftBadge={leftBadge}
       rightBadge={rightBadge}
       controls={controls}
+      referalState={referalState}
     >
       <figure sx={sx.displayCard.figure}>
         <CardImage image={image} alt={title} />
@@ -47,12 +49,14 @@ DisplayCard.propTypes = {
   title: PropTypes.string,
   target: PropTypes.string,
   children: PropTypes.node,
+  referalState: PropTypes.node,
 }
 
 DisplayCard.defaultProps = {
   // variant: 'default',
   leftBadge: null,
   rightBadge: null,
+  referalState: {},
 }
 
 export default DisplayCard

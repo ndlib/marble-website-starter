@@ -10,10 +10,11 @@ const CardShell = ({
   controls,
   target,
   children,
+  referalState,
 }) => {
   return (
     <ThemeCard className='card' sx={sx.cardShell.themeCard}>
-      <LinkOrWrapper target={target}>
+      <LinkOrWrapper target={target} referalState={referalState}>
         {children}
         <div sx={sx.cardShell.leftBadge}>{leftBadge}</div>
         <div sx={sx.cardShell.rightBadge}>{rightBadge}</div>
@@ -29,6 +30,7 @@ CardShell.propTypes = {
   controls: PropTypes.node,
   target: PropTypes.string,
   children: PropTypes.node,
+  referalState: PropTypes.node,
 }
 
 CardShell.defaultProps = {
