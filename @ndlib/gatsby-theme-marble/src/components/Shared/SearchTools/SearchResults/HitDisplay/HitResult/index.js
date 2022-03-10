@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import BookmarkGroup from 'components/Shared/ActionButtonGroup/BookmarkGroup'
 import { isLoggedIn } from 'utils/auth'
 
+// eslint-disable-next-line complexity
 const HitResult = ({ hit, referal, loginReducer }) => {
   const {
     name,
@@ -27,7 +28,6 @@ const HitResult = ({ hit, referal, loginReducer }) => {
   } else {
     bookmark = null
   }
-
   return (
     <div sx={{ '& em': { backgroundColor: 'highlight' } }}>
       <MarbleItemCard
@@ -40,6 +40,9 @@ const HitResult = ({ hit, referal, loginReducer }) => {
         collectionName={highlightCollection(collection, hit.highlight)}
         date={date}
         type={type}
+        referalState={{
+          referal: referal,
+        }}
       >
         {
           hit.highlight && hit.highlight['identifier.idMatch']

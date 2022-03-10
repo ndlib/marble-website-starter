@@ -15,11 +15,13 @@ const MarbleItemCard = (props) => {
     collectionName,
     date,
     type,
+    referalState,
   } = props
   return (
     <DisplayCard
       title={title}
       target={target}
+      referalState={referalState}
       image={image}
       leftBadge={type === 'collection' ? <CardBadge type='collection' /> : null}
       rightBadge={<BookmarkGroup marbleItem={props} size='tiny' />}
@@ -48,10 +50,11 @@ MarbleItemCard.propTypes = {
   ]),
   collectionName: PropTypes.array,
   type: PropTypes.string,
+  referalState: PropTypes.node,
 }
 
 MarbleItemCard.defaultProps = {
-
+  referalState: {},
 }
 
 export default MarbleItemCard
