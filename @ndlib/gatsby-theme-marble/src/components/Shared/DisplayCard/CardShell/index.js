@@ -30,7 +30,7 @@ CardShell.propTypes = {
   controls: PropTypes.node,
   target: PropTypes.string,
   children: PropTypes.node,
-  referalState: PropTypes.node,
+  referalState: PropTypes.object,
 }
 
 CardShell.defaultProps = {

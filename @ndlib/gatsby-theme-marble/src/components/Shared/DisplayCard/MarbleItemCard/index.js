@@ -50,7 +50,7 @@ MarbleItemCard.propTypes = {
   ]),
   collectionName: PropTypes.array,
   type: PropTypes.string,
-  referalState: PropTypes.node,
+  referalState: PropTypes.object,
 }
 
 MarbleItemCard.defaultProps = {

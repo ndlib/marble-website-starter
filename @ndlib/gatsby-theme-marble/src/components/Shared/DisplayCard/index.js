@@ -49,7 +49,7 @@ DisplayCard.propTypes = {
   title: PropTypes.string,
   target: PropTypes.string,
   children: PropTypes.node,
-  referalState: PropTypes.node,
+  referalState: PropTypes.object,
 }
 
 DisplayCard.defaultProps = {

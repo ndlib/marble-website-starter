@@ -21,7 +21,7 @@ const LinkOrWrapper = ({ target, children, referalState }) => {
 LinkOrWrapper.propTypes = {
   target: PropTypes.string,
   children: PropTypes.node,
-  referalState: PropTypes.node,
+  referalState: PropTypes.object,
 }
 
 export default LinkOrWrapper
