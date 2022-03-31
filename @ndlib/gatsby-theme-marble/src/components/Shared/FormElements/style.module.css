@@ -36,16 +36,3 @@
 .buttonGroup button {
   margin-left: .5rem;
 }
-
-.gravatarEdit {
-  border: 1px solid #dedede;
-  padding: 1rem;
-}
-.gravatarEdit img {
-  width: 100px;
-}
-.gravatarEdit span {
-  display: inline-block;
-  margin-left: 1rem;
-  vertical-align: top;
-}

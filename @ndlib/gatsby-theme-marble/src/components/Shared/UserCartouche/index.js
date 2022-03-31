@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import Gravatar from 'components/Shared/Gravatar'
 
 export const UserCartouche = ({ user }) => {
   if (!user.portfolioUserId || !user.email || !user.fullName) {
@@ -31,21 +30,6 @@ export const UserCartouche = ({ user }) => {
         verticalAlign: 'baseline',
       }}
     >
-      <span
-        className='gravatarWrapper'
-        sx={{
-          display: 'inline-block',
-          height: '22px',
-          marginRight: '.25rem',
-          overflow: 'hidden',
-          verticalAlign: 'top',
-          width: '22px',
-        }} >
-        <Gravatar
-          email={user.email}
-          size={22}
-        />
-      </span>
       {user.fullName}
     </button>
   )
