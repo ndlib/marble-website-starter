@@ -34,5 +34,8 @@
     "jest-enzyme": "^7.0.2",
     "prettier": "^2.3.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "resolutions": {
+    "prosemirror-model": "1.9.1"
+  }
 }

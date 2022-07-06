@@ -1,14 +1,15 @@
 import typy from 'typy'
+import { encode, decode } from 'js-base64'
 
 export const savePortfolioUser = ({ user, loginReducer }) => {
   const query = JSON.stringify({
     query: `mutation {
   savePortfolioUser(
-    bio: """${encodeURIComponent(user.bio)}""",
+    bio64: """${encode(user.bio64)}""",
     email: "${encodeURIComponent(user.email)}",
     fullName: "${encodeURIComponent(user.fullName)}"
   ) {
-    bio
+    bio64
     dateAddedToDynamo
     dateModifiedInDynamo
     department
@@ -20,7 +21,7 @@ export const savePortfolioUser = ({ user, loginReducer }) => {
       items {
         portfolioCollectionId
         imageUri
-        description
+        description64
         portfolioUserId
         title
       }
@@ -42,12 +43,12 @@ export const savePortfolioCollectionQuery = ({ portfolio, loginReducer }) => {
       title: "${encodeURIComponent(emptyString(portfolio.title))}",
       privacy: ${portfolio.privacy},
       layout: "${portfolio.layout}",
-      description: "${encodeURIComponent(emptyString(portfolio.description))}",
+      description64: "${encode(emptyString(portfolio.description64))}",
       imageUri: "${emptyString(portfolio.imageUri)}"
     ) {
       dateAddedToDynamo
       dateModifiedInDynamo
-      description
+      description64
       featuredCollection
       highlightedCollection
       imageUri
@@ -58,10 +59,10 @@ export const savePortfolioCollectionQuery = ({ portfolio, loginReducer }) => {
       title
       portfolioItems {
         items {
-          annotation
+          annotation64
           dateAddedToDynamo
           dateModifiedInDynamo
-          description
+          description64
           imageUri
           internalItemId
           itemType
@@ -91,14 +92,14 @@ export const savePortfolioItemQuery = ({ item, loginReducer }) => {
       itemType: internal,
       sequence: ${item.sequence},
       title: "${emptyString(item.title)}",
-      annotation: "${encodeURIComponent(emptyString(item.annotation))}",
+      annotation64: "${encode(emptyString(item.annotation64))}",
     ) {
       portfolioItemId
       portfolioCollectionId
       imageUri
       sequence
       title
-      annotation
+      annotation64
     }
   }
   `,
@@ -119,7 +120,7 @@ export const getPortfolioUser = ({ userName, loginReducer }) => {
   const query = JSON.stringify({
     query: `query {
     getPortfolioUser(portfolioUserId: "${userName}") {
-      bio
+      bio64
       dateAddedToDynamo
       dateModifiedInDynamo
       department
@@ -131,7 +132,7 @@ export const getPortfolioUser = ({ userName, loginReducer }) => {
         items {
           portfolioCollectionId
           imageUri
-          description
+          description64
           portfolioUserId
           dateAddedToDynamo
           dateModifiedInDynamo
@@ -157,7 +158,7 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
     getPortfolioCollection(portfolioCollectionId: "${portfolioId}") {
       dateAddedToDynamo
       dateModifiedInDynamo
-      description
+      description64
       featuredCollection
       highlightedCollection
       imageUri
@@ -168,10 +169,10 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
       title
       portfolioItems {
         items {
-          annotation
+          annotation64
           dateAddedToDynamo
           dateModifiedInDynamo
-          description
+          description64
           imageUri
           internalItemId
           itemType
@@ -209,20 +210,18 @@ export const removeCollectionItem = ({ item, loginReducer }) => {
 }
 
 export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal }) => {
-  let url = 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql' // process.env.GRAPHQL_API_URL
+  let url = process.env.GRAPHQL_API_URL || 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql'
   const headers = {
     'Content-Type': 'application/json',
   }
 
   if (usePublicUrl) {
-    // follow URL should come from configuration instead
-    url = 'https://t8mhrjrn63.execute-api.us-east-1.amazonaws.com/prod/query/getPortfolioCollection'
+    url = process.env.PUBLIC_GRAPHQL_API_URL || 'https://t8mhrjrn63.execute-api.us-east-1.amazonaws.com/prod/query/getPortfolioCollection'
   } else {
     headers.Authorization = typy(loginReducer, 'token.idToken').safeString
-    // console.log(typy(loginReducer, 'token.idToken').safeString)
+    console.log('using token URL')
   }
 
-  // console.log(url)
   return fetch(
     url,
     {
@@ -239,12 +238,17 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
       return typy(result, contentType).safeObjectOrEmpty
     })
     .then(result => {
-      // console.log('unsanitary', result)
       // fix some fields that might be at the top level
-      const fixableFields = ['bio', 'email', 'fullName', 'description', 'annotation', 'title']
-      fixableFields.forEach(field => {
+      const uriEncodedFields = ['email', 'fullName', 'title']
+      const base64encodedFields = ['bio64', 'description64', 'annotation64']
+      uriEncodedFields.forEach(field => {
         if (typy(result, field).isString) {
           result[field] = decodeURIComponent(result[field])
+        }
+      })
+      base64encodedFields.forEach(field => {
+        if (typy(result, field).isString) {
+          result[field] = decode(result[field])
         }
       })
       // fix collection title and description
@@ -253,20 +257,23 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
           if (item.title) {
             result.portfolioCollections.items[index].title = decodeURIComponent(result.portfolioCollections.items[index].title)
           }
-          if (item.description) {
-            result.portfolioCollections.items[index].description = decodeURIComponent(result.portfolioCollections.items[index].description)
+          if (item.description64) {
+            try {
+              result.portfolioCollections.items[index].description64 = decode(result.portfolioCollections.items[index].description64)
+            } catch {
+              console.error('description not base64 encoded: ' + result.description64)
+            }
           }
         })
       }
       // fix item annotation
       if (typy(result, 'portfolioItems.items').isArray) {
         result.portfolioItems.items.forEach((item, index) => {
-          if (item.annotation) {
-            result.portfolioItems.items[index].annotation = decodeURIComponent(result.portfolioItems.items[index].annotation)
+          if (item.annotation64) {
+            result.portfolioItems.items[index].annotation64 = decode(result.portfolioItems.items[index].annotation64)
           }
         })
       }
-      // console.log('sanitary', result)
       return result
     })
 }
