@@ -219,7 +219,7 @@ export const getData = ({ loginReducer, contentType, query, usePublicUrl, signal
     url = process.env.PUBLIC_GRAPHQL_API_URL || 'https://t8mhrjrn63.execute-api.us-east-1.amazonaws.com/prod/query/getPortfolioCollection'
   } else {
     headers.Authorization = typy(loginReducer, 'token.idToken').safeString
-    console.log('using token URL')
+    // console.log('using token URL')
   }
 
   return fetch(
