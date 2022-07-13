@@ -44,9 +44,9 @@ const getItems = async ({
             const err = 'Got result, but it was null for item ' + itemId
             reject(err)
           }
-          //
-          let nextToken = result.data.getItem.children.nextToken
 
+          // Keep retreiving children as long as there is a next token
+          let nextToken = result.data.getItem.children.nextToken
           while (nextToken !== null) {
             await fetch(url, request(itemId, website, key, nextToken))
               .then(r => {
