@@ -96,11 +96,10 @@ const getItems = async ({
             reject(err)
           }
           if (skipEmptyAleph && alephEmptyResult(result)) {
-            if (logIds) {}
+            if (logIds) {
               console.log('Skipping', result.id)
             }
             resolve('Valid result, be we do not want it')
-            return
           }
           const node = await transformAndCreate(result, gatsbyInternal, pluginOptions)
           nodeArray.push(node)
