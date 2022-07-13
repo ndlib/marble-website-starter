@@ -1,13 +1,14 @@
-module.exports = (itemId, website) => {
+module.exports = (itemId, website, childrenNextToken) => {
   return `{
   getItem(id: "${itemId}", websiteId: "${website}") {
     TYPE
     access
     additionalNotes
-    children {
-     items {
-       id
-     }
+    children(nextToken: ${childrenNextToken ? '"' + childrenNextToken + '"' : null}) {
+      nextToken
+      items {
+        id
+      }
     }
     collectionId
     collections {
