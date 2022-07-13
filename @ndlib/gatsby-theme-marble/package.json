@@ -45,6 +45,7 @@
     "gatsby-transformer-sharp": "^3.5.0",
     "graphql": "^15.5.0",
     "i18next": "^20.2.4",
+    "js-base64": "^3.7.2",
     "js-file-downloader": "^1.1.19",
     "lodash.merge": "^4.6.2",
     "md5": "^2.2.1",
