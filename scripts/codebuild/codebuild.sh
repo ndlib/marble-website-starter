@@ -96,7 +96,7 @@ if ((failures != 0)); then
 fi
 
 echo "${magenta}----- Build -------${reset}"
-yarn workspace ${WORKSPACE_NAME} build
+NODE_OPTIONS="--max-old-space-size=15360" yarn workspace ${WORKSPACE_NAME} build
 
 
 echo "${magenta}----- Deploy -------${reset}"
