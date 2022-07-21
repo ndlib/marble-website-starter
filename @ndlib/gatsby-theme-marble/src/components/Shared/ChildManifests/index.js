@@ -1,12 +1,27 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react'
+/** @jsx jsx */
+import React, { useState } from 'react'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
 import CardGroup from 'components/Shared/DisplayCard/CardGroup'
 import MarbleItemCard from 'components/Shared/DisplayCard/MarbleItemCard'
+import Pager from './Pager'
+import ShowAll from './Pager/ShowAll'
 import findImage from 'utils/findImage'
 
 export const ChildManifests = ({ marbleItem }) => {
+  const defaultLength = 30
+  const childItems = typy(marbleItem, 'childrenMarbleItem').safeArray
+  const [startIndex, setStart] = useState(0)
+  const [endIndex, setEndIndex] = useState(defaultLength)
+  const [activeChildren, setActiveChildren] = useState(typy(marbleItem, 'childrenMarbleItem').safeArray.slice(startIndex, endIndex))
+
+  const updateAll = (newStart, newEnd) => {
+    setStart(newStart)
+    setEndIndex(newEnd)
+    setActiveChildren(childItems.slice(newStart, newEnd))
+  }
+
   if (!marbleItem || !typy(marbleItem, 'childrenMarbleItem').isArray) {
     return null
   }
@@ -15,7 +30,7 @@ export const ChildManifests = ({ marbleItem }) => {
       <h2 className='accessibilityOnly'>Related Items</h2>
       <CardGroup defaultDisplay='grid' toggleGroup='related-items' gridWidthRule={['100%', '100%', '50%', '100%', '50%']}>
         {
-          typy(marbleItem, 'childrenMarbleItem').safeArray.map(childItem => {
+          activeChildren.map((childItem, i) => {
             if (!childItem) {
               return null
             }
@@ -29,7 +44,20 @@ export const ChildManifests = ({ marbleItem }) => {
             )
           })
         }
+
       </CardGroup>
+      <Pager
+        items={childItems}
+        updateItems={updateAll}
+        startIndex={startIndex}
+        endIndex={endIndex}
+        defaultLength={defaultLength}
+      />
+      <ShowAll
+        items={childItems}
+        updateItems={updateAll}
+        defaultLength={defaultLength}
+      />
     </>
   )
 }
