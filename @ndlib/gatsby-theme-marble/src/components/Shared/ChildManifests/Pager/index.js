@@ -39,7 +39,7 @@ const Pager = ({
         <div className='sk-toggle'>
           <PagerButton
             isDisabled={setIsDisabled(pageNumber === 1)}
-            onClick={ () => {
+            onClick={() => {
               if (!setIsDisabled(pageNumber === 1)) {
                 navigate(`${location.pathname}?p=${pageNumber - 1}`)
               }
@@ -57,7 +57,7 @@ const Pager = ({
           />
           <PagerButton
             isDisabled={setIsDisabled(pageNumber >= numberOfPages)}
-            onClick={ () => {
+            onClick={() => {
               if (!setIsDisabled(pageNumber >= numberOfPages)) {
                 navigate(`${location.pathname}?p=${pageNumber + 1}`)
               }
