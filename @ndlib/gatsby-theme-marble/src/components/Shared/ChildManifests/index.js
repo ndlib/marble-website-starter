@@ -82,16 +82,16 @@ const initActiveChildren = (pageNumber, items) => {
 
 const getPageNumber = (location) => {
   const { p } = queryString.parse(location.search)
-  if (!isNaN(parseInt(p))) {
-    return parseInt(p)
+  if (!isNaN(parseInt(p, 10))) {
+    return parseInt(p, 10)
   }
   return 1
 }
 const startFromPage = (pageNumber, defaultLength = 30) => {
   if (pageNumber === 0) {
     return 0
-  } else if (typeof parseInt(pageNumber) === 'number') {
-    return (parseInt(pageNumber) - 1) * defaultLength
+  } else if (typeof parseInt(pageNumber, 10) === 'number') {
+    return (parseInt(pageNumber, 10) - 1) * defaultLength
   }
   return 1
 }
