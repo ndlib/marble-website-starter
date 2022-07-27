@@ -4,14 +4,14 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 const PagerButton = ({
-  isActive = '',
-  isDisabled = '',
+  isActive = false,
+  isDisabled = false,
   onClick = () => {},
   label = '...',
 }) => {
   return (
     <div
-      className={`sk-toggle-option sk-toggle__item ${isActive} ${isDisabled}`}
+      className={`sk-toggle-option sk-toggle__item ${setIsActive(isActive)} ${setIsDisabled(isDisabled)}`}
       onClick={onClick}
       role='button'
     >
@@ -29,9 +29,9 @@ PagerButton.propTypes = {
 
 export default PagerButton
 
-export const isActive = (index, length, start) => {
-  return (index - 1) * length === start ? 'is-active' : ''
+export const setIsActive = (bool) => {
+  return bool ? 'is-active' : ''
 }
-export const isDisabled = (bool) => {
+export const setIsDisabled = (bool) => {
   return bool ? 'is-disabled' : ''
 }

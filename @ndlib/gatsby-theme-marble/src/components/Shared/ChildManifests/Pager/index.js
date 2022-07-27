@@ -1,24 +1,23 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from 'theme-ui'
+import { navigate } from 'gatsby'
+import { useLocation } from '@reach/router'
 import PropTypes from 'prop-types'
 import PagerSeries from './PagerSeries'
-import PagerButton, { isActive, isDisabled } from './PagerButton'
+import PagerButton, { setIsActive, setIsDisabled } from './PagerButton'
 import sx from '../../SearchTools/SearchResults/Pager/sx'
 
 const Pager = ({
-  updateItems,
-  startIndex,
-  endIndex,
-  defaultLength = 30,
-  items = [],
+  pageNumber,
+  defaultLength,
+  items,
 }) => {
+  const location = useLocation()
   const numberOfPages = Math.ceil(items.length / defaultLength)
 
   // No pager if there is one subpage or no subpages
-  if (!numberOfPages || numberOfPages === 1 || (
-    startIndex === 0 && endIndex === items.length
-  )) {
+  if (numberOfPages < 2 || pageNumber < 1) {
     return null
   }
 
@@ -38,35 +37,28 @@ const Pager = ({
       <div className='sk-pagination-navigation is-numbered'>
         <div className='sk-toggle'>
           <PagerButton
-            isDisabled={isDisabled(startIndex === 0)}
+            isDisabled={setIsDisabled(pageNumber === 1)}
             onClick={ () => {
-              if (!isDisabled(startIndex === 0)) {
-                const newStart = Math.max(startIndex - defaultLength, 0)
-                const newEnd = newStart > 0 ? startIndex : defaultLength
-                updateItems(newStart, newEnd)
+              if (!setIsDisabled(pageNumber === 1)) {
+                navigate(`${location.pathname}?p=${pageNumber - 1}`)
               }
             }}
             label='Previous'
           />
           <PagerButton
-            isActive={isActive(1, defaultLength, startIndex)}
-            onClick={() => updateItems(0, defaultLength)}
+            isActive={setIsActive(pageNumber === 1)}
+            onClick={() => navigate(`${location.pathname}?p=1`)}
             label='1'
           />
           <PagerSeries
-            updateItems={updateItems}
-            startIndex={startIndex}
-            endIndex={endIndex}
-            defaultLength={defaultLength}
-            items={items}
+            pageNumber={pageNumber}
+            numberOfPages={numberOfPages}
           />
           <PagerButton
-            isDisabled={isDisabled(endIndex >= items.length)}
+            isDisabled={setIsDisabled(pageNumber >= numberOfPages)}
             onClick={ () => {
-              if (!isDisabled(endIndex >= items.length)) {
-                const newStart = Math.min(endIndex, items.length)
-                const newEnd = Math.min(endIndex + defaultLength, items.length)
-                updateItems(newStart, newEnd)
+              if (!setIsDisabled(pageNumber >= numberOfPages)) {
+                navigate(`${location.pathname}?p=${pageNumber + 1}`)
               }
             }}
             label='Next'
@@ -78,10 +70,8 @@ const Pager = ({
 }
 
 Pager.propTypes = {
-  items: PropTypes.array,
-  updateItems: PropTypes.func.isRequired,
-  startIndex: PropTypes.number,
-  endIndex: PropTypes.number,
-  defaultLength: PropTypes.number,
+  items: PropTypes.array.isRequired,
+  defaultLength: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
 }
 export default Pager

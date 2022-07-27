@@ -2,29 +2,26 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import PagerButton, { isActive, isDisabled } from '../PagerButton'
+import { navigate } from 'gatsby'
+import { useLocation } from '@reach/router'
+import PagerButton, { setIsActive, setIsDisabled } from '../PagerButton'
 
 const PagerSeries = ({
-  updateItems,
-  startIndex,
-  endIndex,
-  defaultLength,
-  items = [],
+  pageNumber,
+  numberOfPages,
 }) => {
-  const numberOfPages = Math.ceil(items.length / defaultLength)
-  const currentPage = Math.floor(startIndex / defaultLength) + 1
-  const pageArray = pageRange(currentPage - 3, currentPage + 3, numberOfPages + 1)
-
+  const location = useLocation()
   // No pager series if there is one subpage or less
-  if (!numberOfPages || numberOfPages === 1 || (
-    startIndex === 0 && endIndex === items.length
-  )) {
+  if (numberOfPages < 2 || isNaN(pageNumber)) {
     return null
   }
+
+  const pageArray = pageRange(pageNumber - 3, pageNumber + 3, numberOfPages + 1)
+
   return (
     <>
       {
-        pageArray.includes(2) ? null : <PagerButton isDisabled='is-disabled' />
+        pageArray.includes(2) ? null : <PagerButton isDisabled={setIsDisabled(true)} />
       }
 
       {
@@ -32,15 +29,15 @@ const PagerSeries = ({
           return (
             <PagerButton
               key={i}
-              isActive={isActive(i, defaultLength, startIndex)}
-              onClick={() => updateItems((i - 1) * defaultLength, i * defaultLength)}
+              isActive={setIsActive(pageNumber === i)}
+              onClick={() => navigate(`${location.pathname}?p=${i}`)}
               label={i}
             />
           )
         })
       }
       {
-        pageArray.includes(numberOfPages) ? null : <PagerButton isDisabled='is-disabled' />
+        pageArray.includes(numberOfPages) ? null : <PagerButton isDisabled={setIsDisabled(true)} />
       }
     </>
   )
@@ -51,10 +48,7 @@ const pageRange = (a, b, max) => {
 }
 
 PagerSeries.propTypes = {
-  items: PropTypes.array,
-  updateItems: PropTypes.func.isRequired,
-  startIndex: PropTypes.number,
-  endIndex: PropTypes.number,
-  defaultLength: PropTypes.number,
+  pageNumber: PropTypes.number.isRequired,
+  numberOfPages: PropTypes.number.isRequired,
 }
 export default PagerSeries

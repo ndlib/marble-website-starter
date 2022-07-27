@@ -2,12 +2,15 @@
 import React from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
+import { navigate } from 'gatsby'
+import { useLocation } from '@reach/router'
 
 const ShowAll = ({
-  updateItems,
-  defaultLength = 30,
-  items = [],
+  defaultLength,
+  items,
+  pageNumber,
 }) => {
+  const location = useLocation()
   // No pager if there is one subpage or no subpages
   if (defaultLength >= items.length) {
     return null
@@ -19,18 +22,24 @@ const ShowAll = ({
       '& button': { margin: '0.5rem' },
     }}>
       <Button
-        onClick={ () => updateItems(0, defaultLength)}
+        onClick={ () => navigate(`${location.pathname}?p=1`)}
       >Reset</Button>
-      <Button
-        onClick={ () => updateItems(0, items.length)}
-      >Load all items ({items.length})</Button>
+      {
+        pageNumber === 0
+          ? null
+          : (
+            <Button
+              onClick={ () => navigate(`${location.pathname}?p=0`)}
+            >Load all items ({items.length})</Button>
+          )
+      }
     </div>
   )
 }
 
 ShowAll.propTypes = {
-  items: PropTypes.array,
-  updateItems: PropTypes.func.isRequired,
-  defaultLength: PropTypes.number,
+  items: PropTypes.array.isRequired,
+  defaultLength: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
 }
 export default ShowAll
