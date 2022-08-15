@@ -69,11 +69,14 @@ const customQueryBuilder = (query) => {
         {
           simple_query_string: {
             query: query,
+            analyze_wildcard: true,
+            default_operator :'AND',
             fields: [
               'name.folded^1.4',
               'creator.folded^1',
               'collection.folded^1',
               'allMetadata.folded',
+              'identifier.no_punctuation_keyword^2',
             ],
           },
         },
