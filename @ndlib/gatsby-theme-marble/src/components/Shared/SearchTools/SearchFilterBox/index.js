@@ -76,7 +76,7 @@ const customQueryBuilder = (query) => {
               'creator.folded^1',
               'collection.folded^1',
               'allMetadata.folded',
-              'identifier.no_punctuation_keyword^2',
+              'identifier.no_punctuation_keyword^1.5',
             ],
           },
         },
