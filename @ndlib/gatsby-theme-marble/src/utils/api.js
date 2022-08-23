@@ -175,6 +175,13 @@ export const getPortfolioQuery = ({ portfolioId, isOwner, loginReducer }) => {
           description64
           imageUri
           internalItemId
+          internalItem {
+            title
+            createdDate
+            creators {
+              display
+            } 
+          }
           itemType
           portfolioCollectionId
           portfolioItemId
