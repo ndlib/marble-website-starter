@@ -27,6 +27,7 @@ module.exports = {
     width: '100%',
     flexDirection: 'row',
     pl: '5vw',
+    marginBottom: '1rem',
   },
   banner: {
     gridRow: '1/-1',
