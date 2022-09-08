@@ -36,8 +36,9 @@ module.exports = async (item, pluginOptions) => {
     language: getLanguages(item),
     type: item.level,
     url: '/item/' + item.id,
+    uniqueIdentifier: item.uniqueIdentifier,
   }
-
+  // console.log(searchData)
   searchData.hasImages = !!searchData.thumbnail
 
   if (item.sourceSystem.toLowerCase() === 'archivesspace' && item.format) {

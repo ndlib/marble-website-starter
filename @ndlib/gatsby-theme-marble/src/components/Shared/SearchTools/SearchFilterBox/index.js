@@ -10,7 +10,7 @@ import sx from './sx'
 const SearchFilterBox = () => {
   const { t } = useTranslation()
   const fieldLabel = t('common:search.prompt')
-  const fields = ['name^2', 'creator^2', 'allMetadata']
+  const fields = ['name^2', 'creator^2', 'allMetadata', 'uniqueIdentifier']
 
   return (
     <div sx={{
@@ -60,6 +60,8 @@ const customQueryBuilder = (query) => {
               'creator^1.5',
               'collection^1.5',
               'allMetadata.folded',
+              'uniqueIdentifier.folded^1.5',
+              'uniqueIdentifier.idMatch^1.6',
             ],
             slop: 5,
             type: 'phrase',
@@ -77,6 +79,8 @@ const customQueryBuilder = (query) => {
               'collection.folded^1',
               'allMetadata.folded',
               'identifier.no_punctuation_keyword^1.5',
+              'uniqueIdentifier.folded^1.5',
+              'uniqueIdentifier.idMatch^1.6',
             ],
           },
         },
