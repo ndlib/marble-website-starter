@@ -9,6 +9,7 @@ module.exports = {
     'thumbnail',
     'type',
     'url',
+    'uniqueIdentifier',
   ],
   highlightFields: [
     'allMetadata.folded',
@@ -16,5 +17,7 @@ module.exports = {
     'creator.folded',
     'collection.folded',
     'identifier.idMatch', // remove this to remove expanded tags
+    'uniqueIdentifier.idMatch',
+    'uniqueIdentifier.folded',
   ],
 }

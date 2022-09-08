@@ -28,6 +28,7 @@ const HitResult = ({ hit, referal, loginReducer }) => {
   } else {
     bookmark = null
   }
+
   return (
     <div sx={{ '& em': { backgroundColor: 'highlight' } }}>
       <MarbleItemCard
@@ -50,6 +51,24 @@ const HitResult = ({ hit, referal, loginReducer }) => {
               .map(
                 (idMatch) => {
                   return higlightDisplay(idMatch)
+                })
+            : null
+        }
+        {
+          hit.highlight && hit.highlight['uniqueIdentifier.idMatch']
+            ? Object.values(hit.highlight['uniqueIdentifier.idMatch'])
+              .map(
+                (idMatch) => {
+                  return higlightDisplay(idMatch)
+                })
+            : null
+        }
+        {
+          hit.highlight && hit.highlight['uniqueIdentifier.folded']
+            ? Object.values(hit.highlight['uniqueIdentifier.folded'])
+              .map(
+                (folded) => {
+                  return higlightDisplay(folded)
                 })
             : null
         }
