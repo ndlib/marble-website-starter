@@ -12,7 +12,7 @@
   "author": "Web and Software Engineering at Hesburgh Libraries",
   "license": "APACHE2",
   "dependencies": {
-    "@opensearch-project/opensearch": "https://github.com/opensearch-project/opensearch-js",
+    "@opensearch-project/opensearch": "1.1.0",
     "aws-sdk": "^2.916.0",
     "http-aws-es": "^6.0.0"
   },

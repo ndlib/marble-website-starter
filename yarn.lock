@@ -3833,9 +3833,10 @@
     webcrypto-shim "^0.1.5"
     xhr2 "0.1.3"
 
-"@opensearch-project/opensearch@https://github.com/opensearch-project/opensearch-js":
-  version "1.0.2"
-  resolved "https://github.com/opensearch-project/opensearch-js#68eea00b078710c876bd4c65f7b817c8d418a25f"
+"@opensearch-project/opensearch@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@opensearch-project/opensearch/-/opensearch-1.1.0.tgz#8b3c8b4cbcea01755ba092d2997bf0b4ca7f22f7"
+  integrity sha512-1TDw92JL8rD1b2QGluqBsIBLIiD5SGciIpz4qkrGAe9tcdfQ1ptub5e677rhWl35UULSjr6hP8M6HmISZ/M5HQ==
   dependencies:
     debug "^4.3.1"
     hpagent "^0.1.1"
