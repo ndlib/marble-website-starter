@@ -36,7 +36,7 @@ exports.onCreateWebpackConfig = ({ actions, stage, loaders, plugins }) => {
 }
 
 // Make sure the data directory exists
-exports.onPreBootstrap = ({ reporter }, options) => {
+exports.onPluginInit = ({ reporter }, options) => {
   const contentPath = options.contentPath || 'content'
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`)
@@ -90,7 +90,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const typeDefs = `
   # things expected to be there
   type menuItems @dontInfer {
-    id: String
+    menuId: String
     label: String
     link: String
     icon: String
@@ -98,7 +98,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     items: [menuItems]
   }
   type MenusJson implements Node @dontInfer {
-    id: String
+    menuId: String
     label: String
     items: [menuItems]
   }

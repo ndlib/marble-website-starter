@@ -18,11 +18,11 @@ query {
       author
     }
   }
-    menusJson(id: {eq: "header"}) {
-      id
+    menusJson(menuId: {eq: "header"}) {
+      menuId
       label
       items {
-        id
+        menuId
         label
         link
         icon

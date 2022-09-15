@@ -8,32 +8,32 @@ const sq = {
   allMenusJson: {
     nodes: [
       {
-        id: 'nolabel',
+        menuId: 'nolabel',
         label: '',
         items: [
           {
-            id: 'one',
+            menuId: 'one',
             label: 'link1',
             link: '/link1',
           },
           {
-            id: 'two',
+            menuId: 'two',
             label: 'link2',
             link: '/link2',
           },
         ],
       },
       {
-        id: 'label',
+        menuId: 'label',
         label: 'label',
         items: [
           {
-            id: 'one',
+            menuId: 'one',
             label: 'link1',
             link: '/link1',
           },
           {
-            id: 'two',
+            menuId: 'two',
             label: 'link2',
             link: '/link2',
           },

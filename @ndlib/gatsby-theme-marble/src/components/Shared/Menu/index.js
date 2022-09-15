@@ -9,7 +9,7 @@ import Link from 'components/Shared/Link'
   Class to add a themed menu to the site.
   props:
   variant - the style variant for changing propeties in the theme-ui theme see below.
-  items   - array of items in the format of [ {id, label link, icon, selectedPatterns} ... ]
+  items   - array of items in the format of [ {menuId, label link, icon, selectedPatterns} ... ]
   label   - label to display at the top.
   expand  - denotes if this menu is expaned or not used when there is more than one menu on a page
   Items:
@@ -33,7 +33,7 @@ export const Menu = ({ variant, items, label, children, location, expand }) => {
       <div>
         {expand && items.map(l => {
           return (
-            <React.Fragment key={l.id}>
+            <React.Fragment key={l.menuId}>
               <Link
                 to={l.link}
                 title={l.label}
@@ -82,7 +82,7 @@ Menu.propTypes = {
   variant: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   items: PropTypes.array,
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   expand: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.object,
@@ -99,7 +99,7 @@ Menu.defaultProps = {
 
 export const findNavInData = (id, navData) => {
   return navData.find((element) => {
-    return element.id === id
+    return element.menuId === id
   })
 }
 
