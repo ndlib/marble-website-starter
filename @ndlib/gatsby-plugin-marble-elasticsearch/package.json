@@ -13,7 +13,7 @@
   "license": "APACHE2",
   "dependencies": {
     "@opensearch-project/opensearch": "2.0.0",
-    "aws-sdk": "^2.916.0",
+    "aws-sdk": "^2.1217.0",
     "http-aws-es": "^6.0.0"
   },
   "peerDependencies": {
