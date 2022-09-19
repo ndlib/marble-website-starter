@@ -1,9 +1,9 @@
 name: Node Unit Test CI
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -11,51 +11,51 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - uses: c-hive/gha-yarn-cache@v1
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: c-hive/gha-yarn-cache@v1
 
-    - name: "Install Main App"
-      run: |
-        yarn global add gatsby-cli
-        mkdir ~/.config/gatsby
-        cp ./scripts/codebuild/config.json ~/.config/gatsby/
-        git submodule init
-        git submodule update
-        yarn install
+      - name: "Install Main App"
+        run: |
+          yarn global add gatsby-cli
+          mkdir ~/.config/gatsby
+          cp ./scripts/codebuild/config.json ~/.config/gatsby/
+          git submodule init
+          git submodule update
+          yarn install
 
-    - name: "Unit Tests"
-      run: |
-        pushd @ndlib/gatsby-theme-marble
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter
-        ./cc-test-reporter before-build
-        popd
+      - name: "Unit Tests"
+        run: |
+          pushd @ndlib/gatsby-theme-marble
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
+          popd
 
-        failures=0
-        trap 'failures=$((failures+1))' ERR
+          failures=0
+          trap 'failures=$((failures+1))' ERR
 
-        yarn workspace marble test
-        yarn workspace @ndlib/gatsby-source-appsync-marble test
-        yarn workspace @ndlib/gatsby-theme-marble coverage
+          yarn workspace marble test
+          yarn workspace @ndlib/gatsby-source-appsync-marble test
+          yarn workspace @ndlib/gatsby-theme-marble coverage
 
-        pushd @ndlib/gatsby-theme-marble
-        if ((failures != 0));
-        then
-          echo "TESTS FAILED"
-          ./cc-test-reporter after-build --exit-code 1
-          exit 1
-        else
-          ./cc-test-reporter after-build --exit-code 0
-        fi
-      env:
-        CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
-    - name: "Build"
-      run: |
-        yarn workspace marble build
+          pushd @ndlib/gatsby-theme-marble
+          if ((failures != 0));
+          then
+            echo "TESTS FAILED"
+            ./cc-test-reporter after-build --exit-code 1
+            exit 1
+          else
+            ./cc-test-reporter after-build --exit-code 0
+          fi
+        env:
+          CC_TEST_REPORTER_ID: f507ecc7b3090a909467a65b2b78de334b6e819b99b2a54c5c333e73e2c1ffbb
+      - name: "Build"
+        run: |
+          yarn workspace marble build

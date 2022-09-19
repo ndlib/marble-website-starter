@@ -40,6 +40,9 @@ const getItems = async ({
         .then(async result => {
           if (result.error) {
             reject(result.error)
+          } else if (!result.data) {
+            const err = 'No data was returned for item ' + itemId
+            reject(err)
           } else if (!result.data.getItem) {
             const err = 'Got result, but it was null for item ' + itemId
             reject(err)

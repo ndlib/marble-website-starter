@@ -22,11 +22,11 @@ query {
       author
     }
   }
-    menusJson(id: {eq: "header"}) {
-      id
+    menusJson(menuId: {eq: "header"}) {
+      menuId
       label
       items {
-        id
+        menuId
         label
         link
         icon
@@ -64,7 +64,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
     return (
       <Link
         to={l.link}
-        key={l.id}
+        key={l.menuId}
         title={l.label}
         variant={'navDrawer'}
         className={selectedUrl(l, location) ? ' selected' : ''}
@@ -85,7 +85,7 @@ const NDBrandLayout = ({ location, variant, children, pageHeader, siteFooter, ti
     return (
       <Link
         to={l.link}
-        key={l.id}
+        key={l.menuId}
         title={l.label}
         variant={'navTop'}
         className={'menuLinks' + (selectedUrl(l, location) ? ' selected' : '')}
