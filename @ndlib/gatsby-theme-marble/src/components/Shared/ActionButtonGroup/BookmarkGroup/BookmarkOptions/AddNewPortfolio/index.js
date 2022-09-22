@@ -44,10 +44,10 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
     >
       <label htmlFor={title}>
         <input
-          onClick={e => {
+          onClick={(e) => {
             e.preventDefault()
-            e.stopPropagation()}
-          }
+            e.stopPropagation()
+          }}
           type='text'
           disabled={creating}
           defaultValue={title}

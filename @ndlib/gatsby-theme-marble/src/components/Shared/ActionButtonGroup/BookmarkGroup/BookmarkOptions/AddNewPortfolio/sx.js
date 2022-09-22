@@ -77,6 +77,5 @@ module.exports = {
     margin: '0 !important',
     verticalAlign: 'top',
     width: '80px',
-    
   },
 }
