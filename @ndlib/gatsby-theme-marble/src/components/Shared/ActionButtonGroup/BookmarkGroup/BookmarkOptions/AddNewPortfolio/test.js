@@ -68,7 +68,11 @@ describe('AddNewPortfolio', () => {
 
     // click submit
     act(() => {
-      wrapper.find('.submit-button').props().onClick()
+      const e = {
+        preventDefault: jest.fn(),
+        stopPropagation: jest.fn(),
+      }
+      wrapper.find('.submit-button').props().onClick(e)
     })
 
     // expect input to be disabled

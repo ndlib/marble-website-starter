@@ -16,6 +16,7 @@ module.exports = {
     borderRadius: '.5rem',
     display: 'block',
     maxWidth: ['90vw', '600px', '600px'],
+    minWidth: '220px',
 
     overflow: 'hidden',
     position: 'absolute',
@@ -31,7 +32,6 @@ module.exports = {
     borderRadius: '.5rem',
     color: 'white',
     fontSize: '1rem',
-
     padding: '.5rem',
     width: '200px',
   },
@@ -54,7 +54,7 @@ module.exports = {
     userSelect: 'none',
     float: 'right',
     '& :hover': {
-      color: 'white',
+      color: 'primary',
     },
   },
   bookmark: {
