@@ -44,6 +44,10 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
     >
       <label htmlFor={title}>
         <input
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+          }}
           type='text'
           disabled={creating}
           defaultValue={title}
@@ -57,7 +61,9 @@ export const AddNewPortfolio = ({ portfolios, addFunc, loginReducer }) => {
       </label>
       <button
         className='submit-button'
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
           setCreating(true)
           const portfolio = {
             title: title,
