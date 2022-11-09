@@ -247,7 +247,7 @@ describe('makeMetadataArray', () => {
           label: 'Contact Us',
           type: 'markdown',
           urlField: undefined,
-          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Snite Museum of Art at [sniteart@nd.edu](mailto:sniteart@nd.edu).'],
+          value: ['Our collection information is a work in progress and may be updated as new research findings emerge. If you have spotted an error, please contact Snite Museum of Art at [RMMACollections@nd.edu](mailto:RMMACollections@nd.edu).'],
         },
       ]
       const result = makeMetadataArray(defaultData)

@@ -84,7 +84,7 @@ const findContact = (item) => {
       contact = 'rarebook@nd.edu'
       break
     case 'museum':
-      contact = 'sniteart@nd.edu'
+      contact = 'RMMACollections@nd.edu'
       break
     case 'unda':
       contact = 'archives@nd.edu'
