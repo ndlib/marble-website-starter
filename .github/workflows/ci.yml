@@ -23,7 +23,7 @@ jobs:
 
       - name: "Install Main App"
         run: |
-          yarn global add gatsby-cli
+          yarn global add gatsby-cli@4.24.0
           mkdir ~/.config/gatsby
           cp ./scripts/codebuild/config.json ~/.config/gatsby/
           git submodule init
