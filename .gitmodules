@@ -1,6 +1,3 @@
-[submodule "sites/inquisition"]
-	path = sites/inquisition
-	url = https://github.com/ndlib/inquisition
 [submodule "sites/marble"]
 	path = sites/marble
 	url = https://github.com/ndlib/marble-web
