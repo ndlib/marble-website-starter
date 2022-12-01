@@ -44,27 +44,27 @@ module.exports = (itemId, website, childrenNextToken) => {
     digitalAccess
     digitizationSource
     dimensions
-    media {
-     items {
-       id
-       mediaResourceId
-       mediaServer
-       mimeType
-       sequence
-       sourceUri
-       title
-     }
+    media(limit: 10000) {
+      items {
+        id
+        mediaResourceId
+        mediaServer
+        mimeType
+        sequence
+        sourceUri
+        title
+      }
     }
-    images {
-     items {
-       id
-       mediaResourceId
-       mediaServer
-       mimeType
-       sequence
-       sourceUri
-       title
-     }
+    images(limit: 10000) {
+      items {
+        id
+        mediaResourceId
+        mediaServer
+        mimeType
+        sequence
+        sourceUri
+        title
+      }
     }
     format
     geographicLocations {
