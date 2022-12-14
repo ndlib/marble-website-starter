@@ -52,7 +52,7 @@ echo "${magenta}----- INSTALLATIONS -------${reset}"
 npm install -g yarn || { echo "Npm install failed" ;exit 1; }
 
 # install gatsby
-yarn global add gatsby-cli@4.23.0 || { echo "FATAL: Could not install Gatsby Command Line Tools";exit 1; }
+yarn global add gatsby-cli || { echo "FATAL: Could not install Gatsby Command Line Tools";exit 1; }
 
 # set yarn as default package manager for gatsby
 mkdir ~/.config/gatsby
