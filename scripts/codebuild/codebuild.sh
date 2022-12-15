@@ -9,6 +9,9 @@ cat /proc/sys/fs/inotify/max_user_watches
 sysctl -w fs.inotify.max_user_watches=524288
 cat /proc/sys/fs/inotify/max_user_watches
 
+echo "Manually updating to Node 18"
+n 18
+node --version
 
 echo "${magenta}----- CONFIGURATIONS -------${reset}"
 BASE_DIR="${PWD}"
