@@ -21,6 +21,13 @@ module.exports = {
         href: to,
       })
   ),
+  Slice: jest.fn().mockImplementation(
+    ({ alias, ...rest }) =>
+      React.createElement("div", {
+        ...rest,
+        "data-test-slice-alias": alias
+      })
+  ),
   StaticQuery: jest.fn(),
   useStaticQuery: jest.fn(),
   navigate: jest.fn(),
