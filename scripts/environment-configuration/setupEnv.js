@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-
-const AWS = require('aws-sdk')
-const secretsmanager = new AWS.SecretsManager()
+const { SSMClient, GetParametersByPathCommand } = require('@aws-sdk/client-ssm')
+const { SecretsManagerClient, GetSecretValueCommand } = require('@aws-sdk/client-secrets-manager')
 
 const appConfig = process.argv.slice(2)[0]
 
@@ -11,15 +10,17 @@ const possibleKeys = [
 ]
 
 const retrieveStageParameters = async () => {
-  const ssm = new AWS.SSM({ region: 'us-east-1' })
-  const params = await ssm.getParametersByPath({
+  const ssmClient = new SSMClient({ region: 'us-east-1' })
+  const command = new GetParametersByPathCommand({
     Path: appConfig,
     Recursive: true,
     WithDecryption: true,
-  }).promise().catch((err) => {
-    console.error('Failed getting parameter: ' + appConfig)
-    console.error(err)
   })
+  const params = await ssmClient.send(command)
+    .catch((err) => {
+      console.error('Failed getting parameter: ' + appConfig)
+      console.error(err)
+    })
   params['Parameters'].forEach(node => {
     const paramName = node['Name']
     const envName = paramName.substring(paramName.lastIndexOf('/') + 1, paramName.length).toUpperCase().replace(/[-]/g, '_')
@@ -40,10 +41,13 @@ const retrieveFmpSecrets = async () => {
     const params = {
       SecretId: process.env.FMP_CRED_PATH,
     }
-    const data = await secretsmanager.getSecretValue(params).promise().catch((err) => {
-      console.error('Failed getting FMP secrets: ' + process.env.FMP_CRED_PATH)
-      console.error(err)
-    })
+    const client = new SecretsManagerClient({ region: 'us-east-1' })
+    const command = new GetSecretValueCommand(params)
+    const data = await client.send(command)
+      .catch((err) => {
+        console.error('Failed getting FMP secrets: ' + process.env.FMP_CRED_PATH)
+        console.error(err)
+      })
     secrets = JSON.parse(data.SecretString)
   }
   return secrets

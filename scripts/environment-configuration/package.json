@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "APACHE2",
   "dependencies": {
-    "aws-sdk": "^2.814.0"
+    "@aws-sdk/client-secrets-manager": "^3.299.0",
+    "@aws-sdk/client-ssm": "^3.299.0"
   }
 }
