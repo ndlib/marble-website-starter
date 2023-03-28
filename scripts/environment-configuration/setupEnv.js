@@ -16,7 +16,7 @@ const retrieveStageParameters = async () => {
     Recursive: true,
     WithDecryption: true,
   })
-  const params = await ssmClient.send(command)
+  const params = ssmClient.send(command)
     .catch((err) => {
       console.error('Failed getting parameter: ' + appConfig)
       console.error(err)
@@ -43,7 +43,7 @@ const retrieveFmpSecrets = async () => {
     }
     const client = new SecretsManagerClient({ region: 'us-east-1' })
     const command = new GetSecretValueCommand(params)
-    const data = await client.send(command)
+    const data = client.send(command)
       .catch((err) => {
         console.error('Failed getting FMP secrets: ' + process.env.FMP_CRED_PATH)
         console.error(err)
